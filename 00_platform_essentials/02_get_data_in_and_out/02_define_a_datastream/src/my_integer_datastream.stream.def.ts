@@ -1,8 +1,7 @@
 import * as ELARA from "@elaraai/edk/lib"
 
 
-export default ELARA.PipelineSchema({
+export default ELARA.StreamSchema({
     name: "My Integer Datastream",
-    input_table: null,
-    operations: [],
+    type: ELARA.NullType,
 })
