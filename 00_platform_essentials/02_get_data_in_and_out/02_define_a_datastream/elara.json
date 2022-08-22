@@ -2,5 +2,13 @@
   "project": {
     "name": "Hello World Project"
   },
-  "assets": {}
+  "assets": {
+    "my_integer_datastream.pipeline": {
+      "name": "My Integer Datastream",
+      "def_path": "src/my_integer_datastream.pipeline.def.ts",
+      "gen_path": "gen/my_integer_datastream.pipeline.ts",
+      "type": "entity",
+      "entity_type": "pipeline"
+    }
+  }
 }
