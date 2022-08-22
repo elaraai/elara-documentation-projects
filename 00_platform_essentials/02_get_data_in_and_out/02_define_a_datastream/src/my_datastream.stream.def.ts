@@ -1,7 +1,6 @@
 import * as ELARA from "@elaraai/edk/lib"
 
-
 export default ELARA.StreamSchema({
-    name: "My Integer Datastream",
+    name: "My Datastream",
     type: ELARA.NullType,
 })
