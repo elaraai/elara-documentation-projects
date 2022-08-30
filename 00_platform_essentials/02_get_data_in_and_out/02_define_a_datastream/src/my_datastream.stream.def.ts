@@ -1,4 +1,4 @@
-import * as ELARA from "@elaraai/edk/lib"
+import * as ELARA from "@elaraai/core"
 
 export default ELARA.StreamSchema({
     name: "My Datastream",
