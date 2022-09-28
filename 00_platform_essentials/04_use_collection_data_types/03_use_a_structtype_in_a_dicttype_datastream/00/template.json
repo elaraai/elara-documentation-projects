@@ -1,0 +1,36 @@
+{
+  "version": {
+    "type": "integer",
+    "kind": "literal",
+    "value": "1"
+  },
+  "name": "HelloWorld",
+  "tables": {
+    "My DictType Datastream": {
+      "name": "My DictType Datastream",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Integer",
+            "value": null
+          }
+        }
+      },
+      "hash": "dcfa6da6dde14c5a8b2b06d368eeabb7c807b2fddc73d0db9e881e03f9e38974"
+    },
+    "My IntegerType Datastream": {
+      "name": "My IntegerType Datastream",
+      "type": {
+        "type": "Integer",
+        "value": null,
+        "nullable": true
+      },
+      "hash": "dc0e05bdb88428a65f00ffa7c8ab62f07d593bf0fd13225820427b774af906a0"
+    }
+  }
+}
