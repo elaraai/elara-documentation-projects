@@ -1,0 +1,200 @@
+{
+  "datasources": {
+    "Products": {
+      "type": "csv",
+      "name": "Products",
+      "uri": "file://data/products.csv",
+      "poll": null,
+      "delimiter": ",",
+      "skip_n": 0,
+      "output": {
+        "name": "Source.Products",
+        "type": {
+          "type": "Dict",
+          "value": {
+            "key": {
+              "type": "String",
+              "value": null
+            },
+            "value": {
+              "type": "Struct",
+              "value": {
+                "Name": {
+                  "type": "String",
+                  "value": null
+                },
+                "Code": {
+                  "type": "String",
+                  "value": null
+                },
+                "Category": {
+                  "type": "String",
+                  "value": null
+                },
+                "Unit Cost": {
+                  "type": "Float",
+                  "value": null,
+                  "nullable": true
+                }
+              }
+            }
+          }
+        },
+        "hash": "932063b465db2040be9e11947e6c3bb52ed3de18f3537dc1973b80358dd1bdd8"
+      },
+      "fields": {
+        "Name": {
+          "type": {
+            "type": "String",
+            "value": null
+          },
+          "ast_type": "Variable",
+          "name": "Name"
+        },
+        "Code": {
+          "type": {
+            "type": "String",
+            "value": null
+          },
+          "ast_type": "Variable",
+          "name": "Code"
+        },
+        "Category": {
+          "type": {
+            "type": "String",
+            "value": null
+          },
+          "ast_type": "Variable",
+          "name": "Category"
+        },
+        "Unit Cost": {
+          "type": {
+            "type": "Float",
+            "value": null,
+            "nullable": true
+          },
+          "ast_type": "Variable",
+          "name": "Unit Cost"
+        }
+      },
+      "key": {
+        "type": {
+          "type": "String",
+          "value": null
+        },
+        "ast_type": "Variable",
+        "name": "Code"
+      },
+      "selections": {
+        "Name": {
+          "type": {
+            "type": "String",
+            "value": null
+          },
+          "ast_type": "Parse",
+          "from": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Variable",
+            "name": "Name"
+          }
+        },
+        "Code": {
+          "type": {
+            "type": "String",
+            "value": null
+          },
+          "ast_type": "Parse",
+          "from": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Variable",
+            "name": "Code"
+          }
+        },
+        "Category": {
+          "type": {
+            "type": "String",
+            "value": null
+          },
+          "ast_type": "Parse",
+          "from": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Variable",
+            "name": "Category"
+          }
+        },
+        "Unit Cost": {
+          "type": {
+            "type": "Float",
+            "value": null,
+            "nullable": true
+          },
+          "ast_type": "Parse",
+          "from": {
+            "type": {
+              "type": "Float",
+              "value": null,
+              "nullable": true
+            },
+            "ast_type": "Variable",
+            "name": "Unit Cost"
+          }
+        }
+      },
+      "filter": {
+        "type": {
+          "type": "Boolean",
+          "value": null
+        },
+        "ast_type": "Const",
+        "value": true
+      },
+      "source_type": "single_source"
+    }
+  },
+  "tables": {
+    "Source.Products": {
+      "name": "Source.Products",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "Name": {
+                "type": "String",
+                "value": null
+              },
+              "Code": {
+                "type": "String",
+                "value": null
+              },
+              "Category": {
+                "type": "String",
+                "value": null
+              },
+              "Unit Cost": {
+                "type": "Float",
+                "value": null,
+                "nullable": true
+              }
+            }
+          }
+        }
+      },
+      "hash": "932063b465db2040be9e11947e6c3bb52ed3de18f3537dc1973b80358dd1bdd8"
+    }
+  }
+}
