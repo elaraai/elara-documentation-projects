@@ -25,9 +25,9 @@ type:'String' as const,value:null},
 Category:{
 type:'String' as const,value:null},
 "Unit Cost":{
-type:'Float' as const,nullable:true as const,value:null},
+type:'Float' as const,value:null},
 }}}},
-hash:"932063b465db2040be9e11947e6c3bb52ed3de18f3537dc1973b80358dd1bdd8",
+hash:"fb84e7163e96a95a407091056ed3aac2a91ca3466b1e79ac270aab33d6ee59d6",
 },
 key:{
 type:{
@@ -56,7 +56,7 @@ name:"Category"
 },
 "Unit Cost":{
 type:{
-type:'Float' as const,nullable:true as const,value:null},
+type:'Float' as const,value:null},
 ast_type:'Variable' as const,
 name:"Unit Cost"
 },
@@ -103,11 +103,11 @@ name:"Category"
 format:undefined},
 "Unit Cost":{
 type:{
-type:'Float' as const,nullable:true as const,value:null},
+type:'Float' as const,value:null},
 ast_type:'Parse' as const,
 from:{
 type:{
-type:'Float' as const,nullable:true as const,value:null},
+type:'Float' as const,value:null},
 ast_type:'Variable' as const,
 name:"Unit Cost"
 },
@@ -135,9 +135,9 @@ type:'String' as const,value:null},
 Category:{
 type:'String' as const,value:null},
 "Unit Cost":{
-type:'Float' as const,nullable:true as const,value:null},
+type:'Float' as const,value:null},
 }}}},
-hash:"932063b465db2040be9e11947e6c3bb52ed3de18f3537dc1973b80358dd1bdd8",
+hash:"fb84e7163e96a95a407091056ed3aac2a91ca3466b1e79ac270aab33d6ee59d6",
 },
 },
 scenarios: {},
