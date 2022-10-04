@@ -1,12 +1,12 @@
-import { DictType, IntegerType, Nullable, StreamSchema, StringType, StructType, Template } from "@elaraai/core"
+import { DictType, IntegerType, Nullable, StreamTemplate, StringType, StructType, Template } from "@elaraai/core"
 
 
-const my_integertype_datastream = StreamSchema({
+const my_integertype_datastream = StreamTemplate({
     name: "My IntegerType Datastream",
     type: Nullable(IntegerType)
 })
 
-const my_dicttype_datastream = StreamSchema({
+const my_dicttype_datastream = StreamTemplate({
     name: "My DictType Datastream",
     type: DictType(
         StringType,

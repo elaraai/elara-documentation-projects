@@ -1,7 +1,7 @@
-import { IntegerType, Nullable, StreamSchema } from "@elaraai/core"
+import { IntegerType, Nullable, StreamTemplate } from "@elaraai/core"
 
 
-export default StreamSchema({
+export default StreamTemplate({
     name: "My Datastream",
     type: Nullable(IntegerType)
 })
