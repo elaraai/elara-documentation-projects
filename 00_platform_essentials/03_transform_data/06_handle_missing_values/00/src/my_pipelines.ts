@@ -8,4 +8,4 @@ export default new PipelineBuilder(my_datastreams.tables["My Datastream"])
             100n,
             1n
         )
-    ).toSchema("My Pipeline")
+    ).toTemplate("My Pipeline")
