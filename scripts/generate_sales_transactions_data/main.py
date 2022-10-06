@@ -134,7 +134,7 @@ def generate_sales_transactions() -> None:
                         "salePrice": calculate_sales_price(code=code, units=units)
                     }
                 )
-            transaction["transactionTotalPrice"] = calculate_transaction_total(items=items)
+            # transaction["transactionTotalPrice"] = calculate_transaction_total(items=items)
             transaction["items"] = items
             transactions.append(transaction)
 
