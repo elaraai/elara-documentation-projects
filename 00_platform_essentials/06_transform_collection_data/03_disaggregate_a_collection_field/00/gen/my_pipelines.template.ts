@@ -16,8 +16,6 @@ type:'Struct' as const,
 value:{
 transactionDate:{
 type:'DateTime' as const,value:null},
-transactionTotalPrice:{
-type:'Float' as const,value:null},
 items:{
 type:'Array' as const,
 value:{
@@ -31,7 +29,7 @@ salePrice:{
 type:'Float' as const,value:null},
 }}},
 }}}},
-hash:"1e898b581097f7a58a6e6405cb12d1a3e60838c7d05eaf795b16a3894489ca43",
+hash:"a35f1cb14a495736e15e478276063d4202774cc856afc3a93e997929738a0cf9",
 },
 operations:[
 {
@@ -70,8 +68,6 @@ type:'Struct' as const,
 value:{
 transactionDate:{
 type:'DateTime' as const,value:null},
-transactionTotalPrice:{
-type:'Float' as const,value:null},
 items:{
 type:'Array' as const,
 value:{
@@ -85,7 +81,7 @@ salePrice:{
 type:'Float' as const,value:null},
 }}},
 }}}},
-hash:"1e898b581097f7a58a6e6405cb12d1a3e60838c7d05eaf795b16a3894489ca43",
+hash:"a35f1cb14a495736e15e478276063d4202774cc856afc3a93e997929738a0cf9",
 },
 operations:[
 {
@@ -131,8 +127,6 @@ type:'Struct' as const,
 value:{
 transactionDate:{
 type:'DateTime' as const,value:null},
-transactionTotalPrice:{
-type:'Float' as const,value:null},
 items:{
 type:'Array' as const,
 value:{
@@ -146,7 +140,7 @@ salePrice:{
 type:'Float' as const,value:null},
 }}},
 }}}},
-hash:"1e898b581097f7a58a6e6405cb12d1a3e60838c7d05eaf795b16a3894489ca43",
+hash:"a35f1cb14a495736e15e478276063d4202774cc856afc3a93e997929738a0cf9",
 },
 operations:[
 {
@@ -184,7 +178,7 @@ first:{
 type:{
 type:'Float' as const,value:null},
 ast_type:'Variable' as const,
-name:"_previous_IUtbydDnUTwbGW0ol0ukdk"
+name:"_previous_VdlxNAov4FxIcUdh8DL$KW"
 },second:{
 type:{
 type:'Float' as const,value:null},
@@ -201,7 +195,7 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_49lLrmQhOj1HBkx1wo5fG3"
+name:"_value_It2SeagldfHZt9Ip20DuF9"
 },
 key:"salePrice"},},
 initial:{
@@ -214,7 +208,7 @@ previous:{
 type:{
 type:'Float' as const,value:null},
 ast_type:'Variable' as const,
-name:"_previous_IUtbydDnUTwbGW0ol0ukdk"
+name:"_previous_VdlxNAov4FxIcUdh8DL$KW"
 },
 value:{
 type:{
@@ -228,13 +222,13 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_49lLrmQhOj1HBkx1wo5fG3"
+name:"_value_It2SeagldfHZt9Ip20DuF9"
 },
 key:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_zqz2iFfPupcEeWWDMe4Yev"
+name:"_key_urC41UWbLe2PKj713aakd0"
 }
 },second:{
 type:{
@@ -260,8 +254,6 @@ type:'Struct' as const,
 value:{
 transactionDate:{
 type:'DateTime' as const,value:null},
-transactionTotalPrice:{
-type:'Float' as const,value:null},
 items:{
 type:'Array' as const,
 value:{
@@ -275,7 +267,7 @@ salePrice:{
 type:'Float' as const,value:null},
 }}},
 }}}},
-hash:"1e898b581097f7a58a6e6405cb12d1a3e60838c7d05eaf795b16a3894489ca43",
+hash:"a35f1cb14a495736e15e478276063d4202774cc856afc3a93e997929738a0cf9",
 },
 "Pipeline.Filter On Date":{
 name:"Pipeline.Filter On Date",
@@ -289,8 +281,6 @@ type:'Struct' as const,
 value:{
 transactionDate:{
 type:'DateTime' as const,value:null},
-transactionTotalPrice:{
-type:'Float' as const,value:null},
 items:{
 type:'Array' as const,
 value:{
@@ -304,7 +294,7 @@ salePrice:{
 type:'Float' as const,value:null},
 }}},
 }}}},
-hash:"1e898b581097f7a58a6e6405cb12d1a3e60838c7d05eaf795b16a3894489ca43",
+hash:"a35f1cb14a495736e15e478276063d4202774cc856afc3a93e997929738a0cf9",
 },
 "Pipeline.Filter Revenue Greater than 100":{
 name:"Pipeline.Filter Revenue Greater than 100",
@@ -318,8 +308,6 @@ type:'Struct' as const,
 value:{
 transactionDate:{
 type:'DateTime' as const,value:null},
-transactionTotalPrice:{
-type:'Float' as const,value:null},
 items:{
 type:'Array' as const,
 value:{
@@ -333,7 +321,7 @@ salePrice:{
 type:'Float' as const,value:null},
 }}},
 }}}},
-hash:"1e898b581097f7a58a6e6405cb12d1a3e60838c7d05eaf795b16a3894489ca43",
+hash:"a35f1cb14a495736e15e478276063d4202774cc856afc3a93e997929738a0cf9",
 },
 },
 scenarios: {},

@@ -132,8 +132,6 @@ type:'Struct' as const,
 value:{
 transactionDate:{
 type:'DateTime' as const,value:null},
-transactionTotalPrice:{
-type:'Float' as const,value:null},
 items:{
 type:'Array' as const,
 value:{
@@ -147,7 +145,7 @@ salePrice:{
 type:'Float' as const,value:null},
 }}},
 }}}},
-hash:"1e898b581097f7a58a6e6405cb12d1a3e60838c7d05eaf795b16a3894489ca43",
+hash:"a35f1cb14a495736e15e478276063d4202774cc856afc3a93e997929738a0cf9",
 },
 key:{
 type:{
@@ -166,12 +164,6 @@ type:{
 type:'DateTime' as const,value:null},
 ast_type:'Variable' as const,
 name:"transactionDate"
-},
-transactionTotalPrice:{
-type:{
-type:'Float' as const,value:null},
-ast_type:'Variable' as const,
-name:"transactionTotalPrice"
 },
 items:{
 type:{
@@ -206,17 +198,6 @@ type:{
 type:'DateTime' as const,value:null},
 ast_type:'Variable' as const,
 name:"transactionDate"
-},
-format:undefined},
-transactionTotalPrice:{
-type:{
-type:'Float' as const,value:null},
-ast_type:'Parse' as const,
-from:{
-type:{
-type:'Float' as const,value:null},
-ast_type:'Variable' as const,
-name:"transactionTotalPrice"
 },
 format:undefined},
 items:{
@@ -289,8 +270,6 @@ type:'Struct' as const,
 value:{
 transactionDate:{
 type:'DateTime' as const,value:null},
-transactionTotalPrice:{
-type:'Float' as const,value:null},
 items:{
 type:'Array' as const,
 value:{
@@ -304,7 +283,7 @@ salePrice:{
 type:'Float' as const,value:null},
 }}},
 }}}},
-hash:"1e898b581097f7a58a6e6405cb12d1a3e60838c7d05eaf795b16a3894489ca43",
+hash:"a35f1cb14a495736e15e478276063d4202774cc856afc3a93e997929738a0cf9",
 },
 },
 scenarios: {},

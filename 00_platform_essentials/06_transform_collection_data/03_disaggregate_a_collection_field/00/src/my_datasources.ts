@@ -27,7 +27,6 @@ const json_source = JsonSourceSchema({
     selections: {
         // #TODO: from here
         transactionDate: Parse(Variable("transactionDate", DateTimeType)),
-        transactionTotalPrice: Parse(Variable("transactionTotalPrice", FloatType)),
         items: Parse(Variable("items", items_type))
     },
     primary_key: Print(Variable("transactionDate", DateTimeType))

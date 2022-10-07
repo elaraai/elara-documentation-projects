@@ -182,10 +182,6 @@
                   "type": "DateTime",
                   "value": null
                 },
-                "transactionTotalPrice": {
-                  "type": "Float",
-                  "value": null
-                },
                 "items": {
                   "type": "Array",
                   "value": {
@@ -210,7 +206,7 @@
             }
           }
         },
-        "hash": "1e898b581097f7a58a6e6405cb12d1a3e60838c7d05eaf795b16a3894489ca43"
+        "hash": "a35f1cb14a495736e15e478276063d4202774cc856afc3a93e997929738a0cf9"
       },
       "fields": {
         "transactionDate": {
@@ -220,14 +216,6 @@
           },
           "ast_type": "Variable",
           "name": "transactionDate"
-        },
-        "transactionTotalPrice": {
-          "type": {
-            "type": "Float",
-            "value": null
-          },
-          "ast_type": "Variable",
-          "name": "transactionTotalPrice"
         },
         "items": {
           "type": {
@@ -283,21 +271,6 @@
             },
             "ast_type": "Variable",
             "name": "transactionDate"
-          }
-        },
-        "transactionTotalPrice": {
-          "type": {
-            "type": "Float",
-            "value": null
-          },
-          "ast_type": "Parse",
-          "from": {
-            "type": {
-              "type": "Float",
-              "value": null
-            },
-            "ast_type": "Variable",
-            "name": "transactionTotalPrice"
           }
         },
         "items": {
@@ -445,10 +418,6 @@
                 "type": "DateTime",
                 "value": null
               },
-              "transactionTotalPrice": {
-                "type": "Float",
-                "value": null
-              },
               "items": {
                 "type": "Array",
                 "value": {
@@ -473,7 +442,7 @@
           }
         }
       },
-      "hash": "1e898b581097f7a58a6e6405cb12d1a3e60838c7d05eaf795b16a3894489ca43"
+      "hash": "a35f1cb14a495736e15e478276063d4202774cc856afc3a93e997929738a0cf9"
     }
   }
 }
