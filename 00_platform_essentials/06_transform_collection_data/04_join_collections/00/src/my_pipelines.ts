@@ -36,7 +36,7 @@ const first_disaggregate = new PipelineBuilder(sales)
         selections: {
             transactionDate: (entry) => entry.transactionDate,
             productCode: (_, item) => GetField(item, "productCode"),
-            qty: (_, item) => GetField(item, "units"),
+            units: (_, item) => GetField(item, "units"),
             salePrice: (_, item) => GetField(item, "salePrice"),
         },
     })
@@ -45,11 +45,11 @@ const disaggregate_exercise_one = first_disaggregate.toTemplate("Disaggregate It
 
 const disaggregate_exercise_two = first_disaggregate
     .disaggregateArray({
-        collection: (entry) => Range(1n, entry.qty),
+        collection: (entry) => Range(1n, entry.units),
         selections: {
             transactionDate: (entry) => entry.transactionDate,
             productCode: (entry) => entry.productCode,
-            salePrice: (entry) => Divide(entry.salePrice, entry.qty)
+            salePrice: (entry) => Divide(entry.salePrice, entry.units)
         }
     })
     .toTemplate("Disaggregate Units")
