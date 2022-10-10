@@ -30,7 +30,7 @@ const filter_exercise_three = new PipelineBuilder(sales)
     )
     .toTemplate("Filter Revenue Greater than 100")
 
-const first_disaggregate = new PipelineBuilder(sales)
+const disaggregate_exercise_one = new PipelineBuilder(sales)
     .disaggregateArray({
         collection: (entry) => entry.items,
         selections: {
@@ -39,11 +39,9 @@ const first_disaggregate = new PipelineBuilder(sales)
             units: (_, item) => GetField(item, "units"),
             salePrice: (_, item) => GetField(item, "salePrice"),
         },
-    })
+    }).toPipeline("Disaggregate Items")
 
-const disaggregate_exercise_one = first_disaggregate.toTemplate("Disaggregate Items")
-
-const disaggregate_exercise_two = first_disaggregate
+const disaggregate_exercise_two = new PipelineBuilder(disaggregate_exercise_one.output_table)
     .disaggregateArray({
         collection: (entry) => Range(1n, entry.units),
         selections: {
@@ -59,6 +57,6 @@ export default Template(
     filter_exercise_one,
     filter_exercise_two,
     filter_exercise_three,
-    disaggregate_exercise_one,
+    PipelineBuilder.toTemplate(disaggregate_exercise_one),
     disaggregate_exercise_two
 )
