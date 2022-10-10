@@ -39,7 +39,8 @@ const disaggregate_exercise_one = new PipelineBuilder(sales)
             units: (_, item) => GetField(item, "units"),
             salePrice: (_, item) => GetField(item, "salePrice"),
         },
-    }).toPipeline("Disaggregate Items")
+    })
+    .toPipeline("Disaggregate Items")
 
 const disaggregate_exercise_two = new PipelineBuilder(disaggregate_exercise_one.output_table)
     .disaggregateArray({
