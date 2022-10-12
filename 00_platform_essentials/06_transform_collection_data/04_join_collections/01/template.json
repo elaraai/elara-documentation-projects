@@ -381,7 +381,7 @@
               }
             },
             "ast_type": "Variable",
-            "name": "_value_1$1x791PO1O06UwWzg32Us"
+            "name": "_value_XPvoAGW1jeSdZNhqt8Ykw7"
           },
           "input_key": "#key0",
           "collection_key": {
@@ -390,7 +390,7 @@
               "value": null
             },
             "ast_type": "Variable",
-            "name": "_key_U0JFT5ttknILiOXf8ofMM3"
+            "name": "_key_yonq0q1ziO9f7g8Y8HscKq"
           },
           "type": "disaggregate",
           "selections": {
@@ -427,7 +427,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_1$1x791PO1O06UwWzg32Us"
+                "name": "_value_XPvoAGW1jeSdZNhqt8Ykw7"
               },
               "key": "productCode"
             },
@@ -456,7 +456,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_1$1x791PO1O06UwWzg32Us"
+                "name": "_value_XPvoAGW1jeSdZNhqt8Ykw7"
               },
               "key": "units"
             },
@@ -485,7 +485,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_1$1x791PO1O06UwWzg32Us"
+                "name": "_value_XPvoAGW1jeSdZNhqt8Ykw7"
               },
               "key": "salePrice"
             }
@@ -525,7 +525,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_key_U0JFT5ttknILiOXf8ofMM3"
+                  "name": "_key_yonq0q1ziO9f7g8Y8HscKq"
                 }
               }
             ],
@@ -609,7 +609,7 @@
               "value": null
             },
             "ast_type": "Variable",
-            "name": "_value_2oKwYRzrPE0pe99e$8scsG"
+            "name": "_value_GfQVgqg66tf4pBrP2i1Lfr"
           },
           "input_key": "#key0",
           "collection_key": {
@@ -618,7 +618,7 @@
               "value": null
             },
             "ast_type": "Variable",
-            "name": "_key_EnTIWueA$234KNj1cg2psR"
+            "name": "_key_O22_jp3GeAmwW3ODflUHnf"
           },
           "type": "disaggregate",
           "selections": {
@@ -704,7 +704,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_key_EnTIWueA$234KNj1cg2psR"
+                  "name": "_key_O22_jp3GeAmwW3ODflUHnf"
                 }
               }
             ],
@@ -965,7 +965,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_previous_AiAyzCZZ7SEFTB8i_dYMvU"
+                  "name": "_previous_s_bXryRLy6sUEvaqLPiNAX"
                 },
                 "second": {
                   "type": {
@@ -992,7 +992,7 @@
                       }
                     },
                     "ast_type": "Variable",
-                    "name": "_value_czG8ZKP5uGgBqjU440EHau"
+                    "name": "_value_Qvu1dgkNtR85_Ev03f6fGT"
                   },
                   "key": "salePrice"
                 }
@@ -1011,7 +1011,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_previous_AiAyzCZZ7SEFTB8i_dYMvU"
+                "name": "_previous_s_bXryRLy6sUEvaqLPiNAX"
               },
               "value": {
                 "type": {
@@ -1032,7 +1032,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_czG8ZKP5uGgBqjU440EHau"
+                "name": "_value_Qvu1dgkNtR85_Ev03f6fGT"
               },
               "key": {
                 "type": {
@@ -1040,7 +1040,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_key_lccMUeiY$YiKa7MldiJ3YM"
+                "name": "_key_13WLWK6lmbcfUuOYjQtUlk"
               }
             },
             "second": {
@@ -1095,6 +1095,170 @@
           }
         },
         "hash": "a35f1cb14a495736e15e478276063d4202774cc856afc3a93e997929738a0cf9"
+      }
+    },
+    "Sales and Product Info": {
+      "name": "Sales and Product Info",
+      "input_table": "Pipeline.Disaggregate Items",
+      "operations": [
+        {
+          "type": "join",
+          "join_type": "Inner",
+          "source_table": "Source.Products",
+          "source_input_key": "#right_key0",
+          "source_key": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Variable",
+            "name": "Code"
+          },
+          "source_selections": {
+            "productName": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "Name"
+            },
+            "productCategory": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "Category"
+            },
+            "productUnitCost": {
+              "type": {
+                "type": "Float",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "Unit Cost"
+            }
+          },
+          "target_input_key": "#left_key0",
+          "target_key": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Variable",
+            "name": "productCode"
+          },
+          "target_selections": {
+            "productCode": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "productCode"
+            },
+            "transactionDate": {
+              "type": {
+                "type": "DateTime",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "transactionDate"
+            },
+            "units": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "units"
+            }
+          },
+          "output_key": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "StringJoin",
+            "values": [
+              {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Print",
+                "value": {
+                  "type": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "transactionDate"
+                }
+              },
+              {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": "."
+              },
+              {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "productCode"
+              }
+            ],
+            "seperator": ""
+          }
+        }
+      ],
+      "output_table": {
+        "name": "Pipeline.Sales and Product Info",
+        "type": {
+          "type": "Dict",
+          "value": {
+            "key": {
+              "type": "String",
+              "value": null
+            },
+            "value": {
+              "type": "Struct",
+              "value": {
+                "productCode": {
+                  "type": "String",
+                  "value": null
+                },
+                "transactionDate": {
+                  "type": "DateTime",
+                  "value": null
+                },
+                "units": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "productName": {
+                  "type": "String",
+                  "value": null
+                },
+                "productCategory": {
+                  "type": "String",
+                  "value": null
+                },
+                "productUnitCost": {
+                  "type": "Float",
+                  "value": null
+                }
+              }
+            }
+          }
+        },
+        "hash": "a48b1e853d6b58087646b262f4b7406d61e20a8da82c82fe4d85d88f9143a6b2"
       }
     }
   },
@@ -1323,6 +1487,48 @@
         }
       },
       "hash": "a35f1cb14a495736e15e478276063d4202774cc856afc3a93e997929738a0cf9"
+    },
+    "Pipeline.Sales and Product Info": {
+      "name": "Pipeline.Sales and Product Info",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "productCode": {
+                "type": "String",
+                "value": null
+              },
+              "transactionDate": {
+                "type": "DateTime",
+                "value": null
+              },
+              "units": {
+                "type": "Integer",
+                "value": null
+              },
+              "productName": {
+                "type": "String",
+                "value": null
+              },
+              "productCategory": {
+                "type": "String",
+                "value": null
+              },
+              "productUnitCost": {
+                "type": "Float",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "hash": "a48b1e853d6b58087646b262f4b7406d61e20a8da82c82fe4d85d88f9143a6b2"
     },
     "Source.Products": {
       "name": "Source.Products",

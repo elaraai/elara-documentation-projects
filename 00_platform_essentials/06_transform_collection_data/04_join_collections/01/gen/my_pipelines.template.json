@@ -1,337 +1,4 @@
 {
-  "version": {
-    "type": "integer",
-    "kind": "literal",
-    "value": "1"
-  },
-  "name": "HelloWorld",
-  "datasources": {
-    "Products": {
-      "type": "csv",
-      "name": "Products",
-      "uri": "file://data/products.csv",
-      "poll": null,
-      "delimiter": ",",
-      "skip_n": 0,
-      "output": {
-        "name": "Source.Products",
-        "type": {
-          "type": "Dict",
-          "value": {
-            "key": {
-              "type": "String",
-              "value": null
-            },
-            "value": {
-              "type": "Struct",
-              "value": {
-                "Name": {
-                  "type": "String",
-                  "value": null
-                },
-                "Code": {
-                  "type": "String",
-                  "value": null
-                },
-                "Category": {
-                  "type": "String",
-                  "value": null
-                },
-                "Unit Cost": {
-                  "type": "Float",
-                  "value": null
-                }
-              }
-            }
-          }
-        },
-        "hash": "fb84e7163e96a95a407091056ed3aac2a91ca3466b1e79ac270aab33d6ee59d6"
-      },
-      "fields": {
-        "Name": {
-          "type": {
-            "type": "String",
-            "value": null
-          },
-          "ast_type": "Variable",
-          "name": "Name"
-        },
-        "Code": {
-          "type": {
-            "type": "String",
-            "value": null
-          },
-          "ast_type": "Variable",
-          "name": "Code"
-        },
-        "Category": {
-          "type": {
-            "type": "String",
-            "value": null
-          },
-          "ast_type": "Variable",
-          "name": "Category"
-        },
-        "Unit Cost": {
-          "type": {
-            "type": "Float",
-            "value": null
-          },
-          "ast_type": "Variable",
-          "name": "Unit Cost"
-        }
-      },
-      "key": {
-        "type": {
-          "type": "String",
-          "value": null
-        },
-        "ast_type": "Variable",
-        "name": "Code"
-      },
-      "selections": {
-        "Name": {
-          "type": {
-            "type": "String",
-            "value": null
-          },
-          "ast_type": "Parse",
-          "from": {
-            "type": {
-              "type": "String",
-              "value": null
-            },
-            "ast_type": "Variable",
-            "name": "Name"
-          }
-        },
-        "Code": {
-          "type": {
-            "type": "String",
-            "value": null
-          },
-          "ast_type": "Parse",
-          "from": {
-            "type": {
-              "type": "String",
-              "value": null
-            },
-            "ast_type": "Variable",
-            "name": "Code"
-          }
-        },
-        "Category": {
-          "type": {
-            "type": "String",
-            "value": null
-          },
-          "ast_type": "Parse",
-          "from": {
-            "type": {
-              "type": "String",
-              "value": null
-            },
-            "ast_type": "Variable",
-            "name": "Category"
-          }
-        },
-        "Unit Cost": {
-          "type": {
-            "type": "Float",
-            "value": null
-          },
-          "ast_type": "Parse",
-          "from": {
-            "type": {
-              "type": "Float",
-              "value": null
-            },
-            "ast_type": "Variable",
-            "name": "Unit Cost"
-          }
-        }
-      },
-      "filter": {
-        "type": {
-          "type": "Boolean",
-          "value": null
-        },
-        "ast_type": "Const",
-        "value": true
-      },
-      "source_type": "single_source"
-    },
-    "Sales": {
-      "type": "json",
-      "name": "Sales",
-      "uri": "file://data/sales.jsonl",
-      "poll": null,
-      "output": {
-        "name": "Source.Sales",
-        "type": {
-          "type": "Dict",
-          "value": {
-            "key": {
-              "type": "String",
-              "value": null
-            },
-            "value": {
-              "type": "Struct",
-              "value": {
-                "transactionDate": {
-                  "type": "DateTime",
-                  "value": null
-                },
-                "items": {
-                  "type": "Array",
-                  "value": {
-                    "type": "Struct",
-                    "value": {
-                      "productCode": {
-                        "type": "String",
-                        "value": null
-                      },
-                      "units": {
-                        "type": "Integer",
-                        "value": null
-                      },
-                      "salePrice": {
-                        "type": "Float",
-                        "value": null
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "hash": "a35f1cb14a495736e15e478276063d4202774cc856afc3a93e997929738a0cf9"
-      },
-      "fields": {
-        "transactionDate": {
-          "type": {
-            "type": "DateTime",
-            "value": null
-          },
-          "ast_type": "Variable",
-          "name": "transactionDate"
-        },
-        "items": {
-          "type": {
-            "type": "Array",
-            "value": {
-              "type": "Struct",
-              "value": {
-                "productCode": {
-                  "type": "String",
-                  "value": null
-                },
-                "units": {
-                  "type": "Integer",
-                  "value": null
-                },
-                "salePrice": {
-                  "type": "Float",
-                  "value": null
-                }
-              }
-            }
-          },
-          "ast_type": "Variable",
-          "name": "items"
-        }
-      },
-      "key": {
-        "type": {
-          "type": "String",
-          "value": null
-        },
-        "ast_type": "Print",
-        "value": {
-          "type": {
-            "type": "DateTime",
-            "value": null
-          },
-          "ast_type": "Variable",
-          "name": "transactionDate"
-        }
-      },
-      "selections": {
-        "transactionDate": {
-          "type": {
-            "type": "DateTime",
-            "value": null
-          },
-          "ast_type": "Parse",
-          "from": {
-            "type": {
-              "type": "DateTime",
-              "value": null
-            },
-            "ast_type": "Variable",
-            "name": "transactionDate"
-          }
-        },
-        "items": {
-          "type": {
-            "type": "Array",
-            "value": {
-              "type": "Struct",
-              "value": {
-                "productCode": {
-                  "type": "String",
-                  "value": null
-                },
-                "units": {
-                  "type": "Integer",
-                  "value": null
-                },
-                "salePrice": {
-                  "type": "Float",
-                  "value": null
-                }
-              }
-            }
-          },
-          "ast_type": "Parse",
-          "from": {
-            "type": {
-              "type": "Array",
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "productCode": {
-                    "type": "String",
-                    "value": null
-                  },
-                  "units": {
-                    "type": "Integer",
-                    "value": null
-                  },
-                  "salePrice": {
-                    "type": "Float",
-                    "value": null
-                  }
-                }
-              }
-            },
-            "ast_type": "Variable",
-            "name": "items"
-          }
-        }
-      },
-      "filter": {
-        "type": {
-          "type": "Boolean",
-          "value": null
-        },
-        "ast_type": "Const",
-        "value": true
-      },
-      "source_type": "single_source"
-    }
-  },
   "pipelines": {
     "Disaggregate Items": {
       "name": "Disaggregate Items",
@@ -381,7 +48,7 @@
               }
             },
             "ast_type": "Variable",
-            "name": "_value_1$1x791PO1O06UwWzg32Us"
+            "name": "_value_XPvoAGW1jeSdZNhqt8Ykw7"
           },
           "input_key": "#key0",
           "collection_key": {
@@ -390,7 +57,7 @@
               "value": null
             },
             "ast_type": "Variable",
-            "name": "_key_U0JFT5ttknILiOXf8ofMM3"
+            "name": "_key_yonq0q1ziO9f7g8Y8HscKq"
           },
           "type": "disaggregate",
           "selections": {
@@ -427,7 +94,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_1$1x791PO1O06UwWzg32Us"
+                "name": "_value_XPvoAGW1jeSdZNhqt8Ykw7"
               },
               "key": "productCode"
             },
@@ -456,7 +123,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_1$1x791PO1O06UwWzg32Us"
+                "name": "_value_XPvoAGW1jeSdZNhqt8Ykw7"
               },
               "key": "units"
             },
@@ -485,7 +152,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_1$1x791PO1O06UwWzg32Us"
+                "name": "_value_XPvoAGW1jeSdZNhqt8Ykw7"
               },
               "key": "salePrice"
             }
@@ -525,7 +192,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_key_U0JFT5ttknILiOXf8ofMM3"
+                  "name": "_key_yonq0q1ziO9f7g8Y8HscKq"
                 }
               }
             ],
@@ -609,7 +276,7 @@
               "value": null
             },
             "ast_type": "Variable",
-            "name": "_value_2oKwYRzrPE0pe99e$8scsG"
+            "name": "_value_GfQVgqg66tf4pBrP2i1Lfr"
           },
           "input_key": "#key0",
           "collection_key": {
@@ -618,7 +285,7 @@
               "value": null
             },
             "ast_type": "Variable",
-            "name": "_key_EnTIWueA$234KNj1cg2psR"
+            "name": "_key_O22_jp3GeAmwW3ODflUHnf"
           },
           "type": "disaggregate",
           "selections": {
@@ -704,7 +371,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_key_EnTIWueA$234KNj1cg2psR"
+                  "name": "_key_O22_jp3GeAmwW3ODflUHnf"
                 }
               }
             ],
@@ -965,7 +632,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_previous_AiAyzCZZ7SEFTB8i_dYMvU"
+                  "name": "_previous_s_bXryRLy6sUEvaqLPiNAX"
                 },
                 "second": {
                   "type": {
@@ -992,7 +659,7 @@
                       }
                     },
                     "ast_type": "Variable",
-                    "name": "_value_czG8ZKP5uGgBqjU440EHau"
+                    "name": "_value_Qvu1dgkNtR85_Ev03f6fGT"
                   },
                   "key": "salePrice"
                 }
@@ -1011,7 +678,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_previous_AiAyzCZZ7SEFTB8i_dYMvU"
+                "name": "_previous_s_bXryRLy6sUEvaqLPiNAX"
               },
               "value": {
                 "type": {
@@ -1032,7 +699,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_czG8ZKP5uGgBqjU440EHau"
+                "name": "_value_Qvu1dgkNtR85_Ev03f6fGT"
               },
               "key": {
                 "type": {
@@ -1040,7 +707,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_key_lccMUeiY$YiKa7MldiJ3YM"
+                "name": "_key_13WLWK6lmbcfUuOYjQtUlk"
               }
             },
             "second": {
@@ -1096,44 +763,173 @@
         },
         "hash": "a35f1cb14a495736e15e478276063d4202774cc856afc3a93e997929738a0cf9"
       }
-    }
-  },
-  "tables": {
-    "My DictType Datastream": {
-      "name": "My DictType Datastream",
-      "type": {
-        "type": "Dict",
-        "value": {
-          "key": {
-            "type": "String",
-            "value": null
+    },
+    "Sales and Product Info": {
+      "name": "Sales and Product Info",
+      "input_table": "Pipeline.Disaggregate Items",
+      "operations": [
+        {
+          "type": "join",
+          "join_type": "Inner",
+          "source_table": "Source.Products",
+          "source_input_key": "#right_key0",
+          "source_key": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Variable",
+            "name": "Code"
           },
-          "value": {
-            "type": "Struct",
-            "value": {
-              "my_integer": {
+          "source_selections": {
+            "productName": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "Name"
+            },
+            "productCategory": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "Category"
+            },
+            "productUnitCost": {
+              "type": {
+                "type": "Float",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "Unit Cost"
+            }
+          },
+          "target_input_key": "#left_key0",
+          "target_key": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Variable",
+            "name": "productCode"
+          },
+          "target_selections": {
+            "productCode": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "productCode"
+            },
+            "transactionDate": {
+              "type": {
+                "type": "DateTime",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "transactionDate"
+            },
+            "units": {
+              "type": {
                 "type": "Integer",
                 "value": null
               },
-              "my_string": {
-                "type": "String",
-                "value": null
+              "ast_type": "Variable",
+              "name": "units"
+            }
+          },
+          "output_key": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "StringJoin",
+            "values": [
+              {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Print",
+                "value": {
+                  "type": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "transactionDate"
+                }
+              },
+              {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": "."
+              },
+              {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "productCode"
+              }
+            ],
+            "seperator": ""
+          }
+        }
+      ],
+      "output_table": {
+        "name": "Pipeline.Sales and Product Info",
+        "type": {
+          "type": "Dict",
+          "value": {
+            "key": {
+              "type": "String",
+              "value": null
+            },
+            "value": {
+              "type": "Struct",
+              "value": {
+                "productCode": {
+                  "type": "String",
+                  "value": null
+                },
+                "transactionDate": {
+                  "type": "DateTime",
+                  "value": null
+                },
+                "units": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "productName": {
+                  "type": "String",
+                  "value": null
+                },
+                "productCategory": {
+                  "type": "String",
+                  "value": null
+                },
+                "productUnitCost": {
+                  "type": "Float",
+                  "value": null
+                }
               }
             }
           }
-        }
-      },
-      "hash": "8b9800d1e1e9a63df2992e4116cf5efaac6ceb6b025f741899afb1d799318b85"
-    },
-    "My IntegerType Datastream": {
-      "name": "My IntegerType Datastream",
-      "type": {
-        "type": "Integer",
-        "value": null,
-        "nullable": true
-      },
-      "hash": "dc0e05bdb88428a65f00ffa7c8ab62f07d593bf0fd13225820427b774af906a0"
-    },
+        },
+        "hash": "a48b1e853d6b58087646b262f4b7406d61e20a8da82c82fe4d85d88f9143a6b2"
+      }
+    }
+  },
+  "tables": {
     "Pipeline.Disaggregate Items": {
       "name": "Pipeline.Disaggregate Items",
       "type": {
@@ -1324,8 +1120,8 @@
       },
       "hash": "a35f1cb14a495736e15e478276063d4202774cc856afc3a93e997929738a0cf9"
     },
-    "Source.Products": {
-      "name": "Source.Products",
+    "Pipeline.Sales and Product Info": {
+      "name": "Pipeline.Sales and Product Info",
       "type": {
         "type": "Dict",
         "value": {
@@ -1336,19 +1132,27 @@
           "value": {
             "type": "Struct",
             "value": {
-              "Name": {
+              "productCode": {
                 "type": "String",
                 "value": null
               },
-              "Code": {
+              "transactionDate": {
+                "type": "DateTime",
+                "value": null
+              },
+              "units": {
+                "type": "Integer",
+                "value": null
+              },
+              "productName": {
                 "type": "String",
                 "value": null
               },
-              "Category": {
+              "productCategory": {
                 "type": "String",
                 "value": null
               },
-              "Unit Cost": {
+              "productUnitCost": {
                 "type": "Float",
                 "value": null
               }
@@ -1356,49 +1160,7 @@
           }
         }
       },
-      "hash": "fb84e7163e96a95a407091056ed3aac2a91ca3466b1e79ac270aab33d6ee59d6"
-    },
-    "Source.Sales": {
-      "name": "Source.Sales",
-      "type": {
-        "type": "Dict",
-        "value": {
-          "key": {
-            "type": "String",
-            "value": null
-          },
-          "value": {
-            "type": "Struct",
-            "value": {
-              "transactionDate": {
-                "type": "DateTime",
-                "value": null
-              },
-              "items": {
-                "type": "Array",
-                "value": {
-                  "type": "Struct",
-                  "value": {
-                    "productCode": {
-                      "type": "String",
-                      "value": null
-                    },
-                    "units": {
-                      "type": "Integer",
-                      "value": null
-                    },
-                    "salePrice": {
-                      "type": "Float",
-                      "value": null
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "hash": "a35f1cb14a495736e15e478276063d4202774cc856afc3a93e997929738a0cf9"
+      "hash": "a48b1e853d6b58087646b262f4b7406d61e20a8da82c82fe4d85d88f9143a6b2"
     }
   }
 }
