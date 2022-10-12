@@ -60,16 +60,16 @@ const join_exercise = new PipelineBuilder(disaggregate_exercise_one.output_table
         left_key: entries => entries.productCode,
         right_key: entries => entries.Code,
         left_selections: {
-            productCode: fields => fields.productCode,
-            transactionDate: fields => fields.transactionDate,
-            units: fields => fields.units,
+            productCode: entries => entries.productCode,
+            transactionDate: entries => entries.transactionDate,
+            units: entries => entries.units,
         },
         right_selections: {
             productName: entries => entries.Name,
             productCategory: entries => entries.Category,
             productUnitCost: entries => entries["Unit Cost"],
         },
-        output_key: fields => StringJoin`${fields.transactionDate}.${fields.productCode}`
+        output_key: entries => StringJoin`${entries.transactionDate}.${entries.productCode}`
     })
     .toPipeline("Sales and Product Info")
 
