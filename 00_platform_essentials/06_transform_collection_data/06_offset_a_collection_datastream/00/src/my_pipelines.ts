@@ -1,5 +1,5 @@
 // import { Add, Default, GreaterEqual, IfNull, IntegerType, PipelineBuilder, Template } from "@elaraai/core"
-import { Add, CollectDictSum, Count, Divide, Equal, Floor, GetField, Greater, GreaterEqual, PipelineBuilder, Range, Reduce, StringJoin, Sum, Template } from "@elaraai/core"
+import { Add, CollectDictSum, Divide, Equal, Floor, GetField, Greater, GreaterEqual, PipelineBuilder, Range, Reduce, StringJoin, Sum, Template } from "@elaraai/core"
 // import my_datastreams from "../gen/my_datastreams.template"
 import my_datasources from "../gen/my_datasources.template"
 
@@ -84,24 +84,24 @@ const aggregate_exercise_one = new PipelineBuilder(disaggregate_exercise_one.out
     .toPipeline("By Category")
 
 const aggregate_exercise_two = new PipelineBuilder(sales)
-.aggregate({
-    group_field: "date",
-    group_value: (entry) => Floor(entry.transactionDate, "day"),
-    aggregations: {
-        countTransactions: _ => Count(1n)
-    }
-})
-.toPipeline("By Date")
+    .aggregate({
+        group_field: "date",
+        group_value: (entry) => Floor(entry.transactionDate, "day"),
+        aggregations: {
+            countTransactions: _ => Sum(1n)
+        }
+    })
+    .toPipeline("By Date")
 
 const aggregate_exercise_three = new PipelineBuilder(disaggregate_exercise_one.output_table)
-.aggregate({
-    group_field: "date",
-    group_value: (entry) => Floor(entry.transactionDate, "day"),
-    aggregations: {
-        unitsPerProductCode: (entry) => CollectDictSum(entry.productCode, entry.units)
-    }
-})
-.toPipeline("Units Per Product Code By Date")
+    .aggregate({
+        group_field: "date",
+        group_value: (entry) => Floor(entry.transactionDate, "day"),
+        aggregations: {
+            unitsPerProductCode: (entry) => CollectDictSum(entry.productCode, entry.units)
+        }
+    })
+    .toPipeline("Units Per Product Code By Date")
 
 export default Template(
     // transform_exercise,
