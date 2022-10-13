@@ -1,7 +1,65 @@
 // GENERATED FILE, DO NOT EDIT
 export default {
 datasources: {},
-pipelines: {"Disaggregate Items":{
+pipelines: {"By Category":{
+name:"By Category",
+input_table:"Pipeline.Disaggregate Items",
+output_table:{
+name:"Pipeline.By Category",
+type:{
+type:'Dict' as const,
+value:{
+key:{
+type:'String' as const,value:null},
+value:{
+type:'Struct' as const,
+value:{
+productCode:{
+type:'String' as const,value:null},
+units:{
+type:'Integer' as const,value:null},
+}}}},
+hash:"9c1ccf175c3a6b2e94786482426d63d0483870ece690d8d6a9055a824e8c1323",
+},
+operations:[
+{
+type:'aggregate' as const,
+input_key:"#key0",
+group_field:{
+type:{
+type:'String' as const,value:null},
+ast_type:'Variable' as const,
+name:"productCode"
+},
+group_value:{
+type:{
+type:'String' as const,value:null},
+ast_type:'Variable' as const,
+name:"productCode"
+},
+aggregations:{
+units:{
+type:{
+type:'Integer' as const,value:null},
+aggregation_type:'Sum' as const,
+value:{
+type:{
+type:'Integer' as const,value:null},
+ast_type:'Variable' as const,
+name:"units"
+},
+field:{
+type:{
+type:'Integer' as const,value:null},
+ast_type:'Variable' as const,
+name:"units"
+},
+},
+},
+}
+] as const,
+},
+"Disaggregate Items":{
 name:"Disaggregate Items",
 input_table:"Source.Sales",
 output_table:{
@@ -57,13 +115,13 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_cUFF3V1az20RP46_6Y4c4Y"
+name:"_value_oa1iVuZoCLvIcimhR9W2oB"
 },
 collection_key:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_cIJdA6EhZ2oydDHUYnTdY4"
+name:"_key_OFPZqncRlbz3Bhf3E8a9Q9"
 },
 selections:{
 transactionDate:{
@@ -88,7 +146,7 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_cUFF3V1az20RP46_6Y4c4Y"
+name:"_value_oa1iVuZoCLvIcimhR9W2oB"
 },
 key:"productCode"},
 units:{
@@ -107,7 +165,7 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_cUFF3V1az20RP46_6Y4c4Y"
+name:"_value_oa1iVuZoCLvIcimhR9W2oB"
 },
 key:"units"},
 salePrice:{
@@ -126,7 +184,7 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_cUFF3V1az20RP46_6Y4c4Y"
+name:"_value_oa1iVuZoCLvIcimhR9W2oB"
 },
 key:"salePrice"},
 },
@@ -155,7 +213,7 @@ value:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_cIJdA6EhZ2oydDHUYnTdY4"
+name:"_key_OFPZqncRlbz3Bhf3E8a9Q9"
 },
 format:undefined}
 ],
@@ -211,13 +269,13 @@ value:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_value_6VMSA_SZ5mDQZAgt4H7lUP"
+name:"_value_rY0O4xTp3uGAJjMDrwOjLu"
 },
 collection_key:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_cUFM8I$kEEC0LjbvcK24Ua"
+name:"_key_91kACq50rxTN0KN8ZSzFqj"
 },
 selections:{
 transactionDate:{
@@ -277,7 +335,7 @@ value:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_cUFM8I$kEEC0LjbvcK24Ua"
+name:"_key_91kACq50rxTN0KN8ZSzFqj"
 },
 format:undefined}
 ],
@@ -462,7 +520,7 @@ first:{
 type:{
 type:'Float' as const,value:null},
 ast_type:'Variable' as const,
-name:"_previous_95_a3cXsbwhSo80jlvdCz9"
+name:"_previous_LUX5L2vvpZak5p7EkhXdQV"
 },second:{
 type:{
 type:'Float' as const,value:null},
@@ -479,7 +537,7 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_Wo$_x90WvmwL6AwoplTv0U"
+name:"_value_pVfIqk6RJqkJyfBGmv7o7o"
 },
 key:"salePrice"},},
 initial:{
@@ -492,7 +550,7 @@ previous:{
 type:{
 type:'Float' as const,value:null},
 ast_type:'Variable' as const,
-name:"_previous_95_a3cXsbwhSo80jlvdCz9"
+name:"_previous_LUX5L2vvpZak5p7EkhXdQV"
 },
 value:{
 type:{
@@ -506,13 +564,13 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_Wo$_x90WvmwL6AwoplTv0U"
+name:"_value_pVfIqk6RJqkJyfBGmv7o7o"
 },
 key:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_CqsL2OYtuhHwCBSj9M_fd0"
+name:"_key_dGlHfxRhSK0lxkf3QKa1Tl"
 }
 },second:{
 type:{
@@ -646,7 +704,24 @@ join_type:'Inner' as const,
 },
 models: {},
 environments: {},
-tables: {"Pipeline.Disaggregate Items":{
+tables: {"Pipeline.By Category":{
+name:"Pipeline.By Category",
+type:{
+type:'Dict' as const,
+value:{
+key:{
+type:'String' as const,value:null},
+value:{
+type:'Struct' as const,
+value:{
+productCode:{
+type:'String' as const,value:null},
+units:{
+type:'Integer' as const,value:null},
+}}}},
+hash:"9c1ccf175c3a6b2e94786482426d63d0483870ece690d8d6a9055a824e8c1323",
+},
+"Pipeline.Disaggregate Items":{
 name:"Pipeline.Disaggregate Items",
 type:{
 type:'Dict' as const,

@@ -1,7 +1,130 @@
 // GENERATED FILE, DO NOT EDIT
 export default {
 datasources: {},
-pipelines: {"Disaggregate Items":{
+pipelines: {"By Category":{
+name:"By Category",
+input_table:"Pipeline.Disaggregate Items",
+output_table:{
+name:"Pipeline.By Category",
+type:{
+type:'Dict' as const,
+value:{
+key:{
+type:'String' as const,value:null},
+value:{
+type:'Struct' as const,
+value:{
+productCode:{
+type:'String' as const,value:null},
+units:{
+type:'Integer' as const,value:null},
+}}}},
+hash:"9c1ccf175c3a6b2e94786482426d63d0483870ece690d8d6a9055a824e8c1323",
+},
+operations:[
+{
+type:'aggregate' as const,
+input_key:"#key0",
+group_field:{
+type:{
+type:'String' as const,value:null},
+ast_type:'Variable' as const,
+name:"productCode"
+},
+group_value:{
+type:{
+type:'String' as const,value:null},
+ast_type:'Variable' as const,
+name:"productCode"
+},
+aggregations:{
+units:{
+type:{
+type:'Integer' as const,value:null},
+aggregation_type:'Sum' as const,
+value:{
+type:{
+type:'Integer' as const,value:null},
+ast_type:'Variable' as const,
+name:"units"
+},
+field:{
+type:{
+type:'Integer' as const,value:null},
+ast_type:'Variable' as const,
+name:"units"
+},
+},
+},
+}
+] as const,
+},
+"By Date":{
+name:"By Date",
+input_table:"Source.Sales",
+output_table:{
+name:"Pipeline.By Date",
+type:{
+type:'Dict' as const,
+value:{
+key:{
+type:'String' as const,value:null},
+value:{
+type:'Struct' as const,
+value:{
+date:{
+type:'DateTime' as const,value:null},
+countTransactions:{
+type:'Integer' as const,value:null},
+}}}},
+hash:"f504c11a6ba25991e2edb0aaefd9cc94b1e1295e9f24811f2de3e2c9a672d6ef",
+},
+operations:[
+{
+type:'aggregate' as const,
+input_key:"#key0",
+group_field:{
+type:{
+type:'DateTime' as const,value:null},
+ast_type:'Variable' as const,
+name:"date"
+},
+group_value:{
+type:{
+type:'DateTime' as const,value:null},
+ast_type:'Round' as const,
+rounding_mode:'floor' as const,
+value:{
+type:{
+type:'DateTime' as const,value:null},
+ast_type:'Variable' as const,
+name:"transactionDate"
+},
+unit:'day' as const,
+},
+aggregations:{
+countTransactions:{
+type:{
+type:'Integer' as const,value:null},
+aggregation_type:'Count' as const,
+value:{
+type:{
+type:'Integer' as const,value:null},
+ast_type:'Const' as const,
+value:1n
+},
+field:{
+type:{
+type:'Integer' as const,value:null},
+ast_type:'Variable' as const,
+name:"countTransactions"
+},
+},
+},
+}
+] as const,
+},
+"Disaggregate Items":{
 name:"Disaggregate Items",
 input_table:"Source.Sales",
 output_table:{
@@ -57,13 +180,13 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_cUFF3V1az20RP46_6Y4c4Y"
+name:"_value_96Xg$rh5Z9DyAFF9fsDklC"
 },
 collection_key:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_cIJdA6EhZ2oydDHUYnTdY4"
+name:"_key_lzNyPLT3cn1MHSIPQmgvFF"
 },
 selections:{
 transactionDate:{
@@ -88,7 +211,7 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_cUFF3V1az20RP46_6Y4c4Y"
+name:"_value_96Xg$rh5Z9DyAFF9fsDklC"
 },
 key:"productCode"},
 units:{
@@ -107,7 +230,7 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_cUFF3V1az20RP46_6Y4c4Y"
+name:"_value_96Xg$rh5Z9DyAFF9fsDklC"
 },
 key:"units"},
 salePrice:{
@@ -126,7 +249,7 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_cUFF3V1az20RP46_6Y4c4Y"
+name:"_value_96Xg$rh5Z9DyAFF9fsDklC"
 },
 key:"salePrice"},
 },
@@ -155,7 +278,7 @@ value:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_cIJdA6EhZ2oydDHUYnTdY4"
+name:"_key_lzNyPLT3cn1MHSIPQmgvFF"
 },
 format:undefined}
 ],
@@ -211,13 +334,13 @@ value:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_value_6VMSA_SZ5mDQZAgt4H7lUP"
+name:"_value_LEW5djbx$x8cWg7CBosEWs"
 },
 collection_key:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_cUFM8I$kEEC0LjbvcK24Ua"
+name:"_key_nti70jjxg2ZjQMFULbA2gR"
 },
 selections:{
 transactionDate:{
@@ -277,7 +400,7 @@ value:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_cUFM8I$kEEC0LjbvcK24Ua"
+name:"_key_nti70jjxg2ZjQMFULbA2gR"
 },
 format:undefined}
 ],
@@ -462,7 +585,7 @@ first:{
 type:{
 type:'Float' as const,value:null},
 ast_type:'Variable' as const,
-name:"_previous_95_a3cXsbwhSo80jlvdCz9"
+name:"_previous_ZmRfs_ZiFJQGVxR8WQr_kR"
 },second:{
 type:{
 type:'Float' as const,value:null},
@@ -479,7 +602,7 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_Wo$_x90WvmwL6AwoplTv0U"
+name:"_value_sJ4dABmkhPo5g36BCmI4aK"
 },
 key:"salePrice"},},
 initial:{
@@ -492,7 +615,7 @@ previous:{
 type:{
 type:'Float' as const,value:null},
 ast_type:'Variable' as const,
-name:"_previous_95_a3cXsbwhSo80jlvdCz9"
+name:"_previous_ZmRfs_ZiFJQGVxR8WQr_kR"
 },
 value:{
 type:{
@@ -506,13 +629,13 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_Wo$_x90WvmwL6AwoplTv0U"
+name:"_value_sJ4dABmkhPo5g36BCmI4aK"
 },
 key:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_CqsL2OYtuhHwCBSj9M_fd0"
+name:"_key_iMeSHrdmB0d$iL93KH9YRj"
 }
 },second:{
 type:{
@@ -643,10 +766,130 @@ join_type:'Inner' as const,
 }
 ] as const,
 },
+"Units Per Product Code By Date":{
+name:"Units Per Product Code By Date",
+input_table:"Pipeline.Disaggregate Items",
+output_table:{
+name:"Pipeline.Units Per Product Code By Date",
+type:{
+type:'Dict' as const,
+value:{
+key:{
+type:'String' as const,value:null},
+value:{
+type:'Struct' as const,
+value:{
+date:{
+type:'DateTime' as const,value:null},
+unitsPerProductCode:{
+type:'Dict' as const,
+value:{
+key:{
+type:'String' as const,value:null},
+value:{
+type:'Integer' as const,value:null}}},
+}}}},
+hash:"b9f778541d96e7a4ba73fe6c7d6a6f99416a4c84f05b16bc876ec6ee34bb0105",
+},
+operations:[
+{
+type:'aggregate' as const,
+input_key:"#key0",
+group_field:{
+type:{
+type:'DateTime' as const,value:null},
+ast_type:'Variable' as const,
+name:"date"
+},
+group_value:{
+type:{
+type:'DateTime' as const,value:null},
+ast_type:'Round' as const,
+rounding_mode:'floor' as const,
+value:{
+type:{
+type:'DateTime' as const,value:null},
+ast_type:'Variable' as const,
+name:"transactionDate"
+},
+unit:'day' as const,
+},
+aggregations:{
+unitsPerProductCode:{
+type:{
+type:'Dict' as const,
+value:{
+key:{
+type:'String' as const,value:null},
+value:{
+type:'Integer' as const,value:null}}},
+aggregation_type:'CollectDictSum' as const,
+value:{
+type:{
+type:'Integer' as const,value:null},
+ast_type:'Variable' as const,
+name:"units"
+},
+key:{
+type:{
+type:'String' as const,value:null},
+ast_type:'Variable' as const,
+name:"productCode"
+},
+field:{
+type:{
+type:'Dict' as const,
+value:{
+key:{
+type:'String' as const,value:null},
+value:{
+type:'Integer' as const,value:null}}},
+ast_type:'Variable' as const,
+name:"unitsPerProductCode"
+},
+},
+},
+}
+] as const,
+},
 },
 models: {},
 environments: {},
-tables: {"Pipeline.Disaggregate Items":{
+tables: {"Pipeline.By Category":{
+name:"Pipeline.By Category",
+type:{
+type:'Dict' as const,
+value:{
+key:{
+type:'String' as const,value:null},
+value:{
+type:'Struct' as const,
+value:{
+productCode:{
+type:'String' as const,value:null},
+units:{
+type:'Integer' as const,value:null},
+}}}},
+hash:"9c1ccf175c3a6b2e94786482426d63d0483870ece690d8d6a9055a824e8c1323",
+},
+"Pipeline.By Date":{
+name:"Pipeline.By Date",
+type:{
+type:'Dict' as const,
+value:{
+key:{
+type:'String' as const,value:null},
+value:{
+type:'Struct' as const,
+value:{
+date:{
+type:'DateTime' as const,value:null},
+countTransactions:{
+type:'Integer' as const,value:null},
+}}}},
+hash:"f504c11a6ba25991e2edb0aaefd9cc94b1e1295e9f24811f2de3e2c9a672d6ef",
+},
+"Pipeline.Disaggregate Items":{
 name:"Pipeline.Disaggregate Items",
 type:{
 type:'Dict' as const,
@@ -791,6 +1034,28 @@ productUnitCost:{
 type:'Float' as const,value:null},
 }}}},
 hash:"a48b1e853d6b58087646b262f4b7406d61e20a8da82c82fe4d85d88f9143a6b2",
+},
+"Pipeline.Units Per Product Code By Date":{
+name:"Pipeline.Units Per Product Code By Date",
+type:{
+type:'Dict' as const,
+value:{
+key:{
+type:'String' as const,value:null},
+value:{
+type:'Struct' as const,
+value:{
+date:{
+type:'DateTime' as const,value:null},
+unitsPerProductCode:{
+type:'Dict' as const,
+value:{
+key:{
+type:'String' as const,value:null},
+value:{
+type:'Integer' as const,value:null}}},
+}}}},
+hash:"b9f778541d96e7a4ba73fe6c7d6a6f99416a4c84f05b16bc876ec6ee34bb0105",
 },
 },
 scenarios: {},
