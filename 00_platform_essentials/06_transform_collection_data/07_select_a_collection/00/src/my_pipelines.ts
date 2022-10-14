@@ -1,5 +1,5 @@
 // import { Add, Default, GreaterEqual, IfNull, IntegerType, PipelineBuilder, Template } from "@elaraai/core"
-import { Add, CollectDictSum, Divide, Equal, Floor, GetField, Greater, GreaterEqual, IfElse, PipelineBuilder, Range, Reduce, StringJoin, Sum, Template } from "@elaraai/core"
+import { Add, CollectDictSum, Default, DictType, Divide, Equal, Floor, GetField, Greater, GreaterEqual, IfElse, IntegerType, PipelineBuilder, Range, Reduce, StringJoin, StringType, Sum, Template } from "@elaraai/core"
 // import my_datastreams from "../gen/my_datastreams.template"
 import my_datasources from "../gen/my_datasources.template"
 
@@ -107,11 +107,15 @@ const offset_exercise_one = new PipelineBuilder(aggregate_exercise_three.output_
     .offset({
         sort_key: entry => entry.date,
         offset: -1,
-        offset_selections: { //TODO: find out what the second variable is?
-            previousDaysUnitsPerProductCode: (entry, _, exists) => IfElse(exists, entry.unitsPerProductCode, null)
+        offset_selections: {
+            previousDaysUnitsPerProductCode: (entry, _, exists) => IfElse(
+                exists,
+                entry.unitsPerProductCode,
+                Default(DictType(StringType, IntegerType))
+            )
         }
     })
-    .toPipeline("Today and Yesterday Units Per Product Code By Date")
+    .toPipeline("Recent Units Per Product Code By Date")
 
 export default Template(
     // transform_exercise,
