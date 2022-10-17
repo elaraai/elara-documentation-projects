@@ -114,19 +114,15 @@ const offset_exercise_one = new PipelineBuilder(aggregate_exercise_three.output_
                 entry.unitsPerProductCode,
                 Default(DictType(StringType, IntegerType))
             ),
-            previousDayRevenue: (entry, _, exists) => IfElse(
-                exists,
-                entry.totalRevenue,
-                0
-            )
+            previousDayRevenue: (entry, _, __) => entry.totalRevenue
         }
     })
     .toPipeline("Recent Units Per Product Code By Date")
 
 const select_exercise_one = new PipelineBuilder(offset_exercise_one.output_table)
     .select({
-        keep_all: true,
         selections: {
+            date: entry => entry.date,
             dailyChangeInRevenue: entry => Subtract(entry.totalRevenue, entry.previousDayRevenue)
         }
     })

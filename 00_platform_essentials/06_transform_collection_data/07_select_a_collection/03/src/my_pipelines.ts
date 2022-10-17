@@ -1,5 +1,5 @@
 // import { Add, Default, GreaterEqual, IfNull, IntegerType, PipelineBuilder, Template } from "@elaraai/core"
-import { Add, CollectDictSum, CollectSet, Const, Default, DictType, Divide, Equal, FloatType, Floor, Get, GetField, Greater, GreaterEqual, IfElse, IntegerType, MapDict, Multiply, PipelineBuilder, Range, Reduce, StringJoin, StringType, Subtract, Sum, Template } from "@elaraai/core"
+import { Add, CollectDictSum, CollectSet, Const, Default, DictType, Divide, Equal, Floor, Get, GetField, Greater, GreaterEqual, IfElse, IntegerType, IsNull, MapDict, Multiply, PipelineBuilder, Range, Reduce, StringJoin, StringType, Subtract, Sum, Template } from "@elaraai/core"
 // import my_datastreams from "../gen/my_datastreams.template"
 import my_datasources from "../gen/my_datasources.template"
 
@@ -115,24 +115,16 @@ const offset_exercise_one = new PipelineBuilder(aggregate_exercise_three.output_
                 entry.unitsPerProductCode,
                 Default(DictType(StringType, IntegerType))
             ),
-            previousDayRevenue: (entry, _, exists) => IfElse(
-                exists,
-                entry.totalRevenue,
-                0
-            ),
-            previousDaysRevenuePerProductCode: (entry, _, exists) => IfElse(
-                exists,
-                entry.revenuePerProductCode,
-                Default(DictType(StringType, FloatType))
-            ),
+            previousDayRevenue: (entry, _, __) => entry.totalRevenue,
+            previousDaysRevenuePerProductCode: (entry, _, __) => entry.revenuePerProductCode
         }
     })
     .toPipeline("Recent Units Per Product Code By Date")
 
 const select_exercise_one = new PipelineBuilder(offset_exercise_one.output_table)
     .select({
-        keep_all: true,
         selections: {
+            date: entry => entry.date,
             dailyChangeInRevenue: entry => Subtract(entry.totalRevenue, entry.previousDayRevenue)
         }
     })
@@ -163,11 +155,15 @@ const select_exercise_two = new PipelineBuilder(products)
     .select({
         selections: {
             date: entry => entry.date,
-            dailyChangeInRevenuePerProductCode: entry => MapDict(
-                entry.productCodes,
-                (product) => Subtract(
-                    Get(entry.revenuePerProductCode, product, 0),
-                    Get(entry.previousDaysRevenuePerProductCode, product, 0)
+            dailyChangeInRevenuePerProductCode: entry => IfElse(
+                IsNull(entry.previousDaysRevenuePerProductCode),
+                null,
+                MapDict(
+                    entry.productCodes,
+                    (product) => Subtract(
+                        Get(entry.revenuePerProductCode, product, 0),
+                        Get(entry.previousDaysRevenuePerProductCode, product, 0)
+                    )
                 )
             )
         }

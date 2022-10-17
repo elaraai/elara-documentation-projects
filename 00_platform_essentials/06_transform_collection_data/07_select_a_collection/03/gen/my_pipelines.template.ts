@@ -301,7 +301,7 @@ first:{
 type:{
 type:'Float' as const,nullable:true as const,value:null},
 ast_type:'Variable' as const,
-name:"_previous_S$27AHEUjQBsN9rP3DRm4Z"
+name:"_previous_w2XV0BqYFbXz1VNpa5tzLI"
 },second:{
 type:{
 type:'Float' as const,nullable:true as const,value:null},
@@ -325,7 +325,7 @@ key:{
 type:{
 type:'String' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_oQyjKpYxRzh7XdZgswfKdM"
+name:"_key_whobkRaZ7am5PX1meR4JuT"
 },
 "default":{
 type:{
@@ -340,7 +340,7 @@ from:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_value_AHpXQhG7MX$cfnt3_ySPPt"
+name:"_value_b5W6xu7tdbZLJM8HqHNQKx"
 },},},},
 initial:{
 type:{
@@ -352,19 +352,19 @@ previous:{
 type:{
 type:'Float' as const,nullable:true as const,value:null},
 ast_type:'Variable' as const,
-name:"_previous_S$27AHEUjQBsN9rP3DRm4Z"
+name:"_previous_w2XV0BqYFbXz1VNpa5tzLI"
 },
 value:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_value_AHpXQhG7MX$cfnt3_ySPPt"
+name:"_value_b5W6xu7tdbZLJM8HqHNQKx"
 },
 key:{
 type:{
 type:'String' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_oQyjKpYxRzh7XdZgswfKdM"
+name:"_key_whobkRaZ7am5PX1meR4JuT"
 }
 },},
 },
@@ -395,7 +395,7 @@ offset_exists:{
 type:{
 type:'Boolean' as const,value:null},
 ast_type:'Variable' as const,
-name:"_offset_exists_W3CHir6SnE1wWKQ5aPjHB6"
+name:"_offset_exists_FGls3JhNUejYGsoY67Qo4A"
 },
 offset_selections:{
 previousDayProfit:{
@@ -456,44 +456,10 @@ type:'Struct' as const,
 value:{
 date:{
 type:'DateTime' as const,value:null},
-unitsPerProductCode:{
-type:'Dict' as const,
-value:{
-key:{
-type:'String' as const,value:null},
-value:{
-type:'Integer' as const,value:null}}},
-totalRevenue:{
-type:'Float' as const,nullable:true as const,value:null},
-revenuePerProductCode:{
-type:'Dict' as const,
-value:{
-key:{
-type:'String' as const,value:null},
-value:{
-type:'Float' as const,value:null}}},
-previousDaysUnitsPerProductCode:{
-type:'Dict' as const,
-nullable:true as const,
-value:{
-key:{
-type:'String' as const,value:null},
-value:{
-type:'Integer' as const,value:null}}},
-previousDayRevenue:{
-type:'Float' as const,nullable:true as const,value:null},
-previousDaysRevenuePerProductCode:{
-type:'Dict' as const,
-nullable:true as const,
-value:{
-key:{
-type:'String' as const,value:null},
-value:{
-type:'Float' as const,value:null}}},
 dailyChangeInRevenue:{
 type:'Float' as const,nullable:true as const,value:null},
 }}}},
-hash:"cd1345e494590f588a623b72110dc8205bf952a20bcf17fce5db30155d567add",
+hash:"d0abce407a4a77719e2f68fed22cb5897dc04996257003f5cd10e31d74976c18",
 },
 operations:[
 {
@@ -505,64 +471,6 @@ type:{
 type:'DateTime' as const,value:null},
 ast_type:'Variable' as const,
 name:"date"
-},
-unitsPerProductCode:{
-type:{
-type:'Dict' as const,
-value:{
-key:{
-type:'String' as const,value:null},
-value:{
-type:'Integer' as const,value:null}}},
-ast_type:'Variable' as const,
-name:"unitsPerProductCode"
-},
-totalRevenue:{
-type:{
-type:'Float' as const,nullable:true as const,value:null},
-ast_type:'Variable' as const,
-name:"totalRevenue"
-},
-revenuePerProductCode:{
-type:{
-type:'Dict' as const,
-value:{
-key:{
-type:'String' as const,value:null},
-value:{
-type:'Float' as const,value:null}}},
-ast_type:'Variable' as const,
-name:"revenuePerProductCode"
-},
-previousDaysUnitsPerProductCode:{
-type:{
-type:'Dict' as const,
-nullable:true as const,
-value:{
-key:{
-type:'String' as const,value:null},
-value:{
-type:'Integer' as const,value:null}}},
-ast_type:'Variable' as const,
-name:"previousDaysUnitsPerProductCode"
-},
-previousDayRevenue:{
-type:{
-type:'Float' as const,nullable:true as const,value:null},
-ast_type:'Variable' as const,
-name:"previousDayRevenue"
-},
-previousDaysRevenuePerProductCode:{
-type:{
-type:'Dict' as const,
-nullable:true as const,
-value:{
-key:{
-type:'String' as const,value:null},
-value:{
-type:'Float' as const,value:null}}},
-ast_type:'Variable' as const,
-name:"previousDaysRevenuePerProductCode"
 },
 dailyChangeInRevenue:{
 type:{
@@ -606,13 +514,14 @@ date:{
 type:'DateTime' as const,value:null},
 dailyChangeInRevenuePerProductCode:{
 type:'Dict' as const,
+nullable:true as const,
 value:{
 key:{
 type:'String' as const,value:null},
 value:{
 type:'Float' as const,value:null}}},
 }}}},
-hash:"ebdb53598aa9976620224fb9af7c092bd5a7483cb7ea5c66c176e93c6cf5c5da",
+hash:"cc73eea01f9e0b4400682e8a4b30a7dc774b387aa0cb62d176a86ec7fbb71e05",
 },
 operations:[
 {
@@ -733,6 +642,61 @@ name:"date"
 dailyChangeInRevenuePerProductCode:{
 type:{
 type:'Dict' as const,
+nullable:true as const,
+value:{
+key:{
+type:'String' as const,value:null},
+value:{
+type:'Float' as const,value:null}}},
+ast_type:'IfElse' as const,
+predicate:{
+type:{
+type:'Boolean' as const,value:null},
+ast_type:'IfNull' as const,
+input:{
+type:{
+type:'Dict' as const,
+nullable:true as const,
+value:{
+key:{
+type:'String' as const,value:null},
+value:{
+type:'Float' as const,value:null}}},
+ast_type:'Variable' as const,
+name:"previousDaysRevenuePerProductCode"
+},
+output_null:{
+type:{
+type:'Boolean' as const,value:null},
+ast_type:'Const' as const,
+value:true
+},
+output_value:{
+type:{
+type:'Boolean' as const,value:null},
+ast_type:'Const' as const,
+value:false
+},
+value:{
+type:{
+type:'Dict' as const,
+value:{
+key:{
+type:'String' as const,value:null},
+value:{
+type:'Float' as const,value:null}}},
+ast_type:'Variable' as const,
+name:"_7G7CNxeQWAwWNF9W6_Bw$e"
+}},
+"true":{
+type:{
+nullable:true as const,},
+ast_type:'Const' as const,
+value:null
+},
+"false":{
+type:{
+type:'Dict' as const,
 value:{
 key:{
 type:'String' as const,value:null},
@@ -770,7 +734,7 @@ key:{
 type:{
 type:'String' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_CTT1evFBHUfRyx6FH6om$a"
+name:"_key_gusJwyAOAjKocS3D$X8boc"
 },
 "default":{
 type:{
@@ -797,7 +761,7 @@ key:{
 type:{
 type:'String' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_CTT1evFBHUfRyx6FH6om$a"
+name:"_key_gusJwyAOAjKocS3D$X8boc"
 },
 "default":{
 type:{
@@ -809,8 +773,8 @@ key:{
 type:{
 type:'String' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_CTT1evFBHUfRyx6FH6om$a"
-}},
+name:"_key_gusJwyAOAjKocS3D$X8boc"
+}}},
 },
 output_key:{
 type:{
@@ -877,13 +841,13 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_OWEJxddijxNNC7TcAbtL8P"
+name:"_value_dW0p3b7niPorWzByyaAMiy"
 },
 collection_key:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_GJyigBuSLYp14JSvrxnPjw"
+name:"_key_DN1Z$Nf7ptr12I__dJGNTT"
 },
 selections:{
 transactionDate:{
@@ -908,7 +872,7 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_OWEJxddijxNNC7TcAbtL8P"
+name:"_value_dW0p3b7niPorWzByyaAMiy"
 },
 key:"productCode"},
 units:{
@@ -927,7 +891,7 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_OWEJxddijxNNC7TcAbtL8P"
+name:"_value_dW0p3b7niPorWzByyaAMiy"
 },
 key:"units"},
 salePrice:{
@@ -946,7 +910,7 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_OWEJxddijxNNC7TcAbtL8P"
+name:"_value_dW0p3b7niPorWzByyaAMiy"
 },
 key:"salePrice"},
 },
@@ -975,7 +939,7 @@ value:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_GJyigBuSLYp14JSvrxnPjw"
+name:"_key_DN1Z$Nf7ptr12I__dJGNTT"
 },
 format:undefined}
 ],
@@ -1031,13 +995,13 @@ value:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_value_oBjylcSWOX9a6xkM1iLx4S"
+name:"_value_8zKSkR7ltVffKfeSg0dTnS"
 },
 collection_key:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_GmFgrIfFttIQ5UkkVa5Kq3"
+name:"_key_auGRZZMIvVsDBUpZUQDLQm"
 },
 selections:{
 transactionDate:{
@@ -1097,7 +1061,7 @@ value:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_GmFgrIfFttIQ5UkkVa5Kq3"
+name:"_key_auGRZZMIvVsDBUpZUQDLQm"
 },
 format:undefined}
 ],
@@ -1282,7 +1246,7 @@ first:{
 type:{
 type:'Float' as const,value:null},
 ast_type:'Variable' as const,
-name:"_previous_OWP2OU1SAThKrEwAU3hCvX"
+name:"_previous_qEeVdaU$jdrc9MXBUK_zJi"
 },second:{
 type:{
 type:'Float' as const,value:null},
@@ -1299,7 +1263,7 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_OC7kNU5fooNvZi6Dw3BRl_"
+name:"_value_xEQ9xYwNULepMIwVZRmfWW"
 },
 key:"salePrice"},},
 initial:{
@@ -1312,7 +1276,7 @@ previous:{
 type:{
 type:'Float' as const,value:null},
 ast_type:'Variable' as const,
-name:"_previous_OWP2OU1SAThKrEwAU3hCvX"
+name:"_previous_qEeVdaU$jdrc9MXBUK_zJi"
 },
 value:{
 type:{
@@ -1326,13 +1290,13 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_OC7kNU5fooNvZi6Dw3BRl_"
+name:"_value_xEQ9xYwNULepMIwVZRmfWW"
 },
 key:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_CrNexM8OdnSMv8NRyKtMLi"
+name:"_key_KHh1$exTKswGpumMFNcNTv"
 }
 },second:{
 type:{
@@ -1416,7 +1380,7 @@ offset_exists:{
 type:{
 type:'Boolean' as const,value:null},
 ast_type:'Variable' as const,
-name:"_offset_exists_3jPZ$foCK$rtmAwcaUMYP5"
+name:"_offset_exists_GXoeYsQOcRe0c$OBZaQ5Tt"
 },
 offset_selections:{
 previousDaysUnitsPerProductCode:{
@@ -1433,7 +1397,7 @@ predicate:{
 type:{
 type:'Boolean' as const,value:null},
 ast_type:'Variable' as const,
-name:"_offset_exists_3jPZ$foCK$rtmAwcaUMYP5"
+name:"_offset_exists_GXoeYsQOcRe0c$OBZaQ5Tt"
 },
 "true":{
 type:{
@@ -1462,42 +1426,10 @@ value:new Map<string, any>([
 previousDayRevenue:{
 type:{
 type:'Float' as const,nullable:true as const,value:null},
-ast_type:'IfElse' as const,
-predicate:{
-type:{
-type:'Boolean' as const,value:null},
-ast_type:'Variable' as const,
-name:"_offset_exists_3jPZ$foCK$rtmAwcaUMYP5"
-},
-"true":{
-type:{
-type:'Float' as const,nullable:true as const,value:null},
 ast_type:'Variable' as const,
 name:"totalRevenue"
 },
-"false":{
-type:{
-type:'Float' as const,value:null},
-ast_type:'Const' as const,
-value:0
-}},
 previousDaysRevenuePerProductCode:{
-type:{
-type:'Dict' as const,
-nullable:true as const,
-value:{
-key:{
-type:'String' as const,value:null},
-value:{
-type:'Float' as const,value:null}}},
-ast_type:'IfElse' as const,
-predicate:{
-type:{
-type:'Boolean' as const,value:null},
-ast_type:'Variable' as const,
-name:"_offset_exists_3jPZ$foCK$rtmAwcaUMYP5"
-},
-"true":{
 type:{
 type:'Dict' as const,
 nullable:true as const,
@@ -1509,18 +1441,6 @@ type:'Float' as const,value:null}}},
 ast_type:'Variable' as const,
 name:"revenuePerProductCode"
 },
-"false":{
-type:{
-type:'Dict' as const,
-value:{
-key:{
-type:'String' as const,value:null},
-value:{
-type:'Float' as const,value:null}}},
-ast_type:'Const' as const,
-value:new Map<string, any>([
-])
-}},
 },
 }
 ] as const,
@@ -1856,44 +1776,10 @@ type:'Struct' as const,
 value:{
 date:{
 type:'DateTime' as const,value:null},
-unitsPerProductCode:{
-type:'Dict' as const,
-value:{
-key:{
-type:'String' as const,value:null},
-value:{
-type:'Integer' as const,value:null}}},
-totalRevenue:{
-type:'Float' as const,nullable:true as const,value:null},
-revenuePerProductCode:{
-type:'Dict' as const,
-value:{
-key:{
-type:'String' as const,value:null},
-value:{
-type:'Float' as const,value:null}}},
-previousDaysUnitsPerProductCode:{
-type:'Dict' as const,
-nullable:true as const,
-value:{
-key:{
-type:'String' as const,value:null},
-value:{
-type:'Integer' as const,value:null}}},
-previousDayRevenue:{
-type:'Float' as const,nullable:true as const,value:null},
-previousDaysRevenuePerProductCode:{
-type:'Dict' as const,
-nullable:true as const,
-value:{
-key:{
-type:'String' as const,value:null},
-value:{
-type:'Float' as const,value:null}}},
 dailyChangeInRevenue:{
 type:'Float' as const,nullable:true as const,value:null},
 }}}},
-hash:"cd1345e494590f588a623b72110dc8205bf952a20bcf17fce5db30155d567add",
+hash:"d0abce407a4a77719e2f68fed22cb5897dc04996257003f5cd10e31d74976c18",
 },
 "Pipeline.Daily Difference in Revenue by Product Code":{
 name:"Pipeline.Daily Difference in Revenue by Product Code",
@@ -1909,13 +1795,14 @@ date:{
 type:'DateTime' as const,value:null},
 dailyChangeInRevenuePerProductCode:{
 type:'Dict' as const,
+nullable:true as const,
 value:{
 key:{
 type:'String' as const,value:null},
 value:{
 type:'Float' as const,value:null}}},
 }}}},
-hash:"ebdb53598aa9976620224fb9af7c092bd5a7483cb7ea5c66c176e93c6cf5c5da",
+hash:"cc73eea01f9e0b4400682e8a4b30a7dc774b387aa0cb62d176a86ec7fbb71e05",
 },
 "Pipeline.Disaggregate Items":{
 name:"Pipeline.Disaggregate Items",
