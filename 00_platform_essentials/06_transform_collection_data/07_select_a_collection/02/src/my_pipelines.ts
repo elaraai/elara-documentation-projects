@@ -1,5 +1,5 @@
 // import { Add, Default, GreaterEqual, IfNull, IntegerType, PipelineBuilder, Template } from "@elaraai/core"
-import { Add, CollectDictSum, Default, DictType, Divide, Equal, Floor, GetField, Greater, GreaterEqual, IfElse, IntegerType, PipelineBuilder, Range, Reduce, StringJoin, StringType, Subtract, Sum, Template } from "@elaraai/core"
+import { Add, CollectDictSum, CollectSet, Const, Default, DictType, Divide, Equal, FloatType, Floor, Get, GetField, Greater, GreaterEqual, IfElse, IntegerType, MapDict, PipelineBuilder, Range, Reduce, StringJoin, StringType, Subtract, Sum, Template } from "@elaraai/core"
 // import my_datastreams from "../gen/my_datastreams.template"
 import my_datasources from "../gen/my_datasources.template"
 
@@ -99,7 +99,8 @@ const aggregate_exercise_three = new PipelineBuilder(disaggregate_exercise_one.o
         group_value: (entry) => Floor(entry.transactionDate, "day"),
         aggregations: {
             unitsPerProductCode: (entry) => CollectDictSum(entry.productCode, entry.units),
-            totalRevenue: entry => Sum(entry.salePrice)
+            totalRevenue: entry => Sum(entry.salePrice),
+            revenuePerProductCode:  (entry) => CollectDictSum(entry.productCode, entry.salePrice),
         }
     })
     .toPipeline("Units Per Product Code By Date")
@@ -118,7 +119,12 @@ const offset_exercise_one = new PipelineBuilder(aggregate_exercise_three.output_
                 exists,
                 entry.totalRevenue,
                 0
-            )
+            ),
+            previousDaysRevenuePerProductCode: (entry, _, exists) => IfElse(
+                exists,
+                entry.revenuePerProductCode,
+                Default(DictType(StringType, FloatType))
+            ),
         }
     })
     .toPipeline("Recent Units Per Product Code By Date")
@@ -132,6 +138,42 @@ const select_exercise_one = new PipelineBuilder(offset_exercise_one.output_table
     })
     .toPipeline("Daily Difference in Revenue")
 
+const select_exercise_two = new PipelineBuilder(products)
+    .aggregate({
+        group_field: "_",
+        group_value: (_) => Const("_"),
+        aggregations: {
+            productCodes: entry => CollectSet(entry.Code)
+        }
+    })
+    .innerJoin({
+        right_input: offset_exercise_one.output_table,
+        left_key: _ => Const("_"),
+        right_key: _ => Const("_"),
+        left_selections: {
+            productCodes: entry => entry.productCodes
+        },
+        right_selections: {
+            date: entry => entry.date,
+            revenuePerProductCode: entry => entry.revenuePerProductCode,
+            previousDaysRevenuePerProductCode: entry => entry.previousDaysRevenuePerProductCode
+        },
+        output_key: (_, __, right_input_key) => right_input_key
+    })
+    .select({
+        selections: {
+            date: entry => entry.date,
+            dailyChangeInRevenuePerProductCode: entry => MapDict(
+                entry.productCodes,
+                (product) => Subtract(
+                    Get(entry.revenuePerProductCode, product, 0),
+                    Get(entry.previousDaysRevenuePerProductCode, product, 0)
+                )
+            )
+        }
+    })
+    .toPipeline("Daily Difference in Revenue by Product Code")
+
 export default Template(
     // transform_exercise,
     filter_exercise_one,
@@ -144,5 +186,6 @@ export default Template(
     PipelineBuilder.toTemplate(aggregate_exercise_two),
     PipelineBuilder.toTemplate(aggregate_exercise_three),
     PipelineBuilder.toTemplate(offset_exercise_one),
-    PipelineBuilder.toTemplate(select_exercise_one)
+    PipelineBuilder.toTemplate(select_exercise_one),
+    PipelineBuilder.toTemplate(select_exercise_two)
 )
