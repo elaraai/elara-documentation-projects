@@ -57,19 +57,19 @@ const disaggregate_exercise_two = new PipelineBuilder(disaggregate_exercise_one.
 const join_exercise = new PipelineBuilder(disaggregate_exercise_one.output_table)
     .innerJoin({
         right_input: products,
-        left_key: entries => entries.productCode,
-        right_key: entries => entries.Code,
+        left_key: entry => entry.productCode,
+        right_key: entry => entry.Code,
         left_selections: {
-            productCode: entries => entries.productCode,
-            transactionDate: entries => entries.transactionDate,
-            units: entries => entries.units,
+            productCode: entry => entry.productCode,
+            transactionDate: entry => entry.transactionDate,
+            units: entry => entry.units,
         },
         right_selections: {
-            productName: entries => entries.Name,
-            productCategory: entries => entries.Category,
-            productUnitCost: entries => entries["Unit Cost"],
+            productName: entry => entry.Name,
+            productCategory: entry => entry.Category,
+            productUnitCost: entry => entry["Unit Cost"],
         },
-        output_key: entries => StringJoin`${entries.transactionDate}.${entries.productCode}`
+        output_key: entry => StringJoin`${entry.transactionDate}.${entry.productCode}`
     })
     .toPipeline("Sales and Product Info")
 
@@ -116,7 +116,7 @@ const offset_exercise_one = new PipelineBuilder(aggregate_exercise_three.output_
                 Default(DictType(StringType, IntegerType))
             ),
             previousDayRevenue: (entry, _, __) => entry.totalRevenue,
-            previousDaysRevenuePerProductCode: (entry, _, __) => entry.revenuePerProductCode
+            previousDayRevenuePerProductCode: (entry, _, __) => entry.revenuePerProductCode
         }
     })
     .toPipeline("Recent Units Per Product Code By Date")
@@ -148,7 +148,7 @@ const select_exercise_two = new PipelineBuilder(products)
         right_selections: {
             date: entry => entry.date,
             revenuePerProductCode: entry => entry.revenuePerProductCode,
-            previousDaysRevenuePerProductCode: entry => entry.previousDaysRevenuePerProductCode
+            previousDayRevenuePerProductCode: entry => entry.previousDayRevenuePerProductCode
         },
         output_key: (_, __, right_input_key) => right_input_key
     })
@@ -156,13 +156,13 @@ const select_exercise_two = new PipelineBuilder(products)
         selections: {
             date: entry => entry.date,
             dailyChangeInRevenuePerProductCode: entry => IfElse(
-                IsNull(entry.previousDaysRevenuePerProductCode),
+                IsNull(entry.previousDayRevenuePerProductCode),
                 null,
                 MapDict(
                     entry.productCodes,
                     (product) => Subtract(
                         Get(entry.revenuePerProductCode, product, 0),
-                        Get(entry.previousDaysRevenuePerProductCode, product, 0)
+                        Get(entry.previousDayRevenuePerProductCode, product, 0)
                     )
                 )
             )

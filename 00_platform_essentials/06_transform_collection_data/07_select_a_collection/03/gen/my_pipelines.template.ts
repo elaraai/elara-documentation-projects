@@ -301,7 +301,7 @@ first:{
 type:{
 type:'Float' as const,nullable:true as const,value:null},
 ast_type:'Variable' as const,
-name:"_previous_w2XV0BqYFbXz1VNpa5tzLI"
+name:"_previous_GXczQEXCv$W3_qqktaI7rc"
 },second:{
 type:{
 type:'Float' as const,nullable:true as const,value:null},
@@ -325,7 +325,7 @@ key:{
 type:{
 type:'String' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_whobkRaZ7am5PX1meR4JuT"
+name:"_key_eG$AFu1T3FK_9xQhlM52Do"
 },
 "default":{
 type:{
@@ -340,7 +340,7 @@ from:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_value_b5W6xu7tdbZLJM8HqHNQKx"
+name:"_value_Tl7GNSHgXWHEGIHn$hbVkC"
 },},},},
 initial:{
 type:{
@@ -352,19 +352,19 @@ previous:{
 type:{
 type:'Float' as const,nullable:true as const,value:null},
 ast_type:'Variable' as const,
-name:"_previous_w2XV0BqYFbXz1VNpa5tzLI"
+name:"_previous_GXczQEXCv$W3_qqktaI7rc"
 },
 value:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_value_b5W6xu7tdbZLJM8HqHNQKx"
+name:"_value_Tl7GNSHgXWHEGIHn$hbVkC"
 },
 key:{
 type:{
 type:'String' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_whobkRaZ7am5PX1meR4JuT"
+name:"_key_eG$AFu1T3FK_9xQhlM52Do"
 }
 },},
 },
@@ -395,7 +395,7 @@ offset_exists:{
 type:{
 type:'Boolean' as const,value:null},
 ast_type:'Variable' as const,
-name:"_offset_exists_FGls3JhNUejYGsoY67Qo4A"
+name:"_offset_exists_eG3OKsrkNDZBnW4bWck1gz"
 },
 offset_selections:{
 previousDayProfit:{
@@ -598,7 +598,7 @@ type:'Float' as const,value:null}}},
 ast_type:'Variable' as const,
 name:"revenuePerProductCode"
 },
-previousDaysRevenuePerProductCode:{
+previousDayRevenuePerProductCode:{
 type:{
 type:'Dict' as const,
 nullable:true as const,
@@ -608,7 +608,7 @@ type:'String' as const,value:null},
 value:{
 type:'Float' as const,value:null}}},
 ast_type:'Variable' as const,
-name:"previousDaysRevenuePerProductCode"
+name:"previousDayRevenuePerProductCode"
 },
 },
 target_selections:{
@@ -663,7 +663,7 @@ type:'String' as const,value:null},
 value:{
 type:'Float' as const,value:null}}},
 ast_type:'Variable' as const,
-name:"previousDaysRevenuePerProductCode"
+name:"previousDayRevenuePerProductCode"
 },
 output_null:{
 type:{
@@ -686,7 +686,7 @@ type:'String' as const,value:null},
 value:{
 type:'Float' as const,value:null}}},
 ast_type:'Variable' as const,
-name:"_7G7CNxeQWAwWNF9W6_Bw$e"
+name:"_MVqX_NbVQJX_depm$XkSWN"
 }},
 "true":{
 type:{
@@ -734,7 +734,7 @@ key:{
 type:{
 type:'String' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_gusJwyAOAjKocS3D$X8boc"
+name:"_key_vX$bt4$dDe1gpj3_uHvZYh"
 },
 "default":{
 type:{
@@ -755,13 +755,13 @@ type:'String' as const,value:null},
 value:{
 type:'Float' as const,value:null}}},
 ast_type:'Variable' as const,
-name:"previousDaysRevenuePerProductCode"
+name:"previousDayRevenuePerProductCode"
 },
 key:{
 type:{
 type:'String' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_gusJwyAOAjKocS3D$X8boc"
+name:"_key_vX$bt4$dDe1gpj3_uHvZYh"
 },
 "default":{
 type:{
@@ -773,7 +773,7 @@ key:{
 type:{
 type:'String' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_gusJwyAOAjKocS3D$X8boc"
+name:"_key_vX$bt4$dDe1gpj3_uHvZYh"
 }}},
 },
 output_key:{
@@ -841,13 +841,13 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_dW0p3b7niPorWzByyaAMiy"
+name:"_value_WDR1FiUcJBWoBsB$OwjpC_"
 },
 collection_key:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_DN1Z$Nf7ptr12I__dJGNTT"
+name:"_key_WtcL9GdCGMt4HEAY9rWr5Z"
 },
 selections:{
 transactionDate:{
@@ -872,7 +872,7 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_dW0p3b7niPorWzByyaAMiy"
+name:"_value_WDR1FiUcJBWoBsB$OwjpC_"
 },
 key:"productCode"},
 units:{
@@ -891,7 +891,7 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_dW0p3b7niPorWzByyaAMiy"
+name:"_value_WDR1FiUcJBWoBsB$OwjpC_"
 },
 key:"units"},
 salePrice:{
@@ -910,7 +910,7 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_dW0p3b7niPorWzByyaAMiy"
+name:"_value_WDR1FiUcJBWoBsB$OwjpC_"
 },
 key:"salePrice"},
 },
@@ -939,7 +939,7 @@ value:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_DN1Z$Nf7ptr12I__dJGNTT"
+name:"_key_WtcL9GdCGMt4HEAY9rWr5Z"
 },
 format:undefined}
 ],
@@ -995,13 +995,13 @@ value:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_value_8zKSkR7ltVffKfeSg0dTnS"
+name:"_value_FEF1XhbPaHj_SDlfeky57i"
 },
 collection_key:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_auGRZZMIvVsDBUpZUQDLQm"
+name:"_key_87sF4nYBVG6_G09C47S1kB"
 },
 selections:{
 transactionDate:{
@@ -1061,7 +1061,7 @@ value:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_auGRZZMIvVsDBUpZUQDLQm"
+name:"_key_87sF4nYBVG6_G09C47S1kB"
 },
 format:undefined}
 ],
@@ -1246,7 +1246,7 @@ first:{
 type:{
 type:'Float' as const,value:null},
 ast_type:'Variable' as const,
-name:"_previous_qEeVdaU$jdrc9MXBUK_zJi"
+name:"_previous_2Yy2n_pt51dv$9hxQu7qyk"
 },second:{
 type:{
 type:'Float' as const,value:null},
@@ -1263,7 +1263,7 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_xEQ9xYwNULepMIwVZRmfWW"
+name:"_value_Q8oUMMFMOgoXTDjVvsqBXS"
 },
 key:"salePrice"},},
 initial:{
@@ -1276,7 +1276,7 @@ previous:{
 type:{
 type:'Float' as const,value:null},
 ast_type:'Variable' as const,
-name:"_previous_qEeVdaU$jdrc9MXBUK_zJi"
+name:"_previous_2Yy2n_pt51dv$9hxQu7qyk"
 },
 value:{
 type:{
@@ -1290,13 +1290,13 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_xEQ9xYwNULepMIwVZRmfWW"
+name:"_value_Q8oUMMFMOgoXTDjVvsqBXS"
 },
 key:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_KHh1$exTKswGpumMFNcNTv"
+name:"_key_DHS3kRudmkCpgsF8td$A5Z"
 }
 },second:{
 type:{
@@ -1348,7 +1348,7 @@ value:{
 type:'Integer' as const,value:null}}},
 previousDayRevenue:{
 type:'Float' as const,nullable:true as const,value:null},
-previousDaysRevenuePerProductCode:{
+previousDayRevenuePerProductCode:{
 type:'Dict' as const,
 nullable:true as const,
 value:{
@@ -1357,7 +1357,7 @@ type:'String' as const,value:null},
 value:{
 type:'Float' as const,value:null}}},
 }}}},
-hash:"8bdc4ce6b0aee907e3de114f8996312d000102b77303d8647e4e3556231f104a",
+hash:"cc7209c4c34de0d6742e5b23d2f22a1389d136be7cbd75d0c9755e1d3ca5ead6",
 },
 operations:[
 {
@@ -1380,7 +1380,7 @@ offset_exists:{
 type:{
 type:'Boolean' as const,value:null},
 ast_type:'Variable' as const,
-name:"_offset_exists_GXoeYsQOcRe0c$OBZaQ5Tt"
+name:"_offset_exists_vfYyaofp7rmUKftoed0Spl"
 },
 offset_selections:{
 previousDaysUnitsPerProductCode:{
@@ -1397,7 +1397,7 @@ predicate:{
 type:{
 type:'Boolean' as const,value:null},
 ast_type:'Variable' as const,
-name:"_offset_exists_GXoeYsQOcRe0c$OBZaQ5Tt"
+name:"_offset_exists_vfYyaofp7rmUKftoed0Spl"
 },
 "true":{
 type:{
@@ -1429,7 +1429,7 @@ type:'Float' as const,nullable:true as const,value:null},
 ast_type:'Variable' as const,
 name:"totalRevenue"
 },
-previousDaysRevenuePerProductCode:{
+previousDayRevenuePerProductCode:{
 type:{
 type:'Dict' as const,
 nullable:true as const,
@@ -1963,7 +1963,7 @@ value:{
 type:'Integer' as const,value:null}}},
 previousDayRevenue:{
 type:'Float' as const,nullable:true as const,value:null},
-previousDaysRevenuePerProductCode:{
+previousDayRevenuePerProductCode:{
 type:'Dict' as const,
 nullable:true as const,
 value:{
@@ -1972,7 +1972,7 @@ type:'String' as const,value:null},
 value:{
 type:'Float' as const,value:null}}},
 }}}},
-hash:"8bdc4ce6b0aee907e3de114f8996312d000102b77303d8647e4e3556231f104a",
+hash:"cc7209c4c34de0d6742e5b23d2f22a1389d136be7cbd75d0c9755e1d3ca5ead6",
 },
 "Pipeline.Sales and Product Info":{
 name:"Pipeline.Sales and Product Info",

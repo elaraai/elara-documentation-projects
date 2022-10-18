@@ -678,7 +678,7 @@
               "ast_type": "Variable",
               "name": "revenuePerProductCode"
             },
-            "previousDaysRevenuePerProductCode": {
+            "previousDayRevenuePerProductCode": {
               "type": {
                 "type": "Dict",
                 "value": {
@@ -694,7 +694,7 @@
                 "nullable": true
               },
               "ast_type": "Variable",
-              "name": "previousDaysRevenuePerProductCode"
+              "name": "previousDayRevenuePerProductCode"
             }
           },
           "target_input_key": "#left_key0",
@@ -777,7 +777,7 @@
                     "nullable": true
                   },
                   "ast_type": "Variable",
-                  "name": "previousDaysRevenuePerProductCode"
+                  "name": "previousDayRevenuePerProductCode"
                 },
                 "output_null": {
                   "type": {
@@ -810,7 +810,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "_skiL8wxHSWsZyk5B82ZbbL"
+                  "name": "_0D_mWbjTOPv9GeQBrkBXRX"
                 }
               },
               "true": {
@@ -881,7 +881,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_key_eoz64gnIWVvxSX0BdxjKjC"
+                      "name": "_key_SSAssNxl5$jfa7y6CAvOoZ"
                     },
                     "default": {
                       "type": {
@@ -914,7 +914,7 @@
                         "nullable": true
                       },
                       "ast_type": "Variable",
-                      "name": "previousDaysRevenuePerProductCode"
+                      "name": "previousDayRevenuePerProductCode"
                     },
                     "key": {
                       "type": {
@@ -922,7 +922,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_key_eoz64gnIWVvxSX0BdxjKjC"
+                      "name": "_key_SSAssNxl5$jfa7y6CAvOoZ"
                     },
                     "default": {
                       "type": {
@@ -940,7 +940,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_key_eoz64gnIWVvxSX0BdxjKjC"
+                  "name": "_key_SSAssNxl5$jfa7y6CAvOoZ"
                 }
               }
             }
@@ -1041,7 +1041,7 @@
               }
             },
             "ast_type": "Variable",
-            "name": "_value_TQoxh2bkR5glOE630iVyxI"
+            "name": "_value_qXVWpgC_ygMZptum0Fhr1P"
           },
           "input_key": "#key0",
           "collection_key": {
@@ -1050,7 +1050,7 @@
               "value": null
             },
             "ast_type": "Variable",
-            "name": "_key_p_Yl1w2RayazlIY2lB5gLI"
+            "name": "_key_ln6thl_M4FKhmKUPZUSMaw"
           },
           "type": "disaggregate",
           "selections": {
@@ -1087,7 +1087,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_TQoxh2bkR5glOE630iVyxI"
+                "name": "_value_qXVWpgC_ygMZptum0Fhr1P"
               },
               "key": "productCode"
             },
@@ -1116,7 +1116,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_TQoxh2bkR5glOE630iVyxI"
+                "name": "_value_qXVWpgC_ygMZptum0Fhr1P"
               },
               "key": "units"
             },
@@ -1145,7 +1145,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_TQoxh2bkR5glOE630iVyxI"
+                "name": "_value_qXVWpgC_ygMZptum0Fhr1P"
               },
               "key": "salePrice"
             }
@@ -1185,7 +1185,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_key_p_Yl1w2RayazlIY2lB5gLI"
+                  "name": "_key_ln6thl_M4FKhmKUPZUSMaw"
                 }
               }
             ],
@@ -1269,7 +1269,7 @@
               "value": null
             },
             "ast_type": "Variable",
-            "name": "_value_I_zCQMldj47wLopC5IKesX"
+            "name": "_value_RYHOg62MdCWGR6pTVPCQuR"
           },
           "input_key": "#key0",
           "collection_key": {
@@ -1278,7 +1278,7 @@
               "value": null
             },
             "ast_type": "Variable",
-            "name": "_key_lgSIqSx5$q$bdcCtuboiRf"
+            "name": "_key_M5vUrS9sUC8mMZCUOS19Ew"
           },
           "type": "disaggregate",
           "selections": {
@@ -1364,7 +1364,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_key_lgSIqSx5$q$bdcCtuboiRf"
+                  "name": "_key_M5vUrS9sUC8mMZCUOS19Ew"
                 }
               }
             ],
@@ -1625,7 +1625,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_previous_uN9AQxtCOAfpbNKmhzaTYw"
+                  "name": "_previous_FY9x38VXX1XUdgDMZZcMym"
                 },
                 "second": {
                   "type": {
@@ -1652,7 +1652,7 @@
                       }
                     },
                     "ast_type": "Variable",
-                    "name": "_value_w1CgoNKwoXRP_rSykleZiS"
+                    "name": "_value_0bJV9NoPxIoeclz3lupDAN"
                   },
                   "key": "salePrice"
                 }
@@ -1671,7 +1671,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_previous_uN9AQxtCOAfpbNKmhzaTYw"
+                "name": "_previous_FY9x38VXX1XUdgDMZZcMym"
               },
               "value": {
                 "type": {
@@ -1692,7 +1692,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_w1CgoNKwoXRP_rSykleZiS"
+                "name": "_value_0bJV9NoPxIoeclz3lupDAN"
               },
               "key": {
                 "type": {
@@ -1700,7 +1700,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_key_aLY0z5h0XMCG5WQRIAYqIj"
+                "name": "_key_xNGcxZODpQsrV65kk9ng8E"
               }
             },
             "second": {
@@ -1787,7 +1787,7 @@
               "value": null
             },
             "ast_type": "Variable",
-            "name": "_offset_exists_E0erl1i7mB6bNuXBHBfJvp"
+            "name": "_offset_exists_7EFLvPFLhN33SLGpTdvbUE"
           },
           "offset_selections": {
             "previousDaysUnitsPerProductCode": {
@@ -1812,7 +1812,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_offset_exists_E0erl1i7mB6bNuXBHBfJvp"
+                "name": "_offset_exists_7EFLvPFLhN33SLGpTdvbUE"
               },
               "true": {
                 "type": {
@@ -1863,7 +1863,7 @@
               "ast_type": "Variable",
               "name": "totalRevenue"
             },
-            "previousDaysRevenuePerProductCode": {
+            "previousDayRevenuePerProductCode": {
               "type": {
                 "type": "Dict",
                 "value": {
@@ -1949,7 +1949,7 @@
                   "value": null,
                   "nullable": true
                 },
-                "previousDaysRevenuePerProductCode": {
+                "previousDayRevenuePerProductCode": {
                   "type": "Dict",
                   "value": {
                     "key": {
@@ -1967,7 +1967,7 @@
             }
           }
         },
-        "hash": "8bdc4ce6b0aee907e3de114f8996312d000102b77303d8647e4e3556231f104a"
+        "hash": "cc7209c4c34de0d6742e5b23d2f22a1389d136be7cbd75d0c9755e1d3ca5ead6"
       }
     },
     "Sales and Product Info": {
@@ -2754,7 +2754,7 @@
                 "value": null,
                 "nullable": true
               },
-              "previousDaysRevenuePerProductCode": {
+              "previousDayRevenuePerProductCode": {
                 "type": "Dict",
                 "value": {
                   "key": {
@@ -2772,7 +2772,7 @@
           }
         }
       },
-      "hash": "8bdc4ce6b0aee907e3de114f8996312d000102b77303d8647e4e3556231f104a"
+      "hash": "cc7209c4c34de0d6742e5b23d2f22a1389d136be7cbd75d0c9755e1d3ca5ead6"
     },
     "Pipeline.Sales and Product Info": {
       "name": "Pipeline.Sales and Product Info",

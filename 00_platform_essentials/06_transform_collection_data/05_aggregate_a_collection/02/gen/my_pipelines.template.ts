@@ -180,13 +180,13 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_QnUvPw4_b5w3VROhSI$X7k"
+name:"_value_LovbwwSioZVVLxIxXb4Hi8"
 },
 collection_key:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_Y_B$i8$JG8wNWfa3IWGADM"
+name:"_key_B5Q61ZVTQERSolrLOQPDxU"
 },
 selections:{
 transactionDate:{
@@ -211,7 +211,7 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_QnUvPw4_b5w3VROhSI$X7k"
+name:"_value_LovbwwSioZVVLxIxXb4Hi8"
 },
 key:"productCode"},
 units:{
@@ -230,7 +230,7 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_QnUvPw4_b5w3VROhSI$X7k"
+name:"_value_LovbwwSioZVVLxIxXb4Hi8"
 },
 key:"units"},
 salePrice:{
@@ -249,7 +249,7 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_QnUvPw4_b5w3VROhSI$X7k"
+name:"_value_LovbwwSioZVVLxIxXb4Hi8"
 },
 key:"salePrice"},
 },
@@ -278,7 +278,7 @@ value:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_Y_B$i8$JG8wNWfa3IWGADM"
+name:"_key_B5Q61ZVTQERSolrLOQPDxU"
 },
 format:undefined}
 ],
@@ -334,13 +334,13 @@ value:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_value__a9B0w406QgmKWVn1EfFKG"
+name:"_value_ML0Gjy3VzvFRsjO8FgAENZ"
 },
 collection_key:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_5j$vR$yj$Nb3jt1hNU6Sf$"
+name:"_key__W49BcIL42vEQuSjRv_Wjo"
 },
 selections:{
 transactionDate:{
@@ -400,7 +400,7 @@ value:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_5j$vR$yj$Nb3jt1hNU6Sf$"
+name:"_key__W49BcIL42vEQuSjRv_Wjo"
 },
 format:undefined}
 ],
@@ -585,7 +585,7 @@ first:{
 type:{
 type:'Float' as const,value:null},
 ast_type:'Variable' as const,
-name:"_previous_qdOgpKw48pUf$LleJs9XsA"
+name:"_previous_$sPXeFoTcoRmboh72tbW4B"
 },second:{
 type:{
 type:'Float' as const,value:null},
@@ -602,7 +602,7 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_cHCec$HHGWJwWRzVDhumYN"
+name:"_value_ri1Bi5dI4HMQS3pnfpVwPl"
 },
 key:"salePrice"},},
 initial:{
@@ -615,7 +615,7 @@ previous:{
 type:{
 type:'Float' as const,value:null},
 ast_type:'Variable' as const,
-name:"_previous_qdOgpKw48pUf$LleJs9XsA"
+name:"_previous_$sPXeFoTcoRmboh72tbW4B"
 },
 value:{
 type:{
@@ -629,13 +629,13 @@ salePrice:{
 type:'Float' as const,value:null},
 }},
 ast_type:'Variable' as const,
-name:"_value_cHCec$HHGWJwWRzVDhumYN"
+name:"_value_ri1Bi5dI4HMQS3pnfpVwPl"
 },
 key:{
 type:{
 type:'Integer' as const,value:null},
 ast_type:'Variable' as const,
-name:"_key_5cHQiw84TwEkqxuCq4p2QM"
+name:"_key_OMWXdAD6Q3roFock9t7pM9"
 }
 },second:{
 type:{

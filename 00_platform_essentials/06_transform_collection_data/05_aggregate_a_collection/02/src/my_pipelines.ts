@@ -57,19 +57,19 @@ const disaggregate_exercise_two = new PipelineBuilder(disaggregate_exercise_one.
 const join_exercise = new PipelineBuilder(disaggregate_exercise_one.output_table)
     .innerJoin({
         right_input: products,
-        left_key: entries => entries.productCode,
-        right_key: entries => entries.Code,
+        left_key: entry => entry.productCode,
+        right_key: entry => entry.Code,
         left_selections: {
-            productCode: entries => entries.productCode,
-            transactionDate: entries => entries.transactionDate,
-            units: entries => entries.units,
+            productCode: entry => entry.productCode,
+            transactionDate: entry => entry.transactionDate,
+            units: entry => entry.units,
         },
         right_selections: {
-            productName: entries => entries.Name,
-            productCategory: entries => entries.Category,
-            productUnitCost: entries => entries["Unit Cost"],
+            productName: entry => entry.Name,
+            productCategory: entry => entry.Category,
+            productUnitCost: entry => entry["Unit Cost"],
         },
-        output_key: entries => StringJoin`${entries.transactionDate}.${entries.productCode}`
+        output_key: entry => StringJoin`${entry.transactionDate}.${entry.productCode}`
     })
     .toPipeline("Sales and Product Info")
 
