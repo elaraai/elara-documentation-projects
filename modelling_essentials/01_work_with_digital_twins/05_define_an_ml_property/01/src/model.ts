@@ -42,7 +42,7 @@ const sales_input_data = new WritableStreamBuilder("Sales Source", DictType(Stri
         ["29", { date: new Date(`2022-11-07`), qtySold: null, salePrice: 1.0, unitCostPrice: 1.0  }],
     ]))
 
-const daily_sales_model = new ModelBuilder("Daily Sales", sales_input_data.toStream())
+const sales_model = new ModelBuilder("Sales", sales_input_data.toStream())
     .value("date", fields => fields.date)
     .value("salePrice", fields => fields.salePrice)
     .value("unitCostPrice", fields => fields.unitCostPrice)
@@ -63,5 +63,5 @@ const daily_sales_model = new ModelBuilder("Daily Sales", sales_input_data.toStr
 
 export default Template(
     sales_input_data.toTemplate(),
-    ModelBuilder.toTemplate(daily_sales_model)
+    ModelBuilder.toTemplate(sales_model)
 )
