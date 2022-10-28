@@ -46,19 +46,19 @@ const sales_input_data = new SourceBuilder("Sales Source")
     // )
 
 const sales_model = new ModelBuilder("Sales", sales_input_data.outputStream())
-    .value("date", fields => fields.date)
-    .value("salePrice", fields => fields.salePrice)
-    .value("unitCost", fields => fields.unitCost)
-    .value("dayOfWeek", fields => DayOfWeek(fields.date))
+    .value("date", entry => entry.date)
+    .value("salePrice", entry => entry.salePrice)
+    .value("unitCost", entry => entry.unitCost)
+    .value("dayOfWeek", entry => DayOfWeek(entry.date))
     .ml(
         "qtySold", {
-            value: fields => fields.qtySold,
+            value: entry => entry.qtySold,
             features: {
                 dayOfWeek: props => props.dayOfWeek,
                 salePrice: props => props.salePrice,
             },
-            train: fields => Less(fields.date, new Date("2022-11-01")),
-            predict: fields => GreaterEqual(fields.date, new Date("2022-11-01")),
+            train: entry => Less(entry.date, new Date("2022-11-01")),
+            predict: entry => GreaterEqual(entry.date, new Date("2022-11-01")),
             sampling_statistic: "mean"
         }
     )
