@@ -57,6 +57,7 @@ const cash_model = new ModelBuilder("Cash")
 
 const sales_model = new ModelBuilder("Sales", sales_input_data.outputStream())
     .value("date", entry => entry.date)
+    .value("unitCost", entry => entry.unitCost)
     .option(
         "salePrice", {
             default: entry => entry.salePrice,
@@ -71,7 +72,6 @@ const sales_model = new ModelBuilder("Sales", sales_input_data.outputStream())
             ]
         }
     )
-    .value("unitCost", entry => entry.unitCost)
     .value("dayOfWeek", entry => DayOfWeek(entry.date))
     .ml(
         "qtySold", {

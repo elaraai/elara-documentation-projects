@@ -47,9 +47,9 @@ const sales_input_data = new SourceBuilder("Sales Source")
 
 const sales_model = new ModelBuilder("Sales", sales_input_data.outputStream())
     .value("date", entry => entry.date)
-    .value("qtySold", entry => entry.qtySold)
-    .value("salePrice", entry => entry.salePrice)
     .value("unitCost", entry => entry.unitCost)
+    .value("salePrice", entry => entry.salePrice)
+    .value("qtySold", entry => entry.qtySold)
     .toModel()
 
 export default Template(
