@@ -33,19 +33,19 @@ const filter_exercise_three = new PipelineBuilder(sales)
 
 const disaggregate_exercise_one = new PipelineBuilder(sales)
     .disaggregateArray({
-        collection: (fields) => fields.items,
+        collection: fields => fields.items,
         selections: {
             transactionDate: (fields) => fields.transactionDate,
-            productCode: (_, item) => GetField(item, "productCode"),
-            units: (_, item) => GetField(item, "units"),
-            salePrice: (_, item) => GetField(item, "salePrice"),
+            productCode: (_, item_fields) => GetField(item_fields, "productCode"),
+            units: (_, item_fields) => GetField(item_fields, "units"),
+            salePrice: (_, item_fields) => GetField(item_fields, "salePrice"),
         },
     })
     .toPipeline("Disaggregate Items")
 
 const disaggregate_exercise_two = new PipelineBuilder(disaggregate_exercise_one.output_table)
     .disaggregateArray({
-        collection: (fields) => Range(1n, fields.units),
+        collection: fields => Range(1n, fields.units),
         selections: {
             transactionDate: (fields) => fields.transactionDate,
             productCode: (fields) => fields.productCode,
@@ -76,7 +76,7 @@ const join_exercise = new PipelineBuilder(disaggregate_exercise_one.output_table
 const aggregate_exercise_one = new PipelineBuilder(disaggregate_exercise_one.output_table)
     .aggregate({
         group_field: "productCode",
-        group_value: (fields) => fields.productCode,
+        group_value: fields => fields.productCode,
         aggregations: {
             units: fields => Sum(fields.units)
         }
@@ -86,7 +86,7 @@ const aggregate_exercise_one = new PipelineBuilder(disaggregate_exercise_one.out
 const aggregate_exercise_two = new PipelineBuilder(sales)
     .aggregate({
         group_field: "date",
-        group_value: (fields) => Floor(fields.transactionDate, "day"),
+        group_value: fields => Floor(fields.transactionDate, "day"),
         aggregations: {
             countTransactions: _ => Sum(1n)
         }
@@ -96,9 +96,9 @@ const aggregate_exercise_two = new PipelineBuilder(sales)
 const aggregate_exercise_three = new PipelineBuilder(disaggregate_exercise_one.output_table)
     .aggregate({
         group_field: "date",
-        group_value: (fields) => Floor(fields.transactionDate, "day"),
+        group_value: fields => Floor(fields.transactionDate, "day"),
         aggregations: {
-            unitsPerProductCode: (fields) => CollectDictSum(fields.productCode, fields.units)
+            unitsPerProductCode: fields => CollectDictSum(fields.productCode, fields.units)
         }
     })
     .toPipeline("Units Per Product Code By Date")

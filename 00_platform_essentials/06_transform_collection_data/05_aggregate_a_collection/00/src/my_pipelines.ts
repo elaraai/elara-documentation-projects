@@ -33,19 +33,19 @@ const filter_exercise_three = new PipelineBuilder(sales)
 
 const disaggregate_exercise_one = new PipelineBuilder(sales)
     .disaggregateArray({
-        collection: (fields) => fields.items,
+        collection: fields => fields.items,
         selections: {
             transactionDate: (fields) => fields.transactionDate,
-            productCode: (_, item) => GetField(item, "productCode"),
-            units: (_, item) => GetField(item, "units"),
-            salePrice: (_, item) => GetField(item, "salePrice"),
+            productCode: (_, item_fields) => GetField(item_fields, "productCode"),
+            units: (_, item_fields) => GetField(item_fields, "units"),
+            salePrice: (_, item_fields) => GetField(item_fields, "salePrice"),
         },
     })
     .toPipeline("Disaggregate Items")
 
 const disaggregate_exercise_two = new PipelineBuilder(disaggregate_exercise_one.output_table)
     .disaggregateArray({
-        collection: (fields) => Range(1n, fields.units),
+        collection: fields => Range(1n, fields.units),
         selections: {
             transactionDate: (fields) => fields.transactionDate,
             productCode: (fields) => fields.productCode,
