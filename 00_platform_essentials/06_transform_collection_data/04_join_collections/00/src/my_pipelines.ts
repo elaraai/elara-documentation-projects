@@ -10,18 +10,18 @@ const sales = my_datasources.tables["Source.Sales"]
 //     .toTemplate("My Transform")
 
 const filter_exercise_one = new PipelineBuilder(sales)
-    .filter(entry => GreaterEqual(entry.transactionDate, new Date(`2022-11-10`) ) )
+    .filter(fields => GreaterEqual(fields.transactionDate, new Date(`2022-11-10`) ) )
     .toTemplate("Filter After Datetime")
 
 const filter_exercise_two = new PipelineBuilder(sales)
-    .filter(entry => Equal(Floor(entry.transactionDate, "day"), new Date(`2022-11-10`) ) )
+    .filter(fields => Equal(Floor(fields.transactionDate, "day"), new Date(`2022-11-10`) ) )
     .toTemplate("Filter On Date")
     
 const filter_exercise_three = new PipelineBuilder(sales)
     .filter(
-        entry => Greater(
+        fields => Greater(
             Reduce(
-                entry.items,
+                fields.items,
                 (previous, current) => Add(previous, GetField(current, "salePrice")),
                 0
             ),
@@ -32,9 +32,9 @@ const filter_exercise_three = new PipelineBuilder(sales)
 
 const disaggregate_exercise_one = new PipelineBuilder(sales)
     .disaggregateArray({
-        collection: (entry) => entry.items,
+        collection: (fields) => fields.items,
         selections: {
-            transactionDate: (entry) => entry.transactionDate,
+            transactionDate: (fields) => fields.transactionDate,
             productCode: (_, item) => GetField(item, "productCode"),
             units: (_, item) => GetField(item, "units"),
             salePrice: (_, item) => GetField(item, "salePrice"),
@@ -44,11 +44,11 @@ const disaggregate_exercise_one = new PipelineBuilder(sales)
 
 const disaggregate_exercise_two = new PipelineBuilder(disaggregate_exercise_one.output_table)
     .disaggregateArray({
-        collection: (entry) => Range(1n, entry.units),
+        collection: (fields) => Range(1n, fields.units),
         selections: {
-            transactionDate: (entry) => entry.transactionDate,
-            productCode: (entry) => entry.productCode,
-            salePrice: (entry) => Divide(entry.salePrice, entry.units)
+            transactionDate: (fields) => fields.transactionDate,
+            productCode: (fields) => fields.productCode,
+            salePrice: (fields) => Divide(fields.salePrice, fields.units)
         }
     })
     .toTemplate("Disaggregate Units")

@@ -10,11 +10,11 @@ const sales = my_datasources.tables["Source.Sales"]
 //     .toTemplate("My Transform")
 
 const filter_exercise_one = new PipelineBuilder(sales)
-    .filter(entry => GreaterEqual(entry.transactionDate, new Date(`2022-11-10`) ) )
+    .filter(fields => GreaterEqual(fields.transactionDate, new Date(`2022-11-10`) ) )
     .toTemplate("Filter After Datetime")
 
 const filter_exercise_two = new PipelineBuilder(sales)
-    .filter(entry => Equal(Floor(entry.transactionDate, "day"), new Date(`2022-11-10`) ) )
+    .filter(fields => Equal(Floor(fields.transactionDate, "day"), new Date(`2022-11-10`) ) )
     .toTemplate("Filter On Date")
 
 export default Template(

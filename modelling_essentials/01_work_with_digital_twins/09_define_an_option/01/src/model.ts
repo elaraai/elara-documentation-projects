@@ -56,32 +56,32 @@ const cash_model = new ModelBuilder("Cash")
     .toModel()
 
 const sales_model = new ModelBuilder("Sales", sales_input_data.outputStream())
-    .value("date", entry => entry.date)
-    .value("unitCost", entry => entry.unitCost)
+    .value("date", fields => fields.date)
+    .value("unitCost", fields => fields.unitCost)
     .option(
         "salePrice", {
-            default: entry => entry.salePrice,
+            default: fields => fields.salePrice,
             date: props => props.date,
             optimized: [
                 {
                     scenario: optimized_scenario.scenarios.optimized,
-                    active: entry => GreaterEqual(entry.date, new Date("2022-11-01")),
-                    min: entry => entry.unitCost,
+                    active: fields => GreaterEqual(fields.date, new Date("2022-11-01")),
+                    min: fields => fields.unitCost,
                     max: _ => Const(10)
                 }
             ]
         }
     )
-    .value("dayOfWeek", entry => DayOfWeek(entry.date))
+    .value("dayOfWeek", fields => DayOfWeek(fields.date))
     .ml(
         "qtySold", {
-            value: entry => entry.qtySold,
+            value: fields => fields.qtySold,
             features: {
                 dayOfWeek: props => props.dayOfWeek,
                 salePrice: props => props.salePrice,
             },
-            train: entry => Less(entry.date, new Date("2022-11-01")),
-            predict: entry => GreaterEqual(entry.date, new Date("2022-11-01")),
+            train: fields => Less(fields.date, new Date("2022-11-01")),
+            predict: fields => GreaterEqual(fields.date, new Date("2022-11-01")),
             sampling_statistic: "mean"
         }
     )

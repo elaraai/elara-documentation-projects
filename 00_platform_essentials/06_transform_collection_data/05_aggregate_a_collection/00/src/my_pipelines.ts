@@ -11,18 +11,18 @@ const products = my_datasources.tables["Source.Products"]
 //     .toTemplate("My Transform")
 
 const filter_exercise_one = new PipelineBuilder(sales)
-    .filter(entry => GreaterEqual(entry.transactionDate, new Date(`2022-11-10`) ) )
+    .filter(fields => GreaterEqual(fields.transactionDate, new Date(`2022-11-10`) ) )
     .toTemplate("Filter After Datetime")
 
 const filter_exercise_two = new PipelineBuilder(sales)
-    .filter(entry => Equal(Floor(entry.transactionDate, "day"), new Date(`2022-11-10`) ) )
+    .filter(fields => Equal(Floor(fields.transactionDate, "day"), new Date(`2022-11-10`) ) )
     .toTemplate("Filter On Date")
     
 const filter_exercise_three = new PipelineBuilder(sales)
     .filter(
-        entry => Greater(
+        fields => Greater(
             Reduce(
-                entry.items,
+                fields.items,
                 (previous, current) => Add(previous, GetField(current, "salePrice")),
                 0
             ),
@@ -33,9 +33,9 @@ const filter_exercise_three = new PipelineBuilder(sales)
 
 const disaggregate_exercise_one = new PipelineBuilder(sales)
     .disaggregateArray({
-        collection: (entry) => entry.items,
+        collection: (fields) => fields.items,
         selections: {
-            transactionDate: (entry) => entry.transactionDate,
+            transactionDate: (fields) => fields.transactionDate,
             productCode: (_, item) => GetField(item, "productCode"),
             units: (_, item) => GetField(item, "units"),
             salePrice: (_, item) => GetField(item, "salePrice"),
@@ -45,11 +45,11 @@ const disaggregate_exercise_one = new PipelineBuilder(sales)
 
 const disaggregate_exercise_two = new PipelineBuilder(disaggregate_exercise_one.output_table)
     .disaggregateArray({
-        collection: (entry) => Range(1n, entry.units),
+        collection: (fields) => Range(1n, fields.units),
         selections: {
-            transactionDate: (entry) => entry.transactionDate,
-            productCode: (entry) => entry.productCode,
-            salePrice: (entry) => Divide(entry.salePrice, entry.units)
+            transactionDate: (fields) => fields.transactionDate,
+            productCode: (fields) => fields.productCode,
+            salePrice: (fields) => Divide(fields.salePrice, fields.units)
         }
     })
     .toTemplate("Disaggregate Units")
@@ -57,19 +57,19 @@ const disaggregate_exercise_two = new PipelineBuilder(disaggregate_exercise_one.
 const join_exercise = new PipelineBuilder(disaggregate_exercise_one.output_table)
     .innerJoin({
         right_input: products,
-        left_key: entry => entry.productCode,
-        right_key: entry => entry.Code,
+        left_key: fields => fields.productCode,
+        right_key: fields => fields.Code,
         left_selections: {
-            productCode: entry => entry.productCode,
-            transactionDate: entry => entry.transactionDate,
-            units: entry => entry.units,
+            productCode: fields => fields.productCode,
+            transactionDate: fields => fields.transactionDate,
+            units: fields => fields.units,
         },
         right_selections: {
-            productName: entry => entry.Name,
-            productCategory: entry => entry.Category,
-            productUnitCost: entry => entry["Unit Cost"],
+            productName: fields => fields.Name,
+            productCategory: fields => fields.Category,
+            productUnitCost: fields => fields["Unit Cost"],
         },
-        output_key: entry => StringJoin`${entry.transactionDate}.${entry.productCode}`
+        output_key: fields => StringJoin`${fields.transactionDate}.${fields.productCode}`
     })
     .toPipeline("Sales and Product Info")
 

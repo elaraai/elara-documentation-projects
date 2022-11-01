@@ -46,10 +46,10 @@ const sales_input_data = new SourceBuilder("Sales Source")
     })
 
 const sales_model = new ModelBuilder("Sales", sales_input_data.outputStream())
-    .value("date", entry => entry.date)
-    .value("unitCost", entry => entry.unitCost)
-    .value("salePrice", entry => entry.salePrice)
-    .value("qtySold", entry => entry.qtySold)
+    .value("date", fields => fields.date)
+    .value("unitCost", fields => fields.unitCost)
+    .value("salePrice", fields => fields.salePrice)
+    .value("qtySold", fields => fields.qtySold)
     .toModel()
 
 export default Template(
