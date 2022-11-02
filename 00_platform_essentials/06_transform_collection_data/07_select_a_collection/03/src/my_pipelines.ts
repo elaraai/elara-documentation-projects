@@ -35,7 +35,7 @@ const disaggregate_exercise_one = new PipelineBuilder(sales)
     .disaggregateArray({
         collection: fields => fields.items,
         selections: {
-            transactionDate: (fields) => fields.transactionDate,
+            transactionDate: fields => fields.transactionDate,
             productCode: (_, item_fields) => GetField(item_fields, "productCode"),
             units: (_, item_fields) => GetField(item_fields, "units"),
             salePrice: (_, item_fields) => GetField(item_fields, "salePrice"),
@@ -47,9 +47,9 @@ const disaggregate_exercise_two = new PipelineBuilder(disaggregate_exercise_one.
     .disaggregateArray({
         collection: fields => Range(1n, fields.units),
         selections: {
-            transactionDate: (fields) => fields.transactionDate,
-            productCode: (fields) => fields.productCode,
-            salePrice: (fields) => Divide(fields.salePrice, fields.units)
+            transactionDate: fields => fields.transactionDate,
+            productCode: fields => fields.productCode,
+            salePrice: fields => Divide(fields.salePrice, fields.units)
         }
     })
     .toTemplate("Disaggregate Units")
@@ -98,9 +98,9 @@ const aggregate_exercise_three = new PipelineBuilder(disaggregate_exercise_one.o
         group_field: "date",
         group_value: fields => Floor(fields.transactionDate, "day"),
         aggregations: {
-            unitsPerProductCode: (fields) => CollectDictSum(fields.productCode, fields.units),
+            unitsPerProductCode: fields => CollectDictSum(fields.productCode, fields.units),
             totalRevenue: fields => Sum(fields.salePrice),
-            revenuePerProductCode:  (fields) => CollectDictSum(fields.productCode, fields.salePrice),
+            revenuePerProductCode:  fields => CollectDictSum(fields.productCode, fields.salePrice),
         }
     })
     .toPipeline("Units Per Product Code By Date")
@@ -115,8 +115,8 @@ const offset_exercise_one = new PipelineBuilder(aggregate_exercise_three.output_
                 fields.unitsPerProductCode,
                 Default(DictType(StringType, IntegerType))
             ),
-            previousDayRevenue: (fields, _, __) => fields.totalRevenue,
-            previousDayRevenuePerProductCode: (fields, _, __) => fields.revenuePerProductCode
+            previousDayRevenue: fields => fields.totalRevenue,
+            previousDayRevenuePerProductCode: fields => fields.revenuePerProductCode
         }
     })
     .toPipeline("Recent Units Per Product Code By Date")
@@ -215,7 +215,7 @@ const select_exercise_three = new PipelineBuilder(products)
         sort_key: fields => fields.date,
         offset: -1,
         offset_selections: {
-            previousDayProfit: (fields, _, __) => fields.profit,
+            previousDayProfit: fields => fields.profit,
         }
     })
     .select({
