@@ -1,4 +1,4 @@
-import { Add, Const, DateTimeType, DayOfWeek, DictType, FloatType,  GreaterEqual, IfNull, IntegerType, Less, ModelBuilder, Multiply, Nullable, SourceBuilder, StringType, StructType, Subtract, Template } from "@elaraai/core"
+import { Add, Const, DateTimeType, DayOfWeek, DictType, FloatType, IfNull, IntegerType, IsNotNull, IsNull, ModelBuilder, Multiply, Nullable, SourceBuilder, StringType, StructType, Subtract, Template } from "@elaraai/core"
 
 
 const sales_value_type = StructType({
@@ -65,8 +65,8 @@ const sales_model = new ModelBuilder("Sales", sales_input_data.outputStream())
                 dayOfWeek: props => props.dayOfWeek,
                 salePrice: props => props.salePrice,
             },
-            train: fields => Less(fields.date, new Date("2022-11-01")),
-            predict: fields => GreaterEqual(fields.date, new Date("2022-11-01")),
+            train: fields => IsNotNull(fields.qtySold),
+            predict: fields => IsNull(fields.date),
             sampling_statistic: "mean"
         }
     )

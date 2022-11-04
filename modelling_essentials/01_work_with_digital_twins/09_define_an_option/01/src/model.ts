@@ -1,6 +1,6 @@
-import { Add, Const, DateTimeType, DayOfWeek, DictType, FloatType,  GreaterEqual, IfNull, IntegerType, Less, ModelBuilder, Multiply, Nullable, SourceBuilder, StringType, StructType, Subtract, Template } from "@elaraai/core"
+import { Add, Const, DateTimeType, DayOfWeek, DictType, FloatType, IfNull, IntegerType, IsNotNull, IsNull, ModelBuilder, Multiply, Nullable, SourceBuilder, StringType, StructType, Subtract, Template } from "@elaraai/core"
 // import {  Const, DateTimeType, DayOfWeek, DictType, FloatType,  GreaterEqual, IntegerType, Less, ModelBuilder, Multiply, Nullable, StringType, StructType, Subtract, Template, WritableStreamBuilder } from "@elaraai/core"
-import optimized_scenario from "../gen/scenarios.template"
+import scenarios from "../gen/scenarios.template"
 
 const sales_value_type = StructType({
     date: DateTimeType,
@@ -64,12 +64,29 @@ const sales_model = new ModelBuilder("Sales", sales_input_data.outputStream())
             date: props => props.date,
             optimized: [
                 {
-                    scenario: optimized_scenario.scenarios.optimized,
-                    active: fields => GreaterEqual(fields.date, new Date("2022-11-01")),
+                    scenario: scenarios.scenarios.Optimisation,
+                    active: fields => IsNull(fields.date),
                     min: fields => fields.unitCost,
                     max: _ => Const(10)
                 }
-            ]
+            ],
+            sensitivity: [
+                {
+                    scenario: scenarios.scenarios.Sensitivity,
+                    active: fields => IsNull(fields.date),
+                    min: _ => Const(3),
+                    max: _ => Const(4)
+                }
+            ],
+            manual: [
+                {
+                    scenario: scenarios.scenarios.Manual,
+                    active: fields => IsNull(fields.date),
+                    min: _ => Const(3),
+                    max: _ => Const(4)
+                }
+            ],
+            proposals: []
         }
     )
     .value("dayOfWeek", fields => DayOfWeek(fields.date))
@@ -80,8 +97,8 @@ const sales_model = new ModelBuilder("Sales", sales_input_data.outputStream())
                 dayOfWeek: props => props.dayOfWeek,
                 salePrice: props => props.salePrice,
             },
-            train: fields => Less(fields.date, new Date("2022-11-01")),
-            predict: fields => GreaterEqual(fields.date, new Date("2022-11-01")),
+            train: fields => IsNotNull(fields.qtySold),
+            predict: fields => IsNull(fields.date),
             sampling_statistic: "mean"
         }
     )

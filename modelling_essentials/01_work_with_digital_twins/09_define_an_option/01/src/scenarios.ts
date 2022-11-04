@@ -1,5 +1,19 @@
-import * as ELARA from "@elaraai/core"
+import { ScenarioSchema, Template } from "@elaraai/core"
 
-export default ELARA.ScenarioSchema({
-    name: 'optimized',
+const optimised = ScenarioSchema({
+    name: 'Optimisation',
 })
+
+const sensitivity = ScenarioSchema({
+    name: 'Sensitivity',
+})
+
+const manual = ScenarioSchema({
+    name: 'Manual',
+})
+
+export default Template(
+    optimised,
+    sensitivity,
+    manual
+)
