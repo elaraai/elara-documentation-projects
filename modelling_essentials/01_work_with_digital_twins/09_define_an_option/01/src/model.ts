@@ -65,7 +65,7 @@ const sales_model = new ModelBuilder("Sales", sales_input_data.outputStream())
             optimized: [
                 {
                     scenario: scenarios.scenarios.Optimisation,
-                    active: fields => IsNull(fields.date),
+                    active: fields => IsNull(fields.qtySold),
                     min: fields => fields.unitCost,
                     max: _ => Const(10)
                 }
@@ -73,7 +73,7 @@ const sales_model = new ModelBuilder("Sales", sales_input_data.outputStream())
             sensitivity: [
                 {
                     scenario: scenarios.scenarios.Sensitivity,
-                    active: fields => IsNull(fields.date),
+                    active: fields => IsNull(fields.qtySold),
                     min: _ => Const(3),
                     max: _ => Const(4)
                 }
@@ -81,7 +81,7 @@ const sales_model = new ModelBuilder("Sales", sales_input_data.outputStream())
             manual: [
                 {
                     scenario: scenarios.scenarios.Manual,
-                    active: fields => IsNull(fields.date),
+                    active: fields => IsNull(fields.qtySold),
                     min: _ => Const(3),
                     max: _ => Const(4)
                 }
