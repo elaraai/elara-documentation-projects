@@ -12,7 +12,6 @@ import { ModelBuilder, Template, SourceBuilder } from "@elaraai/core"
 const sales_input_data = new SourceBuilder("Sales Source")
     .value({
         value: new Map([
-            ["29", { date: new Date(`2022-11-07`), unitCost: 1.0, salePrice: 1.0, qtySold: null }],
             ["0", { date: new Date(`2022-10-10`), unitCost: 1.0, salePrice: 4.0, qtySold: 25n }],
             ["1", { date: new Date(`2022-10-11`), unitCost: 1.0, salePrice: 4.0, qtySold: 28n }],
             ["2", { date: new Date(`2022-10-12`), unitCost: 1.0, salePrice: 4.0, qtySold: 30n }],
@@ -42,6 +41,7 @@ const sales_input_data = new SourceBuilder("Sales Source")
             ["26", { date: new Date(`2022-11-04`), unitCost: 1.0, salePrice: 1.0, qtySold: null }],
             ["27", { date: new Date(`2022-11-05`), unitCost: 1.0, salePrice: 1.0, qtySold: null }],
             ["28", { date: new Date(`2022-11-06`), unitCost: 1.0, salePrice: 1.0, qtySold: null }],
+            ["29", { date: new Date(`2022-11-07`), unitCost: 1.0, salePrice: 1.0, qtySold: null }],
         ])
     })
 
