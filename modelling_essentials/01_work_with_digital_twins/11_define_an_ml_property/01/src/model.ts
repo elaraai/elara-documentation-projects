@@ -1,4 +1,4 @@
-import { DateTimeType, DayOfWeek, DictType, FloatType,  IntegerType, IsNotNull, IsNull, ModelBuilder, Nullable, SourceBuilder, StringType, StructType, Template } from "@elaraai/core"
+import { Add, Const, DateTimeType, DayOfWeek, DictType, FloatType,  IfNull,  IntegerType, IsNotNull, IsNull, ModelBuilder, Multiply, Nullable, SourceBuilder, StringType, StructType, Subtract, Template } from "@elaraai/core"
 
 
 const sales_value_type = StructType({
@@ -45,6 +45,14 @@ const sales_input_data = new SourceBuilder("Sales Source")
     //     ])
     // )
 
+const cash_model = new ModelBuilder("Cash")
+    .temporal("balance", {
+        initial: _ => Const(0),
+        sampling_statistic: "mean",
+        sampling_unit: "day"
+    })
+    .toModel()
+
 const sales_model = new ModelBuilder("Sales", sales_input_data.outputStream())
     .value("date", fields => fields.date)
     .value("unitCost", fields => fields.unitCost)
@@ -60,6 +68,32 @@ const sales_model = new ModelBuilder("Sales", sales_input_data.outputStream())
             train: fields => IsNotNull(fields.qtySold),
             predict: fields => IsNull(fields.date),
             sampling_statistic: "mean"
+        }
+    )
+    .expression(
+        "profit", {
+            value: (_, props) => Multiply(
+                props.qtySold,
+                Subtract(
+                    props.salePrice,
+                    props.unitCost
+                )
+            ),
+            sampling_statistic: "mean"
+        }
+    )
+    .getAt("cashBalance", {
+        property: cash_model.properties.balance,
+        date: props => props.date
+    })
+    .setAt(
+        "payment", {
+            property: cash_model.properties.balance,
+            date: props => props.date,
+            value: (_, props) => Add(
+                IfNull(props.cashBalance, 0),
+                IfNull(props.profit, 0)
+            )
         }
     )
     .toModel()
