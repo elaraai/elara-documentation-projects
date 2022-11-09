@@ -58,17 +58,22 @@ const sales_model = new ModelBuilder("Sales", sales_input_data.outputStream())
     .value("unitCost", fields => fields.unitCost)
     .value("salePrice", fields => fields.salePrice)
     .value("qtySold", fields => fields.qtySold)
+    .expression(
+        "profit", {
+            value: (_, props) => Multiply(
+                props.qtySold,
+                Subtract(
+                    props.salePrice,
+                    props.unitCost
+                )
+            ),
+            sampling_statistic: "mean"
+        }
+    )
     .getAt("cashBalance", {
         property: cash_model.properties.balance,
         date: props => props.date
     })
-    .value("profit", fields => Multiply(
-        fields.qtySold,
-        Subtract(
-            fields.salePrice,
-            fields.unitCost
-        )
-    ))
     .setAt(
         "payment", {
             property: cash_model.properties.balance,
