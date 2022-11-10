@@ -1,4 +1,4 @@
-import { Add, Const, DateTimeType, DayOfWeek, DictType, FloatType,  IfNull,  IntegerType, IsNotNull, IsNull, ModelBuilder, Multiply, Nullable, SourceBuilder, StringType, StructType, Subtract, Template } from "@elaraai/core"
+import { DateTimeType, DictType, FloatType, IntegerType, ModelBuilder, Nullable, StringType, StructType, Template, SourceBuilder, Const, Subtract, Multiply, Add, IfNull } from "@elaraai/core"
 
 
 const sales_value_type = StructType({
@@ -10,8 +10,8 @@ const sales_value_type = StructType({
 
 const sales_input_data = new SourceBuilder("Sales Source")
     .writeable(DictType(StringType, sales_value_type))
-    // .value(
-    //     new Map([
+    // .value({
+    //     value: new Map([
     //         ["0", { date: new Date(`2022-10-10`), unitCost: 1.0, salePrice: 4.0, qtySold: 25n }],
     //         ["1", { date: new Date(`2022-10-11`), unitCost: 1.0, salePrice: 4.0, qtySold: 28n }],
     //         ["2", { date: new Date(`2022-10-12`), unitCost: 1.0, salePrice: 4.0, qtySold: 30n }],
@@ -35,15 +35,15 @@ const sales_input_data = new SourceBuilder("Sales Source")
     //         ["20", { date: new Date(`2022-10-29`), unitCost: 1.0, salePrice: 3.0, qtySold: 105n }],
     //         ["21", { date: new Date(`2022-10-30`), unitCost: 1.0, salePrice: 3.0, qtySold: 110n }],
     //         ["22", { date: new Date(`2022-10-31`), unitCost: 1.0, salePrice: 3.0, qtySold: 36n }],
-    //         ["23", { date: new Date(`2022-11-01`), unitCost: 1.0, salePrice: 1.0, qtySold: null }],
-    //         ["24", { date: new Date(`2022-11-02`), unitCost: 1.0, salePrice: 1.0, qtySold: null }],
-    //         ["25", { date: new Date(`2022-11-03`), unitCost: 1.0, salePrice: 1.0, qtySold: null }],
-    //         ["26", { date: new Date(`2022-11-04`), unitCost: 1.0, salePrice: 1.0, qtySold: null }],
-    //         ["27", { date: new Date(`2022-11-05`), unitCost: 1.0, salePrice: 1.0, qtySold: null }],
-    //         ["28", { date: new Date(`2022-11-06`), unitCost: 1.0, salePrice: 1.0, qtySold: null }],
-    //         ["29", { date: new Date(`2022-11-07`), unitCost: 1.0, salePrice: 1.0, qtySold: null }],
+    //         ["23", { date: new Date(`2022-11-01`), unitCost: 1.0, salePrice: 3.50, qtySold: null }],
+    //         ["24", { date: new Date(`2022-11-02`), unitCost: 1.0, salePrice: 3.50, qtySold: null }],
+    //         ["25", { date: new Date(`2022-11-03`), unitCost: 1.0, salePrice: 3.50, qtySold: null }],
+    //         ["26", { date: new Date(`2022-11-04`), unitCost: 1.0, salePrice: 3.50, qtySold: null }],
+    //         ["27", { date: new Date(`2022-11-05`), unitCost: 1.0, salePrice: 3.50, qtySold: null }],
+    //         ["28", { date: new Date(`2022-11-06`), unitCost: 1.0, salePrice: 3.50, qtySold: null }],
+    //         ["29", { date: new Date(`2022-11-07`), unitCost: 1.0, salePrice: 3.50, qtySold: null }],
     //     ])
-    // )
+    // })
 
 const cash_model = new ModelBuilder("Cash")
     .temporal("balance", {
@@ -57,19 +57,7 @@ const sales_model = new ModelBuilder("Sales", sales_input_data.outputStream())
     .value("date", fields => fields.date)
     .value("unitCost", fields => fields.unitCost)
     .value("salePrice", fields => fields.salePrice)
-    .value("dayOfWeek", fields => DayOfWeek(fields.date))
-    .ml(
-        "qtySold", {
-            value: fields => fields.qtySold,
-            features: {
-                dayOfWeek: props => props.dayOfWeek,
-                salePrice: props => props.salePrice,
-            },
-            train: fields => IsNotNull(fields.qtySold),
-            predict: fields => IsNull(fields.date),
-            sampling_statistic: "mean"
-        }
-    )
+    .value("qtySold", fields => fields.qtySold)
     .expression(
         "profit", {
             value: (_, props) => Multiply(
@@ -100,5 +88,6 @@ const sales_model = new ModelBuilder("Sales", sales_input_data.outputStream())
 
 export default Template(
     sales_input_data.toTemplate(),
-    ModelBuilder.toTemplate(sales_model)
+    ModelBuilder.toTemplate(cash_model, sales_model)
 )
+    
