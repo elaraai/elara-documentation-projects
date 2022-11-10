@@ -36,12 +36,12 @@ const sales_input_data = new SourceBuilder("Sales Source")
     //         ["21", { date: new Date(`2022-10-30`), unitCost: 1.0, salePrice: 3.0, qtySold: 110n }],
     //         ["22", { date: new Date(`2022-10-31`), unitCost: 1.0, salePrice: 3.0, qtySold: 36n }],
     //         ["23", { date: new Date(`2022-11-01`), unitCost: 1.0, salePrice: 3.50, qtySold: null }],
-    //         ["24", { date: new Date(`2022-11-02`), unitCost: 1.0, salePrice: 3.50, qtySold: null }],
-    //         ["25", { date: new Date(`2022-11-03`), unitCost: 1.0, salePrice: 3.50, qtySold: null }],
-    //         ["26", { date: new Date(`2022-11-04`), unitCost: 1.0, salePrice: 3.50, qtySold: null }],
-    //         ["27", { date: new Date(`2022-11-05`), unitCost: 1.0, salePrice: 3.50, qtySold: null }],
-    //         ["28", { date: new Date(`2022-11-06`), unitCost: 1.0, salePrice: 3.50, qtySold: null }],
-    //         ["29", { date: new Date(`2022-11-07`), unitCost: 1.0, salePrice: 3.50, qtySold: null }],
+    //         ["24", { date: new Date(`2022-11-02`), unitCost: 1.0, salePrice: 4.0, qtySold: null }],
+    //         ["25", { date: new Date(`2022-11-03`), unitCost: 1.0, salePrice: 2.50, qtySold: null }],
+    //         ["26", { date: new Date(`2022-11-04`), unitCost: 1.0, salePrice: 2.0, qtySold: null }],
+    //         ["27", { date: new Date(`2022-11-05`), unitCost: 1.0, salePrice: 3.0, qtySold: null }],
+    //         ["28", { date: new Date(`2022-11-06`), unitCost: 1.0, salePrice: 4.50, qtySold: null }],
+    //         ["29", { date: new Date(`2022-11-07`), unitCost: 1.0, salePrice: 5.0, qtySold: null }],
     //     ])
     // })
 

@@ -1,6 +1,6 @@
-import { Add, Const, DateTimeType, DayOfWeek, DictType, FloatType,  IfNull,  IntegerType, IsNotNull, IsNull, ModelBuilder, Multiply, Nullable, SourceBuilder, StringType, StructType, Subtract, Template } from "@elaraai/core"
+import { Add, Const, DateTimeType, DayOfWeek, DictType, FloatType, IfNull, IntegerType, IsNotNull, IsNull, ModelBuilder, Multiply, Nullable, SourceBuilder, StringType, StructType, Subtract, Template } from "@elaraai/core"
+// import {  Const, DateTimeType, DayOfWeek, DictType, FloatType,  GreaterEqual, IntegerType, Less, ModelBuilder, Multiply, Nullable, StringType, StructType, Subtract, Template, WritableStreamBuilder } from "@elaraai/core"
 import scenarios from "../gen/scenarios.template"
-
 
 const sales_value_type = StructType({
     date: DateTimeType,
@@ -48,7 +48,7 @@ const sales_input_data = new SourceBuilder("Sales Source")
 
 const cash_model = new ModelBuilder("Cash")
     .temporal("balance", {
-        initial: _ => Const(0),
+        initial: () => Const(0.0),
         objective: (_, prop) => prop,
         sampling_statistic: "mean",
         sampling_unit: "day"
@@ -62,14 +62,31 @@ const sales_model = new ModelBuilder("Sales", sales_input_data.outputStream())
         "salePrice", {
             default: fields => fields.salePrice,
             date: props => props.date,
+            optimized: [
+                {
+                    scenario: scenarios.scenarios.Optimisation,
+                    active: fields => IsNull(fields.qtySold),
+                    min: fields => fields.unitCost,
+                    max: _ => Const(10)
+                }
+            ],
             sensitivity: [
                 {
                     scenario: scenarios.scenarios.Sensitivity,
                     active: fields => IsNull(fields.qtySold),
-                    min: fields => Multiply(0.5, fields.salePrice),
-                    max: fields => Multiply(3, fields.salePrice),
+                    min: _ => Const(3),
+                    max: _ => Const(4)
                 }
-            ]
+            ],
+            manual: [
+                {
+                    scenario: scenarios.scenarios.Manual,
+                    active: fields => IsNull(fields.qtySold),
+                    min: _ => Const(3),
+                    max: _ => Const(4)
+                }
+            ],
+            proposals: []
         }
     )
     .value("dayOfWeek", fields => DayOfWeek(fields.date))
@@ -85,6 +102,10 @@ const sales_model = new ModelBuilder("Sales", sales_input_data.outputStream())
             sampling_statistic: "mean"
         }
     )
+    .getAt("cashBalance", {
+        property: cash_model.properties.balance,
+        date: props => props.date
+    })
     .expression(
         "profit", {
             value: (_, props) => Multiply(
@@ -97,10 +118,6 @@ const sales_model = new ModelBuilder("Sales", sales_input_data.outputStream())
             sampling_statistic: "mean"
         }
     )
-    .getAt("cashBalance", {
-        property: cash_model.properties.balance,
-        date: props => props.date
-    })
     .setAt(
         "payment", {
             property: cash_model.properties.balance,
@@ -115,5 +132,8 @@ const sales_model = new ModelBuilder("Sales", sales_input_data.outputStream())
 
 export default Template(
     sales_input_data.toTemplate(),
-    ModelBuilder.toTemplate(sales_model)
+    ModelBuilder.toTemplate(
+        sales_model,
+        cash_model
+    )
 )
