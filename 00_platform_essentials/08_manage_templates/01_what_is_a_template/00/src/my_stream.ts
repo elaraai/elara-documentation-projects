@@ -1,7 +1,6 @@
-import { FloatType, StreamTemplate } from "@elaraai/core"
+import { FloatType, SourceBuilder } from "@elaraai/core"
 
 
-export default StreamTemplate({
-    name: 'My Stream',
-    type: FloatType
-})
+export default new SourceBuilder("My Stream")
+    .writeable(FloatType)
+    .toTemplate()

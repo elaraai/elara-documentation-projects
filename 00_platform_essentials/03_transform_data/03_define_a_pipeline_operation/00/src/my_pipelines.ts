@@ -1,5 +1,5 @@
 import { PipelineBuilder } from "@elaraai/core"
-import my_datastreams from "../gen/my_datastreams.template"
+import my_tutorial from "../gen/my_tutorial.template"
 
-export default new PipelineBuilder(my_datastreams.tables["My Datastream"])
+export default new PipelineBuilder(my_tutorial.tables["My Datastream"])
     .toTemplate("My Pipeline")
