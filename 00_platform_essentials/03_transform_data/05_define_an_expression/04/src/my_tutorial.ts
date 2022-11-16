@@ -1,6 +1,14 @@
-import { IntegerType, SourceBuilder } from "@elaraai/core"
+import { Equal, IntegerType, PipelineBuilder, SourceBuilder, Template } from "@elaraai/core"
 
 
-export default new SourceBuilder("My Datastream")
+const my_datastream = new SourceBuilder("My Datastream")
     .writeable(IntegerType)
-    .toTemplate()
+
+const my_pipeline = new PipelineBuilder("My Pipeline")
+    .from(my_datastream.outputStream())
+    .transform(stream => Equal(stream, 10n))
+
+export default Template(
+    my_datastream.toTemplate(),
+    my_pipeline.toTemplate()
+)
