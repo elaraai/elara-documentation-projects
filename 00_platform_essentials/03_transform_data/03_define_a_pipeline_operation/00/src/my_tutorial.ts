@@ -8,6 +8,6 @@ const my_pipeline = new PipelineBuilder("My Pipeline")
     .from(my_datastream.outputStream())
 
 export default Template(
-    my_datastream.toTemplate(),
-    my_pipeline.toTemplate()
+    my_datastream,
+    my_pipeline
 )

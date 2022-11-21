@@ -9,6 +9,6 @@ const my_pipeline = new PipelineBuilder("My Pipeline")
     .transform(stream => Multiply(Add(stream, 1n), 5n))
 
 export default Template(
-    my_datastream.toTemplate(),
-    my_pipeline.toTemplate()
+    my_datastream,
+    my_pipeline
 )

@@ -9,6 +9,6 @@ const pipeline = new PipelineBuilder("My Other Stream")
     .transform(value => Add(value, 1))
 
 export default Template(
-    stream.toTemplate(),
-    pipeline.toTemplate()
+    stream,
+    pipeline
 )

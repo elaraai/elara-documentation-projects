@@ -21,7 +21,7 @@ const my_dicttype_datastream = new SourceBuilder("My DictType Datastream")
     .writeable(DictType(StringType, IntegerType))
 
 export default Template(
-    my_datastream.toTemplate(),
-    my_dicttype_datastream.toTemplate(),
-    my_pipeline.toTemplate()
+    my_datastream,
+    my_dicttype_datastream,
+    my_pipeline
 )
