@@ -1,4 +1,4 @@
-import { Add, Default, DictType, IfNull, IntegerType, Less, Nullable, PipelineBuilder, SourceBuilder, StringJoin, StringType, StructType, Template } from "@elaraai/core"
+import { Add, BlobType, Default, DictType, IfNull, IntegerType, Less, Nullable, PipelineBuilder, SourceBuilder, StringJoin, StringType, StructType, Template } from "@elaraai/core"
 
 
 const my_datastream = new SourceBuilder("My Datastream")
@@ -28,8 +28,12 @@ const my_dicttype_datastream = new SourceBuilder("My DictType Datastream")
         )
     )
 
+const my_blobtype_datastream = new SourceBuilder("My BlobType Datastream")
+    .writeable(BlobType)
+
 export default Template(
     my_datastream,
     my_dicttype_datastream,
-    my_pipeline
+    my_pipeline,
+    my_blobtype_datastream
 )

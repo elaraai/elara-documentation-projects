@@ -1,10 +1,10 @@
-import { Add, Default, DictType, IfNull, IntegerType, Less, Nullable, PipelineBuilder2, SourceBuilder, StringJoin, StringType, StructType, Template } from "@elaraai/core"
+import { Add, Default, DictType, IfNull, IntegerType, Less, Nullable, PipelineBuilder, SourceBuilder, StringJoin, StringType, StructType, Template } from "@elaraai/core"
 
 
 const my_datastream = new SourceBuilder("My Datastream")
     .writeable(Nullable(IntegerType))
 
-const my_pipeline = new PipelineBuilder2("My Pipeline")
+const my_pipeline = new PipelineBuilder("My Pipeline")
     .from(my_datastream.outputStream())
     .transform(stream => IfNull(stream, Default(IntegerType)))
     .assert({
