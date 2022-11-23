@@ -1,4 +1,4 @@
-import { Add, BlobType, Default, DictType, IfNull, IntegerType, Less, Nullable, PipelineBuilder, SourceBuilder, StringJoin, StringType, StructType, Template } from "@elaraai/core"
+import { Add, BlobType, Default, DictType, Greater, IfNull, IntegerType, Less, Nullable, PipelineBuilder, Size, SourceBuilder, StringJoin, StringType, StructType, Template } from "@elaraai/core"
 
 
 const my_datastream = new SourceBuilder("My Datastream")
@@ -30,6 +30,10 @@ const my_dicttype_datastream = new SourceBuilder("My DictType Datastream")
 
 const my_blobtype_datastream = new SourceBuilder("My BlobType Datastream")
     .writeable(BlobType)
+    .assert({
+        predicate: stream => Greater(Size(stream), 3n),
+        message: stream => StringJoin`Expected file with 3 or more bytes, got ${Size(stream)} bytes.`
+    })
 
 export default Template(
     my_datastream,
