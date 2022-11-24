@@ -35,9 +35,13 @@ const my_blobtype_datastream = new SourceBuilder("My BlobType Datastream")
         message: stream => StringJoin`Expected file with 3 or more bytes, got ${Size(stream)} bytes.`
     })
 
+const my_file_source = new SourceBuilder("My File Source")
+    .file({ path: "./data/products.csv" })
+
 export default Template(
     my_datastream,
     my_dicttype_datastream,
     my_pipeline,
-    my_blobtype_datastream
+    my_blobtype_datastream,
+    my_file_source
 )
