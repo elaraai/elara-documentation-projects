@@ -47,7 +47,7 @@ const parse_products = new PipelineBuilder("Parse Products")
             Name: StringType,
             Code: StringType,
             Category: StringType,
-            "Unit Cost": FloatType
+            "Unit Cost": Nullable(FloatType)
         },
         output_key: fields => fields.Code
     })
