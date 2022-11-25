@@ -31,6 +31,10 @@ build-07_use_blobtype_data:
 build-08_ingest_file_data: 
 	cd 08_ingest_file_data && make build
 
+.PHONY: build-09_transform_blobtype_data
+build-09_transform_blobtype_data: 
+	cd 09_transform_blobtype_data && make build
+
 .PHONY: build-06_transform_collection_data
 build-06_transform_collection_data: 
 	cd 06_transform_collection_data && make build
