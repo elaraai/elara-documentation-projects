@@ -1,4 +1,4 @@
-import { Add, ArrayType, BlobType, DateTimeType, Default, DictType, FloatType, Greater, IfNull, IntegerType, Less, Nullable, PipelineBuilder, Size, SourceBuilder, StringJoin, StringType, StructType, Template } from "@elaraai/core"
+import { Add, ArrayType, BlobType, DateTimeType, Default, DictType, FloatType, Greater, IfNull, IntegerType, IsNotNull, Less, Nullable, PipelineBuilder, Size, SourceBuilder, StringJoin, StringType, StructType, Template } from "@elaraai/core"
 
 
 const my_datastream = new SourceBuilder("My Datastream")
@@ -52,8 +52,8 @@ const parse_products = new PipelineBuilder("Parse Products")
         output_key: fields => fields.Code
     })
     .assertEvery({
-        predicate: fields => Less(fields["Unit Cost"], 80),
-        message: fields => StringJoin`Expected value less than 80, got ${fields["Unit Cost"]}`
+        predicate: fields => IsNotNull(fields["Unit Cost"]),
+        message: fields => StringJoin`Expected non-null values for "Unit, got ${fields["Unit Cost"]}`
     })
 
 const my_sales_file_source = new SourceBuilder("Sales")
