@@ -73,7 +73,7 @@ const parse_sales = new PipelineBuilder("Parse Sales")
 
 const filter_exercise_one = new PipelineBuilder("Filter After Datetime")
     .from(parse_sales.outputStream())
-    .filter(fields => GreaterEqual(fields.transactionDate, new Date(`2022-11-10`) ) )
+    .filter(fields => GreaterEqual(fields.transactionDate, new Date(`2022-11-10`)))
 
 export default Template(
     my_datastream,
