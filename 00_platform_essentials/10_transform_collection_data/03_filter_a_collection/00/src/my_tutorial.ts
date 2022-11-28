@@ -1,4 +1,4 @@
-import { Add, BlobType, Default, DictType, FloatType, Greater, IfNull, IntegerType, Less, Nullable, PipelineBuilder, Size, SourceBuilder, StringJoin, StringType, StructType, Template } from "@elaraai/core"
+import { Add, ArrayType, BlobType, DateTimeType, Default, DictType, FloatType, Greater, IfNull, IntegerType, Less, Nullable, PipelineBuilder, Size, SourceBuilder, StringJoin, StringType, StructType, Template } from "@elaraai/core"
 
 
 const my_datastream = new SourceBuilder("My Datastream")
@@ -52,11 +52,31 @@ const parse_products = new PipelineBuilder("Parse Products")
         output_key: fields => fields.Code
     })
 
+const my_sales_file_source = new SourceBuilder("Sales")
+    .file({ path: "./data/sales.jsonl" })
+
+const parse_sales = new PipelineBuilder("Parse Sales")
+    .from(my_sales_file_source.outputStream())
+    .fromJsonLines({
+        fields: {
+            transactionDate: DateTimeType,
+            items: ArrayType(
+                StructType({
+                    productCode: StringType,
+                    units: IntegerType,
+                    salePrice: FloatType
+                })
+            )
+        },
+        output_key: fields => fields.transactionDate
+    })
+
 export default Template(
     my_datastream,
     my_dicttype_datastream,
     my_pipeline,
     my_blobtype_datastream,
     my_products_file_source,
-    parse_products
+    parse_products,
+    parse_sales
 )
