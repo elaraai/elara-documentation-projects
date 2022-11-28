@@ -78,5 +78,6 @@ export default Template(
     my_blobtype_datastream,
     my_products_file_source,
     parse_products,
+    my_sales_file_source,
     parse_sales
 )

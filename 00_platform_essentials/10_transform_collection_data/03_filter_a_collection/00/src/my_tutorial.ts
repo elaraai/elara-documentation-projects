@@ -71,6 +71,7 @@ const parse_sales = new PipelineBuilder("Parse Sales")
         output_key: fields => fields.transactionDate
     })
 
+
 export default Template(
     my_datastream,
     my_dicttype_datastream,
@@ -78,5 +79,6 @@ export default Template(
     my_blobtype_datastream,
     my_products_file_source,
     parse_products,
+    my_sales_file_source,
     parse_sales
 )
