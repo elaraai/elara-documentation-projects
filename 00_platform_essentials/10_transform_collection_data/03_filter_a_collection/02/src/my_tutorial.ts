@@ -1,4 +1,4 @@
-import { Add, ArrayType, BlobType, DateTimeType, Default, DictType, FloatType, Greater, GreaterEqual, IfNull, IntegerType, Less, Nullable, PipelineBuilder, Size, SourceBuilder, StringJoin, StringType, StructType, Template } from "@elaraai/core"
+import { Add, ArrayType, BlobType, DateTimeType, Default, DictType, Equal, FloatType, Floor, Greater, GreaterEqual, IfNull, IntegerType, Less, Nullable, PipelineBuilder, Size, SourceBuilder, StringJoin, StringType, StructType, Template } from "@elaraai/core"
 
 
 const my_datastream = new SourceBuilder("My Datastream")
