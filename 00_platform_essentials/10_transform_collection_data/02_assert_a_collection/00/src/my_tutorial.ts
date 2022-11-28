@@ -53,7 +53,7 @@ const parse_products = new PipelineBuilder("Parse Products")
     })
     .assertEvery({
         predicate: fields => IsNotNull(fields["Unit Cost"]),
-        message: fields => StringJoin`Expected non-null values for "Unit, got ${fields["Unit Cost"]}`
+        message: fields => StringJoin`Expected non-null values for "Unit Cost", got ${fields["Unit Cost"]}`
     })
 
 const my_sales_file_source = new SourceBuilder("Sales")
