@@ -1,4 +1,4 @@
-import { Add, ArrayType, BlobType, DateTimeType, Default, DictType, Divide, Equal, FloatType, Floor, GetField, Greater, GreaterEqual, IfNull, IntegerType, IsNotNull, Less, Nullable, PipelineBuilder, Range, Reduce, Size, SourceBuilder, StringJoin, StringType, StructType, Template } from "@elaraai/core"
+import { Add, ArrayType, BlobType, DateTimeType, Default, DictType, Divide, Equal, FloatType, Floor, GetField, Greater, GreaterEqual, IfNull, IntegerType, Less, Nullable, PipelineBuilder, Range, Reduce, Size, SourceBuilder, StringJoin, StringType, StructType, Template } from "@elaraai/core"
 
 
 const my_datastream = new SourceBuilder("My Datastream")
@@ -50,10 +50,6 @@ const parse_products = new PipelineBuilder("Parse Products")
             "Unit Cost": Nullable(FloatType)
         },
         output_key: fields => fields.Code
-    })
-    .assertEvery({
-        predicate: fields => IsNotNull(fields["Unit Cost"]),
-        message: fields => StringJoin`Expected non-null values for "Unit Cost", got ${fields["Unit Cost"]}`
     })
 
 const my_sales_file_source = new SourceBuilder("Sales")
@@ -118,7 +114,6 @@ const disaggregate_exercise_two = new PipelineBuilder("Disaggregate Units")
             salePrice: fields => Divide(fields.salePrice, fields.units)
         }
     })
-
 
 export default Template(
     my_datastream,
