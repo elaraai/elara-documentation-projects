@@ -1,4 +1,4 @@
-import { Add, ArrayType, BlobType, CollectDictSum, Const, DateTimeType, Default, DictType, Divide, Equal, FloatType, Floor, GetField, Greater, GreaterEqual, IfNull, IntegerType, Less, Nullable, PipelineBuilder, Range, Reduce, Size, SourceBuilder, StringJoin, StringType, StructType, Sum, Template } from "@elaraai/core"
+import { Add, ArrayType, BlobType, CollectDictSum, Count, DateTimeType, Default, DictType, Divide, Equal, FloatType, Floor, GetField, Greater, GreaterEqual, IfNull, IntegerType, Less, Nullable, PipelineBuilder, Range, Reduce, Size, SourceBuilder, StringJoin, StringType, StructType, Sum, Template } from "@elaraai/core"
 
 
 const my_datastream = new SourceBuilder("My Datastream")
@@ -151,7 +151,7 @@ const aggregate_exercise_two = new PipelineBuilder("By Date")
         group_name: "date",
         group_value: fields => Floor(fields.transactionDate, "day"),
         aggregations: {
-            countTransactions: _ => Sum(Const(1n))
+            countTransactions: _ => Count()
         }
     })
 
