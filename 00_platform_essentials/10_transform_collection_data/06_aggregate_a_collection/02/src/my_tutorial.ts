@@ -170,5 +170,6 @@ export default Template(
     disaggregate_exercise_one,
     disaggregate_exercise_two,
     join_exercise,
-    aggregate_exercise_one
+    aggregate_exercise_one,
+    aggregate_exercise_two
 )
