@@ -1,4 +1,4 @@
-import { Add, ArrayType, BlobType, CollectDictSum, Count, DateTimeType, Default, DictType, Divide, Equal, FloatType, Floor, GetField, Greater, GreaterEqual, IfNull, IntegerType, Less, Nullable, PipelineBuilder, Range, Reduce, Size, SourceBuilder, StringJoin, StringType, StructType, Sum, Template } from "@elaraai/core"
+import { Add, ArrayType, BlobType, CollectDictSum, Count, DateTimeType, Default, DictType, Divide, Equal, FloatType, Floor, GetField, Greater, GreaterEqual, IfElse, IfNull, IntegerType, Less, Nullable, PipelineBuilder, Range, Reduce, Size, SourceBuilder, StringJoin, StringType, StructType, Sum, Template } from "@elaraai/core"
 
 
 const my_datastream = new SourceBuilder("My Datastream")
@@ -171,7 +171,11 @@ const offset_exercise_one = new PipelineBuilder("Recent Units Per Product Code B
         sort_key: fields => fields.date,
         offset: -1,
         offset_selections: {
-            previousDaysUnitsPerProductCode: fields => fields.unitsPerProductCode
+            previousDaysUnitsPerProductCode: (fields, _, exists) => IfElse(
+                exists,
+                fields.unitsPerProductCode,
+                Default(DictType(StringType, IntegerType))
+            )
         }
     })
 
