@@ -1,4 +1,4 @@
-import { Add, ArrayType, BlobType, CollectDictSum, Count, DateTimeType, Default, DictType, Divide, Equal, FloatType, Floor, GetField, Greater, GreaterEqual, IfElse, IfNull, IntegerType, Less, Nullable, PipelineBuilder, Range, Reduce, Size, SourceBuilder, StringJoin, StringType, StructType, Subtract, Sum, Template } from "@elaraai/core"
+import { Add, ArrayType, BlobType, CollectDictSum, CollectSet, Const, Count, DateTimeType, Default, DictType, Divide, Equal, FloatType, Floor, Get, GetField, Greater, GreaterEqual, IfElse, IfNull, IntegerType, IsNull, Less, MapDict, Nullable, PipelineBuilder, Range, Reduce, Size, SourceBuilder, StringJoin, StringType, StructType, Subtract, Sum, Template } from "@elaraai/core"
 
 
 const my_datastream = new SourceBuilder("My Datastream")
@@ -162,7 +162,8 @@ const aggregate_exercise_three = new PipelineBuilder("Units Per Product Code By 
         group_value: fields => Floor(fields.transactionDate, "day"),
         aggregations: {
             unitsPerProductCode: fields => CollectDictSum(fields.productCode, fields.units),
-            totalRevenue: fields => Sum(fields.salePrice)
+            totalRevenue: fields => Sum(fields.salePrice),
+            revenuePerProductCode:  fields => CollectDictSum(fields.productCode, fields.salePrice)
         }
     })
 
@@ -191,6 +192,47 @@ const select_exercise_one = new PipelineBuilder("Daily Difference in Revenue")
         }
     })
 
+const select_exercise_two = new PipelineBuilder("Daily Difference in Revenue by Product Code")
+    .from(parse_products.outputStream())
+    .aggregate({
+        group_name: "_",
+        group_value: (_) => Const("_"),
+        aggregations: {
+            productCodes: fields => CollectSet(fields.Code)
+        }
+    })
+    .input({ name: "recent_sales", stream: offset_exercise_one.outputStream() })
+    .innerJoin({
+        right_input: inputs => inputs.recent_sales,
+        left_key: _ => Const("_"),
+        right_key: _ => Const("_"),
+        left_selections: {
+            productCodes: fields => fields.productCodes
+        },
+        right_selections: {
+            date: fields => fields.date,
+            revenuePerProductCode: fields => fields.revenuePerProductCode,
+            previousDayRevenuePerProductCode: fields => fields.previousDayRevenuePerProductCode
+        },
+        output_key: (_, __, right_input_key) => right_input_key
+    })
+    .select({
+        selections: {
+            date: fields => fields.date,
+            dailyChangeInRevenuePerProductCode: fields => IfElse(
+                IsNull(fields.previousDayRevenuePerProductCode),
+                null,
+                MapDict(
+                    fields.productCodes,
+                    product => Subtract(
+                        Get(fields.revenuePerProductCode, product, 0),
+                        Get(fields.previousDayRevenuePerProductCode, product, 0)
+                    )
+                )
+            )
+        }
+    })
+
 export default Template(
     my_datastream,
     my_dicttype_datastream,
@@ -210,5 +252,6 @@ export default Template(
     aggregate_exercise_two,
     aggregate_exercise_three,
     offset_exercise_one,
-    select_exercise_one
+    select_exercise_one,
+    select_exercise_two
 )
