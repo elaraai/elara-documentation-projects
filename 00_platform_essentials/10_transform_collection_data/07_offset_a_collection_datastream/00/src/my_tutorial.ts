@@ -158,7 +158,7 @@ const aggregate_exercise_two = new PipelineBuilder("By Date")
 const aggregate_exercise_three = new PipelineBuilder("Units Per Product Code By Date")
     .from(disaggregate_exercise_one.outputStream())   
     .aggregate({
-        // group_name: "date",
+        group_name: "date",
         group_value: fields => Floor(fields.transactionDate, "day"),
         aggregations: {
             unitsPerProductCode: fields => CollectDictSum(fields.productCode, fields.units)

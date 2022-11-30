@@ -158,10 +158,20 @@ const aggregate_exercise_two = new PipelineBuilder("By Date")
 const aggregate_exercise_three = new PipelineBuilder("Units Per Product Code By Date")
     .from(disaggregate_exercise_one.outputStream())   
     .aggregate({
-        // group_name: "date",
+        group_name: "date",
         group_value: fields => Floor(fields.transactionDate, "day"),
         aggregations: {
             unitsPerProductCode: fields => CollectDictSum(fields.productCode, fields.units)
+        }
+    })
+
+const offset_exercise_one = new PipelineBuilder("Recent Units Per Product Code By Date")
+    .from(aggregate_exercise_three.outputStream())
+    .offset({
+        sort_key: fields => fields.date,
+        offset: -1,
+        offset_selections: {
+            previousDaysUnitsPerProductCode: fields => fields.unitsPerProductCode
         }
     })
 
@@ -182,5 +192,6 @@ export default Template(
     join_exercise,
     aggregate_exercise_one,
     aggregate_exercise_two,
-    aggregate_exercise_three
+    aggregate_exercise_three,
+    offset_exercise_one
 )
