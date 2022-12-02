@@ -1,4 +1,4 @@
-import { Add, ArrayType, BlobType, CollectDictSum, CollectSet, Const, Count, DateTimeType, Default, DictType, Divide, Equal, FloatType, Floor, Get, GetField, Greater, GreaterEqual, IfElse, IfNull, IntegerType, IsNull, Less, MapDict, Nullable, PipelineBuilder, Print, Range, Reduce, Size, SourceBuilder, StringJoin, StringType, Struct, StructType, Subtract, Sum, Template, ToArray } from "@elaraai/core"
+import { Add, ArrayType, BlobType, CollectDictSum, CollectSet, Const, Count, DateTimeType, Default, DictType, Divide, Equal, FloatType, Floor, Get, GetField, Greater, GreaterEqual, IfElse, IfNull, IntegerType, IsNull, Less, MapDict, Nullable, PipelineBuilder, Print, Range, Reduce, SinkBuilder, Size, SourceBuilder, StringJoin, StringType, Struct, StructType, Subtract, Sum, Template, ToArray } from "@elaraai/core"
 
 
 const my_datastream = new SourceBuilder("My Datastream")
@@ -260,6 +260,14 @@ const encode_exercise_two = new PipelineBuilder("Daily Difference in Revenue by 
         }
     })
 
+const ftp_datasink = new SinkBuilder("Daily Difference in Revenue.CSV")
+    .from(encode_exercise_one.outputStream())
+    .ftp({
+        uri: () => Const("ftp.dlptest.com/rev_test.csv"),
+        username: () => Const("dlpuser"),
+        password: () => Const("rNrKYTX9g7z3RgJRmxWuGHbeu")
+    })
+
 export default Template(
     my_datastream,
     my_dicttype_datastream,
@@ -282,5 +290,6 @@ export default Template(
     select_exercise_one,
     select_exercise_two,
     encode_exercise_one,
-    encode_exercise_two
+    encode_exercise_two,
+    ftp_datasink
 )
