@@ -20,7 +20,7 @@ import numpy as np
 Constants
 """
 
-OUTPUT_FILE_PATH = "/home/rav/repos/elara-documentation-projects/00_platform_essentials/05_ingest_structured_data/03_define_and_launch_a_rest_api_datasource/00/data/sales.json"
+OUTPUT_FILE_PATH = "/home/rav/repos/elara-documentation-projects/data_essentials/05_ingest_structured_data/03_define_and_launch_a_rest_api_datasource/00/data/sales.json"
 NUM_TRANSACTIONS_PER_DAY: Dict[datetime.datetime, int] = {
     datetime.datetime(2022, 11, 1): 5,
     datetime.datetime(2022, 11, 2): 6,

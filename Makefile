@@ -5,7 +5,7 @@ help:
 	@echo "    make help"
 
 .PHONY: build
-build: build-00_platform_essentials 
+build: build-data_essentials 
 
 .PHONY: clean
 clean: 
@@ -14,6 +14,6 @@ clean:
 	find . -name 'gen' -type d -prune -exec rm -rf '{}' +
 	find . -name 'template.json' -prune -exec rm -rf '{}' +
 
-.PHONY: build-00_platform_essentials
-build-00_platform_essentials: 
-	cd 00_platform_essentials && make build
+.PHONY: build-data_essentials
+build-data_essentials: 
+	cd data_essentials && make build
