@@ -233,7 +233,7 @@ const select_exercise_two = new PipelineBuilder("Daily Difference in Revenue by 
         }
     })
 
-const encode_exercise_one = new PipelineBuilder("Daily Difference in Revenue.JSON")
+const encode_exercise_one = new PipelineBuilder("Daily Difference in Revenue.CSV")
     .from(select_exercise_one.outputStream())
     .toCsv({
         selections: {
