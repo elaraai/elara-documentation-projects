@@ -1,8 +1,8 @@
-import { Equal, IfElse, IntegerType, PipelineBuilder, SourceBuilder, Template } from "@elaraai/core"
+import { Equal, IfElse, PipelineBuilder, SourceBuilder, Template } from "@elaraai/core"
 
 
 const my_datastream = new SourceBuilder("My Datastream")
-    .writeable(IntegerType)
+    .value({ value: 2n })
 
 const my_pipeline = new PipelineBuilder("My Pipeline")
     .from(my_datastream.outputStream())
