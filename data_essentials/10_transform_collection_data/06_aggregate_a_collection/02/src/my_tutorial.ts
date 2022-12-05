@@ -2,7 +2,10 @@ import { Add, ArrayType, BlobType, Count, DateTimeType, Default, DictType, Divid
 
 
 const my_datastream = new SourceBuilder("My Datastream")
-    .writeable(Nullable(IntegerType))
+    .value({
+        value: 2n,
+        type: Nullable(IntegerType)
+    })
 
 const my_pipeline = new PipelineBuilder("My Pipeline")
     .from(my_datastream.outputStream())
