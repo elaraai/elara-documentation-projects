@@ -5,7 +5,7 @@ help:
 	@echo "    make help"
 
 .PHONY: build
-build: build-02_define_a_datastream build-03_launch_a_solution build-04_view_datastream_status build-06_read_a_datastream_value build-07_delete_a_value_in_a_datastream
+build: build-02_define_a_datastream build-03_launch_a_solution build-04_view_datastream_status build-06_read_a_datastream_value build-07_delete_a_value_in_a_datastream build-08_set_an_initial_value_in_a_datastream
 
 .PHONY: build-02_define_a_datastream
 build-02_define_a_datastream: 
@@ -26,3 +26,7 @@ build-06_read_a_datastream_value:
 .PHONY: build-07_delete_a_value_in_a_datastream
 build-07_delete_a_value_in_a_datastream: 
 	cd 07_delete_a_value_in_a_datastream && make build
+
+.PHONY: build-08_set_an_initial_value_in_a_datastream
+build-08_set_an_initial_value_in_a_datastream: 
+	cd 08_set_an_initial_value_in_a_datastream && make build
