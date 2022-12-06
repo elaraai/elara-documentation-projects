@@ -7,8 +7,15 @@ const my_datastream = new SourceBuilder("My Datastream")
         type: Nullable(IntegerType)
     })
 
+const my_second_datastream = new SourceBuilder("My Second Datastream")
+    .value({ value: 10n })
+
 const my_pipeline = new PipelineBuilder("My Pipeline")
     .from(my_datastream.outputStream())
+    .input({
+        name: "some_integer",
+        stream: my_second_datastream.outputStream()
+    })
     .transform(stream => IfNull(stream, Default(IntegerType)))
     .assert({
         predicate: stream => Less(stream, 50n),
@@ -43,6 +50,7 @@ const my_products_file_source = new SourceBuilder("Products")
 
 export default Template(
     my_datastream,
+    my_second_datastream,
     my_dicttype_datastream,
     my_pipeline,
     my_blobtype_datastream,
