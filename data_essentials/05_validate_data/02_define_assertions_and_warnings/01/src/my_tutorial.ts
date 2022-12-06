@@ -17,13 +17,13 @@ const my_pipeline = new PipelineBuilder("My Pipeline")
         stream: my_second_datastream.outputStream()
     })
     .transform(stream => IfNull(stream, Default(IntegerType)))
-    .warn({
-        predicate: stream => Less(stream, 40n),
-        message: stream => StringJoin`Expected value less than 40, got ${stream}`
-    })
     .assert({
         predicate: stream => Less(stream, 50n),
         message: stream => StringJoin`Expected value less than 50, got ${stream}`
+    })
+    .warn({
+        predicate: (stream, inputs) => Less(stream, inputs.some_integer),
+        message: (stream, inputs) => StringJoin`Expected value less than ${inputs.some_integer}, got ${stream}`
     })
     .transform(stream => Add(stream, 1n))
 

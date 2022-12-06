@@ -22,8 +22,8 @@ const my_pipeline = new PipelineBuilder("My Pipeline")
         message: stream => StringJoin`Expected value less than 50, got ${stream}`
     })
     .warn({
-        predicate: stream => Less(stream, 40n),
-        message: stream => StringJoin`Expected value less than 40, got ${stream}`
+        predicate: (stream, inputs) => Less(stream, inputs.some_integer),
+        message: (stream, inputs) => StringJoin`Expected value less than ${inputs.some_integer}, got ${stream}`
     })
     .transform(stream => Add(stream, 1n))
 
