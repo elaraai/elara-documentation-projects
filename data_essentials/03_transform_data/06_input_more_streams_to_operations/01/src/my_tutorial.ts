@@ -5,12 +5,14 @@ const my_datastream = new SourceBuilder("My Datastream")
     .value({ value: 2n })
 
 const my_second_datastream = new SourceBuilder("My Second Datastream")
-    .value({ value: 10n})
+    .value({ value: 10n })
 
 const my_pipeline = new PipelineBuilder("My Pipeline")
     .from(my_datastream.outputStream())
     .input({
-        name: "some_integer", stream: my_second_datastream.outputStream()})
+        name: "some_integer",
+        stream: my_second_datastream.outputStream()
+    })
     .transform(
         (stream, inputs) => IfElse(
             Equal(stream, inputs.some_integer),
