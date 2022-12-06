@@ -20,5 +20,6 @@ const my_pipeline = new PipelineBuilder("My Pipeline")
 
 export default Template(
     my_datastream,
+    my_second_datastream,
     my_pipeline
 )
