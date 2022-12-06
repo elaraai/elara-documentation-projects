@@ -7,8 +7,15 @@ const my_datastream = new SourceBuilder("My Datastream")
         type: Nullable(IntegerType)
     })
 
+const my_second_datastream = new SourceBuilder("My Second Datastream")
+    .value({ value: 10n })
+
 const my_pipeline = new PipelineBuilder("My Pipeline")
     .from(my_datastream.outputStream())
+    .input({
+        name: "some_integer",
+        stream: my_second_datastream.outputStream()
+    })
     .transform(stream => Add(stream, 1n))
 
 export default Template(
