@@ -26,7 +26,7 @@ const my_date_datasource = new SourceBuilder("My Date")
 
 const my_boolean_datasource = new SourceBuilder("My Boolean")
     .value({
-        value: true,
+        value: false,
         type: BooleanType
     })
 
