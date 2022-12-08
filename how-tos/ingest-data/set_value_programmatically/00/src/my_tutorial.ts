@@ -1,4 +1,4 @@
-import { ArrayType, DateTimeType, DictType, IntegerType, SetType, SourceBuilder, StringType, StructType, Template } from "@elaraai/core"
+import { ArrayType, BooleanType, DateTimeType, DictType, FloatType, IntegerType, NullType, SetType, SourceBuilder, StringType, StructType, Template } from "@elaraai/core"
 
 const my_string_datasource = new SourceBuilder("My String")
     .value({
@@ -6,10 +6,34 @@ const my_string_datasource = new SourceBuilder("My String")
         type: StringType
     })
 
+const my_integer_datasource = new SourceBuilder("My Integer")
+    .value({
+        value: 100n,
+        type: IntegerType
+    })
+
+const my_float_datasource = new SourceBuilder("My Float")
+    .value({
+        value: 100,
+        type: FloatType
+    })
+
 const my_date_datasource = new SourceBuilder("My Date")
     .value({
         value: new Date("2025-01-01"),
         type: DateTimeType
+    })
+
+const my_boolean_datasource = new SourceBuilder("My Boolean")
+    .value({
+        value: true,
+        type: BooleanType
+    })
+
+const my_null_datasource = new SourceBuilder("My Null")
+    .value({
+        value: null,
+        type: NullType
     })
 
 const my_array_datasource = new SourceBuilder("My Array")
@@ -44,7 +68,11 @@ const my_struct_datasource = new SourceBuilder("My Struct")
 
 export default Template(
     my_string_datasource,
+    my_integer_datasource,
+    my_float_datasource,
     my_date_datasource,
+    my_boolean_datasource,
+    my_null_datasource,
     my_array_datasource,
     my_set_datasource,
     my_dict_datasource,
