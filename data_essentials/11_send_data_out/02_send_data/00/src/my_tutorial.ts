@@ -273,7 +273,7 @@ const encode_exercise_two = new PipelineBuilder("Daily Difference in Revenue by 
 const ftp_datasink = new SinkBuilder("Daily Difference in Revenue.CSV")
     .from(encode_exercise_one.outputStream())
     .ftp({
-        uri: () => Const("ftp.dlptest.com/rev_test.csv"),
+        uri: () => Const("ftp://ftp.dlptest.com/test_revenue.csv"),
         username: () => Const("dlpuser"),
         password: () => Const("rNrKYTX9g7z3RgJRmxWuGHbeu")
     })
