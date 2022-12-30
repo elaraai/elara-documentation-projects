@@ -1,4 +1,4 @@
-import { SourceBuilder, Template } from "@elaraai/core"
+import { FloatType, IntegerType, ProcessBuilder, SourceBuilder, StringType, Template } from "@elaraai/core"
 
 const sales_data = new SourceBuilder("Sales Records")
     .value({
@@ -39,8 +39,24 @@ const pricing_data = new SourceBuilder("Pricing")
         ])
     })
 
+const sales = new ProcessBuilder("Sales")
+    .value("qty", IntegerType)
+    .value("price", FloatType)
+    .value("revenue", FloatType)
+
+const procurement = new ProcessBuilder("Procurement")
+    .value("supplierName", StringType)
+    .value("qty", IntegerType)
+    .value("cost", FloatType)
+
+const promotion = new ProcessBuilder("Promotion")
+    .value("price", FloatType)
+
 export default Template(
     sales_data,
     order_data,
-    pricing_data
+    pricing_data,
+    sales,
+    procurement,
+    promotion
 );
