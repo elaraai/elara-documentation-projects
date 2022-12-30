@@ -41,6 +41,8 @@ const pricing_data = new SourceBuilder("Pricing")
 
 const sales = new ProcessBuilder("Sales")
     .value("qty", IntegerType)
+    .value("price", FloatType)
+    .value("revenue", FloatType)
 
 const procurement = new ProcessBuilder("Procurement")
     .value("supplierName", StringType)
