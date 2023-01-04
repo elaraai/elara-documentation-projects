@@ -1,4 +1,4 @@
-import { DateTimeType, FloatType, IntegerType, ProcessBuilder, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringType, Template } from "@elaraai/core"
+import { FloatType, IntegerType, ProcessBuilder, ScenarioBuilder, SourceBuilder, StringType, Template } from "@elaraai/core"
 
 const sales_data = new SourceBuilder("Sales Records")
     .value({
