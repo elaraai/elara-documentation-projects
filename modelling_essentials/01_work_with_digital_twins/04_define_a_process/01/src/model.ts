@@ -26,7 +26,7 @@ const sales_data = new SourceBuilder("Sales Records")
 const order_data = new SourceBuilder("Order Records")
     .value({
         value: new Map([
-            ["0", { date: new Date(`2022-10-12T15:00:00.000Z`), qty: 50n, cost: 50, supplierName: "Meat Kings" }]
+            ["0", { date: new Date(`2022-10-12T15:00:00.000Z`), supplierName: "Meat Kings", qty: 50n, cost: 50 }]
         ])
     })
 
