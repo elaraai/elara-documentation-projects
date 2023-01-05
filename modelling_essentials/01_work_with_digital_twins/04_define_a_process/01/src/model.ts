@@ -57,4 +57,4 @@ export default Template(
     sales,
     procurement,
     promotion
-);
+)

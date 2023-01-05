@@ -13,7 +13,7 @@ const my_ftp_datasource = new SourceBuilder("My FTP")
         uri: () => Const(protocol + url + file_path),
         username: () => Const(username),
         password: () => Const(password),
-    });
+    })
 
 export default Template(
     my_ftp_datasource

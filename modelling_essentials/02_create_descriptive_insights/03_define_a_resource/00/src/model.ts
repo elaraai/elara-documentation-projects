@@ -1,4 +1,4 @@
-import { FloatType, IntegerType, ProcessBuilder, ScenarioBuilder, SourceBuilder, StringType, Template } from "@elaraai/core"
+import { Divide, FloatType, IntegerType, ProcessBuilder, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringType, Template } from "@elaraai/core"
 
 const sales_data = new SourceBuilder("Sales Records")
     .value({
@@ -39,6 +39,15 @@ const pricing_data = new SourceBuilder("Pricing")
         ])
     })
 
+const cash = new ResourceBuilder("Cash")
+    .mapFromValue(0.0)
+
+const inventory = new ResourceBuilder("StockOnHand")
+    .mapFromValue(200n)
+
+const price = new ResourceBuilder("Price")
+    .mapFromValue(4.00)
+
 const sales = new ProcessBuilder("Sales")
     .value("qty", IntegerType)
     .mapManyFromStream(sales_data.outputStream())
@@ -47,6 +56,7 @@ const procurement = new ProcessBuilder("Procurement")
     .value("supplierName", StringType)
     .value("qty", IntegerType)
     .value("cost", FloatType)
+    .let("unitCost", props => Divide(props.cost, props.qty))
     .mapManyFromStream(order_data.outputStream())
 
 const promotion = new ProcessBuilder("Promotion")
@@ -57,6 +67,9 @@ const descriptive_scenario = new ScenarioBuilder("Descriptive")
     .process(sales)
     .process(procurement)
     .process(promotion)
+    .resource(cash)
+    .resource(inventory)
+    .resource(price)
 
 export default Template(
     sales_data,
@@ -65,5 +78,8 @@ export default Template(
     sales,
     procurement,
     promotion,
-    descriptive_scenario
+    descriptive_scenario,
+    cash,
+    inventory,
+    price
 )

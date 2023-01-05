@@ -63,4 +63,4 @@ export default Template(
     procurement,
     promotion,
     descriptive_scenario
-);
+)
