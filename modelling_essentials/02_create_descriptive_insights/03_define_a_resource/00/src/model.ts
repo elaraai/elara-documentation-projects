@@ -42,7 +42,7 @@ const pricing_data = new SourceBuilder("Pricing")
 const cash = new ResourceBuilder("Cash")
     .mapFromValue(0.0)
 
-const inventory = new ResourceBuilder("StockOnHand")
+const stock_on_hand = new ResourceBuilder("Stock-on-hand")
     .mapFromValue(200n)
 
 const price = new ResourceBuilder("Price")
@@ -68,7 +68,7 @@ const descriptive_scenario = new ScenarioBuilder("Descriptive")
     .process(procurement)
     .process(promotion)
     .resource(cash)
-    .resource(inventory)
+    .resource(stock_on_hand)
     .resource(price)
 
 export default Template(
@@ -80,6 +80,6 @@ export default Template(
     promotion,
     descriptive_scenario,
     cash,
-    inventory,
+    stock_on_hand,
     price
 )
