@@ -34,7 +34,6 @@ const sales = new ProcessBuilder("Sales")
     .value("qty", IntegerType)
     .value("price", FloatType)
 
-
 const procurement = new ProcessBuilder("Procurement")
     .value("supplierName", StringType)
     .value("qty", IntegerType)
