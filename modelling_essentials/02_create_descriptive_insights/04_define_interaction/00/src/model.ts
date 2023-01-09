@@ -34,7 +34,7 @@ const cash = new ResourceBuilder("Cash")
     .mapFromValue(0.0)
 
 const stock_on_hand = new ResourceBuilder("Stock-on-hand")
-    .mapFromValue(200n)
+    .mapFromValue(70n)
 
 const sales = new ProcessBuilder("Sales")
     .resource(stock_on_hand)
