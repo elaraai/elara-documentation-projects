@@ -42,7 +42,7 @@ const initial_price = new PipelineBuilder("Initial Price")
             GetField(second, "date")
         )
     ))
-    // Return the `date` value of the first element in the array
+    // Return the `date` value of the first element in the array - a default value is provided to `Get()` to ensure the result is non-nullable.
     .transform(
         stream => GetField(
             Get(
