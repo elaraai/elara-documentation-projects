@@ -1,4 +1,4 @@
-import { Divide, FloatType, IntegerType, ProcessBuilder, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringType, Template } from "@elaraai/core"
+import { FloatType, IntegerType, ProcessBuilder, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringType, Template } from "@elaraai/core"
 
 const sales_data = new SourceBuilder("Sales Records")
     .value({
@@ -50,8 +50,8 @@ const procurement = new ProcessBuilder("Procurement")
 const descriptive_scenario = new ScenarioBuilder("Descriptive")
     .process(sales)
     .process(procurement)
-    .resource(cash)
-    .resource(stock_on_hand)
+    .resource(cash, { ledger: true})
+    .resource(stock_on_hand, { ledger: true})
 
 export default Template(
     sales_data,
