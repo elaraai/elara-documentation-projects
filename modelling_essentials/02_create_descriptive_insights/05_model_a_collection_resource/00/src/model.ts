@@ -8,15 +8,6 @@ const stock_on_hand = new ResourceBuilder("Stock-on-hand")
         ]) 
     )
 
-const sales_data = new SourceBuilder("Sales Transactions")
-    .value({
-        value: new Map([
-            ["0", { date: new Date(`2022-10-10T09:00:00.000Z`), qty: new Map([ ["hotdog", 1n], ["vegan hotdog", 3n] ]) }],
-            ["1", { date: new Date(`2022-10-10T10:00:00.000Z`), qty: new Map([ ["hotdog", 2n], ["vegan hotdog", 2n] ]) }],
-            ["2", { date: new Date(`2022-10-10T11:00:00.000Z`), qty: new Map([ ["hotdog", 3n], ["vegan hotdog", 1n] ]) }],
-        ])
-    })
-
 const sales = new ProcessBuilder("Sales")
     .resource(stock_on_hand)
     .value("saleQty", DictType(StringType,IntegerType))
@@ -44,7 +35,6 @@ const descriptive_scenario = new ScenarioBuilder("Descriptive")
     .process(sales)
 
 export default Template(
-    sales_data,
     stock_on_hand,
     sales,
     descriptive_scenario
