@@ -23,6 +23,20 @@ const sales_data = new SourceBuilder("Sales Records")
         ])
     })
 
+const prediction_data = new SourceBuilder("Quantity Prediction Input Data")
+    .value({
+      value: new Map([
+        ["0", { price: 3.00 }],
+        ["1", { price: 3.25 }],
+        ["2", { price: 3.50 }],
+        ["3", { price: 3.75 }],
+        ["4", { price: 4.00 }],
+        ["5", { price: 4.25 }],
+        ["6", { price: 4.50 }],
+        ["7", { price: 4.75 }],
+      ])
+    })
+
 const qty_training_data = new PipelineBuilder("Transform Quantity for ML")
     .from(sales_data.outputStream())
     .select({
@@ -41,6 +55,10 @@ const qty_ml_model = new MLModelBuilder("Quantity Model")
         output_name: "qty",
         input: qty_training_data.outputStream(),
       })
+
+const qty_prediction = new MLPredictionBuilder("Quantity Prediction")
+    .model(qty_ml_model)
+    .predict(prediction_data.outputStream())
 
 const arrival_time_training_data = new PipelineBuilder("Transform Arrival Time for ML")
     .from(sales_data.outputStream())
@@ -73,10 +91,17 @@ const arrival_time_ml_model = new MLModelBuilder("Arrival Time Model")
         input: arrival_time_training_data.outputStream(),
       })
 
+const arrival_time_prediction = new MLPredictionBuilder("Arrival Time Prediction")
+    .model(qty_ml_model)
+    .predict(prediction_data.outputStream())
+
 export default Template(
     sales_data,
+    prediction_data,
     qty_training_data,
     qty_ml_model,
+    qty_prediction,
     arrival_time_training_data,
     arrival_time_ml_model,
+    arrival_time_prediction
 );
