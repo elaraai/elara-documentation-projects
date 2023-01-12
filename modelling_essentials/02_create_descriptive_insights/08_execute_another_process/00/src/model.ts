@@ -1,4 +1,4 @@
-import { Add, Const, Sort, FloatType, Get, GetField, IntegerType, Multiply, PipelineBuilder, ProcessBuilder, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringType, Subtract, Template, ToArray, Less, Struct, Round, Mean } from "@elaraai/core"
+import { Add, Const, Sort, FloatType, Get, GetField, IntegerType, Multiply, PipelineBuilder, ProcessBuilder, ResourceBuilder, ScenarioBuilder, SourceBuilder, Subtract, Template, ToArray, Less, Struct, Round, Mean, AddDuration } from "@elaraai/core"
 
 const sales_data = new SourceBuilder("Sales Records")
     .value({
@@ -100,23 +100,56 @@ const sales = new ProcessBuilder("Sales")
     .set("Cash", (props, resources) => Add(resources.Cash, props.revenue))
     .mapManyFromStream(sales_ex_price.outputStream())
 
+const supplier = new ResourceBuilder("Supplier")
+    .mapFromValue({ supplierName: "Meat Kings", unitCost: 1, leadTime: 1, invoicePeriod: 5 })
+
+const receive_goods = new ProcessBuilder("Receive Goods")
+    .resource(stock_on_hand)
+    .value("qty", IntegerType)
+    .set("Stock-on-hand", (props, resources) => Add(resources["Stock-on-hand"], props.qty))
+
+const pay_supplier = new ProcessBuilder("Pay Supplier")
+    .resource(cash)
+    .value("invoiceTotal", FloatType)
+    .set("Cash", (props, resources) => Subtract(resources.Cash, props.invoiceTotal))
+
+const procurement_data = new PipelineBuilder("Procurement Data")
+    .from(order_data.outputStream())
+    .select({
+        keep_all: false,
+        selections: {
+            date: fields => fields.date,
+            qty: fields => fields.qty
+        }
+    })
+
 const procurement = new ProcessBuilder("Procurement")
     .resource(stock_on_hand)
     .resource(cash)
-    .value("supplierName", StringType)
+    .resource(supplier)
+    .process(receive_goods)
+    .process(pay_supplier)
     .value("qty", IntegerType)
-    .value("cost", FloatType)
-    .set("Stock-on-hand", (props, resources) => Add(resources["Stock-on-hand"], props.qty))
-    .set("Cash", (props, resources) => Subtract(resources.Cash, props.cost))
-    .mapManyFromStream(order_data.outputStream())
+    .execute("Receive Goods", (props, resources) => Struct({
+        date: AddDuration(props.date, GetField(resources.Supplier, "leadTime"), "day"),
+        qty: props.qty
+    }))
+    .execute("Pay Supplier", (props, resources) => Struct({
+        date: AddDuration(props.date, GetField(resources.Supplier, "invoicePeriod"), "day"),
+        invoiceTotal: Multiply(props.qty, GetField(resources.Supplier, "unitCost"))
+    }))
+    .mapManyFromStream(procurement_data.outputStream())
 
 const descriptive_scenario = new ScenarioBuilder("Descriptive")
     .process(sales)
     .process(procurement)
-    .resource(cash)
-    .resource(stock_on_hand)
+    .resource(cash, { ledger: true })
+    .resource(stock_on_hand, { ledger: true })
     .process(promotion)
-    .resource(price)
+    .resource(price, { ledger: true })
+    .resource(supplier, { ledger: true })
+    .process(receive_goods)
+    .process(pay_supplier)
 
 export default Template(
     sales_data,
@@ -130,5 +163,9 @@ export default Template(
     price,
     promotion_data,
     promotion,
-    sales_ex_price
+    sales_ex_price,
+    supplier,
+    receive_goods,
+    pay_supplier,
+    procurement_data
 )
