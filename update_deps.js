@@ -6,14 +6,16 @@ function findReplaceFolderSync(source, filter, find, replace) {
     var stats = exists && fs.statSync(source);
     var isDirectory = exists && stats.isDirectory();
     if (isDirectory) {
-        let children = fs.readdirSync(source)
-        if (children.length > 0) {
-            children.forEach((childItemName) => findReplaceFolderSync(
-                path.join(source, childItemName),
-                filter,
-                find,
-                replace
-            ));
+        if(!source.includes('node_modules')) {
+            let children = fs.readdirSync(source)
+            if (children.length > 0) {
+                children.forEach((childItemName) => findReplaceFolderSync(
+                    path.join(source, childItemName),
+                    filter,
+                    find,
+                    replace
+                ));
+            }
         }
     } else {
         if ((filter != null && source.includes(filter)) || filter == null) {
