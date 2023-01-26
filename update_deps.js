@@ -23,4 +23,6 @@ function findReplaceFolderSync(source, filter, find, replace) {
         }
     }
 }
-findReplaceFolderSync('.', "package.json", /(.*(?:elaraai).*)/, `     "@elaraai/edk": "${version}"`)
+const version = JSON.parse(fs.readFileSync("version.json").toString())
+findReplaceFolderSync('.', "package.json", /(.*(?:elaraai\/edk).*)/, `     "@elaraai/core": "${version["core"]},"`)
+findReplaceFolderSync('.', "package.json", /(.*(?:elaraai\/cli).*)/, `     "@elaraai/cli": "${version["cli"]},"`)
