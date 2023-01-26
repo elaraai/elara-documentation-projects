@@ -1,0 +1,361 @@
+{
+  "streams": {
+    "Pipeline.My Pipeline": {
+      "name": "Pipeline.My Pipeline",
+      "type": {
+        "type": "Integer",
+        "value": null
+      },
+      "writable": false
+    },
+    "Writeable.My Datastream": {
+      "name": "Writeable.My Datastream",
+      "type": {
+        "type": "Integer",
+        "value": null,
+        "nullable": true
+      },
+      "writable": true
+    },
+    "Writeable.My DictType Datastream": {
+      "name": "Writeable.My DictType Datastream",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Integer",
+            "value": null
+          }
+        }
+      },
+      "writable": true
+    },
+    "Writeable.My Second Datastream": {
+      "name": "Writeable.My Second Datastream",
+      "type": {
+        "type": "Integer",
+        "value": null
+      },
+      "writable": true
+    }
+  },
+  "tasks": {
+    "Pipeline.My Pipeline": {
+      "name": "Pipeline.My Pipeline",
+      "parent": "Pipeline.My Pipeline",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.My Datastream",
+          "type": {
+            "type": "Integer",
+            "value": null,
+            "nullable": true
+          },
+          "writable": true
+        },
+        "some_integer": {
+          "name": "Writeable.My Second Datastream",
+          "type": {
+            "type": "Integer",
+            "value": null
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.My Pipeline",
+          "type": {
+            "type": "Integer",
+            "value": null
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "input",
+          "name": "some_integer"
+        },
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "Integer",
+            "value": null
+          },
+          "expression": {
+            "type": {
+              "type": "Integer",
+              "value": null
+            },
+            "ast_type": "IfNull",
+            "input": {
+              "type": {
+                "type": "Integer",
+                "value": null,
+                "nullable": true
+              },
+              "ast_type": "Variable",
+              "name": "value"
+            },
+            "output_null": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Const",
+              "value": {
+                "type": "integer",
+                "kind": "literal",
+                "value": "0"
+              }
+            },
+            "output_value": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "_ko3_$6fHE4tyWm0K1HkGZN"
+            },
+            "value": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "_ko3_$6fHE4tyWm0K1HkGZN"
+            }
+          }
+        },
+        {
+          "operation_type": "assert",
+          "assertion": {
+            "assertion_type": "Fail",
+            "value_type": "Value",
+            "predicate": {
+              "type": {
+                "type": "Boolean",
+                "value": null
+              },
+              "ast_type": "Less",
+              "first": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "value"
+              },
+              "second": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": {
+                  "type": "integer",
+                  "kind": "literal",
+                  "value": "50"
+                }
+              }
+            },
+            "message": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "StringJoin",
+              "values": [
+                {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Const",
+                  "value": "Expected value less than 50, got "
+                },
+                {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Print",
+                  "value": {
+                    "type": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "value"
+                  }
+                }
+              ],
+              "seperator": ""
+            }
+          }
+        },
+        {
+          "operation_type": "assert",
+          "assertion": {
+            "assertion_type": "Warn",
+            "value_type": "Value",
+            "predicate": {
+              "type": {
+                "type": "Boolean",
+                "value": null
+              },
+              "ast_type": "Less",
+              "first": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "value"
+              },
+              "second": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "input.some_integer"
+              }
+            },
+            "message": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "StringJoin",
+              "values": [
+                {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Const",
+                  "value": "Expected value less than "
+                },
+                {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Print",
+                  "value": {
+                    "type": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "input.some_integer"
+                  }
+                },
+                {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Const",
+                  "value": ", got "
+                },
+                {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Print",
+                  "value": {
+                    "type": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "value"
+                  }
+                }
+              ],
+              "seperator": ""
+            }
+          }
+        },
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "Integer",
+            "value": null
+          },
+          "expression": {
+            "type": {
+              "type": "Integer",
+              "value": null
+            },
+            "ast_type": "Add",
+            "first": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "value"
+            },
+            "second": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Const",
+              "value": {
+                "type": "integer",
+                "kind": "literal",
+                "value": "1"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "defaults": {
+    "Writeable.My Datastream": {
+      "default_type": "value",
+      "stream": "Writeable.My Datastream",
+      "value": {
+        "type": {
+          "type": "Integer",
+          "value": null,
+          "nullable": true
+        },
+        "ast_type": "Const",
+        "value": {
+          "type": "integer",
+          "kind": "literal",
+          "value": "2"
+        }
+      }
+    },
+    "Writeable.My Second Datastream": {
+      "default_type": "value",
+      "stream": "Writeable.My Second Datastream",
+      "value": {
+        "type": {
+          "type": "Integer",
+          "value": null
+        },
+        "ast_type": "Const",
+        "value": {
+          "type": "integer",
+          "kind": "literal",
+          "value": "10"
+        }
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import { Add, Const, Sort, FloatType, Get, GetField, IntegerType, Multiply, PipelineBuilder, ProcessBuilder, ResourceBuilder, ScenarioBuilder, SourceBuilder, Subtract, Template, ToArray, Less, Struct, Round, Mean, AddDuration, Let, IfElse, GreaterEqual, DateTimeType, Hour, Greater, Min, Divide, IfNull } from "@elaraai/core"
+import { Add, Const, Sort, FloatType, Get, GetField, IntegerType, Multiply, PipelineBuilder, ProcessBuilder, ResourceBuilder, ScenarioBuilder, SourceBuilder, Subtract, Template, ToArray, Less, Struct, Round, Mean, AddDuration, Let, IfElse, GreaterEqual, DateTimeType, Hour, Greater, Min, Divide, Floor } from "@elaraai/core"
 
 const sales_data = new SourceBuilder("Sales Records")
     .value({
@@ -210,10 +210,7 @@ const predicted_procurement = new ProcessBuilder("Predicted Procurement")
     .let("reorder", (_, resources) => Less(resources["Stock-on-hand"], 40n))
     .let("qty", (_, resources) => Min(
         Const(50n),
-        IfNull(
-            Round(Divide(resources.Cash, GetField(resources.Supplier, "unitCost")), "floor", "integer"),
-            0n
-        )
+        Floor(Divide(resources.Cash, GetField(resources.Supplier, "unitCost")), "integer")
     ))
     .execute(
         "Procurement",

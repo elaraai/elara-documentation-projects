@@ -1,4 +1,4 @@
-import { AddDuration, Convert, Duration, FloatType, IfElse, IfNull, MLModelBuilder, MLPredictionBuilder, PipelineBuilder, Round, SourceBuilder, Template } from "@elaraai/core"
+import { AddDuration, Convert, Duration, FloatType, IfElse, IfNull, MLModelBuilder, PipelineBuilder, Round, SourceBuilder, Template } from "@elaraai/core"
 
 const sales_data = new SourceBuilder("Sales Records")
     .value({

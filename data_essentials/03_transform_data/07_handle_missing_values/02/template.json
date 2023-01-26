@@ -1,0 +1,175 @@
+{
+  "streams": {
+    "Pipeline.My Pipeline": {
+      "name": "Pipeline.My Pipeline",
+      "type": {
+        "type": "Integer",
+        "value": null,
+        "nullable": true
+      },
+      "writable": false
+    },
+    "Writeable.My Datastream": {
+      "name": "Writeable.My Datastream",
+      "type": {
+        "type": "Integer",
+        "value": null,
+        "nullable": true
+      },
+      "writable": true
+    },
+    "Writeable.My Second Datastream": {
+      "name": "Writeable.My Second Datastream",
+      "type": {
+        "type": "Integer",
+        "value": null
+      },
+      "writable": true
+    }
+  },
+  "tasks": {
+    "Pipeline.My Pipeline": {
+      "name": "Pipeline.My Pipeline",
+      "parent": "Pipeline.My Pipeline",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.My Datastream",
+          "type": {
+            "type": "Integer",
+            "value": null,
+            "nullable": true
+          },
+          "writable": true
+        },
+        "some_integer": {
+          "name": "Writeable.My Second Datastream",
+          "type": {
+            "type": "Integer",
+            "value": null
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.My Pipeline",
+          "type": {
+            "type": "Integer",
+            "value": null,
+            "nullable": true
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "input",
+          "name": "some_integer"
+        },
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "Integer",
+            "value": null,
+            "nullable": true
+          },
+          "expression": {
+            "type": {
+              "type": "Integer",
+              "value": null,
+              "nullable": true
+            },
+            "ast_type": "IfNull",
+            "input": {
+              "type": {
+                "type": "Integer",
+                "value": null,
+                "nullable": true
+              },
+              "ast_type": "Variable",
+              "name": "value"
+            },
+            "output_null": {
+              "type": {
+                "nullable": true
+              },
+              "ast_type": "Const",
+              "value": null
+            },
+            "output_value": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Add",
+              "first": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "_4cyE95INscocW5gGnq$5mW"
+              },
+              "second": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": {
+                  "type": "integer",
+                  "kind": "literal",
+                  "value": "1"
+                }
+              }
+            },
+            "value": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "_4cyE95INscocW5gGnq$5mW"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "defaults": {
+    "Writeable.My Datastream": {
+      "default_type": "value",
+      "stream": "Writeable.My Datastream",
+      "value": {
+        "type": {
+          "type": "Integer",
+          "value": null,
+          "nullable": true
+        },
+        "ast_type": "Const",
+        "value": {
+          "type": "integer",
+          "kind": "literal",
+          "value": "2"
+        }
+      }
+    },
+    "Writeable.My Second Datastream": {
+      "default_type": "value",
+      "stream": "Writeable.My Second Datastream",
+      "value": {
+        "type": {
+          "type": "Integer",
+          "value": null
+        },
+        "ast_type": "Const",
+        "value": {
+          "type": "integer",
+          "kind": "literal",
+          "value": "10"
+        }
+      }
+    }
+  }
+}

@@ -5,7 +5,7 @@ help:
 	@echo "    make help"
 
 .PHONY: build
-build: build-data_essentials build-modelling_essentials
+build: build-scripts build-how-tos build-data_essentials build-modelling_essentials 
 
 .PHONY: clean
 clean: 
@@ -21,3 +21,11 @@ build-data_essentials:
 .PHONY: build-modelling_essentials
 build-modelling_essentials: 
 	cd modelling_essentials && make build
+
+.PHONY: build-how-tos
+build-how-tos: 
+	cd how-tos && make build
+
+.PHONY: build-scripts
+build-scripts: 
+	cd scripts && make build

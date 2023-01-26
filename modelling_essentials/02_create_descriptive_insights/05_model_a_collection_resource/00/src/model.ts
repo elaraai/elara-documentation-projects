@@ -1,4 +1,4 @@
-import { DictType, Get, GetField, IntegerType, MapDict, ProcessBuilder, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringType, Subtract, Template } from "@elaraai/core"
+import { DictType, Get, GetField, IntegerType, MapDict, ProcessBuilder, ResourceBuilder, ScenarioBuilder, StringType, Subtract, Template } from "@elaraai/core"
 
 const stock_on_hand = new ResourceBuilder("Stock-on-hand")
     .mapFromValue(

@@ -1,1 +1,9 @@
 # elara-documentation-projects
+
+
+## The following need doc updates
+data_essentials/10_transform_collection_data/08_select_a_collection/02
+data_essentials/10_transform_collection_data/09_encode_to_json/00
+data_essentials/10_transform_collection_data/09_encode_to_json/01
+data_essentials/11_send_data_out/02_send_data/00
+modelling_essentials/03_create_predictive_insights/01_define_a_future_scenario/00

@@ -1,0 +1,1006 @@
+{
+  "streams": {
+    "SimulationJournal.Descriptive": {
+      "name": "SimulationJournal.Descriptive",
+      "type": {
+        "type": "Array",
+        "value": {
+          "type": "Variant",
+          "value": {
+            "Sales": {
+              "type": "Struct",
+              "value": {
+                "date": {
+                  "type": "DateTime",
+                  "value": null
+                },
+                "saleQty": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Integer",
+                      "value": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "SimulationLedger.Descriptive.Stock-on-hand": {
+      "name": "SimulationLedger.Descriptive.Stock-on-hand",
+      "type": {
+        "type": "Array",
+        "value": {
+          "type": "Struct",
+          "value": {
+            "journal_id": {
+              "type": "Integer",
+              "value": null
+            },
+            "date": {
+              "type": "DateTime",
+              "value": null
+            },
+            "event": {
+              "type": "Variant",
+              "value": {
+                "delete": {
+                  "type": "String",
+                  "value": null
+                },
+                "deleteAll": {
+                  "nullable": true
+                },
+                "deleteMany": {
+                  "type": "Set",
+                  "value": {
+                    "type": "String",
+                    "value": null
+                  }
+                },
+                "insert": {
+                  "type": "Struct",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "name": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "qty": {
+                          "type": "Integer",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                },
+                "insertMany": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "name": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "qty": {
+                          "type": "Integer",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                },
+                "set": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "name": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "qty": {
+                          "type": "Integer",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                },
+                "update": {
+                  "type": "Struct",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "name": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "qty": {
+                          "type": "Integer",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                },
+                "updateMany": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "name": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "qty": {
+                          "type": "Integer",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "SimulationResult.Descriptive.Stock-on-hand": {
+      "name": "SimulationResult.Descriptive.Stock-on-hand",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "name": {
+                "type": "String",
+                "value": null
+              },
+              "qty": {
+                "type": "Integer",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "Writeable.Process.Sales": {
+      "name": "Writeable.Process.Sales",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              },
+              "saleQty": {
+                "type": "Dict",
+                "value": {
+                  "key": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "value": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "writable": true
+    },
+    "Writeable.Resource.Stock-on-hand": {
+      "name": "Writeable.Resource.Stock-on-hand",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "name": {
+                "type": "String",
+                "value": null
+              },
+              "qty": {
+                "type": "Integer",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    }
+  },
+  "tasks": {
+    "Simulation.Descriptive": {
+      "task_type": "simulation",
+      "name": "Simulation.Descriptive",
+      "inputs": {
+        "resource.Stock-on-hand": {
+          "name": "Writeable.Resource.Stock-on-hand",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "name": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "qty": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        },
+        "process.Sales": {
+          "name": "Writeable.Process.Sales",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "saleQty": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "outputs": {
+        "result.Stock-on-hand": {
+          "name": "SimulationResult.Descriptive.Stock-on-hand",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "name": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "qty": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        },
+        "ledger.Stock-on-hand": {
+          "name": "SimulationLedger.Descriptive.Stock-on-hand",
+          "type": {
+            "type": "Array",
+            "value": {
+              "type": "Struct",
+              "value": {
+                "journal_id": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "date": {
+                  "type": "DateTime",
+                  "value": null
+                },
+                "event": {
+                  "type": "Variant",
+                  "value": {
+                    "delete": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "deleteAll": {
+                      "nullable": true
+                    },
+                    "deleteMany": {
+                      "type": "Set",
+                      "value": {
+                        "type": "String",
+                        "value": null
+                      }
+                    },
+                    "insert": {
+                      "type": "Struct",
+                      "value": {
+                        "key": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "value": {
+                          "type": "Struct",
+                          "value": {
+                            "name": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "qty": {
+                              "type": "Integer",
+                              "value": null
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "insertMany": {
+                      "type": "Dict",
+                      "value": {
+                        "key": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "value": {
+                          "type": "Struct",
+                          "value": {
+                            "name": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "qty": {
+                              "type": "Integer",
+                              "value": null
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "set": {
+                      "type": "Dict",
+                      "value": {
+                        "key": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "value": {
+                          "type": "Struct",
+                          "value": {
+                            "name": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "qty": {
+                              "type": "Integer",
+                              "value": null
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "update": {
+                      "type": "Struct",
+                      "value": {
+                        "key": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "value": {
+                          "type": "Struct",
+                          "value": {
+                            "name": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "qty": {
+                              "type": "Integer",
+                              "value": null
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "updateMany": {
+                      "type": "Dict",
+                      "value": {
+                        "key": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "value": {
+                          "type": "Struct",
+                          "value": {
+                            "name": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "qty": {
+                              "type": "Integer",
+                              "value": null
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        },
+        "journal": {
+          "name": "SimulationJournal.Descriptive",
+          "type": {
+            "type": "Array",
+            "value": {
+              "type": "Variant",
+              "value": {
+                "Sales": {
+                  "type": "Struct",
+                  "value": {
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "saleQty": {
+                      "type": "Dict",
+                      "value": {
+                        "key": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "value": {
+                          "type": "Integer",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "resources": {
+        "Stock-on-hand": {
+          "name": "Stock-on-hand",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "name": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "qty": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "input": "resource.Stock-on-hand",
+          "assertions": [],
+          "ledger": true
+        }
+      },
+      "processes": {
+        "Sales": {
+          "name": "Sales",
+          "values": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              },
+              "saleQty": {
+                "type": "Dict",
+                "value": {
+                  "key": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "value": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "type": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              },
+              "saleQty": {
+                "type": "Dict",
+                "value": {
+                  "key": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "value": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "statements": [
+            {
+              "type": "updateMany",
+              "resource": "Stock-on-hand",
+              "field": "qty",
+              "expr": {
+                "type": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Integer",
+                      "value": null
+                    }
+                  }
+                },
+                "ast_type": "MapDict",
+                "collection": {
+                  "type": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Struct",
+                        "value": {
+                          "name": {
+                            "type": "String",
+                            "value": null
+                          },
+                          "qty": {
+                            "type": "Integer",
+                            "value": null
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "ast_type": "Variable",
+                  "name": "r_Stock-on-hand"
+                },
+                "function": {
+                  "type": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "ast_type": "Subtract",
+                  "first": {
+                    "type": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "ast_type": "GetField",
+                    "struct": {
+                      "type": {
+                        "type": "Struct",
+                        "value": {
+                          "name": {
+                            "type": "String",
+                            "value": null
+                          },
+                          "qty": {
+                            "type": "Integer",
+                            "value": null
+                          }
+                        }
+                      },
+                      "ast_type": "Variable",
+                      "name": "_value_9ls9XHYGNpacf9EP5wQ5t5"
+                    },
+                    "key": "qty"
+                  },
+                  "second": {
+                    "type": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "ast_type": "Get",
+                    "dict": {
+                      "type": {
+                        "type": "Dict",
+                        "value": {
+                          "key": {
+                            "type": "String",
+                            "value": null
+                          },
+                          "value": {
+                            "type": "Integer",
+                            "value": null
+                          }
+                        }
+                      },
+                      "ast_type": "Variable",
+                      "name": "p_saleQty"
+                    },
+                    "key": {
+                      "type": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "ast_type": "GetField",
+                      "struct": {
+                        "type": {
+                          "type": "Struct",
+                          "value": {
+                            "name": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "qty": {
+                              "type": "Integer",
+                              "value": null
+                            }
+                          }
+                        },
+                        "ast_type": "Variable",
+                        "name": "_value_9ls9XHYGNpacf9EP5wQ5t5"
+                      },
+                      "key": "name"
+                    },
+                    "default": {
+                      "type": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": {
+                        "type": "integer",
+                        "kind": "literal",
+                        "value": "0"
+                      }
+                    }
+                  }
+                },
+                "value": {
+                  "type": {
+                    "type": "Struct",
+                    "value": {
+                      "name": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "qty": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
+                  },
+                  "ast_type": "Variable",
+                  "name": "_value_9ls9XHYGNpacf9EP5wQ5t5"
+                },
+                "key": {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "_key_sLnjuS0LgmpjmUxIUCQbZS"
+                }
+              },
+              "assertions": []
+            }
+          ],
+          "input": "process.Sales"
+        }
+      },
+      "mls": {},
+      "configuration": {
+        "in_memory": false,
+        "journal": true
+      }
+    }
+  },
+  "defaults": {
+    "Writeable.Process.Sales": {
+      "default_type": "value",
+      "stream": "Writeable.Process.Sales",
+      "value": {
+        "type": {
+          "type": "Dict",
+          "value": {
+            "key": {
+              "type": "String",
+              "value": null
+            },
+            "value": {
+              "type": "Struct",
+              "value": {
+                "date": {
+                  "type": "DateTime",
+                  "value": null
+                },
+                "saleQty": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Integer",
+                      "value": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ast_type": "Const",
+        "value": {
+          "type": "map",
+          "kind": "literal",
+          "value": [
+            [
+              "0",
+              {
+                "date": {
+                  "type": "datetime",
+                  "kind": "literal",
+                  "value": "2022-10-10T09:00:00.000Z"
+                },
+                "saleQty": {
+                  "type": "map",
+                  "kind": "literal",
+                  "value": [
+                    [
+                      "hotdog",
+                      {
+                        "type": "integer",
+                        "kind": "literal",
+                        "value": "1"
+                      }
+                    ],
+                    [
+                      "vegan hotdog",
+                      {
+                        "type": "integer",
+                        "kind": "literal",
+                        "value": "3"
+                      }
+                    ]
+                  ]
+                }
+              }
+            ],
+            [
+              "1",
+              {
+                "date": {
+                  "type": "datetime",
+                  "kind": "literal",
+                  "value": "2022-10-10T10:00:00.000Z"
+                },
+                "saleQty": {
+                  "type": "map",
+                  "kind": "literal",
+                  "value": [
+                    [
+                      "hotdog",
+                      {
+                        "type": "integer",
+                        "kind": "literal",
+                        "value": "2"
+                      }
+                    ],
+                    [
+                      "vegan hotdog",
+                      {
+                        "type": "integer",
+                        "kind": "literal",
+                        "value": "2"
+                      }
+                    ]
+                  ]
+                }
+              }
+            ],
+            [
+              "2",
+              {
+                "date": {
+                  "type": "datetime",
+                  "kind": "literal",
+                  "value": "2022-10-10T11:00:00.000Z"
+                },
+                "saleQty": {
+                  "type": "map",
+                  "kind": "literal",
+                  "value": [
+                    [
+                      "hotdog",
+                      {
+                        "type": "integer",
+                        "kind": "literal",
+                        "value": "3"
+                      }
+                    ],
+                    [
+                      "vegan hotdog",
+                      {
+                        "type": "integer",
+                        "kind": "literal",
+                        "value": "1"
+                      }
+                    ]
+                  ]
+                }
+              }
+            ]
+          ]
+        }
+      }
+    },
+    "Writeable.Resource.Stock-on-hand": {
+      "default_type": "value",
+      "value": {
+        "type": {
+          "type": "Dict",
+          "value": {
+            "key": {
+              "type": "String",
+              "value": null
+            },
+            "value": {
+              "type": "Struct",
+              "value": {
+                "name": {
+                  "type": "String",
+                  "value": null
+                },
+                "qty": {
+                  "type": "Integer",
+                  "value": null
+                }
+              }
+            }
+          }
+        },
+        "ast_type": "Const",
+        "value": {
+          "type": "map",
+          "kind": "literal",
+          "value": [
+            [
+              "0",
+              {
+                "name": "hotdog",
+                "qty": {
+                  "type": "integer",
+                  "kind": "literal",
+                  "value": "50"
+                }
+              }
+            ],
+            [
+              "1",
+              {
+                "name": "vegan hotdog",
+                "qty": {
+                  "type": "integer",
+                  "kind": "literal",
+                  "value": "30"
+                }
+              }
+            ]
+          ]
+        }
+      },
+      "stream": "Writeable.Resource.Stock-on-hand"
+    }
+  }
+}

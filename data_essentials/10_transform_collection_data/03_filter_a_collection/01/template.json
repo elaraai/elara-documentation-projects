@@ -1,0 +1,1028 @@
+{
+  "streams": {
+    "Pipeline.Filter After Datetime": {
+      "name": "Pipeline.Filter After Datetime",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "transactionDate": {
+                "type": "DateTime",
+                "value": null
+              },
+              "items": {
+                "type": "Array",
+                "value": {
+                  "type": "Struct",
+                  "value": {
+                    "productCode": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "units": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "salePrice": {
+                      "type": "Float",
+                      "value": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "Pipeline.My Pipeline": {
+      "name": "Pipeline.My Pipeline",
+      "type": {
+        "type": "Integer",
+        "value": null
+      },
+      "writable": false
+    },
+    "Pipeline.Parse Products": {
+      "name": "Pipeline.Parse Products",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "Name": {
+                "type": "String",
+                "value": null
+              },
+              "Code": {
+                "type": "String",
+                "value": null
+              },
+              "Category": {
+                "type": "String",
+                "value": null
+              },
+              "Unit Cost": {
+                "type": "Float",
+                "value": null,
+                "nullable": true
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "Pipeline.Parse Sales": {
+      "name": "Pipeline.Parse Sales",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "transactionDate": {
+                "type": "DateTime",
+                "value": null
+              },
+              "items": {
+                "type": "Array",
+                "value": {
+                  "type": "Struct",
+                  "value": {
+                    "productCode": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "units": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "salePrice": {
+                      "type": "Float",
+                      "value": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "Source.My BlobType Datastream": {
+      "name": "Source.My BlobType Datastream",
+      "type": {
+        "type": "Blob",
+        "value": null
+      },
+      "writable": false
+    },
+    "Writeable.My BlobType Datastream": {
+      "name": "Writeable.My BlobType Datastream",
+      "type": {
+        "type": "Blob",
+        "value": null
+      },
+      "writable": true
+    },
+    "Writeable.My Datastream": {
+      "name": "Writeable.My Datastream",
+      "type": {
+        "type": "Integer",
+        "value": null,
+        "nullable": true
+      },
+      "writable": true
+    },
+    "Writeable.My DictType Datastream": {
+      "name": "Writeable.My DictType Datastream",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "my_integer": {
+                "type": "Integer",
+                "value": null
+              },
+              "my_string": {
+                "type": "String",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": true
+    },
+    "Writeable.My Second Datastream": {
+      "name": "Writeable.My Second Datastream",
+      "type": {
+        "type": "Integer",
+        "value": null
+      },
+      "writable": true
+    },
+    "Writeable.Products": {
+      "name": "Writeable.Products",
+      "type": {
+        "type": "Blob",
+        "value": null
+      },
+      "writable": true
+    },
+    "Writeable.Sales": {
+      "name": "Writeable.Sales",
+      "type": {
+        "type": "Blob",
+        "value": null
+      },
+      "writable": true
+    }
+  },
+  "tasks": {
+    "Pipeline.Filter After Datetime": {
+      "name": "Pipeline.Filter After Datetime",
+      "parent": "Pipeline.Filter After Datetime",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Pipeline.Parse Sales",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "items": {
+                    "type": "Array",
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "productCode": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "units": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "salePrice": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Filter After Datetime",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "items": {
+                    "type": "Array",
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "productCode": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "units": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "salePrice": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "filter",
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "items": {
+                    "type": "Array",
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "productCode": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "units": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "salePrice": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "predicate": {
+            "type": {
+              "type": "Boolean",
+              "value": null
+            },
+            "ast_type": "GreaterEqual",
+            "first": {
+              "type": {
+                "type": "DateTime",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.transactionDate"
+            },
+            "second": {
+              "type": {
+                "type": "DateTime",
+                "value": null
+              },
+              "ast_type": "Const",
+              "value": {
+                "type": "datetime",
+                "kind": "literal",
+                "value": "2022-11-10T00:00:00.000Z"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Pipeline.My Pipeline": {
+      "name": "Pipeline.My Pipeline",
+      "parent": "Pipeline.My Pipeline",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.My Datastream",
+          "type": {
+            "type": "Integer",
+            "value": null,
+            "nullable": true
+          },
+          "writable": true
+        },
+        "some_integer": {
+          "name": "Writeable.My Second Datastream",
+          "type": {
+            "type": "Integer",
+            "value": null
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.My Pipeline",
+          "type": {
+            "type": "Integer",
+            "value": null
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "input",
+          "name": "some_integer"
+        },
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "Integer",
+            "value": null
+          },
+          "expression": {
+            "type": {
+              "type": "Integer",
+              "value": null
+            },
+            "ast_type": "IfNull",
+            "input": {
+              "type": {
+                "type": "Integer",
+                "value": null,
+                "nullable": true
+              },
+              "ast_type": "Variable",
+              "name": "value"
+            },
+            "output_null": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Const",
+              "value": {
+                "type": "integer",
+                "kind": "literal",
+                "value": "0"
+              }
+            },
+            "output_value": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "_kjCx7gH4BsO8IYRcNUqeFP"
+            },
+            "value": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "_kjCx7gH4BsO8IYRcNUqeFP"
+            }
+          }
+        },
+        {
+          "operation_type": "assert",
+          "assertion": {
+            "assertion_type": "Fail",
+            "value_type": "Value",
+            "predicate": {
+              "type": {
+                "type": "Boolean",
+                "value": null
+              },
+              "ast_type": "Less",
+              "first": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "value"
+              },
+              "second": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": {
+                  "type": "integer",
+                  "kind": "literal",
+                  "value": "50"
+                }
+              }
+            },
+            "message": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "StringJoin",
+              "values": [
+                {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Const",
+                  "value": "Expected value less than 50, got "
+                },
+                {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Print",
+                  "value": {
+                    "type": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "value"
+                  }
+                }
+              ],
+              "seperator": ""
+            }
+          }
+        },
+        {
+          "operation_type": "assert",
+          "assertion": {
+            "assertion_type": "Warn",
+            "value_type": "Value",
+            "predicate": {
+              "type": {
+                "type": "Boolean",
+                "value": null
+              },
+              "ast_type": "Less",
+              "first": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "value"
+              },
+              "second": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "input.some_integer"
+              }
+            },
+            "message": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "StringJoin",
+              "values": [
+                {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Const",
+                  "value": "Expected value less than "
+                },
+                {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Print",
+                  "value": {
+                    "type": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "input.some_integer"
+                  }
+                },
+                {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Const",
+                  "value": ", got "
+                },
+                {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Print",
+                  "value": {
+                    "type": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "value"
+                  }
+                }
+              ],
+              "seperator": ""
+            }
+          }
+        },
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "Integer",
+            "value": null
+          },
+          "expression": {
+            "type": {
+              "type": "Integer",
+              "value": null
+            },
+            "ast_type": "Add",
+            "first": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "value"
+            },
+            "second": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Const",
+              "value": {
+                "type": "integer",
+                "kind": "literal",
+                "value": "1"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Pipeline.Parse Products": {
+      "name": "Pipeline.Parse Products",
+      "parent": "Pipeline.Parse Products",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.Products",
+          "type": {
+            "type": "Blob",
+            "value": null
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Parse Products",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "Name": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Code": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Category": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Unit Cost": {
+                    "type": "Float",
+                    "value": null,
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "fromCsv",
+          "skip_n": {
+            "type": "integer",
+            "kind": "literal",
+            "value": "1"
+          },
+          "delimiter": ",",
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "Name": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Code": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Category": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Unit Cost": {
+                    "type": "Float",
+                    "value": null,
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "output_key": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Variable",
+            "name": "field.Code"
+          }
+        }
+      ]
+    },
+    "Pipeline.Parse Sales": {
+      "name": "Pipeline.Parse Sales",
+      "parent": "Pipeline.Parse Sales",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.Sales",
+          "type": {
+            "type": "Blob",
+            "value": null
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Parse Sales",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "items": {
+                    "type": "Array",
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "productCode": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "units": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "salePrice": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "fromJsonLines",
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "items": {
+                    "type": "Array",
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "productCode": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "units": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "salePrice": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "output_key": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Print",
+            "value": {
+              "type": {
+                "type": "DateTime",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.transactionDate"
+            }
+          }
+        }
+      ]
+    },
+    "Source.My BlobType Datastream": {
+      "name": "Source.My BlobType Datastream",
+      "parent": "My BlobType Datastream",
+      "task_type": "source",
+      "source_type": "writeable",
+      "inputs": {
+        "input": {
+          "name": "Writeable.My BlobType Datastream",
+          "type": {
+            "type": "Blob",
+            "value": null
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Source.My BlobType Datastream",
+          "type": {
+            "type": "Blob",
+            "value": null
+          },
+          "writable": false
+        }
+      },
+      "input_assertions": [],
+      "output_assertions": [
+        {
+          "assertion_type": "Fail",
+          "value_type": "Value",
+          "predicate": {
+            "type": {
+              "type": "Boolean",
+              "value": null
+            },
+            "ast_type": "Greater",
+            "first": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Size",
+              "collection": {
+                "type": {
+                  "type": "Blob",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "value"
+              }
+            },
+            "second": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Const",
+              "value": {
+                "type": "integer",
+                "kind": "literal",
+                "value": "3"
+              }
+            }
+          },
+          "message": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "StringJoin",
+            "values": [
+              {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": "Expected file with 3 or more bytes, got "
+              },
+              {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Print",
+                "value": {
+                  "type": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "ast_type": "Size",
+                  "collection": {
+                    "type": {
+                      "type": "Blob",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "value"
+                  }
+                }
+              },
+              {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": " bytes."
+              }
+            ],
+            "seperator": ""
+          }
+        }
+      ]
+    }
+  },
+  "defaults": {
+    "Writeable.My Datastream": {
+      "default_type": "value",
+      "stream": "Writeable.My Datastream",
+      "value": {
+        "type": {
+          "type": "Integer",
+          "value": null,
+          "nullable": true
+        },
+        "ast_type": "Const",
+        "value": {
+          "type": "integer",
+          "kind": "literal",
+          "value": "2"
+        }
+      }
+    },
+    "Writeable.My Second Datastream": {
+      "default_type": "value",
+      "stream": "Writeable.My Second Datastream",
+      "value": {
+        "type": {
+          "type": "Integer",
+          "value": null
+        },
+        "ast_type": "Const",
+        "value": {
+          "type": "integer",
+          "kind": "literal",
+          "value": "10"
+        }
+      }
+    },
+    "Writeable.Products": {
+      "default_type": "file",
+      "stream": "Writeable.Products",
+      "path": "./data/products.csv"
+    },
+    "Writeable.Sales": {
+      "default_type": "file",
+      "stream": "Writeable.Sales",
+      "path": "./data/sales.jsonl"
+    }
+  }
+}

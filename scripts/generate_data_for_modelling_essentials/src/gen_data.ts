@@ -1,126 +1,76 @@
-import { Add, AddDuration, Const, Convert, DateTimeType, Divide, Exp, FloatType, GetField, IfNull, Insert, Multiply, NewDict, PipelineBuilder, Print, RandomNormal, Range, Reduce, Round, SourceBuilder, StringType, Struct, StructType, Subtract, Template } from "@elaraai/core"
+import { Add, AddDuration, Divide, EastFunction, Exp, FloatType, GetField, Greater, Hour, IfElse, Less, Let, Multiply, ProcessBuilder, RandomNormal, RandomUniform, ResourceBuilder, Round, ScenarioBuilder, SourceBuilder, Struct, Subtract, Template } from "@elaraai/core"
 
 const params = new SourceBuilder("Initial Params")
     .value({
-        value: {minPrice: 2.0, maxPrice: 5.5, step: 0.5, start_date: new Date(`2022-10-10T09:00:00.000Z`), work_hours: 6}
+        value: { 
+            minDiscount: 2.0, 
+            maxDiscount: 5.5, 
+            price: 3.5, 
+            endHour: 18n, 
+            endDate: new Date(`2022-10-17T05:00:00.000Z`) 
+        }
     })
 
-const generate_summary_sales_data = new PipelineBuilder("Generate Summary Sales Data")
-    .from(params.outputStream())
-    .transform(
-        stream => Range(
-            0n,
-            IfNull(
-                Round(
-                    Divide(Subtract(GetField(stream, "maxPrice"), GetField(stream, "minPrice")), GetField(stream, "step")),
-                    "nearest",
-                    "integer"
-                ),
-                0n
+export function Demand(discount: EastFunction<FloatType>) {
+    return Subtract(
+        1,
+        Divide(
+            1,
+            Add(
+                1,
+                Exp(
+                    Subtract(
+                        Add(
+                            Multiply(discount, 100),
+                            Multiply(
+                                0.75,
+                                RandomNormal()
+                            ),
+                        ),
+                        5
+                    )
+                )
             )
         )
     )
-    .input({ name: "params", stream: params.outputStream()})
-    .transform((stream, inputs) => Reduce(
-        stream,
-        (previous, current) => Insert(
-            previous,
-            Print(current),
-            Struct({
-                price: Add(
-                    GetField(inputs.params, "minPrice"),
-                    Multiply(current, GetField(inputs.params, "step"))
-                ),
-                date: AddDuration(GetField(inputs.params, "start_date"), Convert(current, FloatType), "day")
-            })
-        ),
-        NewDict(StringType, StructType({price: FloatType, date: DateTimeType}))
-    ))
-    .select({
-        keep_all: true,
-        selections: {
-            qty_func_val: fields => Divide(
-                5,
-                Add(
-                    1,
-                    Exp(
-                        Add(
-                            fields.price,
-                            Subtract(
-                                // Multiply(
-                                //     0.75,
-                                //     RandomNormal()
-                                // ),
-                                Const(0),
-                                3
-                            )
-                        )   
-                    )
+}
+
+
+const resource = new ResourceBuilder("Resource")
+    .mapFromStream(params.outputStream())
+
+const process = new ProcessBuilder("Process")
+    .resource(resource)
+    .let("discount", (_props, resources) => RandomUniform(GetField(resources.Resource, "minDiscount"), GetField(resources.Resource, "minDiscount")))
+    .let("price", (_props, resources) => GetField(resources.Resource, "price"))
+    .let("qty", props => Round(Multiply(5, Demand(props.discount)), 'nearest', 'integer'))
+    .end((props, resources) => Less(props.date, GetField(resources.Resource, "endDate")))
+    .execute(
+        "Process",
+        (props, resources) => Struct({
+            date: Let(
+                AddDuration(props.date, Multiply(5, Divide(1, Demand(props.discount))), 'minute'),
+                next_date => IfElse(
+                    Greater(Hour(next_date), GetField(resources.Resource, "endHour")),
+                    AddDuration(next_date, 12, 'hour'),
+                    next_date
                 )
-            ),
-            interarrival_func_val: fields => Add(
-                Multiply(
-                    2,
-                    Exp(
-                        Subtract(
-                            Multiply(
-                                0.7,
-                                fields.price
-                            ),
-                            3.5
-                        )
-                    )
-                ),
-                0.5
-            )
-        }
-    })
-    .select({
-        keep_all: true,
-        selections: {
-            num_arrivals: (fields, _, inputs) => Round(
-                Divide(
-                    GetField(inputs.params, "work_hours"),
-                    fields.interarrival_func_val
-                ),
-                "floor",
-                "integer"
-            )
-        }
+            ) 
+        })
+    )
+    .mapFromValue({
+        date: new Date(`2022-10-10T09:00:00.000Z`)
     })
 
 
-const generate_daily_sales_data = new PipelineBuilder("Generate Daily Sales Data")
-    .from(generate_summary_sales_data.outputStream())
-    .disaggregateArray({
-        collection: fields => Range(1n, IfNull(fields.num_arrivals, 1n)),
-        selections: {
-            date: (fields, arrival_num) => AddDuration(
-                fields.date,
-                Multiply(
-                    arrival_num,
-                    Add(
-                        fields.interarrival_func_val,
-                        Multiply(RandomNormal(), 0.1)
-                    )
-                ),
-                "hour"
-            ), // Add date,
-            price: fields => fields.price,
-            qty: fields => Round(
-                Add(
-                    fields.qty_func_val,
-                    RandomNormal()
-                ),
-                "nearest",
-                "integer"
-            ),
-        }
-    })
+const scenario = new ScenarioBuilder("Scenario")
+    .resource(resource)
+    .process(process)
 
 
 export default Template(
     params,
-    generate_summary_sales_data,
-    generate_daily_sales_data
+    resource,
+    process,
+    scenario
 );

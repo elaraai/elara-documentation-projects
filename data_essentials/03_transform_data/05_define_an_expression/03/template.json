@@ -1,0 +1,120 @@
+{
+  "streams": {
+    "Pipeline.My Pipeline": {
+      "name": "Pipeline.My Pipeline",
+      "type": {
+        "type": "Integer",
+        "value": null
+      },
+      "writable": false
+    },
+    "Writeable.My Datastream": {
+      "name": "Writeable.My Datastream",
+      "type": {
+        "type": "Integer",
+        "value": null
+      },
+      "writable": true
+    }
+  },
+  "tasks": {
+    "Pipeline.My Pipeline": {
+      "name": "Pipeline.My Pipeline",
+      "parent": "Pipeline.My Pipeline",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.My Datastream",
+          "type": {
+            "type": "Integer",
+            "value": null
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.My Pipeline",
+          "type": {
+            "type": "Integer",
+            "value": null
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "Integer",
+            "value": null
+          },
+          "expression": {
+            "type": {
+              "type": "Integer",
+              "value": null
+            },
+            "ast_type": "Multiply",
+            "first": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Add",
+              "first": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "value"
+              },
+              "second": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": {
+                  "type": "integer",
+                  "kind": "literal",
+                  "value": "1"
+                }
+              }
+            },
+            "second": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Const",
+              "value": {
+                "type": "integer",
+                "kind": "literal",
+                "value": "5"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "defaults": {
+    "Writeable.My Datastream": {
+      "default_type": "value",
+      "stream": "Writeable.My Datastream",
+      "value": {
+        "type": {
+          "type": "Integer",
+          "value": null
+        },
+        "ast_type": "Const",
+        "value": {
+          "type": "integer",
+          "kind": "literal",
+          "value": "2"
+        }
+      }
+    }
+  }
+}

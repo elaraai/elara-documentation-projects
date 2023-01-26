@@ -1,0 +1,4549 @@
+{
+  "streams": {
+    "Pipeline.By Category": {
+      "name": "Pipeline.By Category",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "productCode": {
+                "type": "String",
+                "value": null
+              },
+              "units": {
+                "type": "Integer",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "Pipeline.By Date": {
+      "name": "Pipeline.By Date",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              },
+              "countTransactions": {
+                "type": "Integer",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "Pipeline.Daily Difference in Revenue": {
+      "name": "Pipeline.Daily Difference in Revenue",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              },
+              "dailyChangeInRevenue": {
+                "type": "Float",
+                "value": null,
+                "nullable": true
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "Pipeline.Daily Difference in Revenue by Product Code": {
+      "name": "Pipeline.Daily Difference in Revenue by Product Code",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              },
+              "dailyChangeInRevenuePerProductCode": {
+                "type": "Dict",
+                "value": {
+                  "key": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "value": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "Pipeline.Daily Difference in Revenue.CSV": {
+      "name": "Pipeline.Daily Difference in Revenue.CSV",
+      "type": {
+        "type": "Blob",
+        "value": null
+      },
+      "writable": false
+    },
+    "Pipeline.Disaggregate Items": {
+      "name": "Pipeline.Disaggregate Items",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "transactionDate": {
+                "type": "DateTime",
+                "value": null
+              },
+              "productCode": {
+                "type": "String",
+                "value": null
+              },
+              "units": {
+                "type": "Integer",
+                "value": null
+              },
+              "salePrice": {
+                "type": "Float",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "Pipeline.Disaggregate Units": {
+      "name": "Pipeline.Disaggregate Units",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "transactionDate": {
+                "type": "DateTime",
+                "value": null
+              },
+              "productCode": {
+                "type": "String",
+                "value": null
+              },
+              "salePrice": {
+                "type": "Float",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "Pipeline.Filter After Datetime": {
+      "name": "Pipeline.Filter After Datetime",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "transactionDate": {
+                "type": "DateTime",
+                "value": null
+              },
+              "items": {
+                "type": "Array",
+                "value": {
+                  "type": "Struct",
+                  "value": {
+                    "productCode": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "units": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "salePrice": {
+                      "type": "Float",
+                      "value": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "Pipeline.Filter On Date": {
+      "name": "Pipeline.Filter On Date",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "transactionDate": {
+                "type": "DateTime",
+                "value": null
+              },
+              "items": {
+                "type": "Array",
+                "value": {
+                  "type": "Struct",
+                  "value": {
+                    "productCode": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "units": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "salePrice": {
+                      "type": "Float",
+                      "value": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "Pipeline.Filter Revenue Greater than 100": {
+      "name": "Pipeline.Filter Revenue Greater than 100",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "transactionDate": {
+                "type": "DateTime",
+                "value": null
+              },
+              "items": {
+                "type": "Array",
+                "value": {
+                  "type": "Struct",
+                  "value": {
+                    "productCode": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "units": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "salePrice": {
+                      "type": "Float",
+                      "value": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "Pipeline.My Pipeline": {
+      "name": "Pipeline.My Pipeline",
+      "type": {
+        "type": "Integer",
+        "value": null
+      },
+      "writable": false
+    },
+    "Pipeline.Parse Products": {
+      "name": "Pipeline.Parse Products",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "Name": {
+                "type": "String",
+                "value": null
+              },
+              "Code": {
+                "type": "String",
+                "value": null
+              },
+              "Category": {
+                "type": "String",
+                "value": null
+              },
+              "Unit Cost": {
+                "type": "Float",
+                "value": null,
+                "nullable": true
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "Pipeline.Parse Sales": {
+      "name": "Pipeline.Parse Sales",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "transactionDate": {
+                "type": "DateTime",
+                "value": null
+              },
+              "items": {
+                "type": "Array",
+                "value": {
+                  "type": "Struct",
+                  "value": {
+                    "productCode": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "units": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "salePrice": {
+                      "type": "Float",
+                      "value": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "Pipeline.Recent Units Per Product Code By Date": {
+      "name": "Pipeline.Recent Units Per Product Code By Date",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              },
+              "unitsPerProductCode": {
+                "type": "Dict",
+                "value": {
+                  "key": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "value": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              },
+              "totalRevenue": {
+                "type": "Float",
+                "value": null
+              },
+              "revenuePerProductCode": {
+                "type": "Dict",
+                "value": {
+                  "key": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "value": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              },
+              "previousDaysUnitsPerProductCode": {
+                "type": "Dict",
+                "value": {
+                  "key": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "value": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                },
+                "nullable": true
+              },
+              "previousDayRevenue": {
+                "type": "Float",
+                "value": null,
+                "nullable": true
+              },
+              "previousDayRevenuePerProductCode": {
+                "type": "Dict",
+                "value": {
+                  "key": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "value": {
+                    "type": "Float",
+                    "value": null
+                  }
+                },
+                "nullable": true
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "Pipeline.Sales and Product Info": {
+      "name": "Pipeline.Sales and Product Info",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "productCode": {
+                "type": "String",
+                "value": null
+              },
+              "transactionDate": {
+                "type": "DateTime",
+                "value": null
+              },
+              "units": {
+                "type": "Integer",
+                "value": null
+              },
+              "productName": {
+                "type": "String",
+                "value": null
+              },
+              "productCategory": {
+                "type": "String",
+                "value": null
+              },
+              "productUnitCost": {
+                "type": "Float",
+                "value": null,
+                "nullable": true
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "Pipeline.Units Per Product Code By Date": {
+      "name": "Pipeline.Units Per Product Code By Date",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              },
+              "unitsPerProductCode": {
+                "type": "Dict",
+                "value": {
+                  "key": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "value": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              },
+              "totalRevenue": {
+                "type": "Float",
+                "value": null
+              },
+              "revenuePerProductCode": {
+                "type": "Dict",
+                "value": {
+                  "key": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "value": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "Source.My BlobType Datastream": {
+      "name": "Source.My BlobType Datastream",
+      "type": {
+        "type": "Blob",
+        "value": null
+      },
+      "writable": false
+    },
+    "Writeable.My BlobType Datastream": {
+      "name": "Writeable.My BlobType Datastream",
+      "type": {
+        "type": "Blob",
+        "value": null
+      },
+      "writable": true
+    },
+    "Writeable.My Datastream": {
+      "name": "Writeable.My Datastream",
+      "type": {
+        "type": "Integer",
+        "value": null,
+        "nullable": true
+      },
+      "writable": true
+    },
+    "Writeable.My DictType Datastream": {
+      "name": "Writeable.My DictType Datastream",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "my_integer": {
+                "type": "Integer",
+                "value": null
+              },
+              "my_string": {
+                "type": "String",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": true
+    },
+    "Writeable.My Second Datastream": {
+      "name": "Writeable.My Second Datastream",
+      "type": {
+        "type": "Integer",
+        "value": null
+      },
+      "writable": true
+    },
+    "Writeable.Products": {
+      "name": "Writeable.Products",
+      "type": {
+        "type": "Blob",
+        "value": null
+      },
+      "writable": true
+    },
+    "Writeable.Sales": {
+      "name": "Writeable.Sales",
+      "type": {
+        "type": "Blob",
+        "value": null
+      },
+      "writable": true
+    }
+  },
+  "tasks": {
+    "Pipeline.By Category": {
+      "name": "Pipeline.By Category",
+      "parent": "Pipeline.By Category",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Pipeline.Disaggregate Items",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "productCode": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "units": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "salePrice": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.By Category",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "productCode": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "units": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "aggregate",
+          "group_name": "productCode",
+          "group_value": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Variable",
+            "name": "field.productCode"
+          },
+          "aggregations": {
+            "units": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "aggregation_type": "Sum",
+              "input_key": "key",
+              "value": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "field.units"
+              },
+              "field": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "units"
+              }
+            }
+          },
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "productCode": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "units": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Pipeline.By Date": {
+      "name": "Pipeline.By Date",
+      "parent": "Pipeline.By Date",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Pipeline.Parse Sales",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "items": {
+                    "type": "Array",
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "productCode": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "units": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "salePrice": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.By Date",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "countTransactions": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "aggregate",
+          "group_name": "date",
+          "group_value": {
+            "type": {
+              "type": "DateTime",
+              "value": null
+            },
+            "ast_type": "Round",
+            "rounding_mode": "floor",
+            "value": {
+              "type": {
+                "type": "DateTime",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.transactionDate"
+            },
+            "unit": "day"
+          },
+          "aggregations": {
+            "countTransactions": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "aggregation_type": "Count",
+              "input_key": "key",
+              "value": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": true
+              },
+              "field": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "countTransactions"
+              }
+            }
+          },
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "countTransactions": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Pipeline.Daily Difference in Revenue": {
+      "name": "Pipeline.Daily Difference in Revenue",
+      "parent": "Pipeline.Daily Difference in Revenue",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Pipeline.Recent Units Per Product Code By Date",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "unitsPerProductCode": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
+                  },
+                  "totalRevenue": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "revenuePerProductCode": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Float",
+                        "value": null
+                      }
+                    }
+                  },
+                  "previousDaysUnitsPerProductCode": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    },
+                    "nullable": true
+                  },
+                  "previousDayRevenue": {
+                    "type": "Float",
+                    "value": null,
+                    "nullable": true
+                  },
+                  "previousDayRevenuePerProductCode": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Float",
+                        "value": null
+                      }
+                    },
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Daily Difference in Revenue",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "dailyChangeInRevenue": {
+                    "type": "Float",
+                    "value": null,
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "select",
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "dailyChangeInRevenue": {
+                    "type": "Float",
+                    "value": null,
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "selections": {
+            "date": {
+              "type": {
+                "type": "DateTime",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.date"
+            },
+            "dailyChangeInRevenue": {
+              "type": {
+                "type": "Float",
+                "value": null,
+                "nullable": true
+              },
+              "ast_type": "IfNull",
+              "input": {
+                "type": {
+                  "type": "Float",
+                  "value": null,
+                  "nullable": true
+                },
+                "ast_type": "Variable",
+                "name": "field.previousDayRevenue"
+              },
+              "output_null": {
+                "type": {
+                  "nullable": true
+                },
+                "ast_type": "Const",
+                "value": null
+              },
+              "output_value": {
+                "type": {
+                  "type": "Float",
+                  "value": null
+                },
+                "ast_type": "Subtract",
+                "first": {
+                  "type": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "field.totalRevenue"
+                },
+                "second": {
+                  "type": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "_SXtUiY1dbCnY4s5rSAAkq1"
+                }
+              },
+              "value": {
+                "type": {
+                  "type": "Float",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "_SXtUiY1dbCnY4s5rSAAkq1"
+              }
+            }
+          },
+          "output_key": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Variable",
+            "name": "key"
+          }
+        }
+      ]
+    },
+    "Pipeline.Daily Difference in Revenue by Product Code": {
+      "name": "Pipeline.Daily Difference in Revenue by Product Code",
+      "parent": "Pipeline.Daily Difference in Revenue by Product Code",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Pipeline.Parse Products",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "Name": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Code": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Category": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Unit Cost": {
+                    "type": "Float",
+                    "value": null,
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        },
+        "recent_sales": {
+          "name": "Pipeline.Recent Units Per Product Code By Date",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "unitsPerProductCode": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
+                  },
+                  "totalRevenue": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "revenuePerProductCode": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Float",
+                        "value": null
+                      }
+                    }
+                  },
+                  "previousDaysUnitsPerProductCode": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    },
+                    "nullable": true
+                  },
+                  "previousDayRevenue": {
+                    "type": "Float",
+                    "value": null,
+                    "nullable": true
+                  },
+                  "previousDayRevenuePerProductCode": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Float",
+                        "value": null
+                      }
+                    },
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Daily Difference in Revenue by Product Code",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "dailyChangeInRevenuePerProductCode": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Float",
+                        "value": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "aggregate",
+          "group_name": "_",
+          "group_value": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Const",
+            "value": "_"
+          },
+          "aggregations": {
+            "productCodes": {
+              "type": {
+                "type": "Set",
+                "value": {
+                  "type": "String",
+                  "value": null
+                }
+              },
+              "aggregation_type": "CollectSet",
+              "input_key": "key",
+              "value": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "field.Code"
+              },
+              "field": {
+                "type": {
+                  "type": "Set",
+                  "value": {
+                    "type": "String",
+                    "value": null
+                  }
+                },
+                "ast_type": "Variable",
+                "name": "productCodes"
+              }
+            }
+          },
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "_": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "productCodes": {
+                    "type": "Set",
+                    "value": {
+                      "type": "String",
+                      "value": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "operation_type": "input",
+          "name": "recent_sales"
+        },
+        {
+          "operation_type": "join",
+          "join_type": "Inner",
+          "source_table": "input.recent_sales",
+          "source_key": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Const",
+            "value": "_"
+          },
+          "source_selections": {
+            "date": {
+              "type": {
+                "type": "DateTime",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.date"
+            },
+            "revenuePerProductCode": {
+              "type": {
+                "type": "Dict",
+                "value": {
+                  "key": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "value": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              },
+              "ast_type": "Variable",
+              "name": "field.revenuePerProductCode"
+            },
+            "previousDayRevenuePerProductCode": {
+              "type": {
+                "type": "Dict",
+                "value": {
+                  "key": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "value": {
+                    "type": "Float",
+                    "value": null
+                  }
+                },
+                "nullable": true
+              },
+              "ast_type": "Variable",
+              "name": "field.previousDayRevenuePerProductCode"
+            }
+          },
+          "target_key": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Const",
+            "value": "_"
+          },
+          "target_selections": {
+            "productCodes": {
+              "type": {
+                "type": "Set",
+                "value": {
+                  "type": "String",
+                  "value": null
+                }
+              },
+              "ast_type": "Variable",
+              "name": "field.productCodes"
+            }
+          },
+          "output_key": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Variable",
+            "name": "right_key"
+          },
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "productCodes": {
+                    "type": "Set",
+                    "value": {
+                      "type": "String",
+                      "value": null
+                    }
+                  },
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "revenuePerProductCode": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Float",
+                        "value": null
+                      }
+                    }
+                  },
+                  "previousDayRevenuePerProductCode": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Float",
+                        "value": null
+                      }
+                    },
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "operation_type": "select",
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "dailyChangeInRevenuePerProductCode": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Float",
+                        "value": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selections": {
+            "date": {
+              "type": {
+                "type": "DateTime",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.date"
+            },
+            "dailyChangeInRevenuePerProductCode": {
+              "type": {
+                "type": "Dict",
+                "value": {
+                  "key": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "value": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              },
+              "ast_type": "IfNull",
+              "input": {
+                "type": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Float",
+                      "value": null
+                    }
+                  },
+                  "nullable": true
+                },
+                "ast_type": "Variable",
+                "name": "field.previousDayRevenuePerProductCode"
+              },
+              "output_null": {
+                "type": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Float",
+                      "value": null
+                    }
+                  }
+                },
+                "ast_type": "NewDict",
+                "keys": [],
+                "values": []
+              },
+              "output_value": {
+                "type": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Float",
+                      "value": null
+                    }
+                  }
+                },
+                "ast_type": "ToDict",
+                "collection": {
+                  "type": {
+                    "type": "Set",
+                    "value": {
+                      "type": "String",
+                      "value": null
+                    }
+                  },
+                  "ast_type": "Variable",
+                  "name": "field.productCodes"
+                },
+                "output_value": {
+                  "type": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "ast_type": "Subtract",
+                  "first": {
+                    "type": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "ast_type": "Get",
+                    "dict": {
+                      "type": {
+                        "type": "Dict",
+                        "value": {
+                          "key": {
+                            "type": "String",
+                            "value": null
+                          },
+                          "value": {
+                            "type": "Float",
+                            "value": null
+                          }
+                        }
+                      },
+                      "ast_type": "Variable",
+                      "name": "field.revenuePerProductCode"
+                    },
+                    "key": {
+                      "type": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "_key_xFieqkH7GngnVVosTY8S6D"
+                    },
+                    "default": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": 0
+                    }
+                  },
+                  "second": {
+                    "type": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "ast_type": "Get",
+                    "dict": {
+                      "type": {
+                        "type": "Dict",
+                        "value": {
+                          "key": {
+                            "type": "String",
+                            "value": null
+                          },
+                          "value": {
+                            "type": "Float",
+                            "value": null
+                          }
+                        }
+                      },
+                      "ast_type": "Variable",
+                      "name": "__iiwKZY_8m_tjnXH05lDKU"
+                    },
+                    "key": {
+                      "type": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "_key_xFieqkH7GngnVVosTY8S6D"
+                    },
+                    "default": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": 0
+                    }
+                  }
+                },
+                "output_key": {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "_key_xFieqkH7GngnVVosTY8S6D"
+                },
+                "input_key": {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "_key_xFieqkH7GngnVVosTY8S6D"
+                }
+              },
+              "value": {
+                "type": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Float",
+                      "value": null
+                    }
+                  }
+                },
+                "ast_type": "Variable",
+                "name": "__iiwKZY_8m_tjnXH05lDKU"
+              }
+            }
+          },
+          "output_key": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Variable",
+            "name": "key"
+          }
+        }
+      ]
+    },
+    "Pipeline.Daily Difference in Revenue.CSV": {
+      "name": "Pipeline.Daily Difference in Revenue.CSV",
+      "parent": "Pipeline.Daily Difference in Revenue.CSV",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Pipeline.Daily Difference in Revenue",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "dailyChangeInRevenue": {
+                    "type": "Float",
+                    "value": null,
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Daily Difference in Revenue.CSV",
+          "type": {
+            "type": "Blob",
+            "value": null
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "toCsv",
+          "skip_n": {
+            "type": "integer",
+            "kind": "literal",
+            "value": "0"
+          },
+          "delimiter": ",",
+          "null_str": "",
+          "output_type": {
+            "type": "Blob",
+            "value": null
+          },
+          "selections": {
+            "Date": {
+              "type": {
+                "type": "DateTime",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.date"
+            },
+            "Daily Change In Revenue": {
+              "type": {
+                "type": "Float",
+                "value": null,
+                "nullable": true
+              },
+              "ast_type": "Variable",
+              "name": "field.dailyChangeInRevenue"
+            }
+          }
+        }
+      ]
+    },
+    "Pipeline.Disaggregate Items": {
+      "name": "Pipeline.Disaggregate Items",
+      "parent": "Pipeline.Disaggregate Items",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Pipeline.Parse Sales",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "items": {
+                    "type": "Array",
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "productCode": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "units": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "salePrice": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Disaggregate Items",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "productCode": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "units": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "salePrice": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "disaggregate",
+          "collection": {
+            "type": {
+              "type": "Array",
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "productCode": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "units": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "salePrice": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              }
+            },
+            "ast_type": "Variable",
+            "name": "field.items"
+          },
+          "selections": {
+            "transactionDate": {
+              "type": {
+                "type": "DateTime",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.transactionDate"
+            },
+            "productCode": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "GetField",
+              "struct": {
+                "type": {
+                  "type": "Struct",
+                  "value": {
+                    "productCode": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "units": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "salePrice": {
+                      "type": "Float",
+                      "value": null
+                    }
+                  }
+                },
+                "ast_type": "Variable",
+                "name": "collection_value"
+              },
+              "key": "productCode"
+            },
+            "units": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "GetField",
+              "struct": {
+                "type": {
+                  "type": "Struct",
+                  "value": {
+                    "productCode": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "units": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "salePrice": {
+                      "type": "Float",
+                      "value": null
+                    }
+                  }
+                },
+                "ast_type": "Variable",
+                "name": "collection_value"
+              },
+              "key": "units"
+            },
+            "salePrice": {
+              "type": {
+                "type": "Float",
+                "value": null
+              },
+              "ast_type": "GetField",
+              "struct": {
+                "type": {
+                  "type": "Struct",
+                  "value": {
+                    "productCode": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "units": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "salePrice": {
+                      "type": "Float",
+                      "value": null
+                    }
+                  }
+                },
+                "ast_type": "Variable",
+                "name": "collection_value"
+              },
+              "key": "salePrice"
+            }
+          },
+          "output_key": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "StringJoin",
+            "values": [
+              {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "key"
+              },
+              {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": "."
+              },
+              {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Print",
+                "value": {
+                  "type": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "collection_key"
+                }
+              }
+            ],
+            "seperator": ""
+          },
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "productCode": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "units": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "salePrice": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Pipeline.Disaggregate Units": {
+      "name": "Pipeline.Disaggregate Units",
+      "parent": "Pipeline.Disaggregate Units",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Pipeline.Disaggregate Items",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "productCode": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "units": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "salePrice": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Disaggregate Units",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "productCode": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "salePrice": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "disaggregate",
+          "collection": {
+            "type": {
+              "type": "Array",
+              "value": {
+                "type": "Integer",
+                "value": null
+              }
+            },
+            "ast_type": "Range",
+            "start": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Const",
+              "value": {
+                "type": "integer",
+                "kind": "literal",
+                "value": "1"
+              }
+            },
+            "stop": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.units"
+            }
+          },
+          "selections": {
+            "transactionDate": {
+              "type": {
+                "type": "DateTime",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.transactionDate"
+            },
+            "productCode": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.productCode"
+            },
+            "salePrice": {
+              "type": {
+                "type": "Float",
+                "value": null
+              },
+              "ast_type": "Divide",
+              "first": {
+                "type": {
+                  "type": "Float",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "field.salePrice"
+              },
+              "second": {
+                "type": {
+                  "type": "Float",
+                  "value": null
+                },
+                "ast_type": "Convert",
+                "from": {
+                  "type": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "field.units"
+                }
+              }
+            }
+          },
+          "output_key": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "StringJoin",
+            "values": [
+              {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "key"
+              },
+              {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": "."
+              },
+              {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Print",
+                "value": {
+                  "type": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "collection_key"
+                }
+              }
+            ],
+            "seperator": ""
+          },
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "productCode": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "salePrice": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Pipeline.Filter After Datetime": {
+      "name": "Pipeline.Filter After Datetime",
+      "parent": "Pipeline.Filter After Datetime",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Pipeline.Parse Sales",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "items": {
+                    "type": "Array",
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "productCode": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "units": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "salePrice": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Filter After Datetime",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "items": {
+                    "type": "Array",
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "productCode": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "units": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "salePrice": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "filter",
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "items": {
+                    "type": "Array",
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "productCode": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "units": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "salePrice": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "predicate": {
+            "type": {
+              "type": "Boolean",
+              "value": null
+            },
+            "ast_type": "GreaterEqual",
+            "first": {
+              "type": {
+                "type": "DateTime",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.transactionDate"
+            },
+            "second": {
+              "type": {
+                "type": "DateTime",
+                "value": null
+              },
+              "ast_type": "Const",
+              "value": {
+                "type": "datetime",
+                "kind": "literal",
+                "value": "2022-11-10T00:00:00.000Z"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Pipeline.Filter On Date": {
+      "name": "Pipeline.Filter On Date",
+      "parent": "Pipeline.Filter On Date",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Pipeline.Parse Sales",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "items": {
+                    "type": "Array",
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "productCode": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "units": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "salePrice": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Filter On Date",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "items": {
+                    "type": "Array",
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "productCode": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "units": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "salePrice": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "filter",
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "items": {
+                    "type": "Array",
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "productCode": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "units": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "salePrice": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "predicate": {
+            "type": {
+              "type": "Boolean",
+              "value": null
+            },
+            "ast_type": "Equal",
+            "first": {
+              "type": {
+                "type": "DateTime",
+                "value": null
+              },
+              "ast_type": "Round",
+              "rounding_mode": "floor",
+              "value": {
+                "type": {
+                  "type": "DateTime",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "field.transactionDate"
+              },
+              "unit": "day"
+            },
+            "second": {
+              "type": {
+                "type": "DateTime",
+                "value": null
+              },
+              "ast_type": "Const",
+              "value": {
+                "type": "datetime",
+                "kind": "literal",
+                "value": "2022-11-10T00:00:00.000Z"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Pipeline.Filter Revenue Greater than 100": {
+      "name": "Pipeline.Filter Revenue Greater than 100",
+      "parent": "Pipeline.Filter Revenue Greater than 100",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Pipeline.Parse Sales",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "items": {
+                    "type": "Array",
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "productCode": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "units": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "salePrice": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Filter Revenue Greater than 100",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "items": {
+                    "type": "Array",
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "productCode": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "units": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "salePrice": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "filter",
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "items": {
+                    "type": "Array",
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "productCode": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "units": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "salePrice": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "predicate": {
+            "type": {
+              "type": "Boolean",
+              "value": null
+            },
+            "ast_type": "Greater",
+            "first": {
+              "type": {
+                "type": "Float",
+                "value": null
+              },
+              "ast_type": "Reduce",
+              "collection": {
+                "type": {
+                  "type": "Array",
+                  "value": {
+                    "type": "Struct",
+                    "value": {
+                      "productCode": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "units": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "salePrice": {
+                        "type": "Float",
+                        "value": null
+                      }
+                    }
+                  }
+                },
+                "ast_type": "Variable",
+                "name": "field.items"
+              },
+              "reducer": {
+                "type": {
+                  "type": "Float",
+                  "value": null
+                },
+                "ast_type": "Add",
+                "first": {
+                  "type": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "_previous_pWGxXKcxE_ilF5Z$VA3wcD"
+                },
+                "second": {
+                  "type": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "ast_type": "GetField",
+                  "struct": {
+                    "type": {
+                      "type": "Struct",
+                      "value": {
+                        "productCode": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "units": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "salePrice": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    },
+                    "ast_type": "Variable",
+                    "name": "_value_c$M2qGoO4Kxztvq6kcpen5"
+                  },
+                  "key": "salePrice"
+                }
+              },
+              "initial": {
+                "type": {
+                  "type": "Float",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": 0
+              },
+              "previous": {
+                "type": {
+                  "type": "Float",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "_previous_pWGxXKcxE_ilF5Z$VA3wcD"
+              },
+              "value": {
+                "type": {
+                  "type": "Struct",
+                  "value": {
+                    "productCode": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "units": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "salePrice": {
+                      "type": "Float",
+                      "value": null
+                    }
+                  }
+                },
+                "ast_type": "Variable",
+                "name": "_value_c$M2qGoO4Kxztvq6kcpen5"
+              },
+              "key": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "_key_Mqp_84B4LZXwLqOG$Bp36R"
+              }
+            },
+            "second": {
+              "type": {
+                "type": "Float",
+                "value": null
+              },
+              "ast_type": "Const",
+              "value": 100
+            }
+          }
+        }
+      ]
+    },
+    "Pipeline.My Pipeline": {
+      "name": "Pipeline.My Pipeline",
+      "parent": "Pipeline.My Pipeline",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.My Datastream",
+          "type": {
+            "type": "Integer",
+            "value": null,
+            "nullable": true
+          },
+          "writable": true
+        },
+        "some_integer": {
+          "name": "Writeable.My Second Datastream",
+          "type": {
+            "type": "Integer",
+            "value": null
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.My Pipeline",
+          "type": {
+            "type": "Integer",
+            "value": null
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "input",
+          "name": "some_integer"
+        },
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "Integer",
+            "value": null
+          },
+          "expression": {
+            "type": {
+              "type": "Integer",
+              "value": null
+            },
+            "ast_type": "IfNull",
+            "input": {
+              "type": {
+                "type": "Integer",
+                "value": null,
+                "nullable": true
+              },
+              "ast_type": "Variable",
+              "name": "value"
+            },
+            "output_null": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Const",
+              "value": {
+                "type": "integer",
+                "kind": "literal",
+                "value": "0"
+              }
+            },
+            "output_value": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "_HazoUqqFPXCY$BL2lFWN3H"
+            },
+            "value": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "_HazoUqqFPXCY$BL2lFWN3H"
+            }
+          }
+        },
+        {
+          "operation_type": "assert",
+          "assertion": {
+            "assertion_type": "Fail",
+            "value_type": "Value",
+            "predicate": {
+              "type": {
+                "type": "Boolean",
+                "value": null
+              },
+              "ast_type": "Less",
+              "first": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "value"
+              },
+              "second": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": {
+                  "type": "integer",
+                  "kind": "literal",
+                  "value": "50"
+                }
+              }
+            },
+            "message": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "StringJoin",
+              "values": [
+                {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Const",
+                  "value": "Expected value less than 50, got "
+                },
+                {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Print",
+                  "value": {
+                    "type": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "value"
+                  }
+                }
+              ],
+              "seperator": ""
+            }
+          }
+        },
+        {
+          "operation_type": "assert",
+          "assertion": {
+            "assertion_type": "Warn",
+            "value_type": "Value",
+            "predicate": {
+              "type": {
+                "type": "Boolean",
+                "value": null
+              },
+              "ast_type": "Less",
+              "first": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "value"
+              },
+              "second": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "input.some_integer"
+              }
+            },
+            "message": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "StringJoin",
+              "values": [
+                {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Const",
+                  "value": "Expected value less than "
+                },
+                {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Print",
+                  "value": {
+                    "type": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "input.some_integer"
+                  }
+                },
+                {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Const",
+                  "value": ", got "
+                },
+                {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Print",
+                  "value": {
+                    "type": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "value"
+                  }
+                }
+              ],
+              "seperator": ""
+            }
+          }
+        },
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "Integer",
+            "value": null
+          },
+          "expression": {
+            "type": {
+              "type": "Integer",
+              "value": null
+            },
+            "ast_type": "Add",
+            "first": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "value"
+            },
+            "second": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Const",
+              "value": {
+                "type": "integer",
+                "kind": "literal",
+                "value": "1"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Pipeline.Parse Products": {
+      "name": "Pipeline.Parse Products",
+      "parent": "Pipeline.Parse Products",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.Products",
+          "type": {
+            "type": "Blob",
+            "value": null
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Parse Products",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "Name": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Code": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Category": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Unit Cost": {
+                    "type": "Float",
+                    "value": null,
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "fromCsv",
+          "skip_n": {
+            "type": "integer",
+            "kind": "literal",
+            "value": "0"
+          },
+          "delimiter": ",",
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "Name": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Code": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Category": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Unit Cost": {
+                    "type": "Float",
+                    "value": null,
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "output_key": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Variable",
+            "name": "field.Code"
+          }
+        }
+      ]
+    },
+    "Pipeline.Parse Sales": {
+      "name": "Pipeline.Parse Sales",
+      "parent": "Pipeline.Parse Sales",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.Sales",
+          "type": {
+            "type": "Blob",
+            "value": null
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Parse Sales",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "items": {
+                    "type": "Array",
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "productCode": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "units": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "salePrice": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "fromJsonLines",
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "items": {
+                    "type": "Array",
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "productCode": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "units": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "salePrice": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "output_key": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Print",
+            "value": {
+              "type": {
+                "type": "DateTime",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.transactionDate"
+            }
+          }
+        }
+      ]
+    },
+    "Pipeline.Recent Units Per Product Code By Date": {
+      "name": "Pipeline.Recent Units Per Product Code By Date",
+      "parent": "Pipeline.Recent Units Per Product Code By Date",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Pipeline.Units Per Product Code By Date",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "unitsPerProductCode": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
+                  },
+                  "totalRevenue": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "revenuePerProductCode": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Float",
+                        "value": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Recent Units Per Product Code By Date",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "unitsPerProductCode": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
+                  },
+                  "totalRevenue": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "revenuePerProductCode": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Float",
+                        "value": null
+                      }
+                    }
+                  },
+                  "previousDaysUnitsPerProductCode": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    },
+                    "nullable": true
+                  },
+                  "previousDayRevenue": {
+                    "type": "Float",
+                    "value": null,
+                    "nullable": true
+                  },
+                  "previousDayRevenuePerProductCode": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Float",
+                        "value": null
+                      }
+                    },
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "offset",
+          "group_key": {
+            "type": {
+              "nullable": true
+            },
+            "ast_type": "Const",
+            "value": null
+          },
+          "sort_key": {
+            "type": {
+              "type": "DateTime",
+              "value": null
+            },
+            "ast_type": "Variable",
+            "name": "field.date"
+          },
+          "offset": -1,
+          "offset_selections": {
+            "previousDaysUnitsPerProductCode": {
+              "type": {
+                "type": "Dict",
+                "value": {
+                  "key": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "value": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                },
+                "nullable": true
+              },
+              "ast_type": "IfElse",
+              "predicate": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "offset_exists"
+              },
+              "true": {
+                "type": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Integer",
+                      "value": null
+                    }
+                  },
+                  "nullable": true
+                },
+                "ast_type": "Variable",
+                "name": "field.unitsPerProductCode"
+              },
+              "false": {
+                "type": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Integer",
+                      "value": null
+                    }
+                  }
+                },
+                "ast_type": "Const",
+                "value": {
+                  "type": "map",
+                  "kind": "literal",
+                  "value": []
+                }
+              }
+            },
+            "previousDayRevenue": {
+              "type": {
+                "type": "Float",
+                "value": null,
+                "nullable": true
+              },
+              "ast_type": "Variable",
+              "name": "field.totalRevenue"
+            },
+            "previousDayRevenuePerProductCode": {
+              "type": {
+                "type": "Dict",
+                "value": {
+                  "key": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "value": {
+                    "type": "Float",
+                    "value": null
+                  }
+                },
+                "nullable": true
+              },
+              "ast_type": "Variable",
+              "name": "field.revenuePerProductCode"
+            }
+          },
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "unitsPerProductCode": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
+                  },
+                  "totalRevenue": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "revenuePerProductCode": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Float",
+                        "value": null
+                      }
+                    }
+                  },
+                  "previousDaysUnitsPerProductCode": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    },
+                    "nullable": true
+                  },
+                  "previousDayRevenue": {
+                    "type": "Float",
+                    "value": null,
+                    "nullable": true
+                  },
+                  "previousDayRevenuePerProductCode": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Float",
+                        "value": null
+                      }
+                    },
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Pipeline.Sales and Product Info": {
+      "name": "Pipeline.Sales and Product Info",
+      "parent": "Pipeline.Sales and Product Info",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Pipeline.Disaggregate Items",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "productCode": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "units": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "salePrice": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        },
+        "products": {
+          "name": "Pipeline.Parse Products",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "Name": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Code": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Category": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Unit Cost": {
+                    "type": "Float",
+                    "value": null,
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Sales and Product Info",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "productCode": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "units": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "productName": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "productCategory": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "productUnitCost": {
+                    "type": "Float",
+                    "value": null,
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "input",
+          "name": "products"
+        },
+        {
+          "operation_type": "join",
+          "join_type": "Inner",
+          "source_table": "input.products",
+          "source_key": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Variable",
+            "name": "field.Code"
+          },
+          "source_selections": {
+            "productName": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.Name"
+            },
+            "productCategory": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.Category"
+            },
+            "productUnitCost": {
+              "type": {
+                "type": "Float",
+                "value": null,
+                "nullable": true
+              },
+              "ast_type": "Variable",
+              "name": "field.Unit Cost"
+            }
+          },
+          "target_key": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Variable",
+            "name": "field.productCode"
+          },
+          "target_selections": {
+            "productCode": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.productCode"
+            },
+            "transactionDate": {
+              "type": {
+                "type": "DateTime",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.transactionDate"
+            },
+            "units": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.units"
+            }
+          },
+          "output_key": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "StringJoin",
+            "values": [
+              {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Print",
+                "value": {
+                  "type": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "field.transactionDate"
+                }
+              },
+              {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": "."
+              },
+              {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "field.productCode"
+              }
+            ],
+            "seperator": ""
+          },
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "productCode": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "units": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "productName": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "productCategory": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "productUnitCost": {
+                    "type": "Float",
+                    "value": null,
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Pipeline.Units Per Product Code By Date": {
+      "name": "Pipeline.Units Per Product Code By Date",
+      "parent": "Pipeline.Units Per Product Code By Date",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Pipeline.Disaggregate Items",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "productCode": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "units": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "salePrice": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Units Per Product Code By Date",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "unitsPerProductCode": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
+                  },
+                  "totalRevenue": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "revenuePerProductCode": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Float",
+                        "value": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "aggregate",
+          "group_name": "date",
+          "group_value": {
+            "type": {
+              "type": "DateTime",
+              "value": null
+            },
+            "ast_type": "Round",
+            "rounding_mode": "floor",
+            "value": {
+              "type": {
+                "type": "DateTime",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.transactionDate"
+            },
+            "unit": "day"
+          },
+          "aggregations": {
+            "unitsPerProductCode": {
+              "type": {
+                "type": "Dict",
+                "value": {
+                  "key": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "value": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              },
+              "aggregation_type": "CollectDictSum",
+              "input_key": "key",
+              "value": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "field.units"
+              },
+              "key": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "field.productCode"
+              },
+              "field": {
+                "type": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Integer",
+                      "value": null
+                    }
+                  }
+                },
+                "ast_type": "Variable",
+                "name": "unitsPerProductCode"
+              }
+            },
+            "totalRevenue": {
+              "type": {
+                "type": "Float",
+                "value": null
+              },
+              "aggregation_type": "Sum",
+              "input_key": "key",
+              "value": {
+                "type": {
+                  "type": "Float",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "field.salePrice"
+              },
+              "field": {
+                "type": {
+                  "type": "Float",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "totalRevenue"
+              }
+            },
+            "revenuePerProductCode": {
+              "type": {
+                "type": "Dict",
+                "value": {
+                  "key": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "value": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              },
+              "aggregation_type": "CollectDictSum",
+              "input_key": "key",
+              "value": {
+                "type": {
+                  "type": "Float",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "field.salePrice"
+              },
+              "key": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "field.productCode"
+              },
+              "field": {
+                "type": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Float",
+                      "value": null
+                    }
+                  }
+                },
+                "ast_type": "Variable",
+                "name": "revenuePerProductCode"
+              }
+            }
+          },
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "unitsPerProductCode": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
+                  },
+                  "totalRevenue": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "revenuePerProductCode": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Float",
+                        "value": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Source.My BlobType Datastream": {
+      "name": "Source.My BlobType Datastream",
+      "parent": "My BlobType Datastream",
+      "task_type": "source",
+      "source_type": "writeable",
+      "inputs": {
+        "input": {
+          "name": "Writeable.My BlobType Datastream",
+          "type": {
+            "type": "Blob",
+            "value": null
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Source.My BlobType Datastream",
+          "type": {
+            "type": "Blob",
+            "value": null
+          },
+          "writable": false
+        }
+      },
+      "input_assertions": [],
+      "output_assertions": [
+        {
+          "assertion_type": "Fail",
+          "value_type": "Value",
+          "predicate": {
+            "type": {
+              "type": "Boolean",
+              "value": null
+            },
+            "ast_type": "Greater",
+            "first": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Size",
+              "collection": {
+                "type": {
+                  "type": "Blob",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "value"
+              }
+            },
+            "second": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Const",
+              "value": {
+                "type": "integer",
+                "kind": "literal",
+                "value": "3"
+              }
+            }
+          },
+          "message": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "StringJoin",
+            "values": [
+              {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": "Expected file with 3 or more bytes, got "
+              },
+              {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Print",
+                "value": {
+                  "type": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "ast_type": "Size",
+                  "collection": {
+                    "type": {
+                      "type": "Blob",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "value"
+                  }
+                }
+              },
+              {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": " bytes."
+              }
+            ],
+            "seperator": ""
+          }
+        }
+      ]
+    }
+  },
+  "defaults": {
+    "Writeable.My Datastream": {
+      "default_type": "value",
+      "stream": "Writeable.My Datastream",
+      "value": {
+        "type": {
+          "type": "Integer",
+          "value": null,
+          "nullable": true
+        },
+        "ast_type": "Const",
+        "value": {
+          "type": "integer",
+          "kind": "literal",
+          "value": "2"
+        }
+      }
+    },
+    "Writeable.My Second Datastream": {
+      "default_type": "value",
+      "stream": "Writeable.My Second Datastream",
+      "value": {
+        "type": {
+          "type": "Integer",
+          "value": null
+        },
+        "ast_type": "Const",
+        "value": {
+          "type": "integer",
+          "kind": "literal",
+          "value": "10"
+        }
+      }
+    },
+    "Writeable.Products": {
+      "default_type": "file",
+      "stream": "Writeable.Products",
+      "path": "./data/products.csv"
+    },
+    "Writeable.Sales": {
+      "default_type": "file",
+      "stream": "Writeable.Sales",
+      "path": "./data/sales.jsonl"
+    }
+  }
+}

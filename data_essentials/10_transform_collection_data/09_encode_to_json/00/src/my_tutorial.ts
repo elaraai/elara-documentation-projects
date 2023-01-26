@@ -1,4 +1,4 @@
-import { Add, ArrayType, BlobType, CollectDictSum, CollectSet, Const, Count, DateTimeType, Default, DictType, Divide, Equal, FloatType, Floor, Get, GetField, Greater, GreaterEqual, IfElse, IfNull, IntegerType, IsNull, Less, MapDict, Nullable, PipelineBuilder, Range, Reduce, Size, SourceBuilder, StringJoin, StringType, StructType, Subtract, Sum, Template } from "@elaraai/core"
+import { Add, ArrayType, BlobType, CollectDictSum, CollectSet, Const, Count, DateTimeType, Default, DictType, Divide, Equal, FloatType, Floor, Get, GetField, Greater, GreaterEqual, IfElse, IfNull, IntegerType, Less, NewDict, Nullable, PipelineBuilder, Range, Reduce, Size, SourceBuilder, StringJoin, StringType, StructType, Subtract, Sum, Template, ToDict } from "@elaraai/core"
 
 
 const my_datastream = new SourceBuilder("My Datastream")
@@ -229,15 +229,16 @@ const select_exercise_two = new PipelineBuilder("Daily Difference in Revenue by 
     .select({
         selections: {
             date: fields => fields.date,
-            dailyChangeInRevenuePerProductCode: fields => IfElse(
-                IsNull(fields.previousDayRevenuePerProductCode),
-                null,
-                MapDict(
+            dailyChangeInRevenuePerProductCode: fields => IfNull(
+                fields.previousDayRevenuePerProductCode,
+                NewDict(StringType, FloatType),
+                previousDayRevenuePerProductCode => ToDict(
                     fields.productCodes,
                     product => Subtract(
                         Get(fields.revenuePerProductCode, product, 0),
-                        Get(fields.previousDayRevenuePerProductCode, product, 0)
-                    )
+                        Get(previousDayRevenuePerProductCode, product, 0)
+                    ),
+                    key => key
                 )
             )
         }

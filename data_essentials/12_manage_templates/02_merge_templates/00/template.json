@@ -1,10 +1,4 @@
 {
-  "version": {
-    "type": "integer",
-    "kind": "literal",
-    "value": "1"
-  },
-  "name": "HelloWorld",
   "streams": {
     "Pipeline.My Other Stream": {
       "name": "Pipeline.My Other Stream",
@@ -12,7 +6,7 @@
         "type": "Float",
         "value": null
       },
-      "hash": "5336003d4d556ab4851fa11c9f32fbb5f8799d413dcfe77295cbc6f8fe0846eb"
+      "writable": false
     },
     "Writeable.My Stream": {
       "name": "Writeable.My Stream",
@@ -20,13 +14,13 @@
         "type": "Float",
         "value": null
       },
-      "hash": "5336003d4d556ab4851fa11c9f32fbb5f8799d413dcfe77295cbc6f8fe0846eb"
+      "writable": true
     }
   },
   "tasks": {
     "Pipeline.My Other Stream": {
       "name": "Pipeline.My Other Stream",
-      "parent": "My Other Stream",
+      "parent": "Pipeline.My Other Stream",
       "task_type": "pipeline",
       "inputs": {
         "input": {
@@ -35,7 +29,7 @@
             "type": "Float",
             "value": null
           },
-          "hash": "5336003d4d556ab4851fa11c9f32fbb5f8799d413dcfe77295cbc6f8fe0846eb"
+          "writable": true
         }
       },
       "outputs": {
@@ -45,7 +39,7 @@
             "type": "Float",
             "value": null
           },
-          "hash": "5336003d4d556ab4851fa11c9f32fbb5f8799d413dcfe77295cbc6f8fe0846eb"
+          "writable": false
         }
       },
       "operations": [

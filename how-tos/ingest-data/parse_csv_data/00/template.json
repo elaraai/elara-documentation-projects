@@ -1,0 +1,254 @@
+{
+  "streams": {
+    "Pipeline.My Parser": {
+      "name": "Pipeline.My Parser",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "Text Field": {
+                "type": "String",
+                "value": null
+              },
+              "Integer Field": {
+                "type": "Integer",
+                "value": null,
+                "nullable": true
+              },
+              "Float Field": {
+                "type": "Float",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "Writeable.My BlobType Stream": {
+      "name": "Writeable.My BlobType Stream",
+      "type": {
+        "type": "Blob",
+        "value": null
+      },
+      "writable": true
+    }
+  },
+  "tasks": {
+    "Pipeline.My Parser": {
+      "name": "Pipeline.My Parser",
+      "parent": "Pipeline.My Parser",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.My BlobType Stream",
+          "type": {
+            "type": "Blob",
+            "value": null
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.My Parser",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "Text Field": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Integer Field": {
+                    "type": "Integer",
+                    "value": null,
+                    "nullable": true
+                  },
+                  "Float Field": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "fromCsv",
+          "skip_n": {
+            "type": "integer",
+            "kind": "literal",
+            "value": "0"
+          },
+          "delimiter": ",",
+          "null_str": "",
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "Text Field": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Integer Field": {
+                    "type": "Integer",
+                    "value": null,
+                    "nullable": true
+                  },
+                  "Float Field": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "output_key": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Variable",
+            "name": "field.Text Field"
+          }
+        }
+      ]
+    }
+  },
+  "defaults": {
+    "Writeable.My BlobType Stream": {
+      "default_type": "value",
+      "stream": "Writeable.My BlobType Stream",
+      "value": {
+        "type": {
+          "type": "Blob",
+          "value": null
+        },
+        "ast_type": "Const",
+        "value": {
+          "type": "blob",
+          "kind": "literal",
+          "value": [
+            84,
+            101,
+            120,
+            116,
+            32,
+            70,
+            105,
+            101,
+            108,
+            100,
+            44,
+            73,
+            110,
+            116,
+            101,
+            103,
+            101,
+            114,
+            32,
+            70,
+            105,
+            101,
+            108,
+            100,
+            44,
+            70,
+            108,
+            111,
+            97,
+            116,
+            32,
+            70,
+            105,
+            101,
+            108,
+            100,
+            10,
+            115,
+            111,
+            109,
+            101,
+            32,
+            115,
+            116,
+            114,
+            105,
+            110,
+            103,
+            44,
+            53,
+            44,
+            49,
+            51,
+            46,
+            53,
+            10,
+            97,
+            110,
+            111,
+            116,
+            104,
+            101,
+            114,
+            32,
+            115,
+            116,
+            114,
+            105,
+            110,
+            103,
+            44,
+            49,
+            48,
+            44,
+            49,
+            50,
+            10,
+            116,
+            104,
+            105,
+            114,
+            100,
+            32,
+            115,
+            116,
+            114,
+            105,
+            110,
+            103,
+            44,
+            44,
+            49,
+            51,
+            46,
+            53
+          ]
+        }
+      }
+    }
+  }
+}
