@@ -9,4 +9,4 @@ build: build-01
 
 .PHONY: build-01
 build-01:
-	cd 01 && npm install
+	cd 01 && npm install && edk template build

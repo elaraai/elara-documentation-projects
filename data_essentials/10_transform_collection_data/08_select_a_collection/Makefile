@@ -9,12 +9,12 @@ build: build-00 build-01 build-02
 
 .PHONY: build-00
 build-00:
-	cd 00 && npm install
+	cd 00 && npm install && edk template build
 
 .PHONY: build-01
 build-01:
-	cd 01 && npm install
+	cd 01 && npm install && edk template build
 
 .PHONY: build-02
 build-02:
-	cd 02 && npm install
+	cd 02 && npm install && edk template build
