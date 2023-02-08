@@ -51,7 +51,7 @@ const initial_price = new PipelineBuilder("Initial Price")
                 Struct({ date: new Date(`2022-10-10T09:00:00.000Z`), qty: 1n, price: 4.00 })
             ),
             "price"
-        )   
+        )
     )
 
 const price = new ResourceBuilder("Price")
@@ -111,12 +111,12 @@ const procurement = new ProcessBuilder("Procurement")
     .mapManyFromStream(order_data.outputStream())
 
 const descriptive_scenario = new ScenarioBuilder("Descriptive")
-    .process(sales)
-    .process(procurement)
     .resource(cash, { ledger: true })
     .resource(stock_on_hand, { ledger: true })
-    .process(promotion)
     .resource(price, { ledger: true })
+    .process(sales)
+    .process(procurement)
+    .process(promotion)
 
 export default Template(
     sales_data,

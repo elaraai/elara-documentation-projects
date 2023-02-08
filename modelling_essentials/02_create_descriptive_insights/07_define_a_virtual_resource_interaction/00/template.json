@@ -456,7 +456,7 @@
                 }
               },
               "ast_type": "Variable",
-              "name": "_value_9N8mLx2qkFePdnAhcvdw1b"
+              "name": "_value_LnW7_HZg4vnf6WmhraD7X6"
             },
             "input_value": {
               "type": {
@@ -477,7 +477,7 @@
                 }
               },
               "ast_type": "Variable",
-              "name": "_value_9N8mLx2qkFePdnAhcvdw1b"
+              "name": "_value_LnW7_HZg4vnf6WmhraD7X6"
             },
             "input_key": {
               "type": {
@@ -485,7 +485,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_5fn6s$XX1wmWiAcFK3Y$aU"
+              "name": "_key_1GX5XYPNXPh2EzQ0sNNh1c"
             }
           }
         },
@@ -588,7 +588,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "_first_UqRcY8E7G6gYUuv9mgnhZp"
+                  "name": "_first_y0Ht57V7uqGacNhfz0w2M_"
                 },
                 "key": "date"
               },
@@ -617,7 +617,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "_second_QUYRqx0FEdSgPr$1EytxvR"
+                  "name": "_second_xS4Jw5mqZr7Zv5vrWKAy4d"
                 },
                 "key": "date"
               }
@@ -641,7 +641,7 @@
                 }
               },
               "ast_type": "Variable",
-              "name": "_first_UqRcY8E7G6gYUuv9mgnhZp"
+              "name": "_first_y0Ht57V7uqGacNhfz0w2M_"
             },
             "second": {
               "type": {
@@ -662,7 +662,7 @@
                 }
               },
               "ast_type": "Variable",
-              "name": "_second_QUYRqx0FEdSgPr$1EytxvR"
+              "name": "_second_xS4Jw5mqZr7Zv5vrWKAy4d"
             }
           }
         },
@@ -1051,6 +1051,30 @@
       "task_type": "simulation",
       "name": "Simulation.Descriptive",
       "inputs": {
+        "resource.Cash": {
+          "name": "Writeable.Resource.Cash",
+          "type": {
+            "type": "Float",
+            "value": null
+          },
+          "writable": false
+        },
+        "resource.Stock-on-hand": {
+          "name": "Writeable.Resource.Stock-on-hand",
+          "type": {
+            "type": "Integer",
+            "value": null
+          },
+          "writable": false
+        },
+        "resource.Price": {
+          "name": "Pipeline.Initial Price",
+          "type": {
+            "type": "Float",
+            "value": null
+          },
+          "writable": false
+        },
         "process.Sales": {
           "name": "Pipeline.Sales Excluding Price",
           "type": {
@@ -1111,22 +1135,6 @@
           },
           "writable": true
         },
-        "resource.Cash": {
-          "name": "Writeable.Resource.Cash",
-          "type": {
-            "type": "Float",
-            "value": null
-          },
-          "writable": false
-        },
-        "resource.Stock-on-hand": {
-          "name": "Writeable.Resource.Stock-on-hand",
-          "type": {
-            "type": "Integer",
-            "value": null
-          },
-          "writable": false
-        },
         "process.Promotion": {
           "name": "Pipeline.Promotion Data",
           "type": {
@@ -1150,14 +1158,6 @@
                 }
               }
             }
-          },
-          "writable": false
-        },
-        "resource.Price": {
-          "name": "Pipeline.Initial Price",
-          "type": {
-            "type": "Float",
-            "value": null
           },
           "writable": false
         }
@@ -1650,7 +1650,8 @@
       "mls": {},
       "configuration": {
         "in_memory": false,
-        "journal": true
+        "journal": true,
+        "debug": false
       }
     }
   },

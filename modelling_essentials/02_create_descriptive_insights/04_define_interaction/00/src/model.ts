@@ -57,10 +57,10 @@ const procurement = new ProcessBuilder("Procurement")
     .mapManyFromStream(order_data.outputStream())
 
 const descriptive_scenario = new ScenarioBuilder("Descriptive")
-    .process(sales)
-    .process(procurement)
     .resource(cash, { ledger: true })
     .resource(stock_on_hand, { ledger: true })
+    .process(sales)
+    .process(procurement)
 
 export default Template(
     sales_data,

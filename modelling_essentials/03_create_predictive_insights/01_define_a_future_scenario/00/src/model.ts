@@ -51,7 +51,7 @@ const initial_price = new PipelineBuilder("Initial Price")
                 Struct({ date: new Date(`2022-10-10T09:00:00.000Z`), qty: 1n, price: 4.00 })
             ),
             "price"
-        )   
+        )
     )
 
 const price = new ResourceBuilder("Price")
@@ -147,13 +147,13 @@ const past_procurement = procurement
     .mapManyFromStream(procurement_data.outputStream())
 
 const descriptive_scenario = new ScenarioBuilder("Descriptive")
-    .process(past_sales)
-    .process(past_procurement)
     .resource(cash, { ledger: true })
     .resource(stock_on_hand, { ledger: true })
-    .process(past_promotion)
     .resource(price, { ledger: true })
     .resource(supplier, { ledger: true })
+    .process(past_sales)
+    .process(past_procurement)
+    .process(past_promotion)
     .process(receive_goods)
     .process(pay_supplier)
 
@@ -251,31 +251,31 @@ const predictive_scenario = new ScenarioBuilder("Predictive")
     .process(predicted_procurement)
     .process(predicted_promotion)
 
-    export default Template(
-        sales_data,
-        order_data,
-        sales,
-        procurement,
-        descriptive_scenario,
-        cash,
-        stock_on_hand,
-        initial_price,
-        price,
-        promotion_data,
-        promotion,
-        sales_ex_price,
-        supplier,
-        receive_goods,
-        pay_supplier,
-        procurement_data,
-        past_promotion,
-        past_sales,
-        past_procurement,
-        start_date,
-        initial_instance_parameters,
-        predicted_sales,
-        predicted_procurement,
-        predicted_price,
-        predicted_promotion,
-        predictive_scenario
-    )
+export default Template(
+    sales_data,
+    order_data,
+    sales,
+    procurement,
+    descriptive_scenario,
+    cash,
+    stock_on_hand,
+    initial_price,
+    price,
+    promotion_data,
+    promotion,
+    sales_ex_price,
+    supplier,
+    receive_goods,
+    pay_supplier,
+    procurement_data,
+    past_promotion,
+    past_sales,
+    past_procurement,
+    start_date,
+    initial_instance_parameters,
+    predicted_sales,
+    predicted_procurement,
+    predicted_price,
+    predicted_promotion,
+    predictive_scenario
+)
