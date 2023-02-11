@@ -5,7 +5,7 @@ help:
 	@echo "    make help"
 
 .PHONY: build
-build: build-scripts build-how-tos build-data_essentials build-modelling_essentials 
+build: clean build-scripts build-how-tos build-data_essentials build-modelling_essentials 
 
 .PHONY: clean
 clean: 
@@ -13,6 +13,7 @@ clean:
 	find . -name 'dist' -type d -prune -exec rm -rf '{}' +
 	find . -name 'gen' -type d -prune -exec rm -rf '{}' +
 	find . -name 'template.json' -prune -exec rm -rf '{}' +
+	find . -name 'package-lock.json' -prune -exec rm -rf '{}' +
 
 .PHONY: build-data_essentials
 build-data_essentials: 
