@@ -8,6 +8,40 @@
       },
       "writable": false
     },
+    "Pipeline.Parse Products": {
+      "name": "Pipeline.Parse Products",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "Name": {
+                "type": "String",
+                "value": null
+              },
+              "Code": {
+                "type": "String",
+                "value": null
+              },
+              "Category": {
+                "type": "String",
+                "value": null
+              },
+              "Unit Cost": {
+                "type": "Float",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
     "Source.My BlobType Datastream": {
       "name": "Source.My BlobType Datastream",
       "type": {
@@ -154,7 +188,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_0_kNULlG_lEQbDT8At5Ftx"
+              "name": "_5XZV8fsryEPkZXyNmb6hcd"
             },
             "value": {
               "type": {
@@ -162,7 +196,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_0_kNULlG_lEQbDT8At5Ftx"
+              "name": "_5XZV8fsryEPkZXyNmb6hcd"
             }
           }
         },
@@ -351,6 +385,106 @@
                 "value": "1"
               }
             }
+          }
+        }
+      ]
+    },
+    "Pipeline.Parse Products": {
+      "name": "Pipeline.Parse Products",
+      "parent": "Pipeline.Parse Products",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.Products",
+          "type": {
+            "type": "Blob",
+            "value": null
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Parse Products",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "Name": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Code": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Category": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Unit Cost": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "fromCsv",
+          "skip_n": {
+            "type": "integer",
+            "kind": "literal",
+            "value": "1"
+          },
+          "delimiter": ",",
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "Name": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Code": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Category": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Unit Cost": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "output_key": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Variable",
+            "name": "field.Code"
           }
         }
       ]

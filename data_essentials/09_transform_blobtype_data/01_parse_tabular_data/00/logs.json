@@ -1,0 +1,32 @@
+{
+  "Pipeline.Parse Products": [
+    {
+      "taskLogUuid": "c83bed07-17a9-4010-b9f6-80527f47d7a4",
+      "taskInstanceUuid": "fd78a628-5214-4fca-975b-5fcf68797662",
+      "name": "Pipeline.Parse Products",
+      "reason": {
+        "reason": "new_task_definition"
+      },
+      "status": "error",
+      "startedAt": "2023-02-11T22:32:59.044Z",
+      "completedAt": "2023-02-11T22:32:59.159Z",
+      "logLevel": "info",
+      "logMessage": "Executing pipeline with 1 operations",
+      "loggedAt": "2023-02-11T22:32:59.048Z"
+    },
+    {
+      "taskLogUuid": "7df56321-5e04-4522-a76f-98c0f6a58c61",
+      "taskInstanceUuid": "fd78a628-5214-4fca-975b-5fcf68797662",
+      "name": "Pipeline.Parse Products",
+      "reason": {
+        "reason": "new_task_definition"
+      },
+      "status": "error",
+      "startedAt": "2023-02-11T22:32:59.044Z",
+      "completedAt": "2023-02-11T22:32:59.159Z",
+      "logLevel": "error",
+      "logMessage": "Null value found for Unit Cost with type ( type = \"Float\", value = null, )",
+      "loggedAt": "2023-02-11T22:32:59.156Z"
+    }
+  ]
+}
