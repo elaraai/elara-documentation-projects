@@ -1,5 +1,31 @@
 {
   "streams": {
+    "Pipeline.output": {
+      "name": "Pipeline.output",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "Qty": {
+                "type": "Float",
+                "value": null
+              },
+              "Discount": {
+                "type": "Float",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
     "SimulationJournal.Scenario": {
       "name": "SimulationJournal.Scenario",
       "type": {
@@ -22,8 +48,12 @@
                   "type": "Float",
                   "value": null
                 },
+                "demand": {
+                  "type": "Float",
+                  "value": null
+                },
                 "qty": {
-                  "type": "Integer",
+                  "type": "Float",
                   "value": null
                 }
               }
@@ -115,6 +145,369 @@
     }
   },
   "tasks": {
+    "Pipeline.output": {
+      "name": "Pipeline.output",
+      "parent": "Pipeline.output",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "SimulationJournal.Scenario",
+          "type": {
+            "type": "Array",
+            "value": {
+              "type": "Variant",
+              "value": {
+                "Process": {
+                  "type": "Struct",
+                  "value": {
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "discount": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "price": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "demand": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "qty": {
+                      "type": "Float",
+                      "value": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.output",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "Qty": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "Discount": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "Qty": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "Discount": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "expression": {
+            "type": {
+              "type": "Dict",
+              "value": {
+                "key": {
+                  "type": "String",
+                  "value": null
+                },
+                "value": {
+                  "type": "Struct",
+                  "value": {
+                    "Qty": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "Discount": {
+                      "type": "Float",
+                      "value": null
+                    }
+                  }
+                }
+              }
+            },
+            "ast_type": "ToDict",
+            "collection": {
+              "type": {
+                "type": "Array",
+                "value": {
+                  "type": "Variant",
+                  "value": {
+                    "Process": {
+                      "type": "Struct",
+                      "value": {
+                        "date": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "discount": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "price": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "demand": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "qty": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "ast_type": "Variable",
+              "name": "value"
+            },
+            "output_value": {
+              "type": {
+                "type": "Struct",
+                "value": {
+                  "Qty": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "Discount": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              },
+              "ast_type": "Match",
+              "input": {
+                "type": {
+                  "type": "Variant",
+                  "value": {
+                    "Process": {
+                      "type": "Struct",
+                      "value": {
+                        "date": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "discount": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "price": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "demand": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "qty": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                },
+                "ast_type": "Variable",
+                "name": "_value_wgyQOLSXAwAdpDm5Pr3w8w"
+              },
+              "functions": {
+                "Process": {
+                  "type": {
+                    "type": "Struct",
+                    "value": {
+                      "Qty": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "Discount": {
+                        "type": "Float",
+                        "value": null
+                      }
+                    }
+                  },
+                  "ast_type": "Struct",
+                  "fields": {
+                    "Qty": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "GetField",
+                      "struct": {
+                        "type": {
+                          "type": "Struct",
+                          "value": {
+                            "date": {
+                              "type": "DateTime",
+                              "value": null
+                            },
+                            "discount": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "price": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "demand": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "qty": {
+                              "type": "Float",
+                              "value": null
+                            }
+                          }
+                        },
+                        "ast_type": "Variable",
+                        "name": "_322bDd3KrEnsBJhVavBmYA"
+                      },
+                      "key": "qty"
+                    },
+                    "Discount": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "GetField",
+                      "struct": {
+                        "type": {
+                          "type": "Struct",
+                          "value": {
+                            "date": {
+                              "type": "DateTime",
+                              "value": null
+                            },
+                            "discount": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "price": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "demand": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "qty": {
+                              "type": "Float",
+                              "value": null
+                            }
+                          }
+                        },
+                        "ast_type": "Variable",
+                        "name": "_322bDd3KrEnsBJhVavBmYA"
+                      },
+                      "key": "discount"
+                    }
+                  }
+                }
+              },
+              "value": "_322bDd3KrEnsBJhVavBmYA"
+            },
+            "output_key": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "Print",
+              "value": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "_key_TyTNG0WQNXxiWNmH0fj2sh"
+              }
+            },
+            "input_value": {
+              "type": {
+                "type": "Variant",
+                "value": {
+                  "Process": {
+                    "type": "Struct",
+                    "value": {
+                      "date": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "discount": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "price": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "demand": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "qty": {
+                        "type": "Float",
+                        "value": null
+                      }
+                    }
+                  }
+                }
+              },
+              "ast_type": "Variable",
+              "name": "_value_wgyQOLSXAwAdpDm5Pr3w8w"
+            },
+            "input_key": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "_key_TyTNG0WQNXxiWNmH0fj2sh"
+            }
+          }
+        }
+      ]
+    },
     "Simulation.Scenario": {
       "task_type": "simulation",
       "name": "Simulation.Scenario",
@@ -223,8 +616,12 @@
                       "type": "Float",
                       "value": null
                     },
+                    "demand": {
+                      "type": "Float",
+                      "value": null
+                    },
                     "qty": {
-                      "type": "Integer",
+                      "type": "Float",
                       "value": null
                     }
                   }
@@ -295,8 +692,12 @@
                 "type": "Float",
                 "value": null
               },
+              "demand": {
+                "type": "Float",
+                "value": null
+              },
               "qty": {
-                "type": "Integer",
+                "type": "Float",
                 "value": null
               }
             }
@@ -395,7 +796,7 @@
                         "ast_type": "Variable",
                         "name": "r_Resource"
                       },
-                      "key": "minDiscount"
+                      "key": "maxDiscount"
                     },
                     "second": {
                       "type": {
@@ -488,15 +889,130 @@
             },
             {
               "type": "let",
+              "name": "demand",
+              "expr": {
+                "type": {
+                  "type": "Float",
+                  "value": null
+                },
+                "ast_type": "Subtract",
+                "first": {
+                  "type": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "ast_type": "Const",
+                  "value": 1
+                },
+                "second": {
+                  "type": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "ast_type": "Divide",
+                  "first": {
+                    "type": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "ast_type": "Const",
+                    "value": 1
+                  },
+                  "second": {
+                    "type": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "ast_type": "Add",
+                    "first": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": 1
+                    },
+                    "second": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Exp",
+                      "value": {
+                        "type": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "ast_type": "Subtract",
+                        "first": {
+                          "type": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "ast_type": "Add",
+                          "first": {
+                            "type": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "ast_type": "Variable",
+                            "name": "p_discount"
+                          },
+                          "second": {
+                            "type": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "ast_type": "Multiply",
+                            "first": {
+                              "type": {
+                                "type": "Float",
+                                "value": null
+                              },
+                              "ast_type": "Const",
+                              "value": 0.5
+                            },
+                            "second": {
+                              "type": {
+                                "type": "Float",
+                                "value": null
+                              },
+                              "ast_type": "RandomNormal"
+                            }
+                          }
+                        },
+                        "second": {
+                          "type": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "ast_type": "Const",
+                          "value": 5
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "let",
               "name": "qty",
               "expr": {
                 "type": {
-                  "type": "Integer",
+                  "type": "Float",
                   "value": null
                 },
-                "ast_type": "Round",
-                "rounding_mode": "nearest",
-                "value": {
+                "ast_type": "Add",
+                "first": {
+                  "type": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "ast_type": "Const",
+                  "value": 1
+                },
+                "second": {
                   "type": {
                     "type": "Float",
                     "value": null
@@ -515,119 +1031,8 @@
                       "type": "Float",
                       "value": null
                     },
-                    "ast_type": "Subtract",
-                    "first": {
-                      "type": {
-                        "type": "Float",
-                        "value": null
-                      },
-                      "ast_type": "Const",
-                      "value": 1
-                    },
-                    "second": {
-                      "type": {
-                        "type": "Float",
-                        "value": null
-                      },
-                      "ast_type": "Divide",
-                      "first": {
-                        "type": {
-                          "type": "Float",
-                          "value": null
-                        },
-                        "ast_type": "Const",
-                        "value": 1
-                      },
-                      "second": {
-                        "type": {
-                          "type": "Float",
-                          "value": null
-                        },
-                        "ast_type": "Add",
-                        "first": {
-                          "type": {
-                            "type": "Float",
-                            "value": null
-                          },
-                          "ast_type": "Const",
-                          "value": 1
-                        },
-                        "second": {
-                          "type": {
-                            "type": "Float",
-                            "value": null
-                          },
-                          "ast_type": "Exp",
-                          "value": {
-                            "type": {
-                              "type": "Float",
-                              "value": null
-                            },
-                            "ast_type": "Subtract",
-                            "first": {
-                              "type": {
-                                "type": "Float",
-                                "value": null
-                              },
-                              "ast_type": "Add",
-                              "first": {
-                                "type": {
-                                  "type": "Float",
-                                  "value": null
-                                },
-                                "ast_type": "Multiply",
-                                "first": {
-                                  "type": {
-                                    "type": "Float",
-                                    "value": null
-                                  },
-                                  "ast_type": "Variable",
-                                  "name": "p_discount"
-                                },
-                                "second": {
-                                  "type": {
-                                    "type": "Float",
-                                    "value": null
-                                  },
-                                  "ast_type": "Const",
-                                  "value": 100
-                                }
-                              },
-                              "second": {
-                                "type": {
-                                  "type": "Float",
-                                  "value": null
-                                },
-                                "ast_type": "Multiply",
-                                "first": {
-                                  "type": {
-                                    "type": "Float",
-                                    "value": null
-                                  },
-                                  "ast_type": "Const",
-                                  "value": 0.75
-                                },
-                                "second": {
-                                  "type": {
-                                    "type": "Float",
-                                    "value": null
-                                  },
-                                  "ast_type": "RandomNormal"
-                                }
-                              }
-                            },
-                            "second": {
-                              "type": {
-                                "type": "Float",
-                                "value": null
-                              },
-                              "ast_type": "Const",
-                              "value": 5
-                            }
-                          }
-                        }
-                      }
-                    }
+                    "ast_type": "Variable",
+                    "name": "p_demand"
                   }
                 }
               }
@@ -639,7 +1044,7 @@
                   "type": "Boolean",
                   "value": null
                 },
-                "ast_type": "Less",
+                "ast_type": "Greater",
                 "first": {
                   "type": {
                     "type": "DateTime",
@@ -732,7 +1137,7 @@
                               "value": null
                             },
                             "ast_type": "Variable",
-                            "name": "_CzLeeQ1hF2fScFVfJTVdrV"
+                            "name": "_YWY1ytybsuiN76x45GmS3O"
                           }
                         },
                         "second": {
@@ -785,7 +1190,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_CzLeeQ1hF2fScFVfJTVdrV"
+                          "name": "_YWY1ytybsuiN76x45GmS3O"
                         },
                         "duration": {
                           "type": {
@@ -803,7 +1208,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_CzLeeQ1hF2fScFVfJTVdrV"
+                        "name": "_YWY1ytybsuiN76x45GmS3O"
                       }
                     },
                     "variable": {
@@ -812,7 +1217,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_CzLeeQ1hF2fScFVfJTVdrV"
+                      "name": "_YWY1ytybsuiN76x45GmS3O"
                     },
                     "value": {
                       "type": {
@@ -833,21 +1238,21 @@
                           "type": "Float",
                           "value": null
                         },
-                        "ast_type": "Multiply",
+                        "ast_type": "Divide",
                         "first": {
                           "type": {
                             "type": "Float",
                             "value": null
                           },
                           "ast_type": "Const",
-                          "value": 5
+                          "value": 1
                         },
                         "second": {
                           "type": {
                             "type": "Float",
                             "value": null
                           },
-                          "ast_type": "Divide",
+                          "ast_type": "Subtract",
                           "first": {
                             "type": {
                               "type": "Float",
@@ -861,7 +1266,7 @@
                               "type": "Float",
                               "value": null
                             },
-                            "ast_type": "Subtract",
+                            "ast_type": "Divide",
                             "first": {
                               "type": {
                                 "type": "Float",
@@ -875,7 +1280,7 @@
                                 "type": "Float",
                                 "value": null
                               },
-                              "ast_type": "Divide",
+                              "ast_type": "Add",
                               "first": {
                                 "type": {
                                   "type": "Float",
@@ -889,87 +1294,57 @@
                                   "type": "Float",
                                   "value": null
                                 },
-                                "ast_type": "Add",
-                                "first": {
+                                "ast_type": "Exp",
+                                "value": {
                                   "type": {
                                     "type": "Float",
                                     "value": null
                                   },
-                                  "ast_type": "Const",
-                                  "value": 1
-                                },
-                                "second": {
-                                  "type": {
-                                    "type": "Float",
-                                    "value": null
-                                  },
-                                  "ast_type": "Exp",
-                                  "value": {
+                                  "ast_type": "Subtract",
+                                  "first": {
                                     "type": {
                                       "type": "Float",
                                       "value": null
                                     },
-                                    "ast_type": "Subtract",
+                                    "ast_type": "Add",
                                     "first": {
                                       "type": {
                                         "type": "Float",
                                         "value": null
                                       },
-                                      "ast_type": "Add",
-                                      "first": {
-                                        "type": {
-                                          "type": "Float",
-                                          "value": null
-                                        },
-                                        "ast_type": "Multiply",
-                                        "first": {
-                                          "type": {
-                                            "type": "Float",
-                                            "value": null
-                                          },
-                                          "ast_type": "Variable",
-                                          "name": "p_discount"
-                                        },
-                                        "second": {
-                                          "type": {
-                                            "type": "Float",
-                                            "value": null
-                                          },
-                                          "ast_type": "Const",
-                                          "value": 100
-                                        }
-                                      },
-                                      "second": {
-                                        "type": {
-                                          "type": "Float",
-                                          "value": null
-                                        },
-                                        "ast_type": "Multiply",
-                                        "first": {
-                                          "type": {
-                                            "type": "Float",
-                                            "value": null
-                                          },
-                                          "ast_type": "Const",
-                                          "value": 0.75
-                                        },
-                                        "second": {
-                                          "type": {
-                                            "type": "Float",
-                                            "value": null
-                                          },
-                                          "ast_type": "RandomNormal"
-                                        }
-                                      }
+                                      "ast_type": "Variable",
+                                      "name": "p_discount"
                                     },
                                     "second": {
                                       "type": {
                                         "type": "Float",
                                         "value": null
                                       },
-                                      "ast_type": "Const",
-                                      "value": 5
+                                      "ast_type": "Multiply",
+                                      "first": {
+                                        "type": {
+                                          "type": "Float",
+                                          "value": null
+                                        },
+                                        "ast_type": "Const",
+                                        "value": 0.5
+                                      },
+                                      "second": {
+                                        "type": {
+                                          "type": "Float",
+                                          "value": null
+                                        },
+                                        "ast_type": "RandomNormal"
+                                      }
                                     }
+                                  },
+                                  "second": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "Const",
+                                    "value": 5
                                   }
                                 }
                               }
@@ -997,7 +1372,7 @@
       },
       "mls": {},
       "configuration": {
-        "in_memory": false,
+        "in_memory": true,
         "journal": true,
         "debug": false
       }
@@ -1035,8 +1410,8 @@
         },
         "ast_type": "Const",
         "value": {
-          "minDiscount": 2,
-          "maxDiscount": 5.5,
+          "minDiscount": 0,
+          "maxDiscount": 10,
           "price": 3.5,
           "endHour": {
             "type": "integer",
@@ -1090,6 +1465,90 @@
             ]
           ]
         }
+      }
+    }
+  },
+  "layouts": {
+    "Layout.Comparison (Chart)": {
+      "type": "layout",
+      "name": "Layout.Comparison (Chart)",
+      "display_name": "Comparison (Chart)",
+      "visual": {
+        "type": "vega",
+        "kind": "dict",
+        "name": "Chart",
+        "stream": "Pipeline.output",
+        "spec": {
+          "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+          "width": "container",
+          "height": "container",
+          "data": {
+            "values": []
+          },
+          "mark": {
+            "type": "circle"
+          },
+          "encoding": {
+            "x": {
+              "field": "Discount",
+              "type": "quantitative"
+            },
+            "y": {
+              "field": "Qty",
+              "type": "quantitative"
+            },
+            "tooltip": [
+              {
+                "field": "Discount",
+                "type": "quantitative"
+              },
+              {
+                "field": "Qty",
+                "type": "quantitative"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "Layout.Comparison (Table)": {
+      "type": "layout",
+      "name": "Layout.Comparison (Table)",
+      "display_name": "Comparison (Table)",
+      "visual": {
+        "type": "table",
+        "kind": "struct",
+        "name": "Table",
+        "stream": "Pipeline.output",
+        "columns": {
+          "Qty": {
+            "name": "Qty",
+            "kind": "primitive",
+            "target": "field",
+            "value": {
+              "type": {
+                "type": "Float",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "Qty"
+            }
+          },
+          "Discount": {
+            "name": "Discount",
+            "kind": "primitive",
+            "target": "field",
+            "value": {
+              "type": {
+                "type": "Float",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "Discount"
+            }
+          }
+        },
+        "key_visible": false
       }
     }
   }
