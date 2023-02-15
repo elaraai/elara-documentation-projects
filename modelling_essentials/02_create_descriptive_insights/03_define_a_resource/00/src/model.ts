@@ -1,33 +1,60 @@
-import { FloatType, IntegerType, ProcessBuilder, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringType, Template } from "@elaraai/core"
+import { DateTimeType, Divide, FloatType, IntegerType, Multiply, PipelineBuilder, Print, ProcessBuilder, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringType, Subtract, Template } from "@elaraai/core"
 
-const sales_data = new SourceBuilder("Sales Records")
-    .value({
-        value: new Map([
-            ["0", { date: new Date(`2022-10-10T09:00:00.000Z`), qty: 1n, price: 4.00 }],
-            ["1", { date: new Date(`2022-10-10T10:00:00.000Z`), qty: 2n, price: 4.00 }],
-            ["2", { date: new Date(`2022-10-10T11:00:00.000Z`), qty: 3n, price: 4.00 }],
-            ["3", { date: new Date(`2022-10-10T12:00:00.000Z`), qty: 2n, price: 4.00 }],
-            ["4", { date: new Date(`2022-10-10T13:00:00.000Z`), qty: 2n, price: 4.00 }],
-            ["5", { date: new Date(`2022-10-11T09:00:00.000Z`), qty: 2n, price: 4.50 }],
-            ["6", { date: new Date(`2022-10-11T10:30:00.000Z`), qty: 1n, price: 4.50 }],
-            ["7", { date: new Date(`2022-10-11T12:00:00.000Z`), qty: 1n, price: 4.50 }],
-            ["8", { date: new Date(`2022-10-11T13:30:00.000Z`), qty: 2n, price: 4.50 }],
-            ["9", { date: new Date(`2022-10-12T09:00:00.000Z`), qty: 2n, price: 3.50 }],
-            ["10", { date: new Date(`2022-10-12T09:30:00.000Z`), qty: 4n, price: 3.50 }],
-            ["11", { date: new Date(`2022-10-12T10:00:00.000Z`), qty: 3n, price: 3.50 }],
-            ["12", { date: new Date(`2022-10-12T11:00:00.000Z`), qty: 3n, price: 3.50 }],
-            ["13", { date: new Date(`2022-10-12T11:30:00.000Z`), qty: 1n, price: 3.50 }],
-            ["14", { date: new Date(`2022-10-12T12:00:00.000Z`), qty: 4n, price: 3.50 }],
-            ["15", { date: new Date(`2022-10-12T13:00:00.000Z`), qty: 4n, price: 3.50 }],
-            ["16", { date: new Date(`2022-10-12T13:30:00.000Z`), qty: 3n, price: 3.50 }],
-        ])
+const sales_file = new SourceBuilder("Sales File")
+    .file({ path: 'data/sales.jsonl' })
+
+const suppliers_file = new SourceBuilder("Suppliers File")
+    .file({ path: 'data/suppliers.jsonl' })
+
+const procurement_file = new SourceBuilder("Procurement File")
+    .file({ path: 'data/procurement.jsonl' })
+
+// parse the blob data into jsonl data
+const procurement_data = new PipelineBuilder('Historic Procurement')
+    .from(procurement_file.outputStream())
+    .fromJsonLines({
+        fields: {
+            // the date of a historic procurement - these occr daily
+            date: DateTimeType,
+            // the supplier the procurement was from
+            supplierName: StringType,
+        },
+        // the procurement date is unique, so can be used as the key
+        output_key: fields => Print(fields.date)
+    });
+
+const sales_data = new PipelineBuilder('Historic Sales')
+    .from(sales_file.outputStream())
+    .fromJsonLines({
+        fields: {
+            // the date of our aggregate sales records
+            date: DateTimeType,
+            // the qty of suasages sold in the hour
+            qty: IntegerType,
+            // the discount applied duration that hour
+            discount: FloatType,
+        },
+        // the sale date is unique, so can be used as the key
+        output_key: fields => Print(fields.date)
     })
 
-const order_data = new SourceBuilder("Order Records")
-    .value({
-        value: new Map([
-            ["0", { date: new Date(`2022-10-12T15:00:00.000Z`), supplierName: "Meat Kings", qty: 50n, cost: 50 }]
-        ])
+const supplier_data = new PipelineBuilder('Suppliers')
+    .from(suppliers_file.outputStream())
+    .fromJsonLines({
+        fields: {
+            // the name of the supplier
+            supplierName: StringType,
+            // the number of days until payment from order
+            paymentTerms: FloatType,
+            // the number of days it takes to recieve suasages
+            leadTime: FloatType,
+            // the cost per sausage
+            unitCost: FloatType,
+            // the amount of sausages that must be ordered
+            orderQty: IntegerType,
+        },
+        // the name is unique, so can bs used as the key
+        output_key: fields => fields.supplierName
     })
 
 const cash = new ResourceBuilder("Cash")
@@ -35,30 +62,41 @@ const cash = new ResourceBuilder("Cash")
 
 const stock_on_hand = new ResourceBuilder("Stock-on-hand")
     .mapFromValue(70n)
+    
+const price = new ResourceBuilder("Price")
+    .mapFromValue(3.5)
 
 const sales = new ProcessBuilder("Sales")
+    .resource(price)
     .value("qty", IntegerType)
-    .value("price", FloatType)
+    .value("discount", FloatType)
+    // calculate the sale amount from the price and qty
+    .let("price", (props, resources) => Subtract(resources.Price, Multiply(Divide(props.discount, 100), resources.Price)))
+    .let("amount", props => Multiply(props.qty, props.price))
     .mapManyFromStream(sales_data.outputStream())
 
 const procurement = new ProcessBuilder("Procurement")
     .value("supplierName", StringType)
-    .value("qty", IntegerType)
-    .value("cost", FloatType)
-    .mapManyFromStream(order_data.outputStream())
+    .mapManyFromStream(procurement_data.outputStream())
 
 const descriptive_scenario = new ScenarioBuilder("Descriptive")
-    .process(sales)
-    .process(procurement)
     .resource(cash, { ledger: true })
     .resource(stock_on_hand, { ledger: true })
+    .resource(price, { ledger: true })
+    .process(sales)
+    .process(procurement)
 
 export default Template(
+    sales_file,
+    suppliers_file,
+    procurement_file,
+    procurement_data,
     sales_data,
-    order_data,
+    supplier_data,
     sales,
     procurement,
     descriptive_scenario,
     cash,
-    stock_on_hand
+    stock_on_hand,
+    price
 )
