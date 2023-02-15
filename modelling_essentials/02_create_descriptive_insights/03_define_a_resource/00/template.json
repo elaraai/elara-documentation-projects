@@ -173,35 +173,6 @@
       },
       "writable": false
     },
-    "SimulationLedger.Descriptive.Price": {
-      "name": "SimulationLedger.Descriptive.Price",
-      "type": {
-        "type": "Array",
-        "value": {
-          "type": "Struct",
-          "value": {
-            "journal_id": {
-              "type": "Integer",
-              "value": null
-            },
-            "date": {
-              "type": "DateTime",
-              "value": null
-            },
-            "event": {
-              "type": "Variant",
-              "value": {
-                "set": {
-                  "type": "Float",
-                  "value": null
-                }
-              }
-            }
-          }
-        }
-      },
-      "writable": false
-    },
     "SimulationLedger.Descriptive.Stock-on-hand": {
       "name": "SimulationLedger.Descriptive.Stock-on-hand",
       "type": {
@@ -448,14 +419,6 @@
       },
       "writable": false
     },
-    "SimulationResult.Descriptive.Price": {
-      "name": "SimulationResult.Descriptive.Price",
-      "type": {
-        "type": "Float",
-        "value": null
-      },
-      "writable": false
-    },
     "SimulationResult.Descriptive.Stock-on-hand": {
       "name": "SimulationResult.Descriptive.Stock-on-hand",
       "type": {
@@ -512,14 +475,6 @@
     },
     "Writeable.Resource.Cash": {
       "name": "Writeable.Resource.Cash",
-      "type": {
-        "type": "Float",
-        "value": null
-      },
-      "writable": false
-    },
-    "Writeable.Resource.Price": {
-      "name": "Writeable.Resource.Price",
       "type": {
         "type": "Float",
         "value": null
@@ -852,14 +807,6 @@
           },
           "writable": false
         },
-        "resource.Price": {
-          "name": "Writeable.Resource.Price",
-          "type": {
-            "type": "Float",
-            "value": null
-          },
-          "writable": false
-        },
         "resource.Suppliers": {
           "name": "Pipeline.Suppliers",
           "type": {
@@ -972,14 +919,6 @@
           },
           "writable": false
         },
-        "result.Price": {
-          "name": "SimulationResult.Descriptive.Price",
-          "type": {
-            "type": "Float",
-            "value": null
-          },
-          "writable": false
-        },
         "result.Suppliers": {
           "name": "SimulationResult.Descriptive.Suppliers",
           "type": {
@@ -1067,35 +1006,6 @@
                   "value": {
                     "set": {
                       "type": "Integer",
-                      "value": null
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "writable": false
-        },
-        "ledger.Price": {
-          "name": "SimulationLedger.Descriptive.Price",
-          "type": {
-            "type": "Array",
-            "value": {
-              "type": "Struct",
-              "value": {
-                "journal_id": {
-                  "type": "Integer",
-                  "value": null
-                },
-                "date": {
-                  "type": "DateTime",
-                  "value": null
-                },
-                "event": {
-                  "type": "Variant",
-                  "value": {
-                    "set": {
-                      "type": "Float",
                       "value": null
                     }
                   }
@@ -1386,16 +1296,6 @@
           "assertions": [],
           "ledger": true
         },
-        "Price": {
-          "name": "Price",
-          "type": {
-            "type": "Float",
-            "value": null
-          },
-          "input": "resource.Price",
-          "assertions": [],
-          "ledger": true
-        },
         "Suppliers": {
           "name": "Suppliers",
           "type": {
@@ -1497,8 +1397,8 @@
                     "type": "Float",
                     "value": null
                   },
-                  "ast_type": "Variable",
-                  "name": "r_Price"
+                  "ast_type": "Const",
+                  "value": 3.5
                 },
                 "second": {
                   "type": {
@@ -1534,8 +1434,8 @@
                       "type": "Float",
                       "value": null
                     },
-                    "ast_type": "Variable",
-                    "name": "r_Price"
+                    "ast_type": "Const",
+                    "value": 3.5
                   }
                 }
               }
@@ -1634,18 +1534,6 @@
         "value": 0
       },
       "stream": "Writeable.Resource.Cash"
-    },
-    "Writeable.Resource.Price": {
-      "default_type": "value",
-      "value": {
-        "type": {
-          "type": "Float",
-          "value": null
-        },
-        "ast_type": "Const",
-        "value": 3.5
-      },
-      "stream": "Writeable.Resource.Price"
     },
     "Writeable.Resource.Stock-on-hand": {
       "default_type": "value",
