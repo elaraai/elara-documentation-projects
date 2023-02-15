@@ -10,16 +10,16 @@ const procurement_file = new SourceBuilder("Procurement File")
     .file({ path: 'data/procurement.jsonl' })
 
 // parse the blob data into jsonl data
-const purchasing_data = new PipelineBuilder('Historic Procurement')
+const procurement_data = new PipelineBuilder('Historic Procurement')
     .from(procurement_file.outputStream())
     .fromJsonLines({
         fields: {
-            // the date of a historic purchase - these occur daily
+            // the date of a historic procurement - these occr daily
             date: DateTimeType,
-            // the supplier the purchase was from
+            // the supplier the procurement was from
             supplierName: StringType,
         },
-        // the purchase date is unique, so can be used as the key
+        // the procurement date is unique, so can be used as the key
         output_key: fields => Print(fields.date)
     });
 
@@ -61,7 +61,7 @@ export default Template(
     sales_file,
     suppliers_file,
     procurement_file,
-    purchasing_data,
+    procurement_data,
     sales_data,
     supplier_data
 )

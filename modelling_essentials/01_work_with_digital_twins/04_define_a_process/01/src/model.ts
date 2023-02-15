@@ -14,12 +14,12 @@ const procurement_data = new PipelineBuilder('Historic Procurement')
     .from(procurement_file.outputStream())
     .fromJsonLines({
         fields: {
-            // the date of a historic purchase - these occr daily
+            // the date of a historic procurement - these occr daily
             date: DateTimeType,
-            // the supplier the purchase was from
+            // the supplier the procurement was from
             supplierName: StringType,
         },
-        // the purcahse date is unique, so can be used as the key
+        // the procurement date is unique, so can be used as the key
         output_key: fields => Print(fields.date)
     });
 
@@ -61,7 +61,7 @@ const sales = new ProcessBuilder("Sales")
     .value("qty", IntegerType)
     .value("discount", FloatType)
 
-const purchasing = new ProcessBuilder("Purchasing")
+const procurement = new ProcessBuilder("Procurement")
     .value("supplierName", StringType)
 
 export default Template(
@@ -72,5 +72,5 @@ export default Template(
     sales_data,
     supplier_data,
     sales,
-    purchasing
+    procurement
 )
