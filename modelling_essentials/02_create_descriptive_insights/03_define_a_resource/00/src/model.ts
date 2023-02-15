@@ -66,6 +66,9 @@ const stock_on_hand = new ResourceBuilder("Stock-on-hand")
 const price = new ResourceBuilder("Price")
     .mapFromValue(3.5)
 
+const suppliers = new ResourceBuilder("Suppliers")
+    .mapFromStream(supplier_data.outputStream())
+
 const sales = new ProcessBuilder("Sales")
     .resource(price)
     .value("qty", IntegerType)
@@ -83,6 +86,7 @@ const descriptive_scenario = new ScenarioBuilder("Descriptive")
     .resource(cash, { ledger: true })
     .resource(stock_on_hand, { ledger: true })
     .resource(price, { ledger: true })
+    .resource(suppliers, { ledger: true })
     .process(sales)
     .process(procurement)
 
@@ -98,5 +102,6 @@ export default Template(
     descriptive_scenario,
     cash,
     stock_on_hand,
-    price
+    price,
+    suppliers
 )
