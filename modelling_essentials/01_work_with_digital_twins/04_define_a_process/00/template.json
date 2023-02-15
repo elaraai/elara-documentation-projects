@@ -1,7 +1,7 @@
 {
   "streams": {
-    "Pipeline.Historic Purchasing": {
-      "name": "Pipeline.Historic Purchasing",
+    "Pipeline.Historic Procurement": {
+      "name": "Pipeline.Historic Procurement",
       "type": {
         "type": "Dict",
         "value": {
@@ -94,8 +94,8 @@
       },
       "writable": false
     },
-    "Writeable.Purchasing File": {
-      "name": "Writeable.Purchasing File",
+    "Writeable.Procurement File": {
+      "name": "Writeable.Procurement File",
       "type": {
         "type": "Blob",
         "value": null
@@ -120,13 +120,13 @@
     }
   },
   "tasks": {
-    "Pipeline.Historic Purchasing": {
-      "name": "Pipeline.Historic Purchasing",
-      "parent": "Pipeline.Historic Purchasing",
+    "Pipeline.Historic Procurement": {
+      "name": "Pipeline.Historic Procurement",
+      "parent": "Pipeline.Historic Procurement",
       "task_type": "pipeline",
       "inputs": {
         "input": {
-          "name": "Writeable.Purchasing File",
+          "name": "Writeable.Procurement File",
           "type": {
             "type": "Blob",
             "value": null
@@ -136,7 +136,7 @@
       },
       "outputs": {
         "output": {
-          "name": "Pipeline.Historic Purchasing",
+          "name": "Pipeline.Historic Procurement",
           "type": {
             "type": "Dict",
             "value": {
@@ -402,10 +402,10 @@
     }
   },
   "defaults": {
-    "Writeable.Purchasing File": {
+    "Writeable.Procurement File": {
       "default_type": "file",
-      "stream": "Writeable.Purchasing File",
-      "path": "data/purchasing.jsonl"
+      "stream": "Writeable.Procurement File",
+      "path": "data/procurement.jsonl"
     },
     "Writeable.Sales File": {
       "default_type": "file",
