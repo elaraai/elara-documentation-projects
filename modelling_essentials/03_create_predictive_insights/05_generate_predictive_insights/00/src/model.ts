@@ -1,4 +1,4 @@
-import { Add, AddDuration, Const, Convert, DateTimeType, Divide, FloatType, Floor, Get, GetField, Greater, Hour, IfElse, IntegerType, LessEqual, Multiply, PipelineBuilder, Print, ProcessBuilder, RandomKey, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringType, Struct, Subtract, Template } from "@elaraai/core"
+import { Add, AddDuration, Const, Convert, DateTimeType, Divide, FloatType, Floor, Get, GetField, Greater, Hour, IfElse, IntegerType, LessEqual, MLModelBuilder, Multiply, PipelineBuilder, Print, ProcessBuilder, RandomKey, ResourceBuilder, Round, ScenarioBuilder, SourceBuilder, StringType, Struct, Subtract, Template } from "@elaraai/core"
 
 const sales_file = new SourceBuilder("Sales File")
     .file({ path: 'data/sales.jsonl' })
@@ -55,6 +55,26 @@ const supplier_data = new PipelineBuilder('Suppliers')
         },
         // the name is unique, so can bs used as the key
         output_key: fields => fields.supplierName
+    })
+
+// ML Model
+const demand = new MLModelBuilder("Demand")
+    // add a feature to the model
+    .feature("discount", FloatType)
+    // the output is qty which is FloatType
+    .output(FloatType)
+    // define the historic data as the training set
+    .trainFromPipeline({
+        output_name: "qty",
+        pipeline: builder => builder
+            .from(sales_data.outputStream())
+            // select just the discount and qty from the sale for training
+            .select({
+                selections: {
+                    discount: fields => fields.discount,
+                    qty: fields => Convert(fields.qty, FloatType)
+                }
+            })
     })
 
 // Generic Model
@@ -186,11 +206,12 @@ const predicted_sales = new ProcessBuilder("Predicted Sales")
     .resource(cash)
     .resource(operating_times)
     .process(sales)
+    .ml(demand)
     // create the next sale in the future
-    .execute("Sales", props => Struct({
+    .execute("Sales", (props, _, mls) => Struct({
         // the next sale date is mapped.
         date: props.date,
-        qty: Const(1n),
+        qty: Round(mls.Demand(Struct({ discount: Const(0) })), 'nearest', "integer"),
         discount: Const(0)
     }))
     // predict the next sale and continue triggering predicted sales
@@ -257,5 +278,6 @@ export default Template(
     operating_times,
     predicted_sales,
     predicted_procurement,
-    predictive_scenario
+    predictive_scenario,
+    demand
 )
