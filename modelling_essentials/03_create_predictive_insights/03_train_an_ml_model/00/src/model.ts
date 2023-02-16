@@ -75,7 +75,7 @@ const demand = new MLModelBuilder("Demand")
                     qty: fields => Convert(fields.qty, FloatType)
                 }
             })
-    });
+    })
 
 export default Template(
     sales_file,

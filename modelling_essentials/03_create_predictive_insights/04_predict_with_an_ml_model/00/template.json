@@ -1,25 +1,13 @@
 {
   "streams": {
-    "MLModel.Arrival Time Model": {
-      "name": "MLModel.Arrival Time Model",
+    "MLModel.Demand": {
+      "name": "MLModel.Demand",
       "type": {
         "type": "Struct",
         "value": {
           "parameters": {
-            "type": "Struct",
-            "value": {
-              "beta": {
-                "type": "Array",
-                "value": {
-                  "type": "Float",
-                  "value": null
-                }
-              },
-              "c": {
-                "type": "Float",
-                "value": null
-              }
-            }
+            "type": "Blob",
+            "value": null
           },
           "transform": {
             "type": "Struct",
@@ -31,7 +19,7 @@
               "transform": {
                 "type": "Struct",
                 "value": {
-                  "price": {
+                  "discount": {
                     "type": "Struct",
                     "value": {
                       "index": {
@@ -56,64 +44,8 @@
       },
       "writable": false
     },
-    "MLModel.Quantity Model": {
-      "name": "MLModel.Quantity Model",
-      "type": {
-        "type": "Struct",
-        "value": {
-          "parameters": {
-            "type": "Struct",
-            "value": {
-              "beta": {
-                "type": "Array",
-                "value": {
-                  "type": "Float",
-                  "value": null
-                }
-              },
-              "c": {
-                "type": "Float",
-                "value": null
-              }
-            }
-          },
-          "transform": {
-            "type": "Struct",
-            "value": {
-              "n_features": {
-                "type": "Integer",
-                "value": null
-              },
-              "transform": {
-                "type": "Struct",
-                "value": {
-                  "price": {
-                    "type": "Struct",
-                    "value": {
-                      "index": {
-                        "type": "Integer",
-                        "value": null
-                      },
-                      "min": {
-                        "type": "Float",
-                        "value": null
-                      },
-                      "max": {
-                        "type": "Float",
-                        "value": null
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "writable": false
-    },
-    "MLPrediction.Arrival Time Prediction": {
-      "name": "MLPrediction.Arrival Time Prediction",
+    "MLTraining.Demand": {
+      "name": "MLTraining.Demand",
       "type": {
         "type": "Dict",
         "value": {
@@ -127,7 +59,7 @@
               "features": {
                 "type": "Struct",
                 "value": {
-                  "price": {
+                  "discount": {
                     "type": "Float",
                     "value": null
                   }
@@ -143,101 +75,8 @@
       },
       "writable": false
     },
-    "MLPrediction.Quantity Prediction": {
-      "name": "MLPrediction.Quantity Prediction",
-      "type": {
-        "type": "Dict",
-        "value": {
-          "key": {
-            "type": "String",
-            "value": null
-          },
-          "value": {
-            "type": "Struct",
-            "value": {
-              "features": {
-                "type": "Struct",
-                "value": {
-                  "price": {
-                    "type": "Float",
-                    "value": null
-                  }
-                }
-              },
-              "output": {
-                "type": "Float",
-                "value": null
-              }
-            }
-          }
-        }
-      },
-      "writable": false
-    },
-    "MLTraining.Arrival Time Model": {
-      "name": "MLTraining.Arrival Time Model",
-      "type": {
-        "type": "Dict",
-        "value": {
-          "key": {
-            "type": "String",
-            "value": null
-          },
-          "value": {
-            "type": "Struct",
-            "value": {
-              "features": {
-                "type": "Struct",
-                "value": {
-                  "price": {
-                    "type": "Float",
-                    "value": null
-                  }
-                }
-              },
-              "output": {
-                "type": "Float",
-                "value": null
-              }
-            }
-          }
-        }
-      },
-      "writable": false
-    },
-    "MLTraining.Quantity Model": {
-      "name": "MLTraining.Quantity Model",
-      "type": {
-        "type": "Dict",
-        "value": {
-          "key": {
-            "type": "String",
-            "value": null
-          },
-          "value": {
-            "type": "Struct",
-            "value": {
-              "features": {
-                "type": "Struct",
-                "value": {
-                  "price": {
-                    "type": "Float",
-                    "value": null
-                  }
-                }
-              },
-              "output": {
-                "type": "Float",
-                "value": null
-              }
-            }
-          }
-        }
-      },
-      "writable": false
-    },
-    "MLValidation.Arrival Time Model": {
-      "name": "MLValidation.Arrival Time Model",
+    "MLValidation.Demand": {
+      "name": "MLValidation.Demand",
       "type": {
         "type": "Dict",
         "value": {
@@ -295,8 +134,8 @@
       },
       "writable": false
     },
-    "MLValidation.Quantity Model": {
-      "name": "MLValidation.Quantity Model",
+    "Pipeline.Historic Procurement": {
+      "name": "Pipeline.Historic Procurement",
       "type": {
         "type": "Dict",
         "value": {
@@ -307,71 +146,12 @@
           "value": {
             "type": "Struct",
             "value": {
-              "n_train": {
-                "type": "Integer",
+              "date": {
+                "type": "DateTime",
                 "value": null
               },
-              "n_test": {
-                "type": "Integer",
-                "value": null
-              },
-              "train_stddev": {
-                "type": "Float",
-                "value": null
-              },
-              "train_rmse": {
-                "type": "Float",
-                "value": null
-              },
-              "test_stddev": {
-                "type": "Float",
-                "value": null
-              },
-              "test_rmse": {
-                "type": "Float",
-                "value": null
-              },
-              "loss": {
-                "type": "Float",
-                "value": null
-              },
-              "hyperparameters": {
-                "type": "Dict",
-                "value": {
-                  "key": {
-                    "type": "String",
-                    "value": null
-                  },
-                  "value": {
-                    "type": "String",
-                    "value": null
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "writable": false
-    },
-    "Pipeline.Transform Arrival Time for ML": {
-      "name": "Pipeline.Transform Arrival Time for ML",
-      "type": {
-        "type": "Dict",
-        "value": {
-          "key": {
-            "type": "String",
-            "value": null
-          },
-          "value": {
-            "type": "Struct",
-            "value": {
-              "price": {
-                "type": "Float",
-                "value": null
-              },
-              "interArrivalHours": {
-                "type": "Float",
+              "supplierName": {
+                "type": "String",
                 "value": null
               }
             }
@@ -380,56 +160,8 @@
       },
       "writable": false
     },
-    "Pipeline.Transform Quantity for ML": {
-      "name": "Pipeline.Transform Quantity for ML",
-      "type": {
-        "type": "Dict",
-        "value": {
-          "key": {
-            "type": "String",
-            "value": null
-          },
-          "value": {
-            "type": "Struct",
-            "value": {
-              "price": {
-                "type": "Float",
-                "value": null
-              },
-              "qty": {
-                "type": "Float",
-                "value": null
-              }
-            }
-          }
-        }
-      },
-      "writable": false
-    },
-    "Writeable.Quantity Prediction Input Data": {
-      "name": "Writeable.Quantity Prediction Input Data",
-      "type": {
-        "type": "Dict",
-        "value": {
-          "key": {
-            "type": "String",
-            "value": null
-          },
-          "value": {
-            "type": "Struct",
-            "value": {
-              "price": {
-                "type": "Float",
-                "value": null
-              }
-            }
-          }
-        }
-      },
-      "writable": true
-    },
-    "Writeable.Sales Records": {
-      "name": "Writeable.Sales Records",
+    "Pipeline.Historic Sales": {
+      "name": "Pipeline.Historic Sales",
       "type": {
         "type": "Dict",
         "value": {
@@ -448,7 +180,7 @@
                 "type": "Integer",
                 "value": null
               },
-              "price": {
+              "discount": {
                 "type": "Float",
                 "value": null
               }
@@ -456,468 +188,119 @@
           }
         }
       },
+      "writable": false
+    },
+    "Pipeline.MLTraining.Demand": {
+      "name": "Pipeline.MLTraining.Demand",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "discount": {
+                "type": "Float",
+                "value": null
+              },
+              "qty": {
+                "type": "Float",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "Pipeline.Suppliers": {
+      "name": "Pipeline.Suppliers",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "supplierName": {
+                "type": "String",
+                "value": null
+              },
+              "paymentTerms": {
+                "type": "Float",
+                "value": null
+              },
+              "leadTime": {
+                "type": "Float",
+                "value": null
+              },
+              "unitCost": {
+                "type": "Float",
+                "value": null
+              },
+              "orderQty": {
+                "type": "Integer",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "Writeable.Procurement File": {
+      "name": "Writeable.Procurement File",
+      "type": {
+        "type": "Blob",
+        "value": null
+      },
+      "writable": true
+    },
+    "Writeable.Sales File": {
+      "name": "Writeable.Sales File",
+      "type": {
+        "type": "Blob",
+        "value": null
+      },
+      "writable": true
+    },
+    "Writeable.Suppliers File": {
+      "name": "Writeable.Suppliers File",
+      "type": {
+        "type": "Blob",
+        "value": null
+      },
       "writable": true
     }
   },
   "tasks": {
-    "MLPrediction.Arrival Time Prediction": {
-      "name": "MLPrediction.Arrival Time Prediction",
-      "task_type": "ml_prediction",
-      "model": {
-        "type": "linear",
-        "noise": "none"
-      },
-      "inputs": {
-        "model": {
-          "name": "MLModel.Quantity Model",
-          "type": {
-            "type": "Struct",
-            "value": {
-              "parameters": {
-                "type": "Struct",
-                "value": {
-                  "beta": {
-                    "type": "Array",
-                    "value": {
-                      "type": "Float",
-                      "value": null
-                    }
-                  },
-                  "c": {
-                    "type": "Float",
-                    "value": null
-                  }
-                }
-              },
-              "transform": {
-                "type": "Struct",
-                "value": {
-                  "n_features": {
-                    "type": "Integer",
-                    "value": null
-                  },
-                  "transform": {
-                    "type": "Struct",
-                    "value": {
-                      "price": {
-                        "type": "Struct",
-                        "value": {
-                          "index": {
-                            "type": "Integer",
-                            "value": null
-                          },
-                          "min": {
-                            "type": "Float",
-                            "value": null
-                          },
-                          "max": {
-                            "type": "Float",
-                            "value": null
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "writable": false
-        },
-        "examples": {
-          "name": "Writeable.Quantity Prediction Input Data",
-          "type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "price": {
-                    "type": "Float",
-                    "value": null
-                  }
-                }
-              }
-            }
-          },
-          "writable": true
-        }
-      },
-      "outputs": {
-        "output": {
-          "name": "MLPrediction.Arrival Time Prediction",
-          "type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "features": {
-                    "type": "Struct",
-                    "value": {
-                      "price": {
-                        "type": "Float",
-                        "value": null
-                      }
-                    }
-                  },
-                  "output": {
-                    "type": "Float",
-                    "value": null
-                  }
-                }
-              }
-            }
-          },
-          "writable": false
-        }
-      }
-    },
-    "MLPrediction.Quantity Prediction": {
-      "name": "MLPrediction.Quantity Prediction",
-      "task_type": "ml_prediction",
-      "model": {
-        "type": "linear",
-        "noise": "none"
-      },
-      "inputs": {
-        "model": {
-          "name": "MLModel.Quantity Model",
-          "type": {
-            "type": "Struct",
-            "value": {
-              "parameters": {
-                "type": "Struct",
-                "value": {
-                  "beta": {
-                    "type": "Array",
-                    "value": {
-                      "type": "Float",
-                      "value": null
-                    }
-                  },
-                  "c": {
-                    "type": "Float",
-                    "value": null
-                  }
-                }
-              },
-              "transform": {
-                "type": "Struct",
-                "value": {
-                  "n_features": {
-                    "type": "Integer",
-                    "value": null
-                  },
-                  "transform": {
-                    "type": "Struct",
-                    "value": {
-                      "price": {
-                        "type": "Struct",
-                        "value": {
-                          "index": {
-                            "type": "Integer",
-                            "value": null
-                          },
-                          "min": {
-                            "type": "Float",
-                            "value": null
-                          },
-                          "max": {
-                            "type": "Float",
-                            "value": null
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "writable": false
-        },
-        "examples": {
-          "name": "Writeable.Quantity Prediction Input Data",
-          "type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "price": {
-                    "type": "Float",
-                    "value": null
-                  }
-                }
-              }
-            }
-          },
-          "writable": true
-        }
-      },
-      "outputs": {
-        "output": {
-          "name": "MLPrediction.Quantity Prediction",
-          "type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "features": {
-                    "type": "Struct",
-                    "value": {
-                      "price": {
-                        "type": "Float",
-                        "value": null
-                      }
-                    }
-                  },
-                  "output": {
-                    "type": "Float",
-                    "value": null
-                  }
-                }
-              }
-            }
-          },
-          "writable": false
-        }
-      }
-    },
-    "MLTraining.Arrival Time Model": {
+    "MLTraining.Demand": {
       "task_type": "ml_training",
-      "name": "MLTraining.Arrival Time Model",
+      "name": "MLTraining.Demand",
       "features": {
-        "price": {
-          "type": "Float",
-          "value": null
-        }
-      },
-      "output_name": "interArrivalHours",
-      "model": {
-        "type": "linear",
-        "noise": "none"
-      },
-      "train_iterations": 500,
-      "tune_iterations": 50,
-      "max_samples": 500,
-      "loss": "L2",
-      "inputs": {
-        "input": {
-          "name": "Pipeline.Transform Arrival Time for ML",
-          "type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "price": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "interArrivalHours": {
-                    "type": "Float",
-                    "value": null
-                  }
-                }
-              }
-            }
-          },
-          "writable": false
-        }
-      },
-      "outputs": {
-        "model": {
-          "name": "MLModel.Arrival Time Model",
-          "type": {
-            "type": "Struct",
-            "value": {
-              "parameters": {
-                "type": "Struct",
-                "value": {
-                  "beta": {
-                    "type": "Array",
-                    "value": {
-                      "type": "Float",
-                      "value": null
-                    }
-                  },
-                  "c": {
-                    "type": "Float",
-                    "value": null
-                  }
-                }
-              },
-              "transform": {
-                "type": "Struct",
-                "value": {
-                  "n_features": {
-                    "type": "Integer",
-                    "value": null
-                  },
-                  "transform": {
-                    "type": "Struct",
-                    "value": {
-                      "price": {
-                        "type": "Struct",
-                        "value": {
-                          "index": {
-                            "type": "Integer",
-                            "value": null
-                          },
-                          "min": {
-                            "type": "Float",
-                            "value": null
-                          },
-                          "max": {
-                            "type": "Float",
-                            "value": null
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "writable": false
-        },
-        "training": {
-          "name": "MLTraining.Arrival Time Model",
-          "type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "features": {
-                    "type": "Struct",
-                    "value": {
-                      "price": {
-                        "type": "Float",
-                        "value": null
-                      }
-                    }
-                  },
-                  "output": {
-                    "type": "Float",
-                    "value": null
-                  }
-                }
-              }
-            }
-          },
-          "writable": false
-        },
-        "validation": {
-          "name": "MLValidation.Arrival Time Model",
-          "type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "n_train": {
-                    "type": "Integer",
-                    "value": null
-                  },
-                  "n_test": {
-                    "type": "Integer",
-                    "value": null
-                  },
-                  "train_stddev": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "train_rmse": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "test_stddev": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "test_rmse": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "loss": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "hyperparameters": {
-                    "type": "Dict",
-                    "value": {
-                      "key": {
-                        "type": "String",
-                        "value": null
-                      },
-                      "value": {
-                        "type": "String",
-                        "value": null
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "writable": false
-        }
-      }
-    },
-    "MLTraining.Quantity Model": {
-      "task_type": "ml_training",
-      "name": "MLTraining.Quantity Model",
-      "features": {
-        "price": {
+        "discount": {
           "type": "Float",
           "value": null
         }
       },
       "output_name": "qty",
       "model": {
-        "type": "linear",
-        "noise": "none"
+        "type": "gaussian_process",
+        "noise": "gaussian"
       },
       "train_iterations": 500,
       "tune_iterations": 50,
-      "max_samples": 500,
+      "max_samples": 50,
       "loss": "L2",
       "inputs": {
         "input": {
-          "name": "Pipeline.Transform Quantity for ML",
+          "name": "Pipeline.MLTraining.Demand",
           "type": {
             "type": "Dict",
             "value": {
@@ -928,7 +311,7 @@
               "value": {
                 "type": "Struct",
                 "value": {
-                  "price": {
+                  "discount": {
                     "type": "Float",
                     "value": null
                   },
@@ -945,25 +328,13 @@
       },
       "outputs": {
         "model": {
-          "name": "MLModel.Quantity Model",
+          "name": "MLModel.Demand",
           "type": {
             "type": "Struct",
             "value": {
               "parameters": {
-                "type": "Struct",
-                "value": {
-                  "beta": {
-                    "type": "Array",
-                    "value": {
-                      "type": "Float",
-                      "value": null
-                    }
-                  },
-                  "c": {
-                    "type": "Float",
-                    "value": null
-                  }
-                }
+                "type": "Blob",
+                "value": null
               },
               "transform": {
                 "type": "Struct",
@@ -975,7 +346,7 @@
                   "transform": {
                     "type": "Struct",
                     "value": {
-                      "price": {
+                      "discount": {
                         "type": "Struct",
                         "value": {
                           "index": {
@@ -1001,7 +372,7 @@
           "writable": false
         },
         "training": {
-          "name": "MLTraining.Quantity Model",
+          "name": "MLTraining.Demand",
           "type": {
             "type": "Dict",
             "value": {
@@ -1015,7 +386,7 @@
                   "features": {
                     "type": "Struct",
                     "value": {
-                      "price": {
+                      "discount": {
                         "type": "Float",
                         "value": null
                       }
@@ -1032,7 +403,7 @@
           "writable": false
         },
         "validation": {
-          "name": "MLValidation.Quantity Model",
+          "name": "MLValidation.Demand",
           "type": {
             "type": "Dict",
             "value": {
@@ -1092,13 +463,23 @@
         }
       }
     },
-    "Pipeline.Transform Arrival Time for ML": {
-      "name": "Pipeline.Transform Arrival Time for ML",
-      "parent": "Pipeline.Transform Arrival Time for ML",
+    "Pipeline.Historic Procurement": {
+      "name": "Pipeline.Historic Procurement",
+      "parent": "Pipeline.Historic Procurement",
       "task_type": "pipeline",
       "inputs": {
         "input": {
-          "name": "Writeable.Sales Records",
+          "name": "Writeable.Procurement File",
+          "type": {
+            "type": "Blob",
+            "value": null
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Historic Procurement",
           "type": {
             "type": "Dict",
             "value": {
@@ -1113,40 +494,8 @@
                     "type": "DateTime",
                     "value": null
                   },
-                  "qty": {
-                    "type": "Integer",
-                    "value": null
-                  },
-                  "price": {
-                    "type": "Float",
-                    "value": null
-                  }
-                }
-              }
-            }
-          },
-          "writable": true
-        }
-      },
-      "outputs": {
-        "output": {
-          "name": "Pipeline.Transform Arrival Time for ML",
-          "type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "price": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "interArrivalHours": {
-                    "type": "Float",
+                  "supplierName": {
+                    "type": "String",
                     "value": null
                   }
                 }
@@ -1158,156 +507,7 @@
       },
       "operations": [
         {
-          "operation_type": "offset",
-          "group_key": {
-            "type": {
-              "type": "DateTime",
-              "value": null
-            },
-            "ast_type": "Round",
-            "rounding_mode": "floor",
-            "value": {
-              "type": {
-                "type": "DateTime",
-                "value": null
-              },
-              "ast_type": "Variable",
-              "name": "field.date"
-            },
-            "unit": "day"
-          },
-          "sort_key": {
-            "type": {
-              "type": "DateTime",
-              "value": null
-            },
-            "ast_type": "Variable",
-            "name": "field.date"
-          },
-          "offset": -1,
-          "offset_selections": {
-            "previousDate": {
-              "type": {
-                "type": "DateTime",
-                "value": null,
-                "nullable": true
-              },
-              "ast_type": "IfElse",
-              "predicate": {
-                "type": {
-                  "type": "Boolean",
-                  "value": null
-                },
-                "ast_type": "Variable",
-                "name": "offset_exists"
-              },
-              "true": {
-                "type": {
-                  "type": "DateTime",
-                  "value": null,
-                  "nullable": true
-                },
-                "ast_type": "Variable",
-                "name": "field.date"
-              },
-              "false": {
-                "type": {
-                  "type": "DateTime",
-                  "value": null,
-                  "nullable": true
-                },
-                "ast_type": "IfNull",
-                "input": {
-                  "type": {
-                    "type": "DateTime",
-                    "value": null,
-                    "nullable": true
-                  },
-                  "ast_type": "IfNull",
-                  "input": {
-                    "type": {
-                      "type": "DateTime",
-                      "value": null,
-                      "nullable": true
-                    },
-                    "ast_type": "Variable",
-                    "name": "field.date"
-                  },
-                  "output_null": {
-                    "type": {
-                      "nullable": true
-                    },
-                    "ast_type": "Const",
-                    "value": null
-                  },
-                  "output_value": {
-                    "type": {
-                      "type": "DateTime",
-                      "value": null
-                    },
-                    "ast_type": "Round",
-                    "rounding_mode": "floor",
-                    "value": {
-                      "type": {
-                        "type": "DateTime",
-                        "value": null
-                      },
-                      "ast_type": "Variable",
-                      "name": "_Rhku4lGwef$H1pW2B1AQ6x"
-                    },
-                    "unit": "day"
-                  },
-                  "value": {
-                    "type": {
-                      "type": "DateTime",
-                      "value": null
-                    },
-                    "ast_type": "Variable",
-                    "name": "_Rhku4lGwef$H1pW2B1AQ6x"
-                  }
-                },
-                "output_null": {
-                  "type": {
-                    "nullable": true
-                  },
-                  "ast_type": "Const",
-                  "value": null
-                },
-                "output_value": {
-                  "type": {
-                    "type": "DateTime",
-                    "value": null
-                  },
-                  "ast_type": "AddDuration",
-                  "start": {
-                    "type": {
-                      "type": "DateTime",
-                      "value": null
-                    },
-                    "ast_type": "Variable",
-                    "name": "_3gJOESFv517ckFh81opLzH"
-                  },
-                  "duration": {
-                    "type": {
-                      "type": "Float",
-                      "value": null
-                    },
-                    "ast_type": "Const",
-                    "value": 9
-                  },
-                  "unit": "hour"
-                },
-                "value": {
-                  "type": {
-                    "type": "DateTime",
-                    "value": null
-                  },
-                  "ast_type": "Variable",
-                  "name": "_3gJOESFv517ckFh81opLzH"
-                }
-              }
-            }
-          },
+          "operation_type": "fromJsonLines",
           "output_type": {
             "type": "Dict",
             "value": {
@@ -1322,142 +522,11 @@
                     "type": "DateTime",
                     "value": null
                   },
-                  "qty": {
-                    "type": "Integer",
-                    "value": null
-                  },
-                  "price": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "previousDate": {
-                    "type": "DateTime",
-                    "value": null,
-                    "nullable": true
-                  }
-                }
-              }
-            }
-          }
-        },
-        {
-          "operation_type": "select",
-          "output_type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "price": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "interArrivalHours": {
-                    "type": "Float",
+                  "supplierName": {
+                    "type": "String",
                     "value": null
                   }
                 }
-              }
-            }
-          },
-          "selections": {
-            "price": {
-              "type": {
-                "type": "Float",
-                "value": null
-              },
-              "ast_type": "Variable",
-              "name": "field.price"
-            },
-            "interArrivalHours": {
-              "type": {
-                "type": "Float",
-                "value": null
-              },
-              "ast_type": "IfNull",
-              "input": {
-                "type": {
-                  "type": "Float",
-                  "value": null,
-                  "nullable": true
-                },
-                "ast_type": "IfNull",
-                "input": {
-                  "type": {
-                    "type": "DateTime",
-                    "value": null,
-                    "nullable": true
-                  },
-                  "ast_type": "Variable",
-                  "name": "field.previousDate"
-                },
-                "output_null": {
-                  "type": {
-                    "nullable": true
-                  },
-                  "ast_type": "Const",
-                  "value": null
-                },
-                "output_value": {
-                  "type": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "ast_type": "Duration",
-                  "start": {
-                    "type": {
-                      "type": "DateTime",
-                      "value": null
-                    },
-                    "ast_type": "Variable",
-                    "name": "_I_r$_h4nPi0Z79roxTewXB"
-                  },
-                  "stop": {
-                    "type": {
-                      "type": "DateTime",
-                      "value": null
-                    },
-                    "ast_type": "Variable",
-                    "name": "field.date"
-                  },
-                  "unit": "hour"
-                },
-                "value": {
-                  "type": {
-                    "type": "DateTime",
-                    "value": null
-                  },
-                  "ast_type": "Variable",
-                  "name": "_I_r$_h4nPi0Z79roxTewXB"
-                }
-              },
-              "output_null": {
-                "type": {
-                  "type": "Float",
-                  "value": null
-                },
-                "ast_type": "Const",
-                "value": 0
-              },
-              "output_value": {
-                "type": {
-                  "type": "Float",
-                  "value": null
-                },
-                "ast_type": "Variable",
-                "name": "_yEh2GIZLgUcxLtJx11oBqU"
-              },
-              "value": {
-                "type": {
-                  "type": "Float",
-                  "value": null
-                },
-                "ast_type": "Variable",
-                "name": "_yEh2GIZLgUcxLtJx11oBqU"
               }
             }
           },
@@ -1466,19 +535,36 @@
               "type": "String",
               "value": null
             },
-            "ast_type": "Variable",
-            "name": "key"
+            "ast_type": "Print",
+            "value": {
+              "type": {
+                "type": "DateTime",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.date"
+            }
           }
         }
       ]
     },
-    "Pipeline.Transform Quantity for ML": {
-      "name": "Pipeline.Transform Quantity for ML",
-      "parent": "Pipeline.Transform Quantity for ML",
+    "Pipeline.Historic Sales": {
+      "name": "Pipeline.Historic Sales",
+      "parent": "Pipeline.Historic Sales",
       "task_type": "pipeline",
       "inputs": {
         "input": {
-          "name": "Writeable.Sales Records",
+          "name": "Writeable.Sales File",
+          "type": {
+            "type": "Blob",
+            "value": null
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Historic Sales",
           "type": {
             "type": "Dict",
             "value": {
@@ -1497,7 +583,7 @@
                     "type": "Integer",
                     "value": null
                   },
-                  "price": {
+                  "discount": {
                     "type": "Float",
                     "value": null
                   }
@@ -1505,12 +591,63 @@
               }
             }
           },
-          "writable": true
+          "writable": false
         }
       },
-      "outputs": {
-        "output": {
-          "name": "Pipeline.Transform Quantity for ML",
+      "operations": [
+        {
+          "operation_type": "fromJsonLines",
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "qty": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "discount": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "output_key": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Print",
+            "value": {
+              "type": {
+                "type": "DateTime",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.date"
+            }
+          }
+        }
+      ]
+    },
+    "Pipeline.MLTraining.Demand": {
+      "name": "Pipeline.MLTraining.Demand",
+      "parent": "Pipeline.MLTraining.Demand",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Pipeline.Historic Sales",
           "type": {
             "type": "Dict",
             "value": {
@@ -1521,7 +658,39 @@
               "value": {
                 "type": "Struct",
                 "value": {
-                  "price": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "qty": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "discount": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.MLTraining.Demand",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "discount": {
                     "type": "Float",
                     "value": null
                   },
@@ -1549,7 +718,7 @@
               "value": {
                 "type": "Struct",
                 "value": {
-                  "price": {
+                  "discount": {
                     "type": "Float",
                     "value": null
                   },
@@ -1562,13 +731,13 @@
             }
           },
           "selections": {
-            "price": {
+            "discount": {
               "type": {
                 "type": "Float",
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "field.price"
+              "name": "field.discount"
             },
             "qty": {
               "type": {
@@ -1596,398 +765,125 @@
           }
         }
       ]
+    },
+    "Pipeline.Suppliers": {
+      "name": "Pipeline.Suppliers",
+      "parent": "Pipeline.Suppliers",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.Suppliers File",
+          "type": {
+            "type": "Blob",
+            "value": null
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Suppliers",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "supplierName": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "paymentTerms": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "leadTime": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "unitCost": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "orderQty": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "fromJsonLines",
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "supplierName": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "paymentTerms": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "leadTime": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "unitCost": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "orderQty": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "output_key": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Variable",
+            "name": "field.supplierName"
+          }
+        }
+      ]
     }
   },
   "defaults": {
-    "Writeable.Quantity Prediction Input Data": {
-      "default_type": "value",
-      "stream": "Writeable.Quantity Prediction Input Data",
-      "value": {
-        "type": {
-          "type": "Dict",
-          "value": {
-            "key": {
-              "type": "String",
-              "value": null
-            },
-            "value": {
-              "type": "Struct",
-              "value": {
-                "price": {
-                  "type": "Float",
-                  "value": null
-                }
-              }
-            }
-          }
-        },
-        "ast_type": "Const",
-        "value": {
-          "type": "map",
-          "kind": "literal",
-          "value": [
-            [
-              "0",
-              {
-                "price": 3
-              }
-            ],
-            [
-              "1",
-              {
-                "price": 3.25
-              }
-            ],
-            [
-              "2",
-              {
-                "price": 3.5
-              }
-            ],
-            [
-              "3",
-              {
-                "price": 3.75
-              }
-            ],
-            [
-              "4",
-              {
-                "price": 4
-              }
-            ],
-            [
-              "5",
-              {
-                "price": 4.25
-              }
-            ],
-            [
-              "6",
-              {
-                "price": 4.5
-              }
-            ],
-            [
-              "7",
-              {
-                "price": 4.75
-              }
-            ]
-          ]
-        }
-      }
+    "Writeable.Procurement File": {
+      "default_type": "file",
+      "stream": "Writeable.Procurement File",
+      "path": "data/procurement.jsonl"
     },
-    "Writeable.Sales Records": {
-      "default_type": "value",
-      "stream": "Writeable.Sales Records",
-      "value": {
-        "type": {
-          "type": "Dict",
-          "value": {
-            "key": {
-              "type": "String",
-              "value": null
-            },
-            "value": {
-              "type": "Struct",
-              "value": {
-                "date": {
-                  "type": "DateTime",
-                  "value": null
-                },
-                "qty": {
-                  "type": "Integer",
-                  "value": null
-                },
-                "price": {
-                  "type": "Float",
-                  "value": null
-                }
-              }
-            }
-          }
-        },
-        "ast_type": "Const",
-        "value": {
-          "type": "map",
-          "kind": "literal",
-          "value": [
-            [
-              "0",
-              {
-                "date": {
-                  "type": "datetime",
-                  "kind": "literal",
-                  "value": "2022-10-10T09:00:00.000Z"
-                },
-                "qty": {
-                  "type": "integer",
-                  "kind": "literal",
-                  "value": "1"
-                },
-                "price": 4
-              }
-            ],
-            [
-              "1",
-              {
-                "date": {
-                  "type": "datetime",
-                  "kind": "literal",
-                  "value": "2022-10-10T10:00:00.000Z"
-                },
-                "qty": {
-                  "type": "integer",
-                  "kind": "literal",
-                  "value": "2"
-                },
-                "price": 4
-              }
-            ],
-            [
-              "2",
-              {
-                "date": {
-                  "type": "datetime",
-                  "kind": "literal",
-                  "value": "2022-10-10T11:00:00.000Z"
-                },
-                "qty": {
-                  "type": "integer",
-                  "kind": "literal",
-                  "value": "3"
-                },
-                "price": 4
-              }
-            ],
-            [
-              "3",
-              {
-                "date": {
-                  "type": "datetime",
-                  "kind": "literal",
-                  "value": "2022-10-10T12:00:00.000Z"
-                },
-                "qty": {
-                  "type": "integer",
-                  "kind": "literal",
-                  "value": "2"
-                },
-                "price": 4
-              }
-            ],
-            [
-              "4",
-              {
-                "date": {
-                  "type": "datetime",
-                  "kind": "literal",
-                  "value": "2022-10-10T13:00:00.000Z"
-                },
-                "qty": {
-                  "type": "integer",
-                  "kind": "literal",
-                  "value": "2"
-                },
-                "price": 4
-              }
-            ],
-            [
-              "5",
-              {
-                "date": {
-                  "type": "datetime",
-                  "kind": "literal",
-                  "value": "2022-10-11T09:00:00.000Z"
-                },
-                "qty": {
-                  "type": "integer",
-                  "kind": "literal",
-                  "value": "1"
-                },
-                "price": 4.5
-              }
-            ],
-            [
-              "6",
-              {
-                "date": {
-                  "type": "datetime",
-                  "kind": "literal",
-                  "value": "2022-10-11T10:30:00.000Z"
-                },
-                "qty": {
-                  "type": "integer",
-                  "kind": "literal",
-                  "value": "1"
-                },
-                "price": 4.5
-              }
-            ],
-            [
-              "7",
-              {
-                "date": {
-                  "type": "datetime",
-                  "kind": "literal",
-                  "value": "2022-10-11T12:00:00.000Z"
-                },
-                "qty": {
-                  "type": "integer",
-                  "kind": "literal",
-                  "value": "1"
-                },
-                "price": 4.5
-              }
-            ],
-            [
-              "8",
-              {
-                "date": {
-                  "type": "datetime",
-                  "kind": "literal",
-                  "value": "2022-10-11T13:30:00.000Z"
-                },
-                "qty": {
-                  "type": "integer",
-                  "kind": "literal",
-                  "value": "2"
-                },
-                "price": 4.5
-              }
-            ],
-            [
-              "9",
-              {
-                "date": {
-                  "type": "datetime",
-                  "kind": "literal",
-                  "value": "2022-10-12T09:00:00.000Z"
-                },
-                "qty": {
-                  "type": "integer",
-                  "kind": "literal",
-                  "value": "5"
-                },
-                "price": 3.5
-              }
-            ],
-            [
-              "10",
-              {
-                "date": {
-                  "type": "datetime",
-                  "kind": "literal",
-                  "value": "2022-10-12T09:30:00.000Z"
-                },
-                "qty": {
-                  "type": "integer",
-                  "kind": "literal",
-                  "value": "4"
-                },
-                "price": 3.5
-              }
-            ],
-            [
-              "11",
-              {
-                "date": {
-                  "type": "datetime",
-                  "kind": "literal",
-                  "value": "2022-10-12T10:00:00.000Z"
-                },
-                "qty": {
-                  "type": "integer",
-                  "kind": "literal",
-                  "value": "3"
-                },
-                "price": 3.5
-              }
-            ],
-            [
-              "12",
-              {
-                "date": {
-                  "type": "datetime",
-                  "kind": "literal",
-                  "value": "2022-10-12T11:00:00.000Z"
-                },
-                "qty": {
-                  "type": "integer",
-                  "kind": "literal",
-                  "value": "3"
-                },
-                "price": 3.5
-              }
-            ],
-            [
-              "13",
-              {
-                "date": {
-                  "type": "datetime",
-                  "kind": "literal",
-                  "value": "2022-10-12T11:30:00.000Z"
-                },
-                "qty": {
-                  "type": "integer",
-                  "kind": "literal",
-                  "value": "2"
-                },
-                "price": 3.5
-              }
-            ],
-            [
-              "14",
-              {
-                "date": {
-                  "type": "datetime",
-                  "kind": "literal",
-                  "value": "2022-10-12T12:00:00.000Z"
-                },
-                "qty": {
-                  "type": "integer",
-                  "kind": "literal",
-                  "value": "4"
-                },
-                "price": 3.5
-              }
-            ],
-            [
-              "15",
-              {
-                "date": {
-                  "type": "datetime",
-                  "kind": "literal",
-                  "value": "2022-10-12T13:00:00.000Z"
-                },
-                "qty": {
-                  "type": "integer",
-                  "kind": "literal",
-                  "value": "4"
-                },
-                "price": 3.5
-              }
-            ],
-            [
-              "16",
-              {
-                "date": {
-                  "type": "datetime",
-                  "kind": "literal",
-                  "value": "2022-10-12T13:30:00.000Z"
-                },
-                "qty": {
-                  "type": "integer",
-                  "kind": "literal",
-                  "value": "3"
-                },
-                "price": 3.5
-              }
-            ]
-          ]
-        }
-      }
+    "Writeable.Sales File": {
+      "default_type": "file",
+      "stream": "Writeable.Sales File",
+      "path": "data/sales.jsonl"
+    },
+    "Writeable.Suppliers File": {
+      "default_type": "file",
+      "stream": "Writeable.Suppliers File",
+      "path": "data/suppliers.jsonl"
     }
   }
 }
