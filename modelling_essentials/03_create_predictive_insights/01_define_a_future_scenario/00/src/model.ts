@@ -1,4 +1,4 @@
-import { Add, AddDuration, Const, Convert, DateTimeType, Divide, FloatType, Floor, Get, GetField, Greater, Hour, IfElse, IntegerType, Multiply, PipelineBuilder, Print, ProcessBuilder, RandomKey, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringType, Struct, Subtract, Template } from "@elaraai/core"
+import { Add, AddDuration, Const, Convert, DateTimeType, Divide, FloatType, Floor, Get, GetField, Greater, Hour, IfElse, IntegerType, LessEqual, Multiply, PipelineBuilder, Print, ProcessBuilder, RandomKey, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringType, Struct, Subtract, Template } from "@elaraai/core"
 
 const sales_file = new SourceBuilder("Sales File")
     .file({ path: 'data/sales.jsonl' })
@@ -82,6 +82,8 @@ const sales = new ProcessBuilder("Sales")
     .let("amount", props => Multiply(props.qty, props.price))
     .set("Stock-on-hand", (props, resources) => Subtract(resources["Stock-on-hand"], props.qty))
     .set("Cash", (props, resources) => Add(resources.Cash, props.amount))
+    // otherwise stop selling if we run out of stock
+    .end((_props, resources) => LessEqual(resources["Stock-on-hand"], 0n))
 
 const receive_goods = new ProcessBuilder("Receive Goods")
     .resource(stock_on_hand)
@@ -200,6 +202,8 @@ const predicted_sales = new ProcessBuilder("Predicted Sales")
             AddDuration(props.date, 1, 'hour')
         )
     }))
+    // stop simulating 2 weeks into the future
+    .end((props) => Greater(props.date, AddDuration(Const(now), 1, 'week')))
     // start simulating from the current date
     .mapFromValue({ date: now })
 
