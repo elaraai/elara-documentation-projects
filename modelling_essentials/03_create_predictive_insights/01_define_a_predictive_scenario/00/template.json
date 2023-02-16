@@ -2313,6 +2313,36 @@
                 }
               },
               "assertions": []
+            },
+            {
+              "type": "end",
+              "predicate": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "LessEqual",
+                "first": {
+                  "type": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "r_Stock-on-hand"
+                },
+                "second": {
+                  "type": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "ast_type": "Const",
+                  "value": {
+                    "type": "integer",
+                    "kind": "literal",
+                    "value": "0"
+                  }
+                }
+              }
             }
           ],
           "input": null
@@ -4098,6 +4128,36 @@
                 }
               },
               "assertions": []
+            },
+            {
+              "type": "end",
+              "predicate": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "LessEqual",
+                "first": {
+                  "type": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "r_Stock-on-hand"
+                },
+                "second": {
+                  "type": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "ast_type": "Const",
+                  "value": {
+                    "type": "integer",
+                    "kind": "literal",
+                    "value": "0"
+                  }
+                }
+              }
             }
           ],
           "input": null
@@ -5034,6 +5094,52 @@
                 "ast_type": "Const",
                 "value": true
               }
+            },
+            {
+              "type": "end",
+              "predicate": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Greater",
+                "first": {
+                  "type": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "p_date"
+                },
+                "second": {
+                  "type": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "ast_type": "AddDuration",
+                  "start": {
+                    "type": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "ast_type": "Const",
+                    "value": {
+                      "type": "datetime",
+                      "kind": "literal",
+                      "value": "2023-02-16T04:17:45.728Z"
+                    }
+                  },
+                  "duration": {
+                    "type": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "ast_type": "Const",
+                    "value": 1
+                  },
+                  "unit": "week"
+                }
+              }
             }
           ],
           "input": "process.Predicted Sales"
@@ -5262,7 +5368,7 @@
                 "date": {
                   "type": "datetime",
                   "kind": "literal",
-                  "value": "2023-02-16T03:19:40.612Z"
+                  "value": "2023-02-16T04:17:45.728Z"
                 }
               }
             ]
@@ -5303,7 +5409,7 @@
                 "date": {
                   "type": "datetime",
                   "kind": "literal",
-                  "value": "2023-02-16T03:19:40.612Z"
+                  "value": "2023-02-16T04:17:45.728Z"
                 }
               }
             ]
