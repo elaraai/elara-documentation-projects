@@ -1,4 +1,4 @@
-import { Add, AddDuration, Const, Convert, DateTimeType, Divide, FloatType, Floor, Get, GetField, Greater, Hour, IfElse, IntegerType, Min, MLModelBuilder, Multiply, PipelineBuilder, Print, ProcessBuilder, RandomKey, ResourceBuilder, Round, ScenarioBuilder, SourceBuilder, StringType, Struct, Subtract, Template } from "@elaraai/core"
+import { Add, AddDuration, Const, Convert, DateTimeType, Divide, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IntegerType, Min, MLModelBuilder, Multiply, PipelineBuilder, Print, ProcessBuilder, RandomValue, ResourceBuilder, Round, ScenarioBuilder, SourceBuilder, StringType, Struct, Subtract, Template } from "@elaraai/core"
 
 const sales_file = new SourceBuilder("Sales File")
     .file({ path: 'data/sales.jsonl' })
@@ -224,13 +224,24 @@ const predicted_sales = new ProcessBuilder("Predicted Sales")
 
 const predicted_procurement = new ProcessBuilder("Predicted Procurement")
     .resource(suppliers)
+    .resource(cash)
     .process(procurement)
-    .let("supplierName", (_, resources) => RandomKey(resources.Suppliers))
+    .let("supplier", (_, resources) => RandomValue(resources.Suppliers))
     // create the next procurement in the future
-    .execute("Procurement", props => Struct({
-        date: props.date,
-        supplierName: props.supplierName,
-    }))
+    .execute(
+        "Procurement",
+        props => Struct({
+            date: props.date,
+            supplierName: GetField(props.supplier, "supplierName"),
+        }),
+        (props, resources) => GreaterEqual(
+            resources.Cash,
+            Multiply(
+                GetField(props.supplier, "unitCost"),
+                GetField(props.supplier, "orderQty")
+            )
+        )
+    )
     // Set procurement to occur every day
     .execute("Predicted Procurement", props => Struct({
         date: AddDuration(props.date, 1, 'day')

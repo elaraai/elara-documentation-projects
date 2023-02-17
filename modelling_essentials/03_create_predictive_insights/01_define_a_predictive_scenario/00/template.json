@@ -227,9 +227,30 @@
                   "type": "DateTime",
                   "value": null
                 },
-                "supplierName": {
-                  "type": "String",
-                  "value": null
+                "supplier": {
+                  "type": "Struct",
+                  "value": {
+                    "supplierName": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "paymentTerms": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "leadTime": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "unitCost": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "orderQty": {
+                      "type": "Integer",
+                      "value": null
+                    }
+                  }
                 }
               }
             },
@@ -3743,9 +3764,30 @@
                       "type": "DateTime",
                       "value": null
                     },
-                    "supplierName": {
-                      "type": "String",
-                      "value": null
+                    "supplier": {
+                      "type": "Struct",
+                      "value": {
+                        "supplierName": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "paymentTerms": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "leadTime": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "unitCost": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "orderQty": {
+                          "type": "Integer",
+                          "value": null
+                        }
+                      }
                     }
                   }
                 },
@@ -5160,22 +5202,64 @@
                 "type": "DateTime",
                 "value": null
               },
-              "supplierName": {
-                "type": "String",
-                "value": null
+              "supplier": {
+                "type": "Struct",
+                "value": {
+                  "supplierName": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "paymentTerms": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "leadTime": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "unitCost": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "orderQty": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
               }
             }
           },
           "statements": [
             {
               "type": "let",
-              "name": "supplierName",
+              "name": "supplier",
               "expr": {
                 "type": {
-                  "type": "String",
-                  "value": null
+                  "type": "Struct",
+                  "value": {
+                    "supplierName": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "paymentTerms": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "leadTime": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "unitCost": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "orderQty": {
+                      "type": "Integer",
+                      "value": null
+                    }
+                  }
                 },
-                "ast_type": "RandomKey",
+                "ast_type": "RandomValue",
                 "collection": {
                   "type": {
                     "type": "Dict",
@@ -5216,11 +5300,42 @@
                 },
                 "def": {
                   "type": {
-                    "type": "String",
-                    "value": null
+                    "type": "Struct",
+                    "value": {
+                      "supplierName": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "paymentTerms": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "leadTime": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "unitCost": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "orderQty": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
                   },
                   "ast_type": "Const",
-                  "value": ""
+                  "value": {
+                    "supplierName": "",
+                    "paymentTerms": 0,
+                    "leadTime": 0,
+                    "unitCost": 0,
+                    "orderQty": {
+                      "type": "integer",
+                      "kind": "literal",
+                      "value": "0"
+                    }
+                  }
                 }
               }
             },
@@ -5256,8 +5371,37 @@
                       "type": "String",
                       "value": null
                     },
-                    "ast_type": "Variable",
-                    "name": "p_supplierName"
+                    "ast_type": "GetField",
+                    "struct": {
+                      "type": {
+                        "type": "Struct",
+                        "value": {
+                          "supplierName": {
+                            "type": "String",
+                            "value": null
+                          },
+                          "paymentTerms": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "leadTime": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "unitCost": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "orderQty": {
+                            "type": "Integer",
+                            "value": null
+                          }
+                        }
+                      },
+                      "ast_type": "Variable",
+                      "name": "p_supplier"
+                    },
+                    "key": "supplierName"
                   }
                 }
               },
@@ -5266,8 +5410,103 @@
                   "type": "Boolean",
                   "value": null
                 },
-                "ast_type": "Const",
-                "value": true
+                "ast_type": "GreaterEqual",
+                "first": {
+                  "type": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "r_Cash"
+                },
+                "second": {
+                  "type": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "ast_type": "Multiply",
+                  "first": {
+                    "type": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "ast_type": "GetField",
+                    "struct": {
+                      "type": {
+                        "type": "Struct",
+                        "value": {
+                          "supplierName": {
+                            "type": "String",
+                            "value": null
+                          },
+                          "paymentTerms": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "leadTime": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "unitCost": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "orderQty": {
+                            "type": "Integer",
+                            "value": null
+                          }
+                        }
+                      },
+                      "ast_type": "Variable",
+                      "name": "p_supplier"
+                    },
+                    "key": "unitCost"
+                  },
+                  "second": {
+                    "type": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "ast_type": "Convert",
+                    "from": {
+                      "type": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "ast_type": "GetField",
+                      "struct": {
+                        "type": {
+                          "type": "Struct",
+                          "value": {
+                            "supplierName": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "paymentTerms": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "leadTime": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "unitCost": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "orderQty": {
+                              "type": "Integer",
+                              "value": null
+                            }
+                          }
+                        },
+                        "ast_type": "Variable",
+                        "name": "p_supplier"
+                      },
+                      "key": "orderQty"
+                    }
+                  }
+                }
               }
             },
             {
