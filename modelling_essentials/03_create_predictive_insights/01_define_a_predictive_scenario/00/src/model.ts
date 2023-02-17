@@ -134,8 +134,6 @@ const procurement = new ProcessBuilder("Procurement")
 const historic_sales = new ProcessBuilder("Historic Sales")
     // add the other models to be accessed
     .process(sales)
-    .resource(cash)
-    .resource(price)
     // also input for the mapping
     .value("qty", IntegerType)
     .value("discount", FloatType)
@@ -151,8 +149,6 @@ const historic_sales = new ProcessBuilder("Historic Sales")
 const historic_procurement = new ProcessBuilder("Historic Procurement")
     // add the other models to be accessed
     .process(procurement)
-    .resource(cash)
-    .resource(price)
     .value("supplierName", StringType)
     // create a supplier purchase based on the mapped data
     .execute("Procurement", (props) => Struct({
@@ -176,7 +172,7 @@ const descriptive_scenario = new ScenarioBuilder("Descriptive")
 
 // Predicted Scenario
 
-const now = new Date();
+const now = new Date("2023-12-17T09:00:00");
 
 const operating_times = new ResourceBuilder("Operating Times")
     .mapFromValue({ start: 9, end: 12 });
@@ -190,14 +186,14 @@ const predicted_sales = new ProcessBuilder("Predicted Sales")
     .execute("Sales", props => Struct({
         // the next sale date is mapped.
         date: props.date,
-        qty: Const(1n),
+        qty: Const(5n),
         discount: Const(0)
     }))
     // predict the next sale and continue triggering predicted sales
     .execute("Predicted Sales", (props, resources) => Struct({
         // the next sale date will be in an hour, otherwise next day
         date: IfElse(
-            Greater(Convert(Hour(props.date), FloatType), GetField(resources["Operating Times"], "end")),
+            Greater(Convert(Hour(AddDuration(props.date, 1, 'hour')), FloatType), GetField(resources["Operating Times"], "end")),
             AddDuration(Floor(AddDuration(props.date, 1, 'day'), 'day'), GetField(resources["Operating Times"], "start"), 'hour'),
             AddDuration(props.date, 1, 'hour')
         )
@@ -221,7 +217,7 @@ const predicted_procurement = new ProcessBuilder("Predicted Procurement")
         date: AddDuration(props.date, 1, 'day')
     }))
     // start simulating from the current date
-    .mapFromValue({ date: now });
+    .mapFromValue({ date: now })
 
 const predictive_scenario = new ScenarioBuilder("Predictive")
     .resource(cash, { ledger: true })

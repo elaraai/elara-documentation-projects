@@ -4896,7 +4896,7 @@
                     "value": {
                       "type": "integer",
                       "kind": "literal",
-                      "value": "1"
+                      "value": "5"
                     }
                   },
                   "discount": {
@@ -4962,8 +4962,24 @@
                               "type": "DateTime",
                               "value": null
                             },
-                            "ast_type": "Variable",
-                            "name": "p_date"
+                            "ast_type": "AddDuration",
+                            "start": {
+                              "type": {
+                                "type": "DateTime",
+                                "value": null
+                              },
+                              "ast_type": "Variable",
+                              "name": "p_date"
+                            },
+                            "duration": {
+                              "type": {
+                                "type": "Float",
+                                "value": null
+                              },
+                              "ast_type": "Const",
+                              "value": 1
+                            },
+                            "unit": "hour"
                           }
                         }
                       },
@@ -5126,7 +5142,7 @@
                     "value": {
                       "type": "datetime",
                       "kind": "literal",
-                      "value": "2023-02-16T04:17:45.728Z"
+                      "value": "2023-12-16T23:00:00.000Z"
                     }
                   },
                   "duration": {
@@ -5368,7 +5384,7 @@
                 "date": {
                   "type": "datetime",
                   "kind": "literal",
-                  "value": "2023-02-16T04:17:45.728Z"
+                  "value": "2023-12-16T23:00:00.000Z"
                 }
               }
             ]
@@ -5409,7 +5425,7 @@
                 "date": {
                   "type": "datetime",
                   "kind": "literal",
-                  "value": "2023-02-16T04:17:45.728Z"
+                  "value": "2023-12-16T23:00:00.000Z"
                 }
               }
             ]
