@@ -1,4 +1,4 @@
-import { Add, AddDuration, Const, Convert, DateTimeType, Divide, FloatType, Floor, Get, GetField, Greater, Hour, IfElse, IntegerType, LessEqual, Multiply, PipelineBuilder, Print, ProcessBuilder, RandomKey, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringType, Struct, Subtract, Template } from "@elaraai/core"
+import { Add, AddDuration, Const, Convert, DateTimeType, Divide, FloatType, Floor, Get, GetField, Greater, Hour, IfElse, IntegerType, Min, Multiply, PipelineBuilder, Print, ProcessBuilder, RandomKey, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringType, Struct, Subtract, Template } from "@elaraai/core"
 
 const sales_file = new SourceBuilder("Sales File")
     .file({ path: 'data/sales.jsonl' })
@@ -21,7 +21,7 @@ const procurement_data = new PipelineBuilder('Historic Procurement')
         },
         // the procurement date is unique, so can be used as the key
         output_key: fields => Print(fields.date)
-    });
+    })
 
 const sales_data = new PipelineBuilder('Historic Sales')
     .from(sales_file.outputStream())
@@ -82,8 +82,6 @@ const sales = new ProcessBuilder("Sales")
     .let("amount", props => Multiply(props.qty, props.price))
     .set("Stock-on-hand", (props, resources) => Subtract(resources["Stock-on-hand"], props.qty))
     .set("Cash", (props, resources) => Add(resources.Cash, props.amount))
-    // otherwise stop selling if we run out of stock
-    .end((_props, resources) => LessEqual(resources["Stock-on-hand"], 0n))
 
 const receive_goods = new ProcessBuilder("Receive Goods")
     .resource(stock_on_hand)
@@ -172,21 +170,21 @@ const descriptive_scenario = new ScenarioBuilder("Descriptive")
 
 // Predicted Scenario
 
-const now = new Date("2023-12-17T09:00:00");
+const now = new Date("2023-12-17T19:00:00Z")
 
 const operating_times = new ResourceBuilder("Operating Times")
-    .mapFromValue({ start: 9, end: 12 });
+    .mapFromValue({ start: 9, end: 12 })
 
 const predicted_sales = new ProcessBuilder("Predicted Sales")
     // add the other models to be accessed
-    .resource(cash)
     .resource(operating_times)
+    .resource(stock_on_hand)
     .process(sales)
     // create the next sale in the future
-    .execute("Sales", props => Struct({
+    .execute("Sales", (props, resources) => Struct({
         // the next sale date is mapped.
         date: props.date,
-        qty: Const(5n),
+        qty: Min(Const(5n), resources["Stock-on-hand"]),
         discount: Const(0)
     }))
     // predict the next sale and continue triggering predicted sales

@@ -2313,36 +2313,6 @@
                 }
               },
               "assertions": []
-            },
-            {
-              "type": "end",
-              "predicate": {
-                "type": {
-                  "type": "Boolean",
-                  "value": null
-                },
-                "ast_type": "LessEqual",
-                "first": {
-                  "type": {
-                    "type": "Integer",
-                    "value": null
-                  },
-                  "ast_type": "Variable",
-                  "name": "r_Stock-on-hand"
-                },
-                "second": {
-                  "type": {
-                    "type": "Integer",
-                    "value": null
-                  },
-                  "ast_type": "Const",
-                  "value": {
-                    "type": "integer",
-                    "kind": "literal",
-                    "value": "0"
-                  }
-                }
-              }
             }
           ],
           "input": null
@@ -4128,36 +4098,6 @@
                 }
               },
               "assertions": []
-            },
-            {
-              "type": "end",
-              "predicate": {
-                "type": {
-                  "type": "Boolean",
-                  "value": null
-                },
-                "ast_type": "LessEqual",
-                "first": {
-                  "type": {
-                    "type": "Integer",
-                    "value": null
-                  },
-                  "ast_type": "Variable",
-                  "name": "r_Stock-on-hand"
-                },
-                "second": {
-                  "type": {
-                    "type": "Integer",
-                    "value": null
-                  },
-                  "ast_type": "Const",
-                  "value": {
-                    "type": "integer",
-                    "kind": "literal",
-                    "value": "0"
-                  }
-                }
-              }
             }
           ],
           "input": null
@@ -4892,11 +4832,53 @@
                       "type": "Integer",
                       "value": null
                     },
-                    "ast_type": "Const",
-                    "value": {
-                      "type": "integer",
-                      "kind": "literal",
-                      "value": "5"
+                    "ast_type": "IfElse",
+                    "predicate": {
+                      "type": {
+                        "type": "Boolean",
+                        "value": null
+                      },
+                      "ast_type": "Less",
+                      "first": {
+                        "type": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "ast_type": "Const",
+                        "value": {
+                          "type": "integer",
+                          "kind": "literal",
+                          "value": "5"
+                        }
+                      },
+                      "second": {
+                        "type": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "ast_type": "Variable",
+                        "name": "r_Stock-on-hand"
+                      }
+                    },
+                    "true": {
+                      "type": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": {
+                        "type": "integer",
+                        "kind": "literal",
+                        "value": "5"
+                      }
+                    },
+                    "false": {
+                      "type": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "r_Stock-on-hand"
                     }
                   },
                   "discount": {
@@ -5142,7 +5124,7 @@
                     "value": {
                       "type": "datetime",
                       "kind": "literal",
-                      "value": "2023-12-16T23:00:00.000Z"
+                      "value": "2023-12-17T19:00:00.000Z"
                     }
                   },
                   "duration": {
@@ -5384,7 +5366,7 @@
                 "date": {
                   "type": "datetime",
                   "kind": "literal",
-                  "value": "2023-12-16T23:00:00.000Z"
+                  "value": "2023-12-17T19:00:00.000Z"
                 }
               }
             ]
@@ -5425,7 +5407,7 @@
                 "date": {
                   "type": "datetime",
                   "kind": "literal",
-                  "value": "2023-12-16T23:00:00.000Z"
+                  "value": "2023-12-17T19:00:00.000Z"
                 }
               }
             ]
