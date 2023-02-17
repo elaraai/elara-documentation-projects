@@ -170,7 +170,7 @@ const descriptive_scenario = new ScenarioBuilder("Descriptive")
 
 // Predicted Scenario
 
-const now = new Date("2023-12-17T19:00:00Z")
+const now = new Date("2023-12-17T09:00:00Z")
 
 const operating_times = new ResourceBuilder("Operating Times")
     .mapFromValue({ start: 9, end: 12 })
@@ -196,7 +196,7 @@ const predicted_sales = new ProcessBuilder("Predicted Sales")
             AddDuration(props.date, 1, 'hour')
         )
     }))
-    // stop simulating 2 weeks into the future
+    // stop simulating 1 week into the future
     .end((props) => Greater(props.date, AddDuration(Const(now), 1, 'week')))
     // start simulating from the current date
     .mapFromValue({ date: now })
