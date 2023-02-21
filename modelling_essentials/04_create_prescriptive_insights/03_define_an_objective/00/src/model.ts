@@ -276,6 +276,8 @@ const prescriptive_scenario = new ScenarioBuilder("Prescriptive")
     .process(procurement)
     .process(predicted_sales)
     .process(predicted_procurement)
+    // elara will try to maximise this - the cash balance!
+    .objective("Cash", (cash) => cash)
 
 export default Template(
     sales_file,

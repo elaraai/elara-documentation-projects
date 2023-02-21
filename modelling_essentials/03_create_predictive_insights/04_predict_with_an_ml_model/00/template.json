@@ -44,6 +44,37 @@
       },
       "writable": false
     },
+    "MLPrediction.Demand Validation": {
+      "name": "MLPrediction.Demand Validation",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "features": {
+                "type": "Struct",
+                "value": {
+                  "discount": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              },
+              "output": {
+                "type": "Float",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
     "MLTraining.Demand": {
       "name": "MLTraining.Demand",
       "type": {
@@ -254,6 +285,28 @@
       },
       "writable": false
     },
+    "Writeable.Demand Values": {
+      "name": "Writeable.Demand Values",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "discount": {
+                "type": "Float",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": true
+    },
     "Writeable.Procurement File": {
       "name": "Writeable.Procurement File",
       "type": {
@@ -280,6 +333,115 @@
     }
   },
   "tasks": {
+    "MLPrediction.Demand Validation": {
+      "name": "MLPrediction.Demand Validation",
+      "task_type": "ml_prediction",
+      "model": {
+        "type": "gaussian_process",
+        "noise": "gaussian"
+      },
+      "inputs": {
+        "model": {
+          "name": "MLModel.Demand",
+          "type": {
+            "type": "Struct",
+            "value": {
+              "parameters": {
+                "type": "Blob",
+                "value": null
+              },
+              "transform": {
+                "type": "Struct",
+                "value": {
+                  "n_features": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "transform": {
+                    "type": "Struct",
+                    "value": {
+                      "discount": {
+                        "type": "Struct",
+                        "value": {
+                          "index": {
+                            "type": "Integer",
+                            "value": null
+                          },
+                          "min": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "max": {
+                            "type": "Float",
+                            "value": null
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        },
+        "examples": {
+          "name": "Writeable.Demand Values",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "discount": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "MLPrediction.Demand Validation",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "features": {
+                    "type": "Struct",
+                    "value": {
+                      "discount": {
+                        "type": "Float",
+                        "value": null
+                      }
+                    }
+                  },
+                  "output": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      }
+    },
     "MLTraining.Demand": {
       "task_type": "ml_training",
       "name": "MLTraining.Demand",
@@ -870,6 +1032,157 @@
     }
   },
   "defaults": {
+    "Writeable.Demand Values": {
+      "default_type": "value",
+      "stream": "Writeable.Demand Values",
+      "value": {
+        "type": {
+          "type": "Dict",
+          "value": {
+            "key": {
+              "type": "String",
+              "value": null
+            },
+            "value": {
+              "type": "Struct",
+              "value": {
+                "discount": {
+                  "type": "Float",
+                  "value": null
+                }
+              }
+            }
+          }
+        },
+        "ast_type": "Const",
+        "value": {
+          "type": "map",
+          "kind": "literal",
+          "value": [
+            [
+              "0",
+              {
+                "discount": 0
+              }
+            ],
+            [
+              "1",
+              {
+                "discount": 1
+              }
+            ],
+            [
+              "2",
+              {
+                "discount": 2
+              }
+            ],
+            [
+              "3",
+              {
+                "discount": 3
+              }
+            ],
+            [
+              "4",
+              {
+                "discount": 4
+              }
+            ],
+            [
+              "5",
+              {
+                "discount": 5
+              }
+            ],
+            [
+              "6",
+              {
+                "discount": 6
+              }
+            ],
+            [
+              "7",
+              {
+                "discount": 7
+              }
+            ],
+            [
+              "8",
+              {
+                "discount": 8
+              }
+            ],
+            [
+              "9",
+              {
+                "discount": 9
+              }
+            ],
+            [
+              "10",
+              {
+                "discount": 10
+              }
+            ],
+            [
+              "11",
+              {
+                "discount": 11
+              }
+            ],
+            [
+              "12",
+              {
+                "discount": 12
+              }
+            ],
+            [
+              "13",
+              {
+                "discount": 13
+              }
+            ],
+            [
+              "14",
+              {
+                "discount": 14
+              }
+            ],
+            [
+              "15",
+              {
+                "discount": 15
+              }
+            ],
+            [
+              "16",
+              {
+                "discount": 16
+              }
+            ],
+            [
+              "17",
+              {
+                "discount": 17
+              }
+            ],
+            [
+              "18",
+              {
+                "discount": 18
+              }
+            ],
+            [
+              "19",
+              {
+                "discount": 19
+              }
+            ]
+          ]
+        }
+      }
+    },
     "Writeable.Procurement File": {
       "default_type": "file",
       "stream": "Writeable.Procurement File",
