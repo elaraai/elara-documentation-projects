@@ -283,7 +283,7 @@ const prescriptive_scenario = new ScenarioBuilder("Prescriptive")
     .process(predicted_sales)
     .process(predicted_procurement)
     // elara will try to maximise this - the cash balance!
-    .objective("Cash", (cash) => cash)
+    .objective("Cash", cash => cash)
     // tell elara to find the best discount
     .optimize("Discount", { min: 0, max: 20.0 })
 
