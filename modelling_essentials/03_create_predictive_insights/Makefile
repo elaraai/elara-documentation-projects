@@ -5,11 +5,11 @@ help:
 	@echo "    make help"
 
 .PHONY: build
-build: build-01_define_a_future_scenario build-03_train_an_ml_model build-04_predict_with_an_ml_model build-05_generate_predictive_insights build-06_analyse_scenarios_interactively
+build: build-01_define_a_predictive_scenario build-03_train_an_ml_model build-04_predict_with_an_ml_model build-05_generate_predictive_insights build-06_analyse_scenarios_interactively
 
-.PHONY: build-01_define_a_future_scenario
-build-01_define_a_future_scenario: 
-	cd 01_define_a_future_scenario && make build
+.PHONY: build-01_define_a_predictive_scenario
+build-01_define_a_predictive_scenario: 
+	cd 01_define_a_predictive_scenario && make build
 
 .PHONY: build-03_train_an_ml_model
 build-03_train_an_ml_model: 
