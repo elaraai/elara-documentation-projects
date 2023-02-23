@@ -1,4 +1,4 @@
-import { Add, AddDuration, Const, Convert, DateTimeType, Divide, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IntegerType, Less, Min, MLModelBuilder, Multiply, PipelineBuilder, Print, ProcessBuilder, RandomValue, ResourceBuilder, Round, ScenarioBuilder, Sort, SourceBuilder, StringType, Struct, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
+import { Add, AddDuration, Const, Convert, DateTimeType, Divide, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IfNull, IntegerType, Less, Min, MLModelBuilder, Multiply, Nullable, PipelineBuilder, Print, ProcessBuilder, RandomValue, ResourceBuilder, Round, ScenarioBuilder, Sort, SourceBuilder, StringType, Struct, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
 
 const sales_file = new SourceBuilder("Sales File")
     .file({ path: 'data/sales.jsonl' })
@@ -254,34 +254,37 @@ const predicted_procurement = new ProcessBuilder("Predicted Procurement")
     .mapFromValue({ date: now })
 
 const predictive_scenario = new ScenarioBuilder("Predictive")
-    .resource(cash, { ledger: true })
-    .resource(stock_on_hand, { ledger: true })
-    .resource(price, { ledger: true })
-    .resource(suppliers, { ledger: true })
-    .resource(operating_times, { ledger: true })
-    .resource(discount, { ledger: true })
+    .resource(cash)
+    .resource(stock_on_hand)
+    .resource(price)
+    .resource(suppliers)
+    .resource(operating_times)
+    .resource(discount)
     .process(sales)
     .process(receive_goods)
     .process(pay_supplier)
     .process(procurement)
     .process(predicted_sales)
     .process(predicted_procurement)
+
+const my_discount_choice = new SourceBuilder("My Discount Choice")
+    .value({
+        value: null,
+        type: Nullable(FloatType)
+    })
+
+const interactive_scenario = new ScenarioBuilder("Interactive")
+    .fromScenario(predictive_scenario)
+    .alterResourceFromPipeline("Discount", (builder, baseline) => builder
+        .from(baseline)
+        .input({ name: "MyDiscountChoice", stream: my_discount_choice.outputStream() })
+        .transform( (stream, inputs) => IfNull(inputs.MyDiscountChoice, stream) )
+    )
 
 // Prescriptive Scenario
 
 const prescriptive_scenario = new ScenarioBuilder("Prescriptive")
-    .resource(cash, { ledger: true })
-    .resource(stock_on_hand, { ledger: true })
-    .resource(price, { ledger: true })
-    .resource(suppliers, { ledger: true })
-    .resource(operating_times, { ledger: true })
-    .resource(discount, { ledger: true })
-    .process(sales)
-    .process(receive_goods)
-    .process(pay_supplier)
-    .process(procurement)
-    .process(predicted_sales)
-    .process(predicted_procurement)
+    .fromScenario(predictive_scenario)
     // elara will try to maximise this - the cash balance!
     .objective("Cash", cash => cash)
     // tell elara to find the best discount
@@ -381,8 +384,10 @@ export default Template(
     predicted_procurement,
     predictive_scenario,
     demand,
-    prescriptive_scenario,
     discount,
+    interactive_scenario,
+    my_discount_choice,
+    prescriptive_scenario,
     multi_prescriptive_scenario,
     supplier_policy,
     ranked_predicted_procurement
