@@ -5,7 +5,7 @@ help:
 	@echo "    make help"
 
 .PHONY: build
-build: build-01_define_a_prescriptive_scenario build-03_define_an_objective build-05_define_an_optimized_resource build-07_optimize_a_categorical_choice
+build: build-01_define_a_prescriptive_scenario build-03_define_an_objective build-05_define_an_optimized_resource build-07_optimize_a_set_of_choices
 
 .PHONY: build-01_define_a_prescriptive_scenario
 build-01_define_a_prescriptive_scenario: 
@@ -19,7 +19,7 @@ build-03_define_an_objective:
 build-05_define_an_optimized_resource: 
 	cd 05_define_an_optimized_resource && make build
 
-.PHONY: build-07_optimize_a_categorical_choice
-build-07_optimize_a_categorical_choice: 
-	cd 07_optimize_a_categorical_choice && make build
+.PHONY: build-07_optimize_a_set_of_choices
+build-07_optimize_a_set_of_choices: 
+	cd 07_optimize_a_set_of_choices && make build
 	
