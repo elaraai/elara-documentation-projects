@@ -1,4 +1,4 @@
-import { Add, AddDuration, Const, Convert, DateTimeType, Divide, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IfNull, IntegerType, Min, MLModelBuilder, Multiply, Nullable, PipelineBuilder, Print, ProcessBuilder, RandomValue, ResourceBuilder, Round, ScenarioBuilder, SourceBuilder, StringType, Struct, Subtract, Template } from "@elaraai/core"
+import { Add, AddDuration, Const, Convert, DateTimeType, Divide, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IfNull, IntegerType, Less, Min, MLModelBuilder, Multiply, Nullable, PipelineBuilder, Print, ProcessBuilder, RandomValue, ResourceBuilder, Round, ScenarioBuilder, Sort, SourceBuilder, StringType, Struct, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
 
 const sales_file = new SourceBuilder("Sales File")
     .file({ path: 'data/sales.jsonl' })
@@ -295,7 +295,84 @@ const prescriptive_scenario = new ScenarioBuilder("Prescriptive")
     .simulationInMemory(true)
     .optimizationInMemory(true)
 
-// Supplier Optimisation
+// Multiple Decisoin Optimisation with simple Supplier Rank
+
+const supplier_policy = new ResourceBuilder("Supplier Policy")
+    .mapFromPipeline(builder => builder
+        .from(supplier_data.outputStream())
+        .transform(suppliers => ToDict(
+            suppliers,
+            () => Struct({
+                score: 1
+            }),
+            (_, key) => key
+        ))
+    )
+
+const predicted_procurement_simple_ranked = new ProcessBuilder("Predicted Procurement with Simple Supplier Rank")
+    .resource(suppliers)
+    .resource(cash)
+    .resource(supplier_policy)
+    .process(procurement)
+    .let("supplierName", (_, resources) => GetField(
+        Get(
+            Sort(
+                ToArray(
+                    resources["Supplier Policy"],
+                    (value, key) => Struct({ supplierName: key, score: GetField(value, "score") })
+                ),
+                (first, second) => Less(GetField(first, "score"), GetField(second, "score"))
+            ),
+            Const(0n),
+        ),
+        "supplierName"
+    ))
+    .let("supplier", (props, resources) => Get(resources.Suppliers, props.supplierName))
+    // create the next procurement in the future
+    .execute(
+        "Procurement",
+        props => Struct({
+            date: props.date,
+            supplierName: props.supplierName,
+        }),
+        (props, resources) => GreaterEqual(
+            resources.Cash,
+            Multiply(
+                GetField(props.supplier, "unitCost"),
+                GetField(props.supplier, "orderQty")
+            )
+        )
+    )
+    // Set procurement to occur every day
+    .execute("Predicted Procurement with Simple Supplier Rank", props => Struct({
+        date: AddDuration(props.date, 1, 'day')
+    }))
+    // start simulating from the current date
+    .mapFromValue({ date: now })
+
+const prescriptive_scenario_w_simple_supplier_rank = new ScenarioBuilder("Multiple Decision Prescriptive Scenario with Simple Supplier Rank")
+    .resource(cash, { ledger: true })
+    .resource(stock_on_hand, { ledger: true })
+    .resource(price, { ledger: true })
+    .resource(suppliers, { ledger: true })
+    .resource(operating_times, { ledger: true })
+    .resource(discount, { ledger: true })
+    .resource(supplier_policy)
+    .process(sales)
+    .process(receive_goods)
+    .process(pay_supplier)
+    .process(procurement)
+    .process(predicted_sales)
+    .process(predicted_procurement_simple_ranked)
+    // elara will try to maximise this - the cash balance!
+    .objective("Cash", cash => cash)
+    // tell elara to find the best discount
+    .optimize("Discount", { min: 0, max: 20.0 })
+    // tell elara to find the best rank for supplier policy
+    .optimizeEvery("Supplier Policy", "score", { min: 0, max: 1 })
+    .simulationInMemory(true)
+    .optimizationInMemory(true)
+
 
 export default Template(
     sales_file,
@@ -323,5 +400,8 @@ export default Template(
     discount,
     interactive_scenario,
     my_discount_choice,
-    prescriptive_scenario
+    prescriptive_scenario,
+    supplier_policy,
+    predicted_procurement_simple_ranked,
+    prescriptive_scenario_w_simple_supplier_rank
 )
