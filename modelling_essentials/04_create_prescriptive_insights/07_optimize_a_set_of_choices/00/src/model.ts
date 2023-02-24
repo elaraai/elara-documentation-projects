@@ -295,7 +295,7 @@ const prescriptive_scenario = new ScenarioBuilder("Prescriptive")
     .simulationInMemory(true)
     .optimizationInMemory(true)
 
-// Multiple Decisoin Optimisation with simple Supplier Rank
+// Multiple Decision Optimisation with simple Supplier Rank
 
 const supplier_policy = new ResourceBuilder("Supplier Policy")
     .mapFromPipeline(builder => builder
@@ -350,7 +350,7 @@ const predicted_procurement_simple_ranked = new ProcessBuilder("Predicted Procur
     // start simulating from the current date
     .mapFromValue({ date: now })
 
-const prescriptive_scenario_w_simple_supplier_rank = new ScenarioBuilder("Multiple Decision Prescriptive Scenario with Simple Supplier Rank")
+const multi_decision_prescriptive_scenario = new ScenarioBuilder("Multi-decision Prescriptive Scenario")
     .resource(cash, { ledger: true })
     .resource(stock_on_hand, { ledger: true })
     .resource(price, { ledger: true })
@@ -403,5 +403,5 @@ export default Template(
     prescriptive_scenario,
     supplier_policy,
     predicted_procurement_simple_ranked,
-    prescriptive_scenario_w_simple_supplier_rank
+    multi_decision_prescriptive_scenario
 )
