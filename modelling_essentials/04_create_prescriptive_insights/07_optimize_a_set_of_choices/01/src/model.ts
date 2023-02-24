@@ -1,4 +1,4 @@
-import { Add, AddDuration, Const, Convert, DateTimeType, Divide, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IfNull, IntegerType, Min, MLModelBuilder, Multiply, Nullable, PipelineBuilder, Print, ProcessBuilder, RandomValue, ResourceBuilder, Round, ScenarioBuilder, SourceBuilder, StringType, Struct, Subtract, Template } from "@elaraai/core"
+import { Add, AddDuration, Const, Convert, DateTimeType, Divide, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IfNull, IntegerType, Less, Min, MLModelBuilder, Multiply, Nullable, PipelineBuilder, Print, ProcessBuilder, RandomValue, ResourceBuilder, Round, ScenarioBuilder, Sort, SourceBuilder, StringType, Struct, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
 
 const sales_file = new SourceBuilder("Sales File")
     .file({ path: 'data/sales.jsonl' })
@@ -83,7 +83,7 @@ const cash = new ResourceBuilder("Cash")
     .mapFromValue(0.0)
 
 const stock_on_hand = new ResourceBuilder("Stock-on-hand")
-    .mapFromValue(70n)
+    .mapFromValue(5n)
     
 const price = new ResourceBuilder("Price")
     .mapFromValue(3.5)
@@ -213,6 +213,10 @@ const predicted_sales = new ProcessBuilder("Predicted Sales")
         qty: Min(Round(mls.Demand(Struct({ discount: resources.Discount })), 'nearest', "integer"), resources["Stock-on-hand"]),
         discount: resources.Discount
     }))
+    .log({
+        active: (_, resources) => Less(resources["Stock-on-hand"], 1n),
+        message: () => Const("Ran out of stock")
+    })
     // predict the next sale and continue triggering predicted sales
     .execute("Predicted Sales", (props, resources) => Struct({
         // the next sale date will be in an hour, otherwise next day
@@ -269,6 +273,7 @@ const predictive_scenario = new ScenarioBuilder("Predictive")
     .process(predicted_procurement)
     .simulationInMemory(true)
 
+
 const my_discount_choice = new SourceBuilder("My Discount Choice")
     .value({
         value: null,
@@ -282,7 +287,6 @@ const interactive_scenario = new ScenarioBuilder("Interactive")
         .input({ name: "MyDiscountChoice", stream: my_discount_choice.outputStream() })
         .transform( (stream, inputs) => IfNull(inputs.MyDiscountChoice, stream) )
     )
-    .simulationInMemory(true)
 
 // Prescriptive Scenario
 
@@ -295,7 +299,149 @@ const prescriptive_scenario = new ScenarioBuilder("Prescriptive")
     .simulationInMemory(true)
     .optimizationInMemory(true)
 
-// Supplier Optimisation
+// Ranked Procurement/Multiple Optimisations Scenario
+
+const supplier_policy = new ResourceBuilder("Supplier Policy")
+    .mapFromPipeline(builder => builder
+        .from(supplier_data.outputStream())
+        .transform(suppliers => ToDict(
+            suppliers,
+            () => Struct({
+                stockWeight: 1,
+                cashWeight: 1
+            }),
+            (_, key) => key
+        ))
+    )
+
+const ranked_predicted_procurement = new ProcessBuilder("Ranked Predicted Procurement")
+    .resource(suppliers)
+    .resource(supplier_policy)
+    .resource(stock_on_hand)
+    .resource(cash)
+    .process(procurement)
+    .let("rankedSuppliers", (_props, resources) => ToDict(
+        resources.Suppliers,
+        (_supplier, supplierId) => Multiply(
+            GetField(Get(resources["Supplier Policy"], supplierId), "cashWeight"),
+            resources["Cash"],
+        ),
+        (_value, key) => key
+    ))
+    .let("supplierName", (props) => GetField(
+        Get(
+            Sort(
+                ToArray(props.rankedSuppliers, (value, key) => Struct({ supplierName: key, Rank: value })),
+                (first, second) => Less(GetField(first, "Rank"), GetField(second, "Rank"))
+            ),
+            Const(0n),
+        ),
+        "supplierName"
+    ))
+    // create the next procurement in the future
+    .execute("Procurement", props => Struct({
+        date: props.date,
+        supplierName: props.supplierName,
+    }))
+    // create a Future procurement to continue triggering procturement
+    .execute("Ranked Predicted Procurement", props => Struct({
+        // set purchasing to occur every second day for now
+        date: AddDuration(props.date, 1, 'day')
+    }))
+    // start simulating from the current date
+    .mapFromValue({ date: now });
+
+const multi_prescriptive_scenario = new ScenarioBuilder("Multiple Prescriptive")
+    .resource(cash, { ledger: true })
+    .resource(stock_on_hand, { ledger: true })
+    .resource(price, { ledger: true })
+    .resource(suppliers, { ledger: true })
+    .resource(operating_times, { ledger: true })
+    .resource(discount, { ledger: true })
+    .resource(supplier_policy)
+    .process(sales)
+    .process(receive_goods)
+    .process(pay_supplier)
+    .process(procurement)
+    .process(predicted_sales)
+    .process(ranked_predicted_procurement)
+    // elara will try to maximise this - the cash balance!
+    .objective("Cash", cash => cash)
+    // tell elara to find the best discount
+    .optimize("Discount", { min: 0, max: 20.0 })
+    // tell elara to find the best rank for supplier policy
+    .optimizeEvery("Supplier Policy", "cashWeight", { min: 0, max: 1 })
+    .simulationInMemory(true)
+    .optimizationInMemory(true)
+
+// Ranked Procurement/Multiple Optimisations Scenario (based on current stock-on-hand AND cash)
+
+const dual_ranked_predicted_procurement = new ProcessBuilder("Dual Ranked Predicted Procurement")
+    .resource(cash)
+    .resource(suppliers)
+    .resource(supplier_policy)
+    .resource(stock_on_hand)
+    .process(procurement)
+    .let("rankedSuppliers", (_props, resources) => ToDict(
+        resources.Suppliers,
+        (_supplier, supplierId) => Add(
+            Multiply(
+                GetField(Get(resources["Supplier Policy"], supplierId), "stockWeight"),
+                resources["Stock-on-hand"],
+            ),
+            Multiply(
+                GetField(Get(resources["Supplier Policy"], supplierId), "cashWeight"),
+                resources["Cash"],
+            ),
+        ),
+        (_value, key) => key
+    ))
+    .let("supplierName", (props) => GetField(
+        Get(
+            Sort(
+                ToArray(props.rankedSuppliers, (value, key) => Struct({ supplierName: key, Rank: value })),
+                (first, second) => Less(GetField(first, "Rank"), GetField(second, "Rank"))
+            ),
+            Const(0n),
+        ),
+        "supplierName"
+    ))
+    // create the next procurement in the future
+    .execute("Procurement", props => Struct({
+        date: props.date,
+        supplierName: props.supplierName,
+    }))
+    // create a Future procurement to continue triggering procturement
+    .execute("Dual Ranked Predicted Procurement", props => Struct({
+        // set purchasing to occur every second day for now
+        date: AddDuration(props.date, 1, 'day')
+    }))
+    // start simulating from the current date
+    .mapFromValue({ date: now });
+
+const dual_multi_prescriptive_scenario = new ScenarioBuilder("Dual Multiple Prescriptive")
+    .resource(cash, { ledger: true })
+    .resource(stock_on_hand, { ledger: true })
+    .resource(price, { ledger: true })
+    .resource(suppliers, { ledger: true })
+    .resource(operating_times, { ledger: true })
+    .resource(discount, { ledger: true })
+    .resource(supplier_policy)
+    .process(sales)
+    .process(receive_goods)
+    .process(pay_supplier)
+    .process(procurement)
+    .process(predicted_sales)
+    .process(dual_ranked_predicted_procurement)
+    // elara will try to maximise this - the cash balance!
+    .objective("Cash", cash => cash)
+    // tell elara to find the best discount
+    .optimize("Discount", { min: 0, max: 20.0 })
+    // tell elara to find the best rank for supplier policy
+    .optimizeEvery("Supplier Policy", "stockWeight", { min: 0, max: 1 })
+    .optimizeEvery("Supplier Policy", "cashWeight", { min: -1, max: 1 })
+    .simulationInMemory(true)
+    .optimizationInMemory(true)
 
 export default Template(
     sales_file,
@@ -323,5 +469,10 @@ export default Template(
     discount,
     interactive_scenario,
     my_discount_choice,
-    prescriptive_scenario
+    prescriptive_scenario,
+    multi_prescriptive_scenario,
+    supplier_policy,
+    ranked_predicted_procurement,
+    dual_ranked_predicted_procurement,
+    dual_multi_prescriptive_scenario
 )
