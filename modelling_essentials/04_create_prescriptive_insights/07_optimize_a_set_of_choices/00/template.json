@@ -710,10 +710,6 @@
                   "type": "DateTime",
                   "value": null
                 },
-                "supplierName": {
-                  "type": "String",
-                  "value": null
-                },
                 "supplier": {
                   "type": "Struct",
                   "value": {
@@ -3829,7 +3825,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_Ktya$QkSseWBXy4s3AX9D2"
+                          "name": "_vkJ9ppRPrxCPvpW3PWwPq0"
                         },
                         "second": {
                           "type": {
@@ -3846,7 +3842,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_Ktya$QkSseWBXy4s3AX9D2"
+                        "name": "_vkJ9ppRPrxCPvpW3PWwPq0"
                       },
                       "false": {
                         "type": {
@@ -3863,7 +3859,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_Ktya$QkSseWBXy4s3AX9D2"
+                      "name": "_vkJ9ppRPrxCPvpW3PWwPq0"
                     },
                     "value": {
                       "type": {
@@ -4183,10 +4179,6 @@
                 "type": "DateTime",
                 "value": null
               },
-              "supplierName": {
-                "type": "String",
-                "value": null
-              },
               "supplier": {
                 "type": "Struct",
                 "value": {
@@ -4215,266 +4207,6 @@
             }
           },
           "statements": [
-            {
-              "type": "let",
-              "name": "supplierName",
-              "expr": {
-                "type": {
-                  "type": "String",
-                  "value": null
-                },
-                "ast_type": "GetField",
-                "struct": {
-                  "type": {
-                    "type": "Struct",
-                    "value": {
-                      "supplierName": {
-                        "type": "String",
-                        "value": null
-                      },
-                      "weight": {
-                        "type": "Float",
-                        "value": null
-                      }
-                    }
-                  },
-                  "ast_type": "Get",
-                  "dict": {
-                    "type": {
-                      "type": "Array",
-                      "value": {
-                        "type": "Struct",
-                        "value": {
-                          "supplierName": {
-                            "type": "String",
-                            "value": null
-                          },
-                          "weight": {
-                            "type": "Float",
-                            "value": null
-                          }
-                        }
-                      }
-                    },
-                    "ast_type": "Sort",
-                    "collection": {
-                      "type": {
-                        "type": "Array",
-                        "value": {
-                          "type": "Struct",
-                          "value": {
-                            "supplierName": {
-                              "type": "String",
-                              "value": null
-                            },
-                            "weight": {
-                              "type": "Float",
-                              "value": null
-                            }
-                          }
-                        }
-                      },
-                      "ast_type": "ToArray",
-                      "collection": {
-                        "type": {
-                          "type": "Dict",
-                          "value": {
-                            "key": {
-                              "type": "String",
-                              "value": null
-                            },
-                            "value": {
-                              "type": "Struct",
-                              "value": {
-                                "weight": {
-                                  "type": "Float",
-                                  "value": null
-                                }
-                              }
-                            }
-                          }
-                        },
-                        "ast_type": "Variable",
-                        "name": "r_Supplier Policy"
-                      },
-                      "output_value": {
-                        "type": {
-                          "type": "Struct",
-                          "value": {
-                            "supplierName": {
-                              "type": "String",
-                              "value": null
-                            },
-                            "weight": {
-                              "type": "Float",
-                              "value": null
-                            }
-                          }
-                        },
-                        "ast_type": "Struct",
-                        "fields": {
-                          "supplierName": {
-                            "type": {
-                              "type": "String",
-                              "value": null
-                            },
-                            "ast_type": "Variable",
-                            "name": "_key_9o4KjNxiqUmqSQRKNtgG$2"
-                          },
-                          "weight": {
-                            "type": {
-                              "type": "Float",
-                              "value": null
-                            },
-                            "ast_type": "GetField",
-                            "struct": {
-                              "type": {
-                                "type": "Struct",
-                                "value": {
-                                  "weight": {
-                                    "type": "Float",
-                                    "value": null
-                                  }
-                                }
-                              },
-                              "ast_type": "Variable",
-                              "name": "_value_UJqpU8OKJ2cDXhciVt0Jte"
-                            },
-                            "key": "weight"
-                          }
-                        }
-                      },
-                      "input_value": {
-                        "type": {
-                          "type": "Struct",
-                          "value": {
-                            "weight": {
-                              "type": "Float",
-                              "value": null
-                            }
-                          }
-                        },
-                        "ast_type": "Variable",
-                        "name": "_value_UJqpU8OKJ2cDXhciVt0Jte"
-                      },
-                      "input_key": {
-                        "type": {
-                          "type": "String",
-                          "value": null
-                        },
-                        "ast_type": "Variable",
-                        "name": "_key_9o4KjNxiqUmqSQRKNtgG$2"
-                      }
-                    },
-                    "isless": {
-                      "type": {
-                        "type": "Boolean",
-                        "value": null
-                      },
-                      "ast_type": "Less",
-                      "first": {
-                        "type": {
-                          "type": "Float",
-                          "value": null
-                        },
-                        "ast_type": "GetField",
-                        "struct": {
-                          "type": {
-                            "type": "Struct",
-                            "value": {
-                              "supplierName": {
-                                "type": "String",
-                                "value": null
-                              },
-                              "weight": {
-                                "type": "Float",
-                                "value": null
-                              }
-                            }
-                          },
-                          "ast_type": "Variable",
-                          "name": "_first_Y55QfNeXg8cjX4OiOQXeNF"
-                        },
-                        "key": "weight"
-                      },
-                      "second": {
-                        "type": {
-                          "type": "Float",
-                          "value": null
-                        },
-                        "ast_type": "GetField",
-                        "struct": {
-                          "type": {
-                            "type": "Struct",
-                            "value": {
-                              "supplierName": {
-                                "type": "String",
-                                "value": null
-                              },
-                              "weight": {
-                                "type": "Float",
-                                "value": null
-                              }
-                            }
-                          },
-                          "ast_type": "Variable",
-                          "name": "_second_NCcydG7qKTeXdMEHyfdRmb"
-                        },
-                        "key": "weight"
-                      }
-                    },
-                    "first": {
-                      "type": {
-                        "type": "Struct",
-                        "value": {
-                          "supplierName": {
-                            "type": "String",
-                            "value": null
-                          },
-                          "weight": {
-                            "type": "Float",
-                            "value": null
-                          }
-                        }
-                      },
-                      "ast_type": "Variable",
-                      "name": "_first_Y55QfNeXg8cjX4OiOQXeNF"
-                    },
-                    "second": {
-                      "type": {
-                        "type": "Struct",
-                        "value": {
-                          "supplierName": {
-                            "type": "String",
-                            "value": null
-                          },
-                          "weight": {
-                            "type": "Float",
-                            "value": null
-                          }
-                        }
-                      },
-                      "ast_type": "Variable",
-                      "name": "_second_NCcydG7qKTeXdMEHyfdRmb"
-                    }
-                  },
-                  "key": {
-                    "type": {
-                      "type": "Integer",
-                      "value": null
-                    },
-                    "ast_type": "Const",
-                    "value": {
-                      "type": "integer",
-                      "kind": "literal",
-                      "value": "0"
-                    }
-                  },
-                  "default": null
-                },
-                "key": "supplierName"
-              }
-            },
             {
               "type": "let",
               "name": "supplier",
@@ -4548,8 +4280,256 @@
                     "type": "String",
                     "value": null
                   },
-                  "ast_type": "Variable",
-                  "name": "p_supplierName"
+                  "ast_type": "GetField",
+                  "struct": {
+                    "type": {
+                      "type": "Struct",
+                      "value": {
+                        "supplierName": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "weight": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    },
+                    "ast_type": "Get",
+                    "dict": {
+                      "type": {
+                        "type": "Array",
+                        "value": {
+                          "type": "Struct",
+                          "value": {
+                            "supplierName": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "weight": {
+                              "type": "Float",
+                              "value": null
+                            }
+                          }
+                        }
+                      },
+                      "ast_type": "Sort",
+                      "collection": {
+                        "type": {
+                          "type": "Array",
+                          "value": {
+                            "type": "Struct",
+                            "value": {
+                              "supplierName": {
+                                "type": "String",
+                                "value": null
+                              },
+                              "weight": {
+                                "type": "Float",
+                                "value": null
+                              }
+                            }
+                          }
+                        },
+                        "ast_type": "ToArray",
+                        "collection": {
+                          "type": {
+                            "type": "Dict",
+                            "value": {
+                              "key": {
+                                "type": "String",
+                                "value": null
+                              },
+                              "value": {
+                                "type": "Struct",
+                                "value": {
+                                  "weight": {
+                                    "type": "Float",
+                                    "value": null
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "ast_type": "Variable",
+                          "name": "r_Supplier Policy"
+                        },
+                        "output_value": {
+                          "type": {
+                            "type": "Struct",
+                            "value": {
+                              "supplierName": {
+                                "type": "String",
+                                "value": null
+                              },
+                              "weight": {
+                                "type": "Float",
+                                "value": null
+                              }
+                            }
+                          },
+                          "ast_type": "Struct",
+                          "fields": {
+                            "supplierName": {
+                              "type": {
+                                "type": "String",
+                                "value": null
+                              },
+                              "ast_type": "Variable",
+                              "name": "_key_o3g7QjzrH0h0Ud24S6C7Bf"
+                            },
+                            "weight": {
+                              "type": {
+                                "type": "Float",
+                                "value": null
+                              },
+                              "ast_type": "GetField",
+                              "struct": {
+                                "type": {
+                                  "type": "Struct",
+                                  "value": {
+                                    "weight": {
+                                      "type": "Float",
+                                      "value": null
+                                    }
+                                  }
+                                },
+                                "ast_type": "Variable",
+                                "name": "_value_0miExh1hHtEDkF4ahaKP6m"
+                              },
+                              "key": "weight"
+                            }
+                          }
+                        },
+                        "input_value": {
+                          "type": {
+                            "type": "Struct",
+                            "value": {
+                              "weight": {
+                                "type": "Float",
+                                "value": null
+                              }
+                            }
+                          },
+                          "ast_type": "Variable",
+                          "name": "_value_0miExh1hHtEDkF4ahaKP6m"
+                        },
+                        "input_key": {
+                          "type": {
+                            "type": "String",
+                            "value": null
+                          },
+                          "ast_type": "Variable",
+                          "name": "_key_o3g7QjzrH0h0Ud24S6C7Bf"
+                        }
+                      },
+                      "isless": {
+                        "type": {
+                          "type": "Boolean",
+                          "value": null
+                        },
+                        "ast_type": "Greater",
+                        "first": {
+                          "type": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "ast_type": "GetField",
+                          "struct": {
+                            "type": {
+                              "type": "Struct",
+                              "value": {
+                                "supplierName": {
+                                  "type": "String",
+                                  "value": null
+                                },
+                                "weight": {
+                                  "type": "Float",
+                                  "value": null
+                                }
+                              }
+                            },
+                            "ast_type": "Variable",
+                            "name": "_first_Zan7ofPvAAINl6_1PA2pdf"
+                          },
+                          "key": "weight"
+                        },
+                        "second": {
+                          "type": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "ast_type": "GetField",
+                          "struct": {
+                            "type": {
+                              "type": "Struct",
+                              "value": {
+                                "supplierName": {
+                                  "type": "String",
+                                  "value": null
+                                },
+                                "weight": {
+                                  "type": "Float",
+                                  "value": null
+                                }
+                              }
+                            },
+                            "ast_type": "Variable",
+                            "name": "_second_W3DXSCZYwDjFba59T_6syO"
+                          },
+                          "key": "weight"
+                        }
+                      },
+                      "first": {
+                        "type": {
+                          "type": "Struct",
+                          "value": {
+                            "supplierName": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "weight": {
+                              "type": "Float",
+                              "value": null
+                            }
+                          }
+                        },
+                        "ast_type": "Variable",
+                        "name": "_first_Zan7ofPvAAINl6_1PA2pdf"
+                      },
+                      "second": {
+                        "type": {
+                          "type": "Struct",
+                          "value": {
+                            "supplierName": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "weight": {
+                              "type": "Float",
+                              "value": null
+                            }
+                          }
+                        },
+                        "ast_type": "Variable",
+                        "name": "_second_W3DXSCZYwDjFba59T_6syO"
+                      }
+                    },
+                    "key": {
+                      "type": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": {
+                        "type": "integer",
+                        "kind": "literal",
+                        "value": "0"
+                      }
+                    },
+                    "default": null
+                  },
+                  "key": "supplierName"
                 },
                 "default": null
               }
@@ -4586,8 +4566,37 @@
                       "type": "String",
                       "value": null
                     },
-                    "ast_type": "Variable",
-                    "name": "p_supplierName"
+                    "ast_type": "GetField",
+                    "struct": {
+                      "type": {
+                        "type": "Struct",
+                        "value": {
+                          "supplierName": {
+                            "type": "String",
+                            "value": null
+                          },
+                          "paymentTerms": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "leadTime": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "unitCost": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "orderQty": {
+                            "type": "Integer",
+                            "value": null
+                          }
+                        }
+                      },
+                      "ast_type": "Variable",
+                      "name": "p_supplier"
+                    },
+                    "key": "supplierName"
                   }
                 }
               },
@@ -6182,7 +6191,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_Ktya$QkSseWBXy4s3AX9D2"
+                          "name": "_vkJ9ppRPrxCPvpW3PWwPq0"
                         },
                         "second": {
                           "type": {
@@ -6199,7 +6208,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_Ktya$QkSseWBXy4s3AX9D2"
+                        "name": "_vkJ9ppRPrxCPvpW3PWwPq0"
                       },
                       "false": {
                         "type": {
@@ -6216,7 +6225,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_Ktya$QkSseWBXy4s3AX9D2"
+                      "name": "_vkJ9ppRPrxCPvpW3PWwPq0"
                     },
                     "value": {
                       "type": {
@@ -7081,7 +7090,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_Z1aaixPQpZtO4RPd4JsAY_"
+              "name": "_OfmMeFHzfJeLezFw9x9auT"
             },
             "value": {
               "type": {
@@ -7089,7 +7098,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_Z1aaixPQpZtO4RPd4JsAY_"
+              "name": "_OfmMeFHzfJeLezFw9x9auT"
             }
           }
         }
@@ -7721,7 +7730,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_kYO69iypXzqblbfJL7BCkK"
+              "name": "_key_gsY_FYItMvozVMYKQ$DYtf"
             },
             "input_value": {
               "type": {
@@ -7750,7 +7759,7 @@
                 }
               },
               "ast_type": "Variable",
-              "name": "_value_vro1W4l4uaeIFfj4lWA4df"
+              "name": "_value_zvPmsXuG4DGXh3Oc0jvNSG"
             },
             "input_key": {
               "type": {
@@ -7758,7 +7767,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_kYO69iypXzqblbfJL7BCkK"
+              "name": "_key_gsY_FYItMvozVMYKQ$DYtf"
             }
           }
         }
@@ -11014,7 +11023,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_Ktya$QkSseWBXy4s3AX9D2"
+                          "name": "_vkJ9ppRPrxCPvpW3PWwPq0"
                         },
                         "second": {
                           "type": {
@@ -11031,7 +11040,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_Ktya$QkSseWBXy4s3AX9D2"
+                        "name": "_vkJ9ppRPrxCPvpW3PWwPq0"
                       },
                       "false": {
                         "type": {
@@ -11048,7 +11057,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_Ktya$QkSseWBXy4s3AX9D2"
+                      "name": "_vkJ9ppRPrxCPvpW3PWwPq0"
                     },
                     "value": {
                       "type": {
@@ -12504,10 +12513,6 @@
                       "type": "DateTime",
                       "value": null
                     },
-                    "supplierName": {
-                      "type": "String",
-                      "value": null
-                    },
                     "supplier": {
                       "type": "Struct",
                       "value": {
@@ -13671,7 +13676,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_Ktya$QkSseWBXy4s3AX9D2"
+                          "name": "_vkJ9ppRPrxCPvpW3PWwPq0"
                         },
                         "second": {
                           "type": {
@@ -13688,7 +13693,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_Ktya$QkSseWBXy4s3AX9D2"
+                        "name": "_vkJ9ppRPrxCPvpW3PWwPq0"
                       },
                       "false": {
                         "type": {
@@ -13705,7 +13710,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_Ktya$QkSseWBXy4s3AX9D2"
+                      "name": "_vkJ9ppRPrxCPvpW3PWwPq0"
                     },
                     "value": {
                       "type": {
@@ -14025,10 +14030,6 @@
                 "type": "DateTime",
                 "value": null
               },
-              "supplierName": {
-                "type": "String",
-                "value": null
-              },
               "supplier": {
                 "type": "Struct",
                 "value": {
@@ -14057,266 +14058,6 @@
             }
           },
           "statements": [
-            {
-              "type": "let",
-              "name": "supplierName",
-              "expr": {
-                "type": {
-                  "type": "String",
-                  "value": null
-                },
-                "ast_type": "GetField",
-                "struct": {
-                  "type": {
-                    "type": "Struct",
-                    "value": {
-                      "supplierName": {
-                        "type": "String",
-                        "value": null
-                      },
-                      "weight": {
-                        "type": "Float",
-                        "value": null
-                      }
-                    }
-                  },
-                  "ast_type": "Get",
-                  "dict": {
-                    "type": {
-                      "type": "Array",
-                      "value": {
-                        "type": "Struct",
-                        "value": {
-                          "supplierName": {
-                            "type": "String",
-                            "value": null
-                          },
-                          "weight": {
-                            "type": "Float",
-                            "value": null
-                          }
-                        }
-                      }
-                    },
-                    "ast_type": "Sort",
-                    "collection": {
-                      "type": {
-                        "type": "Array",
-                        "value": {
-                          "type": "Struct",
-                          "value": {
-                            "supplierName": {
-                              "type": "String",
-                              "value": null
-                            },
-                            "weight": {
-                              "type": "Float",
-                              "value": null
-                            }
-                          }
-                        }
-                      },
-                      "ast_type": "ToArray",
-                      "collection": {
-                        "type": {
-                          "type": "Dict",
-                          "value": {
-                            "key": {
-                              "type": "String",
-                              "value": null
-                            },
-                            "value": {
-                              "type": "Struct",
-                              "value": {
-                                "weight": {
-                                  "type": "Float",
-                                  "value": null
-                                }
-                              }
-                            }
-                          }
-                        },
-                        "ast_type": "Variable",
-                        "name": "r_Supplier Policy"
-                      },
-                      "output_value": {
-                        "type": {
-                          "type": "Struct",
-                          "value": {
-                            "supplierName": {
-                              "type": "String",
-                              "value": null
-                            },
-                            "weight": {
-                              "type": "Float",
-                              "value": null
-                            }
-                          }
-                        },
-                        "ast_type": "Struct",
-                        "fields": {
-                          "supplierName": {
-                            "type": {
-                              "type": "String",
-                              "value": null
-                            },
-                            "ast_type": "Variable",
-                            "name": "_key_9o4KjNxiqUmqSQRKNtgG$2"
-                          },
-                          "weight": {
-                            "type": {
-                              "type": "Float",
-                              "value": null
-                            },
-                            "ast_type": "GetField",
-                            "struct": {
-                              "type": {
-                                "type": "Struct",
-                                "value": {
-                                  "weight": {
-                                    "type": "Float",
-                                    "value": null
-                                  }
-                                }
-                              },
-                              "ast_type": "Variable",
-                              "name": "_value_UJqpU8OKJ2cDXhciVt0Jte"
-                            },
-                            "key": "weight"
-                          }
-                        }
-                      },
-                      "input_value": {
-                        "type": {
-                          "type": "Struct",
-                          "value": {
-                            "weight": {
-                              "type": "Float",
-                              "value": null
-                            }
-                          }
-                        },
-                        "ast_type": "Variable",
-                        "name": "_value_UJqpU8OKJ2cDXhciVt0Jte"
-                      },
-                      "input_key": {
-                        "type": {
-                          "type": "String",
-                          "value": null
-                        },
-                        "ast_type": "Variable",
-                        "name": "_key_9o4KjNxiqUmqSQRKNtgG$2"
-                      }
-                    },
-                    "isless": {
-                      "type": {
-                        "type": "Boolean",
-                        "value": null
-                      },
-                      "ast_type": "Less",
-                      "first": {
-                        "type": {
-                          "type": "Float",
-                          "value": null
-                        },
-                        "ast_type": "GetField",
-                        "struct": {
-                          "type": {
-                            "type": "Struct",
-                            "value": {
-                              "supplierName": {
-                                "type": "String",
-                                "value": null
-                              },
-                              "weight": {
-                                "type": "Float",
-                                "value": null
-                              }
-                            }
-                          },
-                          "ast_type": "Variable",
-                          "name": "_first_Y55QfNeXg8cjX4OiOQXeNF"
-                        },
-                        "key": "weight"
-                      },
-                      "second": {
-                        "type": {
-                          "type": "Float",
-                          "value": null
-                        },
-                        "ast_type": "GetField",
-                        "struct": {
-                          "type": {
-                            "type": "Struct",
-                            "value": {
-                              "supplierName": {
-                                "type": "String",
-                                "value": null
-                              },
-                              "weight": {
-                                "type": "Float",
-                                "value": null
-                              }
-                            }
-                          },
-                          "ast_type": "Variable",
-                          "name": "_second_NCcydG7qKTeXdMEHyfdRmb"
-                        },
-                        "key": "weight"
-                      }
-                    },
-                    "first": {
-                      "type": {
-                        "type": "Struct",
-                        "value": {
-                          "supplierName": {
-                            "type": "String",
-                            "value": null
-                          },
-                          "weight": {
-                            "type": "Float",
-                            "value": null
-                          }
-                        }
-                      },
-                      "ast_type": "Variable",
-                      "name": "_first_Y55QfNeXg8cjX4OiOQXeNF"
-                    },
-                    "second": {
-                      "type": {
-                        "type": "Struct",
-                        "value": {
-                          "supplierName": {
-                            "type": "String",
-                            "value": null
-                          },
-                          "weight": {
-                            "type": "Float",
-                            "value": null
-                          }
-                        }
-                      },
-                      "ast_type": "Variable",
-                      "name": "_second_NCcydG7qKTeXdMEHyfdRmb"
-                    }
-                  },
-                  "key": {
-                    "type": {
-                      "type": "Integer",
-                      "value": null
-                    },
-                    "ast_type": "Const",
-                    "value": {
-                      "type": "integer",
-                      "kind": "literal",
-                      "value": "0"
-                    }
-                  },
-                  "default": null
-                },
-                "key": "supplierName"
-              }
-            },
             {
               "type": "let",
               "name": "supplier",
@@ -14390,8 +14131,256 @@
                     "type": "String",
                     "value": null
                   },
-                  "ast_type": "Variable",
-                  "name": "p_supplierName"
+                  "ast_type": "GetField",
+                  "struct": {
+                    "type": {
+                      "type": "Struct",
+                      "value": {
+                        "supplierName": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "weight": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    },
+                    "ast_type": "Get",
+                    "dict": {
+                      "type": {
+                        "type": "Array",
+                        "value": {
+                          "type": "Struct",
+                          "value": {
+                            "supplierName": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "weight": {
+                              "type": "Float",
+                              "value": null
+                            }
+                          }
+                        }
+                      },
+                      "ast_type": "Sort",
+                      "collection": {
+                        "type": {
+                          "type": "Array",
+                          "value": {
+                            "type": "Struct",
+                            "value": {
+                              "supplierName": {
+                                "type": "String",
+                                "value": null
+                              },
+                              "weight": {
+                                "type": "Float",
+                                "value": null
+                              }
+                            }
+                          }
+                        },
+                        "ast_type": "ToArray",
+                        "collection": {
+                          "type": {
+                            "type": "Dict",
+                            "value": {
+                              "key": {
+                                "type": "String",
+                                "value": null
+                              },
+                              "value": {
+                                "type": "Struct",
+                                "value": {
+                                  "weight": {
+                                    "type": "Float",
+                                    "value": null
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "ast_type": "Variable",
+                          "name": "r_Supplier Policy"
+                        },
+                        "output_value": {
+                          "type": {
+                            "type": "Struct",
+                            "value": {
+                              "supplierName": {
+                                "type": "String",
+                                "value": null
+                              },
+                              "weight": {
+                                "type": "Float",
+                                "value": null
+                              }
+                            }
+                          },
+                          "ast_type": "Struct",
+                          "fields": {
+                            "supplierName": {
+                              "type": {
+                                "type": "String",
+                                "value": null
+                              },
+                              "ast_type": "Variable",
+                              "name": "_key_o3g7QjzrH0h0Ud24S6C7Bf"
+                            },
+                            "weight": {
+                              "type": {
+                                "type": "Float",
+                                "value": null
+                              },
+                              "ast_type": "GetField",
+                              "struct": {
+                                "type": {
+                                  "type": "Struct",
+                                  "value": {
+                                    "weight": {
+                                      "type": "Float",
+                                      "value": null
+                                    }
+                                  }
+                                },
+                                "ast_type": "Variable",
+                                "name": "_value_0miExh1hHtEDkF4ahaKP6m"
+                              },
+                              "key": "weight"
+                            }
+                          }
+                        },
+                        "input_value": {
+                          "type": {
+                            "type": "Struct",
+                            "value": {
+                              "weight": {
+                                "type": "Float",
+                                "value": null
+                              }
+                            }
+                          },
+                          "ast_type": "Variable",
+                          "name": "_value_0miExh1hHtEDkF4ahaKP6m"
+                        },
+                        "input_key": {
+                          "type": {
+                            "type": "String",
+                            "value": null
+                          },
+                          "ast_type": "Variable",
+                          "name": "_key_o3g7QjzrH0h0Ud24S6C7Bf"
+                        }
+                      },
+                      "isless": {
+                        "type": {
+                          "type": "Boolean",
+                          "value": null
+                        },
+                        "ast_type": "Greater",
+                        "first": {
+                          "type": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "ast_type": "GetField",
+                          "struct": {
+                            "type": {
+                              "type": "Struct",
+                              "value": {
+                                "supplierName": {
+                                  "type": "String",
+                                  "value": null
+                                },
+                                "weight": {
+                                  "type": "Float",
+                                  "value": null
+                                }
+                              }
+                            },
+                            "ast_type": "Variable",
+                            "name": "_first_Zan7ofPvAAINl6_1PA2pdf"
+                          },
+                          "key": "weight"
+                        },
+                        "second": {
+                          "type": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "ast_type": "GetField",
+                          "struct": {
+                            "type": {
+                              "type": "Struct",
+                              "value": {
+                                "supplierName": {
+                                  "type": "String",
+                                  "value": null
+                                },
+                                "weight": {
+                                  "type": "Float",
+                                  "value": null
+                                }
+                              }
+                            },
+                            "ast_type": "Variable",
+                            "name": "_second_W3DXSCZYwDjFba59T_6syO"
+                          },
+                          "key": "weight"
+                        }
+                      },
+                      "first": {
+                        "type": {
+                          "type": "Struct",
+                          "value": {
+                            "supplierName": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "weight": {
+                              "type": "Float",
+                              "value": null
+                            }
+                          }
+                        },
+                        "ast_type": "Variable",
+                        "name": "_first_Zan7ofPvAAINl6_1PA2pdf"
+                      },
+                      "second": {
+                        "type": {
+                          "type": "Struct",
+                          "value": {
+                            "supplierName": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "weight": {
+                              "type": "Float",
+                              "value": null
+                            }
+                          }
+                        },
+                        "ast_type": "Variable",
+                        "name": "_second_W3DXSCZYwDjFba59T_6syO"
+                      }
+                    },
+                    "key": {
+                      "type": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": {
+                        "type": "integer",
+                        "kind": "literal",
+                        "value": "0"
+                      }
+                    },
+                    "default": null
+                  },
+                  "key": "supplierName"
                 },
                 "default": null
               }
@@ -14428,8 +14417,37 @@
                       "type": "String",
                       "value": null
                     },
-                    "ast_type": "Variable",
-                    "name": "p_supplierName"
+                    "ast_type": "GetField",
+                    "struct": {
+                      "type": {
+                        "type": "Struct",
+                        "value": {
+                          "supplierName": {
+                            "type": "String",
+                            "value": null
+                          },
+                          "paymentTerms": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "leadTime": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "unitCost": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "orderQty": {
+                            "type": "Integer",
+                            "value": null
+                          }
+                        }
+                      },
+                      "ast_type": "Variable",
+                      "name": "p_supplier"
+                    },
+                    "key": "supplierName"
                   }
                 }
               },
@@ -16098,7 +16116,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_Ktya$QkSseWBXy4s3AX9D2"
+                          "name": "_vkJ9ppRPrxCPvpW3PWwPq0"
                         },
                         "second": {
                           "type": {
@@ -16115,7 +16133,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_Ktya$QkSseWBXy4s3AX9D2"
+                        "name": "_vkJ9ppRPrxCPvpW3PWwPq0"
                       },
                       "false": {
                         "type": {
@@ -16132,7 +16150,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_Ktya$QkSseWBXy4s3AX9D2"
+                      "name": "_vkJ9ppRPrxCPvpW3PWwPq0"
                     },
                     "value": {
                       "type": {
@@ -18320,7 +18338,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_Ktya$QkSseWBXy4s3AX9D2"
+                          "name": "_vkJ9ppRPrxCPvpW3PWwPq0"
                         },
                         "second": {
                           "type": {
@@ -18337,7 +18355,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_Ktya$QkSseWBXy4s3AX9D2"
+                        "name": "_vkJ9ppRPrxCPvpW3PWwPq0"
                       },
                       "false": {
                         "type": {
@@ -18354,7 +18372,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_Ktya$QkSseWBXy4s3AX9D2"
+                      "name": "_vkJ9ppRPrxCPvpW3PWwPq0"
                     },
                     "value": {
                       "type": {

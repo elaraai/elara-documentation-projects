@@ -314,26 +314,28 @@ const predicted_procurement_simple_ranked = new ProcessBuilder("Predicted Procur
     .resource(cash)
     .resource(supplier_policy)
     .process(procurement)
-    .let("supplierName", (_, resources) => GetField(
-        Get(
-            Sort(
-                ToArray(
-                    resources["Supplier Policy"],
-                    (value, key) => Struct({ supplierName: key, weight: GetField(value, "weight") })
+    .let("supplier", (_, resources) => Get(
+        resources.Suppliers,
+        GetField(
+            Get(
+                Sort(
+                    ToArray(
+                        resources["Supplier Policy"],
+                        (value, key) => Struct({ supplierName: key, weight: GetField(value, "weight") })
+                    ),
+                    (first, second) => Greater(GetField(first, "weight"), GetField(second, "weight"))
                 ),
-                (first, second) => Greater(GetField(first, "weight"), GetField(second, "weight"))
+                Const(0n),
             ),
-            Const(0n),
-        ),
-        "supplierName"
+            "supplierName"
+        )
     ))
-    .let("supplier", (props, resources) => Get(resources.Suppliers, props.supplierName))
     // create the next procurement in the future
     .execute(
         "Procurement",
         props => Struct({
             date: props.date,
-            supplierName: props.supplierName,
+            supplierName: GetField(props.supplier, "supplierName"),
         }),
         (props, resources) => GreaterEqual(
             resources.Cash,
