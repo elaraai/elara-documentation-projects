@@ -256,8 +256,8 @@
       },
       "writable": false
     },
-    "Optimized.Multi-decision Prescriptive Scenario.Supplier Policy.score": {
-      "name": "Optimized.Multi-decision Prescriptive Scenario.Supplier Policy.score",
+    "Optimized.Multi-decision Prescriptive Scenario.Supplier Policy.weight": {
+      "name": "Optimized.Multi-decision Prescriptive Scenario.Supplier Policy.weight",
       "type": {
         "type": "Dict",
         "value": {
@@ -268,7 +268,7 @@
           "value": {
             "type": "Struct",
             "value": {
-              "score": {
+              "weight": {
                 "type": "Float",
                 "value": null
               }
@@ -376,8 +376,8 @@
       },
       "writable": false
     },
-    "Pipeline.Optimization.Multi-decision Prescriptive Scenario.Supplier Policy.score": {
-      "name": "Pipeline.Optimization.Multi-decision Prescriptive Scenario.Supplier Policy.score",
+    "Pipeline.Optimization.Multi-decision Prescriptive Scenario.Supplier Policy.weight": {
+      "name": "Pipeline.Optimization.Multi-decision Prescriptive Scenario.Supplier Policy.weight",
       "type": {
         "type": "Dict",
         "value": {
@@ -388,7 +388,7 @@
           "value": {
             "type": "Struct",
             "value": {
-              "score": {
+              "weight": {
                 "type": "Float",
                 "value": null
               }
@@ -410,7 +410,7 @@
           "value": {
             "type": "Struct",
             "value": {
-              "score": {
+              "weight": {
                 "type": "Float",
                 "value": null
               }
@@ -1913,7 +1913,7 @@
           "value": {
             "type": "Struct",
             "value": {
-              "score": {
+              "weight": {
                 "type": "Float",
                 "value": null
               }
@@ -2571,7 +2571,7 @@
               "value": {
                 "type": "Struct",
                 "value": {
-                  "score": {
+                  "weight": {
                     "type": "Float",
                     "value": null
                   }
@@ -2679,8 +2679,8 @@
           },
           "writable": false
         },
-        "optimized.Supplier Policy.score": {
-          "name": "Optimized.Multi-decision Prescriptive Scenario.Supplier Policy.score",
+        "optimized.Supplier Policy.weight": {
+          "name": "Optimized.Multi-decision Prescriptive Scenario.Supplier Policy.weight",
           "type": {
             "type": "Dict",
             "value": {
@@ -2691,7 +2691,7 @@
               "value": {
                 "type": "Struct",
                 "value": {
-                  "score": {
+                  "weight": {
                     "type": "Float",
                     "value": null
                   }
@@ -2871,7 +2871,7 @@
               "value": {
                 "type": "Struct",
                 "value": {
-                  "score": {
+                  "weight": {
                     "type": "Float",
                     "value": null
                   }
@@ -3829,7 +3829,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_njGYPLDf7mLYbqsP63fNYu"
+                          "name": "_Ktya$QkSseWBXy4s3AX9D2"
                         },
                         "second": {
                           "type": {
@@ -3846,7 +3846,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_njGYPLDf7mLYbqsP63fNYu"
+                        "name": "_Ktya$QkSseWBXy4s3AX9D2"
                       },
                       "false": {
                         "type": {
@@ -3863,7 +3863,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_njGYPLDf7mLYbqsP63fNYu"
+                      "name": "_Ktya$QkSseWBXy4s3AX9D2"
                     },
                     "value": {
                       "type": {
@@ -4232,7 +4232,7 @@
                         "type": "String",
                         "value": null
                       },
-                      "score": {
+                      "weight": {
                         "type": "Float",
                         "value": null
                       }
@@ -4249,7 +4249,7 @@
                             "type": "String",
                             "value": null
                           },
-                          "score": {
+                          "weight": {
                             "type": "Float",
                             "value": null
                           }
@@ -4267,7 +4267,7 @@
                               "type": "String",
                               "value": null
                             },
-                            "score": {
+                            "weight": {
                               "type": "Float",
                               "value": null
                             }
@@ -4286,7 +4286,7 @@
                             "value": {
                               "type": "Struct",
                               "value": {
-                                "score": {
+                                "weight": {
                                   "type": "Float",
                                   "value": null
                                 }
@@ -4305,7 +4305,7 @@
                               "type": "String",
                               "value": null
                             },
-                            "score": {
+                            "weight": {
                               "type": "Float",
                               "value": null
                             }
@@ -4319,9 +4319,9 @@
                               "value": null
                             },
                             "ast_type": "Variable",
-                            "name": "_key_RWGULu5C7l3nNCdQ0NqQ5K"
+                            "name": "_key_9o4KjNxiqUmqSQRKNtgG$2"
                           },
-                          "score": {
+                          "weight": {
                             "type": {
                               "type": "Float",
                               "value": null
@@ -4331,16 +4331,16 @@
                               "type": {
                                 "type": "Struct",
                                 "value": {
-                                  "score": {
+                                  "weight": {
                                     "type": "Float",
                                     "value": null
                                   }
                                 }
                               },
                               "ast_type": "Variable",
-                              "name": "_value_udM04TdoN1pxv$yCxd0Eg4"
+                              "name": "_value_UJqpU8OKJ2cDXhciVt0Jte"
                             },
-                            "key": "score"
+                            "key": "weight"
                           }
                         }
                       },
@@ -4348,14 +4348,14 @@
                         "type": {
                           "type": "Struct",
                           "value": {
-                            "score": {
+                            "weight": {
                               "type": "Float",
                               "value": null
                             }
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "_value_udM04TdoN1pxv$yCxd0Eg4"
+                        "name": "_value_UJqpU8OKJ2cDXhciVt0Jte"
                       },
                       "input_key": {
                         "type": {
@@ -4363,7 +4363,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_key_RWGULu5C7l3nNCdQ0NqQ5K"
+                        "name": "_key_9o4KjNxiqUmqSQRKNtgG$2"
                       }
                     },
                     "isless": {
@@ -4386,16 +4386,16 @@
                                 "type": "String",
                                 "value": null
                               },
-                              "score": {
+                              "weight": {
                                 "type": "Float",
                                 "value": null
                               }
                             }
                           },
                           "ast_type": "Variable",
-                          "name": "_first_KKcxSvlcu1AKYDdu1GN0YI"
+                          "name": "_first_Y55QfNeXg8cjX4OiOQXeNF"
                         },
-                        "key": "score"
+                        "key": "weight"
                       },
                       "second": {
                         "type": {
@@ -4411,16 +4411,16 @@
                                 "type": "String",
                                 "value": null
                               },
-                              "score": {
+                              "weight": {
                                 "type": "Float",
                                 "value": null
                               }
                             }
                           },
                           "ast_type": "Variable",
-                          "name": "_second_0aHZJdQdzh2cEhExzDo6mm"
+                          "name": "_second_NCcydG7qKTeXdMEHyfdRmb"
                         },
-                        "key": "score"
+                        "key": "weight"
                       }
                     },
                     "first": {
@@ -4431,14 +4431,14 @@
                             "type": "String",
                             "value": null
                           },
-                          "score": {
+                          "weight": {
                             "type": "Float",
                             "value": null
                           }
                         }
                       },
                       "ast_type": "Variable",
-                      "name": "_first_KKcxSvlcu1AKYDdu1GN0YI"
+                      "name": "_first_Y55QfNeXg8cjX4OiOQXeNF"
                     },
                     "second": {
                       "type": {
@@ -4448,14 +4448,14 @@
                             "type": "String",
                             "value": null
                           },
-                          "score": {
+                          "weight": {
                             "type": "Float",
                             "value": null
                           }
                         }
                       },
                       "ast_type": "Variable",
-                      "name": "_second_0aHZJdQdzh2cEhExzDo6mm"
+                      "name": "_second_NCcydG7qKTeXdMEHyfdRmb"
                     }
                   },
                   "key": {
@@ -4854,7 +4854,7 @@
         {
           "optimization_type": "update",
           "resource": "Supplier Policy",
-          "field": "score",
+          "field": "weight",
           "active": {
             "type": {
               "type": "Boolean",
@@ -6182,7 +6182,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_njGYPLDf7mLYbqsP63fNYu"
+                          "name": "_Ktya$QkSseWBXy4s3AX9D2"
                         },
                         "second": {
                           "type": {
@@ -6199,7 +6199,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_njGYPLDf7mLYbqsP63fNYu"
+                        "name": "_Ktya$QkSseWBXy4s3AX9D2"
                       },
                       "false": {
                         "type": {
@@ -6216,7 +6216,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_njGYPLDf7mLYbqsP63fNYu"
+                      "name": "_Ktya$QkSseWBXy4s3AX9D2"
                     },
                     "value": {
                       "type": {
@@ -7081,7 +7081,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_oZDnxofMdyr995MCpc2_2x"
+              "name": "_Z1aaixPQpZtO4RPd4JsAY_"
             },
             "value": {
               "type": {
@@ -7089,7 +7089,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_oZDnxofMdyr995MCpc2_2x"
+              "name": "_Z1aaixPQpZtO4RPd4JsAY_"
             }
           }
         }
@@ -7398,9 +7398,9 @@
         }
       ]
     },
-    "Pipeline.Optimization.Multi-decision Prescriptive Scenario.Supplier Policy.score": {
-      "name": "Pipeline.Optimization.Multi-decision Prescriptive Scenario.Supplier Policy.score",
-      "parent": "Pipeline.Optimization.Multi-decision Prescriptive Scenario.Supplier Policy.score",
+    "Pipeline.Optimization.Multi-decision Prescriptive Scenario.Supplier Policy.weight": {
+      "name": "Pipeline.Optimization.Multi-decision Prescriptive Scenario.Supplier Policy.weight",
+      "parent": "Pipeline.Optimization.Multi-decision Prescriptive Scenario.Supplier Policy.weight",
       "task_type": "pipeline",
       "inputs": {
         "input": {
@@ -7415,7 +7415,7 @@
               "value": {
                 "type": "Struct",
                 "value": {
-                  "score": {
+                  "weight": {
                     "type": "Float",
                     "value": null
                   }
@@ -7426,7 +7426,7 @@
           "writable": false
         },
         "optimized": {
-          "name": "Optimized.Multi-decision Prescriptive Scenario.Supplier Policy.score",
+          "name": "Optimized.Multi-decision Prescriptive Scenario.Supplier Policy.weight",
           "type": {
             "type": "Dict",
             "value": {
@@ -7437,7 +7437,7 @@
               "value": {
                 "type": "Struct",
                 "value": {
-                  "score": {
+                  "weight": {
                     "type": "Float",
                     "value": null
                   }
@@ -7450,7 +7450,7 @@
       },
       "outputs": {
         "output": {
-          "name": "Pipeline.Optimization.Multi-decision Prescriptive Scenario.Supplier Policy.score",
+          "name": "Pipeline.Optimization.Multi-decision Prescriptive Scenario.Supplier Policy.weight",
           "type": {
             "type": "Dict",
             "value": {
@@ -7461,7 +7461,7 @@
               "value": {
                 "type": "Struct",
                 "value": {
-                  "score": {
+                  "weight": {
                     "type": "Float",
                     "value": null
                   }
@@ -7490,13 +7490,13 @@
             "name": "key"
           },
           "source_selections": {
-            "score": {
+            "weight": {
               "type": {
                 "type": "Float",
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "field.score"
+              "name": "field.weight"
             }
           },
           "target_key": {
@@ -7508,13 +7508,13 @@
             "name": "key"
           },
           "target_selections": {
-            "score": {
+            "weight": {
               "type": {
                 "type": "Float",
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "field.score"
+              "name": "field.weight"
             }
           },
           "output_key": {
@@ -7535,7 +7535,7 @@
               "value": {
                 "type": "Struct",
                 "value": {
-                  "score": {
+                  "weight": {
                     "type": "Float",
                     "value": null
                   }
@@ -7603,7 +7603,7 @@
               "value": {
                 "type": "Struct",
                 "value": {
-                  "score": {
+                  "weight": {
                     "type": "Float",
                     "value": null
                   }
@@ -7627,7 +7627,7 @@
               "value": {
                 "type": "Struct",
                 "value": {
-                  "score": {
+                  "weight": {
                     "type": "Float",
                     "value": null
                   }
@@ -7646,7 +7646,7 @@
                 "value": {
                   "type": "Struct",
                   "value": {
-                    "score": {
+                    "weight": {
                       "type": "Float",
                       "value": null
                     }
@@ -7697,7 +7697,7 @@
               "type": {
                 "type": "Struct",
                 "value": {
-                  "score": {
+                  "weight": {
                     "type": "Float",
                     "value": null
                   }
@@ -7705,7 +7705,7 @@
               },
               "ast_type": "Struct",
               "fields": {
-                "score": {
+                "weight": {
                   "type": {
                     "type": "Float",
                     "value": null
@@ -7721,7 +7721,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_BqdPNkZy9dJ3cEmhXT6r1L"
+              "name": "_key_kYO69iypXzqblbfJL7BCkK"
             },
             "input_value": {
               "type": {
@@ -7750,7 +7750,7 @@
                 }
               },
               "ast_type": "Variable",
-              "name": "_value_pkfZ4zDbv$8FUMtLWjPqEQ"
+              "name": "_value_vro1W4l4uaeIFfj4lWA4df"
             },
             "input_key": {
               "type": {
@@ -7758,7 +7758,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_BqdPNkZy9dJ3cEmhXT6r1L"
+              "name": "_key_kYO69iypXzqblbfJL7BCkK"
             }
           }
         }
@@ -11014,7 +11014,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_njGYPLDf7mLYbqsP63fNYu"
+                          "name": "_Ktya$QkSseWBXy4s3AX9D2"
                         },
                         "second": {
                           "type": {
@@ -11031,7 +11031,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_njGYPLDf7mLYbqsP63fNYu"
+                        "name": "_Ktya$QkSseWBXy4s3AX9D2"
                       },
                       "false": {
                         "type": {
@@ -11048,7 +11048,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_njGYPLDf7mLYbqsP63fNYu"
+                      "name": "_Ktya$QkSseWBXy4s3AX9D2"
                     },
                     "value": {
                       "type": {
@@ -11894,7 +11894,7 @@
           "writable": false
         },
         "resource.Supplier Policy": {
-          "name": "Pipeline.Optimization.Multi-decision Prescriptive Scenario.Supplier Policy.score",
+          "name": "Pipeline.Optimization.Multi-decision Prescriptive Scenario.Supplier Policy.weight",
           "type": {
             "type": "Dict",
             "value": {
@@ -11905,7 +11905,7 @@
               "value": {
                 "type": "Struct",
                 "value": {
-                  "score": {
+                  "weight": {
                     "type": "Float",
                     "value": null
                   }
@@ -12104,7 +12104,7 @@
               "value": {
                 "type": "Struct",
                 "value": {
-                  "score": {
+                  "weight": {
                     "type": "Float",
                     "value": null
                   }
@@ -12713,7 +12713,7 @@
               "value": {
                 "type": "Struct",
                 "value": {
-                  "score": {
+                  "weight": {
                     "type": "Float",
                     "value": null
                   }
@@ -13671,7 +13671,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_njGYPLDf7mLYbqsP63fNYu"
+                          "name": "_Ktya$QkSseWBXy4s3AX9D2"
                         },
                         "second": {
                           "type": {
@@ -13688,7 +13688,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_njGYPLDf7mLYbqsP63fNYu"
+                        "name": "_Ktya$QkSseWBXy4s3AX9D2"
                       },
                       "false": {
                         "type": {
@@ -13705,7 +13705,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_njGYPLDf7mLYbqsP63fNYu"
+                      "name": "_Ktya$QkSseWBXy4s3AX9D2"
                     },
                     "value": {
                       "type": {
@@ -14074,7 +14074,7 @@
                         "type": "String",
                         "value": null
                       },
-                      "score": {
+                      "weight": {
                         "type": "Float",
                         "value": null
                       }
@@ -14091,7 +14091,7 @@
                             "type": "String",
                             "value": null
                           },
-                          "score": {
+                          "weight": {
                             "type": "Float",
                             "value": null
                           }
@@ -14109,7 +14109,7 @@
                               "type": "String",
                               "value": null
                             },
-                            "score": {
+                            "weight": {
                               "type": "Float",
                               "value": null
                             }
@@ -14128,7 +14128,7 @@
                             "value": {
                               "type": "Struct",
                               "value": {
-                                "score": {
+                                "weight": {
                                   "type": "Float",
                                   "value": null
                                 }
@@ -14147,7 +14147,7 @@
                               "type": "String",
                               "value": null
                             },
-                            "score": {
+                            "weight": {
                               "type": "Float",
                               "value": null
                             }
@@ -14161,9 +14161,9 @@
                               "value": null
                             },
                             "ast_type": "Variable",
-                            "name": "_key_RWGULu5C7l3nNCdQ0NqQ5K"
+                            "name": "_key_9o4KjNxiqUmqSQRKNtgG$2"
                           },
-                          "score": {
+                          "weight": {
                             "type": {
                               "type": "Float",
                               "value": null
@@ -14173,16 +14173,16 @@
                               "type": {
                                 "type": "Struct",
                                 "value": {
-                                  "score": {
+                                  "weight": {
                                     "type": "Float",
                                     "value": null
                                   }
                                 }
                               },
                               "ast_type": "Variable",
-                              "name": "_value_udM04TdoN1pxv$yCxd0Eg4"
+                              "name": "_value_UJqpU8OKJ2cDXhciVt0Jte"
                             },
-                            "key": "score"
+                            "key": "weight"
                           }
                         }
                       },
@@ -14190,14 +14190,14 @@
                         "type": {
                           "type": "Struct",
                           "value": {
-                            "score": {
+                            "weight": {
                               "type": "Float",
                               "value": null
                             }
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "_value_udM04TdoN1pxv$yCxd0Eg4"
+                        "name": "_value_UJqpU8OKJ2cDXhciVt0Jte"
                       },
                       "input_key": {
                         "type": {
@@ -14205,7 +14205,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_key_RWGULu5C7l3nNCdQ0NqQ5K"
+                        "name": "_key_9o4KjNxiqUmqSQRKNtgG$2"
                       }
                     },
                     "isless": {
@@ -14228,16 +14228,16 @@
                                 "type": "String",
                                 "value": null
                               },
-                              "score": {
+                              "weight": {
                                 "type": "Float",
                                 "value": null
                               }
                             }
                           },
                           "ast_type": "Variable",
-                          "name": "_first_KKcxSvlcu1AKYDdu1GN0YI"
+                          "name": "_first_Y55QfNeXg8cjX4OiOQXeNF"
                         },
-                        "key": "score"
+                        "key": "weight"
                       },
                       "second": {
                         "type": {
@@ -14253,16 +14253,16 @@
                                 "type": "String",
                                 "value": null
                               },
-                              "score": {
+                              "weight": {
                                 "type": "Float",
                                 "value": null
                               }
                             }
                           },
                           "ast_type": "Variable",
-                          "name": "_second_0aHZJdQdzh2cEhExzDo6mm"
+                          "name": "_second_NCcydG7qKTeXdMEHyfdRmb"
                         },
-                        "key": "score"
+                        "key": "weight"
                       }
                     },
                     "first": {
@@ -14273,14 +14273,14 @@
                             "type": "String",
                             "value": null
                           },
-                          "score": {
+                          "weight": {
                             "type": "Float",
                             "value": null
                           }
                         }
                       },
                       "ast_type": "Variable",
-                      "name": "_first_KKcxSvlcu1AKYDdu1GN0YI"
+                      "name": "_first_Y55QfNeXg8cjX4OiOQXeNF"
                     },
                     "second": {
                       "type": {
@@ -14290,14 +14290,14 @@
                             "type": "String",
                             "value": null
                           },
-                          "score": {
+                          "weight": {
                             "type": "Float",
                             "value": null
                           }
                         }
                       },
                       "ast_type": "Variable",
-                      "name": "_second_0aHZJdQdzh2cEhExzDo6mm"
+                      "name": "_second_NCcydG7qKTeXdMEHyfdRmb"
                     }
                   },
                   "key": {
@@ -16098,7 +16098,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_njGYPLDf7mLYbqsP63fNYu"
+                          "name": "_Ktya$QkSseWBXy4s3AX9D2"
                         },
                         "second": {
                           "type": {
@@ -16115,7 +16115,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_njGYPLDf7mLYbqsP63fNYu"
+                        "name": "_Ktya$QkSseWBXy4s3AX9D2"
                       },
                       "false": {
                         "type": {
@@ -16132,7 +16132,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_njGYPLDf7mLYbqsP63fNYu"
+                      "name": "_Ktya$QkSseWBXy4s3AX9D2"
                     },
                     "value": {
                       "type": {
@@ -18320,7 +18320,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_njGYPLDf7mLYbqsP63fNYu"
+                          "name": "_Ktya$QkSseWBXy4s3AX9D2"
                         },
                         "second": {
                           "type": {
@@ -18337,7 +18337,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_njGYPLDf7mLYbqsP63fNYu"
+                        "name": "_Ktya$QkSseWBXy4s3AX9D2"
                       },
                       "false": {
                         "type": {
@@ -18354,7 +18354,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_njGYPLDf7mLYbqsP63fNYu"
+                      "name": "_Ktya$QkSseWBXy4s3AX9D2"
                     },
                     "value": {
                       "type": {

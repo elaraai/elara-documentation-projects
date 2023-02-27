@@ -303,7 +303,7 @@ const supplier_policy = new ResourceBuilder("Supplier Policy")
         .transform(suppliers => ToDict(
             suppliers,
             () => Struct({
-                score: 1
+                weight: 1
             }),
             (_, key) => key
         ))
@@ -319,9 +319,9 @@ const predicted_procurement_simple_ranked = new ProcessBuilder("Predicted Procur
             Sort(
                 ToArray(
                     resources["Supplier Policy"],
-                    (value, key) => Struct({ supplierName: key, score: GetField(value, "score") })
+                    (value, key) => Struct({ supplierName: key, weight: GetField(value, "weight") })
                 ),
-                (first, second) => Less(GetField(first, "score"), GetField(second, "score"))
+                (first, second) => Less(GetField(first, "weight"), GetField(second, "weight"))
             ),
             Const(0n),
         ),
@@ -369,7 +369,7 @@ const multi_decision_prescriptive_scenario = new ScenarioBuilder("Multi-decision
     // tell elara to find the best discount
     .optimize("Discount", { min: 0, max: 20.0 })
     // tell elara to find the best rank for supplier policy
-    .optimizeEvery("Supplier Policy", "score", { min: 0, max: 1 })
+    .optimizeEvery("Supplier Policy", "weight", { min: 0, max: 1 })
     .simulationInMemory(true)
     .optimizationInMemory(true)
 
@@ -413,9 +413,9 @@ const predicted_procurement_ranking_function = new ProcessBuilder("Predicted Pro
             Sort(
                 ToArray(
                     props.supplierRanking,
-                    (value, key) => Struct({ supplierName: key, score: value })
+                    (value, key) => Struct({ supplierName: key, rank: value })
                 ),
-                (first, second) => Less(GetField(first, "score"), GetField(second, "score"))
+                (first, second) => Less(GetField(first, "rank"), GetField(second, "rank"))
             ),
             Const(0n),
         ),

@@ -187,6 +187,7 @@ const descriptive_scenario = new ScenarioBuilder("Descriptive")
     .process(procurement)
     .process(historic_sales)
     .process(historic_procurement)
+    .simulationInMemory(true)
 
 // Predicted Scenario
 
@@ -266,6 +267,7 @@ const predictive_scenario = new ScenarioBuilder("Predictive")
     .process(procurement)
     .process(predicted_sales)
     .process(predicted_procurement)
+    .simulationInMemory(true)
 
 const my_discount_choice = new SourceBuilder("My Discount Choice")
     .value({
@@ -280,6 +282,7 @@ const interactive_scenario = new ScenarioBuilder("Interactive")
         .input({ name: "MyDiscountChoice", stream: my_discount_choice.outputStream() })
         .transform( (stream, inputs) => IfNull(inputs.MyDiscountChoice, stream) )
     )
+    .simulationInMemory(true)
 
 // Prescriptive Scenario
 
@@ -289,6 +292,8 @@ const prescriptive_scenario = new ScenarioBuilder("Prescriptive")
     .objective("Cash", cash => cash)
     // tell elara to find the best discount
     .optimize("Discount", { min: 0, max: 20.0 })
+    .simulationInMemory(true)
+    .optimizationInMemory(true)
 
 export default Template(
     sales_file,
