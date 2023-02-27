@@ -1,4 +1,4 @@
-import { Add, AddDuration, Const, Convert, DateTimeType, Divide, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IfNull, IntegerType, Less, Min, MLModelBuilder, Multiply, Nullable, PipelineBuilder, Print, ProcessBuilder, RandomValue, ResourceBuilder, Round, ScenarioBuilder, Sort, SourceBuilder, StringType, Struct, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
+import { Add, AddDuration, Const, Convert, DateTimeType, Divide, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IfNull, IntegerType, Min, MLModelBuilder, Multiply, Nullable, PipelineBuilder, Print, ProcessBuilder, RandomValue, ResourceBuilder, Round, ScenarioBuilder, Sort, SourceBuilder, StringType, Struct, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
 
 const sales_file = new SourceBuilder("Sales File")
     .file({ path: 'data/sales.jsonl' })
@@ -321,7 +321,7 @@ const predicted_procurement_simple_ranked = new ProcessBuilder("Predicted Procur
                     resources["Supplier Policy"],
                     (value, key) => Struct({ supplierName: key, weight: GetField(value, "weight") })
                 ),
-                (first, second) => Less(GetField(first, "weight"), GetField(second, "weight"))
+                (first, second) => Greater(GetField(first, "weight"), GetField(second, "weight"))
             ),
             Const(0n),
         ),
@@ -415,7 +415,7 @@ const predicted_procurement_ranking_function = new ProcessBuilder("Predicted Pro
                     props.supplierRanking,
                     (value, key) => Struct({ supplierName: key, rank: value })
                 ),
-                (first, second) => Less(GetField(first, "rank"), GetField(second, "rank"))
+                (first, second) => Greater(GetField(first, "rank"), GetField(second, "rank"))
             ),
             Const(0n),
         ),
