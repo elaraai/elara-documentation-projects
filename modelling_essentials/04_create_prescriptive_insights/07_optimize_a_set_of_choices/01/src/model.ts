@@ -352,7 +352,7 @@ const predicted_procurement_simple_ranked = new ProcessBuilder("Predicted Procur
     // start simulating from the current date
     .mapFromValue({ date: now })
 
-const multi_decision_prescriptive_scenario = new ScenarioBuilder("Multi-decision Prescriptive Scenario")
+const multi_decision_prescriptive_scenario = new ScenarioBuilder("Multi-decision Prescriptive")
     .resource(cash, { ledger: true })
     .resource(stock_on_hand, { ledger: true })
     .resource(price, { ledger: true })
@@ -448,7 +448,7 @@ const predicted_procurement_ranking_function = new ProcessBuilder("Predicted Pro
     // start simulating from the current date
     .mapFromValue({ date: now })
 
-const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi-decision Prescriptive Scenario Enhanced")
+const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi-decision Prescriptive Enhanced")
     .resource(cash, { ledger: true })
     .resource(stock_on_hand, { ledger: true })
     .resource(price, { ledger: true })

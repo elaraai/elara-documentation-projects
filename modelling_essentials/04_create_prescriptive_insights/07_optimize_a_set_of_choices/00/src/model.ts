@@ -320,7 +320,7 @@ const predicted_procurement_simple_ranked = new ProcessBuilder("Predicted Procur
             Get(
                 Sort(
                     ToArray(
-                        resources["Supplier Policy"],
+                        resources["Supplier Policy"],   
                         (value, key) => Struct({ supplierName: key, weight: GetField(value, "weight") })
                     ),
                     (first, second) => Greater(GetField(first, "weight"), GetField(second, "weight"))
@@ -352,7 +352,7 @@ const predicted_procurement_simple_ranked = new ProcessBuilder("Predicted Procur
     // start simulating from the current date
     .mapFromValue({ date: now })
 
-const multi_decision_prescriptive_scenario = new ScenarioBuilder("Multi-decision Prescriptive Scenario")
+const multi_decision_prescriptive_scenario = new ScenarioBuilder("Multi-decision Prescriptive")
     .resource(cash, { ledger: true })
     .resource(stock_on_hand, { ledger: true })
     .resource(price, { ledger: true })
@@ -374,7 +374,6 @@ const multi_decision_prescriptive_scenario = new ScenarioBuilder("Multi-decision
     .optimizeEvery("Supplier Policy", "weight", { min: 0, max: 1 })
     .simulationInMemory(true)
     .optimizationInMemory(true)
-
 
 export default Template(
     sales_file,
