@@ -1,4 +1,4 @@
-import { Add, AddDuration, Const, Convert, DateTimeType, Divide, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IfNull, IntegerType, Min, MLModelBuilder, Multiply, Nullable, PipelineBuilder, Print, ProcessBuilder, RandomValue, ResourceBuilder, Round, ScenarioBuilder, Sort, SourceBuilder, StringType, Struct, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
+import { Add, AddDuration, Const, Convert, DateTimeType, Divide, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IfNull, Insert, IntegerType, Min, MLModelBuilder, Multiply, NewDict, Nullable, PipelineBuilder, Print, ProcessBuilder, RandomValue, ResourceBuilder, Round, ScenarioBuilder, Sort, SourceBuilder, StringType, Struct, StructType, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
 
 const sales_file = new SourceBuilder("Sales File")
     .file({ path: 'data/sales.jsonl' })
@@ -254,6 +254,46 @@ const predicted_procurement = new ProcessBuilder("Predicted Procurement")
     // start simulating from the current date
     .mapFromValue({ date: now })
 
+// Reporting Resources and Processes
+
+const report = new ResourceBuilder("Report")
+    .mapFromPipeline(builder => builder
+        .from(cash.resourceStream())
+        .input({ name: "stockOnHand", stream: stock_on_hand.resourceStream()})
+        .transform((stream, inputs) => NewDict(
+            StringType,
+            StructType({
+                date: DateTimeType,
+                cash: FloatType,
+                stockOnHand: IntegerType
+            }),
+            [Print(now)],
+            [Struct({
+                date: now,
+                cash: stream,
+                stockOnHand: inputs.stockOnHand
+            })]
+        ))
+    )
+
+const reporter = new ProcessBuilder("Reporter")
+    .resource(cash)
+    .resource(stock_on_hand)
+    .resource(report)
+    .set("Report", (props, resources) => Insert(
+        resources.Report,
+        Print(props.date),
+        Struct({
+            date: props.date,
+            cash: resources.Cash,
+            stockOnHand: resources["Stock-on-hand"]   
+        })
+    ))
+    .execute("Reporter", props => Struct({
+        date: AddDuration(props.date, 1, "hour")
+    }))
+    .mapFromValue({ date: now })
+
 const predictive_scenario = new ScenarioBuilder("Predictive")
     .resource(cash)
     .resource(stock_on_hand)
@@ -268,6 +308,8 @@ const predictive_scenario = new ScenarioBuilder("Predictive")
     .process(predicted_sales)
     .process(predicted_procurement)
     .simulationInMemory(true)
+    .resource(report)
+    .process(reporter)
 
 const my_discount_choice = new SourceBuilder("My Discount Choice")
     .value({
@@ -366,6 +408,9 @@ const multi_decision_prescriptive_scenario = new ScenarioBuilder("Multi-decision
     .process(procurement)
     .process(predicted_sales)
     .process(predicted_procurement_simple_ranked)
+    // reporting resources/processes
+    .resource(report)
+    .process(reporter)
     // elara will try to maximise this - the cash balance!
     .objective("Cash", cash => cash)
     // tell elara to find the best discount
@@ -462,6 +507,9 @@ const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi
     .process(procurement)
     .process(predicted_sales)
     .process(predicted_procurement_ranking_function)
+    // reporting resources/processes
+    .resource(report)
+    .process(reporter)
     // elara will try to maximise this - the cash balance!
     .objective("Cash", cash => cash)
     // tell elara to find the best discount
@@ -504,5 +552,7 @@ export default Template(
     multi_decision_prescriptive_scenario,
     multi_factor_supplier_policy,
     predicted_procurement_ranking_function,
-    multi_decision_prescriptive_scenario_enhanced
+    multi_decision_prescriptive_scenario_enhanced,
+    report,
+    reporter
 )
