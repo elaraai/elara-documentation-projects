@@ -3,8 +3,17 @@
     "Writeable.My VariantType Datasource": {
       "name": "Writeable.My VariantType Datasource",
       "type": {
-        "type": "Integer",
-        "value": null
+        "type": "Variant",
+        "value": {
+          "a": {
+            "type": "Boolean",
+            "value": null
+          },
+          "b": {
+            "type": "String",
+            "value": null
+          }
+        }
       },
       "writable": true
     }
