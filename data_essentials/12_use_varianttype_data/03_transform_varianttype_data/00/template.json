@@ -1,0 +1,150 @@
+{
+  "streams": {
+    "Pipeline.Construct a Variant": {
+      "name": "Pipeline.Construct a Variant",
+      "type": {
+        "type": "Variant",
+        "value": {
+          "a": {
+            "type": "Boolean",
+            "value": null
+          },
+          "b": {
+            "type": "String",
+            "value": null
+          }
+        }
+      },
+      "writable": false
+    },
+    "Writeable.My Boolean Datastream": {
+      "name": "Writeable.My Boolean Datastream",
+      "type": {
+        "type": "Boolean",
+        "value": null
+      },
+      "writable": true
+    }
+  },
+  "tasks": {
+    "Pipeline.Construct a Variant": {
+      "name": "Pipeline.Construct a Variant",
+      "parent": "Pipeline.Construct a Variant",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.My Boolean Datastream",
+          "type": {
+            "type": "Boolean",
+            "value": null
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Construct a Variant",
+          "type": {
+            "type": "Variant",
+            "value": {
+              "a": {
+                "type": "Boolean",
+                "value": null
+              },
+              "b": {
+                "type": "String",
+                "value": null
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "Variant",
+            "value": {
+              "a": {
+                "type": "Boolean",
+                "value": null
+              },
+              "b": {
+                "type": "String",
+                "value": null
+              }
+            }
+          },
+          "expression": {
+            "type": {
+              "type": "Variant",
+              "value": {
+                "a": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "b": {
+                  "type": "String",
+                  "value": null
+                }
+              }
+            },
+            "ast_type": "IfElse",
+            "predicate": {
+              "type": {
+                "type": "Boolean",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "value"
+            },
+            "true": {
+              "type": {
+                "type": "Variant",
+                "value": {
+                  "a": {
+                    "type": "Boolean",
+                    "value": null
+                  }
+                }
+              },
+              "ast_type": "NewVariant",
+              "tag": "a",
+              "value": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": false
+              }
+            },
+            "false": {
+              "type": {
+                "type": "Variant",
+                "value": {
+                  "b": {
+                    "type": "String",
+                    "value": null
+                  }
+                }
+              },
+              "ast_type": "NewVariant",
+              "tag": "b",
+              "value": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": "some string"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "defaults": {}
+}

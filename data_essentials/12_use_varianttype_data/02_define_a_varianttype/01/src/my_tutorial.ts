@@ -9,7 +9,6 @@ const varianttype_datastream = new SourceBuilder("My VariantType Datastream")
         })
     })
 
-
 export default Template(
     varianttype_datastream
 )
