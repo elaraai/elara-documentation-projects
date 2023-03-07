@@ -1,0 +1,328 @@
+{
+  "streams": {
+    "Pipeline.Construct a Variant": {
+      "name": "Pipeline.Construct a Variant",
+      "type": {
+        "type": "Variant",
+        "value": {
+          "a": {
+            "type": "Boolean",
+            "value": null
+          },
+          "b": {
+            "type": "String",
+            "value": null
+          }
+        }
+      },
+      "writable": false
+    },
+    "Pipeline.Deconstruct a Variant": {
+      "name": "Pipeline.Deconstruct a Variant",
+      "type": {
+        "type": "String",
+        "value": null
+      },
+      "writable": false
+    },
+    "Writeable.My Boolean Datastream": {
+      "name": "Writeable.My Boolean Datastream",
+      "type": {
+        "type": "Boolean",
+        "value": null
+      },
+      "writable": true
+    },
+    "Writeable.My VariantType Datastream": {
+      "name": "Writeable.My VariantType Datastream",
+      "type": {
+        "type": "Variant",
+        "value": {
+          "a": {
+            "type": "Boolean",
+            "value": null
+          },
+          "b": {
+            "type": "String",
+            "value": null
+          }
+        }
+      },
+      "writable": true
+    }
+  },
+  "tasks": {
+    "Pipeline.Construct a Variant": {
+      "name": "Pipeline.Construct a Variant",
+      "parent": "Pipeline.Construct a Variant",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.My Boolean Datastream",
+          "type": {
+            "type": "Boolean",
+            "value": null
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Construct a Variant",
+          "type": {
+            "type": "Variant",
+            "value": {
+              "a": {
+                "type": "Boolean",
+                "value": null
+              },
+              "b": {
+                "type": "String",
+                "value": null
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "Variant",
+            "value": {
+              "a": {
+                "type": "Boolean",
+                "value": null
+              },
+              "b": {
+                "type": "String",
+                "value": null
+              }
+            }
+          },
+          "expression": {
+            "type": {
+              "type": "Variant",
+              "value": {
+                "a": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "b": {
+                  "type": "String",
+                  "value": null
+                }
+              }
+            },
+            "ast_type": "IfElse",
+            "predicate": {
+              "type": {
+                "type": "Boolean",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "value"
+            },
+            "true": {
+              "type": {
+                "type": "Variant",
+                "value": {
+                  "a": {
+                    "type": "Boolean",
+                    "value": null
+                  }
+                }
+              },
+              "ast_type": "NewVariant",
+              "tag": "a",
+              "value": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": false
+              }
+            },
+            "false": {
+              "type": {
+                "type": "Variant",
+                "value": {
+                  "b": {
+                    "type": "String",
+                    "value": null
+                  }
+                }
+              },
+              "ast_type": "NewVariant",
+              "tag": "b",
+              "value": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": "some string"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Pipeline.Deconstruct a Variant": {
+      "name": "Pipeline.Deconstruct a Variant",
+      "parent": "Pipeline.Deconstruct a Variant",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.My VariantType Datastream",
+          "type": {
+            "type": "Variant",
+            "value": {
+              "a": {
+                "type": "Boolean",
+                "value": null
+              },
+              "b": {
+                "type": "String",
+                "value": null
+              }
+            }
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Deconstruct a Variant",
+          "type": {
+            "type": "String",
+            "value": null
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "String",
+            "value": null
+          },
+          "expression": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Match",
+            "input": {
+              "type": {
+                "type": "Variant",
+                "value": {
+                  "a": {
+                    "type": "Boolean",
+                    "value": null
+                  },
+                  "b": {
+                    "type": "String",
+                    "value": null
+                  }
+                }
+              },
+              "ast_type": "Variable",
+              "name": "value"
+            },
+            "functions": {
+              "a": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "StringJoin",
+                "values": [
+                  {
+                    "type": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "ast_type": "Const",
+                    "value": "My stream has data: "
+                  },
+                  {
+                    "type": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "ast_type": "Print",
+                    "value": {
+                      "type": {
+                        "type": "Boolean",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "_0nuCsdxpLr0Eq7jSpwHIZf"
+                    }
+                  }
+                ],
+                "seperator": ""
+              },
+              "b": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "StringJoin",
+                "values": [
+                  {
+                    "type": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "ast_type": "Const",
+                    "value": "My stream has data: "
+                  },
+                  {
+                    "type": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "_0nuCsdxpLr0Eq7jSpwHIZf"
+                  }
+                ],
+                "seperator": ""
+              }
+            },
+            "value": "_0nuCsdxpLr0Eq7jSpwHIZf"
+          }
+        }
+      ]
+    }
+  },
+  "defaults": {
+    "Writeable.My VariantType Datastream": {
+      "default_type": "value",
+      "stream": "Writeable.My VariantType Datastream",
+      "value": {
+        "type": {
+          "type": "Variant",
+          "value": {
+            "a": {
+              "type": "Boolean",
+              "value": null
+            },
+            "b": {
+              "type": "String",
+              "value": null
+            }
+          }
+        },
+        "ast_type": "Const",
+        "value": {
+          "type": "a"
+        }
+      }
+    }
+  }
+}
