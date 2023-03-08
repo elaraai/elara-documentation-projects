@@ -16,6 +16,22 @@
       },
       "writable": false
     },
+    "Pipeline.Convert to Optional Value": {
+      "name": "Pipeline.Convert to Optional Value",
+      "type": {
+        "type": "Variant",
+        "value": {
+          "none": {
+            "nullable": true
+          },
+          "some": {
+            "type": "Integer",
+            "value": null
+          }
+        }
+      },
+      "writable": false
+    },
     "Pipeline.Filter Map Optional Value": {
       "name": "Pipeline.Filter Map Optional Value",
       "type": {
@@ -43,8 +59,8 @@
       },
       "writable": false
     },
-    "Pipeline.My Match and Filter": {
-      "name": "Pipeline.My Match and Filter",
+    "Pipeline.Match and Filter": {
+      "name": "Pipeline.Match and Filter",
       "type": {
         "type": "Array",
         "value": {
@@ -62,8 +78,8 @@
       },
       "writable": false
     },
-    "Writeable.My Array of Optional Values": {
-      "name": "Writeable.My Array of Optional Values",
+    "Writeable.Array of Optional Values": {
+      "name": "Writeable.Array of Optional Values",
       "type": {
         "type": "Array",
         "value": {
@@ -81,8 +97,8 @@
       },
       "writable": true
     },
-    "Writeable.My Array of Variant Values": {
-      "name": "Writeable.My Array of Variant Values",
+    "Writeable.Array of Variant Values": {
+      "name": "Writeable.Array of Variant Values",
       "type": {
         "type": "Array",
         "value": {
@@ -101,16 +117,25 @@
       },
       "writable": true
     },
-    "Writeable.My BooleanTye Datastream": {
-      "name": "Writeable.My BooleanTye Datastream",
+    "Writeable.BooleanType Datastream": {
+      "name": "Writeable.BooleanType Datastream",
       "type": {
         "type": "Boolean",
         "value": null
       },
       "writable": true
     },
-    "Writeable.My OptionType Datastream": {
-      "name": "Writeable.My OptionType Datastream",
+    "Writeable.Nullable Datastream": {
+      "name": "Writeable.Nullable Datastream",
+      "type": {
+        "type": "Integer",
+        "value": null,
+        "nullable": true
+      },
+      "writable": true
+    },
+    "Writeable.OptionType Datastream": {
+      "name": "Writeable.OptionType Datastream",
       "type": {
         "type": "Variant",
         "value": {
@@ -133,7 +158,7 @@
       "task_type": "pipeline",
       "inputs": {
         "input": {
-          "name": "Writeable.My BooleanTye Datastream",
+          "name": "Writeable.BooleanType Datastream",
           "type": {
             "type": "Boolean",
             "value": null
@@ -235,13 +260,131 @@
         }
       ]
     },
+    "Pipeline.Convert to Optional Value": {
+      "name": "Pipeline.Convert to Optional Value",
+      "parent": "Pipeline.Convert to Optional Value",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.Nullable Datastream",
+          "type": {
+            "type": "Integer",
+            "value": null,
+            "nullable": true
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Convert to Optional Value",
+          "type": {
+            "type": "Variant",
+            "value": {
+              "none": {
+                "nullable": true
+              },
+              "some": {
+                "type": "Integer",
+                "value": null
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "Variant",
+            "value": {
+              "none": {
+                "nullable": true
+              },
+              "some": {
+                "type": "Integer",
+                "value": null
+              }
+            }
+          },
+          "expression": {
+            "type": {
+              "type": "Variant",
+              "value": {
+                "none": {
+                  "nullable": true
+                },
+                "some": {
+                  "type": "Integer",
+                  "value": null
+                }
+              }
+            },
+            "ast_type": "IfNull",
+            "input": {
+              "type": {
+                "type": "Integer",
+                "value": null,
+                "nullable": true
+              },
+              "ast_type": "Variable",
+              "name": "value"
+            },
+            "output_null": {
+              "ast_type": "Const",
+              "type": {
+                "type": "Variant",
+                "value": {
+                  "none": {
+                    "nullable": true
+                  }
+                }
+              },
+              "value": {
+                "type": "none"
+              }
+            },
+            "output_value": {
+              "type": {
+                "type": "Variant",
+                "value": {
+                  "some": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              },
+              "ast_type": "NewVariant",
+              "tag": "some",
+              "value": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "_A_tWteoWYYZ150HWmAIgE_"
+              }
+            },
+            "value": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "_A_tWteoWYYZ150HWmAIgE_"
+            }
+          }
+        }
+      ]
+    },
     "Pipeline.Filter Map Optional Value": {
       "name": "Pipeline.Filter Map Optional Value",
       "parent": "Pipeline.Filter Map Optional Value",
       "task_type": "pipeline",
       "inputs": {
         "input": {
-          "name": "Writeable.My Array of Optional Values",
+          "name": "Writeable.Array of Optional Values",
           "type": {
             "type": "Array",
             "value": {
@@ -339,7 +482,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_$6vahX$d0KrIxGmEVvE993"
+                "name": "_value_c2s7F4Cz1XxLSocj6BsMpi"
               },
               "functions": {
                 "none": {
@@ -380,7 +523,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_Y7E62JND$aKOLLkjYiS9pj"
+                      "name": "_BVwdqD2oVAEtzhWHICpoE3"
                     },
                     "second": {
                       "type": {
@@ -397,7 +540,7 @@
                   }
                 }
               },
-              "value": "_Y7E62JND$aKOLLkjYiS9pj"
+              "value": "_BVwdqD2oVAEtzhWHICpoE3"
             },
             "value": {
               "type": {
@@ -413,7 +556,7 @@
                 }
               },
               "ast_type": "Variable",
-              "name": "_value_$6vahX$d0KrIxGmEVvE993"
+              "name": "_value_c2s7F4Cz1XxLSocj6BsMpi"
             },
             "key": {
               "type": {
@@ -421,7 +564,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_xuteogkAv_8QBaGCKZUqMu"
+              "name": "_key_UI6doLtr3D9QlcR1szywTW"
             }
           }
         }
@@ -433,7 +576,7 @@
       "task_type": "pipeline",
       "inputs": {
         "input": {
-          "name": "Writeable.My OptionType Datastream",
+          "name": "Writeable.OptionType Datastream",
           "type": {
             "type": "Variant",
             "value": {
@@ -551,7 +694,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_I0NCItjYpbjcqhZQmi$ljU"
+                    "name": "_ApbKi0j$Wj_nTBBssDOEEt"
                   },
                   "second": {
                     "type": {
@@ -568,18 +711,18 @@
                 }
               }
             },
-            "value": "_I0NCItjYpbjcqhZQmi$ljU"
+            "value": "_ApbKi0j$Wj_nTBBssDOEEt"
           }
         }
       ]
     },
-    "Pipeline.My Match and Filter": {
-      "name": "Pipeline.My Match and Filter",
-      "parent": "Pipeline.My Match and Filter",
+    "Pipeline.Match and Filter": {
+      "name": "Pipeline.Match and Filter",
+      "parent": "Pipeline.Match and Filter",
       "task_type": "pipeline",
       "inputs": {
         "input": {
-          "name": "Writeable.My Array of Variant Values",
+          "name": "Writeable.Array of Variant Values",
           "type": {
             "type": "Array",
             "value": {
@@ -601,7 +744,7 @@
       },
       "outputs": {
         "output": {
-          "name": "Pipeline.My Match and Filter",
+          "name": "Pipeline.Match and Filter",
           "type": {
             "type": "Array",
             "value": {
@@ -680,7 +823,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_rIR$wUQW9dOfuH24p7XBry"
+                "name": "_value_wukYlsyOIFVdc_peA1bWWd"
               },
               "functions": {
                 "a": {
@@ -701,7 +844,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_OBC3Y55qABYRaxGOfJSXVu"
+                    "name": "_4vQKbyTYbUxN2clxzankqQ"
                   }
                 },
                 "b": {
@@ -719,7 +862,7 @@
                   }
                 }
               },
-              "value": "_OBC3Y55qABYRaxGOfJSXVu"
+              "value": "_4vQKbyTYbUxN2clxzankqQ"
             },
             "value": {
               "type": {
@@ -736,7 +879,7 @@
                 }
               },
               "ast_type": "Variable",
-              "name": "_value_rIR$wUQW9dOfuH24p7XBry"
+              "name": "_value_wukYlsyOIFVdc_peA1bWWd"
             },
             "key": {
               "type": {
@@ -744,7 +887,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_W8iD5slYU4_sc5dSUssnJY"
+              "name": "_key_ifoQPGwv_Hs_P61VmOH8Sm"
             }
           }
         }
@@ -756,7 +899,7 @@
       "task_type": "pipeline",
       "inputs": {
         "input": {
-          "name": "Writeable.My OptionType Datastream",
+          "name": "Writeable.OptionType Datastream",
           "type": {
             "type": "Variant",
             "value": {
@@ -830,19 +973,19 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_3Z7T2TwE2xXd4oZmCkeXcr"
+                "name": "_AdmZXlEAvQy9F3eWdSkD4H"
               }
             },
-            "value": "_3Z7T2TwE2xXd4oZmCkeXcr"
+            "value": "_AdmZXlEAvQy9F3eWdSkD4H"
           }
         }
       ]
     }
   },
   "defaults": {
-    "Writeable.My BooleanTye Datastream": {
+    "Writeable.BooleanType Datastream": {
       "default_type": "value",
-      "stream": "Writeable.My BooleanTye Datastream",
+      "stream": "Writeable.BooleanType Datastream",
       "value": {
         "type": {
           "type": "Boolean",
@@ -850,6 +993,19 @@
         },
         "ast_type": "Const",
         "value": true
+      }
+    },
+    "Writeable.Nullable Datastream": {
+      "default_type": "value",
+      "stream": "Writeable.Nullable Datastream",
+      "value": {
+        "type": {
+          "type": "Integer",
+          "value": null,
+          "nullable": true
+        },
+        "ast_type": "Const",
+        "value": null
       }
     }
   }
