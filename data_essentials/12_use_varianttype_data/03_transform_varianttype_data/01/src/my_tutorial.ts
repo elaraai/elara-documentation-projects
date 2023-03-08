@@ -16,7 +16,7 @@ const construct_pipeline = new PipelineBuilder("Construct a Variant")
     .from(booleantype_datastream.outputStream())
     .transform(stream => IfElse(
         stream,
-        NewVariant("a", false),
+        NewVariant("a", stream),
         NewVariant("b", "some string")
     ))
 
