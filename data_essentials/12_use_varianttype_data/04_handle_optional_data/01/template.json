@@ -1,0 +1,45 @@
+{
+  "streams": {
+    "Writeable.OptionType Datastream": {
+      "name": "Writeable.OptionType Datastream",
+      "type": {
+        "type": "Variant",
+        "value": {
+          "none": {
+            "nullable": true
+          },
+          "some": {
+            "type": "Integer",
+            "value": null
+          }
+        }
+      },
+      "writable": true
+    }
+  },
+  "tasks": {},
+  "defaults": {
+    "Writeable.OptionType Datastream": {
+      "default_type": "value",
+      "stream": "Writeable.OptionType Datastream",
+      "value": {
+        "type": {
+          "type": "Variant",
+          "value": {
+            "none": {
+              "nullable": true
+            },
+            "some": {
+              "type": "Integer",
+              "value": null
+            }
+          }
+        },
+        "ast_type": "Const",
+        "value": {
+          "type": "some"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,856 @@
+{
+  "streams": {
+    "Pipeline.Construct Optional Value": {
+      "name": "Pipeline.Construct Optional Value",
+      "type": {
+        "type": "Variant",
+        "value": {
+          "none": {
+            "nullable": true
+          },
+          "some": {
+            "type": "Boolean",
+            "value": null
+          }
+        }
+      },
+      "writable": false
+    },
+    "Pipeline.Filter Map Optional Value": {
+      "name": "Pipeline.Filter Map Optional Value",
+      "type": {
+        "type": "Array",
+        "value": {
+          "type": "Integer",
+          "value": null
+        }
+      },
+      "writable": false
+    },
+    "Pipeline.Map Optional Value": {
+      "name": "Pipeline.Map Optional Value",
+      "type": {
+        "type": "Variant",
+        "value": {
+          "none": {
+            "nullable": true
+          },
+          "some": {
+            "type": "Integer",
+            "value": null
+          }
+        }
+      },
+      "writable": false
+    },
+    "Pipeline.My Match and Filter": {
+      "name": "Pipeline.My Match and Filter",
+      "type": {
+        "type": "Array",
+        "value": {
+          "type": "Boolean",
+          "value": null
+        }
+      },
+      "writable": false
+    },
+    "Pipeline.Unwrap Optional Value": {
+      "name": "Pipeline.Unwrap Optional Value",
+      "type": {
+        "type": "Integer",
+        "value": null
+      },
+      "writable": false
+    },
+    "Writeable.My Array of Optional Values": {
+      "name": "Writeable.My Array of Optional Values",
+      "type": {
+        "type": "Array",
+        "value": {
+          "type": "Variant",
+          "value": {
+            "none": {
+              "nullable": true
+            },
+            "some": {
+              "type": "Integer",
+              "value": null
+            }
+          }
+        }
+      },
+      "writable": true
+    },
+    "Writeable.My Array of Variant Values": {
+      "name": "Writeable.My Array of Variant Values",
+      "type": {
+        "type": "Array",
+        "value": {
+          "type": "Variant",
+          "value": {
+            "a": {
+              "type": "Boolean",
+              "value": null
+            },
+            "b": {
+              "type": "String",
+              "value": null
+            }
+          }
+        }
+      },
+      "writable": true
+    },
+    "Writeable.My BooleanTye Datastream": {
+      "name": "Writeable.My BooleanTye Datastream",
+      "type": {
+        "type": "Boolean",
+        "value": null
+      },
+      "writable": true
+    },
+    "Writeable.My OptionType Datastream": {
+      "name": "Writeable.My OptionType Datastream",
+      "type": {
+        "type": "Variant",
+        "value": {
+          "none": {
+            "nullable": true
+          },
+          "some": {
+            "type": "Integer",
+            "value": null
+          }
+        }
+      },
+      "writable": true
+    }
+  },
+  "tasks": {
+    "Pipeline.Construct Optional Value": {
+      "name": "Pipeline.Construct Optional Value",
+      "parent": "Pipeline.Construct Optional Value",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.My BooleanTye Datastream",
+          "type": {
+            "type": "Boolean",
+            "value": null
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Construct Optional Value",
+          "type": {
+            "type": "Variant",
+            "value": {
+              "none": {
+                "nullable": true
+              },
+              "some": {
+                "type": "Boolean",
+                "value": null
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "Variant",
+            "value": {
+              "none": {
+                "nullable": true
+              },
+              "some": {
+                "type": "Boolean",
+                "value": null
+              }
+            }
+          },
+          "expression": {
+            "type": {
+              "type": "Variant",
+              "value": {
+                "none": {
+                  "nullable": true
+                },
+                "some": {
+                  "type": "Boolean",
+                  "value": null
+                }
+              }
+            },
+            "ast_type": "IfElse",
+            "predicate": {
+              "type": {
+                "type": "Boolean",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "value"
+            },
+            "true": {
+              "type": {
+                "type": "Variant",
+                "value": {
+                  "some": {
+                    "type": "Boolean",
+                    "value": null
+                  }
+                }
+              },
+              "ast_type": "NewVariant",
+              "tag": "some",
+              "value": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "value"
+              }
+            },
+            "false": {
+              "ast_type": "Const",
+              "type": {
+                "type": "Variant",
+                "value": {
+                  "none": {
+                    "nullable": true
+                  }
+                }
+              },
+              "value": {
+                "type": "none"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Pipeline.Filter Map Optional Value": {
+      "name": "Pipeline.Filter Map Optional Value",
+      "parent": "Pipeline.Filter Map Optional Value",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.My Array of Optional Values",
+          "type": {
+            "type": "Array",
+            "value": {
+              "type": "Variant",
+              "value": {
+                "none": {
+                  "nullable": true
+                },
+                "some": {
+                  "type": "Integer",
+                  "value": null
+                }
+              }
+            }
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Filter Map Optional Value",
+          "type": {
+            "type": "Array",
+            "value": {
+              "type": "Integer",
+              "value": null
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "Array",
+            "value": {
+              "type": "Integer",
+              "value": null
+            }
+          },
+          "expression": {
+            "type": {
+              "type": "Array",
+              "value": {
+                "type": "Integer",
+                "value": null
+              }
+            },
+            "ast_type": "FilterMap",
+            "collection": {
+              "type": {
+                "type": "Array",
+                "value": {
+                  "type": "Variant",
+                  "value": {
+                    "none": {
+                      "nullable": true
+                    },
+                    "some": {
+                      "type": "Integer",
+                      "value": null
+                    }
+                  }
+                }
+              },
+              "ast_type": "Variable",
+              "name": "value"
+            },
+            "function": {
+              "type": {
+                "type": "Variant",
+                "value": {
+                  "none": {
+                    "nullable": true
+                  },
+                  "some": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              },
+              "ast_type": "Match",
+              "input": {
+                "type": {
+                  "type": "Variant",
+                  "value": {
+                    "none": {
+                      "nullable": true
+                    },
+                    "some": {
+                      "type": "Integer",
+                      "value": null
+                    }
+                  }
+                },
+                "ast_type": "Variable",
+                "name": "_value_$6vahX$d0KrIxGmEVvE993"
+              },
+              "functions": {
+                "none": {
+                  "ast_type": "Const",
+                  "type": {
+                    "type": "Variant",
+                    "value": {
+                      "none": {
+                        "nullable": true
+                      }
+                    }
+                  },
+                  "value": {
+                    "type": "none"
+                  }
+                },
+                "some": {
+                  "type": {
+                    "type": "Variant",
+                    "value": {
+                      "some": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
+                  },
+                  "ast_type": "NewVariant",
+                  "tag": "some",
+                  "value": {
+                    "type": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "ast_type": "Add",
+                    "first": {
+                      "type": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "_Y7E62JND$aKOLLkjYiS9pj"
+                    },
+                    "second": {
+                      "type": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": {
+                        "type": "integer",
+                        "kind": "literal",
+                        "value": "1"
+                      }
+                    }
+                  }
+                }
+              },
+              "value": "_Y7E62JND$aKOLLkjYiS9pj"
+            },
+            "value": {
+              "type": {
+                "type": "Variant",
+                "value": {
+                  "none": {
+                    "nullable": true
+                  },
+                  "some": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              },
+              "ast_type": "Variable",
+              "name": "_value_$6vahX$d0KrIxGmEVvE993"
+            },
+            "key": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "_key_xuteogkAv_8QBaGCKZUqMu"
+            }
+          }
+        }
+      ]
+    },
+    "Pipeline.Map Optional Value": {
+      "name": "Pipeline.Map Optional Value",
+      "parent": "Pipeline.Map Optional Value",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.My OptionType Datastream",
+          "type": {
+            "type": "Variant",
+            "value": {
+              "none": {
+                "nullable": true
+              },
+              "some": {
+                "type": "Integer",
+                "value": null
+              }
+            }
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Map Optional Value",
+          "type": {
+            "type": "Variant",
+            "value": {
+              "none": {
+                "nullable": true
+              },
+              "some": {
+                "type": "Integer",
+                "value": null
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "Variant",
+            "value": {
+              "none": {
+                "nullable": true
+              },
+              "some": {
+                "type": "Integer",
+                "value": null
+              }
+            }
+          },
+          "expression": {
+            "type": {
+              "type": "Variant",
+              "value": {
+                "none": {
+                  "nullable": true
+                },
+                "some": {
+                  "type": "Integer",
+                  "value": null
+                }
+              }
+            },
+            "ast_type": "Match",
+            "input": {
+              "type": {
+                "type": "Variant",
+                "value": {
+                  "none": {
+                    "nullable": true
+                  },
+                  "some": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              },
+              "ast_type": "Variable",
+              "name": "value"
+            },
+            "functions": {
+              "none": {
+                "ast_type": "Const",
+                "type": {
+                  "type": "Variant",
+                  "value": {
+                    "none": {
+                      "nullable": true
+                    }
+                  }
+                },
+                "value": {
+                  "type": "none"
+                }
+              },
+              "some": {
+                "type": {
+                  "type": "Variant",
+                  "value": {
+                    "some": {
+                      "type": "Integer",
+                      "value": null
+                    }
+                  }
+                },
+                "ast_type": "NewVariant",
+                "tag": "some",
+                "value": {
+                  "type": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "ast_type": "Add",
+                  "first": {
+                    "type": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "_I0NCItjYpbjcqhZQmi$ljU"
+                  },
+                  "second": {
+                    "type": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "ast_type": "Const",
+                    "value": {
+                      "type": "integer",
+                      "kind": "literal",
+                      "value": "1"
+                    }
+                  }
+                }
+              }
+            },
+            "value": "_I0NCItjYpbjcqhZQmi$ljU"
+          }
+        }
+      ]
+    },
+    "Pipeline.My Match and Filter": {
+      "name": "Pipeline.My Match and Filter",
+      "parent": "Pipeline.My Match and Filter",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.My Array of Variant Values",
+          "type": {
+            "type": "Array",
+            "value": {
+              "type": "Variant",
+              "value": {
+                "a": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "b": {
+                  "type": "String",
+                  "value": null
+                }
+              }
+            }
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.My Match and Filter",
+          "type": {
+            "type": "Array",
+            "value": {
+              "type": "Boolean",
+              "value": null
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "Array",
+            "value": {
+              "type": "Boolean",
+              "value": null
+            }
+          },
+          "expression": {
+            "type": {
+              "type": "Array",
+              "value": {
+                "type": "Boolean",
+                "value": null
+              }
+            },
+            "ast_type": "FilterMap",
+            "collection": {
+              "type": {
+                "type": "Array",
+                "value": {
+                  "type": "Variant",
+                  "value": {
+                    "a": {
+                      "type": "Boolean",
+                      "value": null
+                    },
+                    "b": {
+                      "type": "String",
+                      "value": null
+                    }
+                  }
+                }
+              },
+              "ast_type": "Variable",
+              "name": "value"
+            },
+            "function": {
+              "type": {
+                "type": "Variant",
+                "value": {
+                  "none": {
+                    "nullable": true
+                  },
+                  "some": {
+                    "type": "Boolean",
+                    "value": null
+                  }
+                }
+              },
+              "ast_type": "Match",
+              "input": {
+                "type": {
+                  "type": "Variant",
+                  "value": {
+                    "a": {
+                      "type": "Boolean",
+                      "value": null
+                    },
+                    "b": {
+                      "type": "String",
+                      "value": null
+                    }
+                  }
+                },
+                "ast_type": "Variable",
+                "name": "_value_rIR$wUQW9dOfuH24p7XBry"
+              },
+              "functions": {
+                "a": {
+                  "type": {
+                    "type": "Variant",
+                    "value": {
+                      "some": {
+                        "type": "Boolean",
+                        "value": null
+                      }
+                    }
+                  },
+                  "ast_type": "NewVariant",
+                  "tag": "some",
+                  "value": {
+                    "type": {
+                      "type": "Boolean",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "_OBC3Y55qABYRaxGOfJSXVu"
+                  }
+                },
+                "b": {
+                  "ast_type": "Const",
+                  "type": {
+                    "type": "Variant",
+                    "value": {
+                      "none": {
+                        "nullable": true
+                      }
+                    }
+                  },
+                  "value": {
+                    "type": "none"
+                  }
+                }
+              },
+              "value": "_OBC3Y55qABYRaxGOfJSXVu"
+            },
+            "value": {
+              "type": {
+                "type": "Variant",
+                "value": {
+                  "a": {
+                    "type": "Boolean",
+                    "value": null
+                  },
+                  "b": {
+                    "type": "String",
+                    "value": null
+                  }
+                }
+              },
+              "ast_type": "Variable",
+              "name": "_value_rIR$wUQW9dOfuH24p7XBry"
+            },
+            "key": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "_key_W8iD5slYU4_sc5dSUssnJY"
+            }
+          }
+        }
+      ]
+    },
+    "Pipeline.Unwrap Optional Value": {
+      "name": "Pipeline.Unwrap Optional Value",
+      "parent": "Pipeline.Unwrap Optional Value",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.My OptionType Datastream",
+          "type": {
+            "type": "Variant",
+            "value": {
+              "none": {
+                "nullable": true
+              },
+              "some": {
+                "type": "Integer",
+                "value": null
+              }
+            }
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Unwrap Optional Value",
+          "type": {
+            "type": "Integer",
+            "value": null
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "Integer",
+            "value": null
+          },
+          "expression": {
+            "type": {
+              "type": "Integer",
+              "value": null
+            },
+            "ast_type": "Match",
+            "input": {
+              "type": {
+                "type": "Variant",
+                "value": {
+                  "none": {
+                    "nullable": true
+                  },
+                  "some": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              },
+              "ast_type": "Variable",
+              "name": "value"
+            },
+            "functions": {
+              "none": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": {
+                  "type": "integer",
+                  "kind": "literal",
+                  "value": "0"
+                }
+              },
+              "some": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "_3Z7T2TwE2xXd4oZmCkeXcr"
+              }
+            },
+            "value": "_3Z7T2TwE2xXd4oZmCkeXcr"
+          }
+        }
+      ]
+    }
+  },
+  "defaults": {
+    "Writeable.My BooleanTye Datastream": {
+      "default_type": "value",
+      "stream": "Writeable.My BooleanTye Datastream",
+      "value": {
+        "type": {
+          "type": "Boolean",
+          "value": null
+        },
+        "ast_type": "Const",
+        "value": true
+      }
+    }
+  }
+}
