@@ -1,6 +1,6 @@
 import { BooleanType, IfElse, NewVariant, PipelineBuilder, SourceBuilder, StringType, Template, Variant, VariantType } from "@elaraai/core"
 
-const varianttype_datastream = new SourceBuilder("My VariantType Datastream")
+const varianttype_datastream = new SourceBuilder("VariantType Datastream")
     .value({
         value: Variant("a", true),
         type: VariantType({
@@ -9,11 +9,11 @@ const varianttype_datastream = new SourceBuilder("My VariantType Datastream")
         })
     })
 
-const my_boolean_datastream = new SourceBuilder("My Boolean Datastream")
+const booleantype_datastream = new SourceBuilder("BooleanType Datastream")
     .writeable(BooleanType)
 
-const my_pipeline = new PipelineBuilder("Construct a Variant")
-    .from(my_boolean_datastream.outputStream())
+const construct_pipeline = new PipelineBuilder("Construct a Variant")
+    .from(booleantype_datastream.outputStream())
     .transform(stream => IfElse(
         stream,
         NewVariant("a", false),
@@ -22,6 +22,6 @@ const my_pipeline = new PipelineBuilder("Construct a Variant")
 
 export default Template(
     varianttype_datastream,
-    my_boolean_datastream,
-    my_pipeline
+    booleantype_datastream,
+    construct_pipeline
 )

@@ -1,7 +1,7 @@
 {
   "streams": {
-    "Writeable.My VariantType Datasource": {
-      "name": "Writeable.My VariantType Datasource",
+    "Writeable.VariantType Datastream": {
+      "name": "Writeable.VariantType Datastream",
       "type": {
         "type": "Variant",
         "value": {
@@ -19,5 +19,29 @@
     }
   },
   "tasks": {},
-  "defaults": {}
+  "defaults": {
+    "Writeable.VariantType Datastream": {
+      "default_type": "value",
+      "stream": "Writeable.VariantType Datastream",
+      "value": {
+        "type": {
+          "type": "Variant",
+          "value": {
+            "a": {
+              "type": "Boolean",
+              "value": null
+            },
+            "b": {
+              "type": "String",
+              "value": null
+            }
+          }
+        },
+        "ast_type": "Const",
+        "value": {
+          "type": "a"
+        }
+      }
+    }
+  }
 }

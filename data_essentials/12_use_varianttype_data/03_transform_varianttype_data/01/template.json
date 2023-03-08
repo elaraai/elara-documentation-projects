@@ -25,16 +25,16 @@
       },
       "writable": false
     },
-    "Writeable.My Boolean Datastream": {
-      "name": "Writeable.My Boolean Datastream",
+    "Writeable.BooleanType Datastream": {
+      "name": "Writeable.BooleanType Datastream",
       "type": {
         "type": "Boolean",
         "value": null
       },
       "writable": true
     },
-    "Writeable.My VariantType Datastream": {
-      "name": "Writeable.My VariantType Datastream",
+    "Writeable.VariantType Datastream": {
+      "name": "Writeable.VariantType Datastream",
       "type": {
         "type": "Variant",
         "value": {
@@ -58,7 +58,7 @@
       "task_type": "pipeline",
       "inputs": {
         "input": {
-          "name": "Writeable.My Boolean Datastream",
+          "name": "Writeable.BooleanType Datastream",
           "type": {
             "type": "Boolean",
             "value": null
@@ -176,7 +176,7 @@
       "task_type": "pipeline",
       "inputs": {
         "input": {
-          "name": "Writeable.My VariantType Datastream",
+          "name": "Writeable.VariantType Datastream",
           "type": {
             "type": "Variant",
             "value": {
@@ -247,7 +247,7 @@
                       "value": null
                     },
                     "ast_type": "Const",
-                    "value": "My stream has data: "
+                    "value": "My stream has value: "
                   },
                   {
                     "type": {
@@ -261,7 +261,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_0nuCsdxpLr0Eq7jSpwHIZf"
+                      "name": "_D7$0luOfszCBpYxz1mLh32"
                     }
                   }
                 ],
@@ -280,7 +280,7 @@
                       "value": null
                     },
                     "ast_type": "Const",
-                    "value": "My stream has data: "
+                    "value": "My stream has value: "
                   },
                   {
                     "type": {
@@ -288,22 +288,22 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_0nuCsdxpLr0Eq7jSpwHIZf"
+                    "name": "_D7$0luOfszCBpYxz1mLh32"
                   }
                 ],
                 "seperator": ""
               }
             },
-            "value": "_0nuCsdxpLr0Eq7jSpwHIZf"
+            "value": "_D7$0luOfszCBpYxz1mLh32"
           }
         }
       ]
     }
   },
   "defaults": {
-    "Writeable.My VariantType Datastream": {
+    "Writeable.VariantType Datastream": {
       "default_type": "value",
-      "stream": "Writeable.My VariantType Datastream",
+      "stream": "Writeable.VariantType Datastream",
       "value": {
         "type": {
           "type": "Variant",

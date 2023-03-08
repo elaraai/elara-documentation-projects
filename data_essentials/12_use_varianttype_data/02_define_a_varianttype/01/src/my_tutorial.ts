@@ -1,6 +1,6 @@
 import { BooleanType, SourceBuilder, StringType, Template, Variant, VariantType } from "@elaraai/core"
 
-const varianttype_datastream = new SourceBuilder("My VariantType Datastream")
+const varianttype_datastream = new SourceBuilder("VariantType Datastream")
     .value({
         value: Variant("a", true),
         type: VariantType({
