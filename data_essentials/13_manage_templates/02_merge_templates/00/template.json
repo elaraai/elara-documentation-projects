@@ -1,0 +1,93 @@
+{
+  "streams": {
+    "Pipeline.My Other Stream": {
+      "name": "Pipeline.My Other Stream",
+      "type": {
+        "type": "Float",
+        "value": null
+      },
+      "writable": false
+    },
+    "Writeable.My Stream": {
+      "name": "Writeable.My Stream",
+      "type": {
+        "type": "Float",
+        "value": null
+      },
+      "writable": true
+    }
+  },
+  "tasks": {
+    "Pipeline.My Other Stream": {
+      "name": "Pipeline.My Other Stream",
+      "parent": "Pipeline.My Other Stream",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.My Stream",
+          "type": {
+            "type": "Float",
+            "value": null
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.My Other Stream",
+          "type": {
+            "type": "Float",
+            "value": null
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "Float",
+            "value": null
+          },
+          "expression": {
+            "type": {
+              "type": "Float",
+              "value": null
+            },
+            "ast_type": "Add",
+            "first": {
+              "type": {
+                "type": "Float",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "value"
+            },
+            "second": {
+              "type": {
+                "type": "Float",
+                "value": null
+              },
+              "ast_type": "Const",
+              "value": 1
+            }
+          }
+        }
+      ]
+    }
+  },
+  "defaults": {
+    "Writeable.My Stream": {
+      "default_type": "value",
+      "stream": "Writeable.My Stream",
+      "value": {
+        "type": {
+          "type": "Float",
+          "value": null
+        },
+        "ast_type": "Const",
+        "value": 2
+      }
+    }
+  }
+}

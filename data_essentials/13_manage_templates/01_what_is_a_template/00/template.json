@@ -1,0 +1,27 @@
+{
+  "streams": {
+    "Writeable.My Stream": {
+      "name": "Writeable.My Stream",
+      "type": {
+        "type": "Float",
+        "value": null
+      },
+      "writable": true
+    }
+  },
+  "tasks": {},
+  "defaults": {
+    "Writeable.My Stream": {
+      "default_type": "value",
+      "stream": "Writeable.My Stream",
+      "value": {
+        "type": {
+          "type": "Float",
+          "value": null
+        },
+        "ast_type": "Const",
+        "value": 2
+      }
+    }
+  }
+}
