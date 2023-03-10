@@ -121,7 +121,7 @@ def generate_sales_transactions() -> None:
         for x in range(num_transactions):
             transaction = {}
             transaction_date = calculate_random_datetime_in_range(day=day)
-            transaction["transactionDate"] = transaction_date.strftime('%Y-%m-%dT%H:%M:%S.%f')[0:23] + "z" # This is trimming the output to match what is in edk-examples as feasible timezone format, perhaps doesn't need to be trimmed
+            transaction["transactionDate"] = transaction_date.strftime('%Y-%m-%dT%H:%M:%S.%f')[0:23] + "Z" # This is trimming the output to match what is in edk-examples as feasible timezone format, perhaps doesn't need to be trimmed
             num_codes = calculate_number_of_codes()
             codes = calculate_codes(num_codes=num_codes)
             items = []
