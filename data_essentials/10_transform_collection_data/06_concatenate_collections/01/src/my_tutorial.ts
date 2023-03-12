@@ -68,8 +68,8 @@ const melbourne_sales_file_source = new SourceBuilder("Melbourne Sales")
 const sydney_sales_file_source = new SourceBuilder("Sydney Sales")
     .file({ path: "./data/sydney_sales.jsonl" })
 
-function SalesParser(site: string, sales_blob_stream: Stream<BlobType>) {
-    return new PipelineBuilder("Parse " + site + " Sales")
+const SalesParser = (site: string, sales_blob_stream: Stream<BlobType>) => 
+    new PipelineBuilder(`Parse ${site} Sales`)
         .from(sales_blob_stream)
         .fromJsonLines({
             fields: {
@@ -84,7 +84,6 @@ function SalesParser(site: string, sales_blob_stream: Stream<BlobType>) {
             },
             output_key: fields => fields.transactionDate
         })
-}
 
 const parse_sales = SalesParser("Melbourne", melbourne_sales_file_source.outputStream())
 const parse_sydney_sales = SalesParser("Sydney", sydney_sales_file_source.outputStream())
@@ -161,6 +160,7 @@ const concatenate_exercise = new PipelineBuilder("Concatenate Sales across Sites
         discriminator_value: "Melbourne",
         inputs: [
             { input: inputs => inputs.sydney_sales, discriminator_value: "Sydney" },
+
         ]
     })
 
