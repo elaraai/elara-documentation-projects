@@ -52,6 +52,52 @@
       },
       "writable": false
     },
+    "Pipeline.Concatenate Sales across Sites": {
+      "name": "Pipeline.Concatenate Sales across Sites",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "transactionDate": {
+                "type": "DateTime",
+                "value": null
+              },
+              "items": {
+                "type": "Array",
+                "value": {
+                  "type": "Struct",
+                  "value": {
+                    "productCode": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "units": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "salePrice": {
+                      "type": "Float",
+                      "value": null
+                    }
+                  }
+                }
+              },
+              "store": {
+                "type": "String",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
     "Pipeline.Daily Difference in Revenue": {
       "name": "Pipeline.Daily Difference in Revenue",
       "type": {
@@ -277,6 +323,90 @@
       },
       "writable": false
     },
+    "Pipeline.Parse Brisbane Sales": {
+      "name": "Pipeline.Parse Brisbane Sales",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "transactionDate": {
+                "type": "DateTime",
+                "value": null
+              },
+              "items": {
+                "type": "Array",
+                "value": {
+                  "type": "Struct",
+                  "value": {
+                    "productCode": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "units": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "salePrice": {
+                      "type": "Float",
+                      "value": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "Pipeline.Parse Melbourne Sales": {
+      "name": "Pipeline.Parse Melbourne Sales",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "transactionDate": {
+                "type": "DateTime",
+                "value": null
+              },
+              "items": {
+                "type": "Array",
+                "value": {
+                  "type": "Struct",
+                  "value": {
+                    "productCode": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "units": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "salePrice": {
+                      "type": "Float",
+                      "value": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
     "Pipeline.Parse Products": {
       "name": "Pipeline.Parse Products",
       "type": {
@@ -312,8 +442,8 @@
       },
       "writable": false
     },
-    "Pipeline.Parse Sales": {
-      "name": "Pipeline.Parse Sales",
+    "Pipeline.Parse Sydney Sales": {
+      "name": "Pipeline.Parse Sydney Sales",
       "type": {
         "type": "Dict",
         "value": {
@@ -502,6 +632,22 @@
       },
       "writable": false
     },
+    "Writeable.Brisbane Sales": {
+      "name": "Writeable.Brisbane Sales",
+      "type": {
+        "type": "Blob",
+        "value": null
+      },
+      "writable": true
+    },
+    "Writeable.Melbourne Sales": {
+      "name": "Writeable.Melbourne Sales",
+      "type": {
+        "type": "Blob",
+        "value": null
+      },
+      "writable": true
+    },
     "Writeable.My BlobType Datastream": {
       "name": "Writeable.My BlobType Datastream",
       "type": {
@@ -561,8 +707,8 @@
       },
       "writable": true
     },
-    "Writeable.Sales": {
-      "name": "Writeable.Sales",
+    "Writeable.Sydney Sales": {
+      "name": "Writeable.Sydney Sales",
       "type": {
         "type": "Blob",
         "value": null
@@ -708,7 +854,7 @@
       "task_type": "pipeline",
       "inputs": {
         "input": {
-          "name": "Pipeline.Parse Sales",
+          "name": "Pipeline.Parse Melbourne Sales",
           "type": {
             "type": "Dict",
             "value": {
@@ -847,6 +993,254 @@
               }
             }
           }
+        }
+      ]
+    },
+    "Pipeline.Concatenate Sales across Sites": {
+      "name": "Pipeline.Concatenate Sales across Sites",
+      "parent": "Pipeline.Concatenate Sales across Sites",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Pipeline.Parse Melbourne Sales",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "items": {
+                    "type": "Array",
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "productCode": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "units": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "salePrice": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        },
+        "sydney_sales": {
+          "name": "Pipeline.Parse Sydney Sales",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "items": {
+                    "type": "Array",
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "productCode": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "units": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "salePrice": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        },
+        "brisbane_sales": {
+          "name": "Pipeline.Parse Brisbane Sales",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "items": {
+                    "type": "Array",
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "productCode": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "units": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "salePrice": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Concatenate Sales across Sites",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "items": {
+                    "type": "Array",
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "productCode": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "units": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "salePrice": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  },
+                  "store": {
+                    "type": "String",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "input",
+          "name": "sydney_sales"
+        },
+        {
+          "operation_type": "input",
+          "name": "brisbane_sales"
+        },
+        {
+          "operation_type": "concatenate",
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "items": {
+                    "type": "Array",
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "productCode": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "units": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "salePrice": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  },
+                  "store": {
+                    "type": "String",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "discriminator_name": "store",
+          "discriminator": "Melbourne",
+          "inputs": [
+            {
+              "input": "input.sydney_sales",
+              "discriminator": "Sydney"
+            },
+            {
+              "input": "input.brisbane_sales",
+              "discriminator": "Brisbane"
+            }
+          ]
         }
       ]
     },
@@ -1021,7 +1415,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_347KnwKU_EmxDv4dNOW4zV"
+                  "name": "_umYyMDn4MwZEET$k38Pxtf"
                 }
               },
               "value": {
@@ -1030,7 +1424,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_347KnwKU_EmxDv4dNOW4zV"
+                "name": "_umYyMDn4MwZEET$k38Pxtf"
               }
             }
           },
@@ -1051,7 +1445,7 @@
       "task_type": "pipeline",
       "inputs": {
         "input": {
-          "name": "Pipeline.Parse Sales",
+          "name": "Pipeline.Parse Melbourne Sales",
           "type": {
             "type": "Dict",
             "value": {
@@ -1556,7 +1950,7 @@
       "task_type": "pipeline",
       "inputs": {
         "input": {
-          "name": "Pipeline.Parse Sales",
+          "name": "Pipeline.Parse Melbourne Sales",
           "type": {
             "type": "Dict",
             "value": {
@@ -1719,7 +2113,7 @@
       "task_type": "pipeline",
       "inputs": {
         "input": {
-          "name": "Pipeline.Parse Sales",
+          "name": "Pipeline.Parse Melbourne Sales",
           "type": {
             "type": "Dict",
             "value": {
@@ -1891,7 +2285,7 @@
       "task_type": "pipeline",
       "inputs": {
         "input": {
-          "name": "Pipeline.Parse Sales",
+          "name": "Pipeline.Parse Melbourne Sales",
           "type": {
             "type": "Dict",
             "value": {
@@ -2066,7 +2460,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_previous_iDixVUgYUWnAPourhDgpJr"
+                  "name": "_previous_F7eExH0LaXGXc$JrTtI_ES"
                 },
                 "second": {
                   "type": {
@@ -2093,7 +2487,7 @@
                       }
                     },
                     "ast_type": "Variable",
-                    "name": "_value_mOyV6MTA0HkNs9UXgz8Y1S"
+                    "name": "_value_VaMJ3sigXMJtSt9f4rUb0k"
                   },
                   "key": "salePrice"
                 }
@@ -2112,7 +2506,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_previous_iDixVUgYUWnAPourhDgpJr"
+                "name": "_previous_F7eExH0LaXGXc$JrTtI_ES"
               },
               "value": {
                 "type": {
@@ -2133,7 +2527,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_mOyV6MTA0HkNs9UXgz8Y1S"
+                "name": "_value_VaMJ3sigXMJtSt9f4rUb0k"
               },
               "key": {
                 "type": {
@@ -2141,7 +2535,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_key_iOi0Z6VJDoY6RL9Udww8i3"
+                "name": "_key_ju$ysx7vi8DpXq_ez8vlpn"
               }
             },
             "second": {
@@ -2233,7 +2627,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_SuB6Vu4peo4AXUl1dngyK5"
+              "name": "_iLDCfjlT4cIFkhpo$ChkN3"
             },
             "value": {
               "type": {
@@ -2241,7 +2635,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_SuB6Vu4peo4AXUl1dngyK5"
+              "name": "_iLDCfjlT4cIFkhpo$ChkN3"
             }
           }
         },
@@ -2434,6 +2828,240 @@
         }
       ]
     },
+    "Pipeline.Parse Brisbane Sales": {
+      "name": "Pipeline.Parse Brisbane Sales",
+      "parent": "Pipeline.Parse Brisbane Sales",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.Brisbane Sales",
+          "type": {
+            "type": "Blob",
+            "value": null
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Parse Brisbane Sales",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "items": {
+                    "type": "Array",
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "productCode": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "units": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "salePrice": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "fromJsonLines",
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "items": {
+                    "type": "Array",
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "productCode": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "units": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "salePrice": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "output_key": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Print",
+            "value": {
+              "type": {
+                "type": "DateTime",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.transactionDate"
+            }
+          }
+        }
+      ]
+    },
+    "Pipeline.Parse Melbourne Sales": {
+      "name": "Pipeline.Parse Melbourne Sales",
+      "parent": "Pipeline.Parse Melbourne Sales",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.Melbourne Sales",
+          "type": {
+            "type": "Blob",
+            "value": null
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Parse Melbourne Sales",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "items": {
+                    "type": "Array",
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "productCode": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "units": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "salePrice": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "fromJsonLines",
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "items": {
+                    "type": "Array",
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "productCode": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "units": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "salePrice": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "output_key": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Print",
+            "value": {
+              "type": {
+                "type": "DateTime",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.transactionDate"
+            }
+          }
+        }
+      ]
+    },
     "Pipeline.Parse Products": {
       "name": "Pipeline.Parse Products",
       "parent": "Pipeline.Parse Products",
@@ -2536,13 +3164,13 @@
         }
       ]
     },
-    "Pipeline.Parse Sales": {
-      "name": "Pipeline.Parse Sales",
-      "parent": "Pipeline.Parse Sales",
+    "Pipeline.Parse Sydney Sales": {
+      "name": "Pipeline.Parse Sydney Sales",
+      "parent": "Pipeline.Parse Sydney Sales",
       "task_type": "pipeline",
       "inputs": {
         "input": {
-          "name": "Writeable.Sales",
+          "name": "Writeable.Sydney Sales",
           "type": {
             "type": "Blob",
             "value": null
@@ -2552,7 +3180,7 @@
       },
       "outputs": {
         "output": {
-          "name": "Pipeline.Parse Sales",
+          "name": "Pipeline.Parse Sydney Sales",
           "type": {
             "type": "Dict",
             "value": {
@@ -3523,6 +4151,16 @@
     }
   },
   "defaults": {
+    "Writeable.Brisbane Sales": {
+      "default_type": "file",
+      "stream": "Writeable.Brisbane Sales",
+      "path": "./data/brisbane_sales.jsonl"
+    },
+    "Writeable.Melbourne Sales": {
+      "default_type": "file",
+      "stream": "Writeable.Melbourne Sales",
+      "path": "./data/sales.jsonl"
+    },
     "Writeable.My Datastream": {
       "default_type": "value",
       "stream": "Writeable.My Datastream",
@@ -3561,10 +4199,10 @@
       "stream": "Writeable.Products",
       "path": "./data/products.csv"
     },
-    "Writeable.Sales": {
+    "Writeable.Sydney Sales": {
       "default_type": "file",
-      "stream": "Writeable.Sales",
-      "path": "./data/sales.jsonl"
+      "stream": "Writeable.Sydney Sales",
+      "path": "./data/sydney_sales.jsonl"
     }
   }
 }
