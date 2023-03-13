@@ -71,8 +71,8 @@ const sydney_sales_file_source = new SourceBuilder("Sydney Sales")
 const brisbane_sales_file_source = new SourceBuilder("Brisbane Sales")
     .file({ path: "./data/brisbane_sales.jsonl" })
 
-const SalesParser = (site: string, sales_blob_stream: Stream<BlobType>) => 
-    new PipelineBuilder(`Parse ${site} Sales`)
+const SalesParser = (store: string, sales_blob_stream: Stream<BlobType>) => 
+    new PipelineBuilder(`Parse ${store} Sales`)
         .from(sales_blob_stream)
         .fromJsonLines({
             fields: {
@@ -88,20 +88,20 @@ const SalesParser = (site: string, sales_blob_stream: Stream<BlobType>) =>
             output_key: fields => fields.transactionDate
         })
 
-const parse_sales = SalesParser("Melbourne", melbourne_sales_file_source.outputStream())
+const parse_melbourne_sales = SalesParser("Melbourne", melbourne_sales_file_source.outputStream())
 const parse_sydney_sales = SalesParser("Sydney", sydney_sales_file_source.outputStream())
 const parse_brisbane_sales = SalesParser("Brisbane", brisbane_sales_file_source.outputStream())
 
 const filter_exercise_one = new PipelineBuilder("Filter After Datetime")
-    .from(parse_sales.outputStream())
+    .from(parse_melbourne_sales.outputStream())
     .filter(fields => GreaterEqual(fields.transactionDate, new Date(`2022-11-10`)))
 
 const filter_exercise_two = new PipelineBuilder("Filter On Date")
-    .from(parse_sales.outputStream())
+    .from(parse_melbourne_sales.outputStream())
     .filter(fields => Equal(Floor(fields.transactionDate, "day"), new Date(`2022-11-10`)))
 
 const filter_exercise_three = new PipelineBuilder("Filter Revenue Greater than 100")
-    .from(parse_sales.outputStream())
+    .from(parse_melbourne_sales.outputStream())
     .filter(
         fields => Greater(
             Reduce(
@@ -114,7 +114,7 @@ const filter_exercise_three = new PipelineBuilder("Filter Revenue Greater than 1
     )
 
 const disaggregate_exercise_one = new PipelineBuilder("Disaggregate Items")
-    .from(parse_sales.outputStream())
+    .from(parse_melbourne_sales.outputStream())
     .disaggregateArray({
         collection: fields => fields.items,
         selections: {
@@ -157,17 +157,17 @@ const join_exercise = new PipelineBuilder("Sales and Product Info")
     })
 
 const concatenate_exercise = new PipelineBuilder("Concatenate Sales across Sites")
-    .from(parse_sales.outputStream())
+    .from(parse_melbourne_sales.outputStream())
     .input({ name: "sydney_sales", stream: parse_sydney_sales.outputStream()})
     .input({ name: "brisbane_sales", stream: parse_brisbane_sales.outputStream()})
     .concatenate({
-        discriminator_name: "site",
+        discriminator_name: "store",
         discriminator_value: "Melbourne",
         inputs: [
             { input: inputs => inputs.sydney_sales, discriminator_value: "Sydney" },
             { input: inputs => inputs.brisbane_sales, discriminator_value: "Brisbane" },
 
-        ]
+        ],
     })
 
 export default Template(
@@ -179,7 +179,7 @@ export default Template(
     my_products_file_source,
     parse_products,
     melbourne_sales_file_source,
-    parse_sales,
+    parse_melbourne_sales,
     filter_exercise_one,
     filter_exercise_two,
     filter_exercise_three,
