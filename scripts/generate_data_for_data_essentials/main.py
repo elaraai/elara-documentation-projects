@@ -20,22 +20,22 @@ import numpy as np
 Constants
 """
 
-OUTPUT_FILE_PATH = "/home/rav/repos/elara-documentation-projects/data_essentials/05_ingest_structured_data/03_define_and_launch_a_rest_api_datasource/00/data/sales.json"
+OUTPUT_FILE_PATH = "/home/rav/repos/elara-documentation-projects/data_essentials/10_transform_collection_data/06_concatenate_collections/00/data/brisbane_sales.json"
 NUM_TRANSACTIONS_PER_DAY: Dict[datetime.datetime, int] = {
-    datetime.datetime(2022, 11, 1): 5,
-    datetime.datetime(2022, 11, 2): 6,
-    datetime.datetime(2022, 11, 3): 3,
-    datetime.datetime(2022, 11, 4): 4,
-    datetime.datetime(2022, 11, 5): 11,
-    datetime.datetime(2022, 11, 6): 9,
-    datetime.datetime(2022, 11, 7): 6,
-    datetime.datetime(2022, 11, 8): 4,
-    datetime.datetime(2022, 11, 9): 4,
-    datetime.datetime(2022, 11, 10): 6,
-    datetime.datetime(2022, 11, 11): 7,
-    datetime.datetime(2022, 11, 12): 14,
-    datetime.datetime(2022, 11, 13): 10,
-    datetime.datetime(2022, 11, 14): 5,
+    datetime.datetime(2022, 11, 1): 4,
+    datetime.datetime(2022, 11, 2): 5,
+    datetime.datetime(2022, 11, 3): 6,
+    datetime.datetime(2022, 11, 4): 7,
+    datetime.datetime(2022, 11, 5): 14,
+    datetime.datetime(2022, 11, 6):15,
+    datetime.datetime(2022, 11, 7): 7,
+    datetime.datetime(2022, 11, 8): 8,
+    datetime.datetime(2022, 11, 9): 3,
+    datetime.datetime(2022, 11, 10): 4,
+    datetime.datetime(2022, 11, 11): 6,
+    datetime.datetime(2022, 11, 12): 12,
+    datetime.datetime(2022, 11, 13): 9,
+    datetime.datetime(2022, 11, 14): 4,
     datetime.datetime(2022, 11, 15): 5,
 }
 CODES_PER_TRANSACTION_POISSON_LAMBDA = 0.5 # 1 is added to every sample to ensure more than 0 codes per transaction

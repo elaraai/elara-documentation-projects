@@ -68,6 +68,9 @@ const melbourne_sales_file_source = new SourceBuilder("Melbourne Sales")
 const sydney_sales_file_source = new SourceBuilder("Sydney Sales")
     .file({ path: "./data/sydney_sales.jsonl" })
 
+const brisbane_sales_file_source = new SourceBuilder("Brisbane Sales")
+    .file({ path: "./data/brisbane_sales.jsonl" })
+
 const SalesParser = (site: string, sales_blob_stream: Stream<BlobType>) => 
     new PipelineBuilder(`Parse ${site} Sales`)
         .from(sales_blob_stream)
@@ -87,6 +90,7 @@ const SalesParser = (site: string, sales_blob_stream: Stream<BlobType>) =>
 
 const parse_sales = SalesParser("Melbourne", melbourne_sales_file_source.outputStream())
 const parse_sydney_sales = SalesParser("Sydney", sydney_sales_file_source.outputStream())
+const parse_brisbane_sales = SalesParser("Brisbane", brisbane_sales_file_source.outputStream())
 
 const filter_exercise_one = new PipelineBuilder("Filter After Datetime")
     .from(parse_sales.outputStream())
@@ -155,11 +159,13 @@ const join_exercise = new PipelineBuilder("Sales and Product Info")
 const concatenate_exercise = new PipelineBuilder("Concatenate Sales across Sites")
     .from(parse_sales.outputStream())
     .input({ name: "sydney_sales", stream: parse_sydney_sales.outputStream()})
+    .input({ name: "brisbane_sales", stream: parse_brisbane_sales.outputStream()})
     .concatenate({
         discriminator_name: "site",
         discriminator_value: "Melbourne",
         inputs: [
             { input: inputs => inputs.sydney_sales, discriminator_value: "Sydney" },
+            { input: inputs => inputs.brisbane_sales, discriminator_value: "Brisbane" },
 
         ]
     })
@@ -181,6 +187,8 @@ export default Template(
     disaggregate_exercise_two,
     join_exercise,
     sydney_sales_file_source,
+    brisbane_sales_file_source,
     parse_sydney_sales,
+    parse_brisbane_sales,
     concatenate_exercise
 )
