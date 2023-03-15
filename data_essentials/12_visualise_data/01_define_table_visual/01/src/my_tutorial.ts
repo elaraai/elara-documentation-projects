@@ -1,4 +1,4 @@
-import { ArrayType, BlobType, Const, DateTimeType, DictType, FloatType, Floor, Get, GetField, IfNull, IntegerType, LayoutBuilder, Multiply, Nullable, PipelineBuilder, SourceBuilder, Stream, StringJoin, StringType, StructType, Subtract, Sum, Template, Unique, } from "@elaraai/core"
+import { ArrayType, BlobType, DateTimeType, FloatType, GetField, IfNull, IntegerType, LayoutBuilder, Multiply, Nullable, PipelineBuilder, SourceBuilder, Stream, StringType, StructType, Subtract, Sum, Template, } from "@elaraai/core"
 
 const my_products_file_source = new SourceBuilder("Products")
     .file({ path: "./data/products.csv" })
@@ -80,18 +80,7 @@ const sales_across_stores = new PipelineBuilder("Sales Across Stores")
         },
     })
 
-const product_rebate = new SourceBuilder("Rebate")
-    .value({
-        value: new Map(),
-        type: DictType(StringType, FloatType)
-    })
-
-const donation = new SourceBuilder("Donation")
-    .value({
-        value: { amount: 0 }
-    })
-
-const summary_statistics_per_product_code = new PipelineBuilder("Summary Statistics Per Product Code")
+const statistics_per_product_code = new PipelineBuilder("Statistics Per Product Code")
     .from(sales_across_stores.outputStream())
     .aggregate({
         group_name: "productCode",
@@ -118,117 +107,30 @@ const summary_statistics_per_product_code = new PipelineBuilder("Summary Statist
         },
         output_key: fields => fields.code
     })
-    .input({ name: "productRebate", stream: product_rebate.outputStream() })
-    .input({ name: "donationPledge", stream: donation.outputStream() })
     .select({
         keep_all: true,
         selections: {
-            rebate: (_, key, inputs) => Get(inputs.productRebate, key, 0),
-            cost: (fields, key, inputs) => Multiply(
-                Subtract(fields.unitCost,Get(inputs.productRebate, key, 0)),
-                fields.unitCost
-            ),
-            profit: (fields, key, inputs) => Subtract(
-                Subtract(
-                    fields.revenue,
-                    Multiply(Subtract(fields.unitCost,Get(inputs.productRebate, key, 0)), fields.units)
-                ),
-                GetField(inputs.donationPledge, "amount")
-            ),
-            min_rebate: _ => Const(0),
-            max_rebate: fields => fields.unitCost
+            cost: fields => Multiply(fields.unitCost, fields.units),
+            profit: fields => Subtract(
+                fields.revenue,
+                Multiply(fields.unitCost, fields.units)
+            )
         }
     })
 
-const table_layout = new LayoutBuilder("My Business Insights")
+const table_layout = new LayoutBuilder("Statistics Per Product Code")
     .table(
-        "Summary Statistics Per Product Code",
+        "Statistics Per Product Code",
         builder => builder
-            .fromStream(summary_statistics_per_product_code.outputStream())
+            .fromStream(statistics_per_product_code.outputStream())
             .string("Code", fields => fields.code)
             .string("Category", fields => fields.category)
             .string("Name", fields => fields.name)
             .float("Unit Cost", fields => fields.unitCost)
             .integer("Units Sold", fields => fields.units)
             .float("Total Cost", fields => fields.cost)
-            .float(
-                "Rebate",
-                {
-                    value: fields => fields.rebate,
-                    min: fields => fields.min_rebate,
-                    max: fields => fields.max_rebate,
-                    edit: product_rebate.outputStream()
-                }
-            )
             .float("Total Revenue", fields => fields.revenue)
             .float("Profit", fields => fields.profit)
-    )
-
-const revenue_over_time_per_store = new PipelineBuilder("Revenue Over Time Per Store")
-    .from(sales_across_stores.outputStream())
-    .aggregate({
-        group_name: "storeDate",
-        group_value: fields => StringJoin`${fields.store}.${Floor(fields.transactionDate, "day")}`,
-        aggregations: {
-            store: fields => Unique(fields.store),
-            transactionDate: fields => Unique(Floor(fields.transactionDate, "day")),
-            revenue: fields => Sum(fields.salePrice)
-        }
-    })
-
-const graph_layout = new LayoutBuilder("My Business Insights Graphed")
-    .vega(
-        "Per Store Revenue over Time",
-        builder => builder
-            .fromStream(revenue_over_time_per_store.outputStream())
-            .area({
-                x: fields => fields.transactionDate,
-                x_title: "Date",
-                y: fields => fields.revenue,
-                y_title: "Revenue",
-                color: fields => fields.store,
-                color_title: "Store"
-            })
-    )
-
-const tabbed_layout = new LayoutBuilder("Business Insights Together")
-    .tab(
-        builder => builder
-            .layout(table_layout)
-            .layout(graph_layout)
-    )
-
-const panel_layout = new LayoutBuilder("Business Insights Dashboard")
-    .panel(
-        "row",
-        builder => builder
-            .panel(50,
-                "column",
-                builder => builder
-                    .layout(60, table_layout)
-                    .form(40, "Donation Per Product", builder => builder
-                        .fromStream(donation.outputStream())
-                        .float("Amount", {
-                            value: fields => fields.amount
-                        })
-                    )
-            )
-            .panel(50,
-                "column",
-                builder => builder
-                    .layout(50, graph_layout)
-                    .vega(
-                        50,
-                        "Profit Split across Products",
-                        builder => builder.fromStream(summary_statistics_per_product_code.outputStream())
-                        .pie({
-                            key: fields => fields.name,
-                            key_title: "Product Code",
-                            value: fields => fields.profit,
-                            value_title: "Total Profit"
-                        })
-                    )
-            )
     )
 
 export default Template(
@@ -241,12 +143,6 @@ export default Template(
     parse_sydney_sales,
     parse_brisbane_sales,
     sales_across_stores,
-    summary_statistics_per_product_code,
-    table_layout,
-    revenue_over_time_per_store,
-    graph_layout,
-    tabbed_layout,
-    panel_layout,
-    product_rebate,
-    donation
+    statistics_per_product_code,
+    table_layout
 )

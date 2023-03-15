@@ -172,10 +172,6 @@
           "value": {
             "type": "Struct",
             "value": {
-              "store": {
-                "type": "String",
-                "value": null
-              },
               "transactionDate": {
                 "type": "DateTime",
                 "value": null
@@ -198,8 +194,8 @@
       },
       "writable": false
     },
-    "Pipeline.Statistics Per Product Code": {
-      "name": "Pipeline.Statistics Per Product Code",
+    "Pipeline.Summary Statistics Per Product Code": {
+      "name": "Pipeline.Summary Statistics Per Product Code",
       "type": {
         "type": "Dict",
         "value": {
@@ -705,7 +701,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_rAEVqMUUZBdub0DYnwA2an"
+                "name": "_rbUQR9uW7WFFu4jtcv8kmA"
               },
               "value": {
                 "type": {
@@ -713,7 +709,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_rAEVqMUUZBdub0DYnwA2an"
+                "name": "_rbUQR9uW7WFFu4jtcv8kmA"
               }
             }
           },
@@ -990,10 +986,6 @@
               "value": {
                 "type": "Struct",
                 "value": {
-                  "store": {
-                    "type": "String",
-                    "value": null
-                  },
                   "transactionDate": {
                     "type": "DateTime",
                     "value": null
@@ -1110,14 +1102,6 @@
             "name": "field.items"
           },
           "selections": {
-            "store": {
-              "type": {
-                "type": "String",
-                "value": null
-              },
-              "ast_type": "Variable",
-              "name": "field.store"
-            },
             "transactionDate": {
               "type": {
                 "type": "DateTime",
@@ -1265,10 +1249,6 @@
               "value": {
                 "type": "Struct",
                 "value": {
-                  "store": {
-                    "type": "String",
-                    "value": null
-                  },
                   "transactionDate": {
                     "type": "DateTime",
                     "value": null
@@ -1292,9 +1272,9 @@
         }
       ]
     },
-    "Pipeline.Statistics Per Product Code": {
-      "name": "Pipeline.Statistics Per Product Code",
-      "parent": "Pipeline.Statistics Per Product Code",
+    "Pipeline.Summary Statistics Per Product Code": {
+      "name": "Pipeline.Summary Statistics Per Product Code",
+      "parent": "Pipeline.Summary Statistics Per Product Code",
       "task_type": "pipeline",
       "inputs": {
         "input": {
@@ -1309,10 +1289,6 @@
               "value": {
                 "type": "Struct",
                 "value": {
-                  "store": {
-                    "type": "String",
-                    "value": null
-                  },
                   "transactionDate": {
                     "type": "DateTime",
                     "value": null
@@ -1372,7 +1348,7 @@
       },
       "outputs": {
         "output": {
-          "name": "Pipeline.Statistics Per Product Code",
+          "name": "Pipeline.Summary Statistics Per Product Code",
           "type": {
             "type": "Dict",
             "value": {
@@ -1792,7 +1768,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_PKl4E7wcY7Ohn0g6T9g6y8"
+                    "name": "_md$MvZQT8ohNP51XbN7fN_"
                   }
                 }
               },
@@ -1802,7 +1778,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_PKl4E7wcY7Ohn0g6T9g6y8"
+                "name": "_md$MvZQT8ohNP51XbN7fN_"
               }
             },
             "profit": {
@@ -1884,7 +1860,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_IpDDEJxsjP89_FLo9UwWLq"
+                        "name": "_4aHGp9ljli$QdKPSPqpYEd"
                       }
                     }
                   },
@@ -1894,7 +1870,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_IpDDEJxsjP89_FLo9UwWLq"
+                    "name": "_4aHGp9ljli$QdKPSPqpYEd"
                   }
                 },
                 "output_null": {
@@ -1916,7 +1892,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_x0w6RcImmyidBnaYA0rUxO"
+                    "name": "_YeZk3uUJMuooMtzd3F6a4y"
                   },
                   "second": {
                     "type": {
@@ -1924,7 +1900,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_U0UQkRGohyxBfuni9_9Uwo"
+                    "name": "_gIbPandVHscZPPc2sF6Z0V"
                   }
                 },
                 "value": {
@@ -1933,7 +1909,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_U0UQkRGohyxBfuni9_9Uwo"
+                  "name": "_gIbPandVHscZPPc2sF6Z0V"
                 }
               },
               "value": {
@@ -1942,7 +1918,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_x0w6RcImmyidBnaYA0rUxO"
+                "name": "_YeZk3uUJMuooMtzd3F6a4y"
               }
             }
           },
@@ -1981,18 +1957,70 @@
     }
   },
   "layouts": {
-    "Layout.Statistics Per Product Code": {
+    "Layout.My Business Insights": {
       "type": "layout",
-      "name": "Layout.Statistics Per Product Code",
-      "display_name": "Statistics Per Product Code",
+      "name": "Layout.My Business Insights",
+      "display_name": "My Business Insights",
       "visual": {
         "type": "table",
         "kind": "struct",
-        "name": "Statistics Per Product Code",
-        "stream": "Pipeline.Statistics Per Product Code",
+        "name": "Summary Statistics Per Product Code",
+        "stream": "Pipeline.Summary Statistics Per Product Code",
         "columns": {
-          "units": {
-            "name": "units",
+          "Code": {
+            "name": "Code",
+            "kind": "primitive",
+            "target": "field",
+            "value": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "code"
+            }
+          },
+          "Category": {
+            "name": "Category",
+            "kind": "primitive",
+            "target": "field",
+            "value": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "category"
+            }
+          },
+          "Name": {
+            "name": "Name",
+            "kind": "primitive",
+            "target": "field",
+            "value": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "name"
+            }
+          },
+          "Unit Cost": {
+            "name": "Unit Cost",
+            "kind": "primitive",
+            "target": "field",
+            "value": {
+              "type": {
+                "type": "Float",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "unitCost"
+            }
+          },
+          "Units": {
+            "name": "Units",
             "kind": "primitive",
             "target": "field",
             "value": {
@@ -2005,74 +2033,8 @@
               "name": "units"
             }
           },
-          "revenue": {
-            "name": "revenue",
-            "kind": "primitive",
-            "target": "field",
-            "value": {
-              "type": {
-                "type": "Float",
-                "value": null,
-                "nullable": true
-              },
-              "ast_type": "Variable",
-              "name": "revenue"
-            }
-          },
-          "name": {
-            "name": "name",
-            "kind": "primitive",
-            "target": "field",
-            "value": {
-              "type": {
-                "type": "String",
-                "value": null
-              },
-              "ast_type": "Variable",
-              "name": "name"
-            }
-          },
-          "category": {
-            "name": "category",
-            "kind": "primitive",
-            "target": "field",
-            "value": {
-              "type": {
-                "type": "String",
-                "value": null
-              },
-              "ast_type": "Variable",
-              "name": "category"
-            }
-          },
-          "code": {
-            "name": "code",
-            "kind": "primitive",
-            "target": "field",
-            "value": {
-              "type": {
-                "type": "String",
-                "value": null
-              },
-              "ast_type": "Variable",
-              "name": "code"
-            }
-          },
-          "unitCost": {
-            "name": "unitCost",
-            "kind": "primitive",
-            "target": "field",
-            "value": {
-              "type": {
-                "type": "Float",
-                "value": null
-              },
-              "ast_type": "Variable",
-              "name": "unitCost"
-            }
-          },
-          "cost": {
-            "name": "cost",
+          "Cost": {
+            "name": "Cost",
             "kind": "primitive",
             "target": "field",
             "value": {
@@ -2085,8 +2047,22 @@
               "name": "cost"
             }
           },
-          "profit": {
-            "name": "profit",
+          "Revenue": {
+            "name": "Revenue",
+            "kind": "primitive",
+            "target": "field",
+            "value": {
+              "type": {
+                "type": "Float",
+                "value": null,
+                "nullable": true
+              },
+              "ast_type": "Variable",
+              "name": "revenue"
+            }
+          },
+          "Profit": {
+            "name": "Profit",
             "kind": "primitive",
             "target": "field",
             "value": {
