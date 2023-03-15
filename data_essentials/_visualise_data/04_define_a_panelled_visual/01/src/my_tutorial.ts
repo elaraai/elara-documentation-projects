@@ -172,7 +172,22 @@ const panel_layout = new LayoutBuilder("Business Insights Dashboard")
         "row",
         builder => builder
             .layout(50, table_layout)
-            .layout(50, graph_layout)
+            .panel(50,
+                "column",
+                builder => builder
+                    .layout(50, graph_layout)
+                    .vega(
+                        50,
+                        "Per Store Profit over Time",
+                        builder => builder.fromStream(statistics_per_product_code.outputStream())
+                        .pie({
+                            key: fields => fields.name,
+                            key_title: "Product Code",
+                            value: fields => fields.profit,
+                            value_title: "Total Profit"
+                        })
+                    )
+            )
     )
 
 export default Template(
