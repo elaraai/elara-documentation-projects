@@ -1,4 +1,4 @@
-import { ArrayType, BlobType, DateTimeType, FloatType, Floor, GetField, IfNull, IntegerType, LayoutBuilder, Multiply, Nullable, PipelineBuilder, SourceBuilder, Stream, StringJoin, StringType, StructType, Subtract, Sum, Template, Unique, } from "@elaraai/core"
+import { ArrayType, BlobType, Const, DateTimeType, DictType, FloatType, Floor, Get, GetField, IfNull, IntegerType, LayoutBuilder, Multiply, Nullable, PipelineBuilder, SourceBuilder, Stream, StringJoin, StringType, StructType, Subtract, Sum, Template, Unique, } from "@elaraai/core"
 
 const my_products_file_source = new SourceBuilder("Products")
     .file({ path: "./data/products.csv" })
@@ -80,6 +80,12 @@ const sales_across_stores = new PipelineBuilder("Sales Across Stores")
         },
     })
 
+const product_unit_rebate = new SourceBuilder("Unit Rebate Per Product")
+    .value({
+        value: new Map(),
+        type: DictType(StringType, FloatType)
+    })
+
 const statistics_per_product_code = new PipelineBuilder("Statistics Per Product Code")
     .from(sales_across_stores.outputStream())
     .aggregate({
@@ -107,14 +113,21 @@ const statistics_per_product_code = new PipelineBuilder("Statistics Per Product 
         },
         output_key: fields => fields.code
     })
+    .input({ name: "productUnitRebate", stream: product_unit_rebate.outputStream() })
     .select({
         keep_all: true,
         selections: {
-            cost: fields => Multiply(fields.unitCost, fields.units),
-            profit: fields => Subtract(
+            rebate: (_, key, inputs) => Get(inputs.productUnitRebate, key, 0),
+            cost: (fields, key, inputs) => Multiply(
+                Subtract(fields.unitCost, Get(inputs.productUnitRebate, key, 0)),
+                fields.unitCost
+            ),
+            profit: (fields, key, inputs) => Subtract(
                 fields.revenue,
-                Multiply(fields.unitCost, fields.units)
-            )
+                Multiply(Subtract(fields.unitCost,Get(inputs.productUnitRebate, key, 0)), fields.units)
+            ),
+            min_rebate: _ => Const(0),
+            max_rebate: fields => fields.unitCost
         }
     })
 
@@ -127,6 +140,15 @@ const table_layout = new LayoutBuilder("Statistics Per Product Code")
             .string("Category", fields => fields.category)
             .string("Name", fields => fields.name)
             .float("Unit Cost", fields => fields.unitCost)
+            .float(
+                "Unit Rebate",
+                {
+                    value: fields => fields.rebate,
+                    min: fields => fields.min_rebate,
+                    max: fields => fields.max_rebate,
+                    edit: product_unit_rebate.outputStream()
+                }
+            )
             .integer("Units Sold", fields => fields.units)
             .float("Total Cost", fields => fields.cost)
             .float("Total Revenue", fields => fields.revenue)
@@ -205,5 +227,6 @@ export default Template(
     revenue_over_time,
     graph_layout,
     tabbed_layout,
-    panel_layout
+    panel_layout,
+    product_unit_rebate
 )

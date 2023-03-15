@@ -149,8 +149,8 @@ const table_layout = new LayoutBuilder("My Business Insights")
             .string("Category", fields => fields.category)
             .string("Name", fields => fields.name)
             .float("Unit Cost", fields => fields.unitCost)
-            .integer("Units", fields => fields.units)
-            .float("Cost", fields => fields.cost)
+            .integer("Units Sold", fields => fields.units)
+            .float("Total Cost", fields => fields.cost)
             .float(
                 "Rebate",
                 {
@@ -160,7 +160,7 @@ const table_layout = new LayoutBuilder("My Business Insights")
                     edit: product_rebate.outputStream()
                 }
             )
-            .float("Revenue", fields => fields.revenue)
+            .float("Total Revenue", fields => fields.revenue)
             .float("Profit", fields => fields.profit)
     )
 
