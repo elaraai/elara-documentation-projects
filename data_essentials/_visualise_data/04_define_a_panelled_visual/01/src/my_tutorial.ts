@@ -178,7 +178,7 @@ const panel_layout = new LayoutBuilder("Business Insights Dashboard")
                     .layout(50, graph_layout)
                     .vega(
                         50,
-                        "Per Store Profit over Time",
+                        "Profit Split across Products",
                         builder => builder.fromStream(statistics_per_product_code.outputStream())
                         .pie({
                             key: fields => fields.name,

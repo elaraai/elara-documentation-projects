@@ -1,4 +1,4 @@
-import { ArrayType, BlobType, Const, DateTimeType, DictType, FloatType, Floor, Get, GetField, IfNull, IntegerType, LayoutBuilder, Multiply, Nullable, PipelineBuilder, SourceBuilder, Stream, StringJoin, StringType, StructType, Subtract, Sum, Template, Unique, } from "@elaraai/core"
+import { ArrayType, BlobType, Const, DateTimeType, DictType, Divide, FloatType, Floor, Get, GetField, IfNull, IntegerType, LayoutBuilder, Multiply, Nullable, PipelineBuilder, SourceBuilder, Stream, StringJoin, StringType, StructType, Subtract, Sum, Template, Unique, } from "@elaraai/core"
 
 const my_products_file_source = new SourceBuilder("Products")
     .file({ path: "./data/products.csv" })
@@ -86,6 +86,11 @@ const product_unit_rebate = new SourceBuilder("Unit Rebate Per Product")
         type: DictType(StringType, FloatType)
     })
 
+const donation_pledge = new SourceBuilder("Donation Pledge")
+    .value({
+        value: { percentageOfProfit: 0 }
+    })
+
 const statistics_per_product_code = new PipelineBuilder("Statistics Per Product Code")
     .from(sales_across_stores.outputStream())
     .aggregate({
@@ -114,6 +119,7 @@ const statistics_per_product_code = new PipelineBuilder("Statistics Per Product 
         output_key: fields => fields.code
     })
     .input({ name: "productUnitRebate", stream: product_unit_rebate.outputStream() })
+    .input({ name: "donationPledge", stream: donation_pledge.outputStream() })
     .select({
         keep_all: true,
         selections: {
@@ -122,9 +128,12 @@ const statistics_per_product_code = new PipelineBuilder("Statistics Per Product 
                 Subtract(fields.unitCost, Get(inputs.productUnitRebate, key, 0)),
                 fields.unitCost
             ),
-            profit: (fields, key, inputs) => Subtract(
-                fields.revenue,
-                Multiply(Subtract(fields.unitCost,Get(inputs.productUnitRebate, key, 0)), fields.units)
+            profit: (fields, key, inputs) => Multiply(
+                Subtract(
+                    fields.revenue,
+                    Multiply(Subtract(fields.unitCost,Get(inputs.productUnitRebate, key, 0)), fields.units)
+                ),
+                Subtract(1, Divide(GetField(inputs.donationPledge, "percentageOfProfit"), 100))
             ),
             min_rebate: _ => Const(0),
             max_rebate: fields => fields.unitCost
@@ -193,14 +202,24 @@ const panel_layout = new LayoutBuilder("Business Insights Dashboard")
     .panel(
         "row",
         builder => builder
-            .layout(50, table_layout)
+            .panel(50,
+                "column",
+                builder => builder
+                    .layout(70, table_layout)
+                    .form(30, "Donation Pledge", builder => builder
+                        .fromStream(donation_pledge.outputStream())
+                        .float("Percentage Of Profit to Donate (%)", {
+                            value: fields => fields.percentageOfProfit
+                        })
+                    )
+            )
             .panel(50,
                 "column",
                 builder => builder
                     .layout(50, graph_layout)
                     .vega(
                         50,
-                        "Per Store Profit over Time",
+                        "Profit Split across Products",
                         builder => builder.fromStream(statistics_per_product_code.outputStream())
                         .pie({
                             key: fields => fields.name,
@@ -228,5 +247,6 @@ export default Template(
     graph_layout,
     tabbed_layout,
     panel_layout,
-    product_unit_rebate
+    product_unit_rebate,
+    donation_pledge
 )
