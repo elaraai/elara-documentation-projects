@@ -272,15 +272,26 @@
                 "type": "Float",
                 "value": null
               },
+              "rebate": {
+                "type": "Float",
+                "value": null
+              },
               "cost": {
                 "type": "Float",
-                "value": null,
-                "nullable": true
+                "value": null
               },
               "profit": {
                 "type": "Float",
                 "value": null,
                 "nullable": true
+              },
+              "min_rebate": {
+                "type": "Float",
+                "value": null
+              },
+              "max_rebate": {
+                "type": "Float",
+                "value": null
               }
             }
           }
@@ -293,6 +304,19 @@
       "type": {
         "type": "Blob",
         "value": null
+      },
+      "writable": true
+    },
+    "Writeable.Donation Pledge": {
+      "name": "Writeable.Donation Pledge",
+      "type": {
+        "type": "Struct",
+        "value": {
+          "percentageOfProfit": {
+            "type": "Float",
+            "value": null
+          }
+        }
       },
       "writable": true
     },
@@ -317,6 +341,23 @@
       "type": {
         "type": "Blob",
         "value": null
+      },
+      "writable": true
+    },
+    "Writeable.Unit Rebate Per Product": {
+      "name": "Writeable.Unit Rebate Per Product",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Float",
+            "value": null
+          }
+        }
       },
       "writable": true
     }
@@ -741,7 +782,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_uSR7J2BnW$uLc4WnZnBcQN"
+                "name": "_KSi8tibNClnnD93cGzb3Yp"
               },
               "value": {
                 "type": {
@@ -749,7 +790,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_uSR7J2BnW$uLc4WnZnBcQN"
+                "name": "_KSi8tibNClnnD93cGzb3Yp"
               }
             }
           },
@@ -1662,6 +1703,36 @@
             }
           },
           "writable": false
+        },
+        "productUnitRebate": {
+          "name": "Writeable.Unit Rebate Per Product",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Float",
+                "value": null
+              }
+            }
+          },
+          "writable": true
+        },
+        "donationPledge": {
+          "name": "Writeable.Donation Pledge",
+          "type": {
+            "type": "Struct",
+            "value": {
+              "percentageOfProfit": {
+                "type": "Float",
+                "value": null
+              }
+            }
+          },
+          "writable": true
         }
       },
       "outputs": {
@@ -1703,15 +1774,26 @@
                     "type": "Float",
                     "value": null
                   },
+                  "rebate": {
+                    "type": "Float",
+                    "value": null
+                  },
                   "cost": {
                     "type": "Float",
-                    "value": null,
-                    "nullable": true
+                    "value": null
                   },
                   "profit": {
                     "type": "Float",
                     "value": null,
                     "nullable": true
+                  },
+                  "min_rebate": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "max_rebate": {
+                    "type": "Float",
+                    "value": null
                   }
                 }
               }
@@ -1935,6 +2017,14 @@
           }
         },
         {
+          "operation_type": "input",
+          "name": "productUnitRebate"
+        },
+        {
+          "operation_type": "input",
+          "name": "donationPledge"
+        },
+        {
           "operation_type": "select",
           "output_type": {
             "type": "Dict",
@@ -1972,15 +2062,26 @@
                     "type": "Float",
                     "value": null
                   },
+                  "rebate": {
+                    "type": "Float",
+                    "value": null
+                  },
                   "cost": {
                     "type": "Float",
-                    "value": null,
-                    "nullable": true
+                    "value": null
                   },
                   "profit": {
                     "type": "Float",
                     "value": null,
                     "nullable": true
+                  },
+                  "min_rebate": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "max_rebate": {
+                    "type": "Float",
+                    "value": null
                   }
                 }
               }
@@ -2037,7 +2138,117 @@
               "ast_type": "Variable",
               "name": "field.unitCost"
             },
+            "rebate": {
+              "type": {
+                "type": "Float",
+                "value": null
+              },
+              "ast_type": "Get",
+              "dict": {
+                "type": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Float",
+                      "value": null
+                    }
+                  }
+                },
+                "ast_type": "Variable",
+                "name": "input.productUnitRebate"
+              },
+              "key": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "key"
+              },
+              "default": {
+                "type": {
+                  "type": "Float",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": 0
+              }
+            },
             "cost": {
+              "type": {
+                "type": "Float",
+                "value": null
+              },
+              "ast_type": "Multiply",
+              "first": {
+                "type": {
+                  "type": "Float",
+                  "value": null
+                },
+                "ast_type": "Subtract",
+                "first": {
+                  "type": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "field.unitCost"
+                },
+                "second": {
+                  "type": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "ast_type": "Get",
+                  "dict": {
+                    "type": {
+                      "type": "Dict",
+                      "value": {
+                        "key": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "value": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    },
+                    "ast_type": "Variable",
+                    "name": "input.productUnitRebate"
+                  },
+                  "key": {
+                    "type": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "key"
+                  },
+                  "default": {
+                    "type": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "ast_type": "Const",
+                    "value": 0
+                  }
+                }
+              },
+              "second": {
+                "type": {
+                  "type": "Float",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "field.unitCost"
+              }
+            },
+            "profit": {
               "type": {
                 "type": "Float",
                 "value": null,
@@ -2046,12 +2257,190 @@
               "ast_type": "IfNull",
               "input": {
                 "type": {
-                  "type": "Integer",
+                  "type": "Float",
                   "value": null,
                   "nullable": true
                 },
-                "ast_type": "Variable",
-                "name": "field.units"
+                "ast_type": "IfNull",
+                "input": {
+                  "type": {
+                    "type": "Float",
+                    "value": null,
+                    "nullable": true
+                  },
+                  "ast_type": "Variable",
+                  "name": "field.revenue"
+                },
+                "output_null": {
+                  "type": {
+                    "nullable": true
+                  },
+                  "ast_type": "Const",
+                  "value": null
+                },
+                "output_value": {
+                  "type": {
+                    "type": "Float",
+                    "value": null,
+                    "nullable": true
+                  },
+                  "ast_type": "IfNull",
+                  "input": {
+                    "type": {
+                      "type": "Float",
+                      "value": null,
+                      "nullable": true
+                    },
+                    "ast_type": "IfNull",
+                    "input": {
+                      "type": {
+                        "type": "Integer",
+                        "value": null,
+                        "nullable": true
+                      },
+                      "ast_type": "Variable",
+                      "name": "field.units"
+                    },
+                    "output_null": {
+                      "type": {
+                        "nullable": true
+                      },
+                      "ast_type": "Const",
+                      "value": null
+                    },
+                    "output_value": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Multiply",
+                      "first": {
+                        "type": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "ast_type": "Subtract",
+                        "first": {
+                          "type": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "ast_type": "Variable",
+                          "name": "field.unitCost"
+                        },
+                        "second": {
+                          "type": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "ast_type": "Get",
+                          "dict": {
+                            "type": {
+                              "type": "Dict",
+                              "value": {
+                                "key": {
+                                  "type": "String",
+                                  "value": null
+                                },
+                                "value": {
+                                  "type": "Float",
+                                  "value": null
+                                }
+                              }
+                            },
+                            "ast_type": "Variable",
+                            "name": "input.productUnitRebate"
+                          },
+                          "key": {
+                            "type": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "ast_type": "Variable",
+                            "name": "key"
+                          },
+                          "default": {
+                            "type": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "ast_type": "Const",
+                            "value": 0
+                          }
+                        }
+                      },
+                      "second": {
+                        "type": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "ast_type": "Convert",
+                        "from": {
+                          "type": {
+                            "type": "Integer",
+                            "value": null
+                          },
+                          "ast_type": "Variable",
+                          "name": "_etRRLs6MXyNMGb4a7vo1GC"
+                        }
+                      }
+                    },
+                    "value": {
+                      "type": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "_etRRLs6MXyNMGb4a7vo1GC"
+                    }
+                  },
+                  "output_null": {
+                    "type": {
+                      "nullable": true
+                    },
+                    "ast_type": "Const",
+                    "value": null
+                  },
+                  "output_value": {
+                    "type": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "ast_type": "Subtract",
+                    "first": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "_22e44cfnmf99_WVCWQjJsz"
+                    },
+                    "second": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "_hhtyLQLGRzTWhPBC5lrBKA"
+                    }
+                  },
+                  "value": {
+                    "type": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "_hhtyLQLGRzTWhPBC5lrBKA"
+                  }
+                },
+                "value": {
+                  "type": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "_22e44cfnmf99_WVCWQjJsz"
+                }
               },
               "output_null": {
                 "type": {
@@ -2072,133 +2461,9 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "field.unitCost"
+                  "name": "_Z2ylSF3PU53Ie8_1N8kZOy"
                 },
                 "second": {
-                  "type": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "ast_type": "Convert",
-                  "from": {
-                    "type": {
-                      "type": "Integer",
-                      "value": null
-                    },
-                    "ast_type": "Variable",
-                    "name": "_4YOY9hfEM1_0H5A3zIz__y"
-                  }
-                }
-              },
-              "value": {
-                "type": {
-                  "type": "Integer",
-                  "value": null
-                },
-                "ast_type": "Variable",
-                "name": "_4YOY9hfEM1_0H5A3zIz__y"
-              }
-            },
-            "profit": {
-              "type": {
-                "type": "Float",
-                "value": null,
-                "nullable": true
-              },
-              "ast_type": "IfNull",
-              "input": {
-                "type": {
-                  "type": "Float",
-                  "value": null,
-                  "nullable": true
-                },
-                "ast_type": "Variable",
-                "name": "field.revenue"
-              },
-              "output_null": {
-                "type": {
-                  "nullable": true
-                },
-                "ast_type": "Const",
-                "value": null
-              },
-              "output_value": {
-                "type": {
-                  "type": "Float",
-                  "value": null,
-                  "nullable": true
-                },
-                "ast_type": "IfNull",
-                "input": {
-                  "type": {
-                    "type": "Float",
-                    "value": null,
-                    "nullable": true
-                  },
-                  "ast_type": "IfNull",
-                  "input": {
-                    "type": {
-                      "type": "Integer",
-                      "value": null,
-                      "nullable": true
-                    },
-                    "ast_type": "Variable",
-                    "name": "field.units"
-                  },
-                  "output_null": {
-                    "type": {
-                      "nullable": true
-                    },
-                    "ast_type": "Const",
-                    "value": null
-                  },
-                  "output_value": {
-                    "type": {
-                      "type": "Float",
-                      "value": null
-                    },
-                    "ast_type": "Multiply",
-                    "first": {
-                      "type": {
-                        "type": "Float",
-                        "value": null
-                      },
-                      "ast_type": "Variable",
-                      "name": "field.unitCost"
-                    },
-                    "second": {
-                      "type": {
-                        "type": "Float",
-                        "value": null
-                      },
-                      "ast_type": "Convert",
-                      "from": {
-                        "type": {
-                          "type": "Integer",
-                          "value": null
-                        },
-                        "ast_type": "Variable",
-                        "name": "_DbNV7PhJ2RhirhA7JaMMTy"
-                      }
-                    }
-                  },
-                  "value": {
-                    "type": {
-                      "type": "Integer",
-                      "value": null
-                    },
-                    "ast_type": "Variable",
-                    "name": "_DbNV7PhJ2RhirhA7JaMMTy"
-                  }
-                },
-                "output_null": {
-                  "type": {
-                    "nullable": true
-                  },
-                  "ast_type": "Const",
-                  "value": null
-                },
-                "output_value": {
                   "type": {
                     "type": "Float",
                     "value": null
@@ -2209,25 +2474,45 @@
                       "type": "Float",
                       "value": null
                     },
-                    "ast_type": "Variable",
-                    "name": "_BwLXuRfZFnXicp9yMvGJs1"
+                    "ast_type": "Const",
+                    "value": 1
                   },
                   "second": {
                     "type": {
                       "type": "Float",
                       "value": null
                     },
-                    "ast_type": "Variable",
-                    "name": "_GyO_02JzuXXL9APVdEkvVG"
+                    "ast_type": "Divide",
+                    "first": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "GetField",
+                      "struct": {
+                        "type": {
+                          "type": "Struct",
+                          "value": {
+                            "percentageOfProfit": {
+                              "type": "Float",
+                              "value": null
+                            }
+                          }
+                        },
+                        "ast_type": "Variable",
+                        "name": "input.donationPledge"
+                      },
+                      "key": "percentageOfProfit"
+                    },
+                    "second": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": 100
+                    }
                   }
-                },
-                "value": {
-                  "type": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "ast_type": "Variable",
-                  "name": "_GyO_02JzuXXL9APVdEkvVG"
                 }
               },
               "value": {
@@ -2236,8 +2521,24 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_BwLXuRfZFnXicp9yMvGJs1"
+                "name": "_Z2ylSF3PU53Ie8_1N8kZOy"
               }
+            },
+            "min_rebate": {
+              "type": {
+                "type": "Float",
+                "value": null
+              },
+              "ast_type": "Const",
+              "value": 0
+            },
+            "max_rebate": {
+              "type": {
+                "type": "Float",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.unitCost"
             }
           },
           "output_key": {
@@ -2258,6 +2559,25 @@
       "stream": "Writeable.Brisbane Sales",
       "path": "./data/brisbane_sales.jsonl"
     },
+    "Writeable.Donation Pledge": {
+      "default_type": "value",
+      "stream": "Writeable.Donation Pledge",
+      "value": {
+        "type": {
+          "type": "Struct",
+          "value": {
+            "percentageOfProfit": {
+              "type": "Float",
+              "value": null
+            }
+          }
+        },
+        "ast_type": "Const",
+        "value": {
+          "percentageOfProfit": 0
+        }
+      }
+    },
     "Writeable.Melbourne Sales": {
       "default_type": "file",
       "stream": "Writeable.Melbourne Sales",
@@ -2272,6 +2592,31 @@
       "default_type": "file",
       "stream": "Writeable.Sydney Sales",
       "path": "./data/sydney_sales.jsonl"
+    },
+    "Writeable.Unit Rebate Per Product": {
+      "default_type": "value",
+      "stream": "Writeable.Unit Rebate Per Product",
+      "value": {
+        "type": {
+          "type": "Dict",
+          "value": {
+            "key": {
+              "type": "String",
+              "value": null
+            },
+            "value": {
+              "type": "Float",
+              "value": null
+            }
+          }
+        },
+        "ast_type": "Const",
+        "value": {
+          "type": "map",
+          "kind": "literal",
+          "value": []
+        }
+      }
     }
   },
   "layouts": {
@@ -2284,121 +2629,176 @@
         "orientation": "row",
         "visuals": [
           {
-            "type": "table",
-            "kind": "struct",
-            "name": "Statistics Per Product Code",
-            "stream": "Pipeline.Statistics Per Product Code",
-            "columns": {
-              "Code": {
-                "name": "Code",
-                "kind": "primitive",
-                "target": "field",
-                "value": {
-                  "type": {
-                    "type": "String",
-                    "value": null
+            "type": "panel",
+            "orientation": "column",
+            "visuals": [
+              {
+                "type": "table",
+                "kind": "struct",
+                "name": "Statistics Per Product Code",
+                "stream": "Pipeline.Statistics Per Product Code",
+                "columns": {
+                  "Code": {
+                    "name": "Code",
+                    "kind": "primitive",
+                    "target": "field",
+                    "value": {
+                      "type": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "code"
+                    }
                   },
-                  "ast_type": "Variable",
-                  "name": "code"
-                }
+                  "Category": {
+                    "name": "Category",
+                    "kind": "primitive",
+                    "target": "field",
+                    "value": {
+                      "type": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "category"
+                    }
+                  },
+                  "Name": {
+                    "name": "Name",
+                    "kind": "primitive",
+                    "target": "field",
+                    "value": {
+                      "type": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "name"
+                    }
+                  },
+                  "Unit Cost": {
+                    "name": "Unit Cost",
+                    "kind": "primitive",
+                    "target": "field",
+                    "value": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "unitCost"
+                    }
+                  },
+                  "Unit Rebate": {
+                    "name": "Unit Rebate",
+                    "kind": "primitive",
+                    "target": "field",
+                    "value": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "rebate"
+                    },
+                    "edit": "Writeable.Unit Rebate Per Product",
+                    "min": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "min_rebate"
+                    },
+                    "max": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "max_rebate"
+                    }
+                  },
+                  "Units Sold": {
+                    "name": "Units Sold",
+                    "kind": "primitive",
+                    "target": "field",
+                    "value": {
+                      "type": {
+                        "type": "Integer",
+                        "value": null,
+                        "nullable": true
+                      },
+                      "ast_type": "Variable",
+                      "name": "units"
+                    }
+                  },
+                  "Total Cost": {
+                    "name": "Total Cost",
+                    "kind": "primitive",
+                    "target": "field",
+                    "value": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "cost"
+                    }
+                  },
+                  "Total Revenue": {
+                    "name": "Total Revenue",
+                    "kind": "primitive",
+                    "target": "field",
+                    "value": {
+                      "type": {
+                        "type": "Float",
+                        "value": null,
+                        "nullable": true
+                      },
+                      "ast_type": "Variable",
+                      "name": "revenue"
+                    }
+                  },
+                  "Profit": {
+                    "name": "Profit",
+                    "kind": "primitive",
+                    "target": "field",
+                    "value": {
+                      "type": {
+                        "type": "Float",
+                        "value": null,
+                        "nullable": true
+                      },
+                      "ast_type": "Variable",
+                      "name": "profit"
+                    }
+                  }
+                },
+                "key_visible": false,
+                "percentage": 70
               },
-              "Category": {
-                "name": "Category",
-                "kind": "primitive",
-                "target": "field",
-                "value": {
-                  "type": {
-                    "type": "String",
-                    "value": null
-                  },
-                  "ast_type": "Variable",
-                  "name": "category"
-                }
-              },
-              "Name": {
-                "name": "Name",
-                "kind": "primitive",
-                "target": "field",
-                "value": {
-                  "type": {
-                    "type": "String",
-                    "value": null
-                  },
-                  "ast_type": "Variable",
-                  "name": "name"
-                }
-              },
-              "Unit Cost": {
-                "name": "Unit Cost",
-                "kind": "primitive",
-                "target": "field",
-                "value": {
-                  "type": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "ast_type": "Variable",
-                  "name": "unitCost"
-                }
-              },
-              "Units": {
-                "name": "Units",
-                "kind": "primitive",
-                "target": "field",
-                "value": {
-                  "type": {
-                    "type": "Integer",
-                    "value": null,
-                    "nullable": true
-                  },
-                  "ast_type": "Variable",
-                  "name": "units"
-                }
-              },
-              "Cost": {
-                "name": "Cost",
-                "kind": "primitive",
-                "target": "field",
-                "value": {
-                  "type": {
-                    "type": "Float",
-                    "value": null,
-                    "nullable": true
-                  },
-                  "ast_type": "Variable",
-                  "name": "cost"
-                }
-              },
-              "Revenue": {
-                "name": "Revenue",
-                "kind": "primitive",
-                "target": "field",
-                "value": {
-                  "type": {
-                    "type": "Float",
-                    "value": null,
-                    "nullable": true
-                  },
-                  "ast_type": "Variable",
-                  "name": "revenue"
-                }
-              },
-              "Profit": {
-                "name": "Profit",
-                "kind": "primitive",
-                "target": "field",
-                "value": {
-                  "type": {
-                    "type": "Float",
-                    "value": null,
-                    "nullable": true
-                  },
-                  "ast_type": "Variable",
-                  "name": "profit"
-                }
+              {
+                "type": "form",
+                "name": "Donation Pledge",
+                "stream": "Writeable.Donation Pledge",
+                "inputs": {
+                  "Percentage Of Profit to Donate (%)": {
+                    "name": "Percentage Of Profit to Donate (%)",
+                    "field": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "percentageOfProfit"
+                    }
+                  }
+                },
+                "percentage": 30
               }
-            },
-            "key_visible": false,
+            ],
             "percentage": 50
           },
           {
@@ -2629,8 +3029,38 @@
               "name": "unitCost"
             }
           },
-          "Units": {
-            "name": "Units",
+          "Unit Rebate": {
+            "name": "Unit Rebate",
+            "kind": "primitive",
+            "target": "field",
+            "value": {
+              "type": {
+                "type": "Float",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "rebate"
+            },
+            "edit": "Writeable.Unit Rebate Per Product",
+            "min": {
+              "type": {
+                "type": "Float",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "min_rebate"
+            },
+            "max": {
+              "type": {
+                "type": "Float",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "max_rebate"
+            }
+          },
+          "Units Sold": {
+            "name": "Units Sold",
             "kind": "primitive",
             "target": "field",
             "value": {
@@ -2643,22 +3073,21 @@
               "name": "units"
             }
           },
-          "Cost": {
-            "name": "Cost",
+          "Total Cost": {
+            "name": "Total Cost",
             "kind": "primitive",
             "target": "field",
             "value": {
               "type": {
                 "type": "Float",
-                "value": null,
-                "nullable": true
+                "value": null
               },
               "ast_type": "Variable",
               "name": "cost"
             }
           },
-          "Revenue": {
-            "name": "Revenue",
+          "Total Revenue": {
+            "name": "Total Revenue",
             "kind": "primitive",
             "target": "field",
             "value": {
@@ -2754,8 +3183,38 @@
                   "name": "unitCost"
                 }
               },
-              "Units": {
-                "name": "Units",
+              "Unit Rebate": {
+                "name": "Unit Rebate",
+                "kind": "primitive",
+                "target": "field",
+                "value": {
+                  "type": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "rebate"
+                },
+                "edit": "Writeable.Unit Rebate Per Product",
+                "min": {
+                  "type": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "min_rebate"
+                },
+                "max": {
+                  "type": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "max_rebate"
+                }
+              },
+              "Units Sold": {
+                "name": "Units Sold",
                 "kind": "primitive",
                 "target": "field",
                 "value": {
@@ -2768,22 +3227,21 @@
                   "name": "units"
                 }
               },
-              "Cost": {
-                "name": "Cost",
+              "Total Cost": {
+                "name": "Total Cost",
                 "kind": "primitive",
                 "target": "field",
                 "value": {
                   "type": {
                     "type": "Float",
-                    "value": null,
-                    "nullable": true
+                    "value": null
                   },
                   "ast_type": "Variable",
                   "name": "cost"
                 }
               },
-              "Revenue": {
-                "name": "Revenue",
+              "Total Revenue": {
+                "name": "Total Revenue",
                 "kind": "primitive",
                 "target": "field",
                 "value": {
