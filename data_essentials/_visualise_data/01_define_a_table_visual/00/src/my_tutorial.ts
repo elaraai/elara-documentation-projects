@@ -72,6 +72,7 @@ const sales_across_stores = new PipelineBuilder("Sales Across Stores")
     .disaggregateArray({
         collection: fields => fields.items,
         selections: {
+            store: fields => fields.store,
             transactionDate: fields => fields.transactionDate,
             productCode: (_, item_fields) => GetField(item_fields, "productCode"),
             units: (_, item_fields) => GetField(item_fields, "units"),
@@ -79,7 +80,7 @@ const sales_across_stores = new PipelineBuilder("Sales Across Stores")
         },
     })
 
-const summary_statistics_per_product_code = new PipelineBuilder("Summary Statistics Per Product Code")
+const statistics_per_product_code = new PipelineBuilder("Statistics Per Product Code")
     .from(sales_across_stores.outputStream())
     .aggregate({
         group_name: "productCode",
@@ -117,11 +118,11 @@ const summary_statistics_per_product_code = new PipelineBuilder("Summary Statist
         }
     })
 
-const table_layout = new LayoutBuilder("My Business Insights")
+const table_layout = new LayoutBuilder("Statistics Per Product Code")
     .table(
-        "Summary Statistics Per Product Code",
+        "Statistics Per Product Code",
         builder => builder
-            .fromStream(summary_statistics_per_product_code.outputStream())
+            .fromStream(statistics_per_product_code.outputStream())
             .string("Code", fields => fields.code)
             .string("Category", fields => fields.category)
             .string("Name", fields => fields.name)
@@ -142,6 +143,6 @@ export default Template(
     parse_sydney_sales,
     parse_brisbane_sales,
     sales_across_stores,
-    summary_statistics_per_product_code,
+    statistics_per_product_code,
     table_layout
 )
