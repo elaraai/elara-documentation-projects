@@ -123,7 +123,14 @@ const table_layout = new LayoutBuilder("Statistics Per Product Code")
         "Statistics Per Product Code",
         builder => builder
             .fromStream(statistics_per_product_code.outputStream())
-            .columns()
+            .string("Code", fields => fields.code)
+            .string("Category", fields => fields.category)
+            .string("Name", fields => fields.name)
+            .float("Unit Cost", fields => fields.unitCost)
+            .integer("Units Sold", fields => fields.units)
+            .float("Total Cost", fields => fields.cost)
+            .float("Total Revenue", fields => fields.revenue)
+            .float("Profit", fields => fields.profit)
     )
 
 export default Template(

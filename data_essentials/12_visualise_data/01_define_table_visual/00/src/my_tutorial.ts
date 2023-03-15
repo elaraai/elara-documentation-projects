@@ -1,4 +1,4 @@
-import { ArrayType, BlobType, DateTimeType, FloatType, GetField, IfNull, IntegerType, LayoutBuilder, Multiply, Nullable, PipelineBuilder, SourceBuilder, Stream, StringType, StructType, Subtract, Sum, Template, } from "@elaraai/core"
+import { ArrayType, BlobType, DateTimeType, FloatType, IfNull, IntegerType, Nullable, PipelineBuilder, SourceBuilder, Stream, StringType, StructType, Template } from "@elaraai/core"
 
 const my_products_file_source = new SourceBuilder("Products")
     .file({ path: "./data/products.csv" })
@@ -56,76 +56,6 @@ const parse_melbourne_sales = SalesParser("Melbourne", melbourne_sales_file_sour
 const parse_sydney_sales = SalesParser("Sydney", sydney_sales_file_source.outputStream())
 const parse_brisbane_sales = SalesParser("Brisbane", brisbane_sales_file_source.outputStream())
 
-const sales_across_stores = new PipelineBuilder("Sales Across Stores")
-    .from(parse_melbourne_sales.outputStream())
-    .input({ name: "sydney_sales", stream: parse_sydney_sales.outputStream()})
-    .input({ name: "brisbane_sales", stream: parse_brisbane_sales.outputStream()})
-    .concatenate({
-        discriminator_name: "store",
-        discriminator_value: "Melbourne",
-        inputs: [
-            { input: inputs => inputs.sydney_sales, discriminator_value: "Sydney" },
-            { input: inputs => inputs.brisbane_sales, discriminator_value: "Brisbane" },
-
-        ],
-    })
-    .disaggregateArray({
-        collection: fields => fields.items,
-        selections: {
-            store: fields => fields.store,
-            transactionDate: fields => fields.transactionDate,
-            productCode: (_, item_fields) => GetField(item_fields, "productCode"),
-            units: (_, item_fields) => GetField(item_fields, "units"),
-            salePrice: (_, item_fields) => GetField(item_fields, "salePrice"),
-        },
-    })
-
-const statistics_per_product_code = new PipelineBuilder("Statistics Per Product Code")
-    .from(sales_across_stores.outputStream())
-    .aggregate({
-        group_name: "productCode",
-        group_value: fields => fields.productCode,
-        aggregations: {
-            units: fields => Sum(fields.units),
-            revenue: fields => Sum(fields.salePrice)
-        }
-    })
-    .input({ name: "products", stream: parse_products.outputStream() })
-    .rightJoin({
-        right_input: inputs => inputs.products,
-        right_key: inputs => inputs.code,
-        left_key: fields => fields.productCode,
-        left_selections: {
-            units: fields => fields.units,
-            revenue: fields => fields.revenue,
-        },
-        right_selections: {
-            name: fields => fields.name,
-            category: fields => fields.category,
-            code: fields => fields.code,
-            unitCost: fields => fields.unitCost,
-        },
-        output_key: fields => fields.code
-    })
-    .select({
-        keep_all: true,
-        selections: {
-            cost: fields => Multiply(fields.unitCost, fields.units),
-            profit: fields => Subtract(
-                fields.revenue,
-                Multiply(fields.unitCost, fields.units)
-            )
-        }
-    })
-
-const table_layout = new LayoutBuilder("Statistics Per Product Code")
-    .table(
-        "Statistics Per Product Code",
-        builder => builder
-            .fromStream(statistics_per_product_code.outputStream())
-            .columns()
-    )
-
 export default Template(
     my_products_file_source,
     parse_products,
@@ -134,8 +64,5 @@ export default Template(
     brisbane_sales_file_source,
     parse_melbourne_sales,
     parse_sydney_sales,
-    parse_brisbane_sales,
-    sales_across_stores,
-    statistics_per_product_code,
-    table_layout
+    parse_brisbane_sales
 )

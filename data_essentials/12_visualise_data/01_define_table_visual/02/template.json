@@ -160,42 +160,6 @@
       },
       "writable": false
     },
-    "Pipeline.Revenue Over Time": {
-      "name": "Pipeline.Revenue Over Time",
-      "type": {
-        "type": "Dict",
-        "value": {
-          "key": {
-            "type": "String",
-            "value": null
-          },
-          "value": {
-            "type": "Struct",
-            "value": {
-              "storeDate": {
-                "type": "String",
-                "value": null
-              },
-              "store": {
-                "type": "String",
-                "value": null,
-                "nullable": true
-              },
-              "transactionDate": {
-                "type": "DateTime",
-                "value": null,
-                "nullable": true
-              },
-              "revenue": {
-                "type": "Float",
-                "value": null
-              }
-            }
-          }
-        }
-      },
-      "writable": false
-    },
     "Pipeline.Sales Across Stores": {
       "name": "Pipeline.Sales Across Stores",
       "type": {
@@ -741,7 +705,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_2sOKibHm5HYmemkw$6dBPR"
+                "name": "__4BlprXHKFSQcXij9uPT6P"
               },
               "value": {
                 "type": {
@@ -749,7 +713,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_2sOKibHm5HYmemkw$6dBPR"
+                "name": "__4BlprXHKFSQcXij9uPT6P"
               }
             }
           },
@@ -876,264 +840,6 @@
               },
               "ast_type": "Variable",
               "name": "field.transactionDate"
-            }
-          }
-        }
-      ]
-    },
-    "Pipeline.Revenue Over Time": {
-      "name": "Pipeline.Revenue Over Time",
-      "parent": "Pipeline.Revenue Over Time",
-      "task_type": "pipeline",
-      "inputs": {
-        "input": {
-          "name": "Pipeline.Sales Across Stores",
-          "type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "store": {
-                    "type": "String",
-                    "value": null
-                  },
-                  "transactionDate": {
-                    "type": "DateTime",
-                    "value": null
-                  },
-                  "productCode": {
-                    "type": "String",
-                    "value": null
-                  },
-                  "units": {
-                    "type": "Integer",
-                    "value": null
-                  },
-                  "salePrice": {
-                    "type": "Float",
-                    "value": null
-                  }
-                }
-              }
-            }
-          },
-          "writable": false
-        }
-      },
-      "outputs": {
-        "output": {
-          "name": "Pipeline.Revenue Over Time",
-          "type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "storeDate": {
-                    "type": "String",
-                    "value": null
-                  },
-                  "store": {
-                    "type": "String",
-                    "value": null,
-                    "nullable": true
-                  },
-                  "transactionDate": {
-                    "type": "DateTime",
-                    "value": null,
-                    "nullable": true
-                  },
-                  "revenue": {
-                    "type": "Float",
-                    "value": null
-                  }
-                }
-              }
-            }
-          },
-          "writable": false
-        }
-      },
-      "operations": [
-        {
-          "operation_type": "aggregate",
-          "group_name": "storeDate",
-          "group_value": {
-            "type": {
-              "type": "String",
-              "value": null
-            },
-            "ast_type": "StringJoin",
-            "values": [
-              {
-                "type": {
-                  "type": "String",
-                  "value": null
-                },
-                "ast_type": "Variable",
-                "name": "field.store"
-              },
-              {
-                "type": {
-                  "type": "String",
-                  "value": null
-                },
-                "ast_type": "Const",
-                "value": "."
-              },
-              {
-                "type": {
-                  "type": "String",
-                  "value": null
-                },
-                "ast_type": "Print",
-                "value": {
-                  "type": {
-                    "type": "DateTime",
-                    "value": null
-                  },
-                  "ast_type": "Round",
-                  "rounding_mode": "floor",
-                  "value": {
-                    "type": {
-                      "type": "DateTime",
-                      "value": null
-                    },
-                    "ast_type": "Variable",
-                    "name": "field.transactionDate"
-                  },
-                  "unit": "day"
-                }
-              }
-            ],
-            "seperator": ""
-          },
-          "aggregations": {
-            "store": {
-              "type": {
-                "type": "String",
-                "value": null,
-                "nullable": true
-              },
-              "aggregation_type": "Unique",
-              "input_key": "key",
-              "value": {
-                "type": {
-                  "type": "String",
-                  "value": null
-                },
-                "ast_type": "Variable",
-                "name": "field.store"
-              },
-              "field": {
-                "type": {
-                  "type": "String",
-                  "value": null,
-                  "nullable": true
-                },
-                "ast_type": "Variable",
-                "name": "store"
-              }
-            },
-            "transactionDate": {
-              "type": {
-                "type": "DateTime",
-                "value": null,
-                "nullable": true
-              },
-              "aggregation_type": "Unique",
-              "input_key": "key",
-              "value": {
-                "type": {
-                  "type": "DateTime",
-                  "value": null
-                },
-                "ast_type": "Round",
-                "rounding_mode": "floor",
-                "value": {
-                  "type": {
-                    "type": "DateTime",
-                    "value": null
-                  },
-                  "ast_type": "Variable",
-                  "name": "field.transactionDate"
-                },
-                "unit": "day"
-              },
-              "field": {
-                "type": {
-                  "type": "DateTime",
-                  "value": null,
-                  "nullable": true
-                },
-                "ast_type": "Variable",
-                "name": "transactionDate"
-              }
-            },
-            "revenue": {
-              "type": {
-                "type": "Float",
-                "value": null
-              },
-              "aggregation_type": "Sum",
-              "input_key": "key",
-              "value": {
-                "type": {
-                  "type": "Float",
-                  "value": null
-                },
-                "ast_type": "Variable",
-                "name": "field.salePrice"
-              },
-              "field": {
-                "type": {
-                  "type": "Float",
-                  "value": null
-                },
-                "ast_type": "Variable",
-                "name": "revenue"
-              }
-            }
-          },
-          "output_type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "storeDate": {
-                    "type": "String",
-                    "value": null
-                  },
-                  "store": {
-                    "type": "String",
-                    "value": null,
-                    "nullable": true
-                  },
-                  "transactionDate": {
-                    "type": "DateTime",
-                    "value": null,
-                    "nullable": true
-                  },
-                  "revenue": {
-                    "type": "Float",
-                    "value": null
-                  }
-                }
-              }
             }
           }
         }
@@ -2086,7 +1792,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_EbY3r1GxLaNwNyzb$AHY38"
+                    "name": "_D9kVehM60Sj4d$EYAJ9LwN"
                   }
                 }
               },
@@ -2096,7 +1802,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_EbY3r1GxLaNwNyzb$AHY38"
+                "name": "_D9kVehM60Sj4d$EYAJ9LwN"
               }
             },
             "profit": {
@@ -2178,7 +1884,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_BUsben7vxuJlP4RhCnReYK"
+                        "name": "_JAJkvMUhhS5_Zt3xop$Qfb"
                       }
                     }
                   },
@@ -2188,7 +1894,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_BUsben7vxuJlP4RhCnReYK"
+                    "name": "_JAJkvMUhhS5_Zt3xop$Qfb"
                   }
                 },
                 "output_null": {
@@ -2210,7 +1916,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_L3VvDzI6JvhaifMNepRowQ"
+                    "name": "_A$5dqpxRTBYRpV4iqwFg6t"
                   },
                   "second": {
                     "type": {
@@ -2218,7 +1924,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_MgXnjXOorW6in6VQ1Q2YmO"
+                    "name": "_NqQuyVNLzaV1bpGi2wX$UK"
                   }
                 },
                 "value": {
@@ -2227,7 +1933,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_MgXnjXOorW6in6VQ1Q2YmO"
+                  "name": "_NqQuyVNLzaV1bpGi2wX$UK"
                 }
               },
               "value": {
@@ -2236,7 +1942,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_L3VvDzI6JvhaifMNepRowQ"
+                "name": "_A$5dqpxRTBYRpV4iqwFg6t"
               }
             }
           },
@@ -2275,298 +1981,6 @@
     }
   },
   "layouts": {
-    "Layout.Business Insights Dashboard": {
-      "type": "layout",
-      "name": "Layout.Business Insights Dashboard",
-      "display_name": "Business Insights Dashboard",
-      "visual": {
-        "type": "panel",
-        "orientation": "row",
-        "visuals": [
-          {
-            "type": "table",
-            "kind": "struct",
-            "name": "Statistics Per Product Code",
-            "stream": "Pipeline.Statistics Per Product Code",
-            "columns": {
-              "Code": {
-                "name": "Code",
-                "kind": "primitive",
-                "target": "field",
-                "value": {
-                  "type": {
-                    "type": "String",
-                    "value": null
-                  },
-                  "ast_type": "Variable",
-                  "name": "code"
-                }
-              },
-              "Category": {
-                "name": "Category",
-                "kind": "primitive",
-                "target": "field",
-                "value": {
-                  "type": {
-                    "type": "String",
-                    "value": null
-                  },
-                  "ast_type": "Variable",
-                  "name": "category"
-                }
-              },
-              "Name": {
-                "name": "Name",
-                "kind": "primitive",
-                "target": "field",
-                "value": {
-                  "type": {
-                    "type": "String",
-                    "value": null
-                  },
-                  "ast_type": "Variable",
-                  "name": "name"
-                }
-              },
-              "Unit Cost": {
-                "name": "Unit Cost",
-                "kind": "primitive",
-                "target": "field",
-                "value": {
-                  "type": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "ast_type": "Variable",
-                  "name": "unitCost"
-                }
-              },
-              "Units Sold": {
-                "name": "Units Sold",
-                "kind": "primitive",
-                "target": "field",
-                "value": {
-                  "type": {
-                    "type": "Integer",
-                    "value": null,
-                    "nullable": true
-                  },
-                  "ast_type": "Variable",
-                  "name": "units"
-                }
-              },
-              "Total Cost": {
-                "name": "Total Cost",
-                "kind": "primitive",
-                "target": "field",
-                "value": {
-                  "type": {
-                    "type": "Float",
-                    "value": null,
-                    "nullable": true
-                  },
-                  "ast_type": "Variable",
-                  "name": "cost"
-                }
-              },
-              "Total Revenue": {
-                "name": "Total Revenue",
-                "kind": "primitive",
-                "target": "field",
-                "value": {
-                  "type": {
-                    "type": "Float",
-                    "value": null,
-                    "nullable": true
-                  },
-                  "ast_type": "Variable",
-                  "name": "revenue"
-                }
-              },
-              "Profit": {
-                "name": "Profit",
-                "kind": "primitive",
-                "target": "field",
-                "value": {
-                  "type": {
-                    "type": "Float",
-                    "value": null,
-                    "nullable": true
-                  },
-                  "ast_type": "Variable",
-                  "name": "profit"
-                }
-              }
-            },
-            "key_visible": false,
-            "percentage": 50
-          },
-          {
-            "type": "panel",
-            "orientation": "column",
-            "visuals": [
-              {
-                "type": "vega",
-                "kind": "dict",
-                "name": "Revenue over Time",
-                "stream": "Pipeline.Revenue Over Time",
-                "spec": {
-                  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-                  "width": "container",
-                  "height": "container",
-                  "data": {
-                    "values": []
-                  },
-                  "params": [
-                    {
-                      "name": "grid",
-                      "select": "interval",
-                      "bind": "scales"
-                    }
-                  ],
-                  "mark": {
-                    "type": "area",
-                    "opacity": 0.8
-                  },
-                  "encoding": {
-                    "x": {
-                      "field": "transactionDate",
-                      "type": "temporal",
-                      "title": "Date"
-                    },
-                    "y": {
-                      "field": "revenue",
-                      "aggregate": "sum",
-                      "title": "Revenue"
-                    },
-                    "color": {
-                      "field": "store",
-                      "type": "nominal",
-                      "title": "Store"
-                    },
-                    "tooltip": [
-                      {
-                        "field": "transactionDate",
-                        "type": "temporal"
-                      },
-                      {
-                        "field": "revenue",
-                        "type": "quantitative"
-                      }
-                    ]
-                  }
-                },
-                "percentage": 50
-              },
-              {
-                "type": "vega",
-                "kind": "dict",
-                "name": "Profit Split across Products",
-                "stream": "Pipeline.Statistics Per Product Code",
-                "spec": {
-                  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-                  "width": "container",
-                  "height": "container",
-                  "data": {
-                    "values": []
-                  },
-                  "mark": {
-                    "type": "arc",
-                    "innerRadius": {
-                      "signal": "min(width,height) / 4"
-                    },
-                    "outerRadius": {
-                      "signal": "min(width, height) / 2"
-                    },
-                    "cornerRadius": 2,
-                    "padAngle": 0.025
-                  },
-                  "encoding": {
-                    "theta": {
-                      "field": "profit",
-                      "aggregate": "sum",
-                      "title": "Total Profit"
-                    },
-                    "color": {
-                      "field": "name",
-                      "title": "Product Code"
-                    },
-                    "tooltip": [
-                      {
-                        "field": "name"
-                      },
-                      {
-                        "field": "profit",
-                        "aggregate": "sum"
-                      }
-                    ]
-                  }
-                },
-                "percentage": 50
-              }
-            ],
-            "percentage": 50
-          }
-        ]
-      }
-    },
-    "Layout.Revenue over Time": {
-      "type": "layout",
-      "name": "Layout.Revenue over Time",
-      "display_name": "Revenue over Time",
-      "visual": {
-        "type": "vega",
-        "kind": "dict",
-        "name": "Revenue over Time",
-        "stream": "Pipeline.Revenue Over Time",
-        "spec": {
-          "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-          "width": "container",
-          "height": "container",
-          "data": {
-            "values": []
-          },
-          "params": [
-            {
-              "name": "grid",
-              "select": "interval",
-              "bind": "scales"
-            }
-          ],
-          "mark": {
-            "type": "area",
-            "opacity": 0.8
-          },
-          "encoding": {
-            "x": {
-              "field": "transactionDate",
-              "type": "temporal",
-              "title": "Date"
-            },
-            "y": {
-              "field": "revenue",
-              "aggregate": "sum",
-              "title": "Revenue"
-            },
-            "color": {
-              "field": "store",
-              "type": "nominal",
-              "title": "Store"
-            },
-            "tooltip": [
-              {
-                "field": "transactionDate",
-                "type": "temporal"
-              },
-              {
-                "field": "revenue",
-                "type": "quantitative"
-              }
-            ]
-          }
-        }
-      }
-    },
     "Layout.Statistics Per Product Code": {
       "type": "layout",
       "name": "Layout.Statistics Per Product Code",
@@ -2687,185 +2101,6 @@
           }
         },
         "key_visible": false
-      }
-    },
-    "Layout.Tabbed Business Insights": {
-      "type": "layout",
-      "name": "Layout.Tabbed Business Insights",
-      "display_name": "Tabbed Business Insights",
-      "visual": {
-        "type": "tab",
-        "visuals": [
-          {
-            "type": "table",
-            "kind": "struct",
-            "name": "Statistics Per Product Code",
-            "stream": "Pipeline.Statistics Per Product Code",
-            "columns": {
-              "Code": {
-                "name": "Code",
-                "kind": "primitive",
-                "target": "field",
-                "value": {
-                  "type": {
-                    "type": "String",
-                    "value": null
-                  },
-                  "ast_type": "Variable",
-                  "name": "code"
-                }
-              },
-              "Category": {
-                "name": "Category",
-                "kind": "primitive",
-                "target": "field",
-                "value": {
-                  "type": {
-                    "type": "String",
-                    "value": null
-                  },
-                  "ast_type": "Variable",
-                  "name": "category"
-                }
-              },
-              "Name": {
-                "name": "Name",
-                "kind": "primitive",
-                "target": "field",
-                "value": {
-                  "type": {
-                    "type": "String",
-                    "value": null
-                  },
-                  "ast_type": "Variable",
-                  "name": "name"
-                }
-              },
-              "Unit Cost": {
-                "name": "Unit Cost",
-                "kind": "primitive",
-                "target": "field",
-                "value": {
-                  "type": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "ast_type": "Variable",
-                  "name": "unitCost"
-                }
-              },
-              "Units Sold": {
-                "name": "Units Sold",
-                "kind": "primitive",
-                "target": "field",
-                "value": {
-                  "type": {
-                    "type": "Integer",
-                    "value": null,
-                    "nullable": true
-                  },
-                  "ast_type": "Variable",
-                  "name": "units"
-                }
-              },
-              "Total Cost": {
-                "name": "Total Cost",
-                "kind": "primitive",
-                "target": "field",
-                "value": {
-                  "type": {
-                    "type": "Float",
-                    "value": null,
-                    "nullable": true
-                  },
-                  "ast_type": "Variable",
-                  "name": "cost"
-                }
-              },
-              "Total Revenue": {
-                "name": "Total Revenue",
-                "kind": "primitive",
-                "target": "field",
-                "value": {
-                  "type": {
-                    "type": "Float",
-                    "value": null,
-                    "nullable": true
-                  },
-                  "ast_type": "Variable",
-                  "name": "revenue"
-                }
-              },
-              "Profit": {
-                "name": "Profit",
-                "kind": "primitive",
-                "target": "field",
-                "value": {
-                  "type": {
-                    "type": "Float",
-                    "value": null,
-                    "nullable": true
-                  },
-                  "ast_type": "Variable",
-                  "name": "profit"
-                }
-              }
-            },
-            "key_visible": false
-          },
-          {
-            "type": "vega",
-            "kind": "dict",
-            "name": "Revenue over Time",
-            "stream": "Pipeline.Revenue Over Time",
-            "spec": {
-              "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-              "width": "container",
-              "height": "container",
-              "data": {
-                "values": []
-              },
-              "params": [
-                {
-                  "name": "grid",
-                  "select": "interval",
-                  "bind": "scales"
-                }
-              ],
-              "mark": {
-                "type": "area",
-                "opacity": 0.8
-              },
-              "encoding": {
-                "x": {
-                  "field": "transactionDate",
-                  "type": "temporal",
-                  "title": "Date"
-                },
-                "y": {
-                  "field": "revenue",
-                  "aggregate": "sum",
-                  "title": "Revenue"
-                },
-                "color": {
-                  "field": "store",
-                  "type": "nominal",
-                  "title": "Store"
-                },
-                "tooltip": [
-                  {
-                    "field": "transactionDate",
-                    "type": "temporal"
-                  },
-                  {
-                    "field": "revenue",
-                    "type": "quantitative"
-                  }
-                ]
-              }
-            }
-          }
-        ]
       }
     }
   }
