@@ -126,7 +126,7 @@ const statistics_per_product_code = new PipelineBuilder("Statistics Per Product 
             rebate: (_, key, inputs) => Get(inputs.productUnitRebate, key, 0),
             cost: (fields, key, inputs) => Multiply(
                 Subtract(fields.unitCost, Get(inputs.productUnitRebate, key, 0)),
-                fields.unitCost
+                fields.units
             ),
             profit: (fields, key, inputs) => Multiply(
                 Subtract(

@@ -1,4 +1,4 @@
-import { ArrayType, BlobType, Const, DateTimeType, DictType, FloatType, Floor, Get, GetField, IfNull, IntegerType, LayoutBuilder, Multiply, Nullable, PipelineBuilder, SourceBuilder, Stream, StringJoin, StringType, StructType, Subtract, Sum, Template, Unique, } from "@elaraai/core"
+import { ArrayType, BlobType, DateTimeType, Divide, FloatType, Floor, GetField, IfNull, IntegerType, LayoutBuilder, Multiply, Nullable, PipelineBuilder, SourceBuilder, Stream, StringJoin, StringType, StructType, Subtract, Sum, Template, Unique, } from "@elaraai/core"
 
 const my_products_file_source = new SourceBuilder("Products")
     .file({ path: "./data/products.csv" })
@@ -80,10 +80,9 @@ const sales_across_stores = new PipelineBuilder("Sales Across Stores")
         },
     })
 
-const product_unit_rebate = new SourceBuilder("Unit Rebate Per Product")
+const donation_pledge = new SourceBuilder("Donation Pledge")
     .value({
-        value: new Map(),
-        type: DictType(StringType, FloatType)
+        value: { percentageOfProfit: 0 }
     })
 
 const statistics_per_product_code = new PipelineBuilder("Statistics Per Product Code")
@@ -113,21 +112,18 @@ const statistics_per_product_code = new PipelineBuilder("Statistics Per Product 
         },
         output_key: fields => fields.code
     })
-    .input({ name: "productUnitRebate", stream: product_unit_rebate.outputStream() })
+    .input({ name: "donationPledge", stream: donation_pledge.outputStream() })
     .select({
         keep_all: true,
         selections: {
-            rebate: (_, key, inputs) => Get(inputs.productUnitRebate, key, 0),
-            cost: (fields, key, inputs) => Multiply(
-                Subtract(fields.unitCost, Get(inputs.productUnitRebate, key, 0)),
-                fields.unitCost
-            ),
-            profit: (fields, key, inputs) => Subtract(
-                fields.revenue,
-                Multiply(Subtract(fields.unitCost,Get(inputs.productUnitRebate, key, 0)), fields.units)
-            ),
-            min_rebate: _ => Const(0),
-            max_rebate: fields => fields.unitCost
+            cost: fields => Multiply(fields.unitCost,fields.units),
+            profit: (fields, _, inputs) => Multiply(
+                Subtract(
+                    fields.revenue,
+                    Multiply(fields.unitCost, fields.units)
+                ),
+                Subtract(1, Divide(GetField(inputs.donationPledge, "percentageOfProfit"), 100))
+            )
         }
     })
 
@@ -140,15 +136,6 @@ const table_layout = new LayoutBuilder("Statistics Per Product Code")
             .string("Category", fields => fields.category)
             .string("Name", fields => fields.name)
             .float("Unit Cost", fields => fields.unitCost)
-            .float(
-                "Unit Rebate",
-                {
-                    value: fields => fields.rebate,
-                    min: fields => fields.min_rebate,
-                    max: fields => fields.max_rebate,
-                    edit: product_unit_rebate.outputStream()
-                }
-            )
             .integer("Units Sold", fields => fields.units)
             .float("Total Cost", fields => fields.cost)
             .float("Total Revenue", fields => fields.revenue)
@@ -193,7 +180,17 @@ const panel_layout = new LayoutBuilder("Business Insights Dashboard")
     .panel(
         "row",
         builder => builder
-            .layout(50, table_layout)
+            .panel(50,
+                "column",
+                builder => builder
+                    .layout(70, table_layout)
+                    .form(30, "Donation Pledge", builder => builder
+                        .fromStream(donation_pledge.outputStream())
+                        .float("Percentage Of Profit to Donate (%)", {
+                            value: fields => fields.percentageOfProfit
+                        })
+                    )
+            )
             .panel(50,
                 "column",
                 builder => builder
@@ -228,5 +225,5 @@ export default Template(
     graph_layout,
     tabbed_layout,
     panel_layout,
-    product_unit_rebate
+    donation_pledge
 )
