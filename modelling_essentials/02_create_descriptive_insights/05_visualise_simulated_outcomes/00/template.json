@@ -1,5 +1,31 @@
 {
   "streams": {
+    "Pipeline.Cash over Time Results": {
+      "name": "Pipeline.Cash over Time Results",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              },
+              "amount": {
+                "type": "Float",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
     "Pipeline.Historic Procurement": {
       "name": "Pipeline.Historic Procurement",
       "type": {
@@ -48,6 +74,32 @@
               },
               "discount": {
                 "type": "Float",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "Pipeline.Stock-on-hand over Time Results": {
+      "name": "Pipeline.Stock-on-hand over Time Results",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              },
+              "amount": {
+                "type": "Integer",
                 "value": null
               }
             }
@@ -507,6 +559,309 @@
     }
   },
   "tasks": {
+    "Pipeline.Cash over Time Results": {
+      "name": "Pipeline.Cash over Time Results",
+      "parent": "Pipeline.Cash over Time Results",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "SimulationLedger.Descriptive.Cash",
+          "type": {
+            "type": "Array",
+            "value": {
+              "type": "Struct",
+              "value": {
+                "journal_id": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "date": {
+                  "type": "DateTime",
+                  "value": null
+                },
+                "event": {
+                  "type": "Variant",
+                  "value": {
+                    "set": {
+                      "type": "Float",
+                      "value": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Cash over Time Results",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "amount": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "amount": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "expression": {
+            "type": {
+              "type": "Dict",
+              "value": {
+                "key": {
+                  "type": "String",
+                  "value": null
+                },
+                "value": {
+                  "type": "Struct",
+                  "value": {
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "amount": {
+                      "type": "Float",
+                      "value": null
+                    }
+                  }
+                }
+              }
+            },
+            "ast_type": "ToDict",
+            "collection": {
+              "type": {
+                "type": "Array",
+                "value": {
+                  "type": "Struct",
+                  "value": {
+                    "journal_id": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "event": {
+                      "type": "Variant",
+                      "value": {
+                        "set": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "ast_type": "Variable",
+              "name": "value"
+            },
+            "output_value": {
+              "type": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "amount": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              },
+              "ast_type": "Struct",
+              "fields": {
+                "date": {
+                  "type": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "ast_type": "GetField",
+                  "struct": {
+                    "type": {
+                      "type": "Struct",
+                      "value": {
+                        "journal_id": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "date": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "event": {
+                          "type": "Variant",
+                          "value": {
+                            "set": {
+                              "type": "Float",
+                              "value": null
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "ast_type": "Variable",
+                    "name": "_value_KZ_vixqKYT_MwiRzCJp69a"
+                  },
+                  "key": "date"
+                },
+                "amount": {
+                  "type": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "ast_type": "Match",
+                  "input": {
+                    "type": {
+                      "type": "Variant",
+                      "value": {
+                        "set": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    },
+                    "ast_type": "GetField",
+                    "struct": {
+                      "type": {
+                        "type": "Struct",
+                        "value": {
+                          "journal_id": {
+                            "type": "Integer",
+                            "value": null
+                          },
+                          "date": {
+                            "type": "DateTime",
+                            "value": null
+                          },
+                          "event": {
+                            "type": "Variant",
+                            "value": {
+                              "set": {
+                                "type": "Float",
+                                "value": null
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "ast_type": "Variable",
+                      "name": "_value_KZ_vixqKYT_MwiRzCJp69a"
+                    },
+                    "key": "event"
+                  },
+                  "functions": {
+                    "set": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "_l27Dmmes3YQ_QApTlIH2bC"
+                    }
+                  },
+                  "value": "_l27Dmmes3YQ_QApTlIH2bC"
+                }
+              }
+            },
+            "output_key": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "Print",
+              "value": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "_key_e9jCHjjFLHyqXLNqAk3FIw"
+              }
+            },
+            "input_value": {
+              "type": {
+                "type": "Struct",
+                "value": {
+                  "journal_id": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "event": {
+                    "type": "Variant",
+                    "value": {
+                      "set": {
+                        "type": "Float",
+                        "value": null
+                      }
+                    }
+                  }
+                }
+              },
+              "ast_type": "Variable",
+              "name": "_value_KZ_vixqKYT_MwiRzCJp69a"
+            },
+            "input_key": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "_key_e9jCHjjFLHyqXLNqAk3FIw"
+            }
+          }
+        }
+      ]
+    },
     "Pipeline.Historic Procurement": {
       "name": "Pipeline.Historic Procurement",
       "parent": "Pipeline.Historic Procurement",
@@ -680,6 +1035,309 @@
               },
               "ast_type": "Variable",
               "name": "field.date"
+            }
+          }
+        }
+      ]
+    },
+    "Pipeline.Stock-on-hand over Time Results": {
+      "name": "Pipeline.Stock-on-hand over Time Results",
+      "parent": "Pipeline.Stock-on-hand over Time Results",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "SimulationLedger.Descriptive.Stock-on-hand",
+          "type": {
+            "type": "Array",
+            "value": {
+              "type": "Struct",
+              "value": {
+                "journal_id": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "date": {
+                  "type": "DateTime",
+                  "value": null
+                },
+                "event": {
+                  "type": "Variant",
+                  "value": {
+                    "set": {
+                      "type": "Integer",
+                      "value": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Stock-on-hand over Time Results",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "amount": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "amount": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "expression": {
+            "type": {
+              "type": "Dict",
+              "value": {
+                "key": {
+                  "type": "String",
+                  "value": null
+                },
+                "value": {
+                  "type": "Struct",
+                  "value": {
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "amount": {
+                      "type": "Integer",
+                      "value": null
+                    }
+                  }
+                }
+              }
+            },
+            "ast_type": "ToDict",
+            "collection": {
+              "type": {
+                "type": "Array",
+                "value": {
+                  "type": "Struct",
+                  "value": {
+                    "journal_id": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "event": {
+                      "type": "Variant",
+                      "value": {
+                        "set": {
+                          "type": "Integer",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "ast_type": "Variable",
+              "name": "value"
+            },
+            "output_value": {
+              "type": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "amount": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              },
+              "ast_type": "Struct",
+              "fields": {
+                "date": {
+                  "type": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "ast_type": "GetField",
+                  "struct": {
+                    "type": {
+                      "type": "Struct",
+                      "value": {
+                        "journal_id": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "date": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "event": {
+                          "type": "Variant",
+                          "value": {
+                            "set": {
+                              "type": "Integer",
+                              "value": null
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "ast_type": "Variable",
+                    "name": "_value_lSd1K9__LRvRKnf93woq_Q"
+                  },
+                  "key": "date"
+                },
+                "amount": {
+                  "type": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "ast_type": "Match",
+                  "input": {
+                    "type": {
+                      "type": "Variant",
+                      "value": {
+                        "set": {
+                          "type": "Integer",
+                          "value": null
+                        }
+                      }
+                    },
+                    "ast_type": "GetField",
+                    "struct": {
+                      "type": {
+                        "type": "Struct",
+                        "value": {
+                          "journal_id": {
+                            "type": "Integer",
+                            "value": null
+                          },
+                          "date": {
+                            "type": "DateTime",
+                            "value": null
+                          },
+                          "event": {
+                            "type": "Variant",
+                            "value": {
+                              "set": {
+                                "type": "Integer",
+                                "value": null
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "ast_type": "Variable",
+                      "name": "_value_lSd1K9__LRvRKnf93woq_Q"
+                    },
+                    "key": "event"
+                  },
+                  "functions": {
+                    "set": {
+                      "type": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "_KlLwYsvTLjqHa25I2VUIoP"
+                    }
+                  },
+                  "value": "_KlLwYsvTLjqHa25I2VUIoP"
+                }
+              }
+            },
+            "output_key": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "Print",
+              "value": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "_key_SDQgdxZAfD_pzBiH5460QX"
+              }
+            },
+            "input_value": {
+              "type": {
+                "type": "Struct",
+                "value": {
+                  "journal_id": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "event": {
+                    "type": "Variant",
+                    "value": {
+                      "set": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
+                  }
+                }
+              },
+              "ast_type": "Variable",
+              "name": "_value_lSd1K9__LRvRKnf93woq_Q"
+            },
+            "input_key": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "_key_SDQgdxZAfD_pzBiH5460QX"
             }
           }
         }
@@ -1920,6 +2578,113 @@
       "default_type": "file",
       "stream": "Writeable.Suppliers File",
       "path": "data/suppliers.jsonl"
+    }
+  },
+  "layouts": {
+    "Layout.Validation Dashboard": {
+      "type": "layout",
+      "name": "Layout.Validation Dashboard",
+      "display_name": "Validation Dashboard",
+      "visual": {
+        "type": "panel",
+        "orientation": "row",
+        "visuals": [
+          {
+            "type": "vega",
+            "kind": "dict",
+            "name": "Cash over Time",
+            "stream": "Pipeline.Cash over Time Results",
+            "spec": {
+              "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+              "width": "container",
+              "height": "container",
+              "data": {
+                "values": []
+              },
+              "params": [
+                {
+                  "name": "grid",
+                  "select": "interval",
+                  "bind": "scales"
+                }
+              ],
+              "mark": {
+                "type": "line"
+              },
+              "encoding": {
+                "x": {
+                  "field": "date",
+                  "type": "temporal",
+                  "title": "Date"
+                },
+                "y": {
+                  "field": "amount",
+                  "type": "quantitative",
+                  "title": "Amount"
+                },
+                "tooltip": [
+                  {
+                    "field": "date",
+                    "type": "temporal"
+                  },
+                  {
+                    "field": "amount",
+                    "type": "quantitative"
+                  }
+                ]
+              }
+            },
+            "percentage": 50
+          },
+          {
+            "type": "vega",
+            "kind": "dict",
+            "name": "Stock-on-hand over Time",
+            "stream": "Pipeline.Stock-on-hand over Time Results",
+            "spec": {
+              "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+              "width": "container",
+              "height": "container",
+              "data": {
+                "values": []
+              },
+              "params": [
+                {
+                  "name": "grid",
+                  "select": "interval",
+                  "bind": "scales"
+                }
+              ],
+              "mark": {
+                "type": "line"
+              },
+              "encoding": {
+                "x": {
+                  "field": "date",
+                  "type": "temporal",
+                  "title": "Date"
+                },
+                "y": {
+                  "field": "amount",
+                  "type": "quantitative",
+                  "title": "Amount"
+                },
+                "tooltip": [
+                  {
+                    "field": "date",
+                    "type": "temporal"
+                  },
+                  {
+                    "field": "amount",
+                    "type": "quantitative"
+                  }
+                ]
+              }
+            },
+            "percentage": 50
+          }
+        ]
+      }
     }
   }
 }

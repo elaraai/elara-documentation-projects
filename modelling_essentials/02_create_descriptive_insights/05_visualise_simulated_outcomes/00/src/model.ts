@@ -1,4 +1,4 @@
-import { Add, DateTimeType, Divide, FloatType, Get, GetField, IntegerType, Multiply, PipelineBuilder, Print, ProcessBuilder, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringType, Subtract, Template } from "@elaraai/core"
+import { Add, Const, DateTimeType, Divide, FloatType, Get, GetField, IntegerType, LayoutBuilder, Match, Multiply, PipelineBuilder, Print, ProcessBuilder, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringType, Struct, Subtract, Template, ToDict } from "@elaraai/core"
 
 const sales_file = new SourceBuilder("Sales File")
     .file({ path: 'data/sales.jsonl' })
@@ -104,6 +104,74 @@ const descriptive_scenario = new ScenarioBuilder("Descriptive")
     .process(sales)
     .process(procurement)
 
+const cash_over_time = new PipelineBuilder("Cash over Time Results")
+    .from(descriptive_scenario.simulationLedgerStreams().Cash)
+    .transform(
+        stream => ToDict(
+            stream,
+            value => Struct({
+                date: GetField(value, "date"),
+                amount: Match(
+                    GetField(value, "event"),
+                    {
+                        set: value => value
+                    },
+                    Const(0)
+                )
+            }),
+            (_, index) => Print(index)
+        )
+    )
+
+const stock_over_time = new PipelineBuilder("Stock-on-hand over Time Results")
+    .from(descriptive_scenario.simulationLedgerStreams()["Stock-on-hand"])
+    .transform(
+        stream => ToDict(
+            stream,
+            value => Struct({
+                date: GetField(value, "date"),
+                amount: Match(
+                    GetField(value, "event"),
+                    {
+                        set: value => value
+                    },
+                    Const(0)
+                )
+            }),
+            (_, index) => Print(index)
+        )
+    )
+
+const validation_dashboard = new LayoutBuilder("Validation Dashboard")
+    .panel(
+        "row",
+        builder => builder
+            .vega(
+                50,
+                "Cash over Time",
+                builder => builder
+                    .fromStream(cash_over_time.outputStream())
+                    .line({
+                        x: fields => fields.date,
+                        x_title: "Date",
+                        y: fields => fields.amount,
+                        y_title: "Amount"
+                    }),
+            )
+            .vega(
+                50,
+                "Stock-on-hand over Time",
+                builder => builder
+                    .fromStream(stock_over_time.outputStream())
+                    .line({
+                        x: fields => fields.date,
+                        x_title: "Date",
+                        y: fields => fields.amount,
+                        y_title: "Amount"
+                    }),
+            )
+    )
+
 export default Template(
     sales_file,
     suppliers_file,
@@ -116,5 +184,8 @@ export default Template(
     descriptive_scenario,
     cash,
     stock_on_hand,
-    suppliers
+    suppliers,
+    cash_over_time,
+    stock_over_time,
+    validation_dashboard
 )
