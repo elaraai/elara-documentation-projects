@@ -23,10 +23,6 @@ build-03_define_a_resource:
 build-04_define_interaction: 
 	cd 04_define_interaction && make build\
 
-.PHONY: build-05_visualise_simulated_outcomes
-build-05_visualise_simulated_outcomes: 
-	cd 05_visualise_simulated_outcomes && make build
-
 .PHONY: build-05_model_a_collection_resource
 build-05_model_a_collection_resource: 
 	cd 05_model_a_collection_resource && make build
