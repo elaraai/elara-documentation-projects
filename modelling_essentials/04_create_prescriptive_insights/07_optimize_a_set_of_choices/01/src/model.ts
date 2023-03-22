@@ -267,6 +267,8 @@ const predictive_scenario = new ScenarioBuilder("Predictive")
     .process(procurement)
     .process(predicted_sales)
     .process(predicted_procurement)
+    .alterResourceFromStream("Cash", descriptive_scenario.simulationResultStreams().Cash)
+    .alterResourceFromStream("Stock-on-hand", descriptive_scenario.simulationResultStreams()["Stock-on-hand"])
     .simulationInMemory(true)
 
 const my_discount_choice = new SourceBuilder("My Discount Choice")
@@ -366,6 +368,8 @@ const multi_decision_prescriptive_scenario = new ScenarioBuilder("Multi-decision
     .process(procurement)
     .process(predicted_sales)
     .process(predicted_procurement_simple_ranked)
+    .alterResourceFromStream("Cash", descriptive_scenario.simulationResultStreams().Cash)
+    .alterResourceFromStream("Stock-on-hand", descriptive_scenario.simulationResultStreams()["Stock-on-hand"])
     // elara will try to maximise this - the cash balance!
     .objective("Cash", cash => cash)
     // tell elara to find the best discount
@@ -462,6 +466,8 @@ const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi
     .process(procurement)
     .process(predicted_sales)
     .process(predicted_procurement_ranking_function)
+    .alterResourceFromStream("Cash", descriptive_scenario.simulationResultStreams().Cash)
+    .alterResourceFromStream("Stock-on-hand", descriptive_scenario.simulationResultStreams()["Stock-on-hand"])
     // elara will try to maximise this - the cash balance!
     .objective("Cash", cash => cash)
     // tell elara to find the best discount

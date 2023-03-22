@@ -3200,7 +3200,7 @@
       "name": "Simulation.Predictive",
       "inputs": {
         "resource.Cash": {
-          "name": "Writeable.Resource.Cash",
+          "name": "SimulationResult.Descriptive.Cash",
           "type": {
             "type": "Float",
             "value": null
@@ -3208,7 +3208,7 @@
           "writable": false
         },
         "resource.Stock-on-hand": {
-          "name": "Writeable.Resource.Stock-on-hand",
+          "name": "SimulationResult.Descriptive.Stock-on-hand",
           "type": {
             "type": "Integer",
             "value": null

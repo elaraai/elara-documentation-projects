@@ -266,6 +266,8 @@ const predictive_scenario = new ScenarioBuilder("Predictive")
     .process(procurement)
     .process(predicted_sales)
     .process(predicted_procurement)
+    .alterResourceFromStream("Cash", descriptive_scenario.simulationResultStreams().Cash)
+    .alterResourceFromStream("Stock-on-hand", descriptive_scenario.simulationResultStreams()["Stock-on-hand"])
 
 const my_discount_choice = new SourceBuilder("My Discount Choice")
     .value({
