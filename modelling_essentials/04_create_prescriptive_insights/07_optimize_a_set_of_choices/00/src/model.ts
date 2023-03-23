@@ -191,10 +191,11 @@ const descriptive_scenario = new ScenarioBuilder("Descriptive")
 
 // Predicted Scenario
 
-const now = new Date("2023-12-17T09:00:00Z")
+const now = new Date("2022-10-15T11:00:00Z")
+const next_procurement = new Date("2022-10-16T09:00:00Z")
 
 const operating_times = new ResourceBuilder("Operating Times")
-    .mapFromValue({ start: 9, end: 12 })
+    .mapFromValue({ start: 9, end: 15 })
 
 const discount = new ResourceBuilder("Discount")
     .mapFromValue(0)
@@ -217,7 +218,7 @@ const predicted_sales = new ProcessBuilder("Predicted Sales")
     .execute("Predicted Sales", (props, resources) => Struct({
         // the next sale date will be in an hour, otherwise next day
         date: IfElse(
-            Greater(Convert(Hour(AddDuration(props.date, 1, 'hour')), FloatType), GetField(resources["Operating Times"], "end")),
+            GreaterEqual(Convert(Hour(AddDuration(props.date, 1, 'hour')), FloatType), GetField(resources["Operating Times"], "end")),
             AddDuration(Floor(AddDuration(props.date, 1, 'day'), 'day'), GetField(resources["Operating Times"], "start"), 'hour'),
             AddDuration(props.date, 1, 'hour')
         )
@@ -252,7 +253,7 @@ const predicted_procurement = new ProcessBuilder("Predicted Procurement")
         date: AddDuration(props.date, 1, 'day')
     }))
     // start simulating from the current date
-    .mapFromValue({ date: now })
+    .mapFromValue({ date: next_procurement })
 
 const predictive_scenario = new ScenarioBuilder("Predictive")
     .resource(cash)
@@ -265,10 +266,11 @@ const predictive_scenario = new ScenarioBuilder("Predictive")
     .process(receive_goods)
     .process(pay_supplier)
     .process(procurement)
+    .process(historic_sales)
+    .process(historic_procurement)
     .process(predicted_sales)
     .process(predicted_procurement)
-    .alterResourceFromStream("Cash", descriptive_scenario.simulationResultStreams().Cash)
-    .alterResourceFromStream("Stock-on-hand", descriptive_scenario.simulationResultStreams()["Stock-on-hand"])
+    
     .simulationInMemory(true)
 
 const my_discount_choice = new SourceBuilder("My Discount Choice")
@@ -352,7 +354,7 @@ const predicted_procurement_simple_ranked = new ProcessBuilder("Predicted Procur
         date: AddDuration(props.date, 1, 'day')
     }))
     // start simulating from the current date
-    .mapFromValue({ date: now })
+    .mapFromValue({ date: next_procurement })
 
 const multi_decision_prescriptive_scenario = new ScenarioBuilder("Multi-decision Prescriptive")
     .resource(cash, { ledger: true })
@@ -366,10 +368,11 @@ const multi_decision_prescriptive_scenario = new ScenarioBuilder("Multi-decision
     .process(receive_goods)
     .process(pay_supplier)
     .process(procurement)
+    .process(historic_sales)
+    .process(historic_procurement)
     .process(predicted_sales)
     .process(predicted_procurement_simple_ranked)
-    .alterResourceFromStream("Cash", descriptive_scenario.simulationResultStreams().Cash)
-    .alterResourceFromStream("Stock-on-hand", descriptive_scenario.simulationResultStreams()["Stock-on-hand"])
+    
     // elara will try to maximise this - the cash balance!
     .objective("Cash", cash => cash)
     // tell elara to find the best discount

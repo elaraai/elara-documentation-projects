@@ -559,6 +559,23 @@
       },
       "writable": false
     },
+    "Pipeline.Recommended Discount": {
+      "name": "Pipeline.Recommended Discount",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Float",
+            "value": null
+          }
+        }
+      },
+      "writable": false
+    },
     "Pipeline.Resource.Multi-factor Supplier Policy": {
       "name": "Pipeline.Resource.Multi-factor Supplier Policy",
       "type": {
@@ -577,6 +594,36 @@
               },
               "stockOnHandWeight": {
                 "type": "Float",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "Pipeline.Resource.Report": {
+      "name": "Pipeline.Resource.Report",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              },
+              "cash": {
+                "type": "Float",
+                "value": null
+              },
+              "stockOnHand": {
+                "type": "Integer",
                 "value": null
               }
             }
@@ -840,6 +887,15 @@
                 }
               }
             },
+            "Reporter": {
+              "type": "Struct",
+              "value": {
+                "date": {
+                  "type": "DateTime",
+                  "value": null
+                }
+              }
+            },
             "Sales": {
               "type": "Struct",
               "value": {
@@ -955,6 +1011,15 @@
                 },
                 "qty": {
                   "type": "Integer",
+                  "value": null
+                }
+              }
+            },
+            "Reporter": {
+              "type": "Struct",
+              "value": {
+                "date": {
+                  "type": "DateTime",
                   "value": null
                 }
               }
@@ -1091,6 +1156,15 @@
                 }
               }
             },
+            "Reporter": {
+              "type": "Struct",
+              "value": {
+                "date": {
+                  "type": "DateTime",
+                  "value": null
+                }
+              }
+            },
             "Sales": {
               "type": "Struct",
               "value": {
@@ -1210,6 +1284,15 @@
                 }
               }
             },
+            "Reporter": {
+              "type": "Struct",
+              "value": {
+                "date": {
+                  "type": "DateTime",
+                  "value": null
+                }
+              }
+            },
             "Sales": {
               "type": "Struct",
               "value": {
@@ -1325,6 +1408,15 @@
                 },
                 "qty": {
                   "type": "Integer",
+                  "value": null
+                }
+              }
+            },
+            "Reporter": {
+              "type": "Struct",
+              "value": {
+                "date": {
+                  "type": "DateTime",
                   "value": null
                 }
               }
@@ -2484,6 +2576,36 @@
       },
       "writable": false
     },
+    "SimulationResult.Interactive.Report": {
+      "name": "SimulationResult.Interactive.Report",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              },
+              "cash": {
+                "type": "Float",
+                "value": null
+              },
+              "stockOnHand": {
+                "type": "Integer",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
     "SimulationResult.Interactive.Stock-on-hand": {
       "name": "SimulationResult.Interactive.Stock-on-hand",
       "type": {
@@ -2597,6 +2719,36 @@
       },
       "writable": false
     },
+    "SimulationResult.Multi-decision Prescriptive Enhanced.Report": {
+      "name": "SimulationResult.Multi-decision Prescriptive Enhanced.Report",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              },
+              "cash": {
+                "type": "Float",
+                "value": null
+              },
+              "stockOnHand": {
+                "type": "Integer",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
     "SimulationResult.Multi-decision Prescriptive Enhanced.Stock-on-hand": {
       "name": "SimulationResult.Multi-decision Prescriptive Enhanced.Stock-on-hand",
       "type": {
@@ -2681,6 +2833,36 @@
       "type": {
         "type": "Float",
         "value": null
+      },
+      "writable": false
+    },
+    "SimulationResult.Multi-decision Prescriptive.Report": {
+      "name": "SimulationResult.Multi-decision Prescriptive.Report",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              },
+              "cash": {
+                "type": "Float",
+                "value": null
+              },
+              "stockOnHand": {
+                "type": "Integer",
+                "value": null
+              }
+            }
+          }
+        }
       },
       "writable": false
     },
@@ -2793,6 +2975,36 @@
       },
       "writable": false
     },
+    "SimulationResult.Predictive.Report": {
+      "name": "SimulationResult.Predictive.Report",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              },
+              "cash": {
+                "type": "Float",
+                "value": null
+              },
+              "stockOnHand": {
+                "type": "Integer",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
     "SimulationResult.Predictive.Stock-on-hand": {
       "name": "SimulationResult.Predictive.Stock-on-hand",
       "type": {
@@ -2877,6 +3089,36 @@
       "type": {
         "type": "Float",
         "value": null
+      },
+      "writable": false
+    },
+    "SimulationResult.Prescriptive.Report": {
+      "name": "SimulationResult.Prescriptive.Report",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              },
+              "cash": {
+                "type": "Float",
+                "value": null
+              },
+              "stockOnHand": {
+                "type": "Integer",
+                "value": null
+              }
+            }
+          }
+        }
       },
       "writable": false
     },
@@ -3003,6 +3245,28 @@
     },
     "Writeable.Process.Predicted Sales": {
       "name": "Writeable.Process.Predicted Sales",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": true
+    },
+    "Writeable.Process.Reporter": {
+      "name": "Writeable.Process.Reporter",
       "type": {
         "type": "Dict",
         "value": {
@@ -3286,7 +3550,7 @@
       "name": "Optimization.Multi-decision Prescriptive",
       "inputs": {
         "resource.Cash": {
-          "name": "Writeable.Resource.Cash",
+          "name": "SimulationResult.Descriptive.Cash",
           "type": {
             "type": "Float",
             "value": null
@@ -3294,7 +3558,7 @@
           "writable": false
         },
         "resource.Stock-on-hand": {
-          "name": "Writeable.Resource.Stock-on-hand",
+          "name": "SimulationResult.Descriptive.Stock-on-hand",
           "type": {
             "type": "Integer",
             "value": null
@@ -3462,6 +3726,58 @@
         },
         "process.Predicted Procurement with Simple Supplier Rank": {
           "name": "Writeable.Process.Predicted Procurement with Simple Supplier Rank",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        },
+        "resource.Report": {
+          "name": "Pipeline.Resource.Report",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "cash": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "stockOnHand": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        },
+        "process.Reporter": {
+          "name": "Writeable.Process.Reporter",
           "type": {
             "type": "Dict",
             "value": {
@@ -3693,6 +4009,38 @@
             }
           },
           "input": "resource.Supplier Policy",
+          "assertions": [],
+          "ledger": false
+        },
+        "Report": {
+          "name": "Report",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "cash": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "stockOnHand": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "input": "resource.Report",
           "assertions": [],
           "ledger": false
         }
@@ -4642,7 +4990,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_9lpiuvFYttemMLtvU$aaI$"
+                          "name": "_vwIfPAVIiqARQIu1g3zq0R"
                         },
                         "second": {
                           "type": {
@@ -4659,7 +5007,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_9lpiuvFYttemMLtvU$aaI$"
+                        "name": "_vwIfPAVIiqARQIu1g3zq0R"
                       },
                       "false": {
                         "type": {
@@ -4676,7 +5024,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_9lpiuvFYttemMLtvU$aaI$"
+                      "name": "_vwIfPAVIiqARQIu1g3zq0R"
                     },
                     "value": {
                       "type": {
@@ -5193,7 +5541,7 @@
                                 "value": null
                               },
                               "ast_type": "Variable",
-                              "name": "_key_58HVuOKjEp4YaGpzLUsp_Y"
+                              "name": "_key_dkji4xIW$m8NCAh7Po3jvz"
                             },
                             "weight": {
                               "type": {
@@ -5212,7 +5560,7 @@
                                   }
                                 },
                                 "ast_type": "Variable",
-                                "name": "_value_ExlYb23SuaXBwur3ZE8O1V"
+                                "name": "_value_MTiW3V1wT7jhZrYILnc0a4"
                               },
                               "key": "weight"
                             }
@@ -5229,7 +5577,7 @@
                             }
                           },
                           "ast_type": "Variable",
-                          "name": "_value_ExlYb23SuaXBwur3ZE8O1V"
+                          "name": "_value_MTiW3V1wT7jhZrYILnc0a4"
                         },
                         "input_key": {
                           "type": {
@@ -5237,7 +5585,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_key_58HVuOKjEp4YaGpzLUsp_Y"
+                          "name": "_key_dkji4xIW$m8NCAh7Po3jvz"
                         }
                       },
                       "isless": {
@@ -5267,7 +5615,7 @@
                               }
                             },
                             "ast_type": "Variable",
-                            "name": "_first_dbCTWaW_mxk98Ipm6IYves"
+                            "name": "_first_pFFlpVq_Xt5KcfQ1AZUs9l"
                           },
                           "key": "weight"
                         },
@@ -5292,7 +5640,7 @@
                               }
                             },
                             "ast_type": "Variable",
-                            "name": "_second_TfWw8B$N1w664tbJn3XvcE"
+                            "name": "_second_SEl8KE8790gfo_VRF7e0lq"
                           },
                           "key": "weight"
                         }
@@ -5312,7 +5660,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "_first_dbCTWaW_mxk98Ipm6IYves"
+                        "name": "_first_pFFlpVq_Xt5KcfQ1AZUs9l"
                       },
                       "second": {
                         "type": {
@@ -5329,7 +5677,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "_second_TfWw8B$N1w664tbJn3XvcE"
+                        "name": "_second_SEl8KE8790gfo_VRF7e0lq"
                       }
                     },
                     "key": {
@@ -5573,6 +5921,218 @@
             }
           ],
           "input": "process.Predicted Procurement with Simple Supplier Rank"
+        },
+        "Reporter": {
+          "name": "Reporter",
+          "values": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              }
+            }
+          },
+          "type": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              }
+            }
+          },
+          "statements": [
+            {
+              "type": "deleteAll",
+              "resource": "Report",
+              "active": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": true
+              },
+              "assertions": []
+            },
+            {
+              "type": "insertMany",
+              "resource": "Report",
+              "expr": {
+                "type": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "date": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "cash": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "stockOnHand": {
+                          "type": "Integer",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                },
+                "ast_type": "Insert",
+                "collection": {
+                  "type": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Struct",
+                        "value": {
+                          "date": {
+                            "type": "DateTime",
+                            "value": null
+                          },
+                          "cash": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "stockOnHand": {
+                            "type": "Integer",
+                            "value": null
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "ast_type": "Variable",
+                  "name": "r_Report"
+                },
+                "key": {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Print",
+                  "value": {
+                    "type": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "p_date"
+                  }
+                },
+                "value": {
+                  "type": {
+                    "type": "Struct",
+                    "value": {
+                      "date": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "cash": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "stockOnHand": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
+                  },
+                  "ast_type": "Struct",
+                  "fields": {
+                    "date": {
+                      "type": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "p_date"
+                    },
+                    "cash": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "r_Cash"
+                    },
+                    "stockOnHand": {
+                      "type": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "r_Stock-on-hand"
+                    }
+                  }
+                }
+              },
+              "assertions": []
+            },
+            {
+              "type": "execute",
+              "process": "Reporter",
+              "values": {
+                "type": {
+                  "type": "Struct",
+                  "value": {
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    }
+                  }
+                },
+                "ast_type": "Struct",
+                "fields": {
+                  "date": {
+                    "type": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "ast_type": "AddDuration",
+                    "start": {
+                      "type": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "p_date"
+                    },
+                    "duration": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": 1
+                    },
+                    "unit": "hour"
+                  }
+                }
+              },
+              "active": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": true
+              }
+            }
+          ],
+          "input": "process.Reporter"
         }
       },
       "mls": {
@@ -5720,7 +6280,7 @@
       "name": "Optimization.Multi-decision Prescriptive Enhanced",
       "inputs": {
         "resource.Cash": {
-          "name": "Writeable.Resource.Cash",
+          "name": "SimulationResult.Descriptive.Cash",
           "type": {
             "type": "Float",
             "value": null
@@ -5728,7 +6288,7 @@
           "writable": false
         },
         "resource.Stock-on-hand": {
-          "name": "Writeable.Resource.Stock-on-hand",
+          "name": "SimulationResult.Descriptive.Stock-on-hand",
           "type": {
             "type": "Integer",
             "value": null
@@ -5900,6 +6460,58 @@
         },
         "process.Predicted Procurement with Ranking Function": {
           "name": "Writeable.Process.Predicted Procurement with Ranking Function",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        },
+        "resource.Report": {
+          "name": "Pipeline.Resource.Report",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "cash": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "stockOnHand": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        },
+        "process.Reporter": {
+          "name": "Writeable.Process.Reporter",
           "type": {
             "type": "Dict",
             "value": {
@@ -6157,6 +6769,38 @@
             }
           },
           "input": "resource.Multi-factor Supplier Policy",
+          "assertions": [],
+          "ledger": false
+        },
+        "Report": {
+          "name": "Report",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "cash": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "stockOnHand": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "input": "resource.Report",
           "assertions": [],
           "ledger": false
         }
@@ -7106,7 +7750,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_9lpiuvFYttemMLtvU$aaI$"
+                          "name": "_vwIfPAVIiqARQIu1g3zq0R"
                         },
                         "second": {
                           "type": {
@@ -7123,7 +7767,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_9lpiuvFYttemMLtvU$aaI$"
+                        "name": "_vwIfPAVIiqARQIu1g3zq0R"
                       },
                       "false": {
                         "type": {
@@ -7140,7 +7784,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_9lpiuvFYttemMLtvU$aaI$"
+                      "name": "_vwIfPAVIiqARQIu1g3zq0R"
                     },
                     "value": {
                       "type": {
@@ -7622,7 +8266,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_key_trau5LPlGpPj7s0BsaHv9C"
+                          "name": "_key_m7o8zzZXTlKFpe8a1V6vwk"
                         },
                         "default": null
                       },
@@ -7703,7 +8347,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_key_trau5LPlGpPj7s0BsaHv9C"
+                          "name": "_key_m7o8zzZXTlKFpe8a1V6vwk"
                         },
                         "default": null
                       },
@@ -7725,7 +8369,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_key_trau5LPlGpPj7s0BsaHv9C"
+                  "name": "_key_m7o8zzZXTlKFpe8a1V6vwk"
                 },
                 "input_value": {
                   "type": {
@@ -7754,7 +8398,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "_value_GhtwQrtMhUNFhWhmsA3GcV"
+                  "name": "_value_H1kXBeLFbmAQRmULokB5A6"
                 },
                 "input_key": {
                   "type": {
@@ -7762,7 +8406,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_key_trau5LPlGpPj7s0BsaHv9C"
+                  "name": "_key_m7o8zzZXTlKFpe8a1V6vwk"
                 }
               }
             },
@@ -7930,7 +8574,7 @@
                                 "value": null
                               },
                               "ast_type": "Variable",
-                              "name": "_key_A$uXCS_ujhWl8JqcbECbfk"
+                              "name": "_key_azYS1fbZRCU5kouDz4LCIE"
                             },
                             "rank": {
                               "type": {
@@ -7938,7 +8582,7 @@
                                 "value": null
                               },
                               "ast_type": "Variable",
-                              "name": "_value_b88d46p$y4E5p0f$we86oh"
+                              "name": "_value_y4A6YLXlLskM4H2Fh7JNcf"
                             }
                           }
                         },
@@ -7948,7 +8592,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_value_b88d46p$y4E5p0f$we86oh"
+                          "name": "_value_y4A6YLXlLskM4H2Fh7JNcf"
                         },
                         "input_key": {
                           "type": {
@@ -7956,7 +8600,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_key_A$uXCS_ujhWl8JqcbECbfk"
+                          "name": "_key_azYS1fbZRCU5kouDz4LCIE"
                         }
                       },
                       "isless": {
@@ -7986,7 +8630,7 @@
                               }
                             },
                             "ast_type": "Variable",
-                            "name": "_first_BlES1CT_0VGJ4x3p30BcXs"
+                            "name": "_first_zFxJTQnAiPCHdLlvioEA3m"
                           },
                           "key": "rank"
                         },
@@ -8011,7 +8655,7 @@
                               }
                             },
                             "ast_type": "Variable",
-                            "name": "_second_DuN8sCn2t$$UHuFGSkJJSZ"
+                            "name": "_second_FMTDL2iTDXchiu3HaJrNKD"
                           },
                           "key": "rank"
                         }
@@ -8031,7 +8675,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "_first_BlES1CT_0VGJ4x3p30BcXs"
+                        "name": "_first_zFxJTQnAiPCHdLlvioEA3m"
                       },
                       "second": {
                         "type": {
@@ -8048,7 +8692,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "_second_DuN8sCn2t$$UHuFGSkJJSZ"
+                        "name": "_second_FMTDL2iTDXchiu3HaJrNKD"
                       }
                     },
                     "key": {
@@ -8292,6 +8936,218 @@
             }
           ],
           "input": "process.Predicted Procurement with Ranking Function"
+        },
+        "Reporter": {
+          "name": "Reporter",
+          "values": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              }
+            }
+          },
+          "type": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              }
+            }
+          },
+          "statements": [
+            {
+              "type": "deleteAll",
+              "resource": "Report",
+              "active": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": true
+              },
+              "assertions": []
+            },
+            {
+              "type": "insertMany",
+              "resource": "Report",
+              "expr": {
+                "type": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "date": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "cash": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "stockOnHand": {
+                          "type": "Integer",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                },
+                "ast_type": "Insert",
+                "collection": {
+                  "type": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Struct",
+                        "value": {
+                          "date": {
+                            "type": "DateTime",
+                            "value": null
+                          },
+                          "cash": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "stockOnHand": {
+                            "type": "Integer",
+                            "value": null
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "ast_type": "Variable",
+                  "name": "r_Report"
+                },
+                "key": {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Print",
+                  "value": {
+                    "type": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "p_date"
+                  }
+                },
+                "value": {
+                  "type": {
+                    "type": "Struct",
+                    "value": {
+                      "date": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "cash": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "stockOnHand": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
+                  },
+                  "ast_type": "Struct",
+                  "fields": {
+                    "date": {
+                      "type": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "p_date"
+                    },
+                    "cash": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "r_Cash"
+                    },
+                    "stockOnHand": {
+                      "type": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "r_Stock-on-hand"
+                    }
+                  }
+                }
+              },
+              "assertions": []
+            },
+            {
+              "type": "execute",
+              "process": "Reporter",
+              "values": {
+                "type": {
+                  "type": "Struct",
+                  "value": {
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    }
+                  }
+                },
+                "ast_type": "Struct",
+                "fields": {
+                  "date": {
+                    "type": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "ast_type": "AddDuration",
+                    "start": {
+                      "type": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "p_date"
+                    },
+                    "duration": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": 1
+                    },
+                    "unit": "hour"
+                  }
+                }
+              },
+              "active": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": true
+              }
+            }
+          ],
+          "input": "process.Reporter"
         }
       },
       "mls": {
@@ -8468,7 +9324,7 @@
       "name": "Optimization.Prescriptive",
       "inputs": {
         "resource.Cash": {
-          "name": "Writeable.Resource.Cash",
+          "name": "SimulationResult.Descriptive.Cash",
           "type": {
             "type": "Float",
             "value": null
@@ -8476,7 +9332,7 @@
           "writable": false
         },
         "resource.Stock-on-hand": {
-          "name": "Writeable.Resource.Stock-on-hand",
+          "name": "SimulationResult.Descriptive.Stock-on-hand",
           "type": {
             "type": "Integer",
             "value": null
@@ -8622,6 +9478,58 @@
         },
         "process.Predicted Procurement": {
           "name": "Writeable.Process.Predicted Procurement",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        },
+        "resource.Report": {
+          "name": "Pipeline.Resource.Report",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "cash": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "stockOnHand": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        },
+        "process.Reporter": {
+          "name": "Writeable.Process.Reporter",
           "type": {
             "type": "Dict",
             "value": {
@@ -8807,6 +9715,38 @@
             "value": null
           },
           "input": "resource.Discount",
+          "assertions": [],
+          "ledger": false
+        },
+        "Report": {
+          "name": "Report",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "cash": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "stockOnHand": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "input": "resource.Report",
           "assertions": [],
           "ledger": false
         }
@@ -9756,7 +10696,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_9lpiuvFYttemMLtvU$aaI$"
+                          "name": "_vwIfPAVIiqARQIu1g3zq0R"
                         },
                         "second": {
                           "type": {
@@ -9773,7 +10713,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_9lpiuvFYttemMLtvU$aaI$"
+                        "name": "_vwIfPAVIiqARQIu1g3zq0R"
                       },
                       "false": {
                         "type": {
@@ -9790,7 +10730,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_9lpiuvFYttemMLtvU$aaI$"
+                      "name": "_vwIfPAVIiqARQIu1g3zq0R"
                     },
                     "value": {
                       "type": {
@@ -10469,6 +11409,218 @@
             }
           ],
           "input": "process.Predicted Procurement"
+        },
+        "Reporter": {
+          "name": "Reporter",
+          "values": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              }
+            }
+          },
+          "type": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              }
+            }
+          },
+          "statements": [
+            {
+              "type": "deleteAll",
+              "resource": "Report",
+              "active": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": true
+              },
+              "assertions": []
+            },
+            {
+              "type": "insertMany",
+              "resource": "Report",
+              "expr": {
+                "type": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "date": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "cash": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "stockOnHand": {
+                          "type": "Integer",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                },
+                "ast_type": "Insert",
+                "collection": {
+                  "type": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Struct",
+                        "value": {
+                          "date": {
+                            "type": "DateTime",
+                            "value": null
+                          },
+                          "cash": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "stockOnHand": {
+                            "type": "Integer",
+                            "value": null
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "ast_type": "Variable",
+                  "name": "r_Report"
+                },
+                "key": {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Print",
+                  "value": {
+                    "type": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "p_date"
+                  }
+                },
+                "value": {
+                  "type": {
+                    "type": "Struct",
+                    "value": {
+                      "date": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "cash": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "stockOnHand": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
+                  },
+                  "ast_type": "Struct",
+                  "fields": {
+                    "date": {
+                      "type": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "p_date"
+                    },
+                    "cash": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "r_Cash"
+                    },
+                    "stockOnHand": {
+                      "type": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "r_Stock-on-hand"
+                    }
+                  }
+                }
+              },
+              "assertions": []
+            },
+            {
+              "type": "execute",
+              "process": "Reporter",
+              "values": {
+                "type": {
+                  "type": "Struct",
+                  "value": {
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    }
+                  }
+                },
+                "ast_type": "Struct",
+                "fields": {
+                  "date": {
+                    "type": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "ast_type": "AddDuration",
+                    "start": {
+                      "type": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "p_date"
+                    },
+                    "duration": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": 1
+                    },
+                    "unit": "hour"
+                  }
+                }
+              },
+              "active": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": true
+              }
+            }
+          ],
+          "input": "process.Reporter"
         }
       },
       "mls": {
@@ -10655,7 +11807,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_A6__yOkvCzeNWJj5yY5iIQ"
+              "name": "_HP4JnwiJ80n0HiQ6cCqzY5"
             },
             "value": {
               "type": {
@@ -10663,7 +11815,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_A6__yOkvCzeNWJj5yY5iIQ"
+              "name": "_HP4JnwiJ80n0HiQ6cCqzY5"
             }
           }
         }
@@ -11456,6 +12608,94 @@
         }
       ]
     },
+    "Pipeline.Recommended Discount": {
+      "name": "Pipeline.Recommended Discount",
+      "parent": "Pipeline.Recommended Discount",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "SimulationResult.Multi-decision Prescriptive Enhanced.Discount",
+          "type": {
+            "type": "Float",
+            "value": null
+          },
+          "writable": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Recommended Discount",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Float",
+                "value": null
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Float",
+                "value": null
+              }
+            }
+          },
+          "expression": {
+            "type": {
+              "type": "Dict",
+              "value": {
+                "key": {
+                  "type": "String",
+                  "value": null
+                },
+                "value": {
+                  "type": "Float",
+                  "value": null
+                }
+              }
+            },
+            "ast_type": "NewDict",
+            "keys": [
+              {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": "Recommended Discount"
+              }
+            ],
+            "values": [
+              {
+                "type": {
+                  "type": "Float",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "value"
+              }
+            ]
+          }
+        }
+      ]
+    },
     "Pipeline.Resource.Multi-factor Supplier Policy": {
       "name": "Pipeline.Resource.Multi-factor Supplier Policy",
       "parent": "Pipeline.Resource.Multi-factor Supplier Policy",
@@ -11655,7 +12895,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_sxXTBkn0UGFc5YtLoma4e5"
+              "name": "_key_ALn6b9nySW5nTS1ilOg0$F"
             },
             "input_value": {
               "type": {
@@ -11684,7 +12924,7 @@
                 }
               },
               "ast_type": "Variable",
-              "name": "_value_2UCLxvZuzww4DlkYbqzLdM"
+              "name": "_value_fFFfq19McSpG9O7tOQFpwS"
             },
             "input_key": {
               "type": {
@@ -11692,8 +12932,200 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_sxXTBkn0UGFc5YtLoma4e5"
+              "name": "_key_ALn6b9nySW5nTS1ilOg0$F"
             }
+          }
+        }
+      ]
+    },
+    "Pipeline.Resource.Report": {
+      "name": "Pipeline.Resource.Report",
+      "parent": "Pipeline.Resource.Report",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.Resource.Cash",
+          "type": {
+            "type": "Float",
+            "value": null
+          },
+          "writable": false
+        },
+        "stockOnHand": {
+          "name": "Writeable.Resource.Stock-on-hand",
+          "type": {
+            "type": "Integer",
+            "value": null
+          },
+          "writable": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Resource.Report",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "cash": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "stockOnHand": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "input",
+          "name": "stockOnHand"
+        },
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "cash": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "stockOnHand": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "expression": {
+            "type": {
+              "type": "Dict",
+              "value": {
+                "key": {
+                  "type": "String",
+                  "value": null
+                },
+                "value": {
+                  "type": "Struct",
+                  "value": {
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "cash": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "stockOnHand": {
+                      "type": "Integer",
+                      "value": null
+                    }
+                  }
+                }
+              }
+            },
+            "ast_type": "NewDict",
+            "keys": [
+              {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Print",
+                "value": {
+                  "type": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "ast_type": "Const",
+                  "value": {
+                    "type": "datetime",
+                    "kind": "literal",
+                    "value": "2023-12-17T09:00:00.000Z"
+                  }
+                }
+              }
+            ],
+            "values": [
+              {
+                "type": {
+                  "type": "Struct",
+                  "value": {
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "cash": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "stockOnHand": {
+                      "type": "Integer",
+                      "value": null
+                    }
+                  }
+                },
+                "ast_type": "Struct",
+                "fields": {
+                  "date": {
+                    "type": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "ast_type": "Const",
+                    "value": {
+                      "type": "datetime",
+                      "kind": "literal",
+                      "value": "2023-12-17T09:00:00.000Z"
+                    }
+                  },
+                  "cash": {
+                    "type": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "value"
+                  },
+                  "stockOnHand": {
+                    "type": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "input.stockOnHand"
+                  }
+                }
+              }
+            ]
           }
         }
       ]
@@ -11873,7 +13305,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_WWPyjBjlZOUL4nlsadcJen"
+              "name": "_key_BHs4XzEJStwBR8wTo$jQoU"
             },
             "input_value": {
               "type": {
@@ -11902,7 +13334,7 @@
                 }
               },
               "ast_type": "Variable",
-              "name": "_value_shJik3tXry4NmTQAu0O0T2"
+              "name": "_value_e7qj_$umzWv57LP2gn3EYH"
             },
             "input_key": {
               "type": {
@@ -11910,7 +13342,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_WWPyjBjlZOUL4nlsadcJen"
+              "name": "_key_BHs4XzEJStwBR8wTo$jQoU"
             }
           }
         }
@@ -13737,7 +15169,7 @@
       "name": "Simulation.Interactive",
       "inputs": {
         "resource.Cash": {
-          "name": "Writeable.Resource.Cash",
+          "name": "SimulationResult.Descriptive.Cash",
           "type": {
             "type": "Float",
             "value": null
@@ -13745,7 +15177,7 @@
           "writable": false
         },
         "resource.Stock-on-hand": {
-          "name": "Writeable.Resource.Stock-on-hand",
+          "name": "SimulationResult.Descriptive.Stock-on-hand",
           "type": {
             "type": "Integer",
             "value": null
@@ -13910,6 +15342,58 @@
             }
           },
           "writable": false
+        },
+        "resource.Report": {
+          "name": "Pipeline.Resource.Report",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "cash": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "stockOnHand": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        },
+        "process.Reporter": {
+          "name": "Writeable.Process.Reporter",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
         }
       },
       "outputs": {
@@ -14000,6 +15484,36 @@
           },
           "writable": false
         },
+        "result.Report": {
+          "name": "SimulationResult.Interactive.Report",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "cash": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "stockOnHand": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        },
         "journal": {
           "name": "SimulationJournal.Interactive",
           "type": {
@@ -14085,6 +15599,15 @@
                     },
                     "qty": {
                       "type": "Integer",
+                      "value": null
+                    }
+                  }
+                },
+                "Reporter": {
+                  "type": "Struct",
+                  "value": {
+                    "date": {
+                      "type": "DateTime",
                       "value": null
                     }
                   }
@@ -14217,6 +15740,38 @@
             "value": null
           },
           "input": "resource.Discount",
+          "assertions": [],
+          "ledger": false
+        },
+        "Report": {
+          "name": "Report",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "cash": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "stockOnHand": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "input": "resource.Report",
           "assertions": [],
           "ledger": false
         }
@@ -15166,7 +16721,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_9lpiuvFYttemMLtvU$aaI$"
+                          "name": "_vwIfPAVIiqARQIu1g3zq0R"
                         },
                         "second": {
                           "type": {
@@ -15183,7 +16738,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_9lpiuvFYttemMLtvU$aaI$"
+                        "name": "_vwIfPAVIiqARQIu1g3zq0R"
                       },
                       "false": {
                         "type": {
@@ -15200,7 +16755,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_9lpiuvFYttemMLtvU$aaI$"
+                      "name": "_vwIfPAVIiqARQIu1g3zq0R"
                     },
                     "value": {
                       "type": {
@@ -15879,6 +17434,218 @@
             }
           ],
           "input": "process.Predicted Procurement"
+        },
+        "Reporter": {
+          "name": "Reporter",
+          "values": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              }
+            }
+          },
+          "type": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              }
+            }
+          },
+          "statements": [
+            {
+              "type": "deleteAll",
+              "resource": "Report",
+              "active": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": true
+              },
+              "assertions": []
+            },
+            {
+              "type": "insertMany",
+              "resource": "Report",
+              "expr": {
+                "type": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "date": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "cash": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "stockOnHand": {
+                          "type": "Integer",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                },
+                "ast_type": "Insert",
+                "collection": {
+                  "type": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Struct",
+                        "value": {
+                          "date": {
+                            "type": "DateTime",
+                            "value": null
+                          },
+                          "cash": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "stockOnHand": {
+                            "type": "Integer",
+                            "value": null
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "ast_type": "Variable",
+                  "name": "r_Report"
+                },
+                "key": {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Print",
+                  "value": {
+                    "type": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "p_date"
+                  }
+                },
+                "value": {
+                  "type": {
+                    "type": "Struct",
+                    "value": {
+                      "date": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "cash": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "stockOnHand": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
+                  },
+                  "ast_type": "Struct",
+                  "fields": {
+                    "date": {
+                      "type": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "p_date"
+                    },
+                    "cash": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "r_Cash"
+                    },
+                    "stockOnHand": {
+                      "type": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "r_Stock-on-hand"
+                    }
+                  }
+                }
+              },
+              "assertions": []
+            },
+            {
+              "type": "execute",
+              "process": "Reporter",
+              "values": {
+                "type": {
+                  "type": "Struct",
+                  "value": {
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    }
+                  }
+                },
+                "ast_type": "Struct",
+                "fields": {
+                  "date": {
+                    "type": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "ast_type": "AddDuration",
+                    "start": {
+                      "type": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "p_date"
+                    },
+                    "duration": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": 1
+                    },
+                    "unit": "hour"
+                  }
+                }
+              },
+              "active": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": true
+              }
+            }
+          ],
+          "input": "process.Reporter"
         }
       },
       "mls": {
@@ -15959,7 +17726,7 @@
       "name": "Simulation.Multi-decision Prescriptive",
       "inputs": {
         "resource.Cash": {
-          "name": "Writeable.Resource.Cash",
+          "name": "SimulationResult.Descriptive.Cash",
           "type": {
             "type": "Float",
             "value": null
@@ -15967,7 +17734,7 @@
           "writable": false
         },
         "resource.Stock-on-hand": {
-          "name": "Writeable.Resource.Stock-on-hand",
+          "name": "SimulationResult.Descriptive.Stock-on-hand",
           "type": {
             "type": "Integer",
             "value": null
@@ -16154,6 +17921,58 @@
             }
           },
           "writable": false
+        },
+        "resource.Report": {
+          "name": "Pipeline.Resource.Report",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "cash": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "stockOnHand": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        },
+        "process.Reporter": {
+          "name": "Writeable.Process.Reporter",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
         }
       },
       "outputs": {
@@ -16258,6 +18077,36 @@
                 "value": {
                   "weight": {
                     "type": "Float",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        },
+        "result.Report": {
+          "name": "SimulationResult.Multi-decision Prescriptive.Report",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "cash": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "stockOnHand": {
+                    "type": "Integer",
                     "value": null
                   }
                 }
@@ -16718,6 +18567,15 @@
                     }
                   }
                 },
+                "Reporter": {
+                  "type": "Struct",
+                  "value": {
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    }
+                  }
+                },
                 "Sales": {
                   "type": "Struct",
                   "value": {
@@ -16870,6 +18728,38 @@
             }
           },
           "input": "resource.Supplier Policy",
+          "assertions": [],
+          "ledger": false
+        },
+        "Report": {
+          "name": "Report",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "cash": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "stockOnHand": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "input": "resource.Report",
           "assertions": [],
           "ledger": false
         }
@@ -17819,7 +19709,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_9lpiuvFYttemMLtvU$aaI$"
+                          "name": "_vwIfPAVIiqARQIu1g3zq0R"
                         },
                         "second": {
                           "type": {
@@ -17836,7 +19726,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_9lpiuvFYttemMLtvU$aaI$"
+                        "name": "_vwIfPAVIiqARQIu1g3zq0R"
                       },
                       "false": {
                         "type": {
@@ -17853,7 +19743,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_9lpiuvFYttemMLtvU$aaI$"
+                      "name": "_vwIfPAVIiqARQIu1g3zq0R"
                     },
                     "value": {
                       "type": {
@@ -18370,7 +20260,7 @@
                                 "value": null
                               },
                               "ast_type": "Variable",
-                              "name": "_key_58HVuOKjEp4YaGpzLUsp_Y"
+                              "name": "_key_dkji4xIW$m8NCAh7Po3jvz"
                             },
                             "weight": {
                               "type": {
@@ -18389,7 +20279,7 @@
                                   }
                                 },
                                 "ast_type": "Variable",
-                                "name": "_value_ExlYb23SuaXBwur3ZE8O1V"
+                                "name": "_value_MTiW3V1wT7jhZrYILnc0a4"
                               },
                               "key": "weight"
                             }
@@ -18406,7 +20296,7 @@
                             }
                           },
                           "ast_type": "Variable",
-                          "name": "_value_ExlYb23SuaXBwur3ZE8O1V"
+                          "name": "_value_MTiW3V1wT7jhZrYILnc0a4"
                         },
                         "input_key": {
                           "type": {
@@ -18414,7 +20304,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_key_58HVuOKjEp4YaGpzLUsp_Y"
+                          "name": "_key_dkji4xIW$m8NCAh7Po3jvz"
                         }
                       },
                       "isless": {
@@ -18444,7 +20334,7 @@
                               }
                             },
                             "ast_type": "Variable",
-                            "name": "_first_dbCTWaW_mxk98Ipm6IYves"
+                            "name": "_first_pFFlpVq_Xt5KcfQ1AZUs9l"
                           },
                           "key": "weight"
                         },
@@ -18469,7 +20359,7 @@
                               }
                             },
                             "ast_type": "Variable",
-                            "name": "_second_TfWw8B$N1w664tbJn3XvcE"
+                            "name": "_second_SEl8KE8790gfo_VRF7e0lq"
                           },
                           "key": "weight"
                         }
@@ -18489,7 +20379,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "_first_dbCTWaW_mxk98Ipm6IYves"
+                        "name": "_first_pFFlpVq_Xt5KcfQ1AZUs9l"
                       },
                       "second": {
                         "type": {
@@ -18506,7 +20396,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "_second_TfWw8B$N1w664tbJn3XvcE"
+                        "name": "_second_SEl8KE8790gfo_VRF7e0lq"
                       }
                     },
                     "key": {
@@ -18750,6 +20640,218 @@
             }
           ],
           "input": "process.Predicted Procurement with Simple Supplier Rank"
+        },
+        "Reporter": {
+          "name": "Reporter",
+          "values": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              }
+            }
+          },
+          "type": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              }
+            }
+          },
+          "statements": [
+            {
+              "type": "deleteAll",
+              "resource": "Report",
+              "active": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": true
+              },
+              "assertions": []
+            },
+            {
+              "type": "insertMany",
+              "resource": "Report",
+              "expr": {
+                "type": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "date": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "cash": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "stockOnHand": {
+                          "type": "Integer",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                },
+                "ast_type": "Insert",
+                "collection": {
+                  "type": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Struct",
+                        "value": {
+                          "date": {
+                            "type": "DateTime",
+                            "value": null
+                          },
+                          "cash": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "stockOnHand": {
+                            "type": "Integer",
+                            "value": null
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "ast_type": "Variable",
+                  "name": "r_Report"
+                },
+                "key": {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Print",
+                  "value": {
+                    "type": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "p_date"
+                  }
+                },
+                "value": {
+                  "type": {
+                    "type": "Struct",
+                    "value": {
+                      "date": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "cash": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "stockOnHand": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
+                  },
+                  "ast_type": "Struct",
+                  "fields": {
+                    "date": {
+                      "type": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "p_date"
+                    },
+                    "cash": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "r_Cash"
+                    },
+                    "stockOnHand": {
+                      "type": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "r_Stock-on-hand"
+                    }
+                  }
+                }
+              },
+              "assertions": []
+            },
+            {
+              "type": "execute",
+              "process": "Reporter",
+              "values": {
+                "type": {
+                  "type": "Struct",
+                  "value": {
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    }
+                  }
+                },
+                "ast_type": "Struct",
+                "fields": {
+                  "date": {
+                    "type": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "ast_type": "AddDuration",
+                    "start": {
+                      "type": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "p_date"
+                    },
+                    "duration": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": 1
+                    },
+                    "unit": "hour"
+                  }
+                }
+              },
+              "active": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": true
+              }
+            }
+          ],
+          "input": "process.Reporter"
         }
       },
       "mls": {
@@ -18830,7 +20932,7 @@
       "name": "Simulation.Multi-decision Prescriptive Enhanced",
       "inputs": {
         "resource.Cash": {
-          "name": "Writeable.Resource.Cash",
+          "name": "SimulationResult.Descriptive.Cash",
           "type": {
             "type": "Float",
             "value": null
@@ -18838,7 +20940,7 @@
           "writable": false
         },
         "resource.Stock-on-hand": {
-          "name": "Writeable.Resource.Stock-on-hand",
+          "name": "SimulationResult.Descriptive.Stock-on-hand",
           "type": {
             "type": "Integer",
             "value": null
@@ -19029,6 +21131,58 @@
             }
           },
           "writable": false
+        },
+        "resource.Report": {
+          "name": "Pipeline.Resource.Report",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "cash": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "stockOnHand": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        },
+        "process.Reporter": {
+          "name": "Writeable.Process.Reporter",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
         }
       },
       "outputs": {
@@ -19137,6 +21291,36 @@
                   },
                   "stockOnHandWeight": {
                     "type": "Float",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        },
+        "result.Report": {
+          "name": "SimulationResult.Multi-decision Prescriptive Enhanced.Report",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "cash": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "stockOnHand": {
+                    "type": "Integer",
                     "value": null
                   }
                 }
@@ -19610,6 +21794,15 @@
                     }
                   }
                 },
+                "Reporter": {
+                  "type": "Struct",
+                  "value": {
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    }
+                  }
+                },
                 "Sales": {
                   "type": "Struct",
                   "value": {
@@ -19766,6 +21959,38 @@
             }
           },
           "input": "resource.Multi-factor Supplier Policy",
+          "assertions": [],
+          "ledger": false
+        },
+        "Report": {
+          "name": "Report",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "cash": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "stockOnHand": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "input": "resource.Report",
           "assertions": [],
           "ledger": false
         }
@@ -20715,7 +22940,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_9lpiuvFYttemMLtvU$aaI$"
+                          "name": "_vwIfPAVIiqARQIu1g3zq0R"
                         },
                         "second": {
                           "type": {
@@ -20732,7 +22957,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_9lpiuvFYttemMLtvU$aaI$"
+                        "name": "_vwIfPAVIiqARQIu1g3zq0R"
                       },
                       "false": {
                         "type": {
@@ -20749,7 +22974,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_9lpiuvFYttemMLtvU$aaI$"
+                      "name": "_vwIfPAVIiqARQIu1g3zq0R"
                     },
                     "value": {
                       "type": {
@@ -21231,7 +23456,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_key_trau5LPlGpPj7s0BsaHv9C"
+                          "name": "_key_m7o8zzZXTlKFpe8a1V6vwk"
                         },
                         "default": null
                       },
@@ -21312,7 +23537,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_key_trau5LPlGpPj7s0BsaHv9C"
+                          "name": "_key_m7o8zzZXTlKFpe8a1V6vwk"
                         },
                         "default": null
                       },
@@ -21334,7 +23559,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_key_trau5LPlGpPj7s0BsaHv9C"
+                  "name": "_key_m7o8zzZXTlKFpe8a1V6vwk"
                 },
                 "input_value": {
                   "type": {
@@ -21363,7 +23588,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "_value_GhtwQrtMhUNFhWhmsA3GcV"
+                  "name": "_value_H1kXBeLFbmAQRmULokB5A6"
                 },
                 "input_key": {
                   "type": {
@@ -21371,7 +23596,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_key_trau5LPlGpPj7s0BsaHv9C"
+                  "name": "_key_m7o8zzZXTlKFpe8a1V6vwk"
                 }
               }
             },
@@ -21539,7 +23764,7 @@
                                 "value": null
                               },
                               "ast_type": "Variable",
-                              "name": "_key_A$uXCS_ujhWl8JqcbECbfk"
+                              "name": "_key_azYS1fbZRCU5kouDz4LCIE"
                             },
                             "rank": {
                               "type": {
@@ -21547,7 +23772,7 @@
                                 "value": null
                               },
                               "ast_type": "Variable",
-                              "name": "_value_b88d46p$y4E5p0f$we86oh"
+                              "name": "_value_y4A6YLXlLskM4H2Fh7JNcf"
                             }
                           }
                         },
@@ -21557,7 +23782,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_value_b88d46p$y4E5p0f$we86oh"
+                          "name": "_value_y4A6YLXlLskM4H2Fh7JNcf"
                         },
                         "input_key": {
                           "type": {
@@ -21565,7 +23790,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_key_A$uXCS_ujhWl8JqcbECbfk"
+                          "name": "_key_azYS1fbZRCU5kouDz4LCIE"
                         }
                       },
                       "isless": {
@@ -21595,7 +23820,7 @@
                               }
                             },
                             "ast_type": "Variable",
-                            "name": "_first_BlES1CT_0VGJ4x3p30BcXs"
+                            "name": "_first_zFxJTQnAiPCHdLlvioEA3m"
                           },
                           "key": "rank"
                         },
@@ -21620,7 +23845,7 @@
                               }
                             },
                             "ast_type": "Variable",
-                            "name": "_second_DuN8sCn2t$$UHuFGSkJJSZ"
+                            "name": "_second_FMTDL2iTDXchiu3HaJrNKD"
                           },
                           "key": "rank"
                         }
@@ -21640,7 +23865,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "_first_BlES1CT_0VGJ4x3p30BcXs"
+                        "name": "_first_zFxJTQnAiPCHdLlvioEA3m"
                       },
                       "second": {
                         "type": {
@@ -21657,7 +23882,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "_second_DuN8sCn2t$$UHuFGSkJJSZ"
+                        "name": "_second_FMTDL2iTDXchiu3HaJrNKD"
                       }
                     },
                     "key": {
@@ -21901,6 +24126,218 @@
             }
           ],
           "input": "process.Predicted Procurement with Ranking Function"
+        },
+        "Reporter": {
+          "name": "Reporter",
+          "values": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              }
+            }
+          },
+          "type": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              }
+            }
+          },
+          "statements": [
+            {
+              "type": "deleteAll",
+              "resource": "Report",
+              "active": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": true
+              },
+              "assertions": []
+            },
+            {
+              "type": "insertMany",
+              "resource": "Report",
+              "expr": {
+                "type": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "date": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "cash": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "stockOnHand": {
+                          "type": "Integer",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                },
+                "ast_type": "Insert",
+                "collection": {
+                  "type": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Struct",
+                        "value": {
+                          "date": {
+                            "type": "DateTime",
+                            "value": null
+                          },
+                          "cash": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "stockOnHand": {
+                            "type": "Integer",
+                            "value": null
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "ast_type": "Variable",
+                  "name": "r_Report"
+                },
+                "key": {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Print",
+                  "value": {
+                    "type": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "p_date"
+                  }
+                },
+                "value": {
+                  "type": {
+                    "type": "Struct",
+                    "value": {
+                      "date": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "cash": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "stockOnHand": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
+                  },
+                  "ast_type": "Struct",
+                  "fields": {
+                    "date": {
+                      "type": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "p_date"
+                    },
+                    "cash": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "r_Cash"
+                    },
+                    "stockOnHand": {
+                      "type": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "r_Stock-on-hand"
+                    }
+                  }
+                }
+              },
+              "assertions": []
+            },
+            {
+              "type": "execute",
+              "process": "Reporter",
+              "values": {
+                "type": {
+                  "type": "Struct",
+                  "value": {
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    }
+                  }
+                },
+                "ast_type": "Struct",
+                "fields": {
+                  "date": {
+                    "type": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "ast_type": "AddDuration",
+                    "start": {
+                      "type": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "p_date"
+                    },
+                    "duration": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": 1
+                    },
+                    "unit": "hour"
+                  }
+                }
+              },
+              "active": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": true
+              }
+            }
+          ],
+          "input": "process.Reporter"
         }
       },
       "mls": {
@@ -21981,7 +24418,7 @@
       "name": "Simulation.Predictive",
       "inputs": {
         "resource.Cash": {
-          "name": "Writeable.Resource.Cash",
+          "name": "SimulationResult.Descriptive.Cash",
           "type": {
             "type": "Float",
             "value": null
@@ -21989,7 +24426,7 @@
           "writable": false
         },
         "resource.Stock-on-hand": {
-          "name": "Writeable.Resource.Stock-on-hand",
+          "name": "SimulationResult.Descriptive.Stock-on-hand",
           "type": {
             "type": "Integer",
             "value": null
@@ -22154,6 +24591,58 @@
             }
           },
           "writable": false
+        },
+        "resource.Report": {
+          "name": "Pipeline.Resource.Report",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "cash": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "stockOnHand": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        },
+        "process.Reporter": {
+          "name": "Writeable.Process.Reporter",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
         }
       },
       "outputs": {
@@ -22244,6 +24733,36 @@
           },
           "writable": false
         },
+        "result.Report": {
+          "name": "SimulationResult.Predictive.Report",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "cash": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "stockOnHand": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        },
         "journal": {
           "name": "SimulationJournal.Predictive",
           "type": {
@@ -22329,6 +24848,15 @@
                     },
                     "qty": {
                       "type": "Integer",
+                      "value": null
+                    }
+                  }
+                },
+                "Reporter": {
+                  "type": "Struct",
+                  "value": {
+                    "date": {
+                      "type": "DateTime",
                       "value": null
                     }
                   }
@@ -22461,6 +24989,38 @@
             "value": null
           },
           "input": "resource.Discount",
+          "assertions": [],
+          "ledger": false
+        },
+        "Report": {
+          "name": "Report",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "cash": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "stockOnHand": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "input": "resource.Report",
           "assertions": [],
           "ledger": false
         }
@@ -23410,7 +25970,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_9lpiuvFYttemMLtvU$aaI$"
+                          "name": "_vwIfPAVIiqARQIu1g3zq0R"
                         },
                         "second": {
                           "type": {
@@ -23427,7 +25987,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_9lpiuvFYttemMLtvU$aaI$"
+                        "name": "_vwIfPAVIiqARQIu1g3zq0R"
                       },
                       "false": {
                         "type": {
@@ -23444,7 +26004,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_9lpiuvFYttemMLtvU$aaI$"
+                      "name": "_vwIfPAVIiqARQIu1g3zq0R"
                     },
                     "value": {
                       "type": {
@@ -24123,6 +26683,218 @@
             }
           ],
           "input": "process.Predicted Procurement"
+        },
+        "Reporter": {
+          "name": "Reporter",
+          "values": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              }
+            }
+          },
+          "type": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              }
+            }
+          },
+          "statements": [
+            {
+              "type": "deleteAll",
+              "resource": "Report",
+              "active": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": true
+              },
+              "assertions": []
+            },
+            {
+              "type": "insertMany",
+              "resource": "Report",
+              "expr": {
+                "type": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "date": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "cash": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "stockOnHand": {
+                          "type": "Integer",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                },
+                "ast_type": "Insert",
+                "collection": {
+                  "type": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Struct",
+                        "value": {
+                          "date": {
+                            "type": "DateTime",
+                            "value": null
+                          },
+                          "cash": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "stockOnHand": {
+                            "type": "Integer",
+                            "value": null
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "ast_type": "Variable",
+                  "name": "r_Report"
+                },
+                "key": {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Print",
+                  "value": {
+                    "type": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "p_date"
+                  }
+                },
+                "value": {
+                  "type": {
+                    "type": "Struct",
+                    "value": {
+                      "date": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "cash": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "stockOnHand": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
+                  },
+                  "ast_type": "Struct",
+                  "fields": {
+                    "date": {
+                      "type": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "p_date"
+                    },
+                    "cash": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "r_Cash"
+                    },
+                    "stockOnHand": {
+                      "type": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "r_Stock-on-hand"
+                    }
+                  }
+                }
+              },
+              "assertions": []
+            },
+            {
+              "type": "execute",
+              "process": "Reporter",
+              "values": {
+                "type": {
+                  "type": "Struct",
+                  "value": {
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    }
+                  }
+                },
+                "ast_type": "Struct",
+                "fields": {
+                  "date": {
+                    "type": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "ast_type": "AddDuration",
+                    "start": {
+                      "type": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "p_date"
+                    },
+                    "duration": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": 1
+                    },
+                    "unit": "hour"
+                  }
+                }
+              },
+              "active": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": true
+              }
+            }
+          ],
+          "input": "process.Reporter"
         }
       },
       "mls": {
@@ -24203,7 +26975,7 @@
       "name": "Simulation.Prescriptive",
       "inputs": {
         "resource.Cash": {
-          "name": "Writeable.Resource.Cash",
+          "name": "SimulationResult.Descriptive.Cash",
           "type": {
             "type": "Float",
             "value": null
@@ -24211,7 +26983,7 @@
           "writable": false
         },
         "resource.Stock-on-hand": {
-          "name": "Writeable.Resource.Stock-on-hand",
+          "name": "SimulationResult.Descriptive.Stock-on-hand",
           "type": {
             "type": "Integer",
             "value": null
@@ -24376,6 +27148,58 @@
             }
           },
           "writable": false
+        },
+        "resource.Report": {
+          "name": "Pipeline.Resource.Report",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "cash": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "stockOnHand": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        },
+        "process.Reporter": {
+          "name": "Writeable.Process.Reporter",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
         }
       },
       "outputs": {
@@ -24466,6 +27290,36 @@
           },
           "writable": false
         },
+        "result.Report": {
+          "name": "SimulationResult.Prescriptive.Report",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "cash": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "stockOnHand": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        },
         "journal": {
           "name": "SimulationJournal.Prescriptive",
           "type": {
@@ -24551,6 +27405,15 @@
                     },
                     "qty": {
                       "type": "Integer",
+                      "value": null
+                    }
+                  }
+                },
+                "Reporter": {
+                  "type": "Struct",
+                  "value": {
+                    "date": {
+                      "type": "DateTime",
                       "value": null
                     }
                   }
@@ -24683,6 +27546,38 @@
             "value": null
           },
           "input": "resource.Discount",
+          "assertions": [],
+          "ledger": false
+        },
+        "Report": {
+          "name": "Report",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "cash": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "stockOnHand": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "input": "resource.Report",
           "assertions": [],
           "ledger": false
         }
@@ -25632,7 +28527,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_9lpiuvFYttemMLtvU$aaI$"
+                          "name": "_vwIfPAVIiqARQIu1g3zq0R"
                         },
                         "second": {
                           "type": {
@@ -25649,7 +28544,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_9lpiuvFYttemMLtvU$aaI$"
+                        "name": "_vwIfPAVIiqARQIu1g3zq0R"
                       },
                       "false": {
                         "type": {
@@ -25666,7 +28561,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_9lpiuvFYttemMLtvU$aaI$"
+                      "name": "_vwIfPAVIiqARQIu1g3zq0R"
                     },
                     "value": {
                       "type": {
@@ -26345,6 +29240,218 @@
             }
           ],
           "input": "process.Predicted Procurement"
+        },
+        "Reporter": {
+          "name": "Reporter",
+          "values": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              }
+            }
+          },
+          "type": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              }
+            }
+          },
+          "statements": [
+            {
+              "type": "deleteAll",
+              "resource": "Report",
+              "active": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": true
+              },
+              "assertions": []
+            },
+            {
+              "type": "insertMany",
+              "resource": "Report",
+              "expr": {
+                "type": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "date": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "cash": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "stockOnHand": {
+                          "type": "Integer",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                },
+                "ast_type": "Insert",
+                "collection": {
+                  "type": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Struct",
+                        "value": {
+                          "date": {
+                            "type": "DateTime",
+                            "value": null
+                          },
+                          "cash": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "stockOnHand": {
+                            "type": "Integer",
+                            "value": null
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "ast_type": "Variable",
+                  "name": "r_Report"
+                },
+                "key": {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Print",
+                  "value": {
+                    "type": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "p_date"
+                  }
+                },
+                "value": {
+                  "type": {
+                    "type": "Struct",
+                    "value": {
+                      "date": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "cash": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "stockOnHand": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
+                  },
+                  "ast_type": "Struct",
+                  "fields": {
+                    "date": {
+                      "type": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "p_date"
+                    },
+                    "cash": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "r_Cash"
+                    },
+                    "stockOnHand": {
+                      "type": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "r_Stock-on-hand"
+                    }
+                  }
+                }
+              },
+              "assertions": []
+            },
+            {
+              "type": "execute",
+              "process": "Reporter",
+              "values": {
+                "type": {
+                  "type": "Struct",
+                  "value": {
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    }
+                  }
+                },
+                "ast_type": "Struct",
+                "fields": {
+                  "date": {
+                    "type": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "ast_type": "AddDuration",
+                    "start": {
+                      "type": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "p_date"
+                    },
+                    "duration": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": 1
+                    },
+                    "unit": "hour"
+                  }
+                }
+              },
+              "active": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": true
+              }
+            }
+          ],
+          "input": "process.Reporter"
         }
       },
       "mls": {
@@ -26599,6 +29706,47 @@
         }
       }
     },
+    "Writeable.Process.Reporter": {
+      "default_type": "value",
+      "stream": "Writeable.Process.Reporter",
+      "value": {
+        "type": {
+          "type": "Dict",
+          "value": {
+            "key": {
+              "type": "String",
+              "value": null
+            },
+            "value": {
+              "type": "Struct",
+              "value": {
+                "date": {
+                  "type": "DateTime",
+                  "value": null
+                }
+              }
+            }
+          }
+        },
+        "ast_type": "Const",
+        "value": {
+          "type": "map",
+          "kind": "literal",
+          "value": [
+            [
+              "",
+              {
+                "date": {
+                  "type": "datetime",
+                  "kind": "literal",
+                  "value": "2023-12-17T09:00:00.000Z"
+                }
+              }
+            ]
+          ]
+        }
+      }
+    },
     "Writeable.Procurement File": {
       "default_type": "file",
       "stream": "Writeable.Procurement File",
@@ -26689,6 +29837,27 @@
       "default_type": "file",
       "stream": "Writeable.Suppliers File",
       "path": "data/suppliers.jsonl"
+    }
+  },
+  "layouts": {
+    "Layout.Business Outcomes": {
+      "type": "layout",
+      "name": "Layout.Business Outcomes",
+      "display_name": "Business Outcomes",
+      "visual": {
+        "type": "panel",
+        "orientation": "column",
+        "visuals": [
+          {
+            "type": "table",
+            "kind": "primitive",
+            "name": "Recommended Discount",
+            "stream": "Pipeline.Recommended Discount",
+            "key_visible": false,
+            "percentage": 100
+          }
+        ]
+      }
     }
   }
 }

@@ -190,10 +190,11 @@ const descriptive_scenario = new ScenarioBuilder("Descriptive")
 
 // Predicted Scenario
 
-const now = new Date("2023-12-17T09:00:00Z")
+const now = new Date("2022-10-15T11:00:00Z")
+const next_procurement = new Date("2022-10-16T09:00:00Z")
 
 const operating_times = new ResourceBuilder("Operating Times")
-    .mapFromValue({ start: 9, end: 12 })
+    .mapFromValue({ start: 9, end: 15 })
 
 const predicted_sales = new ProcessBuilder("Predicted Sales")
     // add the other models to be accessed
@@ -212,7 +213,7 @@ const predicted_sales = new ProcessBuilder("Predicted Sales")
     .execute("Predicted Sales", (props, resources) => Struct({
         // the next sale date will be in an hour, otherwise next day
         date: IfElse(
-            Greater(Convert(Hour(AddDuration(props.date, 1, 'hour')), FloatType), GetField(resources["Operating Times"], "end")),
+            GreaterEqual(Convert(Hour(AddDuration(props.date, 1, 'hour')), FloatType), GetField(resources["Operating Times"], "end")),
             AddDuration(Floor(AddDuration(props.date, 1, 'day'), 'day'), GetField(resources["Operating Times"], "start"), 'hour'),
             AddDuration(props.date, 1, 'hour')
         )
@@ -247,7 +248,7 @@ const predicted_procurement = new ProcessBuilder("Predicted Procurement")
         date: AddDuration(props.date, 1, 'day')
     }))
     // start simulating from the current date
-    .mapFromValue({ date: now })
+    .mapFromValue({ date: next_procurement })
 
 const predictive_scenario = new ScenarioBuilder("Predictive")
     .resource(cash, { ledger: true })
@@ -259,10 +260,11 @@ const predictive_scenario = new ScenarioBuilder("Predictive")
     .process(receive_goods)
     .process(pay_supplier)
     .process(procurement)
+    .process(historic_sales)
+    .process(historic_procurement)
     .process(predicted_sales)
     .process(predicted_procurement)
-    .alterResourceFromStream("Cash", descriptive_scenario.simulationResultStreams().Cash)
-    .alterResourceFromStream("Stock-on-hand", descriptive_scenario.simulationResultStreams()["Stock-on-hand"])
+    
 
 export default Template(
     sales_file,
