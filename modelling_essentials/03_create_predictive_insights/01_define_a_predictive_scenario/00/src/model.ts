@@ -169,8 +169,9 @@ const descriptive_scenario = new ScenarioBuilder("Descriptive")
     .process(historic_procurement)
 
 // Predicted Scenario
-const now = new Date("2022-10-15T11:00:00Z")
-const next_procurement = new Date("2022-10-16T09:00:00Z")
+const right_now = new Date("2022-10-15T11:00:00Z")
+const now = new SourceBuilder("Now").value({value: { date: right_now }})
+const next_procurement = new SourceBuilder("Next Procurement").value({value: { date: new Date("2022-10-16T09:00:00Z") }})
 
 const operating_times = new ResourceBuilder("Operating Times")
     .mapFromValue({ start: 9, end: 15 })
@@ -197,9 +198,9 @@ const predicted_sales = new ProcessBuilder("Predicted Sales")
         )
     }))
     // stop simulating 1 week into the future
-    .end((props) => Greater(props.date, AddDuration(Const(now), 1, 'week')))
+    .end((props) => Greater(props.date, AddDuration(Const(right_now), 1, 'week')))
     // start simulating from the current date
-    .mapFromValue({ date: now })
+    .mapFromStream(now.outputStream())
 
 const predicted_procurement = new ProcessBuilder("Predicted Procurement")
     .resource(suppliers)
@@ -226,7 +227,7 @@ const predicted_procurement = new ProcessBuilder("Predicted Procurement")
         date: AddDuration(props.date, 1, 'day')
     }))
     // start simulating from the current date
-    .mapFromValue({ date: next_procurement })
+    .mapFromStream(next_procurement.outputStream())
 
 const predictive_scenario = new ScenarioBuilder("Predictive")
     .fromScenario(descriptive_scenario)
@@ -255,5 +256,7 @@ export default Template(
     operating_times,
     predicted_sales,
     predicted_procurement,
-    predictive_scenario
+    predictive_scenario,
+    now,
+    next_procurement
 )
