@@ -1,4 +1,4 @@
-import { Add, AddDuration, Const, Convert, DateTimeType, Divide, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IfNull, IntegerType, Min, MLModelBuilder, Multiply, Nullable, PipelineBuilder, Print, ProcessBuilder, RandomValue, ResourceBuilder, Round, ScenarioBuilder, Sort, SourceBuilder, StringType, Struct, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
+import { Add, AddDuration, Const, Convert, DateTimeType, Divide, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IfNull, IntegerType, LayoutBuilder, Min, MLModelBuilder, Multiply, Nullable, PipelineBuilder, Print, ProcessBuilder, RandomValue, ResourceBuilder, Round, ScenarioBuilder, Sort, SourceBuilder, StringType, Struct, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
 
 const sales_file = new SourceBuilder("Sales File")
     .file({ path: 'data/sales.jsonl' })
@@ -83,7 +83,7 @@ const cash = new ResourceBuilder("Cash")
     .mapFromValue(0.0)
 
 const stock_on_hand = new ResourceBuilder("Stock-on-hand")
-    .mapFromValue(70n)
+    .mapFromValue(50n)
     
 const price = new ResourceBuilder("Price")
     .mapFromValue(3.5)
@@ -177,8 +177,8 @@ const historic_procurement = new ProcessBuilder("Historic Procurement")
     .mapManyFromStream(procurement_data.outputStream())
 
 const descriptive_scenario = new ScenarioBuilder("Descriptive")
-    .resource(cash)
-    .resource(stock_on_hand)
+    .resource(cash, { ledger: true })
+    .resource(stock_on_hand, { ledger: true })
     .resource(price)
     .resource(suppliers)
     .process(sales)
@@ -451,6 +451,45 @@ const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi
     .simulationInMemory(true)
     .optimizationInMemory(true)
 
+const optimizationLayout = new LayoutBuilder("99 - Optimization Performance")
+    .vega("Objective Value",
+        builder => builder
+            .fromStream(multi_decision_prescriptive_scenario_enhanced.optimizationStream())
+            .spec(
+                fields => ({
+                    transform: [ {
+                        window: [{ op: "max", field: fields.objective, as: "MaxObjective" }],
+                        sort: [{ field: fields.iteration, order: "ascending" }],
+                        groupby: ["scenario"],
+                        ignorePeers: false, frame: [null, 0]
+                    } ],
+                    layer: [ 
+                        {
+                            mark: { type: "circle" },
+                            encoding: {
+                                x: { field: fields.iteration, type: "quantitative" },
+                                y: { field: fields.objective, type: "quantitative" },
+                                // color: { field: fields.scenario, type: "nominal" },
+                            }
+                        },
+                        {
+                            mark: { type: "line" },
+                            encoding: {
+                                x: { field: fields.iteration, type: "quantitative" },
+                                y: { field: "MaxObjective", type: "quantitative" },
+                                // color: { field: fields.scenario, type: "nominal" },
+                                tooltip: [
+                                    { field: fields.iteration, type: "quantitative" },
+                                    { field: fields.objective, type: "quantitative" },
+                                    { field: "MaxObjective", type: "quantitative" }
+                                ]
+                            }
+                        }
+                    ]
+                })
+            )
+    )
+
 export default Template(
     sales_file,
     suppliers_file,
@@ -483,5 +522,6 @@ export default Template(
     multi_decision_prescriptive_scenario,
     multi_factor_supplier_policy,
     predicted_procurement_ranking_function,
-    multi_decision_prescriptive_scenario_enhanced
+    multi_decision_prescriptive_scenario_enhanced,
+    optimizationLayout
 )
