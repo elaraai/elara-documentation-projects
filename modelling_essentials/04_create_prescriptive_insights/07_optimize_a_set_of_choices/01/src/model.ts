@@ -451,45 +451,6 @@ const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi
     .simulationInMemory(true)
     .optimizationInMemory(true)
 
-const optimizationLayout = new LayoutBuilder("99 - Optimization Performance")
-    .vega("Objective Value",
-        builder => builder
-            .fromStream(multi_decision_prescriptive_scenario_enhanced.optimizationStream())
-            .spec(
-                fields => ({
-                    transform: [ {
-                        window: [{ op: "max", field: fields.objective, as: "MaxObjective" }],
-                        sort: [{ field: fields.iteration, order: "ascending" }],
-                        groupby: ["scenario"],
-                        ignorePeers: false, frame: [null, 0]
-                    } ],
-                    layer: [ 
-                        {
-                            mark: { type: "circle" },
-                            encoding: {
-                                x: { field: fields.iteration, type: "quantitative" },
-                                y: { field: fields.objective, type: "quantitative" },
-                                // color: { field: fields.scenario, type: "nominal" },
-                            }
-                        },
-                        {
-                            mark: { type: "line" },
-                            encoding: {
-                                x: { field: fields.iteration, type: "quantitative" },
-                                y: { field: "MaxObjective", type: "quantitative" },
-                                // color: { field: fields.scenario, type: "nominal" },
-                                tooltip: [
-                                    { field: fields.iteration, type: "quantitative" },
-                                    { field: fields.objective, type: "quantitative" },
-                                    { field: "MaxObjective", type: "quantitative" }
-                                ]
-                            }
-                        }
-                    ]
-                })
-            )
-    )
-
 export default Template(
     sales_file,
     suppliers_file,
@@ -522,6 +483,5 @@ export default Template(
     multi_decision_prescriptive_scenario,
     multi_factor_supplier_policy,
     predicted_procurement_ranking_function,
-    multi_decision_prescriptive_scenario_enhanced,
-    optimizationLayout
+    multi_decision_prescriptive_scenario_enhanced
 )
