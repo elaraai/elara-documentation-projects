@@ -1,13 +1,13 @@
-import { Add, AddDuration, Divide, EastFunction, Exp, FloatType, GetField, Greater, Hour, IfElse, LayoutBuilder, Let, Match, Multiply, PipelineBuilder, Print, ProcessBuilder, RandomNormal, RandomUniform, ResourceBuilder, ScenarioBuilder, SourceBuilder, Struct, Subtract, Template, ToDict } from "@elaraai/core"
+import { Add, AddDuration, Divide, EastFunction, Exp, FloatType, GetField, GreaterEqual, Hour, IfElse, LayoutBuilder, Let, Match, Multiply, PipelineBuilder, Print, ProcessBuilder, RandomNormal, RandomUniform, ResourceBuilder, Round, ScenarioBuilder, SourceBuilder, Struct, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
 
 const params = new SourceBuilder("Initial Params")
     .value({
         value: {
             minDiscount: 0.0,
-            maxDiscount: 10,
+            maxDiscount: 20,
             price: 3.5,
-            endHour: 18n,
-            endDate: new Date(`2022-10-17T05:00:00.000Z`)
+            endHour: 15n,
+            endDate: new Date(`2022-10-15T11:00:00.000Z`)
         }
     })
 
@@ -44,23 +44,23 @@ const process = new ProcessBuilder("Process")
     .let("discount", (_props, resources) => RandomUniform(GetField(resources.Resource, "minDiscount"), GetField(resources.Resource, "maxDiscount")))
     .let("price", (_props, resources) => GetField(resources.Resource, "price"))
     .let("demand", (props) => Demand(props.discount))
-    .let("qty", props => Add(1, Multiply(5, props.demand)))
-    .end((props, resources) => Greater(props.date, GetField(resources.Resource, "endDate")))
+    .let("qty", props => Round(Add(1, Multiply(5, props.demand)), "nearest", "integer"))
+    .end((props, resources) => GreaterEqual(props.date, GetField(resources.Resource, "endDate")))
     .execute(
         "Process",
         (props, resources) => Struct({
             date: Let(
-                AddDuration(props.date, Divide(1, Demand(props.discount)), 'minute'),
+                AddDuration(props.date, 1, 'hour'),
                 next_date => IfElse(
-                    Greater(Hour(next_date), GetField(resources.Resource, "endHour")),
-                    AddDuration(next_date, 12, 'hour'),
+                    GreaterEqual(Hour(next_date), GetField(resources.Resource, "endHour")),
+                    AddDuration(next_date, 18, 'hour'),
                     next_date
                 )
             )
         })
     )
     .mapFromValue({
-        date: new Date(`2022-10-10T09:00:00.000Z`)
+        date: new Date(`2022-08-01T09:00:00.000Z`)
     })
 
 const scenario = new ScenarioBuilder("Scenario")
@@ -79,22 +79,37 @@ const output = new PipelineBuilder("output")
             value,
             {
                 "Process": x => Struct({
-                    // Date: GetField(x, "date"),
-                    Qty: GetField(x, "qty"),
-                    Discount: GetField(x, "discount"),
+                    date: GetField(x, "date"),
+                    qty: GetField(x, "qty"),
+                    discount: GetField(x, "discount"),
                 })
             }
         ),
         (_value, index) => Print(index)
     ))
-    
+
+const array_output = new PipelineBuilder("array output")
+    .from(scenario.simulationJournalStream())
+    .transform(journal => ToArray(
+        journal,
+        (value) => Match(
+            value,
+            {
+                "Process": x => Struct({
+                    date: GetField(x, "date"),
+                    qty: GetField(x, "qty"),
+                    discount: GetField(x, "discount"),
+                })
+            }
+        ),
+    ))
 
 const chart = new LayoutBuilder(`Comparison (Chart)`)
     .vega("Chart", builder => builder
         .fromStream(output.outputStream())
         .scatter({
-            x: fields => fields.Discount,
-            y: fields => fields.Qty,
+            x: fields => fields.discount,
+            y: fields => fields.qty,
         })
     )
 
@@ -111,5 +126,6 @@ export default Template(
     scenario,
     output,
     chart,
-    table
+    table,
+    array_output
 );
