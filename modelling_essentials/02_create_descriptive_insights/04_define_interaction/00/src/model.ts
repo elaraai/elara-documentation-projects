@@ -100,7 +100,7 @@ const procurement = new ProcessBuilder("Procurement")
 const descriptive_scenario = new ScenarioBuilder("Descriptive")
     .resource(cash, { ledger: true })
     .resource(stock_on_hand, { ledger: true })
-    .resource(suppliers, { ledger: true })
+    .resource(suppliers)
     .process(sales)
     .process(procurement)
 
