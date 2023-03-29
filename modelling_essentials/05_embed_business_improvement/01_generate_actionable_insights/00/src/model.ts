@@ -1,4 +1,4 @@
-import { Add, AddDuration, Const, Convert, DateTimeType, Divide, FilterMap, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, Insert, IntegerType, LayoutBuilder, Match, Min, MLModelBuilder, Multiply, NewDict, None, PipelineBuilder, Print, ProcessBuilder, ResourceBuilder, Round, ScenarioBuilder, Some, Sort, SourceBuilder, StringType, Struct, StructType, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
+import { Add, AddDuration, Const, Convert, DateTimeType, Divide, FilterMap, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IntegerType, LayoutBuilder, LessEqual, Match, Min, Minimum, MLModelBuilder, Multiply, NewDict, None, PipelineBuilder, Print, ProcessBuilder, ResourceBuilder, Round, ScenarioBuilder, Some, Sort, SourceBuilder, StringType, Struct, StructType, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
 
 const sales_file = new SourceBuilder("Sales File")
     .file({ path: 'data/sales.jsonl' })
@@ -468,19 +468,36 @@ const reporter = new ProcessBuilder("Reporter")
     .resource(cash)
     .resource(stock_on_hand)
     .resource(report)
-    .set("Report", (props, resources) => Insert(
-        resources.Report,
-        Print(props.date),
-        Struct({
+    .insert("Report", {
+        value: (props, resources) => Struct({
             date: props.date,
             cash: resources.Cash,
             stockOnHand: resources["Stock-on-hand"]   
-        })
-    ))
+        }),
+        key: props => Print(props.date)
+    })
     .execute("Reporter", props => Struct({
         date: AddDuration(props.date, 1, "hour")
     }))
-    .mapFromValue({ date: now })
+    .mapFromPipeline(
+        builder => builder
+            .from(sales_data.outputStream())
+            .aggregate({
+                group_name: "_",
+                group_value: _ => Const("_"),
+                aggregations: {
+                    minDate: fields => Minimum(fields.date)
+                }
+            })
+            .transform(
+                stream => Struct({ 
+                    date: GetField(
+                        Get(stream, Const("_")),
+                        "minDate"
+                    )
+                })
+            )
+    )
 
 const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi-decision Prescriptive Enhanced")
     .fromScenario(descriptive_scenario)
@@ -593,16 +610,29 @@ const optimised_sales_performance = new PipelineBuilder("Optimised Sales Perform
     .filter(
         fields => GreaterEqual(fields.date, now)
     )
-
 // Time Series data for charts
-const concatenated_reports = new PipelineBuilder("Concatenated Reports")
+const optimised_report = new PipelineBuilder("Optimised Report")
     .from(multi_decision_prescriptive_scenario_enhanced.simulationResultStreams().Report)
-    .input({ name: "interactive_report", stream: optimised_interactive.simulationResultStreams().Report })
+    .filter(fields => GreaterEqual(fields.date, now))
+
+const interactive_report = new PipelineBuilder("Interactive Report")
+    .from(optimised_interactive.simulationResultStreams().Report)
+    .filter(fields => GreaterEqual(fields.date, now))
+
+const historic_report = new PipelineBuilder("Historic Report")
+    .from(optimised_interactive.simulationResultStreams().Report)
+    .filter(fields => LessEqual(fields.date, now))
+
+const concatenated_reports = new PipelineBuilder("Concatenated Reports")
+    .from(optimised_report.outputStream())
+    .input({ name: "interactive_report", stream: interactive_report.outputStream() })
+    .input({ name: "historic_report", stream: historic_report.outputStream() })
     .concatenate({
         discriminator_name: "scenario",
         discriminator_value: "Optimised",
         inputs: [
-            { input: inputs => inputs.interactive_report, discriminator_value: "BAU" }
+            { input: inputs => inputs.interactive_report, discriminator_value: "BAU" },
+            { input: inputs => inputs.historic_report, discriminator_value: "Historic" }
         ]
     })
 
@@ -739,6 +769,9 @@ export default Template(
     // Table data
     optimised_sales_performance,
     // Line chart data
+    optimised_report,
+    interactive_report,
+    historic_report,
     concatenated_reports,
     dashboard
 )
