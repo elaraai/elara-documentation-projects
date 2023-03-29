@@ -1,4 +1,4 @@
-import { Add, AddDuration, Const, Convert, DateTimeType, Divide, FilterMap, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IfNull, Insert, IntegerType, LayoutBuilder, Match, Min, MLModelBuilder, Multiply, NewDict, None, Nullable, PipelineBuilder, Print, ProcessBuilder, RandomValue, ResourceBuilder, Round, ScenarioBuilder, Some, Sort, SourceBuilder, StringType, Struct, StructType, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
+import { Add, AddDuration, ArrayType, Const, Convert, DateTimeType, Divide, FilterMap, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IfNull, Insert, IntegerType, LayoutBuilder, Match, Min, MLModelBuilder, Multiply, NewDict, None, Nullable, PipelineBuilder, Print, ProcessBuilder, RandomValue, ResourceBuilder, Round, ScenarioBuilder, Some, Sort, SourceBuilder, Stream, StringType, Struct, StructType, Subtract, Template, ToArray, ToDict, VariantType } from "@elaraai/core"
 
 const sales_file = new SourceBuilder("Sales File")
     .file({ path: 'data/sales.jsonl' })
@@ -177,8 +177,8 @@ const historic_procurement = new ProcessBuilder("Historic Procurement")
     .mapManyFromStream(procurement_data.outputStream())
 
 const descriptive_scenario = new ScenarioBuilder("Descriptive")
-    .resource(cash)
-    .resource(stock_on_hand)
+    .resource(cash, { ledger: true })
+    .resource(stock_on_hand, { ledger: true })
     .resource(price)
     .resource(suppliers)
     .process(sales)
@@ -501,6 +501,10 @@ const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi
     .simulationInMemory(true)
     .optimizationInMemory(true)
 
+
+// Interactive Dashboard
+
+// New Interactive Scenario
 const predicted_procurement_from_optimised = new ProcessBuilder("Optimised Procurement")
     .resource(cash)
     .process(procurement)
@@ -561,6 +565,7 @@ const optimised_interactive = new ScenarioBuilder("Optimised Interactive")
     )
     .simulationInMemory(true)
 
+// Headline Recommendation
 const recommended_discount = new PipelineBuilder("Recommended Discount")
     .from(multi_decision_prescriptive_scenario_enhanced.simulationResultStreams().Discount)
     .transform(stream => NewDict(
@@ -570,6 +575,7 @@ const recommended_discount = new PipelineBuilder("Recommended Discount")
         [Struct({ discount: stream })]
     ))
 
+// Sales over time Table data
 const optimised_sales_performance = new PipelineBuilder("Optimised Sales Performance")
     .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
     .transform(
@@ -585,18 +591,116 @@ const optimised_sales_performance = new PipelineBuilder("Optimised Sales Perform
                 )
             ),
             value => value,
-            (value, _) => Print(GetField(value, "date"))
+            (_, key) => Print(key)
         )
     )
     .filter(
         fields => GreaterEqual(fields.date, now)
     )
 
+// Time Series data for charts
+const LedgerToTimeSeries = (
+    resource_name: String,
+    scenario_name: string,
+    ledger_stream: Stream<ArrayType<StructType<{
+        journal_id: IntegerType;
+        date: DateTimeType;
+        event: VariantType<{
+            set: FloatType | IntegerType;
+        }>;
+    }>>>) => 
+    new PipelineBuilder(`Time Series of ${resource_name} for ${scenario_name} Scenario`)
+        .from(ledger_stream)
+        .transform(
+            stream => ToDict(
+                stream,
+                row => Struct({
+                    date: GetField(row, "date"),
+                    amount: Match(
+                        GetField(row, "event"),
+                        {
+                            set: value => value
+                        }
+                    )
+                }),
+                (_, key) => Print(key)
+            )
+        )
+        
+const descriptive_cash_over_time = LedgerToTimeSeries(
+        "Cash",
+        "Descriptive",
+        descriptive_scenario.simulationLedgerStreams().Cash
+    )
+const optimised_cash_over_time = LedgerToTimeSeries(
+        "Cash",
+        "Optimised",
+        multi_decision_prescriptive_scenario_enhanced.simulationLedgerStreams().Cash
+    ).filter(
+        fields => GreaterEqual(fields.date, now)
+    )
+const interactive_cash_over_time = LedgerToTimeSeries(
+        "Cash",
+        "Interactive",
+        optimised_interactive.simulationLedgerStreams().Cash
+    )
+    .filter(
+        fields => GreaterEqual(fields.date, now)
+    )
+
+const cash_over_time = new PipelineBuilder("Cash Over Time")
+    .from(descriptive_cash_over_time.outputStream())
+    .input({ name: "optimised_over_time", stream: optimised_cash_over_time.outputStream() })
+    .input({ name: "interactive_over_time", stream: interactive_cash_over_time.outputStream() })
+    .concatenate({
+        discriminator_name: "scenario",
+        discriminator_value: "Descriptive",
+        inputs: [
+            { input: inputs => inputs.optimised_over_time, discriminator_value: "Optimised" },
+            { input: inputs => inputs.interactive_over_time, discriminator_value: "BAU" }
+        ]
+    })
+
+const descriptive_stock_over_time = LedgerToTimeSeries(
+        "Stock-on-hand",
+        "Descriptive",
+        descriptive_scenario.simulationLedgerStreams()["Stock-on-hand"]
+    )
+const optimised_stock_over_time = LedgerToTimeSeries(
+    "Stock-on-hand",
+        "Optimised",
+        multi_decision_prescriptive_scenario_enhanced.simulationLedgerStreams()["Stock-on-hand"]
+    ).filter(
+        fields => GreaterEqual(fields.date, now)
+    )
+const interactive_stock_over_time = LedgerToTimeSeries(
+        "Stock-on-hand",
+        "Interactive",
+        optimised_interactive.simulationLedgerStreams()["Stock-on-hand"]
+    )
+    .filter(
+        fields => GreaterEqual(fields.date, now)
+    )
+
+const stock_over_time = new PipelineBuilder("Stock-on-hand Over Time")
+    .from(descriptive_stock_over_time.outputStream())
+    .input({ name: "optimised_over_time", stream: optimised_stock_over_time.outputStream() })
+    .input({ name: "interactive_over_time", stream: interactive_stock_over_time.outputStream() })
+    .concatenate({
+        discriminator_name: "scenario",
+        discriminator_value: "Descriptive",
+        inputs: [
+            { input: inputs => inputs.optimised_over_time, discriminator_value: "Optimised" },
+            { input: inputs => inputs.interactive_over_time, discriminator_value: "BAU" }
+        ]
+    })
+
+// Dashboard
 const dashboard = new LayoutBuilder("Business Outcomes")
     .panel(
         "column",
         builder => builder
-            //TODO: remove and replace with headline number
+            //TODO: remove and replace with headline number instead of table
             .table(
                 10,
                 "Recommended Discount",
@@ -643,40 +747,38 @@ const dashboard = new LayoutBuilder("Business Outcomes")
                                     )
                             )
                     )
-                    // TODO: replace below with line charts of stock and cash
+                    // TODO: validate that this is working.
                     .panel(
                         50,
                         "column",
                         builder => builder
-                            .form(
-                                20,
-                                "BAU Discount",
+                            .vega(
+                                50,
+                                "Cash-over-time",
                                 builder => builder
-                                    .fromStream(my_discount_choice.outputStream())
-                                    .float("Percentage Discount", { value: fields => fields.discount })
+                                    .fromStream(cash_over_time.outputStream())
+                                    .line({
+                                        x: fields => fields.date,
+                                        x_title: "Date",
+                                        y: fields => fields.amount,
+                                        y_title: "Cash Balance",
+                                        color: fields => fields.scenario,
+                                        color_title: "Scenario"
+                                    })
                             )
-                            .tab(
-                                80,
+                            .vega(
+                                50,
+                                "Stock-over-time",
                                 builder => builder
-                                    .table(
-                                        "Expected Hourly Sales",
-                                        builder => builder
-                                            .fromStream(optimised_sales_performance.outputStream())
-                                            .date("Date", fields => fields.date)
-                                            .float("Unit Price", fields => fields.price)
-                                            .integer("Quantity Sold", fields => fields.qty)
-                                            .float("Revenue", fields => fields.amount)
-                                    )
-                                    // TODO: replace below with Procurement table
-                                    .table(
-                                        "Expected Hourly Sales2",
-                                        builder => builder
-                                            .fromStream(optimised_sales_performance.outputStream())
-                                            .date("Date", fields => fields.date)
-                                            .float("Unit Price", fields => fields.price)
-                                            .integer("Quantity Sold", fields => fields.qty)
-                                            .float("Revenue", fields => fields.amount)
-                                    )
+                                    .fromStream(stock_over_time.outputStream())
+                                    .line({
+                                        x: fields => fields.date,
+                                        x_title: "Date",
+                                        y: fields => fields.amount,
+                                        y_title: "Stock-on-hand",
+                                        color: fields => fields.scenario,
+                                        color_title: "Scenario"
+                                    })
                             )
                     )
             )
@@ -718,9 +820,21 @@ export default Template(
     // Dashboard
     report,
     reporter,
+    // Interactive scenario
     predicted_procurement_from_optimised,
     optimised_interactive,
+    // Headline value
     recommended_discount,
+    // Table data
     optimised_sales_performance,
+    // Line chart data
+    descriptive_cash_over_time,
+    optimised_cash_over_time,
+    interactive_cash_over_time,
+    cash_over_time,
+    descriptive_stock_over_time,
+    optimised_stock_over_time,
+    interactive_stock_over_time,
+    stock_over_time,
     dashboard
 )
