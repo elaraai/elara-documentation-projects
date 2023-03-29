@@ -1,4 +1,4 @@
-import { Add, AddDuration, Const, Convert, DateTimeType, Divide, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IfNull, Insert, IntegerType, LayoutBuilder, Min, MLModelBuilder, Multiply, NewDict, Nullable, PipelineBuilder, Print, ProcessBuilder, RandomValue, ResourceBuilder, Round, ScenarioBuilder, Sort, SourceBuilder, StringType, Struct, StructType, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
+import { Add, AddDuration, Const, Convert, DateTimeType, Divide, FilterMap, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IfNull, Insert, IntegerType, LayoutBuilder, Match, Min, MLModelBuilder, Multiply, NewDict, None, Nullable, PipelineBuilder, Print, ProcessBuilder, RandomValue, ResourceBuilder, Round, ScenarioBuilder, Some, Sort, SourceBuilder, StringType, Struct, StructType, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
 
 const sales_file = new SourceBuilder("Sales File")
     .file({ path: 'data/sales.jsonl' })
@@ -232,6 +232,7 @@ const predicted_procurement = new ProcessBuilder("Predicted Procurement")
     .resource(suppliers)
     .resource(cash)
     .process(procurement)
+    .value("test", StringType)
     .let("supplier", (_, resources) => RandomValue(resources.Suppliers))
     // create the next procurement in the future
     .execute(
@@ -250,10 +251,11 @@ const predicted_procurement = new ProcessBuilder("Predicted Procurement")
     )
     // Set procurement to occur every day
     .execute("Predicted Procurement", props => Struct({
-        date: AddDuration(props.date, 1, 'day')
+        date: AddDuration(props.date, 1, 'day'),
+        test: Const("asd")
     }))
     // start simulating from the current date
-    .mapFromValue({ date: next_procurement })
+    .mapFromValue({ date: next_procurement, test: "Ad" })
 
 // Reporting Resources and Processes
 
@@ -311,14 +313,19 @@ const my_discount_choice = new SourceBuilder("My Discount Choice")
         type: StructType({ discount: Nullable(FloatType) })
     })
 
-const interactive_scenario = new ScenarioBuilder("Interactive")
-    .fromScenario(predictive_scenario)
-    .alterResourceFromPipeline("Discount", (builder, baseline) => builder
-        .from(baseline)
-        .input({ name: "MyDiscountChoice", stream: my_discount_choice.outputStream() })
-        .transform( (stream, inputs) => IfNull(GetField(inputs.MyDiscountChoice, "discount"), stream) )
-    )
-    .simulationInMemory(true)
+// const interactive_scenario = new ScenarioBuilder("Interactive")
+//     .fromScenario(predictive_scenario)
+//     .alterResourceFromPipeline("Discount", (builder, baseline) => builder
+//         .from(baseline)
+//         .input({ name: "MyDiscountChoice", stream: my_discount_choice.outputStream() })
+//         .transform(
+//             (stream, inputs) => IfNull(
+//                 GetField(inputs.MyDiscountChoice, "discount"),
+//                 stream
+//             ) 
+//         )
+//     )
+//     .simulationInMemory(true)
 
 // Prescriptive Scenario
 
@@ -494,9 +501,96 @@ const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi
     .simulationInMemory(true)
     .optimizationInMemory(true)
 
+const predicted_procurement_from_optimised = new ProcessBuilder("Optimised Procurement")
+    .resource(cash)
+    .process(procurement)
+    .value("supplierName", StringType)
+    .execute(
+        "Procurement",
+        props => Struct({
+            date: props.date,
+            supplierName: props.supplierName
+        }),
+    )
+    .mapManyFromPipeline(
+        builder => builder
+            .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
+            .transform(
+                stream => ToDict(
+                    FilterMap(
+                        stream,
+                        variant => Match(
+                            variant,
+                            {
+                                Procurement: value => Some(value)
+                            },
+                            None
+                        )
+                    ),
+                    value => value,
+                    (value, _) => Print(GetField(value, "date"))
+                )
+            )
+            .filter(fields => GreaterEqual(fields.date, next_procurement))
+    )
+
+const optimised_interactive = new ScenarioBuilder("Optimised Interactive")
+    .fromScenario(descriptive_scenario)
+    .resource(operating_times)
+    .resource(discount)
+    .resource(multi_factor_supplier_policy)
+    .process(predicted_sales)
+    // TODO: from here - set procurement from optimised values.
+    .process(predicted_procurement_from_optimised)
+    .alterResourceFromPipeline("Discount", (builder, baseline) => builder
+        .from(baseline)
+        .input({
+            name: "MyDiscountChoice",
+            stream: my_discount_choice.outputStream()
+        })
+        .input({
+            name: "OptimisedDiscount",
+            stream: multi_decision_prescriptive_scenario_enhanced.simulationResultStreams().Discount
+        })
+        .transform(
+            (_, inputs) => IfNull(
+                GetField(inputs.MyDiscountChoice, "discount"),
+                inputs.OptimisedDiscount
+            ) 
+        )
+    )
+    .simulationInMemory(true)
+
 const recommended_discount = new PipelineBuilder("Recommended Discount")
     .from(multi_decision_prescriptive_scenario_enhanced.simulationResultStreams().Discount)
-    .transform(stream => NewDict(StringType, FloatType, ["Recommended Discount"], [stream]))
+    .transform(stream => NewDict(
+        StringType,
+        StructType({ discount: FloatType }),
+        ["Recommended Discount"],
+        [Struct({ discount: stream })]
+    ))
+
+const optimised_sales_performance = new PipelineBuilder("Optimised Sales Performance")
+    .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
+    .transform(
+        stream => ToDict(
+            FilterMap(
+                stream,
+                variant => Match(
+                    variant,
+                    {
+                        Sales: value => Some(value)
+                    },
+                    None
+                )
+            ),
+            value => value,
+            (value, _) => Print(GetField(value, "date"))
+        )
+    )
+    .filter(
+        fields => GreaterEqual(fields.date, now)
+    )
 
 const dashboard = new LayoutBuilder("Business Outcomes")
     .panel(
@@ -508,6 +602,7 @@ const dashboard = new LayoutBuilder("Business Outcomes")
                 "Recommended Discount",
                 builder => builder
                     .fromStream(recommended_discount.outputStream())
+                    .float("Recommended Discount", fields => fields.discount)
             )
             .panel(
                 90,
@@ -522,7 +617,66 @@ const dashboard = new LayoutBuilder("Business Outcomes")
                                 "BAU Discount",
                                 builder => builder
                                     .fromStream(my_discount_choice.outputStream())
+                                    .float("Percentage Discount", { value: fields => fields.discount  })
+                            )
+                            .tab(
+                                80,
+                                builder => builder
+                                    .table(
+                                        "Expected Hourly Sales",
+                                        builder => builder
+                                            .fromStream(optimised_sales_performance.outputStream())
+                                            .date("Date", fields => fields.date)
+                                            .float("Unit Price", fields => fields.price)
+                                            .integer("Quantity Sold", fields => fields.qty)
+                                            .float("Revenue", fields => fields.amount)
+                                    )
+                                    // TODO: replace below with Procurement table
+                                    .table(
+                                        "Expected Hourly Sales2",
+                                        builder => builder
+                                            .fromStream(optimised_sales_performance.outputStream())
+                                            .date("Date", fields => fields.date)
+                                            .float("Unit Price", fields => fields.price)
+                                            .integer("Quantity Sold", fields => fields.qty)
+                                            .float("Revenue", fields => fields.amount)
+                                    )
+                            )
+                    )
+                    // TODO: replace below with line charts of stock and cash
+                    .panel(
+                        50,
+                        "column",
+                        builder => builder
+                            .form(
+                                20,
+                                "BAU Discount",
+                                builder => builder
+                                    .fromStream(my_discount_choice.outputStream())
                                     .float("Percentage Discount", { value: fields => fields.discount })
+                            )
+                            .tab(
+                                80,
+                                builder => builder
+                                    .table(
+                                        "Expected Hourly Sales",
+                                        builder => builder
+                                            .fromStream(optimised_sales_performance.outputStream())
+                                            .date("Date", fields => fields.date)
+                                            .float("Unit Price", fields => fields.price)
+                                            .integer("Quantity Sold", fields => fields.qty)
+                                            .float("Revenue", fields => fields.amount)
+                                    )
+                                    // TODO: replace below with Procurement table
+                                    .table(
+                                        "Expected Hourly Sales2",
+                                        builder => builder
+                                            .fromStream(optimised_sales_performance.outputStream())
+                                            .date("Date", fields => fields.date)
+                                            .float("Unit Price", fields => fields.price)
+                                            .integer("Quantity Sold", fields => fields.qty)
+                                            .float("Revenue", fields => fields.amount)
+                                    )
                             )
                     )
             )
@@ -552,7 +706,7 @@ export default Template(
     predictive_scenario,
     demand,
     discount,
-    interactive_scenario,
+    // interactive_scenario,
     my_discount_choice,
     prescriptive_scenario,
     supplier_policy,
@@ -561,8 +715,12 @@ export default Template(
     multi_factor_supplier_policy,
     predicted_procurement_ranking_function,
     multi_decision_prescriptive_scenario_enhanced,
+    // Dashboard
     report,
     reporter,
+    predicted_procurement_from_optimised,
+    optimised_interactive,
     recommended_discount,
+    optimised_sales_performance,
     dashboard
 )
