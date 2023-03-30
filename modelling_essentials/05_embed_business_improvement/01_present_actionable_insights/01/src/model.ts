@@ -498,6 +498,11 @@ const dashboard = new LayoutBuilder("Business Outcomes")
                 )
         )
     )
+    .header(
+        builder => builder
+            .item("Recommended Discount", multi_decision_prescriptive_scenario_enhanced.simulationResultStreams().Discount)
+            .size(15)
+    )
 
 export default Template(
     sales_file,
