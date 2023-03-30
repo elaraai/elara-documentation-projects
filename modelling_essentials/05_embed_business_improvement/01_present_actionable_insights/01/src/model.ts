@@ -1,4 +1,4 @@
-import { Add, AddDuration, Const, Convert, DateTimeType, Divide, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IntegerType, Min, MLModelBuilder, Multiply, PipelineBuilder, Print, ProcessBuilder, ResourceBuilder, Round, ScenarioBuilder, Sort, SourceBuilder, StringType, Struct, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
+import { Add, AddDuration, Const, Convert, DateTimeType, Divide, FilterMap, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IntegerType, LayoutBuilder, Match, Min, MLModelBuilder, Multiply, None, PipelineBuilder, Print, ProcessBuilder, ResourceBuilder, Round, ScenarioBuilder, Some, Sort, SourceBuilder, StringType, Struct, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
 
 const sales_file = new SourceBuilder("Sales File")
     .file({ path: 'data/sales.jsonl' })
@@ -316,6 +316,189 @@ const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi
     .simulationInMemory(true)
     .optimizationInMemory(true)
 
+// Sales over time Table data
+const optimized_sales_performance = new PipelineBuilder("Optimized Sales Performance")
+    .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
+    .transform(
+        stream => ToDict(
+            FilterMap(
+                stream,
+                variant => Match(
+                    variant,
+                    {
+                        Sales: value => Some(value)
+                    },
+                    None
+                )
+            ),
+            value => value,
+            (_, key) => Print(key)
+        )
+    )
+    .filter(
+        fields => GreaterEqual(fields.date, now)
+    )
+
+const optimized_procurement_choices = new PipelineBuilder("Optimized Procurement Choices")
+    .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
+    .transform(
+        stream => ToDict(
+            FilterMap(
+                stream,
+                variant => Match(
+                    variant,
+                    {
+                        Procurement: value => Some(value)
+                    },
+                    None
+                )
+            ),
+            value => value,
+            (_, key) => Print(key)
+        )
+    )
+    .filter(
+        fields => GreaterEqual(fields.date, now)
+    )
+    .input({ name: "suppliers", stream: supplier_data.outputStream() })
+    .innerJoin({
+        right_input: inputs => inputs.suppliers,
+        left_key: fields => fields.supplierName,
+        right_key: fields => fields.supplierName,
+        left_selections: {
+            date: fields => fields.date,
+            supplierName: fields => fields.supplierName
+        },
+        right_selections: {
+            unitCost: fields => fields.unitCost,
+            orderQty: fields => fields.orderQty,
+            leadTime: fields => fields.leadTime,
+            paymentTerms: fields => fields.paymentTerms
+        },
+        output_key: fields => Print(fields.date)
+    })
+    .select({
+        keep_all: true,
+        selections: {
+            totalCost: fields => Multiply(fields.unitCost, fields.orderQty),
+            paymentDate: fields => AddDuration(fields.date, fields.paymentTerms, "day"),
+            deliveryDate: fields => AddDuration(fields.date, fields.leadTime, "day"),
+        }
+    })
+
+const cash_over_time = new PipelineBuilder("Cash Over Time")
+    .from(multi_decision_prescriptive_scenario_enhanced.simulationLedgerStreams().Cash)
+    .transform(
+        stream => ToDict(
+            stream,
+            value => Struct({
+                date: GetField(value, "date"),
+                amount: Match(
+                    GetField(value, "event"),
+                    {
+                        set: variant_value => variant_value
+                    }
+                )
+            }),
+            (_, key) => Print(key)
+        )
+    )
+    .select({
+        keep_all: true,
+        selections: {
+            horizon: fields => IfElse(GreaterEqual(fields.date, now), "Optimized Future", "Historic")
+        }
+    })
+
+const stock_over_time = new PipelineBuilder("Stock-on-hand Over Time")
+    .from(multi_decision_prescriptive_scenario_enhanced.simulationLedgerStreams()["Stock-on-hand"])
+    .transform(
+        stream => ToDict(
+            stream,
+            value => Struct({
+                date: GetField(value, "date"),
+                amount: Match(
+                    GetField(value, "event"),
+                    {
+                        set: variant_value => variant_value
+                    }
+                )
+            }),
+            (_, key) => Print(key)
+        )
+    )
+    .select({
+        keep_all: true,
+        selections: {
+            horizon: fields => IfElse(GreaterEqual(fields.date, now), "Optimized Future", "Historic")
+        }
+    })
+
+// Dashboard
+const dashboard = new LayoutBuilder("Business Outcomes")
+    .panel(
+        "row",
+        builder => builder
+        .tab(
+            50,
+            builder => builder
+                .table(
+                    "Expected Hourly Sales",
+                    builder => builder
+                        .fromStream(optimized_sales_performance.outputStream())
+                        .date("Date", fields => fields.date)
+                        .float("Unit Price", fields => fields.price)
+                        .integer("Quantity Sold", fields => fields.qty)
+                        .float("Revenue", fields => fields.amount)
+                )
+                .table(
+                    "Recommended Supplier Choices",
+                    builder => builder
+                        .fromStream(optimized_procurement_choices.outputStream())
+                        .date("Procurement Date", fields => fields.date)
+                        .string("Supplier Name", fields => fields.supplierName)
+                        .float("Unit Cost", fields => fields.unitCost)
+                        .integer("Order Qty", fields => fields.orderQty)
+                        .float("Total Cost", fields => fields.totalCost)
+                        .date("Planned Delivery Date", fields => fields.deliveryDate)
+                        .date("Payment Due Date", fields => fields.paymentDate)
+                )
+        )
+        .panel(
+            50,
+            "column",
+            builder => builder
+                .vega(
+                    50,
+                    "Cash-over-time",
+                    builder => builder
+                        .fromStream(cash_over_time.outputStream())
+                        .line({
+                            x: fields => fields.date,
+                            x_title: "Date",
+                            y: fields => fields.amount,
+                            y_title: "Cash Balance",
+                            color: fields => fields.horizon,
+                            color_title: "Horizon"
+                        })
+                )
+                .vega(
+                    50,
+                    "Stock-over-time",
+                    builder => builder
+                        .fromStream(stock_over_time.outputStream())
+                        .line({
+                            x: fields => fields.date,
+                            x_title: "Date",
+                            y: fields => fields.amount,
+                            y_title: "Stock-on-hand",
+                            color: fields => fields.horizon,
+                            color_title: "Scenario"
+                        })
+                )
+        )
+    )
+
 export default Template(
     sales_file,
     suppliers_file,
@@ -341,4 +524,12 @@ export default Template(
     multi_factor_supplier_policy,
     predicted_procurement_ranking_function,
     multi_decision_prescriptive_scenario_enhanced,
+    // Table data
+    optimized_sales_performance,
+    optimized_procurement_choices,
+    // Line chart data
+    cash_over_time,
+    stock_over_time,
+    // Dashboard
+    dashboard
 )
