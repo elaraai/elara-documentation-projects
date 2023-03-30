@@ -543,29 +543,41 @@ const dashboard = new LayoutBuilder("Business Outcomes")
     .panel(
         "row",
         builder => builder
-        .tab(
+        .panel(
             50,
+            "column",
             builder => builder
-                .table(
-                    "Expected Hourly Sales",
+                .form(
+                    20,
+                    "BAU Discount",
                     builder => builder
-                        .fromStream(optimized_sales_performance.outputStream())
-                        .date("Date", fields => fields.date)
-                        .float("Unit Price", fields => fields.price)
-                        .integer("Quantity Sold", fields => fields.qty)
-                        .float("Revenue", fields => fields.amount)
+                        .fromStream(my_discount_choice.outputStream())
+                        .float("Percentage Discount", { value: fields => fields.discount  })
                 )
-                .table(
-                    "Recommended Supplier Choices",
+                .tab(
+                    80,
                     builder => builder
-                        .fromStream(optimized_procurement_choices.outputStream())
-                        .date("Procurement Date", fields => fields.date)
-                        .string("Supplier Name", fields => fields.supplierName)
-                        .float("Unit Cost", fields => fields.unitCost)
-                        .integer("Order Qty", fields => fields.orderQty)
-                        .float("Total Cost", fields => fields.totalCost)
-                        .date("Planned Delivery Date", fields => fields.deliveryDate)
-                        .date("Payment Due Date", fields => fields.paymentDate)
+                        .table(
+                            "Expected Hourly Sales",
+                            builder => builder
+                                .fromStream(optimized_sales_performance.outputStream())
+                                .date("Date", fields => fields.date)
+                                .float("Unit Price", fields => fields.price)
+                                .integer("Quantity Sold", fields => fields.qty)
+                                .float("Revenue", fields => fields.amount)
+                        )
+                        .table(
+                            "Recommended Supplier Choices",
+                            builder => builder
+                                .fromStream(optimized_procurement_choices.outputStream())
+                                .date("Procurement Date", fields => fields.date)
+                                .string("Supplier Name", fields => fields.supplierName)
+                                .float("Unit Cost", fields => fields.unitCost)
+                                .integer("Order Qty", fields => fields.orderQty)
+                                .float("Total Cost", fields => fields.totalCost)
+                                .date("Planned Delivery Date", fields => fields.deliveryDate)
+                                .date("Payment Due Date", fields => fields.paymentDate)
+                        )
                 )
         )
         .panel(
