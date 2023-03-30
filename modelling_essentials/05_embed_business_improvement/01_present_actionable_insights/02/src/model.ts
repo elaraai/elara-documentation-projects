@@ -448,7 +448,6 @@ const optimized_procurement_choices = new PipelineBuilder("Optimized Procurement
 // Time Series data for charts
 const delineated_report = new PipelineBuilder("Delineated Report")
     .from(multi_decision_prescriptive_scenario_enhanced.simulationResultStreams().Report)
-    .filter(fields => GreaterEqual(fields.date, now))
     .select({
         keep_all: true,
         selections: {
