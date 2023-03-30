@@ -578,16 +578,6 @@ const optimised_interactive = new ScenarioBuilder("Optimised Interactive")
     )
     .simulationInMemory(true)
 
-// Headline Recommendation
-const recommended_discount = new PipelineBuilder("Recommended Discount")
-    .from(multi_decision_prescriptive_scenario_enhanced.simulationResultStreams().Discount)
-    .transform(stream => NewDict(
-        StringType,
-        FloatType,
-        ["Recommended Discount"],
-        [stream]
-    ))
-
 // Sales over time Table data
 const optimised_sales_performance = new PipelineBuilder("Optimised Sales Performance")
     .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
@@ -687,91 +677,83 @@ const concatenated_reports = new PipelineBuilder("Concatenated Reports")
 // Dashboard
 const dashboard = new LayoutBuilder("Business Outcomes")
     .panel(
-        "column",
+        "row",
         builder => builder
-            //TODO: remove and replace with headline number instead of table
-            .table(
-                15,
-                "Recommended Discount",
-                builder => builder
-                    .fromStream(recommended_discount.outputStream())
-                    // .float("Recommended Discount", fields => fields.discount)
-            )
-            .panel(
-                85,
-                "row",
-                builder => builder
-                    .panel(
-                        50,
-                        "column",
-                        builder => builder
-                            .form(
-                                20,
-                                "BAU Discount",
-                                builder => builder
-                                    .fromStream(my_discount_choice.outputStream())
-                                    .float("Percentage Discount", { value: fields => fields.discount  })
-                            )
-                            .tab(
-                                80,
-                                builder => builder
-                                    .table(
-                                        "Expected Hourly Sales",
-                                        builder => builder
-                                            .fromStream(optimised_sales_performance.outputStream())
-                                            .date("Date", fields => fields.date)
-                                            .float("Unit Price", fields => fields.price)
-                                            .integer("Quantity Sold", fields => fields.qty)
-                                            .float("Revenue", fields => fields.amount)
-                                    )
-                                    .table(
-                                        "Recommended Supplier Choices",
-                                        builder => builder
-                                            .fromStream(optimised_procurement_choices.outputStream())
-                                            .date("Procurement Date", fields => fields.date)
-                                            .string("Supplier Name", fields => fields.supplierName)
-                                            .float("Unit Cost", fields => fields.unitCost)
-                                            .integer("Order Qty", fields => fields.orderQty)
-                                            .float("Total Cost", fields => fields.totalCost)
-                                            .date("Planned Delivery Date", fields => fields.deliveryDate)
-                                            .date("Payment Due Date", fields => fields.paymentDate)
-                                    )
-                            )
-                    )
-                    .panel(
-                        50,
-                        "column",
-                        builder => builder
-                            .vega(
-                                50,
-                                "Cash-over-time",
-                                builder => builder
-                                    .fromStream(concatenated_reports.outputStream())
-                                    .line({
-                                        x: fields => fields.date,
-                                        x_title: "Date",
-                                        y: fields => fields.cash,
-                                        y_title: "Cash Balance",
-                                        color: fields => fields.scenario,
-                                        color_title: "Scenario"
-                                    })
-                            )
-                            .vega(
-                                50,
-                                "Stock-over-time",
-                                builder => builder
-                                    .fromStream(concatenated_reports.outputStream())
-                                    .line({
-                                        x: fields => fields.date,
-                                        x_title: "Date",
-                                        y: fields => fields.stockOnHand,
-                                        y_title: "Stock-on-hand",
-                                        color: fields => fields.scenario,
-                                        color_title: "Scenario"
-                                    })
-                            )
-                    )
-            )
+        .panel(
+            50,
+            "column",
+            builder => builder
+                .form(
+                    20,
+                    "BAU Discount",
+                    builder => builder
+                        .fromStream(my_discount_choice.outputStream())
+                        .float("Percentage Discount", { value: fields => fields.discount  })
+                )
+                .tab(
+                    80,
+                    builder => builder
+                        .table(
+                            "Expected Hourly Sales",
+                            builder => builder
+                                .fromStream(optimised_sales_performance.outputStream())
+                                .date("Date", fields => fields.date)
+                                .float("Unit Price", fields => fields.price)
+                                .integer("Quantity Sold", fields => fields.qty)
+                                .float("Revenue", fields => fields.amount)
+                        )
+                        .table(
+                            "Recommended Supplier Choices",
+                            builder => builder
+                                .fromStream(optimised_procurement_choices.outputStream())
+                                .date("Procurement Date", fields => fields.date)
+                                .string("Supplier Name", fields => fields.supplierName)
+                                .float("Unit Cost", fields => fields.unitCost)
+                                .integer("Order Qty", fields => fields.orderQty)
+                                .float("Total Cost", fields => fields.totalCost)
+                                .date("Planned Delivery Date", fields => fields.deliveryDate)
+                                .date("Payment Due Date", fields => fields.paymentDate)
+                        )
+                )
+        )
+        .panel(
+            50,
+            "column",
+            builder => builder
+                .vega(
+                    50,
+                    "Cash-over-time",
+                    builder => builder
+                        .fromStream(concatenated_reports.outputStream())
+                        .line({
+                            x: fields => fields.date,
+                            x_title: "Date",
+                            y: fields => fields.cash,
+                            y_title: "Cash Balance",
+                            color: fields => fields.scenario,
+                            color_title: "Scenario"
+                        })
+                )
+                .vega(
+                    50,
+                    "Stock-over-time",
+                    builder => builder
+                        .fromStream(concatenated_reports.outputStream())
+                        .line({
+                            x: fields => fields.date,
+                            x_title: "Date",
+                            y: fields => fields.stockOnHand,
+                            y_title: "Stock-on-hand",
+                            color: fields => fields.scenario,
+                            color_title: "Scenario"
+                        })
+                )
+        )
+    )
+    .header(
+        builder => builder
+            .item("Recommended Discount", multi_decision_prescriptive_scenario_enhanced.simulationResultStreams().Discount)
+            .size(15)
     )
 
 export default Template(
@@ -807,14 +789,12 @@ export default Template(
     multi_factor_supplier_policy,
     predicted_procurement_ranking_function,
     multi_decision_prescriptive_scenario_enhanced,
-    // Dashboard
+    // Reporting Resoure + Process
     report,
     reporter,
     // Interactive scenario
     predicted_procurement_from_optimised,
     optimised_interactive,
-    // Headline value
-    recommended_discount,
     // Table data
     optimised_sales_performance,
     optimised_procurement_choices,
@@ -823,5 +803,6 @@ export default Template(
     interactive_report,
     historic_report,
     concatenated_reports,
+    //Dashboard
     dashboard
 )
