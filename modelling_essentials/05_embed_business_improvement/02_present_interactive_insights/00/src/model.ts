@@ -445,6 +445,68 @@ const optimized_procurement_choices = new PipelineBuilder("Optimized Procurement
         }
     })
 
+// New Interactive Scenario
+const my_discount_choice = new SourceBuilder("My Discount Choice")
+    .value({
+        value: { discount: 0 },
+        type: StructType({ discount: FloatType })
+    })
+
+const predicted_procurement_from_optimized = new ProcessBuilder("Optimized Procurement")
+    .resource(cash)
+    .process(procurement)
+    .value("supplierName", StringType)
+    .execute(
+        "Procurement",
+        props => Struct({
+            date: props.date,
+            supplierName: props.supplierName
+        }),
+    )
+    .mapManyFromPipeline(
+        builder => builder
+            .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
+            .transform(
+                stream => ToDict(
+                    FilterMap(
+                        stream,
+                        variant => Match(
+                            variant,
+                            {
+                                Procurement: value => Some(value)
+                            },
+                            None
+                        )
+                    ),
+                    value => value,
+                    (value, _) => Print(GetField(value, "date"))
+                )
+            )
+            .filter(fields => GreaterEqual(fields.date, next_procurement))
+    )
+
+const interactive_scenario = new ScenarioBuilder("Interactive Scenario")
+    .fromScenario(descriptive_scenario)
+    .resource(operating_times)
+    .resource(discount)
+    .resource(multi_factor_supplier_policy)
+    .process(predicted_sales)
+    .process(predicted_procurement_from_optimized)
+    // reporting
+    .resource(report)
+    .process(reporter)
+    .alterResourceFromPipeline("Discount", (builder, baseline) => builder
+        .from(baseline)
+        .input({
+            name: "MyDiscountChoice",
+            stream: my_discount_choice.outputStream()
+        })
+        .transform(
+            (_, inputs) => GetField(inputs.MyDiscountChoice, "discount")
+        )
+    )
+    .simulationInMemory(true)
+
 // Time Series data for charts
 const delineated_report = new PipelineBuilder("Delineated Report")
     .from(multi_decision_prescriptive_scenario_enhanced.simulationResultStreams().Report)
@@ -453,6 +515,27 @@ const delineated_report = new PipelineBuilder("Delineated Report")
         selections: {
             horizon: fields => IfElse(GreaterEqual(fields.date, now), "Optimized Future", "Historic")
         }
+    })
+
+const interactive_report = new PipelineBuilder("Interactive Report")
+    .from(interactive_scenario.simulationResultStreams().Report)
+    .filter(fields => GreaterEqual(fields.date, now))
+    .select({
+        keep_all: true,
+        selections: {
+            horizon: _ => Const("BAU")
+        }
+    })
+
+const concatenated_reports = new PipelineBuilder("Concatenated Reports")
+    .from(delineated_report.outputStream())
+    .input({ name: "interactive_report", stream: interactive_report.outputStream() })
+    .concatenate({
+        discriminator_name: "scenario",
+        discriminator_value: "Optimised",
+        inputs: [
+            { input: inputs => inputs.interactive_report, discriminator_value: "BAU" },
+        ]
     })
 
 // Dashboard
@@ -493,7 +576,7 @@ const dashboard = new LayoutBuilder("Business Outcomes")
                     50,
                     "Cash-over-time",
                     builder => builder
-                        .fromStream(delineated_report.outputStream())
+                        .fromStream(concatenated_reports.outputStream())
                         .line({
                             x: fields => fields.date,
                             x_title: "Date",
@@ -507,7 +590,7 @@ const dashboard = new LayoutBuilder("Business Outcomes")
                     50,
                     "Stock-over-time",
                     builder => builder
-                        .fromStream(delineated_report.outputStream())
+                        .fromStream(concatenated_reports.outputStream())
                         .line({
                             x: fields => fields.date,
                             x_title: "Date",
@@ -551,8 +634,14 @@ export default Template(
     // Reporting
     report,
     reporter,
+    // Interactive Scenario
+    my_discount_choice,
+    predicted_procurement_from_optimized,
+    interactive_scenario,
     // Line chart data
+    interactive_report,
     delineated_report,
+    concatenated_reports,
     // Dashboard
     dashboard
 )
