@@ -393,6 +393,122 @@
       },
       "writable": false
     },
+    "SimulationLedger.Descriptive.Cash": {
+      "name": "SimulationLedger.Descriptive.Cash",
+      "type": {
+        "type": "Array",
+        "value": {
+          "type": "Struct",
+          "value": {
+            "journal_id": {
+              "type": "Integer",
+              "value": null
+            },
+            "date": {
+              "type": "DateTime",
+              "value": null
+            },
+            "event": {
+              "type": "Variant",
+              "value": {
+                "set": {
+                  "type": "Float",
+                  "value": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "SimulationLedger.Descriptive.Stock-on-hand": {
+      "name": "SimulationLedger.Descriptive.Stock-on-hand",
+      "type": {
+        "type": "Array",
+        "value": {
+          "type": "Struct",
+          "value": {
+            "journal_id": {
+              "type": "Integer",
+              "value": null
+            },
+            "date": {
+              "type": "DateTime",
+              "value": null
+            },
+            "event": {
+              "type": "Variant",
+              "value": {
+                "set": {
+                  "type": "Integer",
+                  "value": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "SimulationLedger.Predictive.Cash": {
+      "name": "SimulationLedger.Predictive.Cash",
+      "type": {
+        "type": "Array",
+        "value": {
+          "type": "Struct",
+          "value": {
+            "journal_id": {
+              "type": "Integer",
+              "value": null
+            },
+            "date": {
+              "type": "DateTime",
+              "value": null
+            },
+            "event": {
+              "type": "Variant",
+              "value": {
+                "set": {
+                  "type": "Float",
+                  "value": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "SimulationLedger.Predictive.Stock-on-hand": {
+      "name": "SimulationLedger.Predictive.Stock-on-hand",
+      "type": {
+        "type": "Array",
+        "value": {
+          "type": "Struct",
+          "value": {
+            "journal_id": {
+              "type": "Integer",
+              "value": null
+            },
+            "date": {
+              "type": "DateTime",
+              "value": null
+            },
+            "event": {
+              "type": "Variant",
+              "value": {
+                "set": {
+                  "type": "Integer",
+                  "value": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
     "SimulationResult.Descriptive.Cash": {
       "name": "SimulationResult.Descriptive.Cash",
       "type": {
@@ -1319,6 +1435,64 @@
           },
           "writable": false
         },
+        "ledger.Cash": {
+          "name": "SimulationLedger.Descriptive.Cash",
+          "type": {
+            "type": "Array",
+            "value": {
+              "type": "Struct",
+              "value": {
+                "journal_id": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "date": {
+                  "type": "DateTime",
+                  "value": null
+                },
+                "event": {
+                  "type": "Variant",
+                  "value": {
+                    "set": {
+                      "type": "Float",
+                      "value": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        },
+        "ledger.Stock-on-hand": {
+          "name": "SimulationLedger.Descriptive.Stock-on-hand",
+          "type": {
+            "type": "Array",
+            "value": {
+              "type": "Struct",
+              "value": {
+                "journal_id": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "date": {
+                  "type": "DateTime",
+                  "value": null
+                },
+                "event": {
+                  "type": "Variant",
+                  "value": {
+                    "set": {
+                      "type": "Integer",
+                      "value": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        },
         "journal": {
           "name": "SimulationJournal.Descriptive",
           "type": {
@@ -1435,7 +1609,7 @@
           },
           "input": "resource.Cash",
           "assertions": [],
-          "ledger": false
+          "ledger": true
         },
         "Stock-on-hand": {
           "name": "Stock-on-hand",
@@ -1445,7 +1619,7 @@
           },
           "input": "resource.Stock-on-hand",
           "assertions": [],
-          "ledger": false
+          "ledger": true
         },
         "Price": {
           "name": "Price",
@@ -2815,6 +2989,64 @@
           },
           "writable": false
         },
+        "ledger.Cash": {
+          "name": "SimulationLedger.Predictive.Cash",
+          "type": {
+            "type": "Array",
+            "value": {
+              "type": "Struct",
+              "value": {
+                "journal_id": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "date": {
+                  "type": "DateTime",
+                  "value": null
+                },
+                "event": {
+                  "type": "Variant",
+                  "value": {
+                    "set": {
+                      "type": "Float",
+                      "value": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        },
+        "ledger.Stock-on-hand": {
+          "name": "SimulationLedger.Predictive.Stock-on-hand",
+          "type": {
+            "type": "Array",
+            "value": {
+              "type": "Struct",
+              "value": {
+                "journal_id": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "date": {
+                  "type": "DateTime",
+                  "value": null
+                },
+                "event": {
+                  "type": "Variant",
+                  "value": {
+                    "set": {
+                      "type": "Integer",
+                      "value": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        },
         "journal": {
           "name": "SimulationJournal.Predictive",
           "type": {
@@ -2974,7 +3206,7 @@
           },
           "input": "resource.Cash",
           "assertions": [],
-          "ledger": false
+          "ledger": true
         },
         "Stock-on-hand": {
           "name": "Stock-on-hand",
@@ -2984,7 +3216,7 @@
           },
           "input": "resource.Stock-on-hand",
           "assertions": [],
-          "ledger": false
+          "ledger": true
         },
         "Price": {
           "name": "Price",
@@ -4939,7 +5171,7 @@
           "value": null
         },
         "ast_type": "Const",
-        "value": "70"
+        "value": "50"
       },
       "stream": "Writeable.Resource.Stock-on-hand"
     },

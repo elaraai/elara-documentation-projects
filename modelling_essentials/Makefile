@@ -5,7 +5,7 @@ help:
 	@echo "    make help"
 
 .PHONY: build
-build: build-01_work_with_digital_twins build-02_create_descriptive_insights build-03_create_predictive_insights build-04_create_prescriptive_insights
+build: build-01_work_with_digital_twins build-02_create_descriptive_insights build-03_create_predictive_insights build-04_create_prescriptive_insights build-05_embed_business_improvement
 
 .PHONY: build-01_work_with_digital_twins
 build-01_work_with_digital_twins: 
@@ -22,3 +22,7 @@ build-03_create_predictive_insights:
 .PHONY: build-04_create_prescriptive_insights
 build-04_create_prescriptive_insights: 
 	cd 04_create_prescriptive_insights && make build
+
+.PHONY: build-05_embed_business_improvement
+build-05_embed_business_improvement: 
+	cd 05_embed_business_improvement && make build
