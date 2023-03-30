@@ -610,6 +610,54 @@ const optimised_sales_performance = new PipelineBuilder("Optimised Sales Perform
     .filter(
         fields => GreaterEqual(fields.date, now)
     )
+
+const optimised_procurement_choices = new PipelineBuilder("Optimised Procurement Choices")
+    .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
+    .transform(
+        stream => ToDict(
+            FilterMap(
+                stream,
+                variant => Match(
+                    variant,
+                    {
+                        Procurement: value => Some(value)
+                    },
+                    None
+                )
+            ),
+            value => value,
+            (_, key) => Print(key)
+        )
+    )
+    .filter(
+        fields => GreaterEqual(fields.date, now)
+    )
+    .input({ name: "suppliers", stream: supplier_data.outputStream() })
+    .innerJoin({
+        right_input: inputs => inputs.suppliers,
+        left_key: fields => fields.supplierName,
+        right_key: fields => fields.supplierName,
+        left_selections: {
+            date: fields => fields.date,
+            supplierName: fields => fields.supplierName
+        },
+        right_selections: {
+            unitCost: fields => fields.unitCost,
+            orderQty: fields => fields.orderQty,
+            leadTime: fields => fields.leadTime,
+            paymentTerms: fields => fields.paymentTerms
+        },
+        output_key: fields => Print(fields.date)
+    })
+    .select({
+        keep_all: true,
+        selections: {
+            totalCost: fields => Multiply(fields.unitCost, fields.orderQty),
+            paymentDate: fields => AddDuration(fields.date, fields.paymentTerms, "day"),
+            deliveryDate: fields => AddDuration(fields.date, fields.leadTime, "day"),
+        }
+    })
+
 // Time Series data for charts
 const optimised_report = new PipelineBuilder("Optimised Report")
     .from(multi_decision_prescriptive_scenario_enhanced.simulationResultStreams().Report)
@@ -676,19 +724,20 @@ const dashboard = new LayoutBuilder("Business Outcomes")
                                             .integer("Quantity Sold", fields => fields.qty)
                                             .float("Revenue", fields => fields.amount)
                                     )
-                                    // TODO: replace below with Procurement table
                                     .table(
-                                        "Expected Hourly Sales2",
+                                        "Recommended Supplier Choices",
                                         builder => builder
-                                            .fromStream(optimised_sales_performance.outputStream())
-                                            .date("Date", fields => fields.date)
-                                            .float("Unit Price", fields => fields.price)
-                                            .integer("Quantity Sold", fields => fields.qty)
-                                            .float("Revenue", fields => fields.amount)
+                                            .fromStream(optimised_procurement_choices.outputStream())
+                                            .date("Procurement Date", fields => fields.date)
+                                            .string("Supplier Name", fields => fields.supplierName)
+                                            .float("Unit Cost", fields => fields.unitCost)
+                                            .integer("Order Qty", fields => fields.orderQty)
+                                            .float("Total Cost", fields => fields.totalCost)
+                                            .date("Planned Delivery Date", fields => fields.deliveryDate)
+                                            .date("Payment Due Date", fields => fields.paymentDate)
                                     )
                             )
                     )
-                    // TODO: validate that this is working.
                     .panel(
                         50,
                         "column",
@@ -768,6 +817,7 @@ export default Template(
     recommended_discount,
     // Table data
     optimised_sales_performance,
+    optimised_procurement_choices,
     // Line chart data
     optimised_report,
     interactive_report,
