@@ -1,4 +1,4 @@
-import { Add, AddDuration, Const, Convert, DateTimeType, Divide, FilterMap, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IntegerType, LayoutBuilder, Match, Min, MLModelBuilder, Multiply, None, PipelineBuilder, Print, ProcessBuilder, ResourceBuilder, Round, ScenarioBuilder, Some, Sort, SourceBuilder, StringType, Struct, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
+import { Add, AddDuration, Const, Convert, DateTimeType, Divide, FilterMap, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IntegerType, LayoutBuilder, Match, Min, Minimum, MLModelBuilder, Multiply, NewDict, None, PipelineBuilder, Print, ProcessBuilder, ResourceBuilder, Round, ScenarioBuilder, Some, Sort, SourceBuilder, StringType, Struct, StructType, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
 
 const sales_file = new SourceBuilder("Sales File")
     .file({ path: 'data/sales.jsonl' })
@@ -299,6 +299,62 @@ const predicted_procurement_ranking_function = new ProcessBuilder("Predicted Pro
     // start simulating from the current date
     .mapFromValue({ date: next_procurement })
 
+// Reporting Resources and Processes
+const report = new ResourceBuilder("Report")
+    .mapFromPipeline(builder => builder
+        .from(cash.resourceStream())
+        .input({ name: "stockOnHand", stream: stock_on_hand.resourceStream()})
+        .transform((stream, inputs) => NewDict(
+            StringType,
+            StructType({
+                date: DateTimeType,
+                cash: FloatType,
+                stockOnHand: IntegerType
+            }),
+            [Print(now)],
+            [Struct({
+                date: now,
+                cash: stream,
+                stockOnHand: inputs.stockOnHand
+            })]
+        ))
+    )
+
+const reporter = new ProcessBuilder("Reporter")
+    .resource(cash)
+    .resource(stock_on_hand)
+    .resource(report)
+    .insert("Report", {
+        value: (props, resources) => Struct({
+            date: props.date,
+            cash: resources.Cash,
+            stockOnHand: resources["Stock-on-hand"]   
+        }),
+        key: props => Print(props.date)
+    })
+    .execute("Reporter", props => Struct({
+        date: AddDuration(props.date, 1, "hour")
+    }))
+    .mapFromPipeline(
+        builder => builder
+            .from(sales_data.outputStream())
+            .aggregate({
+                group_name: "_",
+                group_value: _ => Const("_"),
+                aggregations: {
+                    minDate: fields => Minimum(fields.date)
+                }
+            })
+            .transform(
+                stream => Struct({ 
+                    date: GetField(
+                        Get(stream, Const("_")),
+                        "minDate"
+                    )
+                })
+            )
+    )
+
 const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi-decision Prescriptive Enhanced")
     .fromScenario(descriptive_scenario)
     .resource(operating_times)
@@ -306,6 +362,9 @@ const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi
     .resource(multi_factor_supplier_policy)
     .process(predicted_sales)
     .process(predicted_procurement_ranking_function)
+    // reporting
+    .resource(report)
+    .process(reporter)
     // elara will try to maximise this - the cash balance!
     .objective("Cash", cash => cash)
     // tell elara to find the best discount
@@ -386,47 +445,10 @@ const optimized_procurement_choices = new PipelineBuilder("Optimized Procurement
         }
     })
 
-const cash_over_time = new PipelineBuilder("Cash Over Time")
-    .from(multi_decision_prescriptive_scenario_enhanced.simulationLedgerStreams().Cash)
-    .transform(
-        stream => ToDict(
-            stream,
-            value => Struct({
-                date: GetField(value, "date"),
-                amount: Match(
-                    GetField(value, "event"),
-                    {
-                        set: variant_value => variant_value
-                    }
-                )
-            }),
-            (_, key) => Print(key)
-        )
-    )
-    .select({
-        keep_all: true,
-        selections: {
-            horizon: fields => IfElse(GreaterEqual(fields.date, now), "Optimized Future", "Historic")
-        }
-    })
-
-const stock_over_time = new PipelineBuilder("Stock-on-hand Over Time")
-    .from(multi_decision_prescriptive_scenario_enhanced.simulationLedgerStreams()["Stock-on-hand"])
-    .transform(
-        stream => ToDict(
-            stream,
-            value => Struct({
-                date: GetField(value, "date"),
-                amount: Match(
-                    GetField(value, "event"),
-                    {
-                        set: variant_value => variant_value
-                    }
-                )
-            }),
-            (_, key) => Print(key)
-        )
-    )
+// Time Series data for charts
+const delineated_report = new PipelineBuilder("Delineated Report")
+    .from(multi_decision_prescriptive_scenario_enhanced.simulationResultStreams().Report)
+    .filter(fields => GreaterEqual(fields.date, now))
     .select({
         keep_all: true,
         selections: {
@@ -472,11 +494,11 @@ const dashboard = new LayoutBuilder("Business Outcomes")
                     50,
                     "Cash-over-time",
                     builder => builder
-                        .fromStream(cash_over_time.outputStream())
+                        .fromStream(delineated_report.outputStream())
                         .line({
                             x: fields => fields.date,
                             x_title: "Date",
-                            y: fields => fields.amount,
+                            y: fields => fields.cash,
                             y_title: "Cash Balance",
                             color: fields => fields.horizon,
                             color_title: "Horizon"
@@ -486,11 +508,11 @@ const dashboard = new LayoutBuilder("Business Outcomes")
                     50,
                     "Stock-over-time",
                     builder => builder
-                        .fromStream(stock_over_time.outputStream())
+                        .fromStream(delineated_report.outputStream())
                         .line({
                             x: fields => fields.date,
                             x_title: "Date",
-                            y: fields => fields.amount,
+                            y: fields => fields.stockOnHand,
                             y_title: "Stock-on-hand",
                             color: fields => fields.horizon,
                             color_title: "Scenario"
@@ -527,9 +549,11 @@ export default Template(
     // Table data
     optimized_sales_performance,
     optimized_procurement_choices,
+    // Reporting
+    report,
+    reporter,
     // Line chart data
-    cash_over_time,
-    stock_over_time,
+    delineated_report,
     // Dashboard
     dashboard
 )
