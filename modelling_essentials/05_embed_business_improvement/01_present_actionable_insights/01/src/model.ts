@@ -1,4 +1,4 @@
-import { Add, AddDuration, Const, Convert, DateTimeType, Divide, FilterMap, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IntegerType, LayoutBuilder, Match, Min, MLModelBuilder, Multiply, None, PipelineBuilder, Print, ProcessBuilder, ResourceBuilder, Round, ScenarioBuilder, Some, Sort, SourceBuilder, StringType, Struct, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
+import { Add, AddDuration, Const, Convert, DateTimeType, Default, Divide, FilterMap, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IntegerType, LayoutBuilder, Match, Max, Min, MLModelBuilder, Multiply, None, PipelineBuilder, Print, ProcessBuilder, Reduce, ResourceBuilder, Round, ScenarioBuilder, Some, Sort, SourceBuilder, StringType, Struct, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
 
 const sales_file = new SourceBuilder("Sales File")
     .file({ path: 'data/sales.jsonl' })
@@ -190,9 +190,33 @@ const descriptive_scenario = new ScenarioBuilder("Descriptive")
     .simulationInMemory(true)
 
 // Prescriptive Scenario
+const next_sale_date = new ResourceBuilder("Next Sale Date")
+    .mapFromPipeline(builder => builder
+        .from(sales_data.outputStream())
+        .transform(sales => AddDuration(
+            Reduce(
+                sales,
+                (prev, curr) => Max(GetField(curr, "date"), prev),
+                Default(DateTimeType)
+            ),
+            1,
+            'hour'
+        ))
+    )
 
-const now = new Date("2022-10-15T11:00:00Z")
-const next_procurement = new Date("2022-10-16T09:00:00Z")
+const next_procurement_date = new ResourceBuilder("Next Procurement Date")
+    .mapFromPipeline(builder => builder
+        .from(procurement_data.outputStream())
+        .transform(procurement => AddDuration(
+            Reduce(
+                procurement,
+                (prev, curr) => Max(GetField(curr, "date"), prev),
+                Default(DateTimeType)
+            ),
+            1,
+            'day'
+        ))
+    )
 
 const operating_times = new ResourceBuilder("Operating Times")
     .mapFromValue({ start: 9, end: 15 })
@@ -202,6 +226,7 @@ const discount = new ResourceBuilder("Discount")
 
 const predicted_sales = new ProcessBuilder("Predicted Sales")
     // add the other models to be accessed
+    .resource(next_sale_date)
     .resource(operating_times)
     .resource(stock_on_hand)
     .resource(discount)
@@ -224,9 +249,12 @@ const predicted_sales = new ProcessBuilder("Predicted Sales")
         )
     }))
     // stop simulating 1 week into the future
-    .end((props) => Greater(props.date, AddDuration(Const(now), 1, 'week')))
+    .end((props, resources) => Greater(props.date, AddDuration(resources["Next Sale Date"], 1, 'week')))
     // start simulating from the current date
-    .mapFromValue({ date: now })
+    .mapFromPipeline(builder => builder
+        .from(next_sale_date.resourceStream())
+        .transform(date => Struct({ date }))
+    )
 
 const multi_factor_supplier_policy = new ResourceBuilder("Multi-factor Supplier Policy")
     .mapFromPipeline(builder => builder
@@ -297,10 +325,15 @@ const predicted_procurement_ranking_function = new ProcessBuilder("Predicted Pro
         date: AddDuration(props.date, 1, 'day')
     }))
     // start simulating from the current date
-    .mapFromValue({ date: next_procurement })
+    .mapFromPipeline(builder => builder
+        .from(next_procurement_date.resourceStream())
+        .transform(date => Struct({ date }))
+    )
 
 const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi-decision Prescriptive Enhanced")
     .fromScenario(descriptive_scenario)
+    .resource(next_sale_date)
+    .resource(next_procurement_date)
     .resource(operating_times)
     .resource(discount)
     .resource(multi_factor_supplier_policy)
@@ -315,29 +348,6 @@ const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi
     .optimizeEvery("Multi-factor Supplier Policy", "stockOnHandWeight", { min: -1, max: 1 })
     .simulationInMemory(true)
     .optimizationInMemory(true)
-
-// Sales over time Table data
-const optimized_sales_performance = new PipelineBuilder("Optimized Sales Performance")
-    .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
-    .transform(
-        stream => ToDict(
-            FilterMap(
-                stream,
-                variant => Match(
-                    variant,
-                    {
-                        Sales: value => Some(value)
-                    },
-                    None
-                )
-            ),
-            value => value,
-            (_, key) => Print(key)
-        )
-    )
-    .filter(
-        fields => GreaterEqual(fields.date, now)
-    )
 
 const optimized_procurement_choices = new PipelineBuilder("Optimized Procurement Choices")
     .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
@@ -357,8 +367,9 @@ const optimized_procurement_choices = new PipelineBuilder("Optimized Procurement
             (_, key) => Print(key)
         )
     )
+    .input({ name: "nextSaleDate", stream: next_sale_date.resourceStream() })
     .filter(
-        fields => GreaterEqual(fields.date, now)
+        (fields, _, inputs) => GreaterEqual(fields.date, inputs.nextSaleDate)
     )
     .input({ name: "suppliers", stream: supplier_data.outputStream() })
     .innerJoin({
@@ -403,10 +414,15 @@ const cash_over_time = new PipelineBuilder("Cash Over Time")
             (_, key) => Print(key)
         )
     )
+    .input({ name: "nextSaleDate", stream: next_sale_date.resourceStream() })
     .select({
         keep_all: true,
         selections: {
-            horizon: fields => IfElse(GreaterEqual(fields.date, now), "Optimized Future", "Historic")
+            horizon: (fields, _, inputs) => IfElse(
+                GreaterEqual(fields.date, inputs.nextSaleDate),
+                "Optimized Future",
+                "Historic"
+            )
         }
     })
 
@@ -427,10 +443,15 @@ const stock_over_time = new PipelineBuilder("Stock-on-hand Over Time")
             (_, key) => Print(key)
         )
     )
+    .input({ name: "nextSaleDate", stream: next_sale_date.resourceStream() })
     .select({
         keep_all: true,
         selections: {
-            horizon: fields => IfElse(GreaterEqual(fields.date, now), "Optimized Future", "Historic")
+            horizon: (fields, _, inputs) => IfElse(
+                GreaterEqual(fields.date, inputs.nextSaleDate),
+                "Optimized Future",
+                "Historic"
+            )
         }
     })
 
@@ -439,30 +460,18 @@ const dashboard = new LayoutBuilder("Business Outcomes")
     .panel(
         "row",
         builder => builder
-        .tab(
+        .table(
             50,
+            "Recommended Supplier Choices",
             builder => builder
-                .table(
-                    "Expected Hourly Sales",
-                    builder => builder
-                        .fromStream(optimized_sales_performance.outputStream())
-                        .date("Date", fields => fields.date)
-                        .float("Unit Price", fields => fields.price)
-                        .integer("Quantity Sold", fields => fields.qty)
-                        .float("Revenue", fields => fields.amount)
-                )
-                .table(
-                    "Recommended Supplier Choices",
-                    builder => builder
-                        .fromStream(optimized_procurement_choices.outputStream())
-                        .date("Procurement Date", fields => fields.date)
-                        .string("Supplier Name", fields => fields.supplierName)
-                        .float("Unit Cost", fields => fields.unitCost)
-                        .integer("Order Qty", fields => fields.orderQty)
-                        .float("Total Cost", fields => fields.totalCost)
-                        .date("Planned Delivery Date", fields => fields.deliveryDate)
-                        .date("Payment Due Date", fields => fields.paymentDate)
-                )
+                .fromStream(optimized_procurement_choices.outputStream())
+                .date("Procurement Date", fields => fields.date)
+                .string("Supplier Name", fields => fields.supplierName)
+                .float("Unit Cost", fields => fields.unitCost)
+                .integer("Order Qty", fields => fields.orderQty)
+                .float("Total Cost", fields => fields.totalCost)
+                .date("Planned Delivery Date", fields => fields.deliveryDate)
+                .date("Payment Due Date", fields => fields.paymentDate)
         )
         .panel(
             50,
@@ -524,13 +533,14 @@ export default Template(
     historic_procurement,
     operating_times,
     predicted_sales,
+    next_sale_date,
+    next_procurement_date,
     demand,
     discount,
     multi_factor_supplier_policy,
     predicted_procurement_ranking_function,
     multi_decision_prescriptive_scenario_enhanced,
     // Table data
-    optimized_sales_performance,
     optimized_procurement_choices,
     // Line chart data
     cash_over_time,
