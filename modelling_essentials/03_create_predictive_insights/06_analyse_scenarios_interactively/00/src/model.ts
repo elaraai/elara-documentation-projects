@@ -271,8 +271,8 @@ const interactive_scenario = new ScenarioBuilder("Interactive")
     .fromScenario(predictive_scenario)
     .alterResourceFromPipeline("Discount", (builder, baseline) => builder
         .from(baseline)
-        .input({ name: "MyDiscountChoice", stream: my_discount_choice.outputStream() })
-        .transform( (stream, inputs) => IfNull(inputs.MyDiscountChoice, stream) )
+        .input({ name: "myDiscountChoice", stream: my_discount_choice.outputStream() })
+        .transform( (stream, inputs) => IfNull(inputs.myDiscountChoice, stream) )
     )
 
 export default Template(

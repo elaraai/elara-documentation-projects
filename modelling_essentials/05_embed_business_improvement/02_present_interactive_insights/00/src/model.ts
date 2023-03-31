@@ -423,9 +423,9 @@ const optimized_procurement_choices = new PipelineBuilder("Optimized Procurement
             (_, key) => Print(key)
         )
     )
-    .input({ name: "next_sale_date", stream: next_sale_date.resourceStream() })
+    .input({ name: "nextSaleDate", stream: next_sale_date.resourceStream() })
     .filter(
-        (fields, _, inputs) => GreaterEqual(fields.date, inputs.next_sale_date)
+        (fields, _, inputs) => GreaterEqual(fields.date, inputs.nextSaleDate)
     )
     .input({ name: "suppliers", stream: supplier_data.outputStream() })
     .innerJoin({
@@ -490,9 +490,9 @@ const predicted_procurement_from_optimized = new ProcessBuilder("Optimized Procu
                     (value, _) => Print(GetField(value, "date"))
                 )
             )
-            .input({ name: "next_procurement_date", stream: next_procurement_date.resourceStream() })
+            .input({ name: "nextProcurementDate", stream: next_procurement_date.resourceStream() })
             .filter(
-                (fields, _, inputs) => GreaterEqual(fields.date, inputs.next_procurement_date)
+                (fields, _, inputs) => GreaterEqual(fields.date, inputs.nextProcurementDate)
             )
     )
 
@@ -511,16 +511,16 @@ const interactive_scenario = new ScenarioBuilder("Interactive Scenario")
     .alterResourceFromPipeline("Discount", (builder, baseline) => builder
         .from(baseline)
         .input({
-            name: "MyDiscountChoice",
+            name: "myDiscountChoice",
             stream: my_discount_choice.outputStream()
         })
         .transform(
-            (_, inputs) => GetField(inputs.MyDiscountChoice, "discount")
+            (_, inputs) => GetField(inputs.myDiscountChoice, "discount")
         )
     )
     .simulationInMemory(true)
 
-const optimised_report = new PipelineBuilder("Optimised Report")
+const optimized_report = new PipelineBuilder("Optimized Report")
     .from(multi_decision_prescriptive_scenario_enhanced.simulationResultStreams().Report)
     .transform(
         stream => FilterMap(
@@ -537,12 +537,12 @@ const optimised_report = new PipelineBuilder("Optimised Report")
 
 const concatenated_reports = new PipelineBuilder("Concatenated Reports")
     .from(interactive_scenario.simulationResultStreams().Report)
-    .input({ name: "optimised_report", stream: optimised_report.outputStream() })
+    .input({ name: "optimizedReport", stream: optimized_report.outputStream() })
     .concatenate({
         discriminator_name: "scenario",
         discriminator_value: "BAU",
         inputs: [
-            { input: inputs => inputs.optimised_report, discriminator_value: "Optimised" },
+            { input: inputs => inputs.optimizedReport, discriminator_value: "Optimized" },
         ]
     })
     .select({
@@ -663,7 +663,7 @@ export default Template(
     predicted_procurement_from_optimized,
     interactive_scenario,
     // Line chart data
-    optimised_report,
+    optimized_report,
     concatenated_reports,
     // Dashboard
     dashboard
