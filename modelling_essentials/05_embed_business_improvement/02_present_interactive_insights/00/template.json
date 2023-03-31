@@ -275,42 +275,19 @@
                 "type": "Integer",
                 "value": null
               },
-              "horizon": {
-                "type": "String",
-                "value": null
+              "mode": {
+                "type": "Variant",
+                "value": {
+                  "Future": {
+                    "nullable": true
+                  },
+                  "Historic": {
+                    "nullable": true
+                  }
+                }
               },
               "scenario": {
                 "type": "String",
-                "value": null
-              }
-            }
-          }
-        }
-      },
-      "writable": false
-    },
-    "Pipeline.Delineated Report": {
-      "name": "Pipeline.Delineated Report",
-      "type": {
-        "type": "Dict",
-        "value": {
-          "key": {
-            "type": "String",
-            "value": null
-          },
-          "value": {
-            "type": "Struct",
-            "value": {
-              "date": {
-                "type": "DateTime",
-                "value": null
-              },
-              "cash": {
-                "type": "Float",
-                "value": null
-              },
-              "stockOnHand": {
-                "type": "Integer",
                 "value": null
               },
               "horizon": {
@@ -379,8 +356,34 @@
       },
       "writable": false
     },
-    "Pipeline.Interactive Report": {
-      "name": "Pipeline.Interactive Report",
+    "Pipeline.MLTraining.Demand": {
+      "name": "Pipeline.MLTraining.Demand",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "discount": {
+                "type": "Float",
+                "value": null
+              },
+              "qty": {
+                "type": "Float",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "Pipeline.Optimised Report": {
+      "name": "Pipeline.Optimised Report",
       "type": {
         "type": "Dict",
         "value": {
@@ -403,35 +406,16 @@
                 "type": "Integer",
                 "value": null
               },
-              "horizon": {
-                "type": "String",
-                "value": null
-              }
-            }
-          }
-        }
-      },
-      "writable": false
-    },
-    "Pipeline.MLTraining.Demand": {
-      "name": "Pipeline.MLTraining.Demand",
-      "type": {
-        "type": "Dict",
-        "value": {
-          "key": {
-            "type": "String",
-            "value": null
-          },
-          "value": {
-            "type": "Struct",
-            "value": {
-              "discount": {
-                "type": "Float",
-                "value": null
-              },
-              "qty": {
-                "type": "Float",
-                "value": null
+              "mode": {
+                "type": "Variant",
+                "value": {
+                  "Future": {
+                    "nullable": true
+                  },
+                  "Historic": {
+                    "nullable": true
+                  }
+                }
               }
             }
           }
@@ -545,44 +529,6 @@
       },
       "writable": false
     },
-    "Pipeline.Optimized Sales Performance": {
-      "name": "Pipeline.Optimized Sales Performance",
-      "type": {
-        "type": "Dict",
-        "value": {
-          "key": {
-            "type": "String",
-            "value": null
-          },
-          "value": {
-            "type": "Struct",
-            "value": {
-              "date": {
-                "type": "DateTime",
-                "value": null
-              },
-              "qty": {
-                "type": "Integer",
-                "value": null
-              },
-              "discount": {
-                "type": "Float",
-                "value": null
-              },
-              "price": {
-                "type": "Float",
-                "value": null
-              },
-              "amount": {
-                "type": "Float",
-                "value": null
-              }
-            }
-          }
-        }
-      },
-      "writable": false
-    },
     "Pipeline.Process.Optimized Procurement": {
       "name": "Pipeline.Process.Optimized Procurement",
       "type": {
@@ -601,6 +547,50 @@
               },
               "supplierName": {
                 "type": "String",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "Pipeline.Process.Predicted Procurement with Ranking Function": {
+      "name": "Pipeline.Process.Predicted Procurement with Ranking Function",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "Pipeline.Process.Predicted Sales": {
+      "name": "Pipeline.Process.Predicted Sales",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
                 "value": null
               }
             }
@@ -657,33 +647,19 @@
       },
       "writable": false
     },
-    "Pipeline.Resource.Report": {
-      "name": "Pipeline.Resource.Report",
+    "Pipeline.Resource.Next Procurement Date": {
+      "name": "Pipeline.Resource.Next Procurement Date",
       "type": {
-        "type": "Dict",
-        "value": {
-          "key": {
-            "type": "String",
-            "value": null
-          },
-          "value": {
-            "type": "Struct",
-            "value": {
-              "date": {
-                "type": "DateTime",
-                "value": null
-              },
-              "cash": {
-                "type": "Float",
-                "value": null
-              },
-              "stockOnHand": {
-                "type": "Integer",
-                "value": null
-              }
-            }
-          }
-        }
+        "type": "DateTime",
+        "value": null
+      },
+      "writable": false
+    },
+    "Pipeline.Resource.Next Sale Date": {
+      "name": "Pipeline.Resource.Next Sale Date",
+      "type": {
+        "type": "DateTime",
+        "value": null
       },
       "writable": false
     },
@@ -1417,6 +1393,22 @@
       },
       "writable": false
     },
+    "SimulationResult.Interactive Scenario.Next Procurement Date": {
+      "name": "SimulationResult.Interactive Scenario.Next Procurement Date",
+      "type": {
+        "type": "DateTime",
+        "value": null
+      },
+      "writable": false
+    },
+    "SimulationResult.Interactive Scenario.Next Sale Date": {
+      "name": "SimulationResult.Interactive Scenario.Next Sale Date",
+      "type": {
+        "type": "DateTime",
+        "value": null
+      },
+      "writable": false
+    },
     "SimulationResult.Interactive Scenario.Operating Times": {
       "name": "SimulationResult.Interactive Scenario.Operating Times",
       "type": {
@@ -1465,6 +1457,17 @@
               "stockOnHand": {
                 "type": "Integer",
                 "value": null
+              },
+              "mode": {
+                "type": "Variant",
+                "value": {
+                  "Future": {
+                    "nullable": true
+                  },
+                  "Historic": {
+                    "nullable": true
+                  }
+                }
               }
             }
           }
@@ -1560,6 +1563,22 @@
       },
       "writable": false
     },
+    "SimulationResult.Multi-decision Prescriptive Enhanced.Next Procurement Date": {
+      "name": "SimulationResult.Multi-decision Prescriptive Enhanced.Next Procurement Date",
+      "type": {
+        "type": "DateTime",
+        "value": null
+      },
+      "writable": false
+    },
+    "SimulationResult.Multi-decision Prescriptive Enhanced.Next Sale Date": {
+      "name": "SimulationResult.Multi-decision Prescriptive Enhanced.Next Sale Date",
+      "type": {
+        "type": "DateTime",
+        "value": null
+      },
+      "writable": false
+    },
     "SimulationResult.Multi-decision Prescriptive Enhanced.Operating Times": {
       "name": "SimulationResult.Multi-decision Prescriptive Enhanced.Operating Times",
       "type": {
@@ -1608,6 +1627,17 @@
               "stockOnHand": {
                 "type": "Integer",
                 "value": null
+              },
+              "mode": {
+                "type": "Variant",
+                "value": {
+                  "Future": {
+                    "nullable": true
+                  },
+                  "Historic": {
+                    "nullable": true
+                  }
+                }
               }
             }
           }
@@ -1669,50 +1699,14 @@
           "discount": {
             "type": "Float",
             "value": null
-          }
-        }
-      },
-      "writable": true
-    },
-    "Writeable.Process.Predicted Procurement with Ranking Function": {
-      "name": "Writeable.Process.Predicted Procurement with Ranking Function",
-      "type": {
-        "type": "Dict",
-        "value": {
-          "key": {
-            "type": "String",
+          },
+          "min_discount": {
+            "type": "Float",
             "value": null
           },
-          "value": {
-            "type": "Struct",
-            "value": {
-              "date": {
-                "type": "DateTime",
-                "value": null
-              }
-            }
-          }
-        }
-      },
-      "writable": true
-    },
-    "Writeable.Process.Predicted Sales": {
-      "name": "Writeable.Process.Predicted Sales",
-      "type": {
-        "type": "Dict",
-        "value": {
-          "key": {
-            "type": "String",
+          "max_discount": {
+            "type": "Float",
             "value": null
-          },
-          "value": {
-            "type": "Struct",
-            "value": {
-              "date": {
-                "type": "DateTime",
-                "value": null
-              }
-            }
           }
         }
       },
@@ -1764,6 +1758,47 @@
       "type": {
         "type": "Float",
         "value": null
+      },
+      "writable": false
+    },
+    "Writeable.Resource.Report": {
+      "name": "Writeable.Resource.Report",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              },
+              "cash": {
+                "type": "Float",
+                "value": null
+              },
+              "stockOnHand": {
+                "type": "Integer",
+                "value": null
+              },
+              "mode": {
+                "type": "Variant",
+                "value": {
+                  "Future": {
+                    "nullable": true
+                  },
+                  "Historic": {
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        }
       },
       "writable": false
     },
@@ -2149,8 +2184,24 @@
           },
           "writable": false
         },
+        "resource.Next Sale Date": {
+          "name": "Pipeline.Resource.Next Sale Date",
+          "type": {
+            "type": "DateTime",
+            "value": null
+          },
+          "writable": false
+        },
+        "resource.Next Procurement Date": {
+          "name": "Pipeline.Resource.Next Procurement Date",
+          "type": {
+            "type": "DateTime",
+            "value": null
+          },
+          "writable": false
+        },
         "process.Predicted Sales": {
-          "name": "Writeable.Process.Predicted Sales",
+          "name": "Pipeline.Process.Predicted Sales",
           "type": {
             "type": "Dict",
             "value": {
@@ -2216,7 +2267,7 @@
           "writable": false
         },
         "process.Predicted Procurement with Ranking Function": {
-          "name": "Writeable.Process.Predicted Procurement with Ranking Function",
+          "name": "Pipeline.Process.Predicted Procurement with Ranking Function",
           "type": {
             "type": "Dict",
             "value": {
@@ -2238,7 +2289,7 @@
           "writable": false
         },
         "resource.Report": {
-          "name": "Pipeline.Resource.Report",
+          "name": "Writeable.Resource.Report",
           "type": {
             "type": "Dict",
             "value": {
@@ -2260,6 +2311,17 @@
                   "stockOnHand": {
                     "type": "Integer",
                     "value": null
+                  },
+                  "mode": {
+                    "type": "Variant",
+                    "value": {
+                      "Future": {
+                        "nullable": true
+                      },
+                      "Historic": {
+                        "nullable": true
+                      }
+                    }
                   }
                 }
               }
@@ -2529,6 +2591,26 @@
           "assertions": [],
           "ledger": false
         },
+        "Next Sale Date": {
+          "name": "Next Sale Date",
+          "type": {
+            "type": "DateTime",
+            "value": null
+          },
+          "input": "resource.Next Sale Date",
+          "assertions": [],
+          "ledger": false
+        },
+        "Next Procurement Date": {
+          "name": "Next Procurement Date",
+          "type": {
+            "type": "DateTime",
+            "value": null
+          },
+          "input": "resource.Next Procurement Date",
+          "assertions": [],
+          "ledger": false
+        },
         "Report": {
           "name": "Report",
           "type": {
@@ -2552,6 +2634,17 @@
                   "stockOnHand": {
                     "type": "Integer",
                     "value": null
+                  },
+                  "mode": {
+                    "type": "Variant",
+                    "value": {
+                      "Future": {
+                        "nullable": true
+                      },
+                      "Historic": {
+                        "nullable": true
+                      }
+                    }
                   }
                 }
               }
@@ -3683,7 +3776,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_80oNa9yuykgI$O9BWcyO6n"
+                          "name": "_JvTzJOK4Lldy0R_Mg2_Ilf"
                         },
                         "second": {
                           "type": {
@@ -3700,7 +3793,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_80oNa9yuykgI$O9BWcyO6n"
+                        "name": "_JvTzJOK4Lldy0R_Mg2_Ilf"
                       },
                       "false": {
                         "type": {
@@ -3717,7 +3810,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_80oNa9yuykgI$O9BWcyO6n"
+                      "name": "_JvTzJOK4Lldy0R_Mg2_Ilf"
                     },
                     "value": {
                       "type": {
@@ -3997,8 +4090,8 @@
                       "type": "DateTime",
                       "value": null
                     },
-                    "ast_type": "Const",
-                    "value": "2022-10-15T11:00:00.000Z"
+                    "ast_type": "Variable",
+                    "name": "r_Next Sale Date"
                   },
                   "duration": {
                     "type": {
@@ -4195,7 +4288,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_key_Mfn2FW8b8G8xO_vcaEA7M3"
+                          "name": "_key_hrudtu0q2NTYoqZhT$uex9"
                         },
                         "default": null
                       },
@@ -4276,7 +4369,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_key_Mfn2FW8b8G8xO_vcaEA7M3"
+                          "name": "_key_hrudtu0q2NTYoqZhT$uex9"
                         },
                         "default": null
                       },
@@ -4298,7 +4391,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_key_Mfn2FW8b8G8xO_vcaEA7M3"
+                  "name": "_key_hrudtu0q2NTYoqZhT$uex9"
                 },
                 "input_value": {
                   "type": {
@@ -4327,7 +4420,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "_value_$44Ti5iwRZSnpSjChrM4Y0"
+                  "name": "_value_JLGvRve41VO6GuME7idC$v"
                 },
                 "input_key": {
                   "type": {
@@ -4335,7 +4428,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_key_Mfn2FW8b8G8xO_vcaEA7M3"
+                  "name": "_key_hrudtu0q2NTYoqZhT$uex9"
                 }
               }
             },
@@ -4503,7 +4596,7 @@
                                 "value": null
                               },
                               "ast_type": "Variable",
-                              "name": "_key_tjvFywcCVmEjE_koVqGzkB"
+                              "name": "_key_ufchKrau$emj_eouWwK8E8"
                             },
                             "rank": {
                               "type": {
@@ -4511,7 +4604,7 @@
                                 "value": null
                               },
                               "ast_type": "Variable",
-                              "name": "_value_l6RvAo91sp9B4lG$I_vN0u"
+                              "name": "_value_5Aj_SaXYGbB8FzrfG72bP$"
                             }
                           }
                         },
@@ -4521,7 +4614,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_value_l6RvAo91sp9B4lG$I_vN0u"
+                          "name": "_value_5Aj_SaXYGbB8FzrfG72bP$"
                         },
                         "input_key": {
                           "type": {
@@ -4529,7 +4622,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_key_tjvFywcCVmEjE_koVqGzkB"
+                          "name": "_key_ufchKrau$emj_eouWwK8E8"
                         }
                       },
                       "isless": {
@@ -4559,7 +4652,7 @@
                               }
                             },
                             "ast_type": "Variable",
-                            "name": "_first_mzKXRUFK9Ip2Xx73FAfCWN"
+                            "name": "_first_nOb4oQn3F56qzJfJUtF0HQ"
                           },
                           "key": "rank"
                         },
@@ -4584,7 +4677,7 @@
                               }
                             },
                             "ast_type": "Variable",
-                            "name": "_second_oOis5zzMuplf9vghvqK6oA"
+                            "name": "_second_h50M4VbG6ih0Ra3xEsz9jy"
                           },
                           "key": "rank"
                         }
@@ -4604,7 +4697,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "_first_mzKXRUFK9Ip2Xx73FAfCWN"
+                        "name": "_first_nOb4oQn3F56qzJfJUtF0HQ"
                       },
                       "second": {
                         "type": {
@@ -4621,7 +4714,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "_second_oOis5zzMuplf9vghvqK6oA"
+                        "name": "_second_h50M4VbG6ih0Ra3xEsz9jy"
                       }
                     },
                     "key": {
@@ -4916,6 +5009,17 @@
                     "stockOnHand": {
                       "type": "Integer",
                       "value": null
+                    },
+                    "mode": {
+                      "type": "Variant",
+                      "value": {
+                        "Future": {
+                          "nullable": true
+                        },
+                        "Historic": {
+                          "nullable": true
+                        }
+                      }
                     }
                   }
                 },
@@ -4944,6 +5048,81 @@
                     },
                     "ast_type": "Variable",
                     "name": "r_Stock-on-hand"
+                  },
+                  "mode": {
+                    "type": {
+                      "type": "Variant",
+                      "value": {
+                        "Future": {
+                          "nullable": true
+                        },
+                        "Historic": {
+                          "nullable": true
+                        }
+                      }
+                    },
+                    "ast_type": "IfElse",
+                    "predicate": {
+                      "type": {
+                        "type": "Boolean",
+                        "value": null
+                      },
+                      "ast_type": "GreaterEqual",
+                      "first": {
+                        "type": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "ast_type": "Variable",
+                        "name": "p_date"
+                      },
+                      "second": {
+                        "type": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "ast_type": "Variable",
+                        "name": "r_Next Sale Date"
+                      }
+                    },
+                    "true": {
+                      "type": {
+                        "type": "Variant",
+                        "value": {
+                          "Future": {
+                            "nullable": true
+                          }
+                        }
+                      },
+                      "ast_type": "NewVariant",
+                      "tag": "Future",
+                      "value": {
+                        "type": {
+                          "nullable": true
+                        },
+                        "ast_type": "Const",
+                        "value": null
+                      }
+                    },
+                    "false": {
+                      "type": {
+                        "type": "Variant",
+                        "value": {
+                          "Historic": {
+                            "nullable": true
+                          }
+                        }
+                      },
+                      "ast_type": "NewVariant",
+                      "tag": "Historic",
+                      "value": {
+                        "type": {
+                          "nullable": true
+                        },
+                        "ast_type": "Const",
+                        "value": null
+                      }
+                    }
                   }
                 }
               },
@@ -5201,6 +5380,14 @@
               "discount": {
                 "type": "Float",
                 "value": null
+              },
+              "min_discount": {
+                "type": "Float",
+                "value": null
+              },
+              "max_discount": {
+                "type": "Float",
+                "value": null
               }
             }
           },
@@ -5241,6 +5428,14 @@
                   "discount": {
                     "type": "Float",
                     "value": null
+                  },
+                  "min_discount": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "max_discount": {
+                    "type": "Float",
+                    "value": null
                   }
                 }
               },
@@ -5258,7 +5453,7 @@
       "task_type": "pipeline",
       "inputs": {
         "input": {
-          "name": "Pipeline.Delineated Report",
+          "name": "SimulationResult.Interactive Scenario.Report",
           "type": {
             "type": "Dict",
             "value": {
@@ -5281,9 +5476,16 @@
                     "type": "Integer",
                     "value": null
                   },
-                  "horizon": {
-                    "type": "String",
-                    "value": null
+                  "mode": {
+                    "type": "Variant",
+                    "value": {
+                      "Future": {
+                        "nullable": true
+                      },
+                      "Historic": {
+                        "nullable": true
+                      }
+                    }
                   }
                 }
               }
@@ -5291,8 +5493,8 @@
           },
           "writable": false
         },
-        "interactive_report": {
-          "name": "Pipeline.Interactive Report",
+        "optimised_report": {
+          "name": "Pipeline.Optimised Report",
           "type": {
             "type": "Dict",
             "value": {
@@ -5315,9 +5517,16 @@
                     "type": "Integer",
                     "value": null
                   },
-                  "horizon": {
-                    "type": "String",
-                    "value": null
+                  "mode": {
+                    "type": "Variant",
+                    "value": {
+                      "Future": {
+                        "nullable": true
+                      },
+                      "Historic": {
+                        "nullable": true
+                      }
+                    }
                   }
                 }
               }
@@ -5351,11 +5560,22 @@
                     "type": "Integer",
                     "value": null
                   },
-                  "horizon": {
+                  "mode": {
+                    "type": "Variant",
+                    "value": {
+                      "Future": {
+                        "nullable": true
+                      },
+                      "Historic": {
+                        "nullable": true
+                      }
+                    }
+                  },
+                  "scenario": {
                     "type": "String",
                     "value": null
                   },
-                  "scenario": {
+                  "horizon": {
                     "type": "String",
                     "value": null
                   }
@@ -5369,7 +5589,7 @@
       "operations": [
         {
           "operation_type": "input",
-          "name": "interactive_report"
+          "name": "optimised_report"
         },
         {
           "operation_type": "concatenate",
@@ -5395,9 +5615,16 @@
                     "type": "Integer",
                     "value": null
                   },
-                  "horizon": {
-                    "type": "String",
-                    "value": null
+                  "mode": {
+                    "type": "Variant",
+                    "value": {
+                      "Future": {
+                        "nullable": true
+                      },
+                      "Historic": {
+                        "nullable": true
+                      }
+                    }
                   },
                   "scenario": {
                     "type": "String",
@@ -5408,89 +5635,14 @@
             }
           },
           "discriminator_name": "scenario",
-          "discriminator": "Optimised",
+          "discriminator": "BAU",
           "inputs": [
             {
-              "input": "input.interactive_report",
-              "discriminator": "BAU"
+              "input": "input.optimised_report",
+              "discriminator": "Optimised"
             }
           ]
-        }
-      ]
-    },
-    "Pipeline.Delineated Report": {
-      "name": "Pipeline.Delineated Report",
-      "parent": "Pipeline.Delineated Report",
-      "task_type": "pipeline",
-      "inputs": {
-        "input": {
-          "name": "SimulationResult.Multi-decision Prescriptive Enhanced.Report",
-          "type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "date": {
-                    "type": "DateTime",
-                    "value": null
-                  },
-                  "cash": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "stockOnHand": {
-                    "type": "Integer",
-                    "value": null
-                  }
-                }
-              }
-            }
-          },
-          "writable": false
-        }
-      },
-      "outputs": {
-        "output": {
-          "name": "Pipeline.Delineated Report",
-          "type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "date": {
-                    "type": "DateTime",
-                    "value": null
-                  },
-                  "cash": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "stockOnHand": {
-                    "type": "Integer",
-                    "value": null
-                  },
-                  "horizon": {
-                    "type": "String",
-                    "value": null
-                  }
-                }
-              }
-            }
-          },
-          "writable": false
-        }
-      },
-      "operations": [
+        },
         {
           "operation_type": "select",
           "output_type": {
@@ -5513,6 +5665,21 @@
                   },
                   "stockOnHand": {
                     "type": "Integer",
+                    "value": null
+                  },
+                  "mode": {
+                    "type": "Variant",
+                    "value": {
+                      "Future": {
+                        "nullable": true
+                      },
+                      "Historic": {
+                        "nullable": true
+                      }
+                    }
+                  },
+                  "scenario": {
+                    "type": "String",
                     "value": null
                   },
                   "horizon": {
@@ -5548,51 +5715,95 @@
               "ast_type": "Variable",
               "name": "field.stockOnHand"
             },
+            "mode": {
+              "type": {
+                "type": "Variant",
+                "value": {
+                  "Future": {
+                    "nullable": true
+                  },
+                  "Historic": {
+                    "nullable": true
+                  }
+                }
+              },
+              "ast_type": "Variable",
+              "name": "field.mode"
+            },
+            "scenario": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.scenario"
+            },
             "horizon": {
               "type": {
                 "type": "String",
                 "value": null
               },
-              "ast_type": "IfElse",
-              "predicate": {
-                "type": {
-                  "type": "Boolean",
-                  "value": null
-                },
-                "ast_type": "GreaterEqual",
-                "first": {
+              "ast_type": "StringJoin",
+              "values": [
+                {
                   "type": {
-                    "type": "DateTime",
+                    "type": "String",
                     "value": null
                   },
-                  "ast_type": "Variable",
-                  "name": "field.date"
+                  "ast_type": "Match",
+                  "input": {
+                    "type": {
+                      "type": "Variant",
+                      "value": {
+                        "Future": {
+                          "nullable": true
+                        },
+                        "Historic": {
+                          "nullable": true
+                        }
+                      }
+                    },
+                    "ast_type": "Variable",
+                    "name": "field.mode"
+                  },
+                  "functions": {
+                    "Future": {
+                      "type": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": "Future"
+                    },
+                    "Historic": {
+                      "type": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": "Historic"
+                    }
+                  },
+                  "value": "_jRmvwkRXD4UsCbJJzeQF8d"
                 },
-                "second": {
+                {
                   "type": {
-                    "type": "DateTime",
+                    "type": "String",
                     "value": null
                   },
                   "ast_type": "Const",
-                  "value": "2022-10-15T11:00:00.000Z"
+                  "value": " "
+                },
+                {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "field.scenario"
                 }
-              },
-              "true": {
-                "type": {
-                  "type": "String",
-                  "value": null
-                },
-                "ast_type": "Const",
-                "value": "Optimized Future"
-              },
-              "false": {
-                "type": {
-                  "type": "String",
-                  "value": null
-                },
-                "ast_type": "Const",
-                "value": "Historic"
-              }
+              ],
+              "seperator": ""
             }
           },
           "output_key": {
@@ -5784,208 +5995,6 @@
         }
       ]
     },
-    "Pipeline.Interactive Report": {
-      "name": "Pipeline.Interactive Report",
-      "parent": "Pipeline.Interactive Report",
-      "task_type": "pipeline",
-      "inputs": {
-        "input": {
-          "name": "SimulationResult.Interactive Scenario.Report",
-          "type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "date": {
-                    "type": "DateTime",
-                    "value": null
-                  },
-                  "cash": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "stockOnHand": {
-                    "type": "Integer",
-                    "value": null
-                  }
-                }
-              }
-            }
-          },
-          "writable": false
-        }
-      },
-      "outputs": {
-        "output": {
-          "name": "Pipeline.Interactive Report",
-          "type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "date": {
-                    "type": "DateTime",
-                    "value": null
-                  },
-                  "cash": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "stockOnHand": {
-                    "type": "Integer",
-                    "value": null
-                  },
-                  "horizon": {
-                    "type": "String",
-                    "value": null
-                  }
-                }
-              }
-            }
-          },
-          "writable": false
-        }
-      },
-      "operations": [
-        {
-          "operation_type": "filter",
-          "output_type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "date": {
-                    "type": "DateTime",
-                    "value": null
-                  },
-                  "cash": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "stockOnHand": {
-                    "type": "Integer",
-                    "value": null
-                  }
-                }
-              }
-            }
-          },
-          "predicate": {
-            "type": {
-              "type": "Boolean",
-              "value": null
-            },
-            "ast_type": "GreaterEqual",
-            "first": {
-              "type": {
-                "type": "DateTime",
-                "value": null
-              },
-              "ast_type": "Variable",
-              "name": "field.date"
-            },
-            "second": {
-              "type": {
-                "type": "DateTime",
-                "value": null
-              },
-              "ast_type": "Const",
-              "value": "2022-10-15T11:00:00.000Z"
-            }
-          }
-        },
-        {
-          "operation_type": "select",
-          "output_type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "date": {
-                    "type": "DateTime",
-                    "value": null
-                  },
-                  "cash": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "stockOnHand": {
-                    "type": "Integer",
-                    "value": null
-                  },
-                  "horizon": {
-                    "type": "String",
-                    "value": null
-                  }
-                }
-              }
-            }
-          },
-          "selections": {
-            "date": {
-              "type": {
-                "type": "DateTime",
-                "value": null
-              },
-              "ast_type": "Variable",
-              "name": "field.date"
-            },
-            "cash": {
-              "type": {
-                "type": "Float",
-                "value": null
-              },
-              "ast_type": "Variable",
-              "name": "field.cash"
-            },
-            "stockOnHand": {
-              "type": {
-                "type": "Integer",
-                "value": null
-              },
-              "ast_type": "Variable",
-              "name": "field.stockOnHand"
-            },
-            "horizon": {
-              "type": {
-                "type": "String",
-                "value": null
-              },
-              "ast_type": "Const",
-              "value": "BAU"
-            }
-          },
-          "output_key": {
-            "type": {
-              "type": "String",
-              "value": null
-            },
-            "ast_type": "Variable",
-            "name": "key"
-          }
-        }
-      ]
-    },
     "Pipeline.MLTraining.Demand": {
       "name": "Pipeline.MLTraining.Demand",
       "parent": "Pipeline.MLTraining.Demand",
@@ -6107,6 +6116,433 @@
             },
             "ast_type": "Variable",
             "name": "key"
+          }
+        }
+      ]
+    },
+    "Pipeline.Optimised Report": {
+      "name": "Pipeline.Optimised Report",
+      "parent": "Pipeline.Optimised Report",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "SimulationResult.Multi-decision Prescriptive Enhanced.Report",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "cash": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "stockOnHand": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "mode": {
+                    "type": "Variant",
+                    "value": {
+                      "Future": {
+                        "nullable": true
+                      },
+                      "Historic": {
+                        "nullable": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Optimised Report",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "cash": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "stockOnHand": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "mode": {
+                    "type": "Variant",
+                    "value": {
+                      "Future": {
+                        "nullable": true
+                      },
+                      "Historic": {
+                        "nullable": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "cash": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "stockOnHand": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "mode": {
+                    "type": "Variant",
+                    "value": {
+                      "Future": {
+                        "nullable": true
+                      },
+                      "Historic": {
+                        "nullable": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "expression": {
+            "type": {
+              "type": "Dict",
+              "value": {
+                "key": {
+                  "type": "String",
+                  "value": null
+                },
+                "value": {
+                  "type": "Struct",
+                  "value": {
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "cash": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "stockOnHand": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "mode": {
+                      "type": "Variant",
+                      "value": {
+                        "Future": {
+                          "nullable": true
+                        },
+                        "Historic": {
+                          "nullable": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "ast_type": "FilterMap",
+            "collection": {
+              "type": {
+                "type": "Dict",
+                "value": {
+                  "key": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "value": {
+                    "type": "Struct",
+                    "value": {
+                      "date": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "cash": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "stockOnHand": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "mode": {
+                        "type": "Variant",
+                        "value": {
+                          "Future": {
+                            "nullable": true
+                          },
+                          "Historic": {
+                            "nullable": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "ast_type": "Variable",
+              "name": "value"
+            },
+            "function": {
+              "type": {
+                "type": "Variant",
+                "value": {
+                  "none": {
+                    "nullable": true
+                  },
+                  "some": {
+                    "type": "Struct",
+                    "value": {
+                      "date": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "cash": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "stockOnHand": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "mode": {
+                        "type": "Variant",
+                        "value": {
+                          "Future": {
+                            "nullable": true
+                          },
+                          "Historic": {
+                            "nullable": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "ast_type": "Match",
+              "input": {
+                "type": {
+                  "type": "Variant",
+                  "value": {
+                    "Future": {
+                      "nullable": true
+                    },
+                    "Historic": {
+                      "nullable": true
+                    }
+                  }
+                },
+                "ast_type": "GetField",
+                "struct": {
+                  "type": {
+                    "type": "Struct",
+                    "value": {
+                      "date": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "cash": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "stockOnHand": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "mode": {
+                        "type": "Variant",
+                        "value": {
+                          "Future": {
+                            "nullable": true
+                          },
+                          "Historic": {
+                            "nullable": true
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "ast_type": "Variable",
+                  "name": "_value_JH6v7OPFQy73xFxC0Hqmf$"
+                },
+                "key": "mode"
+              },
+              "functions": {
+                "Future": {
+                  "type": {
+                    "type": "Variant",
+                    "value": {
+                      "some": {
+                        "type": "Struct",
+                        "value": {
+                          "date": {
+                            "type": "DateTime",
+                            "value": null
+                          },
+                          "cash": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "stockOnHand": {
+                            "type": "Integer",
+                            "value": null
+                          },
+                          "mode": {
+                            "type": "Variant",
+                            "value": {
+                              "Future": {
+                                "nullable": true
+                              },
+                              "Historic": {
+                                "nullable": true
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "ast_type": "NewVariant",
+                  "tag": "some",
+                  "value": {
+                    "type": {
+                      "type": "Struct",
+                      "value": {
+                        "date": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "cash": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "stockOnHand": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "mode": {
+                          "type": "Variant",
+                          "value": {
+                            "Future": {
+                              "nullable": true
+                            },
+                            "Historic": {
+                              "nullable": true
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "ast_type": "Variable",
+                    "name": "_value_JH6v7OPFQy73xFxC0Hqmf$"
+                  }
+                },
+                "Historic": {
+                  "ast_type": "Const",
+                  "type": {
+                    "type": "Variant",
+                    "value": {
+                      "none": {
+                        "nullable": true
+                      }
+                    }
+                  },
+                  "value": {
+                    "type": "none",
+                    "value": null
+                  }
+                }
+              },
+              "value": "_9Axj1gJioJX0fzgrkTThQ0"
+            },
+            "value": {
+              "type": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "cash": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "stockOnHand": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "mode": {
+                    "type": "Variant",
+                    "value": {
+                      "Future": {
+                        "nullable": true
+                      },
+                      "Historic": {
+                        "nullable": true
+                      }
+                    }
+                  }
+                }
+              },
+              "ast_type": "Variable",
+              "name": "_value_JH6v7OPFQy73xFxC0Hqmf$"
+            },
+            "key": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "_key_BpZeg13roFGdjCcOIuEeRu"
+            }
           }
         }
       ]
@@ -6620,6 +7056,14 @@
                 }
               }
             }
+          },
+          "writable": false
+        },
+        "next_sale_date": {
+          "name": "Pipeline.Resource.Next Sale Date",
+          "type": {
+            "type": "DateTime",
+            "value": null
           },
           "writable": false
         },
@@ -7145,7 +7589,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "_value_j_j1MiOY4xF$IIWxGvCdrL"
+                  "name": "_value_hZs5tUKgQk7isPMoF6kx8K"
                 },
                 "functions": {
                   "Historic Procurement": {
@@ -7259,7 +7703,7 @@
                         }
                       },
                       "ast_type": "Variable",
-                      "name": "_5j2JxiVN2QYTCNiI7zLa3x"
+                      "name": "_sfJTF6Y85Ynsf2Yaw6cAgX"
                     }
                   },
                   "Receive Goods": {
@@ -7308,7 +7752,7 @@
                     }
                   }
                 },
-                "value": "_5j2JxiVN2QYTCNiI7zLa3x"
+                "value": "_sfJTF6Y85Ynsf2Yaw6cAgX"
               },
               "value": {
                 "type": {
@@ -7476,7 +7920,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_j_j1MiOY4xF$IIWxGvCdrL"
+                "name": "_value_hZs5tUKgQk7isPMoF6kx8K"
               },
               "key": {
                 "type": {
@@ -7484,7 +7928,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_key_Dz79tf1IlbXRga7l9AUZi7"
+                "name": "_key_LfRMSMgAT1gSGkeTcxUDqa"
               }
             },
             "output_value": {
@@ -7502,7 +7946,7 @@
                 }
               },
               "ast_type": "Variable",
-              "name": "_value_0EGKxXlo4H_ysXba$rwFvT"
+              "name": "_value_i6uJCG4s0GbQlkERIvtG24"
             },
             "output_key": {
               "type": {
@@ -7516,7 +7960,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_key_6olpU_h39ez5GV0rKOvy9m"
+                "name": "_key_UJm_H0v$a_yEKz0P4PAVFb"
               }
             },
             "input_value": {
@@ -7534,7 +7978,7 @@
                 }
               },
               "ast_type": "Variable",
-              "name": "_value_0EGKxXlo4H_ysXba$rwFvT"
+              "name": "_value_i6uJCG4s0GbQlkERIvtG24"
             },
             "input_key": {
               "type": {
@@ -7542,9 +7986,13 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_6olpU_h39ez5GV0rKOvy9m"
+              "name": "_key_UJm_H0v$a_yEKz0P4PAVFb"
             }
           }
+        },
+        {
+          "operation_type": "input",
+          "name": "next_sale_date"
         },
         {
           "operation_type": "filter",
@@ -7589,8 +8037,8 @@
                 "type": "DateTime",
                 "value": null
               },
-              "ast_type": "Const",
-              "value": "2022-10-15T11:00:00.000Z"
+              "ast_type": "Variable",
+              "name": "input.next_sale_date"
             }
           }
         },
@@ -7915,1209 +8363,6 @@
         }
       ]
     },
-    "Pipeline.Optimized Sales Performance": {
-      "name": "Pipeline.Optimized Sales Performance",
-      "parent": "Pipeline.Optimized Sales Performance",
-      "task_type": "pipeline",
-      "inputs": {
-        "input": {
-          "name": "SimulationJournal.Multi-decision Prescriptive Enhanced",
-          "type": {
-            "type": "Array",
-            "value": {
-              "type": "Variant",
-              "value": {
-                "Historic Procurement": {
-                  "type": "Struct",
-                  "value": {
-                    "date": {
-                      "type": "DateTime",
-                      "value": null
-                    },
-                    "supplierName": {
-                      "type": "String",
-                      "value": null
-                    }
-                  }
-                },
-                "Historic Sales": {
-                  "type": "Struct",
-                  "value": {
-                    "date": {
-                      "type": "DateTime",
-                      "value": null
-                    },
-                    "qty": {
-                      "type": "Integer",
-                      "value": null
-                    },
-                    "discount": {
-                      "type": "Float",
-                      "value": null
-                    }
-                  }
-                },
-                "Pay Supplier": {
-                  "type": "Struct",
-                  "value": {
-                    "date": {
-                      "type": "DateTime",
-                      "value": null
-                    },
-                    "invoiceTotal": {
-                      "type": "Float",
-                      "value": null
-                    }
-                  }
-                },
-                "Predicted Procurement with Ranking Function": {
-                  "type": "Struct",
-                  "value": {
-                    "date": {
-                      "type": "DateTime",
-                      "value": null
-                    },
-                    "supplierRanking": {
-                      "type": "Dict",
-                      "value": {
-                        "key": {
-                          "type": "String",
-                          "value": null
-                        },
-                        "value": {
-                          "type": "Float",
-                          "value": null
-                        }
-                      }
-                    },
-                    "supplier": {
-                      "type": "Struct",
-                      "value": {
-                        "supplierName": {
-                          "type": "String",
-                          "value": null
-                        },
-                        "paymentTerms": {
-                          "type": "Float",
-                          "value": null
-                        },
-                        "leadTime": {
-                          "type": "Float",
-                          "value": null
-                        },
-                        "unitCost": {
-                          "type": "Float",
-                          "value": null
-                        },
-                        "orderQty": {
-                          "type": "Integer",
-                          "value": null
-                        }
-                      }
-                    }
-                  }
-                },
-                "Predicted Sales": {
-                  "type": "Struct",
-                  "value": {
-                    "date": {
-                      "type": "DateTime",
-                      "value": null
-                    }
-                  }
-                },
-                "Procurement": {
-                  "type": "Struct",
-                  "value": {
-                    "date": {
-                      "type": "DateTime",
-                      "value": null
-                    },
-                    "supplierName": {
-                      "type": "String",
-                      "value": null
-                    }
-                  }
-                },
-                "Receive Goods": {
-                  "type": "Struct",
-                  "value": {
-                    "date": {
-                      "type": "DateTime",
-                      "value": null
-                    },
-                    "qty": {
-                      "type": "Integer",
-                      "value": null
-                    }
-                  }
-                },
-                "Reporter": {
-                  "type": "Struct",
-                  "value": {
-                    "date": {
-                      "type": "DateTime",
-                      "value": null
-                    }
-                  }
-                },
-                "Sales": {
-                  "type": "Struct",
-                  "value": {
-                    "date": {
-                      "type": "DateTime",
-                      "value": null
-                    },
-                    "qty": {
-                      "type": "Integer",
-                      "value": null
-                    },
-                    "discount": {
-                      "type": "Float",
-                      "value": null
-                    },
-                    "price": {
-                      "type": "Float",
-                      "value": null
-                    },
-                    "amount": {
-                      "type": "Float",
-                      "value": null
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "writable": false
-        }
-      },
-      "outputs": {
-        "output": {
-          "name": "Pipeline.Optimized Sales Performance",
-          "type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "date": {
-                    "type": "DateTime",
-                    "value": null
-                  },
-                  "qty": {
-                    "type": "Integer",
-                    "value": null
-                  },
-                  "discount": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "price": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "amount": {
-                    "type": "Float",
-                    "value": null
-                  }
-                }
-              }
-            }
-          },
-          "writable": false
-        }
-      },
-      "operations": [
-        {
-          "operation_type": "transform",
-          "output_type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "date": {
-                    "type": "DateTime",
-                    "value": null
-                  },
-                  "qty": {
-                    "type": "Integer",
-                    "value": null
-                  },
-                  "discount": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "price": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "amount": {
-                    "type": "Float",
-                    "value": null
-                  }
-                }
-              }
-            }
-          },
-          "expression": {
-            "type": {
-              "type": "Dict",
-              "value": {
-                "key": {
-                  "type": "String",
-                  "value": null
-                },
-                "value": {
-                  "type": "Struct",
-                  "value": {
-                    "date": {
-                      "type": "DateTime",
-                      "value": null
-                    },
-                    "qty": {
-                      "type": "Integer",
-                      "value": null
-                    },
-                    "discount": {
-                      "type": "Float",
-                      "value": null
-                    },
-                    "price": {
-                      "type": "Float",
-                      "value": null
-                    },
-                    "amount": {
-                      "type": "Float",
-                      "value": null
-                    }
-                  }
-                }
-              }
-            },
-            "ast_type": "ToDict",
-            "collection": {
-              "type": {
-                "type": "Array",
-                "value": {
-                  "type": "Struct",
-                  "value": {
-                    "date": {
-                      "type": "DateTime",
-                      "value": null
-                    },
-                    "qty": {
-                      "type": "Integer",
-                      "value": null
-                    },
-                    "discount": {
-                      "type": "Float",
-                      "value": null
-                    },
-                    "price": {
-                      "type": "Float",
-                      "value": null
-                    },
-                    "amount": {
-                      "type": "Float",
-                      "value": null
-                    }
-                  }
-                }
-              },
-              "ast_type": "FilterMap",
-              "collection": {
-                "type": {
-                  "type": "Array",
-                  "value": {
-                    "type": "Variant",
-                    "value": {
-                      "Historic Procurement": {
-                        "type": "Struct",
-                        "value": {
-                          "date": {
-                            "type": "DateTime",
-                            "value": null
-                          },
-                          "supplierName": {
-                            "type": "String",
-                            "value": null
-                          }
-                        }
-                      },
-                      "Historic Sales": {
-                        "type": "Struct",
-                        "value": {
-                          "date": {
-                            "type": "DateTime",
-                            "value": null
-                          },
-                          "qty": {
-                            "type": "Integer",
-                            "value": null
-                          },
-                          "discount": {
-                            "type": "Float",
-                            "value": null
-                          }
-                        }
-                      },
-                      "Pay Supplier": {
-                        "type": "Struct",
-                        "value": {
-                          "date": {
-                            "type": "DateTime",
-                            "value": null
-                          },
-                          "invoiceTotal": {
-                            "type": "Float",
-                            "value": null
-                          }
-                        }
-                      },
-                      "Predicted Procurement with Ranking Function": {
-                        "type": "Struct",
-                        "value": {
-                          "date": {
-                            "type": "DateTime",
-                            "value": null
-                          },
-                          "supplierRanking": {
-                            "type": "Dict",
-                            "value": {
-                              "key": {
-                                "type": "String",
-                                "value": null
-                              },
-                              "value": {
-                                "type": "Float",
-                                "value": null
-                              }
-                            }
-                          },
-                          "supplier": {
-                            "type": "Struct",
-                            "value": {
-                              "supplierName": {
-                                "type": "String",
-                                "value": null
-                              },
-                              "paymentTerms": {
-                                "type": "Float",
-                                "value": null
-                              },
-                              "leadTime": {
-                                "type": "Float",
-                                "value": null
-                              },
-                              "unitCost": {
-                                "type": "Float",
-                                "value": null
-                              },
-                              "orderQty": {
-                                "type": "Integer",
-                                "value": null
-                              }
-                            }
-                          }
-                        }
-                      },
-                      "Predicted Sales": {
-                        "type": "Struct",
-                        "value": {
-                          "date": {
-                            "type": "DateTime",
-                            "value": null
-                          }
-                        }
-                      },
-                      "Procurement": {
-                        "type": "Struct",
-                        "value": {
-                          "date": {
-                            "type": "DateTime",
-                            "value": null
-                          },
-                          "supplierName": {
-                            "type": "String",
-                            "value": null
-                          }
-                        }
-                      },
-                      "Receive Goods": {
-                        "type": "Struct",
-                        "value": {
-                          "date": {
-                            "type": "DateTime",
-                            "value": null
-                          },
-                          "qty": {
-                            "type": "Integer",
-                            "value": null
-                          }
-                        }
-                      },
-                      "Reporter": {
-                        "type": "Struct",
-                        "value": {
-                          "date": {
-                            "type": "DateTime",
-                            "value": null
-                          }
-                        }
-                      },
-                      "Sales": {
-                        "type": "Struct",
-                        "value": {
-                          "date": {
-                            "type": "DateTime",
-                            "value": null
-                          },
-                          "qty": {
-                            "type": "Integer",
-                            "value": null
-                          },
-                          "discount": {
-                            "type": "Float",
-                            "value": null
-                          },
-                          "price": {
-                            "type": "Float",
-                            "value": null
-                          },
-                          "amount": {
-                            "type": "Float",
-                            "value": null
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                "ast_type": "Variable",
-                "name": "value"
-              },
-              "function": {
-                "type": {
-                  "type": "Variant",
-                  "value": {
-                    "none": {
-                      "nullable": true
-                    },
-                    "some": {
-                      "type": "Struct",
-                      "value": {
-                        "date": {
-                          "type": "DateTime",
-                          "value": null
-                        },
-                        "qty": {
-                          "type": "Integer",
-                          "value": null
-                        },
-                        "discount": {
-                          "type": "Float",
-                          "value": null
-                        },
-                        "price": {
-                          "type": "Float",
-                          "value": null
-                        },
-                        "amount": {
-                          "type": "Float",
-                          "value": null
-                        }
-                      }
-                    }
-                  }
-                },
-                "ast_type": "Match",
-                "input": {
-                  "type": {
-                    "type": "Variant",
-                    "value": {
-                      "Historic Procurement": {
-                        "type": "Struct",
-                        "value": {
-                          "date": {
-                            "type": "DateTime",
-                            "value": null
-                          },
-                          "supplierName": {
-                            "type": "String",
-                            "value": null
-                          }
-                        }
-                      },
-                      "Historic Sales": {
-                        "type": "Struct",
-                        "value": {
-                          "date": {
-                            "type": "DateTime",
-                            "value": null
-                          },
-                          "qty": {
-                            "type": "Integer",
-                            "value": null
-                          },
-                          "discount": {
-                            "type": "Float",
-                            "value": null
-                          }
-                        }
-                      },
-                      "Pay Supplier": {
-                        "type": "Struct",
-                        "value": {
-                          "date": {
-                            "type": "DateTime",
-                            "value": null
-                          },
-                          "invoiceTotal": {
-                            "type": "Float",
-                            "value": null
-                          }
-                        }
-                      },
-                      "Predicted Procurement with Ranking Function": {
-                        "type": "Struct",
-                        "value": {
-                          "date": {
-                            "type": "DateTime",
-                            "value": null
-                          },
-                          "supplierRanking": {
-                            "type": "Dict",
-                            "value": {
-                              "key": {
-                                "type": "String",
-                                "value": null
-                              },
-                              "value": {
-                                "type": "Float",
-                                "value": null
-                              }
-                            }
-                          },
-                          "supplier": {
-                            "type": "Struct",
-                            "value": {
-                              "supplierName": {
-                                "type": "String",
-                                "value": null
-                              },
-                              "paymentTerms": {
-                                "type": "Float",
-                                "value": null
-                              },
-                              "leadTime": {
-                                "type": "Float",
-                                "value": null
-                              },
-                              "unitCost": {
-                                "type": "Float",
-                                "value": null
-                              },
-                              "orderQty": {
-                                "type": "Integer",
-                                "value": null
-                              }
-                            }
-                          }
-                        }
-                      },
-                      "Predicted Sales": {
-                        "type": "Struct",
-                        "value": {
-                          "date": {
-                            "type": "DateTime",
-                            "value": null
-                          }
-                        }
-                      },
-                      "Procurement": {
-                        "type": "Struct",
-                        "value": {
-                          "date": {
-                            "type": "DateTime",
-                            "value": null
-                          },
-                          "supplierName": {
-                            "type": "String",
-                            "value": null
-                          }
-                        }
-                      },
-                      "Receive Goods": {
-                        "type": "Struct",
-                        "value": {
-                          "date": {
-                            "type": "DateTime",
-                            "value": null
-                          },
-                          "qty": {
-                            "type": "Integer",
-                            "value": null
-                          }
-                        }
-                      },
-                      "Reporter": {
-                        "type": "Struct",
-                        "value": {
-                          "date": {
-                            "type": "DateTime",
-                            "value": null
-                          }
-                        }
-                      },
-                      "Sales": {
-                        "type": "Struct",
-                        "value": {
-                          "date": {
-                            "type": "DateTime",
-                            "value": null
-                          },
-                          "qty": {
-                            "type": "Integer",
-                            "value": null
-                          },
-                          "discount": {
-                            "type": "Float",
-                            "value": null
-                          },
-                          "price": {
-                            "type": "Float",
-                            "value": null
-                          },
-                          "amount": {
-                            "type": "Float",
-                            "value": null
-                          }
-                        }
-                      }
-                    }
-                  },
-                  "ast_type": "Variable",
-                  "name": "_value_tl6x3ZubTT2e$hGX5iDgak"
-                },
-                "functions": {
-                  "Historic Procurement": {
-                    "ast_type": "Const",
-                    "type": {
-                      "type": "Variant",
-                      "value": {
-                        "none": {
-                          "nullable": true
-                        }
-                      }
-                    },
-                    "value": {
-                      "type": "none",
-                      "value": null
-                    }
-                  },
-                  "Historic Sales": {
-                    "ast_type": "Const",
-                    "type": {
-                      "type": "Variant",
-                      "value": {
-                        "none": {
-                          "nullable": true
-                        }
-                      }
-                    },
-                    "value": {
-                      "type": "none",
-                      "value": null
-                    }
-                  },
-                  "Pay Supplier": {
-                    "ast_type": "Const",
-                    "type": {
-                      "type": "Variant",
-                      "value": {
-                        "none": {
-                          "nullable": true
-                        }
-                      }
-                    },
-                    "value": {
-                      "type": "none",
-                      "value": null
-                    }
-                  },
-                  "Predicted Procurement with Ranking Function": {
-                    "ast_type": "Const",
-                    "type": {
-                      "type": "Variant",
-                      "value": {
-                        "none": {
-                          "nullable": true
-                        }
-                      }
-                    },
-                    "value": {
-                      "type": "none",
-                      "value": null
-                    }
-                  },
-                  "Predicted Sales": {
-                    "ast_type": "Const",
-                    "type": {
-                      "type": "Variant",
-                      "value": {
-                        "none": {
-                          "nullable": true
-                        }
-                      }
-                    },
-                    "value": {
-                      "type": "none",
-                      "value": null
-                    }
-                  },
-                  "Procurement": {
-                    "ast_type": "Const",
-                    "type": {
-                      "type": "Variant",
-                      "value": {
-                        "none": {
-                          "nullable": true
-                        }
-                      }
-                    },
-                    "value": {
-                      "type": "none",
-                      "value": null
-                    }
-                  },
-                  "Receive Goods": {
-                    "ast_type": "Const",
-                    "type": {
-                      "type": "Variant",
-                      "value": {
-                        "none": {
-                          "nullable": true
-                        }
-                      }
-                    },
-                    "value": {
-                      "type": "none",
-                      "value": null
-                    }
-                  },
-                  "Reporter": {
-                    "ast_type": "Const",
-                    "type": {
-                      "type": "Variant",
-                      "value": {
-                        "none": {
-                          "nullable": true
-                        }
-                      }
-                    },
-                    "value": {
-                      "type": "none",
-                      "value": null
-                    }
-                  },
-                  "Sales": {
-                    "type": {
-                      "type": "Variant",
-                      "value": {
-                        "some": {
-                          "type": "Struct",
-                          "value": {
-                            "date": {
-                              "type": "DateTime",
-                              "value": null
-                            },
-                            "qty": {
-                              "type": "Integer",
-                              "value": null
-                            },
-                            "discount": {
-                              "type": "Float",
-                              "value": null
-                            },
-                            "price": {
-                              "type": "Float",
-                              "value": null
-                            },
-                            "amount": {
-                              "type": "Float",
-                              "value": null
-                            }
-                          }
-                        }
-                      }
-                    },
-                    "ast_type": "NewVariant",
-                    "tag": "some",
-                    "value": {
-                      "type": {
-                        "type": "Struct",
-                        "value": {
-                          "date": {
-                            "type": "DateTime",
-                            "value": null
-                          },
-                          "qty": {
-                            "type": "Integer",
-                            "value": null
-                          },
-                          "discount": {
-                            "type": "Float",
-                            "value": null
-                          },
-                          "price": {
-                            "type": "Float",
-                            "value": null
-                          },
-                          "amount": {
-                            "type": "Float",
-                            "value": null
-                          }
-                        }
-                      },
-                      "ast_type": "Variable",
-                      "name": "_PrnfHImeovNojL5IEUYUBt"
-                    }
-                  }
-                },
-                "value": "_PrnfHImeovNojL5IEUYUBt"
-              },
-              "value": {
-                "type": {
-                  "type": "Variant",
-                  "value": {
-                    "Historic Procurement": {
-                      "type": "Struct",
-                      "value": {
-                        "date": {
-                          "type": "DateTime",
-                          "value": null
-                        },
-                        "supplierName": {
-                          "type": "String",
-                          "value": null
-                        }
-                      }
-                    },
-                    "Historic Sales": {
-                      "type": "Struct",
-                      "value": {
-                        "date": {
-                          "type": "DateTime",
-                          "value": null
-                        },
-                        "qty": {
-                          "type": "Integer",
-                          "value": null
-                        },
-                        "discount": {
-                          "type": "Float",
-                          "value": null
-                        }
-                      }
-                    },
-                    "Pay Supplier": {
-                      "type": "Struct",
-                      "value": {
-                        "date": {
-                          "type": "DateTime",
-                          "value": null
-                        },
-                        "invoiceTotal": {
-                          "type": "Float",
-                          "value": null
-                        }
-                      }
-                    },
-                    "Predicted Procurement with Ranking Function": {
-                      "type": "Struct",
-                      "value": {
-                        "date": {
-                          "type": "DateTime",
-                          "value": null
-                        },
-                        "supplierRanking": {
-                          "type": "Dict",
-                          "value": {
-                            "key": {
-                              "type": "String",
-                              "value": null
-                            },
-                            "value": {
-                              "type": "Float",
-                              "value": null
-                            }
-                          }
-                        },
-                        "supplier": {
-                          "type": "Struct",
-                          "value": {
-                            "supplierName": {
-                              "type": "String",
-                              "value": null
-                            },
-                            "paymentTerms": {
-                              "type": "Float",
-                              "value": null
-                            },
-                            "leadTime": {
-                              "type": "Float",
-                              "value": null
-                            },
-                            "unitCost": {
-                              "type": "Float",
-                              "value": null
-                            },
-                            "orderQty": {
-                              "type": "Integer",
-                              "value": null
-                            }
-                          }
-                        }
-                      }
-                    },
-                    "Predicted Sales": {
-                      "type": "Struct",
-                      "value": {
-                        "date": {
-                          "type": "DateTime",
-                          "value": null
-                        }
-                      }
-                    },
-                    "Procurement": {
-                      "type": "Struct",
-                      "value": {
-                        "date": {
-                          "type": "DateTime",
-                          "value": null
-                        },
-                        "supplierName": {
-                          "type": "String",
-                          "value": null
-                        }
-                      }
-                    },
-                    "Receive Goods": {
-                      "type": "Struct",
-                      "value": {
-                        "date": {
-                          "type": "DateTime",
-                          "value": null
-                        },
-                        "qty": {
-                          "type": "Integer",
-                          "value": null
-                        }
-                      }
-                    },
-                    "Reporter": {
-                      "type": "Struct",
-                      "value": {
-                        "date": {
-                          "type": "DateTime",
-                          "value": null
-                        }
-                      }
-                    },
-                    "Sales": {
-                      "type": "Struct",
-                      "value": {
-                        "date": {
-                          "type": "DateTime",
-                          "value": null
-                        },
-                        "qty": {
-                          "type": "Integer",
-                          "value": null
-                        },
-                        "discount": {
-                          "type": "Float",
-                          "value": null
-                        },
-                        "price": {
-                          "type": "Float",
-                          "value": null
-                        },
-                        "amount": {
-                          "type": "Float",
-                          "value": null
-                        }
-                      }
-                    }
-                  }
-                },
-                "ast_type": "Variable",
-                "name": "_value_tl6x3ZubTT2e$hGX5iDgak"
-              },
-              "key": {
-                "type": {
-                  "type": "Integer",
-                  "value": null
-                },
-                "ast_type": "Variable",
-                "name": "_key_1OXzK49xDehJEO8lUNc8tw"
-              }
-            },
-            "output_value": {
-              "type": {
-                "type": "Struct",
-                "value": {
-                  "date": {
-                    "type": "DateTime",
-                    "value": null
-                  },
-                  "qty": {
-                    "type": "Integer",
-                    "value": null
-                  },
-                  "discount": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "price": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "amount": {
-                    "type": "Float",
-                    "value": null
-                  }
-                }
-              },
-              "ast_type": "Variable",
-              "name": "_value_pp4lm_DuOUgdDh0mMXeN$v"
-            },
-            "output_key": {
-              "type": {
-                "type": "String",
-                "value": null
-              },
-              "ast_type": "Print",
-              "value": {
-                "type": {
-                  "type": "Integer",
-                  "value": null
-                },
-                "ast_type": "Variable",
-                "name": "_key_8GCN4O6DRYXpOZS$3PsPlc"
-              }
-            },
-            "input_value": {
-              "type": {
-                "type": "Struct",
-                "value": {
-                  "date": {
-                    "type": "DateTime",
-                    "value": null
-                  },
-                  "qty": {
-                    "type": "Integer",
-                    "value": null
-                  },
-                  "discount": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "price": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "amount": {
-                    "type": "Float",
-                    "value": null
-                  }
-                }
-              },
-              "ast_type": "Variable",
-              "name": "_value_pp4lm_DuOUgdDh0mMXeN$v"
-            },
-            "input_key": {
-              "type": {
-                "type": "Integer",
-                "value": null
-              },
-              "ast_type": "Variable",
-              "name": "_key_8GCN4O6DRYXpOZS$3PsPlc"
-            }
-          }
-        },
-        {
-          "operation_type": "filter",
-          "output_type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "date": {
-                    "type": "DateTime",
-                    "value": null
-                  },
-                  "qty": {
-                    "type": "Integer",
-                    "value": null
-                  },
-                  "discount": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "price": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "amount": {
-                    "type": "Float",
-                    "value": null
-                  }
-                }
-              }
-            }
-          },
-          "predicate": {
-            "type": {
-              "type": "Boolean",
-              "value": null
-            },
-            "ast_type": "GreaterEqual",
-            "first": {
-              "type": {
-                "type": "DateTime",
-                "value": null
-              },
-              "ast_type": "Variable",
-              "name": "field.date"
-            },
-            "second": {
-              "type": {
-                "type": "DateTime",
-                "value": null
-              },
-              "ast_type": "Const",
-              "value": "2022-10-15T11:00:00.000Z"
-            }
-          }
-        }
-      ]
-    },
     "Pipeline.Process.Optimized Procurement": {
       "name": "Pipeline.Process.Optimized Procurement",
       "parent": "Pipeline.Process.Optimized Procurement",
@@ -9291,6 +8536,14 @@
                 }
               }
             }
+          },
+          "writable": false
+        },
+        "next_procurement_date": {
+          "name": "Pipeline.Resource.Next Procurement Date",
+          "type": {
+            "type": "DateTime",
+            "value": null
           },
           "writable": false
         }
@@ -9750,7 +9003,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "_value_t9yBYUJsaKSJ$FDckdFUF5"
+                  "name": "_value_UdLKyTLfcjI4Wh3GUjAFV8"
                 },
                 "functions": {
                   "Historic Procurement": {
@@ -9864,7 +9117,7 @@
                         }
                       },
                       "ast_type": "Variable",
-                      "name": "_RTpX9ymroLSPOwzbqB3E57"
+                      "name": "_b$2JRzI1VWPgw91SCEoMUP"
                     }
                   },
                   "Receive Goods": {
@@ -9913,7 +9166,7 @@
                     }
                   }
                 },
-                "value": "_RTpX9ymroLSPOwzbqB3E57"
+                "value": "_b$2JRzI1VWPgw91SCEoMUP"
               },
               "value": {
                 "type": {
@@ -10081,7 +9334,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_t9yBYUJsaKSJ$FDckdFUF5"
+                "name": "_value_UdLKyTLfcjI4Wh3GUjAFV8"
               },
               "key": {
                 "type": {
@@ -10089,7 +9342,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_key_rCHTweI6B7WYmO8Kt8LljF"
+                "name": "_key_ODylu3X1_SNqcflhJCZab6"
               }
             },
             "output_value": {
@@ -10107,7 +9360,7 @@
                 }
               },
               "ast_type": "Variable",
-              "name": "_value_xIgyAeva5OoKRk2xWm0OUo"
+              "name": "_value_Oy8R5Rhc9uJhJ6RautS_dK"
             },
             "output_key": {
               "type": {
@@ -10136,7 +9389,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "_value_xIgyAeva5OoKRk2xWm0OUo"
+                  "name": "_value_Oy8R5Rhc9uJhJ6RautS_dK"
                 },
                 "key": "date"
               }
@@ -10156,7 +9409,7 @@
                 }
               },
               "ast_type": "Variable",
-              "name": "_value_xIgyAeva5OoKRk2xWm0OUo"
+              "name": "_value_Oy8R5Rhc9uJhJ6RautS_dK"
             },
             "input_key": {
               "type": {
@@ -10164,9 +9417,13 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_KQDAVat8ypgwcckb6VHhLP"
+              "name": "_key_VCAmuvFxglptm9fxfoVfMD"
             }
           }
+        },
+        {
+          "operation_type": "input",
+          "name": "next_procurement_date"
         },
         {
           "operation_type": "filter",
@@ -10211,9 +9468,293 @@
                 "type": "DateTime",
                 "value": null
               },
-              "ast_type": "Const",
-              "value": "2022-10-16T09:00:00.000Z"
+              "ast_type": "Variable",
+              "name": "input.next_procurement_date"
             }
+          }
+        }
+      ]
+    },
+    "Pipeline.Process.Predicted Procurement with Ranking Function": {
+      "name": "Pipeline.Process.Predicted Procurement with Ranking Function",
+      "parent": "Pipeline.Process.Predicted Procurement with Ranking Function",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Pipeline.Resource.Next Procurement Date",
+          "type": {
+            "type": "DateTime",
+            "value": null
+          },
+          "writable": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Process.Predicted Procurement with Ranking Function",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              }
+            }
+          },
+          "expression": {
+            "type": {
+              "type": "Struct",
+              "value": {
+                "date": {
+                  "type": "DateTime",
+                  "value": null
+                }
+              }
+            },
+            "ast_type": "Struct",
+            "fields": {
+              "date": {
+                "type": {
+                  "type": "DateTime",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "value"
+              }
+            }
+          }
+        },
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "expression": {
+            "type": {
+              "type": "Dict",
+              "value": {
+                "key": {
+                  "type": "String",
+                  "value": null
+                },
+                "value": {
+                  "type": "Struct",
+                  "value": {
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    }
+                  }
+                }
+              }
+            },
+            "ast_type": "NewDict",
+            "keys": [
+              {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": ""
+              }
+            ],
+            "values": [
+              {
+                "type": {
+                  "type": "Struct",
+                  "value": {
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    }
+                  }
+                },
+                "ast_type": "Variable",
+                "name": "value"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "Pipeline.Process.Predicted Sales": {
+      "name": "Pipeline.Process.Predicted Sales",
+      "parent": "Pipeline.Process.Predicted Sales",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Pipeline.Resource.Next Sale Date",
+          "type": {
+            "type": "DateTime",
+            "value": null
+          },
+          "writable": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Process.Predicted Sales",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              }
+            }
+          },
+          "expression": {
+            "type": {
+              "type": "Struct",
+              "value": {
+                "date": {
+                  "type": "DateTime",
+                  "value": null
+                }
+              }
+            },
+            "ast_type": "Struct",
+            "fields": {
+              "date": {
+                "type": {
+                  "type": "DateTime",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "value"
+              }
+            }
+          }
+        },
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "expression": {
+            "type": {
+              "type": "Dict",
+              "value": {
+                "key": {
+                  "type": "String",
+                  "value": null
+                },
+                "value": {
+                  "type": "Struct",
+                  "value": {
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    }
+                  }
+                }
+              }
+            },
+            "ast_type": "NewDict",
+            "keys": [
+              {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": ""
+              }
+            ],
+            "values": [
+              {
+                "type": {
+                  "type": "Struct",
+                  "value": {
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    }
+                  }
+                },
+                "ast_type": "Variable",
+                "name": "value"
+              }
+            ]
           }
         }
       ]
@@ -10252,6 +9793,14 @@
             }
           },
           "writable": false
+        },
+        "maxDate": {
+          "name": "Pipeline.Resource.Next Sale Date",
+          "type": {
+            "type": "DateTime",
+            "value": null
+          },
+          "writable": false
         }
       },
       "outputs": {
@@ -10280,64 +9829,8 @@
       },
       "operations": [
         {
-          "operation_type": "aggregate",
-          "group_name": "_",
-          "group_value": {
-            "type": {
-              "type": "String",
-              "value": null
-            },
-            "ast_type": "Const",
-            "value": "_"
-          },
-          "aggregations": {
-            "minDate": {
-              "type": {
-                "type": "DateTime",
-                "value": null
-              },
-              "aggregation_type": "Minimum",
-              "input_key": "key",
-              "value": {
-                "type": {
-                  "type": "DateTime",
-                  "value": null
-                },
-                "ast_type": "Variable",
-                "name": "field.date"
-              },
-              "field": {
-                "type": {
-                  "type": "DateTime",
-                  "value": null
-                },
-                "ast_type": "Variable",
-                "name": "minDate"
-              }
-            }
-          },
-          "output_type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "_": {
-                    "type": "String",
-                    "value": null
-                  },
-                  "minDate": {
-                    "type": "DateTime",
-                    "value": null
-                  }
-                }
-              }
-            }
-          }
+          "operation_type": "input",
+          "name": "maxDate"
         },
         {
           "operation_type": "transform",
@@ -10367,59 +9860,172 @@
                   "type": "DateTime",
                   "value": null
                 },
-                "ast_type": "GetField",
-                "struct": {
+                "ast_type": "Reduce",
+                "collection": {
                   "type": {
-                    "type": "Struct",
+                    "type": "Dict",
                     "value": {
-                      "_": {
+                      "key": {
                         "type": "String",
                         "value": null
                       },
-                      "minDate": {
+                      "value": {
+                        "type": "Struct",
+                        "value": {
+                          "date": {
+                            "type": "DateTime",
+                            "value": null
+                          },
+                          "qty": {
+                            "type": "Integer",
+                            "value": null
+                          },
+                          "discount": {
+                            "type": "Float",
+                            "value": null
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "ast_type": "Variable",
+                  "name": "value"
+                },
+                "reducer": {
+                  "type": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "ast_type": "Let",
+                  "ast": {
+                    "type": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "ast_type": "IfElse",
+                    "predicate": {
+                      "type": {
+                        "type": "Boolean",
+                        "value": null
+                      },
+                      "ast_type": "Less",
+                      "first": {
+                        "type": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "ast_type": "Variable",
+                        "name": "_4tU3qLr6c4TfjIuFCngVEL"
+                      },
+                      "second": {
+                        "type": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "ast_type": "Variable",
+                        "name": "_previous_f0PKr7kn2Nym_nsarvZg7Z"
+                      }
+                    },
+                    "true": {
+                      "type": {
                         "type": "DateTime",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "_4tU3qLr6c4TfjIuFCngVEL"
+                    },
+                    "false": {
+                      "type": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "_previous_f0PKr7kn2Nym_nsarvZg7Z"
+                    }
+                  },
+                  "variable": {
+                    "type": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "_4tU3qLr6c4TfjIuFCngVEL"
+                  },
+                  "value": {
+                    "type": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "ast_type": "GetField",
+                    "struct": {
+                      "type": {
+                        "type": "Struct",
+                        "value": {
+                          "date": {
+                            "type": "DateTime",
+                            "value": null
+                          },
+                          "qty": {
+                            "type": "Integer",
+                            "value": null
+                          },
+                          "discount": {
+                            "type": "Float",
+                            "value": null
+                          }
+                        }
+                      },
+                      "ast_type": "Variable",
+                      "name": "_value_FHf_2FuWtOfyuZPDceiaTo"
+                    },
+                    "key": "date"
+                  }
+                },
+                "initial": {
+                  "type": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "input.maxDate"
+                },
+                "previous": {
+                  "type": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "_previous_f0PKr7kn2Nym_nsarvZg7Z"
+                },
+                "value": {
+                  "type": {
+                    "type": "Struct",
+                    "value": {
+                      "date": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "qty": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "discount": {
+                        "type": "Float",
                         "value": null
                       }
                     }
                   },
-                  "ast_type": "Get",
-                  "dict": {
-                    "type": {
-                      "type": "Dict",
-                      "value": {
-                        "key": {
-                          "type": "String",
-                          "value": null
-                        },
-                        "value": {
-                          "type": "Struct",
-                          "value": {
-                            "_": {
-                              "type": "String",
-                              "value": null
-                            },
-                            "minDate": {
-                              "type": "DateTime",
-                              "value": null
-                            }
-                          }
-                        }
-                      }
-                    },
-                    "ast_type": "Variable",
-                    "name": "value"
-                  },
-                  "key": {
-                    "type": {
-                      "type": "String",
-                      "value": null
-                    },
-                    "ast_type": "Const",
-                    "value": "_"
-                  },
-                  "default": null
+                  "ast_type": "Variable",
+                  "name": "_value_FHf_2FuWtOfyuZPDceiaTo"
                 },
-                "key": "minDate"
+                "key": {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "_key_xBmR3OGh2xhwnO$WExqQRi"
+                }
               }
             }
           }
@@ -10692,7 +10298,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_zU$ToN33IkJWNkS6OLL3xU"
+              "name": "_key_lapoVgkd1iOp0hDpgJFJQY"
             },
             "input_value": {
               "type": {
@@ -10721,7 +10327,7 @@
                 }
               },
               "ast_type": "Variable",
-              "name": "_value_0Nz68J8mYmbXg6cLaVfECK"
+              "name": "_value_F9VbhLxr0bjzA8o2z$Trxq"
             },
             "input_key": {
               "type": {
@@ -10729,37 +10335,247 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_zU$ToN33IkJWNkS6OLL3xU"
+              "name": "_key_lapoVgkd1iOp0hDpgJFJQY"
             }
           }
         }
       ]
     },
-    "Pipeline.Resource.Report": {
-      "name": "Pipeline.Resource.Report",
-      "parent": "Pipeline.Resource.Report",
+    "Pipeline.Resource.Next Procurement Date": {
+      "name": "Pipeline.Resource.Next Procurement Date",
+      "parent": "Pipeline.Resource.Next Procurement Date",
       "task_type": "pipeline",
       "inputs": {
         "input": {
-          "name": "Writeable.Resource.Cash",
+          "name": "Pipeline.Historic Procurement",
           "type": {
-            "type": "Float",
-            "value": null
-          },
-          "writable": false
-        },
-        "stockOnHand": {
-          "name": "Writeable.Resource.Stock-on-hand",
-          "type": {
-            "type": "Integer",
-            "value": null
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "supplierName": {
+                    "type": "String",
+                    "value": null
+                  }
+                }
+              }
+            }
           },
           "writable": false
         }
       },
       "outputs": {
         "output": {
-          "name": "Pipeline.Resource.Report",
+          "name": "Pipeline.Resource.Next Procurement Date",
+          "type": {
+            "type": "DateTime",
+            "value": null
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "DateTime",
+            "value": null
+          },
+          "expression": {
+            "type": {
+              "type": "DateTime",
+              "value": null
+            },
+            "ast_type": "AddDuration",
+            "start": {
+              "type": {
+                "type": "DateTime",
+                "value": null
+              },
+              "ast_type": "Reduce",
+              "collection": {
+                "type": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "date": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "supplierName": {
+                          "type": "String",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                },
+                "ast_type": "Variable",
+                "name": "value"
+              },
+              "reducer": {
+                "type": {
+                  "type": "DateTime",
+                  "value": null
+                },
+                "ast_type": "Let",
+                "ast": {
+                  "type": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "ast_type": "IfElse",
+                  "predicate": {
+                    "type": {
+                      "type": "Boolean",
+                      "value": null
+                    },
+                    "ast_type": "Greater",
+                    "first": {
+                      "type": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "_vyRjiAqDLKGDMkKfNh_BYL"
+                    },
+                    "second": {
+                      "type": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "_previous_IJzkM2$yp8clbTFTkkAkLx"
+                    }
+                  },
+                  "true": {
+                    "type": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "_vyRjiAqDLKGDMkKfNh_BYL"
+                  },
+                  "false": {
+                    "type": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "_previous_IJzkM2$yp8clbTFTkkAkLx"
+                  }
+                },
+                "variable": {
+                  "type": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "_vyRjiAqDLKGDMkKfNh_BYL"
+                },
+                "value": {
+                  "type": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "ast_type": "GetField",
+                  "struct": {
+                    "type": {
+                      "type": "Struct",
+                      "value": {
+                        "date": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "supplierName": {
+                          "type": "String",
+                          "value": null
+                        }
+                      }
+                    },
+                    "ast_type": "Variable",
+                    "name": "_value_Q1c1vWPYHnuaD9N5$v5Qwa"
+                  },
+                  "key": "date"
+                }
+              },
+              "initial": {
+                "type": {
+                  "type": "DateTime",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": "1970-01-01T00:00:00.000Z"
+              },
+              "previous": {
+                "type": {
+                  "type": "DateTime",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "_previous_IJzkM2$yp8clbTFTkkAkLx"
+              },
+              "value": {
+                "type": {
+                  "type": "Struct",
+                  "value": {
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "supplierName": {
+                      "type": "String",
+                      "value": null
+                    }
+                  }
+                },
+                "ast_type": "Variable",
+                "name": "_value_Q1c1vWPYHnuaD9N5$v5Qwa"
+              },
+              "key": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "_key_ST_Fy$4BazyhUESQn$3l0F"
+              }
+            },
+            "duration": {
+              "type": {
+                "type": "Float",
+                "value": null
+              },
+              "ast_type": "Const",
+              "value": 1
+            },
+            "unit": "day"
+          }
+        }
+      ]
+    },
+    "Pipeline.Resource.Next Sale Date": {
+      "name": "Pipeline.Resource.Next Sale Date",
+      "parent": "Pipeline.Resource.Next Sale Date",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Pipeline.Historic Sales",
           "type": {
             "type": "Dict",
             "value": {
@@ -10774,12 +10590,12 @@
                     "type": "DateTime",
                     "value": null
                   },
-                  "cash": {
-                    "type": "Float",
+                  "qty": {
+                    "type": "Integer",
                     "value": null
                   },
-                  "stockOnHand": {
-                    "type": "Integer",
+                  "discount": {
+                    "type": "Float",
                     "value": null
                   }
                 }
@@ -10789,86 +10605,172 @@
           "writable": false
         }
       },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Resource.Next Sale Date",
+          "type": {
+            "type": "DateTime",
+            "value": null
+          },
+          "writable": false
+        }
+      },
       "operations": [
-        {
-          "operation_type": "input",
-          "name": "stockOnHand"
-        },
         {
           "operation_type": "transform",
           "output_type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "date": {
-                    "type": "DateTime",
-                    "value": null
-                  },
-                  "cash": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "stockOnHand": {
-                    "type": "Integer",
-                    "value": null
-                  }
-                }
-              }
-            }
+            "type": "DateTime",
+            "value": null
           },
           "expression": {
             "type": {
-              "type": "Dict",
-              "value": {
-                "key": {
-                  "type": "String",
+              "type": "DateTime",
+              "value": null
+            },
+            "ast_type": "AddDuration",
+            "start": {
+              "type": {
+                "type": "DateTime",
+                "value": null
+              },
+              "ast_type": "Reduce",
+              "collection": {
+                "type": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "date": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "qty": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "discount": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                },
+                "ast_type": "Variable",
+                "name": "value"
+              },
+              "reducer": {
+                "type": {
+                  "type": "DateTime",
                   "value": null
                 },
-                "value": {
-                  "type": "Struct",
-                  "value": {
-                    "date": {
+                "ast_type": "Let",
+                "ast": {
+                  "type": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "ast_type": "IfElse",
+                  "predicate": {
+                    "type": {
+                      "type": "Boolean",
+                      "value": null
+                    },
+                    "ast_type": "Greater",
+                    "first": {
+                      "type": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "_NL5_oSCs1vQ53asCY63Ybr"
+                    },
+                    "second": {
+                      "type": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "_previous_vxLdffVC$T_x6XcXKVJXoY"
+                    }
+                  },
+                  "true": {
+                    "type": {
                       "type": "DateTime",
                       "value": null
                     },
-                    "cash": {
-                      "type": "Float",
+                    "ast_type": "Variable",
+                    "name": "_NL5_oSCs1vQ53asCY63Ybr"
+                  },
+                  "false": {
+                    "type": {
+                      "type": "DateTime",
                       "value": null
                     },
-                    "stockOnHand": {
-                      "type": "Integer",
-                      "value": null
-                    }
+                    "ast_type": "Variable",
+                    "name": "_previous_vxLdffVC$T_x6XcXKVJXoY"
                   }
-                }
-              }
-            },
-            "ast_type": "NewDict",
-            "keys": [
-              {
-                "type": {
-                  "type": "String",
-                  "value": null
                 },
-                "ast_type": "Print",
+                "variable": {
+                  "type": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "_NL5_oSCs1vQ53asCY63Ybr"
+                },
                 "value": {
                   "type": {
                     "type": "DateTime",
                     "value": null
                   },
-                  "ast_type": "Const",
-                  "value": "2022-10-15T11:00:00.000Z"
+                  "ast_type": "GetField",
+                  "struct": {
+                    "type": {
+                      "type": "Struct",
+                      "value": {
+                        "date": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "qty": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "discount": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    },
+                    "ast_type": "Variable",
+                    "name": "_value_Cjq2Pyv4$FnhCFOuuPM$fo"
+                  },
+                  "key": "date"
                 }
-              }
-            ],
-            "values": [
-              {
+              },
+              "initial": {
+                "type": {
+                  "type": "DateTime",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": "1970-01-01T00:00:00.000Z"
+              },
+              "previous": {
+                "type": {
+                  "type": "DateTime",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "_previous_vxLdffVC$T_x6XcXKVJXoY"
+              },
+              "value": {
                 "type": {
                   "type": "Struct",
                   "value": {
@@ -10876,45 +10778,37 @@
                       "type": "DateTime",
                       "value": null
                     },
-                    "cash": {
-                      "type": "Float",
+                    "qty": {
+                      "type": "Integer",
                       "value": null
                     },
-                    "stockOnHand": {
-                      "type": "Integer",
+                    "discount": {
+                      "type": "Float",
                       "value": null
                     }
                   }
                 },
-                "ast_type": "Struct",
-                "fields": {
-                  "date": {
-                    "type": {
-                      "type": "DateTime",
-                      "value": null
-                    },
-                    "ast_type": "Const",
-                    "value": "2022-10-15T11:00:00.000Z"
-                  },
-                  "cash": {
-                    "type": {
-                      "type": "Float",
-                      "value": null
-                    },
-                    "ast_type": "Variable",
-                    "name": "value"
-                  },
-                  "stockOnHand": {
-                    "type": {
-                      "type": "Integer",
-                      "value": null
-                    },
-                    "ast_type": "Variable",
-                    "name": "input.stockOnHand"
-                  }
-                }
+                "ast_type": "Variable",
+                "name": "_value_Cjq2Pyv4$FnhCFOuuPM$fo"
+              },
+              "key": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "_key_ajvRcYNZeeUSuTFzVN3zHi"
               }
-            ]
+            },
+            "duration": {
+              "type": {
+                "type": "Float",
+                "value": null
+              },
+              "ast_type": "Const",
+              "value": 1
+            },
+            "unit": "hour"
           }
         }
       ]
@@ -12670,8 +12564,24 @@
           },
           "writable": false
         },
+        "resource.Next Sale Date": {
+          "name": "Pipeline.Resource.Next Sale Date",
+          "type": {
+            "type": "DateTime",
+            "value": null
+          },
+          "writable": false
+        },
+        "resource.Next Procurement Date": {
+          "name": "Pipeline.Resource.Next Procurement Date",
+          "type": {
+            "type": "DateTime",
+            "value": null
+          },
+          "writable": false
+        },
         "process.Predicted Sales": {
-          "name": "Writeable.Process.Predicted Sales",
+          "name": "Pipeline.Process.Predicted Sales",
           "type": {
             "type": "Dict",
             "value": {
@@ -12763,7 +12673,7 @@
           "writable": false
         },
         "resource.Report": {
-          "name": "Pipeline.Resource.Report",
+          "name": "Writeable.Resource.Report",
           "type": {
             "type": "Dict",
             "value": {
@@ -12785,6 +12695,17 @@
                   "stockOnHand": {
                     "type": "Integer",
                     "value": null
+                  },
+                  "mode": {
+                    "type": "Variant",
+                    "value": {
+                      "Future": {
+                        "nullable": true
+                      },
+                      "Historic": {
+                        "nullable": true
+                      }
+                    }
                   }
                 }
               }
@@ -12929,6 +12850,22 @@
           },
           "writable": false
         },
+        "result.Next Sale Date": {
+          "name": "SimulationResult.Interactive Scenario.Next Sale Date",
+          "type": {
+            "type": "DateTime",
+            "value": null
+          },
+          "writable": false
+        },
+        "result.Next Procurement Date": {
+          "name": "SimulationResult.Interactive Scenario.Next Procurement Date",
+          "type": {
+            "type": "DateTime",
+            "value": null
+          },
+          "writable": false
+        },
         "result.Report": {
           "name": "SimulationResult.Interactive Scenario.Report",
           "type": {
@@ -12952,6 +12889,17 @@
                   "stockOnHand": {
                     "type": "Integer",
                     "value": null
+                  },
+                  "mode": {
+                    "type": "Variant",
+                    "value": {
+                      "Future": {
+                        "nullable": true
+                      },
+                      "Historic": {
+                        "nullable": true
+                      }
+                    }
                   }
                 }
               }
@@ -13283,6 +13231,26 @@
           "assertions": [],
           "ledger": false
         },
+        "Next Sale Date": {
+          "name": "Next Sale Date",
+          "type": {
+            "type": "DateTime",
+            "value": null
+          },
+          "input": "resource.Next Sale Date",
+          "assertions": [],
+          "ledger": false
+        },
+        "Next Procurement Date": {
+          "name": "Next Procurement Date",
+          "type": {
+            "type": "DateTime",
+            "value": null
+          },
+          "input": "resource.Next Procurement Date",
+          "assertions": [],
+          "ledger": false
+        },
         "Report": {
           "name": "Report",
           "type": {
@@ -13306,6 +13274,17 @@
                   "stockOnHand": {
                     "type": "Integer",
                     "value": null
+                  },
+                  "mode": {
+                    "type": "Variant",
+                    "value": {
+                      "Future": {
+                        "nullable": true
+                      },
+                      "Historic": {
+                        "nullable": true
+                      }
+                    }
                   }
                 }
               }
@@ -14437,7 +14416,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_80oNa9yuykgI$O9BWcyO6n"
+                          "name": "_JvTzJOK4Lldy0R_Mg2_Ilf"
                         },
                         "second": {
                           "type": {
@@ -14454,7 +14433,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_80oNa9yuykgI$O9BWcyO6n"
+                        "name": "_JvTzJOK4Lldy0R_Mg2_Ilf"
                       },
                       "false": {
                         "type": {
@@ -14471,7 +14450,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_80oNa9yuykgI$O9BWcyO6n"
+                      "name": "_JvTzJOK4Lldy0R_Mg2_Ilf"
                     },
                     "value": {
                       "type": {
@@ -14751,8 +14730,8 @@
                       "type": "DateTime",
                       "value": null
                     },
-                    "ast_type": "Const",
-                    "value": "2022-10-15T11:00:00.000Z"
+                    "ast_type": "Variable",
+                    "name": "r_Next Sale Date"
                   },
                   "duration": {
                     "type": {
@@ -14901,6 +14880,17 @@
                     "stockOnHand": {
                       "type": "Integer",
                       "value": null
+                    },
+                    "mode": {
+                      "type": "Variant",
+                      "value": {
+                        "Future": {
+                          "nullable": true
+                        },
+                        "Historic": {
+                          "nullable": true
+                        }
+                      }
                     }
                   }
                 },
@@ -14929,6 +14919,81 @@
                     },
                     "ast_type": "Variable",
                     "name": "r_Stock-on-hand"
+                  },
+                  "mode": {
+                    "type": {
+                      "type": "Variant",
+                      "value": {
+                        "Future": {
+                          "nullable": true
+                        },
+                        "Historic": {
+                          "nullable": true
+                        }
+                      }
+                    },
+                    "ast_type": "IfElse",
+                    "predicate": {
+                      "type": {
+                        "type": "Boolean",
+                        "value": null
+                      },
+                      "ast_type": "GreaterEqual",
+                      "first": {
+                        "type": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "ast_type": "Variable",
+                        "name": "p_date"
+                      },
+                      "second": {
+                        "type": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "ast_type": "Variable",
+                        "name": "r_Next Sale Date"
+                      }
+                    },
+                    "true": {
+                      "type": {
+                        "type": "Variant",
+                        "value": {
+                          "Future": {
+                            "nullable": true
+                          }
+                        }
+                      },
+                      "ast_type": "NewVariant",
+                      "tag": "Future",
+                      "value": {
+                        "type": {
+                          "nullable": true
+                        },
+                        "ast_type": "Const",
+                        "value": null
+                      }
+                    },
+                    "false": {
+                      "type": {
+                        "type": "Variant",
+                        "value": {
+                          "Historic": {
+                            "nullable": true
+                          }
+                        }
+                      },
+                      "ast_type": "NewVariant",
+                      "tag": "Historic",
+                      "value": {
+                        "type": {
+                          "nullable": true
+                        },
+                        "ast_type": "Const",
+                        "value": null
+                      }
+                    }
                   }
                 }
               },
@@ -15242,8 +15307,24 @@
           },
           "writable": false
         },
+        "resource.Next Sale Date": {
+          "name": "Pipeline.Resource.Next Sale Date",
+          "type": {
+            "type": "DateTime",
+            "value": null
+          },
+          "writable": false
+        },
+        "resource.Next Procurement Date": {
+          "name": "Pipeline.Resource.Next Procurement Date",
+          "type": {
+            "type": "DateTime",
+            "value": null
+          },
+          "writable": false
+        },
         "process.Predicted Sales": {
-          "name": "Writeable.Process.Predicted Sales",
+          "name": "Pipeline.Process.Predicted Sales",
           "type": {
             "type": "Dict",
             "value": {
@@ -15309,7 +15390,7 @@
           "writable": false
         },
         "process.Predicted Procurement with Ranking Function": {
-          "name": "Writeable.Process.Predicted Procurement with Ranking Function",
+          "name": "Pipeline.Process.Predicted Procurement with Ranking Function",
           "type": {
             "type": "Dict",
             "value": {
@@ -15331,7 +15412,7 @@
           "writable": false
         },
         "resource.Report": {
-          "name": "Pipeline.Resource.Report",
+          "name": "Writeable.Resource.Report",
           "type": {
             "type": "Dict",
             "value": {
@@ -15353,6 +15434,17 @@
                   "stockOnHand": {
                     "type": "Integer",
                     "value": null
+                  },
+                  "mode": {
+                    "type": "Variant",
+                    "value": {
+                      "Future": {
+                        "nullable": true
+                      },
+                      "Historic": {
+                        "nullable": true
+                      }
+                    }
                   }
                 }
               }
@@ -15497,6 +15589,22 @@
           },
           "writable": false
         },
+        "result.Next Sale Date": {
+          "name": "SimulationResult.Multi-decision Prescriptive Enhanced.Next Sale Date",
+          "type": {
+            "type": "DateTime",
+            "value": null
+          },
+          "writable": false
+        },
+        "result.Next Procurement Date": {
+          "name": "SimulationResult.Multi-decision Prescriptive Enhanced.Next Procurement Date",
+          "type": {
+            "type": "DateTime",
+            "value": null
+          },
+          "writable": false
+        },
         "result.Report": {
           "name": "SimulationResult.Multi-decision Prescriptive Enhanced.Report",
           "type": {
@@ -15520,6 +15628,17 @@
                   "stockOnHand": {
                     "type": "Integer",
                     "value": null
+                  },
+                  "mode": {
+                    "type": "Variant",
+                    "value": {
+                      "Future": {
+                        "nullable": true
+                      },
+                      "Historic": {
+                        "nullable": true
+                      }
+                    }
                   }
                 }
               }
@@ -15885,6 +16004,26 @@
           "assertions": [],
           "ledger": false
         },
+        "Next Sale Date": {
+          "name": "Next Sale Date",
+          "type": {
+            "type": "DateTime",
+            "value": null
+          },
+          "input": "resource.Next Sale Date",
+          "assertions": [],
+          "ledger": false
+        },
+        "Next Procurement Date": {
+          "name": "Next Procurement Date",
+          "type": {
+            "type": "DateTime",
+            "value": null
+          },
+          "input": "resource.Next Procurement Date",
+          "assertions": [],
+          "ledger": false
+        },
         "Report": {
           "name": "Report",
           "type": {
@@ -15908,6 +16047,17 @@
                   "stockOnHand": {
                     "type": "Integer",
                     "value": null
+                  },
+                  "mode": {
+                    "type": "Variant",
+                    "value": {
+                      "Future": {
+                        "nullable": true
+                      },
+                      "Historic": {
+                        "nullable": true
+                      }
+                    }
                   }
                 }
               }
@@ -17039,7 +17189,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_80oNa9yuykgI$O9BWcyO6n"
+                          "name": "_JvTzJOK4Lldy0R_Mg2_Ilf"
                         },
                         "second": {
                           "type": {
@@ -17056,7 +17206,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_80oNa9yuykgI$O9BWcyO6n"
+                        "name": "_JvTzJOK4Lldy0R_Mg2_Ilf"
                       },
                       "false": {
                         "type": {
@@ -17073,7 +17223,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_80oNa9yuykgI$O9BWcyO6n"
+                      "name": "_JvTzJOK4Lldy0R_Mg2_Ilf"
                     },
                     "value": {
                       "type": {
@@ -17353,8 +17503,8 @@
                       "type": "DateTime",
                       "value": null
                     },
-                    "ast_type": "Const",
-                    "value": "2022-10-15T11:00:00.000Z"
+                    "ast_type": "Variable",
+                    "name": "r_Next Sale Date"
                   },
                   "duration": {
                     "type": {
@@ -17551,7 +17701,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_key_Mfn2FW8b8G8xO_vcaEA7M3"
+                          "name": "_key_hrudtu0q2NTYoqZhT$uex9"
                         },
                         "default": null
                       },
@@ -17632,7 +17782,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_key_Mfn2FW8b8G8xO_vcaEA7M3"
+                          "name": "_key_hrudtu0q2NTYoqZhT$uex9"
                         },
                         "default": null
                       },
@@ -17654,7 +17804,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_key_Mfn2FW8b8G8xO_vcaEA7M3"
+                  "name": "_key_hrudtu0q2NTYoqZhT$uex9"
                 },
                 "input_value": {
                   "type": {
@@ -17683,7 +17833,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "_value_$44Ti5iwRZSnpSjChrM4Y0"
+                  "name": "_value_JLGvRve41VO6GuME7idC$v"
                 },
                 "input_key": {
                   "type": {
@@ -17691,7 +17841,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_key_Mfn2FW8b8G8xO_vcaEA7M3"
+                  "name": "_key_hrudtu0q2NTYoqZhT$uex9"
                 }
               }
             },
@@ -17859,7 +18009,7 @@
                                 "value": null
                               },
                               "ast_type": "Variable",
-                              "name": "_key_tjvFywcCVmEjE_koVqGzkB"
+                              "name": "_key_ufchKrau$emj_eouWwK8E8"
                             },
                             "rank": {
                               "type": {
@@ -17867,7 +18017,7 @@
                                 "value": null
                               },
                               "ast_type": "Variable",
-                              "name": "_value_l6RvAo91sp9B4lG$I_vN0u"
+                              "name": "_value_5Aj_SaXYGbB8FzrfG72bP$"
                             }
                           }
                         },
@@ -17877,7 +18027,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_value_l6RvAo91sp9B4lG$I_vN0u"
+                          "name": "_value_5Aj_SaXYGbB8FzrfG72bP$"
                         },
                         "input_key": {
                           "type": {
@@ -17885,7 +18035,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_key_tjvFywcCVmEjE_koVqGzkB"
+                          "name": "_key_ufchKrau$emj_eouWwK8E8"
                         }
                       },
                       "isless": {
@@ -17915,7 +18065,7 @@
                               }
                             },
                             "ast_type": "Variable",
-                            "name": "_first_mzKXRUFK9Ip2Xx73FAfCWN"
+                            "name": "_first_nOb4oQn3F56qzJfJUtF0HQ"
                           },
                           "key": "rank"
                         },
@@ -17940,7 +18090,7 @@
                               }
                             },
                             "ast_type": "Variable",
-                            "name": "_second_oOis5zzMuplf9vghvqK6oA"
+                            "name": "_second_h50M4VbG6ih0Ra3xEsz9jy"
                           },
                           "key": "rank"
                         }
@@ -17960,7 +18110,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "_first_mzKXRUFK9Ip2Xx73FAfCWN"
+                        "name": "_first_nOb4oQn3F56qzJfJUtF0HQ"
                       },
                       "second": {
                         "type": {
@@ -17977,7 +18127,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "_second_oOis5zzMuplf9vghvqK6oA"
+                        "name": "_second_h50M4VbG6ih0Ra3xEsz9jy"
                       }
                     },
                     "key": {
@@ -18272,6 +18422,17 @@
                     "stockOnHand": {
                       "type": "Integer",
                       "value": null
+                    },
+                    "mode": {
+                      "type": "Variant",
+                      "value": {
+                        "Future": {
+                          "nullable": true
+                        },
+                        "Historic": {
+                          "nullable": true
+                        }
+                      }
                     }
                   }
                 },
@@ -18300,6 +18461,81 @@
                     },
                     "ast_type": "Variable",
                     "name": "r_Stock-on-hand"
+                  },
+                  "mode": {
+                    "type": {
+                      "type": "Variant",
+                      "value": {
+                        "Future": {
+                          "nullable": true
+                        },
+                        "Historic": {
+                          "nullable": true
+                        }
+                      }
+                    },
+                    "ast_type": "IfElse",
+                    "predicate": {
+                      "type": {
+                        "type": "Boolean",
+                        "value": null
+                      },
+                      "ast_type": "GreaterEqual",
+                      "first": {
+                        "type": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "ast_type": "Variable",
+                        "name": "p_date"
+                      },
+                      "second": {
+                        "type": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "ast_type": "Variable",
+                        "name": "r_Next Sale Date"
+                      }
+                    },
+                    "true": {
+                      "type": {
+                        "type": "Variant",
+                        "value": {
+                          "Future": {
+                            "nullable": true
+                          }
+                        }
+                      },
+                      "ast_type": "NewVariant",
+                      "tag": "Future",
+                      "value": {
+                        "type": {
+                          "nullable": true
+                        },
+                        "ast_type": "Const",
+                        "value": null
+                      }
+                    },
+                    "false": {
+                      "type": {
+                        "type": "Variant",
+                        "value": {
+                          "Historic": {
+                            "nullable": true
+                          }
+                        }
+                      },
+                      "ast_type": "NewVariant",
+                      "tag": "Historic",
+                      "value": {
+                        "type": {
+                          "nullable": true
+                        },
+                        "ast_type": "Const",
+                        "value": null
+                      }
+                    }
                   }
                 }
               },
@@ -18452,79 +18688,23 @@
             "discount": {
               "type": "Float",
               "value": null
+            },
+            "min_discount": {
+              "type": "Float",
+              "value": null
+            },
+            "max_discount": {
+              "type": "Float",
+              "value": null
             }
           }
         },
         "ast_type": "Const",
         "value": {
-          "discount": 0
+          "discount": 0,
+          "min_discount": 0,
+          "max_discount": 100
         }
-      }
-    },
-    "Writeable.Process.Predicted Procurement with Ranking Function": {
-      "default_type": "value",
-      "stream": "Writeable.Process.Predicted Procurement with Ranking Function",
-      "value": {
-        "type": {
-          "type": "Dict",
-          "value": {
-            "key": {
-              "type": "String",
-              "value": null
-            },
-            "value": {
-              "type": "Struct",
-              "value": {
-                "date": {
-                  "type": "DateTime",
-                  "value": null
-                }
-              }
-            }
-          }
-        },
-        "ast_type": "Const",
-        "value": [
-          {
-            "key": "",
-            "value": {
-              "date": "2022-10-16T09:00:00.000Z"
-            }
-          }
-        ]
-      }
-    },
-    "Writeable.Process.Predicted Sales": {
-      "default_type": "value",
-      "stream": "Writeable.Process.Predicted Sales",
-      "value": {
-        "type": {
-          "type": "Dict",
-          "value": {
-            "key": {
-              "type": "String",
-              "value": null
-            },
-            "value": {
-              "type": "Struct",
-              "value": {
-                "date": {
-                  "type": "DateTime",
-                  "value": null
-                }
-              }
-            }
-          }
-        },
-        "ast_type": "Const",
-        "value": [
-          {
-            "key": "",
-            "value": {
-              "date": "2022-10-15T11:00:00.000Z"
-            }
-          }
-        ]
       }
     },
     "Writeable.Procurement File": {
@@ -18592,6 +18772,51 @@
       },
       "stream": "Writeable.Resource.Price"
     },
+    "Writeable.Resource.Report": {
+      "default_type": "value",
+      "value": {
+        "type": {
+          "type": "Dict",
+          "value": {
+            "key": {
+              "type": "String",
+              "value": null
+            },
+            "value": {
+              "type": "Struct",
+              "value": {
+                "date": {
+                  "type": "DateTime",
+                  "value": null
+                },
+                "cash": {
+                  "type": "Float",
+                  "value": null
+                },
+                "stockOnHand": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "mode": {
+                  "type": "Variant",
+                  "value": {
+                    "Future": {
+                      "nullable": true
+                    },
+                    "Historic": {
+                      "nullable": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ast_type": "Const",
+        "value": []
+      },
+      "stream": "Writeable.Resource.Report"
+    },
     "Writeable.Resource.Stock-on-hand": {
       "default_type": "value",
       "value": {
@@ -18642,177 +18867,127 @@
                       },
                       "ast_type": "Variable",
                       "name": "discount"
+                    },
+                    "min": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "min_discount"
+                    },
+                    "max": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "max_discount"
                     }
                   }
                 },
-                "percentage": 20
+                "percentage": 50
               },
               {
-                "type": "tab",
-                "visuals": [
-                  {
-                    "type": "table",
-                    "kind": "struct",
-                    "name": "Expected Hourly Sales",
-                    "stream": "Pipeline.Optimized Sales Performance",
-                    "columns": {
-                      "Date": {
-                        "name": "Date",
-                        "kind": "primitive",
-                        "target": "field",
-                        "value": {
-                          "type": {
-                            "type": "DateTime",
-                            "value": null
-                          },
-                          "ast_type": "Variable",
-                          "name": "date"
-                        }
+                "type": "table",
+                "kind": "struct",
+                "name": "Recommended Supplier Choices",
+                "stream": "Pipeline.Optimized Procurement Choices",
+                "columns": {
+                  "Procurement Date": {
+                    "name": "Procurement Date",
+                    "kind": "primitive",
+                    "target": "field",
+                    "value": {
+                      "type": {
+                        "type": "DateTime",
+                        "value": null
                       },
-                      "Unit Price": {
-                        "name": "Unit Price",
-                        "kind": "primitive",
-                        "target": "field",
-                        "value": {
-                          "type": {
-                            "type": "Float",
-                            "value": null
-                          },
-                          "ast_type": "Variable",
-                          "name": "price"
-                        }
-                      },
-                      "Quantity Sold": {
-                        "name": "Quantity Sold",
-                        "kind": "primitive",
-                        "target": "field",
-                        "value": {
-                          "type": {
-                            "type": "Integer",
-                            "value": null
-                          },
-                          "ast_type": "Variable",
-                          "name": "qty"
-                        }
-                      },
-                      "Revenue": {
-                        "name": "Revenue",
-                        "kind": "primitive",
-                        "target": "field",
-                        "value": {
-                          "type": {
-                            "type": "Float",
-                            "value": null
-                          },
-                          "ast_type": "Variable",
-                          "name": "amount"
-                        }
-                      }
-                    },
-                    "key_visible": false
+                      "ast_type": "Variable",
+                      "name": "date"
+                    }
                   },
-                  {
-                    "type": "table",
-                    "kind": "struct",
-                    "name": "Recommended Supplier Choices",
-                    "stream": "Pipeline.Optimized Procurement Choices",
-                    "columns": {
-                      "Procurement Date": {
-                        "name": "Procurement Date",
-                        "kind": "primitive",
-                        "target": "field",
-                        "value": {
-                          "type": {
-                            "type": "DateTime",
-                            "value": null
-                          },
-                          "ast_type": "Variable",
-                          "name": "date"
-                        }
+                  "Supplier Name": {
+                    "name": "Supplier Name",
+                    "kind": "primitive",
+                    "target": "field",
+                    "value": {
+                      "type": {
+                        "type": "String",
+                        "value": null
                       },
-                      "Supplier Name": {
-                        "name": "Supplier Name",
-                        "kind": "primitive",
-                        "target": "field",
-                        "value": {
-                          "type": {
-                            "type": "String",
-                            "value": null
-                          },
-                          "ast_type": "Variable",
-                          "name": "supplierName"
-                        }
+                      "ast_type": "Variable",
+                      "name": "supplierName"
+                    }
+                  },
+                  "Unit Cost": {
+                    "name": "Unit Cost",
+                    "kind": "primitive",
+                    "target": "field",
+                    "value": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
                       },
-                      "Unit Cost": {
-                        "name": "Unit Cost",
-                        "kind": "primitive",
-                        "target": "field",
-                        "value": {
-                          "type": {
-                            "type": "Float",
-                            "value": null
-                          },
-                          "ast_type": "Variable",
-                          "name": "unitCost"
-                        }
+                      "ast_type": "Variable",
+                      "name": "unitCost"
+                    }
+                  },
+                  "Order Qty": {
+                    "name": "Order Qty",
+                    "kind": "primitive",
+                    "target": "field",
+                    "value": {
+                      "type": {
+                        "type": "Integer",
+                        "value": null
                       },
-                      "Order Qty": {
-                        "name": "Order Qty",
-                        "kind": "primitive",
-                        "target": "field",
-                        "value": {
-                          "type": {
-                            "type": "Integer",
-                            "value": null
-                          },
-                          "ast_type": "Variable",
-                          "name": "orderQty"
-                        }
+                      "ast_type": "Variable",
+                      "name": "orderQty"
+                    }
+                  },
+                  "Total Cost": {
+                    "name": "Total Cost",
+                    "kind": "primitive",
+                    "target": "field",
+                    "value": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
                       },
-                      "Total Cost": {
-                        "name": "Total Cost",
-                        "kind": "primitive",
-                        "target": "field",
-                        "value": {
-                          "type": {
-                            "type": "Float",
-                            "value": null
-                          },
-                          "ast_type": "Variable",
-                          "name": "totalCost"
-                        }
+                      "ast_type": "Variable",
+                      "name": "totalCost"
+                    }
+                  },
+                  "Planned Delivery Date": {
+                    "name": "Planned Delivery Date",
+                    "kind": "primitive",
+                    "target": "field",
+                    "value": {
+                      "type": {
+                        "type": "DateTime",
+                        "value": null
                       },
-                      "Planned Delivery Date": {
-                        "name": "Planned Delivery Date",
-                        "kind": "primitive",
-                        "target": "field",
-                        "value": {
-                          "type": {
-                            "type": "DateTime",
-                            "value": null
-                          },
-                          "ast_type": "Variable",
-                          "name": "deliveryDate"
-                        }
+                      "ast_type": "Variable",
+                      "name": "deliveryDate"
+                    }
+                  },
+                  "Payment Due Date": {
+                    "name": "Payment Due Date",
+                    "kind": "primitive",
+                    "target": "field",
+                    "value": {
+                      "type": {
+                        "type": "DateTime",
+                        "value": null
                       },
-                      "Payment Due Date": {
-                        "name": "Payment Due Date",
-                        "kind": "primitive",
-                        "target": "field",
-                        "value": {
-                          "type": {
-                            "type": "DateTime",
-                            "value": null
-                          },
-                          "ast_type": "Variable",
-                          "name": "paymentDate"
-                        }
-                      }
-                    },
-                    "key_visible": false
+                      "ast_type": "Variable",
+                      "name": "paymentDate"
+                    }
                   }
-                ],
-                "percentage": 80
+                },
+                "key_visible": false,
+                "percentage": 50
               }
             ],
             "percentage": 50
@@ -18909,7 +19084,7 @@
                     "color": {
                       "field": "horizon",
                       "type": "nominal",
-                      "title": "Scenario"
+                      "title": "Horizon"
                     },
                     "tooltip": [
                       {
