@@ -190,7 +190,6 @@ const descriptive_scenario = new ScenarioBuilder("Descriptive")
     .simulationInMemory(true)
 
 // Prescriptive Scenario
-
 const next_sale_date = new ResourceBuilder("Next Sale Date")
     .mapFromPipeline(builder => builder
         .from(sales_data.outputStream())

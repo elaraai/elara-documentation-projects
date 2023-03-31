@@ -1,4 +1,4 @@
-import { Add, AddDuration, Const, Convert, DateTimeType, Divide, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IntegerType, Min, Multiply, PipelineBuilder, Print, ProcessBuilder, RandomValue, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringType, Struct, Subtract, Template } from "@elaraai/core"
+import { Add, AddDuration, Const, Convert, DateTimeType, Default, Divide, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IntegerType, Max, Min, Multiply, PipelineBuilder, Print, ProcessBuilder, RandomValue, Reduce, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringType, Struct, Subtract, Template } from "@elaraai/core"
 
 const sales_file = new SourceBuilder("Sales File")
     .file({ path: 'data/sales.jsonl' })
@@ -169,15 +169,39 @@ const descriptive_scenario = new ScenarioBuilder("Descriptive")
     .process(historic_procurement)
 
 // Predicted Scenario
-const right_now = new Date("2022-10-15T11:00:00Z")
-const now = new SourceBuilder("Now").value({value: { date: right_now }})
-const next_procurement = new SourceBuilder("Next Procurement").value({value: { date: new Date("2022-10-16T09:00:00Z") }})
+const next_sale_date = new ResourceBuilder("Next Sale Date")
+    .mapFromPipeline(builder => builder
+        .from(sales_data.outputStream())
+        .transform(sales => AddDuration(
+            Reduce(
+                sales,
+                (prev, curr) => Max(GetField(curr, "date"), prev),
+                Default(DateTimeType)
+            ),
+            1,
+            'hour'
+        ))
+    )
 
+const next_procurement_date = new ResourceBuilder("Next Procurement Date")
+    .mapFromPipeline(builder => builder
+        .from(procurement_data.outputStream())
+        .transform(procurement => AddDuration(
+            Reduce(
+                procurement,
+                (prev, curr) => Max(GetField(curr, "date"), prev),
+                Default(DateTimeType)
+            ),
+            1,
+            'day'
+        ))
+    )
 const operating_times = new ResourceBuilder("Operating Times")
     .mapFromValue({ start: 9, end: 15 })
 
 const predicted_sales = new ProcessBuilder("Predicted Sales")
     // add the other models to be accessed
+    .resource(next_sale_date)
     .resource(operating_times)
     .resource(stock_on_hand)
     .process(sales)
@@ -198,9 +222,12 @@ const predicted_sales = new ProcessBuilder("Predicted Sales")
         )
     }))
     // stop simulating 1 week into the future
-    .end((props) => Greater(props.date, AddDuration(Const(right_now), 1, 'week')))
+    .end((props, resources) => Greater(props.date, AddDuration(resources["Next Sale Date"], 1, 'week')))
     // start simulating from the current date
-    .mapFromStream(now.outputStream())
+    .mapFromPipeline(builder => builder
+        .from(next_sale_date.resourceStream())
+        .transform(date => Struct({ date }))
+    )
 
 const predicted_procurement = new ProcessBuilder("Predicted Procurement")
     .resource(suppliers)
@@ -227,10 +254,15 @@ const predicted_procurement = new ProcessBuilder("Predicted Procurement")
         date: AddDuration(props.date, 1, 'day')
     }))
     // start simulating from the current date
-    .mapFromStream(next_procurement.outputStream())
+    .mapFromPipeline(builder => builder
+        .from(next_procurement_date.resourceStream())
+        .transform(date => Struct({ date }))
+    )
 
 const predictive_scenario = new ScenarioBuilder("Predictive")
     .fromScenario(descriptive_scenario)
+    .resource(next_sale_date)
+    .resource(next_procurement_date)
     .resource(operating_times)
     .process(predicted_sales)
     .process(predicted_procurement)
@@ -257,6 +289,6 @@ export default Template(
     predicted_sales,
     predicted_procurement,
     predictive_scenario,
-    now,
-    next_procurement
+    next_sale_date,
+    next_procurement_date
 )
