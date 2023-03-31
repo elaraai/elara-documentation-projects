@@ -330,7 +330,7 @@ const predicted_procurement_ranking_function = new ProcessBuilder("Predicted Pro
         .transform(date => Struct({ date }))
     )
 
-    // Reporting Resources and Processes
+// Reporting Resources and Processes
 const report = new ResourceBuilder("Report")
     .mapFromValue(
         new Map(),
@@ -349,8 +349,8 @@ const report = new ResourceBuilder("Report")
     )
 
 const reporter = new ProcessBuilder("Reporter")
+    .resource(next_sale_date)    
     .resource(cash)
-    .resource(next_sale_date)
     .resource(stock_on_hand)
     .resource(report)
     .insert("Report", {
