@@ -196,6 +196,7 @@ const next_procurement_date = new ResourceBuilder("Next Procurement Date")
             'day'
         ))
     )
+
 const operating_times = new ResourceBuilder("Operating Times")
     .mapFromValue({ start: 9, end: 15 })
 
