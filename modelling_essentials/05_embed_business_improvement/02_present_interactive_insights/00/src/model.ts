@@ -384,11 +384,11 @@ const reporter = new ProcessBuilder("Reporter")
 
 const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi-decision Prescriptive Enhanced")
     .fromScenario(descriptive_scenario)
+    .resource(next_sale_date)
+    .resource(next_procurement_date)
     .resource(operating_times)
     .resource(discount)
     .resource(multi_factor_supplier_policy)
-    .resource(next_sale_date)
-    .resource(next_procurement_date)
     .process(predicted_sales)
     .process(predicted_procurement_ranking_function)
     // reporting
@@ -497,11 +497,11 @@ const predicted_procurement_from_optimized = new ProcessBuilder("Optimized Procu
 
 const interactive_scenario = new ScenarioBuilder("Interactive Scenario")
     .fromScenario(descriptive_scenario)
+    .resource(next_sale_date)
+    .resource(next_procurement_date)
     .resource(operating_times)
     .resource(discount)
     .resource(multi_factor_supplier_policy)
-    .resource(next_sale_date)
-    .resource(next_procurement_date)
     .process(predicted_sales)
     .process(predicted_procurement_from_optimized)
     // reporting
