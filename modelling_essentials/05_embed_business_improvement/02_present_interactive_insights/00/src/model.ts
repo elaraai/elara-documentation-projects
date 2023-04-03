@@ -1,4 +1,4 @@
-import { Add, AddDuration, Const, Convert, DateTimeType, Default, DictType, Divide, FilterMap, FloatType, Floor, Get, GetField, GetTag, Greater, GreaterEqual, Hour, IfElse, IntegerType, LayoutBuilder, Match, Max, Min, MLModelBuilder, Multiply, NewVariant, None, NullType, PipelineBuilder, Print, ProcessBuilder, Reduce, ResourceBuilder, Round, ScenarioBuilder, Some, Sort, SourceBuilder, StringJoin, StringType, Struct, StructType, Subtract, Template, ToArray, ToDict, VariantType } from "@elaraai/core"
+import { Add, AddDuration, Const, Convert, DateTimeType, Default, DictType, Divide, FilterMap, FloatType, Floor, Get, GetField, GetTag, Greater, GreaterEqual, Hour, IfElse, IntegerType, LayoutBuilder, Match, Max, Min, MLModelBuilder, Multiply, NewVariant, None, NullType, PipelineBuilder, Print, ProcessBuilder, Reduce, ResourceBuilder, Round, ScenarioBuilder, Some, Sort, SourceBuilder, StringJoin, StringType, Struct, StructType, Subtract, Template, ToArray, ToDict, VariantType, Variable } from "@elaraai/core"
 
 const sales_file = new SourceBuilder("Sales File")
     .file({ path: 'data/sales.jsonl' })
@@ -413,75 +413,45 @@ const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi
     .simulationInMemory(true)
     .optimizationInMemory(true)
 
-// Refactor as TS functions
-const recommended_procurement_choices = new PipelineBuilder("Optimized Procurement Choices")
-    .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
-    .transform(
-        stream => ToDict(
-            FilterMap(
-                stream,
-                variant => Match(
-                    variant,
-                    {
-                        Procurement: value => Some(value)
-                    },
-                    None
-                )
-            ),
-            value => value,
-            (_, key) => Print(key)
-        )
-    )
-    .input({ name: "nextSaleDate", stream: next_sale_date.resourceStream() })
-    .filter(
-        (fields, _, inputs) => GreaterEqual(fields.date, inputs.nextSaleDate)
-    )
+type ProcessChoices = "Procurement" | "Receive Goods" | "Pay Supplier";
+type NonVariantChoices = Variable<{
+    date: DateTimeType;
+} & StructType<{
+    date: DateTimeType;
+    supplierName: StringType;
+    unitCost: FloatType;
+    orderQty: IntegerType;
+    orderDate: DateTimeType;
+    invoiceTotal: FloatType;
+}>>
 
-const expected_deliveries = new PipelineBuilder("Expected Deliveries")
-    .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
-    .transform(
-        stream => ToDict(
-            FilterMap(
-                stream,
-                variant => Match(
-                    variant,
-                    {
-                        "Receive Goods": value => Some(value)
-                    },
-                    None
-                )
-            ),
-            value => value,
-            (_, key) => Print(key)
+const FilterMapFuture = (process: ProcessChoices) => 
+    new PipelineBuilder(`Optimized ${process}`)
+        .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
+        .transform(
+            stream => ToDict(
+                FilterMap(
+                    stream,
+                    variant => Match(
+                        variant,
+                        {
+                            [process]: (value: NonVariantChoices) => Some(value)
+                        },
+                        None
+                    )
+                ),
+                value => value,
+                (_, key) => Print(key)
+            )
         )
-    )
-    .input({ name: "nextSaleDate", stream: next_sale_date.resourceStream() })
-    .filter(
-        (fields, _, inputs) => GreaterEqual(fields.date, inputs.nextSaleDate)
-    )
+        .input({ name: "nextSaleDate", stream: next_sale_date.resourceStream() })
+        .filter(
+            (fields, _, inputs) => GreaterEqual(fields.date, inputs.nextSaleDate)
+        )
 
-const expected_invoices = new PipelineBuilder("Expected Invoices")
-    .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
-    .transform(
-        stream => ToDict(
-            FilterMap(
-                stream,
-                variant => Match(
-                    variant,
-                    {
-                        "Pay Supplier": value => Some(value)
-                    },
-                    None
-                )
-            ),
-            value => value,
-            (_, key) => Print(key)
-        )
-    )
-    .input({ name: "nextSaleDate", stream: next_sale_date.resourceStream() })
-    .filter(
-        (fields, _, inputs) => GreaterEqual(fields.date, inputs.nextSaleDate)
-    )
+const recommended_procurement_choices = FilterMapFuture("Procurement")
+const expected_deliveries = FilterMapFuture("Receive Goods")
+const expected_invoices = FilterMapFuture("Pay Supplier")
 
 // New Interactive Scenario
 const my_discount_choice = new SourceBuilder("My Discount Choice")
