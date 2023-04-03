@@ -105,15 +105,20 @@ const sales = new ProcessBuilder("Sales")
 
 const receive_goods = new ProcessBuilder("Receive Goods")
     .resource(stock_on_hand)
+    .value("supplierName", StringType)
     // the qty recieved
-    .value("qty", IntegerType)
+    .value("orderQty", IntegerType)
     // the update to Stock-on-hand by the qty
-    .set("Stock-on-hand", (props, resources) => Add(resources["Stock-on-hand"], props.qty))
+    .set("Stock-on-hand", (props, resources) => Add(resources["Stock-on-hand"], props.orderQty))
 
 const pay_supplier = new ProcessBuilder("Pay Supplier")
     .resource(cash)
+    .value("supplierName", StringType)
+    .value("unitCost", FloatType)
+    .value("orderQty", IntegerType)
+    .value("orderDate", DateTimeType)
     // the total amount to be paid
-    .value("invoiceTotal", FloatType)
+    .let("invoiceTotal", props => Multiply(props.orderQty, props.unitCost))
     // the update to Cash by the amount
     .set("Cash", (props, resources) => Subtract(resources.Cash, props.invoiceTotal))
 
@@ -125,14 +130,18 @@ const procurement = new ProcessBuilder("Procurement")
     .process(pay_supplier)
     .process(receive_goods)
     .value("supplierName", StringType)
+    .let("supplier", (props, resources) => Get(resources.Suppliers, props.supplierName))
+    .let("orderQty", props => GetField(props.supplier, "orderQty")
+    )
     // the sausages are recieved in leadTime days
-    .execute("Receive Goods", (props, resources) => Struct({
+    .execute("Receive Goods", props => Struct({
         date: AddDuration(
             props.date,
-            GetField(Get(resources.Suppliers, props.supplierName), "leadTime"),
+            GetField(props.supplier, "leadTime"),
             "day"
         ),
-        qty: GetField(Get(resources.Suppliers, props.supplierName), "orderQty")
+        supplierName: props.supplierName,
+        orderQty: props.orderQty
     }))
     // the supplier is paid in paymentTerms days
     .execute("Pay Supplier", (props, resources) => Struct({
@@ -141,10 +150,10 @@ const procurement = new ProcessBuilder("Procurement")
             GetField(Get(resources.Suppliers, props.supplierName), "paymentTerms"),
             "day"
         ),
-        invoiceTotal: Multiply(
-            GetField(Get(resources.Suppliers, props.supplierName), "orderQty"),
-            GetField(Get(resources.Suppliers, props.supplierName), "unitCost")
-        )
+        supplierName: props.supplierName,
+        unitCost: GetField(Get(resources.Suppliers, props.supplierName), "unitCost"),
+        orderQty: props.orderQty,
+        orderDate: props.date
     }))
 
 // Descriptive Scenario
@@ -404,7 +413,8 @@ const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi
     .simulationInMemory(true)
     .optimizationInMemory(true)
 
-const optimized_procurement_choices = new PipelineBuilder("Optimized Procurement Choices")
+// Refactor as TS functions
+const recommended_procurement_choices = new PipelineBuilder("Optimized Procurement Choices")
     .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
     .transform(
         stream => ToDict(
@@ -426,31 +436,52 @@ const optimized_procurement_choices = new PipelineBuilder("Optimized Procurement
     .filter(
         (fields, _, inputs) => GreaterEqual(fields.date, inputs.nextSaleDate)
     )
-    .input({ name: "suppliers", stream: supplier_data.outputStream() })
-    .innerJoin({
-        right_input: inputs => inputs.suppliers,
-        left_key: fields => fields.supplierName,
-        right_key: fields => fields.supplierName,
-        left_selections: {
-            date: fields => fields.date,
-            supplierName: fields => fields.supplierName
-        },
-        right_selections: {
-            unitCost: fields => fields.unitCost,
-            orderQty: fields => fields.orderQty,
-            leadTime: fields => fields.leadTime,
-            paymentTerms: fields => fields.paymentTerms
-        },
-        output_key: fields => Print(fields.date)
-    })
-    .select({
-        keep_all: true,
-        selections: {
-            totalCost: fields => Multiply(fields.unitCost, fields.orderQty),
-            paymentDate: fields => AddDuration(fields.date, fields.paymentTerms, "day"),
-            deliveryDate: fields => AddDuration(fields.date, fields.leadTime, "day"),
-        }
-    })
+
+const expected_deliveries = new PipelineBuilder("Expected Deliveries")
+    .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
+    .transform(
+        stream => ToDict(
+            FilterMap(
+                stream,
+                variant => Match(
+                    variant,
+                    {
+                        "Receive Goods": value => Some(value)
+                    },
+                    None
+                )
+            ),
+            value => value,
+            (_, key) => Print(key)
+        )
+    )
+    .input({ name: "nextSaleDate", stream: next_sale_date.resourceStream() })
+    .filter(
+        (fields, _, inputs) => GreaterEqual(fields.date, inputs.nextSaleDate)
+    )
+
+const expected_invoices = new PipelineBuilder("Expected Invoices")
+    .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
+    .transform(
+        stream => ToDict(
+            FilterMap(
+                stream,
+                variant => Match(
+                    variant,
+                    {
+                        "Pay Supplier": value => Some(value)
+                    },
+                    None
+                )
+            ),
+            value => value,
+            (_, key) => Print(key)
+        )
+    )
+    .input({ name: "nextSaleDate", stream: next_sale_date.resourceStream() })
+    .filter(
+        (fields, _, inputs) => GreaterEqual(fields.date, inputs.nextSaleDate)
+    )
 
 // New Interactive Scenario
 const my_discount_choice = new SourceBuilder("My Discount Choice")
@@ -493,6 +524,13 @@ const predicted_procurement_from_optimized = new ProcessBuilder("Optimized Procu
             .filter(
                 (fields, _, inputs) => GreaterEqual(fields.date, inputs.nextProcurementDate)
             )
+            .select({
+                keep_all: false,
+                selections: {
+                    date: fields => fields.date,
+                    supplierName: fields => fields.supplierName
+                }
+            })
     )
 
 const interactive_scenario = new ScenarioBuilder("Interactive Scenario")
@@ -571,18 +609,36 @@ const dashboard = new LayoutBuilder("Business Outcomes")
                                 max: fields => fields.max_discount
                             })
                     )
-                    .table(
+                    .tab(
                         50,
-                        "Recommended Supplier Choices",
                         builder => builder
-                            .fromStream(optimized_procurement_choices.outputStream())
-                            .date("Procurement Date", fields => fields.date)
-                            .string("Supplier Name", fields => fields.supplierName)
-                            .float("Unit Cost", fields => fields.unitCost)
-                            .integer("Order Qty", fields => fields.orderQty)
-                            .float("Total Cost", fields => fields.totalCost)
-                            .date("Planned Delivery Date", fields => fields.deliveryDate)
-                            .date("Payment Due Date", fields => fields.paymentDate)
+                            .table(
+                                "Recommended Order Choices",
+                                builder => builder
+                                    .fromStream(recommended_procurement_choices.outputStream())
+                                    .date("Procurement Date", fields => fields.date)
+                                    .string("Supplier Name", fields => fields.supplierName)
+                                    .integer("Order Qty", fields => fields.orderQty)
+                            )
+                            .table(
+                                "Expected Deliveries",
+                                builder => builder
+                                    .fromStream(expected_deliveries.outputStream())
+                                    .date("Planned Delivery Date", fields => fields.date)
+                                    .string("Supplier Name", fields => fields.supplierName)
+                                    .integer("Order Qty", fields => fields.orderQty)
+                            )
+                            .table(
+                                "Expected Invoices",
+                                builder => builder
+                                    .fromStream(expected_invoices.outputStream())
+                                    .date("Payment Due Date", fields => fields.date)
+                                    .string("Supplier Name", fields => fields.supplierName)
+                                    .date("Order Date", fields => fields.orderDate)
+                                    .float("Unit Cost", fields => fields.unitCost)
+                                    .integer("Order Qty", fields => fields.orderQty)
+                                    .float("Invoice Total", fields => fields.invoiceTotal)
+                            )
                     )
             )
             .panel(
@@ -653,7 +709,9 @@ export default Template(
     predicted_procurement_ranking_function,
     multi_decision_prescriptive_scenario_enhanced,
     // Table data
-    optimized_procurement_choices,
+    recommended_procurement_choices,
+    expected_deliveries,
+    expected_invoices,
     // Reporting
     report,
     reporter,
