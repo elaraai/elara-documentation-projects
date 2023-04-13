@@ -1,0 +1,312 @@
+{
+  "streams": {
+    "Writeable.My Array": {
+      "name": "Writeable.My Array",
+      "type": {
+        "type": "Array",
+        "value": {
+          "type": "String",
+          "value": null
+        }
+      },
+      "writable": true
+    },
+    "Writeable.My Boolean": {
+      "name": "Writeable.My Boolean",
+      "type": {
+        "type": "Boolean",
+        "value": null
+      },
+      "writable": true
+    },
+    "Writeable.My Date": {
+      "name": "Writeable.My Date",
+      "type": {
+        "type": "DateTime",
+        "value": null
+      },
+      "writable": true
+    },
+    "Writeable.My Dict": {
+      "name": "Writeable.My Dict",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Integer",
+            "value": null
+          }
+        }
+      },
+      "writable": true
+    },
+    "Writeable.My Float": {
+      "name": "Writeable.My Float",
+      "type": {
+        "type": "Float",
+        "value": null
+      },
+      "writable": true
+    },
+    "Writeable.My Integer": {
+      "name": "Writeable.My Integer",
+      "type": {
+        "type": "Integer",
+        "value": null
+      },
+      "writable": true
+    },
+    "Writeable.My Null": {
+      "name": "Writeable.My Null",
+      "type": {
+        "nullable": true
+      },
+      "writable": true
+    },
+    "Writeable.My Set": {
+      "name": "Writeable.My Set",
+      "type": {
+        "type": "Set",
+        "value": {
+          "type": "String",
+          "value": null
+        }
+      },
+      "writable": true
+    },
+    "Writeable.My String": {
+      "name": "Writeable.My String",
+      "type": {
+        "type": "String",
+        "value": null
+      },
+      "writable": true
+    },
+    "Writeable.My Struct": {
+      "name": "Writeable.My Struct",
+      "type": {
+        "type": "Struct",
+        "value": {
+          "my_string": {
+            "type": "String",
+            "value": null
+          },
+          "my_integer": {
+            "type": "Integer",
+            "value": null
+          }
+        }
+      },
+      "writable": true
+    },
+    "Writeable.My Variant Value": {
+      "name": "Writeable.My Variant Value",
+      "type": {
+        "type": "Variant",
+        "value": {
+          "a": {
+            "type": "Boolean",
+            "value": null
+          },
+          "b": {
+            "type": "String",
+            "value": null
+          }
+        }
+      },
+      "writable": true
+    }
+  },
+  "tasks": {},
+  "defaults": {
+    "Writeable.My Array": {
+      "default_type": "value",
+      "stream": "Writeable.My Array",
+      "value": {
+        "type": {
+          "type": "Array",
+          "value": {
+            "type": "String",
+            "value": null
+          }
+        },
+        "ast_type": "Const",
+        "value": [
+          "string_one",
+          "string_two"
+        ]
+      }
+    },
+    "Writeable.My Boolean": {
+      "default_type": "value",
+      "stream": "Writeable.My Boolean",
+      "value": {
+        "type": {
+          "type": "Boolean",
+          "value": null
+        },
+        "ast_type": "Const",
+        "value": false
+      }
+    },
+    "Writeable.My Date": {
+      "default_type": "value",
+      "stream": "Writeable.My Date",
+      "value": {
+        "type": {
+          "type": "DateTime",
+          "value": null
+        },
+        "ast_type": "Const",
+        "value": "2025-01-01T00:00:00.000Z"
+      }
+    },
+    "Writeable.My Dict": {
+      "default_type": "value",
+      "stream": "Writeable.My Dict",
+      "value": {
+        "type": {
+          "type": "Dict",
+          "value": {
+            "key": {
+              "type": "String",
+              "value": null
+            },
+            "value": {
+              "type": "Integer",
+              "value": null
+            }
+          }
+        },
+        "ast_type": "Const",
+        "value": [
+          {
+            "key": "key_one",
+            "value": "1"
+          },
+          {
+            "key": "key_two",
+            "value": "2"
+          }
+        ]
+      }
+    },
+    "Writeable.My Float": {
+      "default_type": "value",
+      "stream": "Writeable.My Float",
+      "value": {
+        "type": {
+          "type": "Float",
+          "value": null
+        },
+        "ast_type": "Const",
+        "value": 100
+      }
+    },
+    "Writeable.My Integer": {
+      "default_type": "value",
+      "stream": "Writeable.My Integer",
+      "value": {
+        "type": {
+          "type": "Integer",
+          "value": null
+        },
+        "ast_type": "Const",
+        "value": "100"
+      }
+    },
+    "Writeable.My Null": {
+      "default_type": "value",
+      "stream": "Writeable.My Null",
+      "value": {
+        "type": {
+          "nullable": true
+        },
+        "ast_type": "Const",
+        "value": null
+      }
+    },
+    "Writeable.My Set": {
+      "default_type": "value",
+      "stream": "Writeable.My Set",
+      "value": {
+        "type": {
+          "type": "Set",
+          "value": {
+            "type": "String",
+            "value": null
+          }
+        },
+        "ast_type": "Const",
+        "value": [
+          "string_one",
+          "string_two"
+        ]
+      }
+    },
+    "Writeable.My String": {
+      "default_type": "value",
+      "stream": "Writeable.My String",
+      "value": {
+        "type": {
+          "type": "String",
+          "value": null
+        },
+        "ast_type": "Const",
+        "value": "a_string_value"
+      }
+    },
+    "Writeable.My Struct": {
+      "default_type": "value",
+      "stream": "Writeable.My Struct",
+      "value": {
+        "type": {
+          "type": "Struct",
+          "value": {
+            "my_string": {
+              "type": "String",
+              "value": null
+            },
+            "my_integer": {
+              "type": "Integer",
+              "value": null
+            }
+          }
+        },
+        "ast_type": "Const",
+        "value": {
+          "my_string": "string_one",
+          "my_integer": "1"
+        }
+      }
+    },
+    "Writeable.My Variant Value": {
+      "default_type": "value",
+      "stream": "Writeable.My Variant Value",
+      "value": {
+        "type": {
+          "type": "Variant",
+          "value": {
+            "a": {
+              "type": "Boolean",
+              "value": null
+            },
+            "b": {
+              "type": "String",
+              "value": null
+            }
+          }
+        },
+        "ast_type": "Const",
+        "value": {
+          "type": "a",
+          "value": true
+        }
+      }
+    }
+  }
+}

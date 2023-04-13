@@ -1,0 +1,20 @@
+{
+  "streams": {
+    "Writeable.Products": {
+      "name": "Writeable.Products",
+      "type": {
+        "type": "Blob",
+        "value": null
+      },
+      "writable": true
+    }
+  },
+  "tasks": {},
+  "defaults": {
+    "Writeable.Products": {
+      "default_type": "file",
+      "stream": "Writeable.Products",
+      "path": "./data/products.csv"
+    }
+  }
+}

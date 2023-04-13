@@ -1,4 +1,4 @@
-import { Add, AddDuration, Const, Convert, DateTimeType, Default, DictType, Divide, FilterMap, FloatType, Floor, Get, GetField, GetTag, Greater, GreaterEqual, Hour, IfElse, IntegerType, LayoutBuilder, Match, Max, Min, MLModelBuilder, Multiply, NewVariant, None, NullType, PipelineBuilder, Print, ProcessBuilder, Reduce, ResourceBuilder, Round, ScenarioBuilder, Some, Sort, SourceBuilder, StringJoin, StringType, Struct, StructType, Subtract, Template, ToArray, ToDict, VariantType } from "@elaraai/core"
+import { Add, AddDuration, Const, Convert, DateTimeType, Default, DictType, Divide, FilterMap, FloatType, Floor, Get, GetField, GetTag, Greater, GreaterEqual, Hour, IfElse, IntegerType, LayoutBuilder, Match, Max, Min, MLModelBuilder, Multiply, NewVariant, None, NullType, PipelineBuilder, Print, ProcessBuilder, Reduce, ResourceBuilder, Round, ScenarioBuilder, Some, Sort, SourceBuilder, StringJoin, StringType, Struct, StructType, Subtract, Template, ToArray, ToDict, VariantType, Variable } from "@elaraai/core"
 
 const sales_file = new SourceBuilder("Sales File")
     .file({ path: 'data/sales.jsonl' })
@@ -105,15 +105,20 @@ const sales = new ProcessBuilder("Sales")
 
 const receive_goods = new ProcessBuilder("Receive Goods")
     .resource(stock_on_hand)
+    .value("supplierName", StringType)
     // the qty recieved
-    .value("qty", IntegerType)
+    .value("orderQty", IntegerType)
     // the update to Stock-on-hand by the qty
-    .set("Stock-on-hand", (props, resources) => Add(resources["Stock-on-hand"], props.qty))
+    .set("Stock-on-hand", (props, resources) => Add(resources["Stock-on-hand"], props.orderQty))
 
 const pay_supplier = new ProcessBuilder("Pay Supplier")
     .resource(cash)
+    .value("supplierName", StringType)
+    .value("unitCost", FloatType)
+    .value("orderQty", IntegerType)
+    .value("orderDate", DateTimeType)
     // the total amount to be paid
-    .value("invoiceTotal", FloatType)
+    .let("invoiceTotal", props => Multiply(props.orderQty, props.unitCost))
     // the update to Cash by the amount
     .set("Cash", (props, resources) => Subtract(resources.Cash, props.invoiceTotal))
 
@@ -125,14 +130,18 @@ const procurement = new ProcessBuilder("Procurement")
     .process(pay_supplier)
     .process(receive_goods)
     .value("supplierName", StringType)
+    .let("supplier", (props, resources) => Get(resources.Suppliers, props.supplierName))
+    .let("orderQty", props => GetField(props.supplier, "orderQty")
+    )
     // the sausages are recieved in leadTime days
-    .execute("Receive Goods", (props, resources) => Struct({
+    .execute("Receive Goods", props => Struct({
         date: AddDuration(
             props.date,
-            GetField(Get(resources.Suppliers, props.supplierName), "leadTime"),
+            GetField(props.supplier, "leadTime"),
             "day"
         ),
-        qty: GetField(Get(resources.Suppliers, props.supplierName), "orderQty")
+        supplierName: props.supplierName,
+        orderQty: props.orderQty
     }))
     // the supplier is paid in paymentTerms days
     .execute("Pay Supplier", (props, resources) => Struct({
@@ -141,10 +150,10 @@ const procurement = new ProcessBuilder("Procurement")
             GetField(Get(resources.Suppliers, props.supplierName), "paymentTerms"),
             "day"
         ),
-        invoiceTotal: Multiply(
-            GetField(Get(resources.Suppliers, props.supplierName), "orderQty"),
-            GetField(Get(resources.Suppliers, props.supplierName), "unitCost")
-        )
+        supplierName: props.supplierName,
+        unitCost: GetField(Get(resources.Suppliers, props.supplierName), "unitCost"),
+        orderQty: props.orderQty,
+        orderDate: props.date
     }))
 
 // Descriptive Scenario
@@ -176,7 +185,7 @@ const historic_procurement = new ProcessBuilder("Historic Procurement")
     // the data comes from the historic purchasing data
     .mapManyFromStream(procurement_data.outputStream())
 
-const descriptive_scenario = new ScenarioBuilder("Descriptive")
+const base_scenario = new ScenarioBuilder("Base")
     .resource(cash, { ledger: true })
     .resource(stock_on_hand, { ledger: true })
     .resource(price)
@@ -185,6 +194,9 @@ const descriptive_scenario = new ScenarioBuilder("Descriptive")
     .process(receive_goods)
     .process(pay_supplier)
     .process(procurement)
+
+const descriptive_scenario = new ScenarioBuilder("Descriptive")
+    .fromScenario(base_scenario)
     .process(historic_sales)
     .process(historic_procurement)
     .simulationInMemory(true)
@@ -330,6 +342,93 @@ const predicted_procurement_ranking_function = new ProcessBuilder("Predicted Pro
         .transform(date => Struct({ date }))
     )
 
+const transition_receive_goods = new ProcessBuilder("Transition Receive Goods")
+    .process(receive_goods)
+    .value("supplierName", StringType)
+    .value("orderQty", IntegerType)
+    .execute("Receive Goods", props => Struct({
+        date: props.date,
+        supplierName: props.supplierName,
+        orderQty: props.orderQty
+    }))
+    .mapManyFromPipeline(
+        builder => builder
+            .from(descriptive_scenario.simulationJournalStream())
+            .transform(
+                stream => ToDict(
+                    FilterMap(
+                        stream,
+                        variant => Match(
+                            variant,
+                            {
+                                "Receive Goods": value => Some(value)
+                            },
+                            None
+                        )
+                    ),
+                    value => value,
+                    (_, key) => Print(key)
+                )
+            )
+            .input({ name: "nextSaleDate", stream: next_sale_date.resourceStream() })
+            .filter( (fields, _, inputs) => GreaterEqual(fields.date, inputs.nextSaleDate))
+            .select({
+                keep_all: false,
+                selections: {
+                    date: fields => fields.date,
+                    supplierName: fields => fields.supplierName,
+                    orderQty: fields => fields.orderQty
+                }
+            })
+    )
+
+const transition_pay_supplier = new ProcessBuilder("Transition Pay Supplier")
+    .process(pay_supplier)
+    .value("supplierName", StringType)
+    .value("unitCost", FloatType)
+    .value("orderQty", IntegerType)
+    .value("orderDate", DateTimeType)
+    .execute("Pay Supplier", props => Struct({
+        date: props.date,
+        supplierName: props.supplierName,
+        unitCost: props.unitCost,
+        orderQty: props.orderQty,
+        orderDate: props.orderDate
+    }))
+    .mapManyFromPipeline(
+        builder => builder
+            .from(descriptive_scenario.simulationJournalStream())
+            .transform(
+                stream => ToDict(
+                    FilterMap(
+                        stream,
+                        variant => Match(
+                            variant,
+                            {
+                                "Pay Supplier": value => Some(value)
+                            },
+                            None
+                        )
+                    ),
+                    value => value,
+                    (_, key) => Print(key)
+                )
+            )
+            .input({ name: "nextSaleDate", stream: next_sale_date.resourceStream() })
+            .filter( (fields, _, inputs) => GreaterEqual(fields.date, inputs.nextSaleDate))
+            .select({
+                keep_all: false,
+                selections: {
+                    date: fields => fields.date,
+                    supplierName: fields => fields.supplierName,
+                    unitCost: fields => fields.unitCost,
+                    orderQty: fields => fields.orderQty,
+                    orderDate: fields => fields.orderDate
+
+                }
+            })
+    )
+
 // Reporting Resources and Processes
 const report = new ResourceBuilder("Report")
     .mapFromValue(
@@ -370,20 +469,12 @@ const reporter = new ProcessBuilder("Reporter")
         date: AddDuration(props.date, 1, "hour")
     }))
     .mapFromPipeline(builder => builder
-        .from(sales_data.outputStream())
-        .input({ name: "maxDate", stream: next_sale_date.resourceStream() })
-        .transform((sales, inputs) => Struct({
-            date: Reduce(
-                sales,
-                (prev, curr) => Min(GetField(curr, "date"), prev),
-                inputs.maxDate
-            ),
-        }))
+        .from(next_sale_date.resourceStream())
+        .transform(date => Struct({ date }))
     )
 
-
 const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi-decision Prescriptive Enhanced")
-    .fromScenario(descriptive_scenario)
+    .fromScenario(base_scenario)
     .resource(next_sale_date)
     .resource(next_procurement_date)
     .resource(operating_times)
@@ -391,6 +482,12 @@ const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi
     .resource(multi_factor_supplier_policy)
     .process(predicted_sales)
     .process(predicted_procurement_ranking_function)
+    // Adjust starting point of scenario from history
+    .alterResourceFromStream("Cash", descriptive_scenario.simulationResultStreams().Cash)
+    .alterResourceFromStream("Stock-on-hand", descriptive_scenario.simulationResultStreams()["Stock-on-hand"])
+    .process(transition_receive_goods)
+    .process(transition_pay_supplier)
+    // starting resource_values
     // reporting
     .resource(report)
     .process(reporter)
@@ -404,53 +501,45 @@ const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi
     .simulationInMemory(true)
     .optimizationInMemory(true)
 
-const optimized_procurement_choices = new PipelineBuilder("Optimized Procurement Choices")
-    .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
-    .transform(
-        stream => ToDict(
-            FilterMap(
-                stream,
-                variant => Match(
-                    variant,
-                    {
-                        Procurement: value => Some(value)
-                    },
-                    None
-                )
-            ),
-            value => value,
-            (_, key) => Print(key)
+type ProcessChoices = "Procurement" | "Receive Goods" | "Pay Supplier";
+type NonVariantChoices = Variable<{
+    date: DateTimeType;
+} & StructType<{
+    date: DateTimeType;
+    supplierName: StringType;
+    unitCost: FloatType;
+    orderQty: IntegerType;
+    orderDate: DateTimeType;
+    invoiceTotal: FloatType;
+}>>
+
+const FilterMapFuture = (process: ProcessChoices) => 
+    new PipelineBuilder(`Optimized ${process}`)
+        .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
+        .transform(
+            stream => ToDict(
+                FilterMap(
+                    stream,
+                    variant => Match(
+                        variant,
+                        {
+                            [process]: (value: NonVariantChoices) => Some(value)
+                        },
+                        None
+                    )
+                ),
+                value => value,
+                (_, key) => Print(key)
+            )
         )
-    )
-    .input({ name: "nextSaleDate", stream: next_sale_date.resourceStream() })
-    .filter(
-        (fields, _, inputs) => GreaterEqual(fields.date, inputs.nextSaleDate)
-    )
-    .input({ name: "suppliers", stream: supplier_data.outputStream() })
-    .innerJoin({
-        right_input: inputs => inputs.suppliers,
-        left_key: fields => fields.supplierName,
-        right_key: fields => fields.supplierName,
-        left_selections: {
-            date: fields => fields.date,
-            supplierName: fields => fields.supplierName
-        },
-        right_selections: {
-            unitCost: fields => fields.unitCost,
-            orderQty: fields => fields.orderQty,
-            leadTime: fields => fields.leadTime,
-            paymentTerms: fields => fields.paymentTerms
-        },
-        output_key: fields => Print(fields.date)
-    })
-    .select({
-        keep_all: true,
-        selections: {
-            totalCost: fields => Multiply(fields.unitCost, fields.orderQty),
-            paymentDate: fields => AddDuration(fields.date, fields.paymentTerms, "day"),
-            deliveryDate: fields => AddDuration(fields.date, fields.leadTime, "day"),
-        }
-    })
+        .input({ name: "nextSaleDate", stream: next_sale_date.resourceStream() })
+        .filter(
+            (fields, _, inputs) => GreaterEqual(fields.date, inputs.nextSaleDate)
+        )
+
+const recommended_procurement_choices = FilterMapFuture("Procurement")
+const expected_deliveries = FilterMapFuture("Receive Goods")
+const expected_invoices = FilterMapFuture("Pay Supplier")
 
 // New Interactive Scenario
 const my_discount_choice = new SourceBuilder("My Discount Choice")
@@ -493,10 +582,17 @@ const predicted_procurement_from_optimized = new ProcessBuilder("Optimized Procu
             .filter(
                 (fields, _, inputs) => GreaterEqual(fields.date, inputs.nextProcurementDate)
             )
+            .select({
+                keep_all: false,
+                selections: {
+                    date: fields => fields.date,
+                    supplierName: fields => fields.supplierName
+                }
+            })
     )
 
 const interactive_scenario = new ScenarioBuilder("Interactive Scenario")
-    .fromScenario(descriptive_scenario)
+    .fromScenario(base_scenario)
     .resource(next_sale_date)
     .resource(next_procurement_date)
     .resource(operating_times)
@@ -571,18 +667,36 @@ const dashboard = new LayoutBuilder("Business Outcomes")
                                 max: fields => fields.max_discount
                             })
                     )
-                    .table(
+                    .tab(
                         50,
-                        "Recommended Supplier Choices",
                         builder => builder
-                            .fromStream(optimized_procurement_choices.outputStream())
-                            .date("Procurement Date", fields => fields.date)
-                            .string("Supplier Name", fields => fields.supplierName)
-                            .float("Unit Cost", fields => fields.unitCost)
-                            .integer("Order Qty", fields => fields.orderQty)
-                            .float("Total Cost", fields => fields.totalCost)
-                            .date("Planned Delivery Date", fields => fields.deliveryDate)
-                            .date("Payment Due Date", fields => fields.paymentDate)
+                            .table(
+                                "Recommended Order Choices",
+                                builder => builder
+                                    .fromStream(recommended_procurement_choices.outputStream())
+                                    .date("Procurement Date", fields => fields.date)
+                                    .string("Supplier Name", fields => fields.supplierName)
+                                    .integer("Order Qty", fields => fields.orderQty)
+                            )
+                            .table(
+                                "Expected Deliveries",
+                                builder => builder
+                                    .fromStream(expected_deliveries.outputStream())
+                                    .date("Planned Delivery Date", fields => fields.date)
+                                    .string("Supplier Name", fields => fields.supplierName)
+                                    .integer("Order Qty", fields => fields.orderQty)
+                            )
+                            .table(
+                                "Expected Invoices",
+                                builder => builder
+                                    .fromStream(expected_invoices.outputStream())
+                                    .date("Payment Due Date", fields => fields.date)
+                                    .string("Supplier Name", fields => fields.supplierName)
+                                    .date("Order Date", fields => fields.orderDate)
+                                    .float("Unit Cost", fields => fields.unitCost)
+                                    .integer("Order Qty", fields => fields.orderQty)
+                                    .float("Invoice Total", fields => fields.invoiceTotal)
+                            )
                     )
             )
             .panel(
@@ -634,6 +748,7 @@ export default Template(
     supplier_data,
     sales,
     procurement,
+    base_scenario,
     descriptive_scenario,
     cash,
     stock_on_hand,
@@ -652,8 +767,13 @@ export default Template(
     multi_factor_supplier_policy,
     predicted_procurement_ranking_function,
     multi_decision_prescriptive_scenario_enhanced,
+    // Transition processes
+    transition_receive_goods,
+    transition_pay_supplier,
     // Table data
-    optimized_procurement_choices,
+    recommended_procurement_choices,
+    expected_deliveries,
+    expected_invoices,
     // Reporting
     report,
     reporter,
