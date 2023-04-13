@@ -1,4 +1,4 @@
-import { ArrayType, BooleanType, DateTimeType, DictType, FloatType, IntegerType, NullType, SetType, SourceBuilder, StringType, StructType, Template } from "@elaraai/core"
+import { ArrayType, BooleanType, DateTimeType, DictType, FloatType, IntegerType, NullType, SetType, SourceBuilder, StringType, StructType, Template, Variant, VariantType } from "@elaraai/core"
 
 const my_string_datasource = new SourceBuilder("My String")
     .value({
@@ -66,6 +66,15 @@ const my_struct_datasource = new SourceBuilder("My Struct")
         })
     })
 
+const my_variant_datasource = new SourceBuilder("My Variant Value")
+    .value({
+        value: Variant("a", true),
+        type: VariantType({
+            a: BooleanType,
+            b: StringType,
+        })
+    })
+
 export default Template(
     my_string_datasource,
     my_integer_datasource,
@@ -76,5 +85,6 @@ export default Template(
     my_array_datasource,
     my_set_datasource,
     my_dict_datasource,
-    my_struct_datasource
+    my_struct_datasource,
+    my_variant_datasource
 )
