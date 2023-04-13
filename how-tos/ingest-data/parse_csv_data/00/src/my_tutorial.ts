@@ -2,10 +2,8 @@ import { BlobType, FloatType, IntegerType, Nullable, SourceBuilder, PipelineBuil
 
 const my_blobtype_stream = new SourceBuilder("My BlobType Stream")
     .value({
-        value: new Uint8Array(
-            new TextEncoder().encode(
-                "Text Field,Integer Field,Float Field\nsome string,5,13.5\nanother string,10,12\nthird string,,13.5"
-            )
+        value: new TextEncoder().encode(
+            "Text Field,Integer Field,Float Field\nsome string,5,13.5\nanother string,10,12\nthird string,,13.5"
         ),
         type: BlobType
     })
