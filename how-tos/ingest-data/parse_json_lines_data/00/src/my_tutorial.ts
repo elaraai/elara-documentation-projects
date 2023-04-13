@@ -2,10 +2,8 @@ import { BlobType, SourceBuilder, PipelineBuilder, StringType, Template, ArrayTy
 
 const my_blobtype_stream = new SourceBuilder("My BlobType Stream")
     .value({
-        value: new Uint8Array(
-            new TextEncoder().encode(
-                '{"name": "Gilbert", "sales": [{"salePrice": 99.90}, {"salePrice": 35.90}]}\n{"name": "Alexa", "sales": [{"salePrice": 23.90}, {"salePrice": 45.90}]}\n{"name": "May", "sales": []}\n{"name": "Deloise", "sales": [{"salePrice": 99.90}]}'
-            )
+        value: new TextEncoder().encode(
+            '{"name": "Gilbert", "sales": [{"salePrice": 99.90}, {"salePrice": 35.90}]}\n{"name": "Alexa", "sales": [{"salePrice": 23.90}, {"salePrice": 45.90}]}\n{"name": "May", "sales": []}\n{"name": "Deloise", "sales": [{"salePrice": 99.90}]}'
         ),
         type: BlobType
     })
