@@ -1,0 +1,59 @@
+{
+  "streams": {
+    "Source.My FTP": {
+      "name": "Source.My FTP",
+      "type": {
+        "type": "Blob",
+        "value": null
+      },
+      "writable": false
+    }
+  },
+  "tasks": {
+    "Source.My FTP": {
+      "name": "Source.My FTP",
+      "parent": "My FTP",
+      "task_type": "source",
+      "source_type": "ftp",
+      "cron": "* * * * *",
+      "ftp_uri": {
+        "type": {
+          "type": "String",
+          "value": null
+        },
+        "ast_type": "Const",
+        "value": "ftp://demo.wftpserver.com/download/version.txt"
+      },
+      "ftp_username": {
+        "type": {
+          "type": "String",
+          "value": null
+        },
+        "ast_type": "Const",
+        "value": "demo"
+      },
+      "ftp_password": {
+        "type": {
+          "type": "String",
+          "value": null
+        },
+        "ast_type": "Const",
+        "value": "demo"
+      },
+      "inputs": {},
+      "outputs": {
+        "output": {
+          "name": "Source.My FTP",
+          "type": {
+            "type": "Blob",
+            "value": null
+          },
+          "writable": false
+        }
+      },
+      "input_assertions": [],
+      "output_assertions": []
+    }
+  },
+  "defaults": {}
+}

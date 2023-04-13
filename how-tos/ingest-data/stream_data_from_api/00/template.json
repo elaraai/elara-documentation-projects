@@ -1,0 +1,173 @@
+{
+  "streams": {
+    "Source.My API": {
+      "name": "Source.My API",
+      "type": {
+        "type": "Blob",
+        "value": null
+      },
+      "writable": false
+    },
+    "Writeable.My Token": {
+      "name": "Writeable.My Token",
+      "type": {
+        "type": "String",
+        "value": null
+      },
+      "writable": true
+    }
+  },
+  "tasks": {
+    "Source.My API": {
+      "name": "Source.My API",
+      "parent": "My API",
+      "task_type": "source",
+      "source_type": "api",
+      "cron": "* * * * *",
+      "request_url": {
+        "type": {
+          "type": "String",
+          "value": null
+        },
+        "ast_type": "Const",
+        "value": "https://dummyjson.com/products/1"
+      },
+      "request_headers": {
+        "type": {
+          "type": "Dict",
+          "value": {
+            "key": {
+              "type": "String",
+              "value": null
+            },
+            "value": {
+              "type": "String",
+              "value": null
+            }
+          }
+        },
+        "ast_type": "NewDict",
+        "keys": [
+          {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Const",
+            "value": "Authorization"
+          }
+        ],
+        "values": [
+          {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "StringJoin",
+            "values": [
+              {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": "Bearer "
+              },
+              {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "input.token"
+              }
+            ],
+            "seperator": ""
+          }
+        ]
+      },
+      "request_retry": {
+        "type": {
+          "type": "Boolean",
+          "value": null
+        },
+        "ast_type": "And",
+        "first": {
+          "type": {
+            "type": "Boolean",
+            "value": null
+          },
+          "ast_type": "Less",
+          "first": {
+            "type": {
+              "type": "Integer",
+              "value": null
+            },
+            "ast_type": "Variable",
+            "name": "attempts"
+          },
+          "second": {
+            "type": {
+              "type": "Integer",
+              "value": null
+            },
+            "ast_type": "Const",
+            "value": "5"
+          }
+        },
+        "second": {
+          "type": {
+            "type": "Boolean",
+            "value": null
+          },
+          "ast_type": "Variable",
+          "name": "previous_failure"
+        }
+      },
+      "request_delay": {
+        "type": {
+          "type": "Integer",
+          "value": null
+        },
+        "ast_type": "Const",
+        "value": "1000"
+      },
+      "inputs": {
+        "token": {
+          "name": "Writeable.My Token",
+          "type": {
+            "type": "String",
+            "value": null
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Source.My API",
+          "type": {
+            "type": "Blob",
+            "value": null
+          },
+          "writable": false
+        }
+      },
+      "input_assertions": [],
+      "output_assertions": []
+    }
+  },
+  "defaults": {
+    "Writeable.My Token": {
+      "default_type": "value",
+      "stream": "Writeable.My Token",
+      "value": {
+        "type": {
+          "type": "String",
+          "value": null
+        },
+        "ast_type": "Const",
+        "value": "SomeString"
+      }
+    }
+  }
+}
