@@ -5,7 +5,7 @@ help:
 	@echo "    make help"
 
 .PHONY: build
-build: build-parse_csv_data build-parse_json_data build-parse_json_lines_data build-set_value_from_local_file build-set_value_programmatically build-stream_data_from_api build-stream_data_from_ftp build-stream_the_current_datetime
+build: build-parse_csv_data build-parse_json_data build-parse_json_lines_data build-set_value_from_local_file build-set_value_programmatically build-stream_data_from_api build-stream_data_from_ftp build-stream_the_current_datetime build-write_data_using_the_cli
 
 .PHONY: build-parse_csv_data
 build-parse_csv_data:
@@ -38,3 +38,7 @@ build-stream_data_from_ftp:
 .PHONY: build-stream_the_current_datetime
 build-stream_the_current_datetime: 
 	cd stream_the_current_datetime && make build
+
+.PHONY: build-write_data_using_the_cli
+build-write_data_using_the_cli: 
+	cd write_data_using_the_cli && make build
