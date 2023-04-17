@@ -1,316 +1,75 @@
 {
   "streams": {
-    "Writeable.My BlobType Datastream": {
-      "name": "Writeable.My BlobType Datastream",
+    "Source.My Datastream": {
+      "name": "Source.My Datastream",
       "type": {
         "type": "Blob",
         "value": null
       },
-      "writable": true
-    },
-    "Writeable.My Datastream": {
-      "name": "Writeable.My Datastream",
-      "type": {
-        "type": "String",
-        "value": null
-      },
-      "writable": true
-    },
-    "Writeable.My Nested Datastream": {
-      "name": "Writeable.My Nested Datastream",
-      "type": {
-        "type": "Dict",
-        "value": {
-          "key": {
-            "type": "String",
-            "value": null
-          },
-          "value": {
-            "type": "Struct",
-            "value": {
-              "date": {
-                "type": "DateTime",
-                "value": null
-              },
-              "saleQty": {
-                "type": "Dict",
-                "value": {
-                  "key": {
-                    "type": "String",
-                    "value": null
-                  },
-                  "value": {
-                    "type": "Integer",
-                    "value": null
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "writable": true
-    },
-    "Writeable.My Tabular Datastream": {
-      "name": "Writeable.My Tabular Datastream",
-      "type": {
-        "type": "Dict",
-        "value": {
-          "key": {
-            "type": "String",
-            "value": null
-          },
-          "value": {
-            "type": "Struct",
-            "value": {
-              "a": {
-                "type": "String",
-                "value": null
-              },
-              "b": {
-                "type": "Integer",
-                "value": null
-              }
-            }
-          }
-        }
-      },
-      "writable": true
+      "writable": false
     }
   },
-  "tasks": {},
-  "defaults": {
-    "Writeable.My BlobType Datastream": {
-      "default_type": "value",
-      "stream": "Writeable.My BlobType Datastream",
-      "value": {
-        "type": {
-          "type": "Blob",
-          "value": null
-        },
-        "ast_type": "Const",
-        "value": [
-          123,
-          34,
-          110,
-          97,
-          109,
-          101,
-          34,
-          58,
-          32,
-          34,
-          71,
-          105,
-          108,
-          98,
-          101,
-          114,
-          116,
-          34,
-          44,
-          32,
-          34,
-          115,
-          97,
-          108,
-          101,
-          115,
-          34,
-          58,
-          32,
-          91,
-          123,
-          34,
-          115,
-          97,
-          108,
-          101,
-          80,
-          114,
-          105,
-          99,
-          101,
-          34,
-          58,
-          32,
-          57,
-          57,
-          46,
-          57,
-          48,
-          125,
-          44,
-          32,
-          123,
-          34,
-          115,
-          97,
-          108,
-          101,
-          80,
-          114,
-          105,
-          99,
-          101,
-          34,
-          58,
-          32,
-          51,
-          53,
-          46,
-          57,
-          48,
-          125,
-          93,
-          125
-        ]
-      }
-    },
-    "Writeable.My Datastream": {
-      "default_type": "value",
-      "stream": "Writeable.My Datastream",
-      "value": {
+  "tasks": {
+    "Source.My Datastream": {
+      "name": "Source.My Datastream",
+      "parent": "My Datastream",
+      "task_type": "source",
+      "source_type": "s3",
+      "cron": "* * * * *",
+      "s3_region": {
         "type": {
           "type": "String",
           "value": null
         },
         "ast_type": "Const",
-        "value": "some string"
-      }
-    },
-    "Writeable.My Nested Datastream": {
-      "default_type": "value",
-      "stream": "Writeable.My Nested Datastream",
-      "value": {
+        "value": "__REGION__"
+      },
+      "s3_bucket": {
         "type": {
-          "type": "Dict",
-          "value": {
-            "key": {
-              "type": "String",
-              "value": null
-            },
-            "value": {
-              "type": "Struct",
-              "value": {
-                "date": {
-                  "type": "DateTime",
-                  "value": null
-                },
-                "saleQty": {
-                  "type": "Dict",
-                  "value": {
-                    "key": {
-                      "type": "String",
-                      "value": null
-                    },
-                    "value": {
-                      "type": "Integer",
-                      "value": null
-                    }
-                  }
-                }
-              }
-            }
-          }
+          "type": "String",
+          "value": null
         },
         "ast_type": "Const",
-        "value": [
-          {
-            "key": "0",
-            "value": {
-              "date": "2022-10-10T09:00:00.000Z",
-              "saleQty": [
-                {
-                  "key": "hotdog",
-                  "value": "1"
-                },
-                {
-                  "key": "vegan hotdog",
-                  "value": "3"
-                }
-              ]
-            }
-          },
-          {
-            "key": "1",
-            "value": {
-              "date": "2022-10-10T10:00:00.000Z",
-              "saleQty": [
-                {
-                  "key": "hotdog",
-                  "value": "2"
-                },
-                {
-                  "key": "vegan hotdog",
-                  "value": "2"
-                }
-              ]
-            }
-          },
-          {
-            "key": "2",
-            "value": {
-              "date": "2022-10-10T11:00:00.000Z",
-              "saleQty": [
-                {
-                  "key": "hotdog",
-                  "value": "3"
-                },
-                {
-                  "key": "vegan hotdog",
-                  "value": "1"
-                }
-              ]
-            }
-          }
-        ]
-      }
-    },
-    "Writeable.My Tabular Datastream": {
-      "default_type": "value",
-      "stream": "Writeable.My Tabular Datastream",
-      "value": {
+        "value": "__BUCKET_NAME__"
+      },
+      "s3_key": {
         "type": {
-          "type": "Dict",
-          "value": {
-            "key": {
-              "type": "String",
-              "value": null
-            },
-            "value": {
-              "type": "Struct",
-              "value": {
-                "a": {
-                  "type": "String",
-                  "value": null
-                },
-                "b": {
-                  "type": "Integer",
-                  "value": null
-                }
-              }
-            }
-          }
+          "type": "String",
+          "value": null
         },
         "ast_type": "Const",
-        "value": [
-          {
-            "key": "0",
-            "value": {
-              "a": "string_a",
-              "b": "1"
-            }
+        "value": "path/to/file"
+      },
+      "s3_access_key_id": {
+        "type": {
+          "type": "String",
+          "value": null
+        },
+        "ast_type": "Const",
+        "value": "__KEY__"
+      },
+      "s3_secret_access_key": {
+        "type": {
+          "type": "String",
+          "value": null
+        },
+        "ast_type": "Const",
+        "value": "__SECRET_KEY__"
+      },
+      "inputs": {},
+      "outputs": {
+        "output": {
+          "name": "Source.My Datastream",
+          "type": {
+            "type": "Blob",
+            "value": null
           },
-          {
-            "key": "1",
-            "value": {
-              "a": "string_b",
-              "b": "2"
-            }
-          }
-        ]
-      }
+          "writable": false
+        }
+      },
+      "input_assertions": [],
+      "output_assertions": []
     }
-  }
+  },
+  "defaults": {}
 }
