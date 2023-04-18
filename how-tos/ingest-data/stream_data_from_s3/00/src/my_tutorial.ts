@@ -1,6 +1,8 @@
 import { Const, SourceBuilder, Template } from "@elaraai/core"
 
-const my_s3_datasource = new SourceBuilder("My Datastream")
+// Replace the contant values below with those of your own S3 connection parameters to test this Datasource.
+
+const my_s3_datasource = new SourceBuilder("My S3 Datasource")
     .s3({
         cron: "* * * * *",
         region: _ => Const("__REGION__"),
