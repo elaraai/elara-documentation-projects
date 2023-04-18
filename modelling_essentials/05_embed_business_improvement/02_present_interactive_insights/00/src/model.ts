@@ -158,6 +158,7 @@ const procurement = new ProcessBuilder("Procurement")
 
 // Descriptive Scenario
 
+// TODO: remove
 const historic_sales = new ProcessBuilder("Historic Sales")
     // add the other models to be accessed
     .process(sales)
@@ -173,6 +174,7 @@ const historic_sales = new ProcessBuilder("Historic Sales")
     // the data comes from the historic sale data
     .mapManyFromStream(sales_data.outputStream())
 
+// TODO: remove
 const historic_procurement = new ProcessBuilder("Historic Procurement")
     // add the other models to be accessed
     .process(procurement)
@@ -185,6 +187,7 @@ const historic_procurement = new ProcessBuilder("Historic Procurement")
     // the data comes from the historic purchasing data
     .mapManyFromStream(procurement_data.outputStream())
 
+// TODO: remove
 const base_scenario = new ScenarioBuilder("Base")
     .resource(cash, { ledger: true })
     .resource(stock_on_hand, { ledger: true })
@@ -195,6 +198,7 @@ const base_scenario = new ScenarioBuilder("Base")
     .process(pay_supplier)
     .process(procurement)
 
+// TODO: add simulationEnd to this, predicate populated from a datastream with the desired end date.
 const descriptive_scenario = new ScenarioBuilder("Descriptive")
     .fromScenario(base_scenario)
     .process(historic_sales)
@@ -236,6 +240,7 @@ const operating_times = new ResourceBuilder("Operating Times")
 const discount = new ResourceBuilder("Discount")
     .mapFromValue(0)
 
+// TODO: remove `.end()` criteria
 const predicted_sales = new ProcessBuilder("Predicted Sales")
     // add the other models to be accessed
     .resource(next_sale_date)
@@ -281,40 +286,41 @@ const multi_factor_supplier_policy = new ResourceBuilder("Multi-factor Supplier 
         ))
     )
 
+// TODO: replace with Reduce to get to highest ranking supplier
 const predicted_procurement_ranking_function = new ProcessBuilder("Predicted Procurement with Ranking Function")
     .resource(cash)
     .resource(suppliers)
     .resource(multi_factor_supplier_policy)
     .resource(stock_on_hand)
     .process(procurement)
-    .let("supplierRanking", (_props, resources) => ToDict(
+    .let("supplierRanking", (_props, resources) => ToArray(
         resources.Suppliers,
-        (_supplier, supplierId) => Add(
-            Multiply(
-                GetField(Get(resources["Multi-factor Supplier Policy"], supplierId), "stockOnHandWeight"),
-                resources["Stock-on-hand"],
+        (_supplier, supplierId) => Struct({
+            rank: Add(
+                Multiply(
+                    GetField(Get(resources["Multi-factor Supplier Policy"], supplierId), "stockOnHandWeight"),
+                    resources["Stock-on-hand"],
+                ),
+                Multiply(
+                    GetField(Get(resources["Multi-factor Supplier Policy"], supplierId), "cashWeight"),
+                    resources["Cash"],
+                ),
             ),
-            Multiply(
-                GetField(Get(resources["Multi-factor Supplier Policy"], supplierId), "cashWeight"),
-                resources["Cash"],
-            ),
-        ),
-        (_value, key) => key
+            supplierId: supplierId
+        })
     ))
     .let("supplier", (props, resources) => Get(
         resources.Suppliers,
         GetField(
+            // TODO: replace with Reduce to get to highest ranking supplier
             Get(
                 Sort(
-                    ToArray(
-                        props.supplierRanking,
-                        (value, key) => Struct({ supplierName: key, rank: value })
-                    ),
+                    props.supplierRanking,
                     (first, second) => Greater(GetField(first, "rank"), GetField(second, "rank"))
                 ),
                 Const(0n),
             ),
-            "supplierName"
+            "supplierId"
         )
     ))
     // create the next procurement in the future
@@ -342,6 +348,7 @@ const predicted_procurement_ranking_function = new ProcessBuilder("Predicted Pro
         .transform(date => Struct({ date }))
     )
 
+// TODO: remove
 const transition_receive_goods = new ProcessBuilder("Transition Receive Goods")
     .process(receive_goods)
     .value("supplierName", StringType)
@@ -382,6 +389,7 @@ const transition_receive_goods = new ProcessBuilder("Transition Receive Goods")
             })
     )
 
+// TODO: remove
 const transition_pay_supplier = new ProcessBuilder("Transition Pay Supplier")
     .process(pay_supplier)
     .value("supplierName", StringType)
@@ -473,6 +481,7 @@ const reporter = new ProcessBuilder("Reporter")
         .transform(date => Struct({ date }))
     )
 
+// Replace fromScenario with continueScenario, remove .alterResourceFromSream, remove transition processes
 const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi-decision Prescriptive Enhanced")
     .fromScenario(base_scenario)
     .resource(next_sale_date)
@@ -513,6 +522,7 @@ type NonVariantChoices = Variable<{
     invoiceTotal: FloatType;
 }>>
 
+// TODO: Remove filters, since it'll all be in the future. Replace FilterMap with FilterTag.
 const FilterMapFuture = (process: ProcessChoices) => 
     new PipelineBuilder(`Optimized ${process}`)
         .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
@@ -547,7 +557,8 @@ const my_discount_choice = new SourceBuilder("My Discount Choice")
         value: { discount: 0, min_discount: 0, max_discount: 100 },
         type: StructType({ discount: FloatType, min_discount: FloatType, max_discount: FloatType })
     })
-
+    
+// TODO: Remove filters, since it'll all be in the future. Replace FilterMap with FilterTag.
 const predicted_procurement_from_optimized = new ProcessBuilder("Optimized Procurement")
     .resource(cash)
     .process(procurement)
@@ -591,6 +602,7 @@ const predicted_procurement_from_optimized = new ProcessBuilder("Optimized Procu
             })
     )
 
+// Replace fromScenario with `.continueScenario()`
 const interactive_scenario = new ScenarioBuilder("Interactive Scenario")
     .fromScenario(base_scenario)
     .resource(next_sale_date)
