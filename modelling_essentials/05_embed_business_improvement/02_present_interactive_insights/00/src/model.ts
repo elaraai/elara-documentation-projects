@@ -77,7 +77,7 @@ const demand = new MLModelBuilder("Demand")
             })
     })
 
-// Descriptive Model
+// Descriptive Scenario
 const cash = new ResourceBuilder("Cash")
     .mapFromValue(0.0)
 
@@ -261,7 +261,7 @@ const next_procurement_date = new PipelineBuilder("Next Procurement Date")
         'day'
     ))
 
-const predicted_procurement_ranking_function = new ProcessBuilder("Ranked Predicted Procurement")
+const ranked_predicted_procurement = new ProcessBuilder("Ranked Predicted Procurement")
     .resource(cash)
     .resource(suppliers)
     .resource(multi_factor_supplier_policy)
@@ -361,7 +361,7 @@ const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi
     .resource(discount)
     .resource(multi_factor_supplier_policy)
     .process(predicted_sales)
-    .process(predicted_procurement_ranking_function)
+    .process(ranked_predicted_procurement)
     // reporting
     .resource(report)
     .process(reporter)
@@ -396,7 +396,6 @@ const my_discount_choice = new SourceBuilder("My Discount Choice")
         type: StructType({ discount: FloatType, min_discount: FloatType, max_discount: FloatType })
     })
 
-// TODO: Remove filters, since it'll all be in the future. Replace FilterMap with FilterTag.
 const predicted_procurement_from_optimized = new ProcessBuilder("Optimized Procurement")
     .resource(cash)
     .process(procurement)
@@ -574,7 +573,7 @@ export default Template(
     demand,
     discount,
     multi_factor_supplier_policy,
-    predicted_procurement_ranking_function,
+    ranked_predicted_procurement,
     multi_decision_prescriptive_scenario_enhanced,
     // Table data
     recommended_procurement_choices,
