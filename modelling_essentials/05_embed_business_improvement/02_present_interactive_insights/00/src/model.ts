@@ -1,4 +1,4 @@
-import { Add, AddDuration, Const, Convert, DateTimeType, Default, DictType, Divide, FilterTag, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IntegerType, LayoutBuilder, Match, Max, Min, MLModelBuilder, Multiply, None, PipelineBuilder, Print, ProcessBuilder, Reduce, ResourceBuilder, Round, ScenarioBuilder, Some, Sort, SourceBuilder, StringType, Struct, StructType, Subtract, Template, ToArray, ToDict, Variable } from "@elaraai/core"
+import { Add, AddDuration, Const, Convert, DateTimeType, Default, DictType, Divide, FilterTag, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IntegerType, LayoutBuilder, Max, Min, MLModelBuilder, Multiply, PipelineBuilder, Print, ProcessBuilder, Reduce, ResourceBuilder, Round, ScenarioBuilder, Sort, SourceBuilder, StringType, Struct, StructType, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
 
 const sales_file = new SourceBuilder("Sales File")
     .file({ path: 'data/sales.jsonl' })
@@ -187,16 +187,13 @@ const descriptive_scenario = new ScenarioBuilder("Descriptive")
 
 // Prescriptive Scenario
 
-// this scenario begins at the end of the histroic simulation and runs for one week
+// this scenario begins at the end of the historic simulation and runs for one week
 const future_cutoff_date = new PipelineBuilder("FutureCutoffDate")
     .from(historic_sales_cutoff_date.outputStream())
-    .transform(date => AddDuration(date, 1, 'week'))    
-
-const operating_times_source = new SourceBuilder("Operating Times")
-    .value({ value: { start: 9n, end: 15n } })
+    .transform(date => AddDuration(date, 1, 'week'))
 
 const operating_times = new ResourceBuilder("Operating Times")
-    .mapFromStream(operating_times_source.outputStream())
+    .mapFromValue({ start: 9n, end: 15n })
 
 const discount = new ResourceBuilder("Discount")
     .mapFromValue(0)
@@ -229,7 +226,7 @@ const predicted_sales = new ProcessBuilder("Predicted Sales")
         .from(historic_sales_cutoff_date.outputStream())
         .input({
             name: "operating_times",
-            stream: operating_times_source.outputStream()
+            stream: operating_times.resourceStream()
         })
         .transform((date, inputs) => Struct({
             date: IfElse(
@@ -249,7 +246,6 @@ const multi_factor_supplier_policy = new ResourceBuilder("Multi-factor Supplier 
                 cashWeight: 1,
                 stockOnHandWeight: 1
             }),
-            (_, key) => key
         ))
     )
 
@@ -265,7 +261,7 @@ const next_procurement_date = new PipelineBuilder("Next Procurement Date")
         'day'
     ))
 
-const predicted_procurement_ranking_function = new ProcessBuilder("Predicted Procurement with Ranking Function")
+const predicted_procurement_ranking_function = new ProcessBuilder("Ranked Predicted Procurement")
     .resource(cash)
     .resource(suppliers)
     .resource(multi_factor_supplier_policy)
@@ -273,18 +269,18 @@ const predicted_procurement_ranking_function = new ProcessBuilder("Predicted Pro
     .process(procurement)
     .let("supplierRanking", (_props, resources) => ToArray(
         resources.Suppliers,
-        (_supplier, supplierId) => Struct({
+        (_supplier, supplierName) => Struct({
             rank: Add(
                 Multiply(
-                    GetField(Get(resources["Multi-factor Supplier Policy"], supplierId), "stockOnHandWeight"),
+                    GetField(Get(resources["Multi-factor Supplier Policy"], supplierName), "stockOnHandWeight"),
                     resources["Stock-on-hand"],
                 ),
                 Multiply(
-                    GetField(Get(resources["Multi-factor Supplier Policy"], supplierId), "cashWeight"),
+                    GetField(Get(resources["Multi-factor Supplier Policy"], supplierName), "cashWeight"),
                     resources["Cash"],
                 ),
             ),
-            supplierId: supplierId
+            supplierName: supplierName
         })
     ))
     .let("supplier", (props, resources) => Get(
@@ -297,7 +293,7 @@ const predicted_procurement_ranking_function = new ProcessBuilder("Predicted Pro
                 ),
                 Const(0n),
             ),
-            "supplierId"
+            "supplierName"
         )
     ))
     // create the next procurement in the future
@@ -316,7 +312,7 @@ const predicted_procurement_ranking_function = new ProcessBuilder("Predicted Pro
         )
     )
     // Set procurement to occur every day
-    .execute("Predicted Procurement with Ranking Function", props => Struct({
+    .execute("Ranked Predicted Procurement", props => Struct({
         date: AddDuration(props.date, 1, 'day')
     }))
     // start simulating from the current date
@@ -381,21 +377,17 @@ const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi
     .simulationInMemory(true)
     .optimizationInMemory(true)
 
-type ProcessChoices = "Procurement" | "Receive Goods" | "Pay Supplier";
-const FilterMapFuture = (process: ProcessChoices) => 
-    new PipelineBuilder(`Optimized ${process}`)
-        .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
-        .transform(
-            stream => ToDict(
-                FilterTag(stream, process),
-                value => value,
-                (_, key) => Print(key)
-            )
-        )
+const recommended_procurement_choices = new PipelineBuilder(`Optimized Procurement`)
+    .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
+    .transform(stream => FilterTag(stream, "Procurement"))
 
-const recommended_procurement_choices = FilterMapFuture("Procurement")
-const expected_deliveries = FilterMapFuture("Receive Goods")
-const expected_invoices = FilterMapFuture("Pay Supplier")
+const expected_deliveries = new PipelineBuilder(`Optimized Receive Goods`)
+    .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
+    .transform(stream => FilterTag(stream, "Receive Goods"))
+
+const expected_invoices = new PipelineBuilder(`Optimized Pay Supplier`)
+    .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
+    .transform(stream => FilterTag(stream, "Pay Supplier"))
 
 // New Interactive Scenario
 const my_discount_choice = new SourceBuilder("My Discount Choice")
@@ -403,7 +395,7 @@ const my_discount_choice = new SourceBuilder("My Discount Choice")
         value: { discount: 0, min_discount: 0, max_discount: 100 },
         type: StructType({ discount: FloatType, min_discount: FloatType, max_discount: FloatType })
     })
-    
+
 // TODO: Remove filters, since it'll all be in the future. Replace FilterMap with FilterTag.
 const predicted_procurement_from_optimized = new ProcessBuilder("Optimized Procurement")
     .resource(cash)
@@ -422,17 +414,13 @@ const predicted_procurement_from_optimized = new ProcessBuilder("Optimized Procu
             .transform(
                 stream => ToDict(
                     FilterTag(stream, "Procurement"),
-                    value => value,
-                    (value, _) => Print(GetField(value, "date"))
+                    value => Struct({
+                        date: GetField(value, "date"),
+                        supplierName: GetField(value, "supplierName"),
+                    }),
+                    (_, index) => Print(index)
                 )
             )
-            .select({
-                keep_all: false,
-                selections: {
-                    date: fields => fields.date,
-                    supplierName: fields => fields.supplierName
-                }
-            })
     )
 
 const interactive_scenario = new ScenarioBuilder("Interactive Scenario")
@@ -484,7 +472,7 @@ const dashboard = new LayoutBuilder("Business Outcomes")
                         "BAU Discount",
                         builder => builder
                             .fromStream(my_discount_choice.outputStream())
-                            .float("Percentage Discount", { 
+                            .float("Percentage Discount", {
                                 value: fields => fields.discount,
                                 min: fields => fields.min_discount,
                                 max: fields => fields.max_discount
@@ -572,7 +560,6 @@ export default Template(
     sales,
     procurement,
     descriptive_scenario,
-    operating_times_source,
     cash,
     stock_on_hand,
     suppliers,
