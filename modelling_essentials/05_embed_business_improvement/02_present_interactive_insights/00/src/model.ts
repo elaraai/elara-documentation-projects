@@ -1,4 +1,4 @@
-import { Add, AddDuration, Const, Convert, DateTimeType, Default, DictType, Divide, FilterTag, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IntegerType, LayoutBuilder, Max, Min, MLModelBuilder, Multiply, PipelineBuilder, Print, ProcessBuilder, Reduce, ResourceBuilder, Round, ScenarioBuilder, Sort, SourceBuilder, StringType, Struct, StructType, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
+import { Add, AddDuration, Const, Convert, DateTimeType, Default, DictType, Divide, FilterTag, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IntegerType, LayoutBuilder, Max, Min, MLModelBuilder, Multiply, NewDict, PipelineBuilder, Print, ProcessBuilder, Reduce, ResourceBuilder, Round, ScenarioBuilder, Sort, SourceBuilder, StringType, Struct, StructType, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
 
 const sales_file = new SourceBuilder("Sales File")
     .file({ path: 'data/sales.jsonl' })
@@ -172,6 +172,40 @@ const historic_sales_cutoff_date = new PipelineBuilder("Historic Sales Cutoff Da
         'hour'
     ))
 
+// Reporting Resources and Processes
+const report = new ResourceBuilder("Report")
+    .mapFromValue(
+        new Map(),
+        DictType(
+            StringType,
+            StructType({
+                date: DateTimeType,
+                cash: FloatType,
+                stockOnHand: IntegerType,
+            })
+        )
+    )
+
+const reporter = new ProcessBuilder("Reporter")
+    .resource(cash)
+    .resource(stock_on_hand)
+    .resource(report)
+    .insert("Report", {
+        value: (props, resources) => Struct({
+            date: props.date,
+            cash: resources.Cash,
+            stockOnHand: resources["Stock-on-hand"],
+        }),
+        key: props => Print(props.date)
+    })
+    .execute("Reporter", props => Struct({
+        date: AddDuration(props.date, 1, "hour")
+    }))
+    .mapFromPipeline(builder => builder
+        .from(historic_sales_cutoff_date.outputStream())
+        .transform(date => Struct({ date }))
+    )
+
 // run the historic processes up to the cutoff date
 const descriptive_scenario = new ScenarioBuilder("Descriptive")
     .resource(cash, { ledger: true })
@@ -182,6 +216,9 @@ const descriptive_scenario = new ScenarioBuilder("Descriptive")
     .process(receive_goods)
     .process(pay_supplier)
     .process(procurement)
+    // reporting
+    .resource(report)
+    .process(reporter)
     .endSimulation(historic_sales_cutoff_date.outputStream())
     .simulationInMemory(true)
 
@@ -303,6 +340,7 @@ const ranked_predicted_procurement = new ProcessBuilder("Ranked Predicted Procur
             date: props.date,
             supplierName: GetField(props.supplier, "supplierName"),
         }),
+        // TODO: change to if statement
         (props, resources) => GreaterEqual(
             resources.Cash,
             Multiply(
@@ -321,40 +359,6 @@ const ranked_predicted_procurement = new ProcessBuilder("Ranked Predicted Procur
         .transform(date => Struct({ date }))
     )
 
-// Reporting Resources and Processes
-const report = new ResourceBuilder("Report")
-    .mapFromValue(
-        new Map(),
-        DictType(
-            StringType,
-            StructType({
-                date: DateTimeType,
-                cash: FloatType,
-                stockOnHand: IntegerType,
-            })
-        )
-    )
-
-const reporter = new ProcessBuilder("Reporter")
-    .resource(cash)
-    .resource(stock_on_hand)
-    .resource(report)
-    .insert("Report", {
-        value: (props, resources) => Struct({
-            date: props.date,
-            cash: resources.Cash,
-            stockOnHand: resources["Stock-on-hand"],
-        }),
-        key: props => Print(props.date)
-    })
-    .execute("Reporter", props => Struct({
-        date: AddDuration(props.date, 1, "hour")
-    }))
-    .mapFromPipeline(builder => builder
-        .from(historic_sales_cutoff_date.outputStream())
-        .transform(date => Struct({ date }))
-    )
-
 const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi-decision Prescriptive Enhanced")
     .continueScenario(descriptive_scenario)
     .resource(operating_times)
@@ -363,8 +367,19 @@ const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi
     .process(predicted_sales)
     .process(ranked_predicted_procurement)
     // reporting
-    .resource(report)
-    .process(reporter)
+    .alterProcessFromPipeline(
+        "Reporter",
+        (builder, _) => builder
+            .from(future_cutoff_date.outputStream())
+            .transform(
+                date => NewDict(
+                    StringType,
+                    StructType({ date: DateTimeType }),
+                    ["0"],
+                    [Struct({ date })]
+                )
+            )
+    )
     // end simulation
     .endSimulation(future_cutoff_date.outputStream())
     // elara will try to maximise this - the cash balance!
@@ -430,8 +445,19 @@ const interactive_scenario = new ScenarioBuilder("Interactive Scenario")
     .process(predicted_sales)
     .process(predicted_procurement_from_optimized)
     // reporting
-    .resource(report)
-    .process(reporter)
+    .alterProcessFromPipeline(
+        "Reporter",
+        (builder, _) => builder
+            .from(future_cutoff_date.outputStream())
+            .transform(
+                date => NewDict(
+                    StringType,
+                    StructType({ date: DateTimeType }),
+                    ["0"],
+                    [Struct({ date })]
+                )
+            )
+    )
     // end simulation
     .endSimulation(future_cutoff_date.outputStream())
     // user-supplied discount
@@ -449,11 +475,16 @@ const concatenated_reports = new PipelineBuilder("Concatenated Reports")
         name: "optimizedReport",
         stream: multi_decision_prescriptive_scenario_enhanced.simulationResultStreams().Report
     })
+    .input({
+        name: "historicReport",
+        stream: descriptive_scenario.simulationResultStreams().Report
+    })
     .concatenate({
         discriminator_name: "scenario",
         discriminator_value: "BAU",
         inputs: [
             { input: inputs => inputs.optimizedReport, discriminator_value: "Optimized" },
+            { input: inputs => inputs.historicReport, discriminator_value: "Historic" },
         ]
     })
 

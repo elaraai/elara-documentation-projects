@@ -1,4 +1,4 @@
-import { DictType, Get, GetField, IntegerType, MapDict, ProcessBuilder, ResourceBuilder, ScenarioBuilder, StringType, Subtract, Template } from "@elaraai/core"
+import { DictType, Get, GetField, IntegerType, ProcessBuilder, ResourceBuilder, ScenarioBuilder, StringType, Subtract, Template, ToDict } from "@elaraai/core"
 
 const stock_on_hand = new ResourceBuilder("Stock-on-hand")
     .mapFromValue(
@@ -14,12 +14,13 @@ const sales = new ProcessBuilder("Sales")
     .updateMany(
         "Stock-on-hand",
         "qty",
-        (props, resources) => MapDict(
+        (props, resources) => ToDict(
             resources["Stock-on-hand"],
             (value, _) => Subtract(
                 GetField(value, "qty"),
                 Get(props.saleQty, GetField(value, "name"), 0n)
-            )
+            ),
+            (_, key) => key
         )
     )
     .mapManyFromValue(
