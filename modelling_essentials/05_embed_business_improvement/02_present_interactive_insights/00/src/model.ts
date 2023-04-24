@@ -341,19 +341,21 @@ const ranked_predicted_procurement = new ProcessBuilder("Ranked Predicted Procur
         )
     ))
     // create the next procurement in the future
-    .execute(
-        "Procurement",
-        props => Struct({
-            date: props.date,
-            supplierName: GetField(props.supplier, "supplierName"),
-        }),
-        // TODO: change to if statement
+    .if(
         (props, resources) => GreaterEqual(
             resources.Cash,
             Multiply(
                 GetField(props.supplier, "unitCost"),
                 GetField(props.supplier, "orderQty")
             )
+        ),
+        block => block
+        .execute(
+            "Procurement",
+            props => Struct({
+                date: props.date,
+                supplierName: GetField(props.supplier, "supplierName"),
+            }),
         )
     )
     // Set procurement to occur every day
