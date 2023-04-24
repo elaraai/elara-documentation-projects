@@ -202,8 +202,15 @@ const reporter = new ProcessBuilder("Reporter")
         date: AddDuration(props.date, 1, "hour")
     }))
     .mapFromPipeline(builder => builder
-        .from(historic_sales_cutoff_date.outputStream())
-        .transform(date => Struct({ date }))
+        .from(sales_data.outputStream())
+        .input({ name: "maxDate", stream: historic_sales_cutoff_date.outputStream() })
+        .transform((sales, inputs) => Struct({
+            date: Reduce(
+                sales,
+                (prev, curr) => Min(GetField(curr, "date"), prev),
+                inputs.maxDate
+            ),
+        }))
     )
 
 // run the historic processes up to the cutoff date
@@ -367,10 +374,11 @@ const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi
     .process(predicted_sales)
     .process(ranked_predicted_procurement)
     // reporting
+    .alterResourceFromValue("Report", new Map())
     .alterProcessFromPipeline(
         "Reporter",
         (builder, _) => builder
-            .from(future_cutoff_date.outputStream())
+            .from(historic_sales_cutoff_date.outputStream())
             .transform(
                 date => NewDict(
                     StringType,
@@ -445,10 +453,11 @@ const interactive_scenario = new ScenarioBuilder("Interactive Scenario")
     .process(predicted_sales)
     .process(predicted_procurement_from_optimized)
     // reporting
+    .alterResourceFromValue("Report", new Map())
     .alterProcessFromPipeline(
         "Reporter",
         (builder, _) => builder
-            .from(future_cutoff_date.outputStream())
+            .from(historic_sales_cutoff_date.outputStream())
             .transform(
                 date => NewDict(
                     StringType,
