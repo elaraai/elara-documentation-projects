@@ -1,4 +1,4 @@
-import { Add, AddDuration, Const, Convert, DateTimeType, Default, DictType, Divide, FilterTag, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IntegerType, LayoutBuilder,  Max, Min, MLModelBuilder, Multiply,  PipelineBuilder, Print, ProcessBuilder, Reduce, ResourceBuilder, Round, ScenarioBuilder, Sort, SourceBuilder, StringType, Struct, StructType, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
+import { Add, AddDuration, Const, Convert, DateTimeType, Default, DictType, Divide, FilterTag, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IntegerType, LayoutBuilder, Max, Min, MLModelBuilder, Multiply, NewDict, PipelineBuilder, Print, ProcessBuilder, Reduce, ResourceBuilder, Round, ScenarioBuilder, Sort, SourceBuilder, StringType, Struct, StructType, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
 
 const sales_file = new SourceBuilder("Sales File")
     .file({ path: 'data/sales.jsonl' })
@@ -83,10 +83,10 @@ const cash = new ResourceBuilder("Cash")
 
 const stock_on_hand = new ResourceBuilder("Stock-on-hand")
     .mapFromValue(50n)
-    
+
 const price = new ResourceBuilder("Price")
     .mapFromValue(3.5)
-    
+
 const suppliers = new ResourceBuilder("Suppliers")
     .mapFromStream(supplier_data.outputStream())
 
@@ -172,6 +172,47 @@ const historic_sales_cutoff_date = new PipelineBuilder("Historic Sales Cutoff Da
         'hour'
     ))
 
+// Reporting Resources and Processes
+const report = new ResourceBuilder("Report")
+    .mapFromValue(
+        new Map(),
+        DictType(
+            StringType,
+            StructType({
+                date: DateTimeType,
+                cash: FloatType,
+                stockOnHand: IntegerType,
+            })
+        )
+    )
+
+const reporter = new ProcessBuilder("Reporter")
+    .resource(cash)
+    .resource(stock_on_hand)
+    .resource(report)
+    .insert("Report", {
+        value: (props, resources) => Struct({
+            date: props.date,
+            cash: resources.Cash,
+            stockOnHand: resources["Stock-on-hand"],
+        }),
+        key: props => Print(props.date)
+    })
+    .execute("Reporter", props => Struct({
+        date: AddDuration(props.date, 1, "hour")
+    }))
+    .mapFromPipeline(builder => builder
+        .from(sales_data.outputStream())
+        .input({ name: "maxDate", stream: historic_sales_cutoff_date.outputStream() })
+        .transform((sales, inputs) => Struct({
+            date: Reduce(
+                sales,
+                (prev, curr) => Min(GetField(curr, "date"), prev),
+                inputs.maxDate
+            ),
+        }))
+    )
+
 // run the historic processes up to the cutoff date
 const descriptive_scenario = new ScenarioBuilder("Descriptive")
     .resource(cash, { ledger: true })
@@ -182,6 +223,9 @@ const descriptive_scenario = new ScenarioBuilder("Descriptive")
     .process(receive_goods)
     .process(pay_supplier)
     .process(procurement)
+    // reporting
+    .resource(report)
+    .process(reporter)
     .endSimulation(historic_sales_cutoff_date.outputStream())
     .simulationInMemory(true)
 
@@ -198,7 +242,7 @@ const operating_times = new ResourceBuilder("Operating Times")
 const discount = new ResourceBuilder("Discount")
     .mapFromValue(0)
 
-    const predicted_sales = new ProcessBuilder("Predicted Sales")
+const predicted_sales = new ProcessBuilder("Predicted Sales")
     // add the other models to be accessed
     .resource(operating_times)
     .resource(stock_on_hand)
@@ -303,6 +347,7 @@ const ranked_predicted_procurement = new ProcessBuilder("Ranked Predicted Procur
             date: props.date,
             supplierName: GetField(props.supplier, "supplierName"),
         }),
+        // TODO: change to if statement
         (props, resources) => GreaterEqual(
             resources.Cash,
             Multiply(
@@ -321,40 +366,6 @@ const ranked_predicted_procurement = new ProcessBuilder("Ranked Predicted Procur
         .transform(date => Struct({ date }))
     )
 
-// Reporting Resources and Processes
-const report = new ResourceBuilder("Report")
-    .mapFromValue(
-        new Map(),
-        DictType(
-            StringType,
-            StructType({
-                date: DateTimeType,
-                cash: FloatType,
-                stockOnHand: IntegerType
-            })
-        )
-    )
-
-const reporter = new ProcessBuilder("Reporter")
-    .resource(cash)
-    .resource(stock_on_hand)
-    .resource(report)
-    .insert("Report", {
-        value: (props, resources) => Struct({
-            date: props.date,
-            cash: resources.Cash,
-            stockOnHand: resources["Stock-on-hand"],
-        }),
-        key: props => Print(props.date)
-    })
-    .execute("Reporter", props => Struct({
-        date: AddDuration(props.date, 1, "hour")
-    }))
-    .mapFromPipeline(builder => builder
-        .from(historic_sales_cutoff_date.outputStream())
-        .transform(date => Struct({ date }))
-    )
-
 const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi-decision Prescriptive Enhanced")
     .continueScenario(descriptive_scenario)
     .resource(operating_times)
@@ -363,8 +374,20 @@ const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi
     .process(predicted_sales)
     .process(ranked_predicted_procurement)
     // reporting
-    .resource(report)
-    .process(reporter)
+    .alterResourceFromValue("Report", new Map())
+    .alterProcessFromPipeline(
+        "Reporter",
+        (builder, _) => builder
+            .from(historic_sales_cutoff_date.outputStream())
+            .transform(
+                date => NewDict(
+                    StringType,
+                    StructType({ date: DateTimeType }),
+                    ["0"],
+                    [Struct({ date })]
+                )
+            )
+    )
     // end simulation
     .endSimulation(future_cutoff_date.outputStream())
     // elara will try to maximise this - the cash balance!
@@ -377,17 +400,31 @@ const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi
     .simulationInMemory(true)
     .optimizationInMemory(true)
 
-const recommended_procurement_choices = new PipelineBuilder(`Recommended Procurement Chocies`)
+const recommended_procurement_choices = new PipelineBuilder(`Recommended Procurement Choices`)
     .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
     .transform(stream => FilterTag(stream, "Procurement"))
 
-const expected_deliveries = new PipelineBuilder(`Optimized Receive Goods`)
+const expected_deliveries = new PipelineBuilder(`Expected Deliveries`)
     .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
     .transform(stream => FilterTag(stream, "Receive Goods"))
 
-const expected_invoices = new PipelineBuilder(`Optimized Pay Supplier`)
+const expected_invoices = new PipelineBuilder(`Expected Invoices`)
     .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
     .transform(stream => FilterTag(stream, "Pay Supplier"))
+
+const concatenated_reports = new PipelineBuilder("Concatenated Reports")
+    .from(descriptive_scenario.simulationResultStreams().Report)
+    .input({
+        name: "optimizedReport",
+        stream: multi_decision_prescriptive_scenario_enhanced.simulationResultStreams().Report
+    })
+    .concatenate({
+        discriminator_name: "scenario",
+        discriminator_value: "Historic",
+        inputs: [
+            { input: inputs => inputs.optimizedReport, discriminator_value: "Optimized" },
+        ]
+    })
 
 // Dashboard
 const dashboard = new LayoutBuilder("Business Outcomes")
@@ -433,30 +470,28 @@ const dashboard = new LayoutBuilder("Business Outcomes")
                     50,
                     "Cash-over-time",
                     builder => builder
-                        .fromStream(multi_decision_prescriptive_scenario_enhanced.simulationResultStreams().Report)
+                        .fromStream(concatenated_reports.outputStream())
                         .line({
                             x: fields => fields.date,
                             x_title: "Date",
                             y: fields => fields.cash,
                             y_title: "Cash Balance",
-                            // TODO: work out how to handle reporting in descriptive scenario
-                            // color: fields => fields.horizon,
-                            // color_title: "Horizon"
+                            color: fields => fields.scenario,
+                            color_title: "Horizon",
                         })
                 )
                 .vega(
                     50,
                     "Stock-over-time",
                     builder => builder
-                        .fromStream(multi_decision_prescriptive_scenario_enhanced.simulationResultStreams().Report)
+                        .fromStream(concatenated_reports.outputStream())
                         .line({
                             x: fields => fields.date,
                             x_title: "Date",
                             y: fields => fields.stockOnHand,
                             y_title: "Stock-on-hand",
-                            // TODO: work out how to handle reporting in descriptive scenario
-                            // color: fields => fields.horizon,
-                            // color_title: "Horizon"
+                            color: fields => fields.scenario,
+                            color_title: "Horizon"
                         })
                 )
         )
@@ -476,7 +511,6 @@ export default Template(
     supplier_data,
     sales,
     procurement,
-    historic_sales_cutoff_date,
     descriptive_scenario,
     cash,
     stock_on_hand,
@@ -486,12 +520,13 @@ export default Template(
     pay_supplier,
     operating_times,
     predicted_sales,
+    historic_sales_cutoff_date,
     next_procurement_date,
-    ranked_predicted_procurement,
+    future_cutoff_date,
     demand,
     discount,
     multi_factor_supplier_policy,
-    future_cutoff_date,
+    ranked_predicted_procurement,
     multi_decision_prescriptive_scenario_enhanced,
     // Table data
     recommended_procurement_choices,
@@ -500,6 +535,8 @@ export default Template(
     // Reporting
     report,
     reporter,
+    // Line chart data
+    concatenated_reports,
     // Dashboard
     dashboard
 )

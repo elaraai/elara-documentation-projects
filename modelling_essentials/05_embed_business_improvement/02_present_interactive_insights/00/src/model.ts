@@ -400,15 +400,15 @@ const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi
     .simulationInMemory(true)
     .optimizationInMemory(true)
 
-const recommended_procurement_choices = new PipelineBuilder(`Optimized Procurement`)
+const recommended_procurement_choices = new PipelineBuilder(`Recommended Procurement Choices`)
     .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
     .transform(stream => FilterTag(stream, "Procurement"))
 
-const expected_deliveries = new PipelineBuilder(`Optimized Receive Goods`)
+const expected_deliveries = new PipelineBuilder(`Expected Deliveries`)
     .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
     .transform(stream => FilterTag(stream, "Receive Goods"))
 
-const expected_invoices = new PipelineBuilder(`Optimized Pay Supplier`)
+const expected_invoices = new PipelineBuilder(`Expected Invoices`)
     .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
     .transform(stream => FilterTag(stream, "Pay Supplier"))
 
@@ -479,21 +479,21 @@ const interactive_scenario = new ScenarioBuilder("Interactive Scenario")
     .simulationInMemory(true)
 
 const concatenated_reports = new PipelineBuilder("Concatenated Reports")
-    .from(interactive_scenario.simulationResultStreams().Report)
+    .from(descriptive_scenario.simulationResultStreams().Report)
     .input({
         name: "optimizedReport",
         stream: multi_decision_prescriptive_scenario_enhanced.simulationResultStreams().Report
     })
     .input({
-        name: "historicReport",
-        stream: descriptive_scenario.simulationResultStreams().Report
+        name: "interactiveReport",
+        stream: interactive_scenario.simulationResultStreams().Report
     })
     .concatenate({
         discriminator_name: "scenario",
-        discriminator_value: "BAU",
+        discriminator_value: "Historic",
         inputs: [
             { input: inputs => inputs.optimizedReport, discriminator_value: "Optimized" },
-            { input: inputs => inputs.historicReport, discriminator_value: "Historic" },
+            { input: inputs => inputs.interactiveReport, discriminator_value: "BAU" },
         ]
     })
 
