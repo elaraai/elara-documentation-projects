@@ -399,7 +399,6 @@ const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi
     // tell elara to find the best rank for supplier policy
     .optimizeEvery("Multi-factor Supplier Policy", "cashWeight", { min: -1, max: 1 })
     .optimizeEvery("Multi-factor Supplier Policy", "stockOnHandWeight", { min: -1, max: 1 })
-    .simulationInMemory(true)
     .optimizationInMemory(true)
 
 const recommended_procurement_choices = new PipelineBuilder(`Recommended Procurement Choices`)

@@ -290,7 +290,6 @@ const predictive_scenario = new ScenarioBuilder("Predictive")
     .process(predicted_procurement)
     // end simulation
     .endSimulation(future_cutoff_date.outputStream())
-    .simulationInMemory(true)
 
 // Interactive Scenario
 
@@ -311,7 +310,6 @@ const interactive_scenario = new ScenarioBuilder("Interactive")
                 (stream, inputs) => IfNull(inputs.myDiscountChoice, stream)
             )
     )
-    .simulationInMemory(true)
 
 // Prescriptive Scenario
 
@@ -321,7 +319,6 @@ const prescriptive_scenario = new ScenarioBuilder("Prescriptive")
     .objective("Cash", cash => cash)
     // tell elara to find the best discount
     .optimize("Discount", { min: 0, max: 20.0 })
-    .simulationInMemory(true)
     .optimizationInMemory(true)
 
 // Multiple Decision Optimisation with simple Supplier Rank
