@@ -5,7 +5,7 @@ help:
 	@echo "    make help"
 
 .PHONY: build
-build: build-01_map_process_instances build-02_define_a_computed_property build-03_define_a_resource build-04_define_interaction build-05_model_a_collection_resource build-07_define_a_virtual_resource_interaction build-08_execute_another_process
+build: build-01_map_process_instances build-02_define_a_computed_property build-03_define_a_resource build-04_define_interaction build-05_model_a_collection_resource build-07_define_a_virtual_resource_interaction build-08_execute_another_process build-09_define_end_criteria
 
 .PHONY: build-01_map_process_instances
 build-01_map_process_instances: 
@@ -34,4 +34,8 @@ build-07_define_a_virtual_resource_interaction:
 .PHONY: build-08_execute_another_process
 build-08_execute_another_process: 
 	cd 08_execute_another_process && make build
+
+.PHONY: build-09_define_end_criteria
+build-09_define_end_criteria: 
+	cd 09_define_end_criteria && make build
 	
