@@ -21,7 +21,7 @@ const procurement_data = new PipelineBuilder('Historic Procurement')
         },
         // the procurement date is unique, so can be used as the key
         output_key: fields => Print(fields.date)
-    });
+    })
 
 const sales_data = new PipelineBuilder('Historic Sales')
     .from(sales_file.outputStream())
@@ -57,15 +57,16 @@ const supplier_data = new PipelineBuilder('Suppliers')
         output_key: fields => fields.supplierName
     })
 
+// Descriptive Scenario
 const cash = new ResourceBuilder("Cash")
     .mapFromValue(0.0)
 
 const stock_on_hand = new ResourceBuilder("Stock-on-hand")
     .mapFromValue(50n)
-    
+
 const price = new ResourceBuilder("Price")
     .mapFromValue(3.5)
-    
+
 const suppliers = new ResourceBuilder("Suppliers")
     .mapFromStream(supplier_data.outputStream())
 
@@ -80,19 +81,25 @@ const sales = new ProcessBuilder("Sales")
     .let("amount", props => Multiply(props.qty, props.price))
     .set("Stock-on-hand", (props, resources) => Subtract(resources["Stock-on-hand"], props.qty))
     .set("Cash", (props, resources) => Add(resources.Cash, props.amount))
+    // the initial data comes from the historic sale data
     .mapManyFromStream(sales_data.outputStream())
 
 const receive_goods = new ProcessBuilder("Receive Goods")
     .resource(stock_on_hand)
+    .value("supplierName", StringType)
     // the qty recieved
-    .value("qty", IntegerType)
+    .value("orderQty", IntegerType)
     // the update to Stock-on-hand by the qty
-    .set("Stock-on-hand", (props, resources) => Add(resources["Stock-on-hand"], props.qty))
+    .set("Stock-on-hand", (props, resources) => Add(resources["Stock-on-hand"], props.orderQty))
 
 const pay_supplier = new ProcessBuilder("Pay Supplier")
     .resource(cash)
+    .value("supplierName", StringType)
+    .value("unitCost", FloatType)
+    .value("orderQty", IntegerType)
+    .value("orderDate", DateTimeType)
     // the total amount to be paid
-    .value("invoiceTotal", FloatType)
+    .let("invoiceTotal", props => Multiply(props.orderQty, props.unitCost))
     // the update to Cash by the amount
     .set("Cash", (props, resources) => Subtract(resources.Cash, props.invoiceTotal))
 
@@ -104,14 +111,17 @@ const procurement = new ProcessBuilder("Procurement")
     .process(pay_supplier)
     .process(receive_goods)
     .value("supplierName", StringType)
+    .let("supplier", (props, resources) => Get(resources.Suppliers, props.supplierName))
+    .let("orderQty", props => GetField(props.supplier, "orderQty"))
     // the sausages are recieved in leadTime days
-    .execute("Receive Goods", (props, resources) => Struct({
+    .execute("Receive Goods", props => Struct({
         date: AddDuration(
             props.date,
-            GetField(Get(resources.Suppliers, props.supplierName), "leadTime"),
+            GetField(props.supplier, "leadTime"),
             "day"
         ),
-        qty: GetField(Get(resources.Suppliers, props.supplierName), "orderQty")
+        supplierName: props.supplierName,
+        orderQty: props.orderQty
     }))
     // the supplier is paid in paymentTerms days
     .execute("Pay Supplier", (props, resources) => Struct({
@@ -120,13 +130,15 @@ const procurement = new ProcessBuilder("Procurement")
             GetField(Get(resources.Suppliers, props.supplierName), "paymentTerms"),
             "day"
         ),
-        invoiceTotal: Multiply(
-            GetField(Get(resources.Suppliers, props.supplierName), "orderQty"),
-            GetField(Get(resources.Suppliers, props.supplierName), "unitCost")
-        )
+        supplierName: props.supplierName,
+        unitCost: GetField(Get(resources.Suppliers, props.supplierName), "unitCost"),
+        orderQty: props.orderQty,
+        orderDate: props.date
     }))
+    // the initial data comes from the historic purchasing data
     .mapManyFromStream(procurement_data.outputStream())
 
+// run the historic processes up to the cutoff date
 const descriptive_scenario = new ScenarioBuilder("Descriptive")
     .resource(cash, { ledger: true })
     .resource(stock_on_hand, { ledger: true })
@@ -136,6 +148,7 @@ const descriptive_scenario = new ScenarioBuilder("Descriptive")
     .process(receive_goods)
     .process(pay_supplier)
     .process(procurement)
+    .simulationInMemory(true)
 
 export default Template(
     sales_file,
