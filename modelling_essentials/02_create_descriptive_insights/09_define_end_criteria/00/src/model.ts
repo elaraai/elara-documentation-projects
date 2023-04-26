@@ -1,4 +1,4 @@
-import { Add, AddDuration, Const, Convert, DateTimeType, Default, Divide, FloatType, Floor, Get, GetField, GreaterEqual, Hour, IfElse, IntegerType, Max, Min, Multiply, PipelineBuilder, Print, ProcessBuilder, RandomValue, Reduce, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringType, Struct, Subtract, Template } from "@elaraai/core"
+import { Add, AddDuration, DateTimeType, Default, Divide, FloatType, Get, GetField, IntegerType, Max, Multiply, PipelineBuilder, Print, ProcessBuilder, Reduce, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringType, Struct, Subtract, Template } from "@elaraai/core"
 
 const sales_file = new SourceBuilder("Sales File")
     .file({ path: 'data/sales.jsonl' })
@@ -165,106 +165,6 @@ const descriptive_scenario = new ScenarioBuilder("Descriptive")
     .endSimulation(historic_sales_cutoff_date.outputStream())
     .simulationInMemory(true)
 
-// Predictive Scenario
-
-// this scenario begins at the end of the historic simulation and runs for one week
-const future_cutoff_date = new PipelineBuilder("FutureCutoffDate")
-    .from(historic_sales_cutoff_date.outputStream())
-    .transform(date => AddDuration(date, 1, 'week'))
-
-const operating_times = new ResourceBuilder("Operating Times")
-    .mapFromValue({ start: 9n, end: 15n })
-
-const predicted_sales = new ProcessBuilder("Predicted Sales")
-    // add the other models to be accessed
-    .resource(operating_times)
-    .resource(stock_on_hand)
-    .process(sales)
-    // create the next sale in the future
-    .execute("Sales", (props, resources) => Struct({
-        // the next sale date is mapped.
-        date: props.date,
-        qty: Min(Const(5n), resources["Stock-on-hand"]),
-        discount: Const(0)
-    }))
-    // predict the next sale and continue triggering predicted sales
-    .execute("Predicted Sales", (props, resources) => Struct({
-        // the next sale date will be in an hour, otherwise next day
-        date: IfElse(
-            GreaterEqual(Hour(AddDuration(props.date, 1, 'hour')), GetField(resources["Operating Times"], "end")),
-            AddDuration(Floor(AddDuration(props.date, 1, 'day'), 'day'), Convert(GetField(resources["Operating Times"], "start"), FloatType), 'hour'),
-            AddDuration(props.date, 1, 'hour')
-        )
-    }))
-    // start simulating from the cutoff date
-    .mapFromPipeline(builder => builder
-        .from(historic_sales_cutoff_date.outputStream())
-        .input({
-            name: "operating_times",
-            stream: operating_times.resourceStream()
-        })
-        .transform((date, inputs) => Struct({
-            date: IfElse(
-                GreaterEqual(Hour(date), GetField(inputs.operating_times, "end")),
-                AddDuration(Floor(AddDuration(date, 1, 'day'), 'day'), Convert(GetField(inputs.operating_times, "start"), FloatType), 'hour'),
-                date
-            )
-        }))
-    )
-
-const next_procurement_date = new PipelineBuilder("Next Procurement Date")
-    .from(procurement_data.outputStream())
-    .transform(procurement => AddDuration(
-        Reduce(
-            procurement,
-            (prev, curr) => Max(GetField(curr, "date"), prev),
-            Default(DateTimeType)
-        ),
-        1,
-        'day'
-    ))
-
-const predicted_procurement = new ProcessBuilder("Predicted Procurement")
-    .resource(suppliers)
-    .resource(cash)
-    .process(procurement)
-    .let("supplier", (_, resources) => RandomValue(resources.Suppliers))
-    // create the next procurement in the future
-    .if(
-        (props, resources) => GreaterEqual(
-            resources.Cash,
-            Multiply(
-                GetField(props.supplier, "unitCost"),
-                GetField(props.supplier, "orderQty")
-            )
-        ),
-        block => block
-            .execute(
-                "Procurement",
-                props => Struct({
-                    date: props.date,
-                    supplierName: GetField(props.supplier, "supplierName"),
-                }),
-            )
-    )
-    // Set procurement to occur every day
-    .execute("Predicted Procurement", props => Struct({
-        date: AddDuration(props.date, 1, 'day')
-    }))
-    // start simulating from the current date
-    .mapFromPipeline(builder => builder
-        .from(next_procurement_date.outputStream())
-        .transform(date => Struct({ date }))
-    )
-
-const predictive_scenario = new ScenarioBuilder("Predictive")
-    .continueScenario(descriptive_scenario)
-    .resource(operating_times)
-    .process(predicted_sales)
-    .process(predicted_procurement)
-    // end simulation
-    .endSimulation(future_cutoff_date.outputStream())
-
 export default Template(
     sales_file,
     suppliers_file,
@@ -281,11 +181,5 @@ export default Template(
     price,
     receive_goods,
     pay_supplier,
-    operating_times,
-    predicted_sales,
-    predicted_procurement,
-    predictive_scenario,
-    historic_sales_cutoff_date,
-    next_procurement_date,
-    future_cutoff_date
+    historic_sales_cutoff_date
 )
