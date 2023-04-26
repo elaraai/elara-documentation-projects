@@ -1,4 +1,4 @@
-import { Add, DateTimeType, Divide, FloatType, Get, GetField, IntegerType, Multiply, PipelineBuilder, Print, ProcessBuilder, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringType, Subtract, Template } from "@elaraai/core"
+import { Add, Const, DateTimeType, Divide, FloatType, Get, GetField, IntegerType, Multiply, PipelineBuilder, Print, ProcessBuilder, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringType, Subtract, Template } from "@elaraai/core"
 
 const sales_file = new SourceBuilder("Sales File")
     .file({ path: 'data/sales.jsonl' })
@@ -21,7 +21,7 @@ const procurement_data = new PipelineBuilder('Historic Procurement')
         },
         // the procurement date is unique, so can be used as the key
         output_key: fields => Print(fields.date)
-    });
+    })
 
 const sales_data = new PipelineBuilder('Historic Sales')
     .from(sales_file.outputStream())
@@ -57,13 +57,13 @@ const supplier_data = new PipelineBuilder('Suppliers')
         output_key: fields => fields.supplierName
     })
 
+// Descriptive Scenario
 const cash = new ResourceBuilder("Cash")
     .mapFromValue(0.0)
 
 const stock_on_hand = new ResourceBuilder("Stock-on-hand")
     .mapFromValue(50n)
-    
-    
+
 const suppliers = new ResourceBuilder("Suppliers")
     .mapFromStream(supplier_data.outputStream())
 
@@ -73,28 +73,31 @@ const sales = new ProcessBuilder("Sales")
     .value("qty", IntegerType)
     .value("discount", FloatType)
     // calculate the sale amount from the price and qty
-    .let("price", props => Subtract(3.5, Multiply(Divide(props.discount, 100), 3.5)))
+    .let("price", props => Subtract(Const(3.5), Multiply(Divide(props.discount, 100), Const(3.5))))
     .let("amount", props => Multiply(props.qty, props.price))
     .set("Stock-on-hand", (props, resources) => Subtract(resources["Stock-on-hand"], props.qty))
     .set("Cash", (props, resources) => Add(resources.Cash, props.amount))
+    // the initial data comes from the historic sale data
     .mapManyFromStream(sales_data.outputStream())
 
 const procurement = new ProcessBuilder("Procurement")
-    .resource(stock_on_hand)
+    // add the other models to be accessed
     .resource(cash)
+    .resource(stock_on_hand)
     .resource(suppliers)
     .value("supplierName", StringType)
+    .let("supplier", (props, resources) => Get(resources.Suppliers, props.supplierName))
+    .let("orderQty", props => GetField(props.supplier, "orderQty"))
     .set("Stock-on-hand", (props, resources) => Add(
         resources["Stock-on-hand"],
-        GetField(Get(resources.Suppliers, props.supplierName), "orderQty")
+        props.orderQty
     ))
+    .let("unitCost", props => GetField(props.supplier, "unitCost"))
     .set("Cash", (props, resources) => Subtract(
         resources.Cash,
-        Multiply(
-            GetField(Get(resources.Suppliers, props.supplierName), "orderQty"),
-            GetField(Get(resources.Suppliers, props.supplierName), "unitCost")
-        )
+        Multiply(props.orderQty, props.unitCost)
     ))
+    // the initial data comes from the historic purchasing data
     .mapManyFromStream(procurement_data.outputStream())
 
 const descriptive_scenario = new ScenarioBuilder("Descriptive")
@@ -103,6 +106,7 @@ const descriptive_scenario = new ScenarioBuilder("Descriptive")
     .resource(suppliers)
     .process(sales)
     .process(procurement)
+    .simulationInMemory(true)
 
 export default Template(
     sales_file,
