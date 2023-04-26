@@ -1,4 +1,4 @@
-import { DateTimeType, Divide, FloatType, IntegerType, Multiply, PipelineBuilder, Print, ProcessBuilder, ScenarioBuilder, SourceBuilder, StringType, Subtract, Template } from "@elaraai/core"
+import { Const, DateTimeType, Divide, FloatType, IntegerType, Multiply, PipelineBuilder, Print, ProcessBuilder, ScenarioBuilder, SourceBuilder, StringType, Subtract, Template } from "@elaraai/core"
 
 const sales_file = new SourceBuilder("Sales File")
     .file({ path: 'data/sales.jsonl' })
@@ -21,7 +21,7 @@ const procurement_data = new PipelineBuilder('Historic Procurement')
         },
         // the procurement date is unique, so can be used as the key
         output_key: fields => Print(fields.date)
-    });
+    })
 
 const sales_data = new PipelineBuilder('Historic Sales')
     .from(sales_file.outputStream())
@@ -57,16 +57,19 @@ const supplier_data = new PipelineBuilder('Suppliers')
         output_key: fields => fields.supplierName
     })
 
+// Descriptive Scenario
 const sales = new ProcessBuilder("Sales")
     .value("qty", IntegerType)
     .value("discount", FloatType)
     // calculate the sale amount from the price and qty
-    .let("price", props => Subtract(3.5, Multiply(Divide(props.discount, 100), 3.5)))
+    .let("price", props => Subtract(Const(3.5), Multiply(Divide(props.discount, 100), Const(3.5))))
     .let("amount", props => Multiply(props.qty, props.price))
+    // the initial data comes from the historic sale data
     .mapManyFromStream(sales_data.outputStream())
 
 const procurement = new ProcessBuilder("Procurement")
     .value("supplierName", StringType)
+    // the initial data comes from the historic purchasing data
     .mapManyFromStream(procurement_data.outputStream())
 
 const descriptive_scenario = new ScenarioBuilder("Descriptive")
