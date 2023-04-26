@@ -138,7 +138,6 @@ const procurement = new ProcessBuilder("Procurement")
     // the initial data comes from the historic purchasing data
     .mapManyFromStream(procurement_data.outputStream())
 
-// run the historic processes up to the cutoff date
 const descriptive_scenario = new ScenarioBuilder("Descriptive")
     .resource(cash, { ledger: true })
     .resource(stock_on_hand, { ledger: true })
