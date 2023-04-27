@@ -124,14 +124,14 @@ const procurement = new ProcessBuilder("Procurement")
         orderQty: props.orderQty
     }))
     // the supplier is paid in paymentTerms days
-    .execute("Pay Supplier", (props, resources) => Struct({
+    .execute("Pay Supplier", props => Struct({
         date: AddDuration(
             props.date,
-            GetField(Get(resources.Suppliers, props.supplierName), "paymentTerms"),
+            GetField(props.supplier, "paymentTerms"),
             "day"
         ),
         supplierName: props.supplierName,
-        unitCost: GetField(Get(resources.Suppliers, props.supplierName), "unitCost"),
+        unitCost: GetField(props.supplier, "unitCost"),
         orderQty: props.orderQty,
         orderDate: props.date
     }))
