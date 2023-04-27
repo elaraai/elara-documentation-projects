@@ -1,4 +1,4 @@
-import { Add, DateTimeType, Divide, FloatType, Get, GetField, IntegerType, Multiply, PipelineBuilder, Print, ProcessBuilder, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringType, Subtract, Template } from "@elaraai/core"
+import { Add, Const, DateTimeType, Divide, FloatType, Get, GetField, IntegerType, Multiply, PipelineBuilder, Print, ProcessBuilder, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringType, Subtract, Template } from "@elaraai/core"
 
 const sales_file = new SourceBuilder("Sales File")
     .file({ path: 'data/sales.jsonl' })
@@ -77,7 +77,7 @@ const sales = new ProcessBuilder("Sales")
     .value("qty", IntegerType)
     .value("discount", FloatType)
     // calculate the sale amount from the price and qty
-    .let("price", (props, resources) => Subtract(resources.Price, Multiply(Divide(props.discount, 100), resources.Price)))
+    .let("price", (props, resources) => Subtract(resources.Price, Multiply(Divide(props.discount, Const(100)), resources.Price)))
     .let("amount", props => Multiply(props.qty, props.price))
     .set("Stock-on-hand", (props, resources) => Subtract(resources["Stock-on-hand"], props.qty))
     .set("Cash", (props, resources) => Add(resources.Cash, props.amount))
