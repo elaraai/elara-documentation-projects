@@ -262,8 +262,7 @@ const select_exercise_two = new PipelineBuilder("Daily Difference in Revenue by 
                     product => Subtract(
                         Get(fields.revenuePerProductCode, product, 0),
                         Get(previousDayRevenuePerProductCode, product, 0)
-                    ),
-                    key => key
+                    )
                 )
             )
         }
