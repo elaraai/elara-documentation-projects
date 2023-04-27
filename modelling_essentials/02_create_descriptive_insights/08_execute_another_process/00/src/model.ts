@@ -1,4 +1,4 @@
-import { Add, AddDuration, DateTimeType, Divide, FloatType, Get, GetField, IntegerType, Multiply, PipelineBuilder, Print, ProcessBuilder, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringType, Struct, Subtract, Template } from "@elaraai/core"
+import { Add, AddDuration, Const, DateTimeType, Divide, FloatType, Get, GetField, IntegerType, Multiply, PipelineBuilder, Print, ProcessBuilder, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringType, Struct, Subtract, Template } from "@elaraai/core"
 
 const sales_file = new SourceBuilder("Sales File")
     .file({ path: 'data/sales.jsonl' })
@@ -124,6 +124,7 @@ const procurement = new ProcessBuilder("Procurement")
         orderQty: props.orderQty
     }))
     // the supplier is paid in paymentTerms days
+    .let("unitCost", props => GetField(props.supplier, "unitCost"))
     .execute("Pay Supplier", props => Struct({
         date: AddDuration(
             props.date,
@@ -131,7 +132,7 @@ const procurement = new ProcessBuilder("Procurement")
             "day"
         ),
         supplierName: props.supplierName,
-        unitCost: GetField(props.supplier, "unitCost"),
+        unitCost: props.unitCost,
         orderQty: props.orderQty,
         orderDate: props.date
     }))
