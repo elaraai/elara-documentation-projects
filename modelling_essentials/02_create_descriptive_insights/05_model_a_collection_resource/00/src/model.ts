@@ -19,8 +19,7 @@ const sales = new ProcessBuilder("Sales")
             (value, _) => Subtract(
                 GetField(value, "qty"),
                 Get(props.saleQty, GetField(value, "name"), 0n)
-            ),
-            (_, key) => key
+            )
         )
     )
     .mapManyFromValue(
