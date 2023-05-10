@@ -1,4 +1,4 @@
-import { Add, AddDuration, Const, Convert, DateTimeType, Default, Divide, FilterTag, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IntegerType, LayoutBuilder, Match, Max, Min, MLModelBuilder, Multiply,PipelineBuilder, Print, ProcessBuilder, Reduce, ResourceBuilder, Round, ScenarioBuilder, Sort, SourceBuilder, StringType, Struct, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
+import { Add, AddDuration, Const, Convert, DateTimeType, Default, Divide, FilterTag, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IntegerType, LayoutBuilder, Match, Max, Min, MLModelBuilder, Multiply,PipelineBuilder, Print, ProcessBuilder, Reduce, ResourceBuilder, Round, RoundPrecision, ScenarioBuilder, Sort, SourceBuilder, StringJoin, StringType, Struct, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
 
 const sales_file = new SourceBuilder("Sales File")
     .file({ path: 'data/sales.jsonl' })
@@ -343,6 +343,12 @@ const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi
     .optimizeEvery("Multi-factor Supplier Policy", "stockOnHandWeight", { min: -1, max: 1 })
     .optimizationInMemory(true)
 
+const recommended_discount = new PipelineBuilder("Recommended Discount")
+    .from(multi_decision_prescriptive_scenario_enhanced.simulationResultStreams().Discount)
+    .transform(
+        stream => StringJoin`${RoundPrecision(stream, 4)}%`
+    )
+
 const recommended_procurement_choices = new PipelineBuilder(`Recommended Procurement Choices`)
     .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
     .transform(stream => FilterTag(stream, "Procurement"))
@@ -513,7 +519,7 @@ const dashboard = new LayoutBuilder("Business Outcomes")
     )
     .header(
         builder => builder
-            .item("Recommended Discount", multi_decision_prescriptive_scenario_enhanced.simulationResultStreams().Discount)
+            .item("Recommended Discount", recommended_discount.outputStream())
             .size(15)
     )
 
@@ -543,6 +549,8 @@ export default Template(
     multi_factor_supplier_policy,
     ranked_predicted_procurement,
     multi_decision_prescriptive_scenario_enhanced,
+    // Header value,
+    recommended_discount,
     // Table data
     recommended_procurement_choices,
     expected_deliveries,
