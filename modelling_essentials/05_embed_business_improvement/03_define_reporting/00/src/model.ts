@@ -420,6 +420,38 @@ const expected_invoices = new PipelineBuilder(`Expected Invoices`)
     .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
     .transform(stream => FilterTag(stream, "Pay Supplier"))
 
+const tabbed_tables = new LayoutBuilder("Tabbed Tables")
+    .tab(
+        builder => builder
+            .table(
+                "Recommended Order Choices",
+                builder => builder
+                    .fromStream(recommended_procurement_choices.outputStream())
+                    .date("Procurement Date", fields => fields.date)
+                    .string("Supplier Name", fields => fields.supplierName)
+                    .integer("Order Qty", fields => fields.orderQty)
+            )
+            .table(
+                "Expected Deliveries",
+                builder => builder
+                    .fromStream(expected_deliveries.outputStream())
+                    .date("Planned Delivery Date", fields => fields.date)
+                    .string("Supplier Name", fields => fields.supplierName)
+                    .integer("Order Qty", fields => fields.orderQty)
+            )
+            .table(
+                "Expected Invoices",
+                builder => builder
+                    .fromStream(expected_invoices.outputStream())
+                    .date("Payment Due Date", fields => fields.date)
+                    .string("Supplier Name", fields => fields.supplierName)
+                    .date("Order Date", fields => fields.orderDate)
+                    .float("Unit Cost", fields => fields.unitCost)
+                    .integer("Order Qty", fields => fields.orderQty)
+                    .float("Invoice Total", fields => fields.invoiceTotal)
+            )
+    )
+
 const concatenated_reports = new PipelineBuilder("Concatenated Reports")
     .from(descriptive_scenario.simulationResultStreams().Report)
     .input({
@@ -434,74 +466,48 @@ const concatenated_reports = new PipelineBuilder("Concatenated Reports")
         ]
     })
 
+const cash_graph = new LayoutBuilder("Cash Graph")
+    .vega(
+        "Cash-over-time",
+        builder => builder
+            .fromStream(concatenated_reports.outputStream())
+            .line({
+                x: fields => fields.date,
+                x_title: "Date",
+                y: fields => fields.cash,
+                y_title: "Cash Balance",
+                color: fields => fields.scenario,
+                color_title: "Horizon",
+            })
+    )
+
+const stock_graph = new LayoutBuilder("Stock Graph")
+    .vega(
+        "Cash-over-time",
+        builder => builder
+            .fromStream(concatenated_reports.outputStream())
+            .line({
+                x: fields => fields.date,
+                x_title: "Date",
+                y: fields => fields.stockOnHand,
+                y_title: "Cash Balance",
+                color: fields => fields.scenario,
+                color_title: "Horizon",
+            })
+    )
+
 // Dashboard
 const dashboard = new LayoutBuilder("Business Outcomes")
     .panel(
         "row",
         builder => builder
-        .tab(
-            50,
-            builder => builder
-                .table(
-                    "Recommended Order Choices",
-                    builder => builder
-                        .fromStream(recommended_procurement_choices.outputStream())
-                        .date("Procurement Date", fields => fields.date)
-                        .string("Supplier Name", fields => fields.supplierName)
-                        .integer("Order Qty", fields => fields.orderQty)
-                )
-                .table(
-                    "Expected Deliveries",
-                    builder => builder
-                        .fromStream(expected_deliveries.outputStream())
-                        .date("Planned Delivery Date", fields => fields.date)
-                        .string("Supplier Name", fields => fields.supplierName)
-                        .integer("Order Qty", fields => fields.orderQty)
-                )
-                .table(
-                    "Expected Invoices",
-                    builder => builder
-                        .fromStream(expected_invoices.outputStream())
-                        .date("Payment Due Date", fields => fields.date)
-                        .string("Supplier Name", fields => fields.supplierName)
-                        .date("Order Date", fields => fields.orderDate)
-                        .float("Unit Cost", fields => fields.unitCost)
-                        .integer("Order Qty", fields => fields.orderQty)
-                        .float("Invoice Total", fields => fields.invoiceTotal)
-                )
-        )
+        .layout(50, tabbed_tables)
         .panel(
             50,
             "column",
             builder => builder
-                .vega(
-                    50,
-                    "Cash-over-time",
-                    builder => builder
-                        .fromStream(concatenated_reports.outputStream())
-                        .line({
-                            x: fields => fields.date,
-                            x_title: "Date",
-                            y: fields => fields.cash,
-                            y_title: "Cash Balance",
-                            color: fields => fields.scenario,
-                            color_title: "Horizon",
-                        })
-                )
-                .vega(
-                    50,
-                    "Stock-over-time",
-                    builder => builder
-                        .fromStream(concatenated_reports.outputStream())
-                        .line({
-                            x: fields => fields.date,
-                            x_title: "Date",
-                            y: fields => fields.stockOnHand,
-                            y_title: "Stock-on-hand",
-                            color: fields => fields.scenario,
-                            color_title: "Horizon"
-                        })
-                )
+                .layout(50, cash_graph)
+                .layout(50, stock_graph)
         )
     )
     .header(
@@ -542,11 +548,14 @@ export default Template(
     recommended_procurement_choices,
     expected_deliveries,
     expected_invoices,
+    tabbed_tables,
     // Reporting
     report,
     reporter,
     // Line chart data
     concatenated_reports,
+    cash_graph,
+    stock_graph,
     // Dashboard
     dashboard
 )
