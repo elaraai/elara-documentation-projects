@@ -553,7 +553,7 @@ const cash_graph = new LayoutBuilder("Cash Graph")
 
 const stock_graph = new LayoutBuilder("Stock Graph")
     .vega(
-        "Cash-over-time",
+        "Stock-over-time",
         builder => builder
             .fromStream(concatenated_reports.outputStream())
             .line({
