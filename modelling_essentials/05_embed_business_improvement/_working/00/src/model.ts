@@ -452,17 +452,87 @@ const tabbed_tables = new LayoutBuilder("Tabbed Tables")
             )
     )
 
+// New Interactive Scenario
+const my_discount_choice = new SourceBuilder("My Discount Choice")
+    .value({
+        value: { discount: 0, min_discount: 0, max_discount: 100 },
+        type: StructType({ discount: FloatType, min_discount: FloatType, max_discount: FloatType })
+    })
+
+const predicted_procurement_from_optimized = new ProcessBuilder("Optimized Procurement")
+    .resource(cash)
+    .process(procurement)
+    .value("supplierName", StringType)
+    .execute(
+        "Procurement",
+        props => Struct({
+            date: props.date,
+            supplierName: props.supplierName
+        }),
+    )
+    .mapManyFromPipeline(
+        builder => builder
+            .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
+            .transform(
+                stream => ToDict(
+                    FilterTag(stream, "Procurement"),
+                    value => Struct({
+                        date: GetField(value, "date"),
+                        supplierName: GetField(value, "supplierName"),
+                    }),
+                    (_, index) => Print(index)
+                )
+            )
+    )
+
+const interactive_scenario = new ScenarioBuilder("Interactive Scenario")
+    .continueScenario(descriptive_scenario)
+    .resource(operating_times)
+    .resource(discount)
+    .resource(multi_factor_supplier_policy)
+    .process(predicted_sales)
+    .process(predicted_procurement_from_optimized)
+    // reporting
+    .alterResourceFromValue("Report", new Map())
+    .alterProcessFromPipeline(
+        "Reporter",
+        (builder, _) => builder
+            .from(historic_sales_cutoff_date.outputStream())
+            .transform(
+                date => NewDict(
+                    StringType,
+                    StructType({ date: DateTimeType }),
+                    ["0"],
+                    [Struct({ date })]
+                )
+            )
+    )
+    // end simulation
+    .endSimulation(future_cutoff_date.outputStream())
+    // user-supplied discount
+    .alterResourceFromPipeline("Discount", builder => builder
+        .from(my_discount_choice.outputStream())
+        .transform(
+            myDiscountChoice => GetField(myDiscountChoice, "discount")
+        )
+    )
+
 const concatenated_reports = new PipelineBuilder("Concatenated Reports")
     .from(descriptive_scenario.simulationResultStreams().Report)
     .input({
         name: "optimizedReport",
         stream: multi_decision_prescriptive_scenario_enhanced.simulationResultStreams().Report
     })
+    .input({
+        name: "interactiveReport",
+        stream: interactive_scenario.simulationResultStreams().Report
+    })
     .concatenate({
         discriminator_name: "scenario",
         discriminator_value: "Historic",
         inputs: [
             { input: inputs => inputs.optimizedReport, discriminator_value: "Optimized" },
+            { input: inputs => inputs.interactiveReport, discriminator_value: "BAU" },
         ]
     })
 
@@ -501,7 +571,23 @@ const dashboard = new LayoutBuilder("Business Outcomes")
     .panel(
         "row",
         builder => builder
-        .layout(50, tabbed_tables)
+        .panel(
+            50,
+            "column",
+            builder => builder
+                .form(
+                    50,
+                    "BAU Discount",
+                    builder => builder
+                        .fromStream(my_discount_choice.outputStream())
+                        .float("Percentage Discount", {
+                            value: fields => fields.discount,
+                            min: fields => fields.min_discount,
+                            max: fields => fields.max_discount
+                        })
+                )
+                .layout(50, tabbed_tables)
+        )
         .panel(
             50,
             "column",
@@ -552,6 +638,10 @@ export default Template(
     // Reporting
     report,
     reporter,
+    // Interactive Scenario
+    my_discount_choice,
+    predicted_procurement_from_optimized,
+    interactive_scenario,
     // Line chart data
     concatenated_reports,
     cash_graph,
