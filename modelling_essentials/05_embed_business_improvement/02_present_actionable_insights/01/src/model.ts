@@ -503,7 +503,7 @@ const stock_graph = new LayoutBuilder("Stock Graph")
                 x: fields => fields.date,
                 x_title: "Date",
                 y: fields => fields.amount,
-                y_title: "Cash Balance",
+                y_title: "Stock Level",
                 color: fields => fields.scenario,
                 color_title: "Horizon",
             })
