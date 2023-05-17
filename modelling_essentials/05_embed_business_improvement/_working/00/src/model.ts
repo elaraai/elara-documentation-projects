@@ -1,4 +1,4 @@
-import { Add, AddDuration, Const, Convert, DateTimeType, Default, Divide, FilterTag, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IntegerType, LayoutBuilder, Match, Max, Min, MLModelBuilder, Multiply,PipelineBuilder, Print, ProcessBuilder, Reduce, ResourceBuilder, Round, RoundPrecision, ScenarioBuilder, Sort, SourceBuilder, StringJoin, StringType, Struct, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
+import { Add, AddDuration, Const, Convert, DateTimeType, Default, DictType, Divide, FilterTag, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IntegerType, LayoutBuilder, Max, Min, MLModelBuilder, Multiply, NewDict, PipelineBuilder, Print, ProcessBuilder, Reduce, ResourceBuilder, Round, RoundPrecision, ScenarioBuilder, Sort, SourceBuilder, StringJoin, StringType, Struct, StructType, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
 
 const sales_file = new SourceBuilder("Sales File")
     .file({ path: 'data/sales.jsonl' })
@@ -173,6 +173,47 @@ const historic_sales_cutoff_date = new PipelineBuilder("Historic Sales Cutoff Da
         'hour'
     ))
 
+// Reporting Resources and Processes
+const report = new ResourceBuilder("Report")
+    .mapFromValue(
+        new Map(),
+        DictType(
+            StringType,
+            StructType({
+                date: DateTimeType,
+                cash: FloatType,
+                stockOnHand: IntegerType,
+            })
+        )
+    )
+
+const reporter = new ProcessBuilder("Reporter")
+    .resource(cash)
+    .resource(stock_on_hand)
+    .resource(report)
+    .insert("Report", {
+        value: (props, resources) => Struct({
+            date: props.date,
+            cash: resources.Cash,
+            stockOnHand: resources["Stock-on-hand"],
+        }),
+        key: props => Print(props.date)
+    })
+    .execute("Reporter", props => Struct({
+        date: AddDuration(props.date, 1, "hour")
+    }))
+    .mapFromPipeline(builder => builder
+        .from(sales_data.outputStream())
+        .input({ name: "maxDate", stream: historic_sales_cutoff_date.outputStream() })
+        .transform((sales, inputs) => Struct({
+            date: Reduce(
+                sales,
+                (prev, curr) => Min(GetField(curr, "date"), prev),
+                inputs.maxDate
+            ),
+        }))
+    )
+
 // run the historic processes up to the cutoff date
 const descriptive_scenario = new ScenarioBuilder("Descriptive")
     .resource(cash, { ledger: true })
@@ -183,6 +224,9 @@ const descriptive_scenario = new ScenarioBuilder("Descriptive")
     .process(receive_goods)
     .process(pay_supplier)
     .process(procurement)
+    // reporting
+    .resource(report)
+    .process(reporter)
     .endSimulation(historic_sales_cutoff_date.outputStream())
     .simulationInMemory(true)
 
@@ -332,6 +376,21 @@ const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi
     .resource(multi_factor_supplier_policy)
     .process(predicted_sales)
     .process(ranked_predicted_procurement)
+    // reporting
+    .alterResourceFromValue("Report", new Map())
+    .alterProcessFromPipeline(
+        "Reporter",
+        (builder, _) => builder
+            .from(historic_sales_cutoff_date.outputStream())
+            .transform(
+                date => NewDict(
+                    StringType,
+                    StructType({ date: DateTimeType }),
+                    ["0"],
+                    [Struct({ date })]
+                )
+            )
+    )
     // end simulation
     .endSimulation(future_cutoff_date.outputStream())
     // elara will try to maximise this - the cash balance!
@@ -393,89 +452,66 @@ const tabbed_tables = new LayoutBuilder("Tabbed Tables")
             )
     )
 
-const optimized_cash_over_time = new PipelineBuilder("Optimised Cash Over Time")
-    .from(multi_decision_prescriptive_scenario_enhanced.simulationLedgerStreams().Cash)
-    .transform(
-        stream => ToDict(
-            stream,
-            value => Struct({
-                date: GetField(value, "date"),
-                amount: Match(
-                    GetField(value, "event"),
-                    { set: variant_value => variant_value }
-                )
-            }),
-            (_, key) => Print(key)
-        )
-    )
+// New Interactive Scenario
+const my_discount_choice = new SourceBuilder("My Discount Choice")
+    .value({
+        value: { discount: 0, min_discount: 0, max_discount: 100 },
+        type: StructType({ discount: FloatType, min_discount: FloatType, max_discount: FloatType })
+    })
 
-const cash_over_time = new PipelineBuilder("Cash Over Time")
-    .from(descriptive_scenario.simulationLedgerStreams().Cash)
-    .transform(
-        stream => ToDict(
-            stream,
-            value => Struct({
-                date: GetField(value, "date"),
-                amount: Match(
-                    GetField(value, "event"),
-                    { set: variant_value => variant_value }
+const interactive_scenario = new ScenarioBuilder("Interactive Scenario")
+    .continueScenario(descriptive_scenario)
+    .resource(operating_times)
+    .resource(discount)
+    .resource(multi_factor_supplier_policy)
+    .process(predicted_sales)
+    .process(ranked_predicted_procurement)
+    // reporting
+    .alterResourceFromValue("Report", new Map())
+    .alterProcessFromPipeline(
+        "Reporter",
+        (builder, _) => builder
+            .from(historic_sales_cutoff_date.outputStream())
+            .transform(
+                date => NewDict(
+                    StringType,
+                    StructType({ date: DateTimeType }),
+                    ["0"],
+                    [Struct({ date })]
                 )
-            }),
-            (_, key) => Print(key)
+            )
+    )
+    // end simulation
+    .endSimulation(future_cutoff_date.outputStream())
+    // user-supplied discount
+    .alterResourceFromPipeline("Discount", builder => builder
+        .from(my_discount_choice.outputStream())
+        .transform(
+            myDiscountChoice => GetField(myDiscountChoice, "discount")
         )
     )
+    .objective("Cash", cash => cash)
+    // tell elara to find the best rank for supplier policy
+    .optimizeEvery("Multi-factor Supplier Policy", "cashWeight", { min: -1, max: 1 })
+    .optimizeEvery("Multi-factor Supplier Policy", "stockOnHandWeight", { min: -1, max: 1 })
+    .optimizationInMemory(true)
+
+const concatenated_reports = new PipelineBuilder("Concatenated Reports")
+    .from(descriptive_scenario.simulationResultStreams().Report)
     .input({
         name: "optimizedReport",
-        stream: optimized_cash_over_time.outputStream()
+        stream: multi_decision_prescriptive_scenario_enhanced.simulationResultStreams().Report
+    })
+    .input({
+        name: "interactiveReport",
+        stream: interactive_scenario.simulationResultStreams().Report
     })
     .concatenate({
         discriminator_name: "scenario",
         discriminator_value: "Historic",
         inputs: [
             { input: inputs => inputs.optimizedReport, discriminator_value: "Optimized" },
-        ]
-    })
-
-const optimized_stock_over_time = new PipelineBuilder("Optimised Stock-on-hand Over Time")
-    .from(multi_decision_prescriptive_scenario_enhanced.simulationLedgerStreams()["Stock-on-hand"])
-    .transform(
-        stream => ToDict(
-            stream,
-            value => Struct({
-                date: GetField(value, "date"),
-                amount: Match(
-                    GetField(value, "event"),
-                    { set: variant_value => variant_value }
-                )
-            }),
-            (_, key) => Print(key)
-        )
-    )
-
-const stock_over_time = new PipelineBuilder("Stock-on-hand Over Time")
-    .from(descriptive_scenario.simulationLedgerStreams()["Stock-on-hand"])
-    .transform(
-        stream => ToDict(
-            stream,
-            value => Struct({
-                date: GetField(value, "date"),
-                amount: Match(
-                    GetField(value, "event"),
-                    { set: variant_value => variant_value }
-                )
-            }),
-            (_, key) => Print(key)
-        )
-    )
-    .input({
-        name: "optimizedReport",
-        stream: optimized_stock_over_time.outputStream()
-    })
-    .concatenate({
-        discriminator_name: "scenario",
-        discriminator_value: "Historic",
-        inputs: [
-            { input: inputs => inputs.optimizedReport, discriminator_value: "Optimized" },
+            { input: inputs => inputs.interactiveReport, discriminator_value: "BAU" },
         ]
     })
 
@@ -483,11 +519,11 @@ const cash_graph = new LayoutBuilder("Cash Graph")
     .vega(
         "Cash-over-time",
         builder => builder
-            .fromStream(cash_over_time.outputStream())
+            .fromStream(concatenated_reports.outputStream())
             .line({
                 x: fields => fields.date,
                 x_title: "Date",
-                y: fields => fields.amount,
+                y: fields => fields.cash,
                 y_title: "Cash Balance",
                 color: fields => fields.scenario,
                 color_title: "Horizon",
@@ -498,22 +534,39 @@ const stock_graph = new LayoutBuilder("Stock Graph")
     .vega(
         "Stock-over-time",
         builder => builder
-            .fromStream(stock_over_time.outputStream())
+            .fromStream(concatenated_reports.outputStream())
             .line({
                 x: fields => fields.date,
                 x_title: "Date",
-                y: fields => fields.amount,
+                y: fields => fields.stockOnHand,
                 y_title: "Stock Level",
                 color: fields => fields.scenario,
                 color_title: "Horizon",
             })
     )
 
+// Dashboard
 const dashboard = new LayoutBuilder("Business Outcomes")
     .panel(
         "row",
         builder => builder
-        .layout(50, tabbed_tables)
+        .panel(
+            50,
+            "column",
+            builder => builder
+                .form(
+                    50,
+                    "BAU Discount",
+                    builder => builder
+                        .fromStream(my_discount_choice.outputStream())
+                        .float("Percentage Discount", {
+                            value: fields => fields.discount,
+                            min: fields => fields.min_discount,
+                            max: fields => fields.max_discount
+                        })
+                )
+                .layout(50, tabbed_tables)
+        )
         .panel(
             50,
             "column",
@@ -561,11 +614,14 @@ export default Template(
     expected_deliveries,
     expected_invoices,
     tabbed_tables,
+    // Reporting
+    report,
+    reporter,
+    // Interactive Scenario
+    my_discount_choice,
+    interactive_scenario,
     // Line chart data
-    optimized_cash_over_time,
-    cash_over_time,
-    optimized_stock_over_time,
-    stock_over_time,
+    concatenated_reports,
     cash_graph,
     stock_graph,
     // Dashboard
