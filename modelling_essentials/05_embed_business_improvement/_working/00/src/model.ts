@@ -459,18 +459,15 @@ const my_discount_choice = new SourceBuilder("My Discount Choice")
         type: StructType({ discount: FloatType, min_discount: FloatType, max_discount: FloatType })
     })
 
-const predicted_procurement_from_optimized = new ProcessBuilder("Optimized Procurement")
-    .process(procurement)
-    .value("supplierName", StringType)
-    .execute(
+const interactive_scenario = new ScenarioBuilder("Interactive Scenario")
+    .continueScenario(descriptive_scenario)
+    .resource(operating_times)
+    .resource(discount)
+    .resource(multi_factor_supplier_policy)
+    .process(predicted_sales)
+    .alterProcessFromPipeline(
         "Procurement",
-        props => Struct({
-            date: props.date,
-            supplierName: props.supplierName
-        }),
-    )
-    .mapManyFromPipeline(
-        builder => builder
+        (builder, _) => builder
             .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
             .transform(
                 stream => ToDict(
@@ -483,14 +480,6 @@ const predicted_procurement_from_optimized = new ProcessBuilder("Optimized Procu
                 )
             )
     )
-
-const interactive_scenario = new ScenarioBuilder("Interactive Scenario")
-    .continueScenario(descriptive_scenario)
-    .resource(operating_times)
-    .resource(discount)
-    .resource(multi_factor_supplier_policy)
-    .process(predicted_sales)
-    .process(predicted_procurement_from_optimized)
     // reporting
     .alterResourceFromValue("Report", new Map())
     .alterProcessFromPipeline(
@@ -639,7 +628,6 @@ export default Template(
     reporter,
     // Interactive Scenario
     my_discount_choice,
-    predicted_procurement_from_optimized,
     interactive_scenario,
     // Line chart data
     concatenated_reports,
