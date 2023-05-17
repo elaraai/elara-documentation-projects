@@ -459,13 +459,39 @@ const my_discount_choice = new SourceBuilder("My Discount Choice")
         type: StructType({ discount: FloatType, min_discount: FloatType, max_discount: FloatType })
     })
 
+const predicted_procurement_from_optimized = new ProcessBuilder("Optimized Procurement")
+    .resource(cash)
+    .process(procurement)
+    .value("supplierName", StringType)
+    .execute(
+        "Procurement",
+        props => Struct({
+            date: props.date,
+            supplierName: props.supplierName
+        }),
+    )
+    .mapManyFromPipeline(
+        builder => builder
+            .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
+            .transform(
+                stream => ToDict(
+                    FilterTag(stream, "Procurement"),
+                    value => Struct({
+                        date: GetField(value, "date"),
+                        supplierName: GetField(value, "supplierName"),
+                    }),
+                    (_, index) => Print(index)
+                )
+            )
+    )
+
 const interactive_scenario = new ScenarioBuilder("Interactive Scenario")
     .continueScenario(descriptive_scenario)
     .resource(operating_times)
     .resource(discount)
     .resource(multi_factor_supplier_policy)
     .process(predicted_sales)
-    .process(ranked_predicted_procurement)
+    .process(predicted_procurement_from_optimized)
     // reporting
     .alterResourceFromValue("Report", new Map())
     .alterProcessFromPipeline(
@@ -490,11 +516,6 @@ const interactive_scenario = new ScenarioBuilder("Interactive Scenario")
             myDiscountChoice => GetField(myDiscountChoice, "discount")
         )
     )
-    .objective("Cash", cash => cash)
-    // tell elara to find the best rank for supplier policy
-    .optimizeEvery("Multi-factor Supplier Policy", "cashWeight", { min: -1, max: 1 })
-    .optimizeEvery("Multi-factor Supplier Policy", "stockOnHandWeight", { min: -1, max: 1 })
-    .optimizationInMemory(true)
 
 const concatenated_reports = new PipelineBuilder("Concatenated Reports")
     .from(descriptive_scenario.simulationResultStreams().Report)
@@ -619,6 +640,7 @@ export default Template(
     reporter,
     // Interactive Scenario
     my_discount_choice,
+    predicted_procurement_from_optimized,
     interactive_scenario,
     // Line chart data
     concatenated_reports,
