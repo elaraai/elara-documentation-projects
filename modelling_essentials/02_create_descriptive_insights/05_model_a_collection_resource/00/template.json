@@ -183,6 +183,40 @@
       },
       "writable": false
     },
+    "SimulationQueue.Descriptive": {
+      "name": "SimulationQueue.Descriptive",
+      "type": {
+        "type": "Array",
+        "value": {
+          "type": "Variant",
+          "value": {
+            "Sales": {
+              "type": "Struct",
+              "value": {
+                "date": {
+                  "type": "DateTime",
+                  "value": null
+                },
+                "saleQty": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Integer",
+                      "value": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
     "SimulationResult.Descriptive.Stock-on-hand": {
       "name": "SimulationResult.Descriptive.Stock-on-hand",
       "type": {
@@ -547,6 +581,40 @@
             }
           },
           "writable": false
+        },
+        "queue": {
+          "name": "SimulationQueue.Descriptive",
+          "type": {
+            "type": "Array",
+            "value": {
+              "type": "Variant",
+              "value": {
+                "Sales": {
+                  "type": "Struct",
+                  "value": {
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "saleQty": {
+                      "type": "Dict",
+                      "value": {
+                        "key": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "value": {
+                          "type": "Integer",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
         }
       },
       "resources": {
@@ -645,7 +713,7 @@
                     }
                   }
                 },
-                "ast_type": "MapDict",
+                "ast_type": "ToDict",
                 "collection": {
                   "type": {
                     "type": "Dict",
@@ -672,7 +740,7 @@
                   "ast_type": "Variable",
                   "name": "r_Stock-on-hand"
                 },
-                "function": {
+                "output_value": {
                   "type": {
                     "type": "Integer",
                     "value": null
@@ -699,7 +767,7 @@
                         }
                       },
                       "ast_type": "Variable",
-                      "name": "_value_ue5PRmGVK1tbxU3RupdXy7"
+                      "name": "_value_2cHgI6jRxhB14SVmi_NRnH"
                     },
                     "key": "qty"
                   },
@@ -747,7 +815,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "_value_ue5PRmGVK1tbxU3RupdXy7"
+                        "name": "_value_2cHgI6jRxhB14SVmi_NRnH"
                       },
                       "key": "name"
                     },
@@ -757,15 +825,19 @@
                         "value": null
                       },
                       "ast_type": "Const",
-                      "value": {
-                        "type": "integer",
-                        "kind": "literal",
-                        "value": "0"
-                      }
+                      "value": "0"
                     }
                   }
                 },
-                "value": {
+                "output_key": {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "_key_aKZ$nYuhgzkmtbWMA5NHNG"
+                },
+                "input_value": {
                   "type": {
                     "type": "Struct",
                     "value": {
@@ -780,15 +852,15 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "_value_ue5PRmGVK1tbxU3RupdXy7"
+                  "name": "_value_2cHgI6jRxhB14SVmi_NRnH"
                 },
-                "key": {
+                "input_key": {
                   "type": {
                     "type": "String",
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_key_$n0GfiUw8evM8Re73o9djT"
+                  "name": "_key_aKZ$nYuhgzkmtbWMA5NHNG"
                 }
               },
               "assertions": []
@@ -801,8 +873,11 @@
       "configuration": {
         "in_memory": false,
         "journal": true,
+        "queue": true,
         "debug": false
-      }
+      },
+      "initial_queue": null,
+      "end_date": null
     }
   },
   "defaults": {
@@ -842,108 +917,56 @@
           }
         },
         "ast_type": "Const",
-        "value": {
-          "type": "map",
-          "kind": "literal",
-          "value": [
-            [
-              "0",
-              {
-                "date": {
-                  "type": "datetime",
-                  "kind": "literal",
-                  "value": "2022-10-10T09:00:00.000Z"
+        "value": [
+          {
+            "key": "0",
+            "value": {
+              "date": "2022-10-10T09:00:00.000Z",
+              "saleQty": [
+                {
+                  "key": "hotdog",
+                  "value": "1"
                 },
-                "saleQty": {
-                  "type": "map",
-                  "kind": "literal",
-                  "value": [
-                    [
-                      "hotdog",
-                      {
-                        "type": "integer",
-                        "kind": "literal",
-                        "value": "1"
-                      }
-                    ],
-                    [
-                      "vegan hotdog",
-                      {
-                        "type": "integer",
-                        "kind": "literal",
-                        "value": "3"
-                      }
-                    ]
-                  ]
+                {
+                  "key": "vegan hotdog",
+                  "value": "3"
                 }
-              }
-            ],
-            [
-              "1",
-              {
-                "date": {
-                  "type": "datetime",
-                  "kind": "literal",
-                  "value": "2022-10-10T10:00:00.000Z"
+              ]
+            }
+          },
+          {
+            "key": "1",
+            "value": {
+              "date": "2022-10-10T10:00:00.000Z",
+              "saleQty": [
+                {
+                  "key": "hotdog",
+                  "value": "2"
                 },
-                "saleQty": {
-                  "type": "map",
-                  "kind": "literal",
-                  "value": [
-                    [
-                      "hotdog",
-                      {
-                        "type": "integer",
-                        "kind": "literal",
-                        "value": "2"
-                      }
-                    ],
-                    [
-                      "vegan hotdog",
-                      {
-                        "type": "integer",
-                        "kind": "literal",
-                        "value": "2"
-                      }
-                    ]
-                  ]
+                {
+                  "key": "vegan hotdog",
+                  "value": "2"
                 }
-              }
-            ],
-            [
-              "2",
-              {
-                "date": {
-                  "type": "datetime",
-                  "kind": "literal",
-                  "value": "2022-10-10T11:00:00.000Z"
+              ]
+            }
+          },
+          {
+            "key": "2",
+            "value": {
+              "date": "2022-10-10T11:00:00.000Z",
+              "saleQty": [
+                {
+                  "key": "hotdog",
+                  "value": "3"
                 },
-                "saleQty": {
-                  "type": "map",
-                  "kind": "literal",
-                  "value": [
-                    [
-                      "hotdog",
-                      {
-                        "type": "integer",
-                        "kind": "literal",
-                        "value": "3"
-                      }
-                    ],
-                    [
-                      "vegan hotdog",
-                      {
-                        "type": "integer",
-                        "kind": "literal",
-                        "value": "1"
-                      }
-                    ]
-                  ]
+                {
+                  "key": "vegan hotdog",
+                  "value": "1"
                 }
-              }
-            ]
-          ]
-        }
+              ]
+            }
+          }
+        ]
       }
     },
     "Writeable.Resource.Stock-on-hand": {
@@ -972,34 +995,22 @@
           }
         },
         "ast_type": "Const",
-        "value": {
-          "type": "map",
-          "kind": "literal",
-          "value": [
-            [
-              "0",
-              {
-                "name": "hotdog",
-                "qty": {
-                  "type": "integer",
-                  "kind": "literal",
-                  "value": "50"
-                }
-              }
-            ],
-            [
-              "1",
-              {
-                "name": "vegan hotdog",
-                "qty": {
-                  "type": "integer",
-                  "kind": "literal",
-                  "value": "30"
-                }
-              }
-            ]
-          ]
-        }
+        "value": [
+          {
+            "key": "0",
+            "value": {
+              "name": "hotdog",
+              "qty": "50"
+            }
+          },
+          {
+            "key": "1",
+            "value": {
+              "name": "vegan hotdog",
+              "qty": "30"
+            }
+          }
+        ]
       },
       "stream": "Writeable.Resource.Stock-on-hand"
     }

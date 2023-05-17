@@ -36,7 +36,7 @@
                   }
                 }
               },
-              "site": {
+              "store": {
                 "type": "String",
                 "value": null
               }
@@ -710,7 +710,7 @@
                       }
                     }
                   },
-                  "site": {
+                  "store": {
                     "type": "String",
                     "value": null
                   }
@@ -766,7 +766,7 @@
                       }
                     }
                   },
-                  "site": {
+                  "store": {
                     "type": "String",
                     "value": null
                   }
@@ -774,7 +774,7 @@
               }
             }
           },
-          "discriminator_name": "site",
+          "discriminator_name": "store",
           "discriminator": "Melbourne",
           "inputs": [
             {
@@ -1161,11 +1161,7 @@
                 "value": null
               },
               "ast_type": "Const",
-              "value": {
-                "type": "integer",
-                "kind": "literal",
-                "value": "1"
-              }
+              "value": "1"
             },
             "stop": {
               "type": {
@@ -1447,11 +1443,7 @@
                 "value": null
               },
               "ast_type": "Const",
-              "value": {
-                "type": "datetime",
-                "kind": "literal",
-                "value": "2022-11-10T00:00:00.000Z"
-              }
+              "value": "2022-11-10T00:00:00.000Z"
             }
           }
         }
@@ -1619,11 +1611,7 @@
                 "value": null
               },
               "ast_type": "Const",
-              "value": {
-                "type": "datetime",
-                "kind": "literal",
-                "value": "2022-11-10T00:00:00.000Z"
-              }
+              "value": "2022-11-10T00:00:00.000Z"
             }
           }
         }
@@ -1810,7 +1798,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_previous_7FQkXfaqCZfGlM6MeqauMv"
+                  "name": "_previous_lZ1bI_jP8rLPzHICEjisdW"
                 },
                 "second": {
                   "type": {
@@ -1837,7 +1825,7 @@
                       }
                     },
                     "ast_type": "Variable",
-                    "name": "_value_F5Zc$Gn4PiOBGTKmLFCd0U"
+                    "name": "_value_xYstybaAnqsELKqZ2c216x"
                   },
                   "key": "salePrice"
                 }
@@ -1856,7 +1844,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_previous_7FQkXfaqCZfGlM6MeqauMv"
+                "name": "_previous_lZ1bI_jP8rLPzHICEjisdW"
               },
               "value": {
                 "type": {
@@ -1877,7 +1865,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_F5Zc$Gn4PiOBGTKmLFCd0U"
+                "name": "_value_xYstybaAnqsELKqZ2c216x"
               },
               "key": {
                 "type": {
@@ -1885,7 +1873,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_key_V7Iikwbq49hpvYMfy8fRJP"
+                "name": "_key_ig$g$iorrws90yMt7yZ_7T"
               }
             },
             "second": {
@@ -1965,11 +1953,7 @@
                 "value": null
               },
               "ast_type": "Const",
-              "value": {
-                "type": "integer",
-                "kind": "literal",
-                "value": "0"
-              }
+              "value": "0"
             },
             "output_value": {
               "type": {
@@ -1977,7 +1961,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_zroki0IcUkOYkj$f_MdWY4"
+              "name": "_q0yirzlIJ3QfHnwranyHIz"
             },
             "value": {
               "type": {
@@ -1985,7 +1969,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_zroki0IcUkOYkj$f_MdWY4"
+              "name": "_q0yirzlIJ3QfHnwranyHIz"
             }
           }
         },
@@ -2014,11 +1998,7 @@
                   "value": null
                 },
                 "ast_type": "Const",
-                "value": {
-                  "type": "integer",
-                  "kind": "literal",
-                  "value": "50"
-                }
+                "value": "50"
               }
             },
             "message": {
@@ -2168,11 +2148,7 @@
                 "value": null
               },
               "ast_type": "Const",
-              "value": {
-                "type": "integer",
-                "kind": "literal",
-                "value": "1"
-              }
+              "value": "1"
             }
           }
         }
@@ -2969,11 +2945,7 @@
                 "value": null
               },
               "ast_type": "Const",
-              "value": {
-                "type": "integer",
-                "kind": "literal",
-                "value": "3"
-              }
+              "value": "3"
             }
           },
           "message": {
@@ -3049,11 +3021,7 @@
           "nullable": true
         },
         "ast_type": "Const",
-        "value": {
-          "type": "integer",
-          "kind": "literal",
-          "value": "2"
-        }
+        "value": "2"
       }
     },
     "Writeable.My Second Datastream": {
@@ -3065,11 +3033,7 @@
           "value": null
         },
         "ast_type": "Const",
-        "value": {
-          "type": "integer",
-          "kind": "literal",
-          "value": "10"
-        }
+        "value": "10"
       }
     },
     "Writeable.Products": {

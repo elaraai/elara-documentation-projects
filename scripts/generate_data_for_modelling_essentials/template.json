@@ -1,5 +1,29 @@
 {
   "streams": {
+    "Pipeline.array output": {
+      "name": "Pipeline.array output",
+      "type": {
+        "type": "Array",
+        "value": {
+          "type": "Struct",
+          "value": {
+            "date": {
+              "type": "DateTime",
+              "value": null
+            },
+            "qty": {
+              "type": "Integer",
+              "value": null
+            },
+            "discount": {
+              "type": "Float",
+              "value": null
+            }
+          }
+        }
+      },
+      "writable": false
+    },
     "Pipeline.output": {
       "name": "Pipeline.output",
       "type": {
@@ -12,11 +36,15 @@
           "value": {
             "type": "Struct",
             "value": {
-              "Qty": {
-                "type": "Float",
+              "date": {
+                "type": "DateTime",
                 "value": null
               },
-              "Discount": {
+              "qty": {
+                "type": "Integer",
+                "value": null
+              },
+              "discount": {
                 "type": "Float",
                 "value": null
               }
@@ -53,7 +81,28 @@
                   "value": null
                 },
                 "qty": {
-                  "type": "Float",
+                  "type": "Integer",
+                  "value": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "SimulationQueue.Scenario": {
+      "name": "SimulationQueue.Scenario",
+      "type": {
+        "type": "Array",
+        "value": {
+          "type": "Variant",
+          "value": {
+            "Process": {
+              "type": "Struct",
+              "value": {
+                "date": {
+                  "type": "DateTime",
                   "value": null
                 }
               }
@@ -142,9 +191,404 @@
         }
       },
       "writable": true
+    },
+    "Writeable.Scenario.Scenario.EndDate": {
+      "name": "Writeable.Scenario.Scenario.EndDate",
+      "type": {
+        "type": "DateTime",
+        "value": null
+      },
+      "writable": true
     }
   },
   "tasks": {
+    "Pipeline.array output": {
+      "name": "Pipeline.array output",
+      "parent": "Pipeline.array output",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "SimulationJournal.Scenario",
+          "type": {
+            "type": "Array",
+            "value": {
+              "type": "Variant",
+              "value": {
+                "Process": {
+                  "type": "Struct",
+                  "value": {
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "discount": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "price": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "demand": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "qty": {
+                      "type": "Integer",
+                      "value": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.array output",
+          "type": {
+            "type": "Array",
+            "value": {
+              "type": "Struct",
+              "value": {
+                "date": {
+                  "type": "DateTime",
+                  "value": null
+                },
+                "qty": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "discount": {
+                  "type": "Float",
+                  "value": null
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "Array",
+            "value": {
+              "type": "Struct",
+              "value": {
+                "date": {
+                  "type": "DateTime",
+                  "value": null
+                },
+                "qty": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "discount": {
+                  "type": "Float",
+                  "value": null
+                }
+              }
+            }
+          },
+          "expression": {
+            "type": {
+              "type": "Array",
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "qty": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "discount": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              }
+            },
+            "ast_type": "ToArray",
+            "collection": {
+              "type": {
+                "type": "Array",
+                "value": {
+                  "type": "Variant",
+                  "value": {
+                    "Process": {
+                      "type": "Struct",
+                      "value": {
+                        "date": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "discount": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "price": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "demand": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "qty": {
+                          "type": "Integer",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "ast_type": "Variable",
+              "name": "value"
+            },
+            "output_value": {
+              "type": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "qty": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "discount": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              },
+              "ast_type": "Match",
+              "input": {
+                "type": {
+                  "type": "Variant",
+                  "value": {
+                    "Process": {
+                      "type": "Struct",
+                      "value": {
+                        "date": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "discount": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "price": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "demand": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "qty": {
+                          "type": "Integer",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                },
+                "ast_type": "Variable",
+                "name": "_value__UWOhZ3fLSOeb9cAxm4EMY"
+              },
+              "functions": {
+                "Process": {
+                  "type": {
+                    "type": "Struct",
+                    "value": {
+                      "date": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "qty": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "discount": {
+                        "type": "Float",
+                        "value": null
+                      }
+                    }
+                  },
+                  "ast_type": "Struct",
+                  "fields": {
+                    "date": {
+                      "type": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "ast_type": "GetField",
+                      "struct": {
+                        "type": {
+                          "type": "Struct",
+                          "value": {
+                            "date": {
+                              "type": "DateTime",
+                              "value": null
+                            },
+                            "discount": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "price": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "demand": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "qty": {
+                              "type": "Integer",
+                              "value": null
+                            }
+                          }
+                        },
+                        "ast_type": "Variable",
+                        "name": "_rAgjlkqFyK0_P1EyFOb3GR"
+                      },
+                      "key": "date"
+                    },
+                    "qty": {
+                      "type": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "ast_type": "GetField",
+                      "struct": {
+                        "type": {
+                          "type": "Struct",
+                          "value": {
+                            "date": {
+                              "type": "DateTime",
+                              "value": null
+                            },
+                            "discount": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "price": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "demand": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "qty": {
+                              "type": "Integer",
+                              "value": null
+                            }
+                          }
+                        },
+                        "ast_type": "Variable",
+                        "name": "_rAgjlkqFyK0_P1EyFOb3GR"
+                      },
+                      "key": "qty"
+                    },
+                    "discount": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "GetField",
+                      "struct": {
+                        "type": {
+                          "type": "Struct",
+                          "value": {
+                            "date": {
+                              "type": "DateTime",
+                              "value": null
+                            },
+                            "discount": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "price": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "demand": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "qty": {
+                              "type": "Integer",
+                              "value": null
+                            }
+                          }
+                        },
+                        "ast_type": "Variable",
+                        "name": "_rAgjlkqFyK0_P1EyFOb3GR"
+                      },
+                      "key": "discount"
+                    }
+                  }
+                }
+              },
+              "value": "_rAgjlkqFyK0_P1EyFOb3GR"
+            },
+            "input_value": {
+              "type": {
+                "type": "Variant",
+                "value": {
+                  "Process": {
+                    "type": "Struct",
+                    "value": {
+                      "date": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "discount": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "price": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "demand": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "qty": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
+                  }
+                }
+              },
+              "ast_type": "Variable",
+              "name": "_value__UWOhZ3fLSOeb9cAxm4EMY"
+            },
+            "input_key": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "_key_pCAW$97tfZOremZwsqdI6w"
+            }
+          }
+        }
+      ]
+    },
     "Pipeline.output": {
       "name": "Pipeline.output",
       "parent": "Pipeline.output",
@@ -177,7 +621,7 @@
                       "value": null
                     },
                     "qty": {
-                      "type": "Float",
+                      "type": "Integer",
                       "value": null
                     }
                   }
@@ -201,11 +645,15 @@
               "value": {
                 "type": "Struct",
                 "value": {
-                  "Qty": {
-                    "type": "Float",
+                  "date": {
+                    "type": "DateTime",
                     "value": null
                   },
-                  "Discount": {
+                  "qty": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "discount": {
                     "type": "Float",
                     "value": null
                   }
@@ -229,11 +677,15 @@
               "value": {
                 "type": "Struct",
                 "value": {
-                  "Qty": {
-                    "type": "Float",
+                  "date": {
+                    "type": "DateTime",
                     "value": null
                   },
-                  "Discount": {
+                  "qty": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "discount": {
                     "type": "Float",
                     "value": null
                   }
@@ -252,11 +704,15 @@
                 "value": {
                   "type": "Struct",
                   "value": {
-                    "Qty": {
-                      "type": "Float",
+                    "date": {
+                      "type": "DateTime",
                       "value": null
                     },
-                    "Discount": {
+                    "qty": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "discount": {
                       "type": "Float",
                       "value": null
                     }
@@ -291,7 +747,7 @@
                           "value": null
                         },
                         "qty": {
-                          "type": "Float",
+                          "type": "Integer",
                           "value": null
                         }
                       }
@@ -306,11 +762,15 @@
               "type": {
                 "type": "Struct",
                 "value": {
-                  "Qty": {
-                    "type": "Float",
+                  "date": {
+                    "type": "DateTime",
                     "value": null
                   },
-                  "Discount": {
+                  "qty": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "discount": {
                     "type": "Float",
                     "value": null
                   }
@@ -341,7 +801,7 @@
                           "value": null
                         },
                         "qty": {
-                          "type": "Float",
+                          "type": "Integer",
                           "value": null
                         }
                       }
@@ -349,18 +809,22 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_pdFVzzSOiZL71RV8FopHxE"
+                "name": "_value_j6LwzTgMJCuJLmlGjOF_3K"
               },
               "functions": {
                 "Process": {
                   "type": {
                     "type": "Struct",
                     "value": {
-                      "Qty": {
-                        "type": "Float",
+                      "date": {
+                        "type": "DateTime",
                         "value": null
                       },
-                      "Discount": {
+                      "qty": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "discount": {
                         "type": "Float",
                         "value": null
                       }
@@ -368,9 +832,9 @@
                   },
                   "ast_type": "Struct",
                   "fields": {
-                    "Qty": {
+                    "date": {
                       "type": {
-                        "type": "Float",
+                        "type": "DateTime",
                         "value": null
                       },
                       "ast_type": "GetField",
@@ -395,17 +859,54 @@
                               "value": null
                             },
                             "qty": {
-                              "type": "Float",
+                              "type": "Integer",
                               "value": null
                             }
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "_QXnwe05rStGphAQhuUNRbA"
+                        "name": "_pEHk3faoF_2qxftyIuWFHS"
+                      },
+                      "key": "date"
+                    },
+                    "qty": {
+                      "type": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "ast_type": "GetField",
+                      "struct": {
+                        "type": {
+                          "type": "Struct",
+                          "value": {
+                            "date": {
+                              "type": "DateTime",
+                              "value": null
+                            },
+                            "discount": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "price": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "demand": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "qty": {
+                              "type": "Integer",
+                              "value": null
+                            }
+                          }
+                        },
+                        "ast_type": "Variable",
+                        "name": "_pEHk3faoF_2qxftyIuWFHS"
                       },
                       "key": "qty"
                     },
-                    "Discount": {
+                    "discount": {
                       "type": {
                         "type": "Float",
                         "value": null
@@ -432,20 +933,20 @@
                               "value": null
                             },
                             "qty": {
-                              "type": "Float",
+                              "type": "Integer",
                               "value": null
                             }
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "_QXnwe05rStGphAQhuUNRbA"
+                        "name": "_pEHk3faoF_2qxftyIuWFHS"
                       },
                       "key": "discount"
                     }
                   }
                 }
               },
-              "value": "_QXnwe05rStGphAQhuUNRbA"
+              "value": "_pEHk3faoF_2qxftyIuWFHS"
             },
             "output_key": {
               "type": {
@@ -459,7 +960,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_key_eBIbSuilPONxWmSDiWPL3L"
+                "name": "_key_pdBglJjlU6p09CHdlKGqUg"
               }
             },
             "input_value": {
@@ -486,7 +987,7 @@
                         "value": null
                       },
                       "qty": {
-                        "type": "Float",
+                        "type": "Integer",
                         "value": null
                       }
                     }
@@ -494,7 +995,7 @@
                 }
               },
               "ast_type": "Variable",
-              "name": "_value_pdFVzzSOiZL71RV8FopHxE"
+              "name": "_value_j6LwzTgMJCuJLmlGjOF_3K"
             },
             "input_key": {
               "type": {
@@ -502,7 +1003,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_eBIbSuilPONxWmSDiWPL3L"
+              "name": "_key_pdBglJjlU6p09CHdlKGqUg"
             }
           }
         }
@@ -562,6 +1063,14 @@
             }
           },
           "writable": false
+        },
+        "endDate": {
+          "name": "Writeable.Scenario.Scenario.EndDate",
+          "type": {
+            "type": "DateTime",
+            "value": null
+          },
+          "writable": true
         }
       },
       "outputs": {
@@ -621,7 +1130,28 @@
                       "value": null
                     },
                     "qty": {
-                      "type": "Float",
+                      "type": "Integer",
+                      "value": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        },
+        "queue": {
+          "name": "SimulationQueue.Scenario",
+          "type": {
+            "type": "Array",
+            "value": {
+              "type": "Variant",
+              "value": {
+                "Process": {
+                  "type": "Struct",
+                  "value": {
+                    "date": {
+                      "type": "DateTime",
                       "value": null
                     }
                   }
@@ -697,7 +1227,7 @@
                 "value": null
               },
               "qty": {
-                "type": "Float",
+                "type": "Integer",
                 "value": null
               }
             }
@@ -1000,95 +1530,48 @@
               "name": "qty",
               "expr": {
                 "type": {
-                  "type": "Float",
+                  "type": "Integer",
                   "value": null
                 },
-                "ast_type": "Add",
-                "first": {
+                "ast_type": "Round",
+                "rounding_mode": "nearest",
+                "value": {
                   "type": {
                     "type": "Float",
                     "value": null
                   },
-                  "ast_type": "Const",
-                  "value": 1
-                },
-                "second": {
-                  "type": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "ast_type": "Multiply",
+                  "ast_type": "Add",
                   "first": {
                     "type": {
                       "type": "Float",
                       "value": null
                     },
                     "ast_type": "Const",
-                    "value": 5
+                    "value": 1
                   },
                   "second": {
                     "type": {
                       "type": "Float",
                       "value": null
                     },
-                    "ast_type": "Variable",
-                    "name": "p_demand"
-                  }
-                }
-              }
-            },
-            {
-              "type": "end",
-              "predicate": {
-                "type": {
-                  "type": "Boolean",
-                  "value": null
-                },
-                "ast_type": "Greater",
-                "first": {
-                  "type": {
-                    "type": "DateTime",
-                    "value": null
-                  },
-                  "ast_type": "Variable",
-                  "name": "p_date"
-                },
-                "second": {
-                  "type": {
-                    "type": "DateTime",
-                    "value": null
-                  },
-                  "ast_type": "GetField",
-                  "struct": {
-                    "type": {
-                      "type": "Struct",
-                      "value": {
-                        "minDiscount": {
-                          "type": "Float",
-                          "value": null
-                        },
-                        "maxDiscount": {
-                          "type": "Float",
-                          "value": null
-                        },
-                        "price": {
-                          "type": "Float",
-                          "value": null
-                        },
-                        "endHour": {
-                          "type": "Integer",
-                          "value": null
-                        },
-                        "endDate": {
-                          "type": "DateTime",
-                          "value": null
-                        }
-                      }
+                    "ast_type": "Multiply",
+                    "first": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": 5
                     },
-                    "ast_type": "Variable",
-                    "name": "r_Resource"
-                  },
-                  "key": "endDate"
+                    "second": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "p_demand"
+                    }
+                  }
                 }
               }
             },
@@ -1124,7 +1607,7 @@
                           "type": "Boolean",
                           "value": null
                         },
-                        "ast_type": "Greater",
+                        "ast_type": "GreaterEqual",
                         "first": {
                           "type": {
                             "type": "Integer",
@@ -1137,7 +1620,7 @@
                               "value": null
                             },
                             "ast_type": "Variable",
-                            "name": "_7mfW__TaXLiiTDtj$uyDyG"
+                            "name": "_EO8SoFKIan6U6zSoCAv067"
                           }
                         },
                         "second": {
@@ -1190,7 +1673,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_7mfW__TaXLiiTDtj$uyDyG"
+                          "name": "_EO8SoFKIan6U6zSoCAv067"
                         },
                         "duration": {
                           "type": {
@@ -1198,7 +1681,7 @@
                             "value": null
                           },
                           "ast_type": "Const",
-                          "value": 12
+                          "value": 18
                         },
                         "unit": "hour"
                       },
@@ -1208,7 +1691,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_7mfW__TaXLiiTDtj$uyDyG"
+                        "name": "_EO8SoFKIan6U6zSoCAv067"
                       }
                     },
                     "variable": {
@@ -1217,7 +1700,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_7mfW__TaXLiiTDtj$uyDyG"
+                      "name": "_EO8SoFKIan6U6zSoCAv067"
                     },
                     "value": {
                       "type": {
@@ -1238,121 +1721,10 @@
                           "type": "Float",
                           "value": null
                         },
-                        "ast_type": "Divide",
-                        "first": {
-                          "type": {
-                            "type": "Float",
-                            "value": null
-                          },
-                          "ast_type": "Const",
-                          "value": 1
-                        },
-                        "second": {
-                          "type": {
-                            "type": "Float",
-                            "value": null
-                          },
-                          "ast_type": "Subtract",
-                          "first": {
-                            "type": {
-                              "type": "Float",
-                              "value": null
-                            },
-                            "ast_type": "Const",
-                            "value": 1
-                          },
-                          "second": {
-                            "type": {
-                              "type": "Float",
-                              "value": null
-                            },
-                            "ast_type": "Divide",
-                            "first": {
-                              "type": {
-                                "type": "Float",
-                                "value": null
-                              },
-                              "ast_type": "Const",
-                              "value": 1
-                            },
-                            "second": {
-                              "type": {
-                                "type": "Float",
-                                "value": null
-                              },
-                              "ast_type": "Add",
-                              "first": {
-                                "type": {
-                                  "type": "Float",
-                                  "value": null
-                                },
-                                "ast_type": "Const",
-                                "value": 1
-                              },
-                              "second": {
-                                "type": {
-                                  "type": "Float",
-                                  "value": null
-                                },
-                                "ast_type": "Exp",
-                                "value": {
-                                  "type": {
-                                    "type": "Float",
-                                    "value": null
-                                  },
-                                  "ast_type": "Subtract",
-                                  "first": {
-                                    "type": {
-                                      "type": "Float",
-                                      "value": null
-                                    },
-                                    "ast_type": "Add",
-                                    "first": {
-                                      "type": {
-                                        "type": "Float",
-                                        "value": null
-                                      },
-                                      "ast_type": "Variable",
-                                      "name": "p_discount"
-                                    },
-                                    "second": {
-                                      "type": {
-                                        "type": "Float",
-                                        "value": null
-                                      },
-                                      "ast_type": "Multiply",
-                                      "first": {
-                                        "type": {
-                                          "type": "Float",
-                                          "value": null
-                                        },
-                                        "ast_type": "Const",
-                                        "value": 0.5
-                                      },
-                                      "second": {
-                                        "type": {
-                                          "type": "Float",
-                                          "value": null
-                                        },
-                                        "ast_type": "RandomNormal"
-                                      }
-                                    }
-                                  },
-                                  "second": {
-                                    "type": {
-                                      "type": "Float",
-                                      "value": null
-                                    },
-                                    "ast_type": "Const",
-                                    "value": 5
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
+                        "ast_type": "Const",
+                        "value": 1
                       },
-                      "unit": "minute"
+                      "unit": "hour"
                     }
                   }
                 }
@@ -1374,8 +1746,11 @@
       "configuration": {
         "in_memory": true,
         "journal": true,
+        "queue": true,
         "debug": false
-      }
+      },
+      "initial_queue": null,
+      "end_date": "endDate"
     }
   },
   "defaults": {
@@ -1411,18 +1786,10 @@
         "ast_type": "Const",
         "value": {
           "minDiscount": 0,
-          "maxDiscount": 10,
+          "maxDiscount": 20,
           "price": 3.5,
-          "endHour": {
-            "type": "integer",
-            "kind": "literal",
-            "value": "18"
-          },
-          "endDate": {
-            "type": "datetime",
-            "kind": "literal",
-            "value": "2022-10-17T05:00:00.000Z"
-          }
+          "endHour": "15",
+          "endDate": "2022-10-15T11:00:00.000Z"
         }
       }
     },
@@ -1449,22 +1816,26 @@
           }
         },
         "ast_type": "Const",
-        "value": {
-          "type": "map",
-          "kind": "literal",
-          "value": [
-            [
-              "",
-              {
-                "date": {
-                  "type": "datetime",
-                  "kind": "literal",
-                  "value": "2022-10-10T09:00:00.000Z"
-                }
-              }
-            ]
-          ]
-        }
+        "value": [
+          {
+            "key": "",
+            "value": {
+              "date": "2022-08-01T09:00:00.000Z"
+            }
+          }
+        ]
+      }
+    },
+    "Writeable.Scenario.Scenario.EndDate": {
+      "default_type": "value",
+      "stream": "Writeable.Scenario.Scenario.EndDate",
+      "value": {
+        "type": {
+          "type": "DateTime",
+          "value": null
+        },
+        "ast_type": "Const",
+        "value": "2022-10-15T11:00:00.000Z"
       }
     }
   },
@@ -1490,20 +1861,20 @@
           },
           "encoding": {
             "x": {
-              "field": "Discount",
+              "field": "discount",
               "type": "quantitative"
             },
             "y": {
-              "field": "Qty",
+              "field": "qty",
               "type": "quantitative"
             },
             "tooltip": [
               {
-                "field": "Discount",
+                "field": "discount",
                 "type": "quantitative"
               },
               {
-                "field": "Qty",
+                "field": "qty",
                 "type": "quantitative"
               }
             ]
@@ -1521,21 +1892,34 @@
         "name": "Table",
         "stream": "Pipeline.output",
         "columns": {
-          "Qty": {
-            "name": "Qty",
+          "date": {
+            "name": "date",
             "kind": "primitive",
             "target": "field",
             "value": {
               "type": {
-                "type": "Float",
+                "type": "DateTime",
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "Qty"
+              "name": "date"
             }
           },
-          "Discount": {
-            "name": "Discount",
+          "qty": {
+            "name": "qty",
+            "kind": "primitive",
+            "target": "field",
+            "value": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "qty"
+            }
+          },
+          "discount": {
+            "name": "discount",
             "kind": "primitive",
             "target": "field",
             "value": {
@@ -1544,7 +1928,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "Discount"
+              "name": "discount"
             }
           }
         },

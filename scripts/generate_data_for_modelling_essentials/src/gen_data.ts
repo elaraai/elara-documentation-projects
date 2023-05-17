@@ -1,5 +1,6 @@
 import { Add, AddDuration, Divide, EastFunction, Exp, FloatType, GetField, GreaterEqual, Hour, IfElse, LayoutBuilder, Let, Match, Multiply, PipelineBuilder, Print, ProcessBuilder, RandomNormal, RandomUniform, ResourceBuilder, Round, ScenarioBuilder, SourceBuilder, Struct, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
 
+const endDate = new Date(`2022-10-15T11:00:00.000Z`)
 const params = new SourceBuilder("Initial Params")
     .value({
         value: {
@@ -7,7 +8,7 @@ const params = new SourceBuilder("Initial Params")
             maxDiscount: 20,
             price: 3.5,
             endHour: 15n,
-            endDate: new Date(`2022-10-15T11:00:00.000Z`)
+            endDate
         }
     })
 
@@ -45,7 +46,6 @@ const process = new ProcessBuilder("Process")
     .let("price", (_props, resources) => GetField(resources.Resource, "price"))
     .let("demand", (props) => Demand(props.discount))
     .let("qty", props => Round(Add(1, Multiply(5, props.demand)), "nearest", "integer"))
-    .end((props, resources) => GreaterEqual(props.date, GetField(resources.Resource, "endDate")))
     .execute(
         "Process",
         (props, resources) => Struct({
@@ -69,7 +69,8 @@ const scenario = new ScenarioBuilder("Scenario")
     .optimizationInMemory(true)
     .simulationInMemory(true)
     .optimizationAlgorithm('gradient_free')
-    .optimizationIterations(100)
+    .optimizationMaxIterations(100)
+    .endSimulation(endDate)
 
 const output = new PipelineBuilder("output")
     .from(scenario.simulationJournalStream())
