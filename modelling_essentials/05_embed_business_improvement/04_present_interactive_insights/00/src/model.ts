@@ -460,7 +460,6 @@ const my_discount_choice = new SourceBuilder("My Discount Choice")
     })
 
 const predicted_procurement_from_optimized = new ProcessBuilder("Optimized Procurement")
-    .resource(cash)
     .process(procurement)
     .value("supplierName", StringType)
     .execute(
