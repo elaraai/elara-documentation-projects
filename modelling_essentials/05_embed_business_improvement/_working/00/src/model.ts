@@ -459,7 +459,7 @@ const my_discount_choice = new SourceBuilder("My Discount Choice")
         type: StructType({ discount: FloatType, min_discount: FloatType, max_discount: FloatType })
     })
 
-const interactive_scenario = new ScenarioBuilder("Interactive Scenario")
+const interactive_scenario = new ScenarioBuilder("Interactive")
     .continueScenario(descriptive_scenario)
     .resource(operating_times)
     .resource(discount)
