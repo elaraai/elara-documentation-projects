@@ -35,6 +35,10 @@ build-stream_data_from_api:
 build-stream_data_from_ftp: 
 	cd stream_data_from_ftp && make build
 
+.PHONY: build-stream_data_from_s3
+build-stream_data_from_s3: 
+	cd stream_data_from_s3 && make build
+
 .PHONY: build-stream_the_current_datetime
 build-stream_the_current_datetime: 
 	cd stream_the_current_datetime && make build

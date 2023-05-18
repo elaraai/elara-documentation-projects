@@ -5,7 +5,7 @@ help:
 	@echo "    make help"
 
 .PHONY: build
-build: build-00 build-01 build-02
+build: build-00 build-01
 
 .PHONY: build-00
 build-00:
@@ -14,7 +14,3 @@ build-00:
 .PHONY: build-01
 build-01:
 	cd 01 && npm install && edk template build
-
-.PHONY: build-02
-build-02:
-	cd 02 && npm install && edk template build

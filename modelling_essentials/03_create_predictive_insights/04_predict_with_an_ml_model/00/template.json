@@ -99,6 +99,14 @@
               "output": {
                 "type": "Float",
                 "value": null
+              },
+              "train": {
+                "type": "Boolean",
+                "value": null
+              },
+              "test": {
+                "type": "Boolean",
+                "value": null
               }
             }
           }
@@ -457,9 +465,9 @@
         "noise": "gaussian"
       },
       "train_iterations": 500,
-      "tune_iterations": 50,
-      "max_samples": 50,
-      "loss": "L2",
+      "tune_iterations": 250,
+      "max_samples": 500,
+      "loss": "LogLikelihood",
       "inputs": {
         "input": {
           "name": "Pipeline.MLTraining.Demand",
@@ -556,6 +564,14 @@
                   },
                   "output": {
                     "type": "Float",
+                    "value": null
+                  },
+                  "train": {
+                    "type": "Boolean",
+                    "value": null
+                  },
+                  "test": {
+                    "type": "Boolean",
                     "value": null
                   }
                 }
@@ -1055,132 +1071,128 @@
           }
         },
         "ast_type": "Const",
-        "value": {
-          "type": "map",
-          "kind": "literal",
-          "value": [
-            [
-              "0",
-              {
-                "discount": 0
-              }
-            ],
-            [
-              "1",
-              {
-                "discount": 1
-              }
-            ],
-            [
-              "2",
-              {
-                "discount": 2
-              }
-            ],
-            [
-              "3",
-              {
-                "discount": 3
-              }
-            ],
-            [
-              "4",
-              {
-                "discount": 4
-              }
-            ],
-            [
-              "5",
-              {
-                "discount": 5
-              }
-            ],
-            [
-              "6",
-              {
-                "discount": 6
-              }
-            ],
-            [
-              "7",
-              {
-                "discount": 7
-              }
-            ],
-            [
-              "8",
-              {
-                "discount": 8
-              }
-            ],
-            [
-              "9",
-              {
-                "discount": 9
-              }
-            ],
-            [
-              "10",
-              {
-                "discount": 10
-              }
-            ],
-            [
-              "11",
-              {
-                "discount": 11
-              }
-            ],
-            [
-              "12",
-              {
-                "discount": 12
-              }
-            ],
-            [
-              "13",
-              {
-                "discount": 13
-              }
-            ],
-            [
-              "14",
-              {
-                "discount": 14
-              }
-            ],
-            [
-              "15",
-              {
-                "discount": 15
-              }
-            ],
-            [
-              "16",
-              {
-                "discount": 16
-              }
-            ],
-            [
-              "17",
-              {
-                "discount": 17
-              }
-            ],
-            [
-              "18",
-              {
-                "discount": 18
-              }
-            ],
-            [
-              "19",
-              {
-                "discount": 19
-              }
-            ]
-          ]
-        }
+        "value": [
+          {
+            "key": "0",
+            "value": {
+              "discount": 0
+            }
+          },
+          {
+            "key": "1",
+            "value": {
+              "discount": 1
+            }
+          },
+          {
+            "key": "2",
+            "value": {
+              "discount": 2
+            }
+          },
+          {
+            "key": "3",
+            "value": {
+              "discount": 3
+            }
+          },
+          {
+            "key": "4",
+            "value": {
+              "discount": 4
+            }
+          },
+          {
+            "key": "5",
+            "value": {
+              "discount": 5
+            }
+          },
+          {
+            "key": "6",
+            "value": {
+              "discount": 6
+            }
+          },
+          {
+            "key": "7",
+            "value": {
+              "discount": 7
+            }
+          },
+          {
+            "key": "8",
+            "value": {
+              "discount": 8
+            }
+          },
+          {
+            "key": "9",
+            "value": {
+              "discount": 9
+            }
+          },
+          {
+            "key": "10",
+            "value": {
+              "discount": 10
+            }
+          },
+          {
+            "key": "11",
+            "value": {
+              "discount": 11
+            }
+          },
+          {
+            "key": "12",
+            "value": {
+              "discount": 12
+            }
+          },
+          {
+            "key": "13",
+            "value": {
+              "discount": 13
+            }
+          },
+          {
+            "key": "14",
+            "value": {
+              "discount": 14
+            }
+          },
+          {
+            "key": "15",
+            "value": {
+              "discount": 15
+            }
+          },
+          {
+            "key": "16",
+            "value": {
+              "discount": 16
+            }
+          },
+          {
+            "key": "17",
+            "value": {
+              "discount": 17
+            }
+          },
+          {
+            "key": "18",
+            "value": {
+              "discount": 18
+            }
+          },
+          {
+            "key": "19",
+            "value": {
+              "discount": 19
+            }
+          }
+        ]
       }
     },
     "Writeable.Procurement File": {

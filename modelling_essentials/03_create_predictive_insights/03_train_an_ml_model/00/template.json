@@ -68,6 +68,14 @@
               "output": {
                 "type": "Float",
                 "value": null
+              },
+              "train": {
+                "type": "Boolean",
+                "value": null
+              },
+              "test": {
+                "type": "Boolean",
+                "value": null
               }
             }
           }
@@ -295,9 +303,9 @@
         "noise": "gaussian"
       },
       "train_iterations": 500,
-      "tune_iterations": 50,
-      "max_samples": 50,
-      "loss": "L2",
+      "tune_iterations": 250,
+      "max_samples": 500,
+      "loss": "LogLikelihood",
       "inputs": {
         "input": {
           "name": "Pipeline.MLTraining.Demand",
@@ -394,6 +402,14 @@
                   },
                   "output": {
                     "type": "Float",
+                    "value": null
+                  },
+                  "train": {
+                    "type": "Boolean",
+                    "value": null
+                  },
+                  "test": {
+                    "type": "Boolean",
                     "value": null
                   }
                 }
