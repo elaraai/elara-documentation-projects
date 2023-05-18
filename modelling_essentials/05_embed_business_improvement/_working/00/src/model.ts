@@ -491,7 +491,7 @@ const interactive_scenario = new ScenarioBuilder("Interactive")
     // procurement supplied from optimized scenario
     .alterProcessFromPipeline(
         "Procurement",
-        (builder, _) => builder
+        builder => builder
             .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
             .transform(
                 stream => ToDict(
