@@ -251,16 +251,16 @@
       },
       "writable": false
     },
-    "Pipeline.Alteration.Interactive Scenario.Resource.Discount": {
-      "name": "Pipeline.Alteration.Interactive Scenario.Resource.Discount",
+    "Pipeline.Alteration.Interactive.Resource.Discount": {
+      "name": "Pipeline.Alteration.Interactive.Resource.Discount",
       "type": {
         "type": "Float",
         "value": null
       },
       "writable": false
     },
-    "Pipeline.Alteration.Interactive Scenario.Resource.Procurement": {
-      "name": "Pipeline.Alteration.Interactive Scenario.Resource.Procurement",
+    "Pipeline.Alteration.Interactive.Resource.Procurement": {
+      "name": "Pipeline.Alteration.Interactive.Resource.Procurement",
       "type": {
         "type": "Dict",
         "value": {
@@ -285,8 +285,8 @@
       },
       "writable": false
     },
-    "Pipeline.Alteration.Interactive Scenario.Resource.Reporter": {
-      "name": "Pipeline.Alteration.Interactive Scenario.Resource.Reporter",
+    "Pipeline.Alteration.Interactive.Resource.Reporter": {
+      "name": "Pipeline.Alteration.Interactive.Resource.Reporter",
       "type": {
         "type": "Dict",
         "value": {
@@ -910,8 +910,8 @@
       },
       "writable": false
     },
-    "SimulationJournal.Interactive Scenario": {
-      "name": "SimulationJournal.Interactive Scenario",
+    "SimulationJournal.Interactive": {
+      "name": "SimulationJournal.Interactive",
       "type": {
         "type": "Array",
         "value": {
@@ -1312,8 +1312,8 @@
       },
       "writable": false
     },
-    "SimulationLedger.Interactive Scenario.Cash": {
-      "name": "SimulationLedger.Interactive Scenario.Cash",
+    "SimulationLedger.Interactive.Cash": {
+      "name": "SimulationLedger.Interactive.Cash",
       "type": {
         "type": "Array",
         "value": {
@@ -1341,8 +1341,8 @@
       },
       "writable": false
     },
-    "SimulationLedger.Interactive Scenario.Stock-on-hand": {
-      "name": "SimulationLedger.Interactive Scenario.Stock-on-hand",
+    "SimulationLedger.Interactive.Stock-on-hand": {
+      "name": "SimulationLedger.Interactive.Stock-on-hand",
       "type": {
         "type": "Array",
         "value": {
@@ -1521,8 +1521,8 @@
       },
       "writable": false
     },
-    "SimulationQueue.Interactive Scenario": {
-      "name": "SimulationQueue.Interactive Scenario",
+    "SimulationQueue.Interactive": {
+      "name": "SimulationQueue.Interactive",
       "type": {
         "type": "Array",
         "value": {
@@ -1826,50 +1826,24 @@
       },
       "writable": false
     },
-    "SimulationResult.Interactive Scenario.Cash": {
-      "name": "SimulationResult.Interactive Scenario.Cash",
+    "SimulationResult.Interactive.Cash": {
+      "name": "SimulationResult.Interactive.Cash",
       "type": {
         "type": "Float",
         "value": null
       },
       "writable": false
     },
-    "SimulationResult.Interactive Scenario.Discount": {
-      "name": "SimulationResult.Interactive Scenario.Discount",
+    "SimulationResult.Interactive.Discount": {
+      "name": "SimulationResult.Interactive.Discount",
       "type": {
         "type": "Float",
         "value": null
       },
       "writable": false
     },
-    "SimulationResult.Interactive Scenario.Multi-factor Supplier Policy": {
-      "name": "SimulationResult.Interactive Scenario.Multi-factor Supplier Policy",
-      "type": {
-        "type": "Dict",
-        "value": {
-          "key": {
-            "type": "String",
-            "value": null
-          },
-          "value": {
-            "type": "Struct",
-            "value": {
-              "cashWeight": {
-                "type": "Float",
-                "value": null
-              },
-              "stockOnHandWeight": {
-                "type": "Float",
-                "value": null
-              }
-            }
-          }
-        }
-      },
-      "writable": false
-    },
-    "SimulationResult.Interactive Scenario.Operating Times": {
-      "name": "SimulationResult.Interactive Scenario.Operating Times",
+    "SimulationResult.Interactive.Operating Times": {
+      "name": "SimulationResult.Interactive.Operating Times",
       "type": {
         "type": "Struct",
         "value": {
@@ -1885,16 +1859,16 @@
       },
       "writable": false
     },
-    "SimulationResult.Interactive Scenario.Price": {
-      "name": "SimulationResult.Interactive Scenario.Price",
+    "SimulationResult.Interactive.Price": {
+      "name": "SimulationResult.Interactive.Price",
       "type": {
         "type": "Float",
         "value": null
       },
       "writable": false
     },
-    "SimulationResult.Interactive Scenario.Report": {
-      "name": "SimulationResult.Interactive Scenario.Report",
+    "SimulationResult.Interactive.Report": {
+      "name": "SimulationResult.Interactive.Report",
       "type": {
         "type": "Dict",
         "value": {
@@ -1923,16 +1897,16 @@
       },
       "writable": false
     },
-    "SimulationResult.Interactive Scenario.Stock-on-hand": {
-      "name": "SimulationResult.Interactive Scenario.Stock-on-hand",
+    "SimulationResult.Interactive.Stock-on-hand": {
+      "name": "SimulationResult.Interactive.Stock-on-hand",
       "type": {
         "type": "Integer",
         "value": null
       },
       "writable": false
     },
-    "SimulationResult.Interactive Scenario.Suppliers": {
-      "name": "SimulationResult.Interactive Scenario.Suppliers",
+    "SimulationResult.Interactive.Suppliers": {
+      "name": "SimulationResult.Interactive.Suppliers",
       "type": {
         "type": "Dict",
         "value": {
@@ -2112,8 +2086,8 @@
       },
       "writable": false
     },
-    "Writeable.Alteration.Interactive Scenario.Resource.Report": {
-      "name": "Writeable.Alteration.Interactive Scenario.Resource.Report",
+    "Writeable.Alteration.Interactive.Resource.Report": {
+      "name": "Writeable.Alteration.Interactive.Resource.Report",
       "type": {
         "type": "Dict",
         "value": {
@@ -4186,7 +4160,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_QvUVD0PUCke6wnP2mrkGOC"
+                          "name": "_dSdJteB9Kucf49RvoT2BT6"
                         },
                         "second": {
                           "type": {
@@ -4203,7 +4177,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_QvUVD0PUCke6wnP2mrkGOC"
+                        "name": "_dSdJteB9Kucf49RvoT2BT6"
                       },
                       "false": {
                         "type": {
@@ -4220,7 +4194,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_QvUVD0PUCke6wnP2mrkGOC"
+                      "name": "_dSdJteB9Kucf49RvoT2BT6"
                     },
                     "value": {
                       "type": {
@@ -4678,7 +4652,7 @@
                                 "value": null
                               },
                               "ast_type": "Variable",
-                              "name": "_key_V9q3IIlHhDTrncRLdVDTDX"
+                              "name": "_key_untjTOiyvgXHoo3Ijd_Umk"
                             },
                             "default": null
                           },
@@ -4759,7 +4733,7 @@
                                 "value": null
                               },
                               "ast_type": "Variable",
-                              "name": "_key_V9q3IIlHhDTrncRLdVDTDX"
+                              "name": "_key_untjTOiyvgXHoo3Ijd_Umk"
                             },
                             "default": null
                           },
@@ -4781,7 +4755,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_key_V9q3IIlHhDTrncRLdVDTDX"
+                      "name": "_key_untjTOiyvgXHoo3Ijd_Umk"
                     }
                   }
                 },
@@ -4812,7 +4786,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "_value_1KajtlEfY3Tqa6lQ5BMvhg"
+                  "name": "_value_Ld1$y0VnwtQPEG2AIrSKr$"
                 },
                 "input_key": {
                   "type": {
@@ -4820,7 +4794,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_key_V9q3IIlHhDTrncRLdVDTDX"
+                  "name": "_key_untjTOiyvgXHoo3Ijd_Umk"
                 }
               }
             },
@@ -4978,7 +4952,7 @@
                               }
                             },
                             "ast_type": "Variable",
-                            "name": "_first_NGSCyImj3Uo3HZer4pTz03"
+                            "name": "_first_m9GkgAagnEZeQxFDYiL$Wf"
                           },
                           "key": "rank"
                         },
@@ -5003,7 +4977,7 @@
                               }
                             },
                             "ast_type": "Variable",
-                            "name": "_second_wbRtteiv0OB7hybGgWNfOc"
+                            "name": "_second_yPPl7eEtIoL63_8TqMYWHy"
                           },
                           "key": "rank"
                         }
@@ -5023,7 +4997,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "_first_NGSCyImj3Uo3HZer4pTz03"
+                        "name": "_first_m9GkgAagnEZeQxFDYiL$Wf"
                       },
                       "second": {
                         "type": {
@@ -5040,7 +5014,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "_second_wbRtteiv0OB7hybGgWNfOc"
+                        "name": "_second_yPPl7eEtIoL63_8TqMYWHy"
                       }
                     },
                     "key": {
@@ -5470,9 +5444,9 @@
       "initial_queue": "queue",
       "end_date": "endDate"
     },
-    "Pipeline.Alteration.Interactive Scenario.Resource.Discount": {
-      "name": "Pipeline.Alteration.Interactive Scenario.Resource.Discount",
-      "parent": "Pipeline.Alteration.Interactive Scenario.Resource.Discount",
+    "Pipeline.Alteration.Interactive.Resource.Discount": {
+      "name": "Pipeline.Alteration.Interactive.Resource.Discount",
+      "parent": "Pipeline.Alteration.Interactive.Resource.Discount",
       "task_type": "pipeline",
       "inputs": {
         "input": {
@@ -5499,7 +5473,7 @@
       },
       "outputs": {
         "output": {
-          "name": "Pipeline.Alteration.Interactive Scenario.Resource.Discount",
+          "name": "Pipeline.Alteration.Interactive.Resource.Discount",
           "type": {
             "type": "Float",
             "value": null
@@ -5546,9 +5520,9 @@
         }
       ]
     },
-    "Pipeline.Alteration.Interactive Scenario.Resource.Procurement": {
-      "name": "Pipeline.Alteration.Interactive Scenario.Resource.Procurement",
-      "parent": "Pipeline.Alteration.Interactive Scenario.Resource.Procurement",
+    "Pipeline.Alteration.Interactive.Resource.Procurement": {
+      "name": "Pipeline.Alteration.Interactive.Resource.Procurement",
+      "parent": "Pipeline.Alteration.Interactive.Resource.Procurement",
       "task_type": "pipeline",
       "inputs": {
         "input": {
@@ -5751,7 +5725,7 @@
       },
       "outputs": {
         "output": {
-          "name": "Pipeline.Alteration.Interactive Scenario.Resource.Procurement",
+          "name": "Pipeline.Alteration.Interactive.Resource.Procurement",
           "type": {
             "type": "Dict",
             "value": {
@@ -6322,7 +6296,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "_value_nzYuCB2Gl5i6zeXumatvNh"
+                  "name": "_value_yRgcT6WTyY5_4gGIf9RU__"
                 },
                 "functions": {
                   "Pay Supplier": {
@@ -6457,7 +6431,7 @@
                         }
                       },
                       "ast_type": "Variable",
-                      "name": "_HrlvikKjFzQNgkkg5Tmzri"
+                      "name": "_18dysU7ihij6DiBSzLDW1h"
                     }
                   },
                   "Ranked Predicted Procurement": {
@@ -6521,7 +6495,7 @@
                     }
                   }
                 },
-                "value": "_HrlvikKjFzQNgkkg5Tmzri"
+                "value": "_18dysU7ihij6DiBSzLDW1h"
               },
               "value": {
                 "type": {
@@ -6715,7 +6689,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_nzYuCB2Gl5i6zeXumatvNh"
+                "name": "_value_yRgcT6WTyY5_4gGIf9RU__"
               },
               "key": {
                 "type": {
@@ -6723,7 +6697,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_key_yb4xAS3yXs9WEStM_PR42v"
+                "name": "_key_$fJNJxFKTQEFpyBWsJbhOw"
               }
             },
             "output_value": {
@@ -6796,7 +6770,7 @@
                       }
                     },
                     "ast_type": "Variable",
-                    "name": "_value_0RWSX6XpITuglKJNpSs72V"
+                    "name": "_value_cs9mSqpFe3GO$eJkQuo1bk"
                   },
                   "key": "date"
                 },
@@ -6854,7 +6828,7 @@
                       }
                     },
                     "ast_type": "Variable",
-                    "name": "_value_0RWSX6XpITuglKJNpSs72V"
+                    "name": "_value_cs9mSqpFe3GO$eJkQuo1bk"
                   },
                   "key": "supplierName"
                 }
@@ -6872,7 +6846,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_key_n5tcmGs3$lHm1tSwvDSKG4"
+                "name": "_key_9vQXMG6i0irE8CaaktwBs6"
               }
             },
             "input_value": {
@@ -6923,7 +6897,7 @@
                 }
               },
               "ast_type": "Variable",
-              "name": "_value_0RWSX6XpITuglKJNpSs72V"
+              "name": "_value_cs9mSqpFe3GO$eJkQuo1bk"
             },
             "input_key": {
               "type": {
@@ -6931,15 +6905,15 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_n5tcmGs3$lHm1tSwvDSKG4"
+              "name": "_key_9vQXMG6i0irE8CaaktwBs6"
             }
           }
         }
       ]
     },
-    "Pipeline.Alteration.Interactive Scenario.Resource.Reporter": {
-      "name": "Pipeline.Alteration.Interactive Scenario.Resource.Reporter",
-      "parent": "Pipeline.Alteration.Interactive Scenario.Resource.Reporter",
+    "Pipeline.Alteration.Interactive.Resource.Reporter": {
+      "name": "Pipeline.Alteration.Interactive.Resource.Reporter",
+      "parent": "Pipeline.Alteration.Interactive.Resource.Reporter",
       "task_type": "pipeline",
       "inputs": {
         "input": {
@@ -6953,7 +6927,7 @@
       },
       "outputs": {
         "output": {
-          "name": "Pipeline.Alteration.Interactive Scenario.Resource.Reporter",
+          "name": "Pipeline.Alteration.Interactive.Resource.Reporter",
           "type": {
             "type": "Dict",
             "value": {
@@ -7237,7 +7211,7 @@
           "writable": false
         },
         "interactiveReport": {
-          "name": "SimulationResult.Interactive Scenario.Report",
+          "name": "SimulationResult.Interactive.Report",
           "type": {
             "type": "Dict",
             "value": {
@@ -8049,7 +8023,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_mSq0qFz1sPeIV02ZXu7x5o"
+                "name": "_value_BklWGnv9WK5pLiw0r8A_ax"
               },
               "functions": {
                 "Pay Supplier": {
@@ -8156,7 +8130,7 @@
                       }
                     },
                     "ast_type": "Variable",
-                    "name": "_z2a4YqjwBSq9id$smw2dq5"
+                    "name": "_Q2sHPcxoBRFe2zo3phVVU2"
                   }
                 },
                 "Reporter": {
@@ -8190,7 +8164,7 @@
                   }
                 }
               },
-              "value": "_z2a4YqjwBSq9id$smw2dq5"
+              "value": "_Q2sHPcxoBRFe2zo3phVVU2"
             },
             "value": {
               "type": {
@@ -8384,7 +8358,7 @@
                 }
               },
               "ast_type": "Variable",
-              "name": "_value_mSq0qFz1sPeIV02ZXu7x5o"
+              "name": "_value_BklWGnv9WK5pLiw0r8A_ax"
             },
             "key": {
               "type": {
@@ -8392,7 +8366,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_QoxXR1e0Lxw9KDuuJc8dmE"
+              "name": "_key_ArO5RC$2MUTI$Gx82YIW41"
             }
           }
         }
@@ -9136,7 +9110,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_js0NC9xOUa7OIEHEWzMjQr"
+                "name": "_value_p0U03mNaUaX6oAn2TtzQSc"
               },
               "functions": {
                 "Pay Supplier": {
@@ -9207,7 +9181,7 @@
                       }
                     },
                     "ast_type": "Variable",
-                    "name": "_DNdxWaUKMHYbWd0TabStrN"
+                    "name": "_pCRNegztov2XrEAFEWXIxh"
                   }
                 },
                 "Predicted Sales": {
@@ -9301,7 +9275,7 @@
                   }
                 }
               },
-              "value": "_DNdxWaUKMHYbWd0TabStrN"
+              "value": "_pCRNegztov2XrEAFEWXIxh"
             },
             "value": {
               "type": {
@@ -9495,7 +9469,7 @@
                 }
               },
               "ast_type": "Variable",
-              "name": "_value_js0NC9xOUa7OIEHEWzMjQr"
+              "name": "_value_p0U03mNaUaX6oAn2TtzQSc"
             },
             "key": {
               "type": {
@@ -9503,7 +9477,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_MZ6ydjtugSkMjW0iPUnc6m"
+              "name": "_key_8iravy6oo0JyhGBaaHHwWX"
             }
           }
         }
@@ -9864,7 +9838,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_w_uOpm5KmrbOuQnMnYBU5I"
+                      "name": "_Fzs9fkKE2p$rtaRWu0ihHd"
                     },
                     "second": {
                       "type": {
@@ -9872,7 +9846,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_previous_GNXTf$2MDEsqv6ff_a5CPp"
+                      "name": "_previous_i4JnD9a_yoPi9QK2C3maDF"
                     }
                   },
                   "true": {
@@ -9881,7 +9855,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_w_uOpm5KmrbOuQnMnYBU5I"
+                    "name": "_Fzs9fkKE2p$rtaRWu0ihHd"
                   },
                   "false": {
                     "type": {
@@ -9889,7 +9863,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_previous_GNXTf$2MDEsqv6ff_a5CPp"
+                    "name": "_previous_i4JnD9a_yoPi9QK2C3maDF"
                   }
                 },
                 "variable": {
@@ -9898,7 +9872,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_w_uOpm5KmrbOuQnMnYBU5I"
+                  "name": "_Fzs9fkKE2p$rtaRWu0ihHd"
                 },
                 "value": {
                   "type": {
@@ -9925,7 +9899,7 @@
                       }
                     },
                     "ast_type": "Variable",
-                    "name": "_value_IfmcnKemFYXmgDCdmPFoDB"
+                    "name": "_value_0WSx_8KdHCnrn9C0t$EdWp"
                   },
                   "key": "date"
                 }
@@ -9944,7 +9918,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_previous_GNXTf$2MDEsqv6ff_a5CPp"
+                "name": "_previous_i4JnD9a_yoPi9QK2C3maDF"
               },
               "value": {
                 "type": {
@@ -9965,7 +9939,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_IfmcnKemFYXmgDCdmPFoDB"
+                "name": "_value_0WSx_8KdHCnrn9C0t$EdWp"
               },
               "key": {
                 "type": {
@@ -9973,7 +9947,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_key_8JD3OES72_B0Yv2e1guVX_"
+                "name": "_key_0e1jcEO80dFG8jScDq5EZ9"
               }
             },
             "duration": {
@@ -10225,7 +10199,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_xTz9WRfeISQxqv2AbS6xHR"
+                      "name": "_sMAoOnQBAcs0WzVv81bMXs"
                     },
                     "second": {
                       "type": {
@@ -10233,7 +10207,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_previous_Tp_XFWs2NCOccbi$yNAtnP"
+                      "name": "_previous_ZZtx7o8TVcdGz$GFbkAqeX"
                     }
                   },
                   "true": {
@@ -10242,7 +10216,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_xTz9WRfeISQxqv2AbS6xHR"
+                    "name": "_sMAoOnQBAcs0WzVv81bMXs"
                   },
                   "false": {
                     "type": {
@@ -10250,7 +10224,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_previous_Tp_XFWs2NCOccbi$yNAtnP"
+                    "name": "_previous_ZZtx7o8TVcdGz$GFbkAqeX"
                   }
                 },
                 "variable": {
@@ -10259,7 +10233,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_xTz9WRfeISQxqv2AbS6xHR"
+                  "name": "_sMAoOnQBAcs0WzVv81bMXs"
                 },
                 "value": {
                   "type": {
@@ -10282,7 +10256,7 @@
                       }
                     },
                     "ast_type": "Variable",
-                    "name": "_value_K0SVjTXSVsBgRqJBMLDa3F"
+                    "name": "_value_o8Gd16UZSBk36KugVUan87"
                   },
                   "key": "date"
                 }
@@ -10301,7 +10275,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_previous_Tp_XFWs2NCOccbi$yNAtnP"
+                "name": "_previous_ZZtx7o8TVcdGz$GFbkAqeX"
               },
               "value": {
                 "type": {
@@ -10318,7 +10292,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_K0SVjTXSVsBgRqJBMLDa3F"
+                "name": "_value_o8Gd16UZSBk36KugVUan87"
               },
               "key": {
                 "type": {
@@ -10326,7 +10300,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_key_wGTOsbRd_lzQLiZi6h8sR2"
+                "name": "_key_5ifw3XtZYuR8K64RxC$qOV"
               }
             },
             "duration": {
@@ -11266,7 +11240,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_6dUzaxeV8DErLqwnmRPhlQ"
+                        "name": "_ksOBYnzikKxTkUI4FDUDHb"
                       },
                       "second": {
                         "type": {
@@ -11274,7 +11248,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_previous_nmx$9xqyu$fLoncif57NL6"
+                        "name": "_previous_cMjK_il$t8p34euIFFtba_"
                       }
                     },
                     "true": {
@@ -11283,7 +11257,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_6dUzaxeV8DErLqwnmRPhlQ"
+                      "name": "_ksOBYnzikKxTkUI4FDUDHb"
                     },
                     "false": {
                       "type": {
@@ -11291,7 +11265,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_previous_nmx$9xqyu$fLoncif57NL6"
+                      "name": "_previous_cMjK_il$t8p34euIFFtba_"
                     }
                   },
                   "variable": {
@@ -11300,7 +11274,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_6dUzaxeV8DErLqwnmRPhlQ"
+                    "name": "_ksOBYnzikKxTkUI4FDUDHb"
                   },
                   "value": {
                     "type": {
@@ -11327,7 +11301,7 @@
                         }
                       },
                       "ast_type": "Variable",
-                      "name": "_value_HDk0SVzfr8ZGhWYLDgh8jj"
+                      "name": "_value_uLx_kH73cggUApgRrUG4bX"
                     },
                     "key": "date"
                   }
@@ -11346,7 +11320,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_previous_nmx$9xqyu$fLoncif57NL6"
+                  "name": "_previous_cMjK_il$t8p34euIFFtba_"
                 },
                 "value": {
                   "type": {
@@ -11367,7 +11341,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "_value_HDk0SVzfr8ZGhWYLDgh8jj"
+                  "name": "_value_uLx_kH73cggUApgRrUG4bX"
                 },
                 "key": {
                   "type": {
@@ -11375,7 +11349,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_key_7Ow3HBPstNxkTSonYruX4f"
+                  "name": "_key_mYtZx7Ck671FXU2LWUKXcT"
                 }
               }
             }
@@ -12331,7 +12305,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_lYwUqRjUA1ZfLyMtrSTxjT"
+                "name": "_value_6u50JoHDSRvkKD4nyxhACG"
               },
               "functions": {
                 "Pay Supplier": {
@@ -12466,7 +12440,7 @@
                       }
                     },
                     "ast_type": "Variable",
-                    "name": "_KXwJ__oSamn2hxrnBoi7T6"
+                    "name": "_Hxq5tppnUabeCyYowXrRII"
                   }
                 },
                 "Ranked Predicted Procurement": {
@@ -12530,7 +12504,7 @@
                   }
                 }
               },
-              "value": "_KXwJ__oSamn2hxrnBoi7T6"
+              "value": "_Hxq5tppnUabeCyYowXrRII"
             },
             "value": {
               "type": {
@@ -12724,7 +12698,7 @@
                 }
               },
               "ast_type": "Variable",
-              "name": "_value_lYwUqRjUA1ZfLyMtrSTxjT"
+              "name": "_value_6u50JoHDSRvkKD4nyxhACG"
             },
             "key": {
               "type": {
@@ -12732,7 +12706,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_N5VfNW0MnKJrIby0LH0mWG"
+              "name": "_key_ontYluqIIGBrYd2$z0f2c7"
             }
           }
         }
@@ -12937,7 +12911,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_nwY7M8UdFgprxlIX2b7214"
+              "name": "_key_7JNa4NHJfyTkhCR6ZItvpZ"
             },
             "input_value": {
               "type": {
@@ -12966,7 +12940,7 @@
                 }
               },
               "ast_type": "Variable",
-              "name": "_value_MMzB2SXae7D_8qiIgB0L4d"
+              "name": "_value_FQ_B$c$CnWvPPM6M1aH_9g"
             },
             "input_key": {
               "type": {
@@ -12974,7 +12948,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_nwY7M8UdFgprxlIX2b7214"
+              "name": "_key_7JNa4NHJfyTkhCR6ZItvpZ"
             }
           }
         }
@@ -14753,9 +14727,9 @@
       "initial_queue": null,
       "end_date": "endDate"
     },
-    "Simulation.Interactive Scenario": {
+    "Simulation.Interactive": {
       "task_type": "simulation",
-      "name": "Simulation.Interactive Scenario",
+      "name": "Simulation.Interactive",
       "inputs": {
         "resource.Cash": {
           "name": "SimulationResult.Descriptive.Cash",
@@ -14820,7 +14794,7 @@
           "writable": false
         },
         "resource.Report": {
-          "name": "Writeable.Alteration.Interactive Scenario.Resource.Report",
+          "name": "Writeable.Alteration.Interactive.Resource.Report",
           "type": {
             "type": "Dict",
             "value": {
@@ -14867,36 +14841,10 @@
           "writable": false
         },
         "resource.Discount": {
-          "name": "Pipeline.Alteration.Interactive Scenario.Resource.Discount",
+          "name": "Pipeline.Alteration.Interactive.Resource.Discount",
           "type": {
             "type": "Float",
             "value": null
-          },
-          "writable": false
-        },
-        "resource.Multi-factor Supplier Policy": {
-          "name": "Pipeline.Resource.Multi-factor Supplier Policy",
-          "type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "cashWeight": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "stockOnHandWeight": {
-                    "type": "Float",
-                    "value": null
-                  }
-                }
-              }
-            }
           },
           "writable": false
         },
@@ -14966,8 +14914,30 @@
           },
           "writable": false
         },
+        "process.Reporter": {
+          "name": "Pipeline.Alteration.Interactive.Resource.Reporter",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        },
         "process.Procurement": {
-          "name": "Pipeline.Alteration.Interactive Scenario.Resource.Procurement",
+          "name": "Pipeline.Alteration.Interactive.Resource.Procurement",
           "type": {
             "type": "Dict",
             "value": {
@@ -14984,28 +14954,6 @@
                   },
                   "supplierName": {
                     "type": "String",
-                    "value": null
-                  }
-                }
-              }
-            }
-          },
-          "writable": false
-        },
-        "process.Reporter": {
-          "name": "Pipeline.Alteration.Interactive Scenario.Resource.Reporter",
-          "type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "date": {
-                    "type": "DateTime",
                     "value": null
                   }
                 }
@@ -15118,7 +15066,7 @@
       },
       "outputs": {
         "result.Cash": {
-          "name": "SimulationResult.Interactive Scenario.Cash",
+          "name": "SimulationResult.Interactive.Cash",
           "type": {
             "type": "Float",
             "value": null
@@ -15126,7 +15074,7 @@
           "writable": false
         },
         "result.Stock-on-hand": {
-          "name": "SimulationResult.Interactive Scenario.Stock-on-hand",
+          "name": "SimulationResult.Interactive.Stock-on-hand",
           "type": {
             "type": "Integer",
             "value": null
@@ -15134,7 +15082,7 @@
           "writable": false
         },
         "result.Price": {
-          "name": "SimulationResult.Interactive Scenario.Price",
+          "name": "SimulationResult.Interactive.Price",
           "type": {
             "type": "Float",
             "value": null
@@ -15142,7 +15090,7 @@
           "writable": false
         },
         "result.Suppliers": {
-          "name": "SimulationResult.Interactive Scenario.Suppliers",
+          "name": "SimulationResult.Interactive.Suppliers",
           "type": {
             "type": "Dict",
             "value": {
@@ -15180,7 +15128,7 @@
           "writable": false
         },
         "result.Report": {
-          "name": "SimulationResult.Interactive Scenario.Report",
+          "name": "SimulationResult.Interactive.Report",
           "type": {
             "type": "Dict",
             "value": {
@@ -15210,7 +15158,7 @@
           "writable": false
         },
         "result.Operating Times": {
-          "name": "SimulationResult.Interactive Scenario.Operating Times",
+          "name": "SimulationResult.Interactive.Operating Times",
           "type": {
             "type": "Struct",
             "value": {
@@ -15227,41 +15175,15 @@
           "writable": false
         },
         "result.Discount": {
-          "name": "SimulationResult.Interactive Scenario.Discount",
+          "name": "SimulationResult.Interactive.Discount",
           "type": {
             "type": "Float",
             "value": null
           },
           "writable": false
         },
-        "result.Multi-factor Supplier Policy": {
-          "name": "SimulationResult.Interactive Scenario.Multi-factor Supplier Policy",
-          "type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "cashWeight": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "stockOnHandWeight": {
-                    "type": "Float",
-                    "value": null
-                  }
-                }
-              }
-            }
-          },
-          "writable": false
-        },
         "ledger.Cash": {
-          "name": "SimulationLedger.Interactive Scenario.Cash",
+          "name": "SimulationLedger.Interactive.Cash",
           "type": {
             "type": "Array",
             "value": {
@@ -15290,7 +15212,7 @@
           "writable": false
         },
         "ledger.Stock-on-hand": {
-          "name": "SimulationLedger.Interactive Scenario.Stock-on-hand",
+          "name": "SimulationLedger.Interactive.Stock-on-hand",
           "type": {
             "type": "Array",
             "value": {
@@ -15319,7 +15241,7 @@
           "writable": false
         },
         "journal": {
-          "name": "SimulationJournal.Interactive Scenario",
+          "name": "SimulationJournal.Interactive",
           "type": {
             "type": "Array",
             "value": {
@@ -15466,7 +15388,7 @@
           "writable": false
         },
         "queue": {
-          "name": "SimulationQueue.Interactive Scenario",
+          "name": "SimulationQueue.Interactive",
           "type": {
             "type": "Array",
             "value": {
@@ -15697,34 +15619,6 @@
             "value": null
           },
           "input": "resource.Discount",
-          "assertions": [],
-          "ledger": false
-        },
-        "Multi-factor Supplier Policy": {
-          "name": "Multi-factor Supplier Policy",
-          "type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "cashWeight": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "stockOnHandWeight": {
-                    "type": "Float",
-                    "value": null
-                  }
-                }
-              }
-            }
-          },
-          "input": "resource.Multi-factor Supplier Policy",
           "assertions": [],
           "ledger": false
         }
@@ -16795,7 +16689,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_QvUVD0PUCke6wnP2mrkGOC"
+                          "name": "_dSdJteB9Kucf49RvoT2BT6"
                         },
                         "second": {
                           "type": {
@@ -16812,7 +16706,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_QvUVD0PUCke6wnP2mrkGOC"
+                        "name": "_dSdJteB9Kucf49RvoT2BT6"
                       },
                       "false": {
                         "type": {
@@ -16829,7 +16723,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_QvUVD0PUCke6wnP2mrkGOC"
+                      "name": "_dSdJteB9Kucf49RvoT2BT6"
                     },
                     "value": {
                       "type": {
@@ -19259,7 +19153,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_QvUVD0PUCke6wnP2mrkGOC"
+                          "name": "_dSdJteB9Kucf49RvoT2BT6"
                         },
                         "second": {
                           "type": {
@@ -19276,7 +19170,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_QvUVD0PUCke6wnP2mrkGOC"
+                        "name": "_dSdJteB9Kucf49RvoT2BT6"
                       },
                       "false": {
                         "type": {
@@ -19293,7 +19187,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_QvUVD0PUCke6wnP2mrkGOC"
+                      "name": "_dSdJteB9Kucf49RvoT2BT6"
                     },
                     "value": {
                       "type": {
@@ -19751,7 +19645,7 @@
                                 "value": null
                               },
                               "ast_type": "Variable",
-                              "name": "_key_V9q3IIlHhDTrncRLdVDTDX"
+                              "name": "_key_untjTOiyvgXHoo3Ijd_Umk"
                             },
                             "default": null
                           },
@@ -19832,7 +19726,7 @@
                                 "value": null
                               },
                               "ast_type": "Variable",
-                              "name": "_key_V9q3IIlHhDTrncRLdVDTDX"
+                              "name": "_key_untjTOiyvgXHoo3Ijd_Umk"
                             },
                             "default": null
                           },
@@ -19854,7 +19748,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_key_V9q3IIlHhDTrncRLdVDTDX"
+                      "name": "_key_untjTOiyvgXHoo3Ijd_Umk"
                     }
                   }
                 },
@@ -19885,7 +19779,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "_value_1KajtlEfY3Tqa6lQ5BMvhg"
+                  "name": "_value_Ld1$y0VnwtQPEG2AIrSKr$"
                 },
                 "input_key": {
                   "type": {
@@ -19893,7 +19787,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_key_V9q3IIlHhDTrncRLdVDTDX"
+                  "name": "_key_untjTOiyvgXHoo3Ijd_Umk"
                 }
               }
             },
@@ -20051,7 +19945,7 @@
                               }
                             },
                             "ast_type": "Variable",
-                            "name": "_first_NGSCyImj3Uo3HZer4pTz03"
+                            "name": "_first_m9GkgAagnEZeQxFDYiL$Wf"
                           },
                           "key": "rank"
                         },
@@ -20076,7 +19970,7 @@
                               }
                             },
                             "ast_type": "Variable",
-                            "name": "_second_wbRtteiv0OB7hybGgWNfOc"
+                            "name": "_second_yPPl7eEtIoL63_8TqMYWHy"
                           },
                           "key": "rank"
                         }
@@ -20096,7 +19990,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "_first_NGSCyImj3Uo3HZer4pTz03"
+                        "name": "_first_m9GkgAagnEZeQxFDYiL$Wf"
                       },
                       "second": {
                         "type": {
@@ -20113,7 +20007,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "_second_wbRtteiv0OB7hybGgWNfOc"
+                        "name": "_second_yPPl7eEtIoL63_8TqMYWHy"
                       }
                     },
                     "key": {
@@ -20447,9 +20341,9 @@
     }
   },
   "defaults": {
-    "Writeable.Alteration.Interactive Scenario.Resource.Report": {
+    "Writeable.Alteration.Interactive.Resource.Report": {
       "default_type": "value",
-      "stream": "Writeable.Alteration.Interactive Scenario.Resource.Report",
+      "stream": "Writeable.Alteration.Interactive.Resource.Report",
       "value": {
         "type": {
           "type": "Dict",
