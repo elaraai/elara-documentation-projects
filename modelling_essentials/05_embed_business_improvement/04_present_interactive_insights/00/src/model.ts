@@ -463,23 +463,7 @@ const interactive_scenario = new ScenarioBuilder("Interactive")
     .continueScenario(descriptive_scenario)
     .resource(operating_times)
     .resource(discount)
-    .resource(multi_factor_supplier_policy)
     .process(predicted_sales)
-    .alterProcessFromPipeline(
-        "Procurement",
-        (builder, _) => builder
-            .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
-            .transform(
-                stream => ToDict(
-                    FilterTag(stream, "Procurement"),
-                    value => Struct({
-                        date: GetField(value, "date"),
-                        supplierName: GetField(value, "supplierName"),
-                    }),
-                    (_, index) => Print(index)
-                )
-            )
-    )
     // reporting
     .alterResourceFromValue("Report", new Map())
     .alterProcessFromPipeline(
@@ -503,6 +487,22 @@ const interactive_scenario = new ScenarioBuilder("Interactive")
         .transform(
             myDiscountChoice => GetField(myDiscountChoice, "discount")
         )
+    )
+    // procurement supplied from optimized scenario
+    .alterProcessFromPipeline(
+        "Procurement",
+        (builder, _) => builder
+            .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
+            .transform(
+                stream => ToDict(
+                    FilterTag(stream, "Procurement"),
+                    value => Struct({
+                        date: GetField(value, "date"),
+                        supplierName: GetField(value, "supplierName"),
+                    }),
+                    (_, index) => Print(index)
+                )
+            )
     )
 
 const concatenated_reports = new PipelineBuilder("Concatenated Reports")
