@@ -1,4 +1,4 @@
-import { Add, ArrayType, BlobType, Const, DateTimeType, DictType, Divide, FloatType, Floor, Get, GetField, IfNull, IntegerType, LayoutBuilder, Multiply, Nullable, PipelineBuilder, Reduce, Size, SourceBuilder, Stream, StringJoin, StringType, StructType, Subtract, Sum, Template, Unique, } from "@elaraai/core"
+import { Add, ArrayType, BlobType, Const, DateTimeType, DictType, Divide, FloatType, Floor, Get, GetField, IfNull, IntegerType, LayoutBuilder, Multiply, Nullable, PipelineBuilder, Reduce, RoundPrecision, Size, SourceBuilder, Stream, StringJoin, StringType, StructType, Subtract, Sum, Template, Unique, } from "@elaraai/core"
 
 const my_products_file_source = new SourceBuilder("Products")
     .file({ path: "./data/products.csv" })
@@ -220,7 +220,7 @@ const average_daily_profit = new PipelineBuilder("Average Daily Profit")
     )
     .input({ name: "numDays", stream: num_days_of_operation.outputStream() })
     .transform(
-        (stream, inputs) => Divide(stream, inputs.numDays)
+        (stream, inputs) => StringJoin`$${RoundPrecision(Divide(stream, inputs.numDays), 4)}`
     )
 
 const panel_layout = new LayoutBuilder("Business Insights Dashboard")
