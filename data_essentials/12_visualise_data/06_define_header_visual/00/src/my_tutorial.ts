@@ -1,4 +1,4 @@
-import { ArrayType, BlobType, Const, DateTimeType, DictType, Divide, FloatType, Floor, Get, GetField, IfNull, IntegerType, LayoutBuilder, Multiply, Nullable, PipelineBuilder, SourceBuilder, Stream, StringJoin, StringType, StructType, Subtract, Sum, Template, Unique, } from "@elaraai/core"
+import { Add, ArrayType, BlobType, Const, DateTimeType, DictType, Divide, FloatType, Floor, Get, GetField, IfNull, IntegerType, LayoutBuilder, Multiply, Nullable, PipelineBuilder, Reduce, Size, SourceBuilder, Stream, StringJoin, StringType, StructType, Subtract, Sum, Template, Unique, } from "@elaraai/core"
 
 const my_products_file_source = new SourceBuilder("Products")
     .file({ path: "./data/products.csv" })
@@ -198,6 +198,31 @@ const tabbed_layout = new LayoutBuilder("Tabbed Business Insights")
             .layout(graph_layout)
     )
 
+const num_days_of_operation = new PipelineBuilder("Number of Days of Operation")
+    .from(revenue_over_time.outputStream())
+    .aggregate({
+        group_name: "transactionDate",
+        group_value: fields => fields.transactionDate,
+        aggregations: {}
+    })
+    .transform(
+        stream => Size(stream)
+    )
+
+const average_daily_profit = new PipelineBuilder("Average Daily Profit")
+    .from(statistics_per_product_code.outputStream())
+    .transform(
+        stream => Reduce(
+            stream,
+            (prev, current) => Add(prev, GetField(current, "profit")),
+            Const(0)
+        )
+    )
+    .input({ name: "numDays", stream: num_days_of_operation.outputStream() })
+    .transform(
+        (stream, inputs) => Divide(stream, inputs.numDays)
+    )
+
 const panel_layout = new LayoutBuilder("Business Insights Dashboard")
     .panel(
         "row",
@@ -230,6 +255,11 @@ const panel_layout = new LayoutBuilder("Business Insights Dashboard")
                     )
             )
     )
+    .header(
+        builder => builder
+            .item("Average Daily Profit", average_daily_profit.outputStream())
+            .size(15)
+    )
 
 export default Template(
     my_products_file_source,
@@ -248,5 +278,7 @@ export default Template(
     tabbed_layout,
     panel_layout,
     product_unit_rebate,
-    donation_pledge
+    donation_pledge,
+    num_days_of_operation,
+    average_daily_profit
 )
