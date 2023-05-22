@@ -1,4 +1,4 @@
-import { BooleanType, IfElse, Match, NewVariant, PipelineBuilder, SourceBuilder, StringJoin, StringType, Template, Variant, VariantType } from "@elaraai/core"
+import { BooleanType, HasTag, IfElse, Match, NewVariant, PipelineBuilder, SourceBuilder, StringJoin, StringType, Template, Variant, VariantType } from "@elaraai/core"
 
 const varianttype_datastream = new SourceBuilder("VariantType Datastream")
     .value({
@@ -32,9 +32,16 @@ const deconstruct_pipeline = new PipelineBuilder("Deconstruct a Variant")
         )
     )
 
+const deconstruct_tag = new PipelineBuilder("Deconstruct from Tag")
+    .from(varianttype_datastream.outputStream())
+    .transform(
+        stream => HasTag(stream, "a")
+    )
+
 export default Template(
     varianttype_datastream,
     booleantype_datastream,
     construct_pipeline,
-    deconstruct_pipeline
+    deconstruct_pipeline,
+    deconstruct_tag
 )
