@@ -1,4 +1,4 @@
-import { Add, ArrayType, BooleanType, Const, FilterMap, IfElse, IfNull, IntegerType, MapOption, Match, none, None, Nullable, OptionType, PipelineBuilder, Some, some, SourceBuilder, StringType, Template, Unwrap, Variant, VariantType } from "@elaraai/core"
+import { Add, ArrayType, BooleanType, Const, FilterMap, FilterTag, IfElse, IfNull, IntegerType, MapOption, none, None, Nullable, OptionType, PipelineBuilder, Some, some, SourceBuilder, StringType, Template, Unwrap, Variant, VariantType } from "@elaraai/core"
 
 const option_type_datastream = new SourceBuilder("OptionType Datastream")
     .value({
@@ -74,20 +74,9 @@ const array_of_variant_values = new SourceBuilder("Array of Variant Values")
     })
     
 
-const match_and_filter_pipeline = new PipelineBuilder("Match and Filter")
+const filter_tag_pipeline = new PipelineBuilder("Filter on Tag")
     .from(array_of_variant_values.outputStream())
-    .transform(
-        stream => FilterMap(
-            stream,
-            variant => Match(
-                variant,
-                {
-                    a: value => Some(value)
-                },
-                None
-            )
-        )
-    )
+    .transform(stream => FilterTag(stream, "a"))
 
 export default Template(
     option_type_datastream,
@@ -100,5 +89,5 @@ export default Template(
     array_of_optional_values,
     filter_map_pipeline,
     array_of_variant_values,
-    match_and_filter_pipeline
+    filter_tag_pipeline
 )
