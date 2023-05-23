@@ -178,8 +178,8 @@ export default Template(
     parse_brisbane_sales,
     sales_across_stores,
     statistics_per_product_code,
-    table_layout,
+    // table_layout,
     revenue_over_time,
-    graph_layout,
+    // graph_layout,
     tabbed_layout
 )
