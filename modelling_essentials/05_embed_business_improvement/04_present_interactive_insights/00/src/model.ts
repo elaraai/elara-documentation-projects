@@ -622,7 +622,6 @@ export default Template(
     recommended_procurement_choices,
     expected_deliveries,
     expected_invoices,
-    tabbed_tables,
     // Reporting
     report,
     reporter,
@@ -631,8 +630,6 @@ export default Template(
     interactive_scenario,
     // Line chart data
     concatenated_reports,
-    cash_graph,
-    stock_graph,
     // Dashboard
     dashboard
 )

@@ -560,14 +560,11 @@ export default Template(
     recommended_procurement_choices,
     expected_deliveries,
     expected_invoices,
-    tabbed_tables,
     // Line chart data
     optimized_cash_over_time,
     cash_over_time,
     optimized_stock_over_time,
     stock_over_time,
-    cash_graph,
-    stock_graph,
     // Dashboard
     dashboard
 )
