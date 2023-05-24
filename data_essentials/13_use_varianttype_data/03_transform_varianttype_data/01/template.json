@@ -25,6 +25,14 @@
       },
       "writable": false
     },
+    "Pipeline.Deconstruct from Tag": {
+      "name": "Pipeline.Deconstruct from Tag",
+      "type": {
+        "type": "Boolean",
+        "value": null
+      },
+      "writable": false
+    },
     "Writeable.BooleanType Datastream": {
       "name": "Writeable.BooleanType Datastream",
       "type": {
@@ -261,7 +269,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_3KUL2GA2CsNcnDpww3CqHT"
+                      "name": "_Oe_HmduErWqF0ZO_AUYwa_"
                     }
                   }
                 ],
@@ -288,13 +296,99 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_3KUL2GA2CsNcnDpww3CqHT"
+                    "name": "_Oe_HmduErWqF0ZO_AUYwa_"
                   }
                 ],
                 "seperator": ""
               }
             },
-            "value": "_3KUL2GA2CsNcnDpww3CqHT"
+            "value": "_Oe_HmduErWqF0ZO_AUYwa_"
+          }
+        }
+      ]
+    },
+    "Pipeline.Deconstruct from Tag": {
+      "name": "Pipeline.Deconstruct from Tag",
+      "parent": "Pipeline.Deconstruct from Tag",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.VariantType Datastream",
+          "type": {
+            "type": "Variant",
+            "value": {
+              "a": {
+                "type": "Boolean",
+                "value": null
+              },
+              "b": {
+                "type": "String",
+                "value": null
+              }
+            }
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Deconstruct from Tag",
+          "type": {
+            "type": "Boolean",
+            "value": null
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "Boolean",
+            "value": null
+          },
+          "expression": {
+            "type": {
+              "type": "Boolean",
+              "value": null
+            },
+            "ast_type": "Match",
+            "input": {
+              "type": {
+                "type": "Variant",
+                "value": {
+                  "a": {
+                    "type": "Boolean",
+                    "value": null
+                  },
+                  "b": {
+                    "type": "String",
+                    "value": null
+                  }
+                }
+              },
+              "ast_type": "Variable",
+              "name": "value"
+            },
+            "functions": {
+              "a": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": true
+              },
+              "b": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": false
+              }
+            },
+            "value": "_Ws8EJ$QQ36rSmbPCrC9agR"
           }
         }
       ]
