@@ -406,15 +406,6 @@ const recommended_discount = new PipelineBuilder("Recommended Discount")
     .from(multi_decision_prescriptive_scenario_enhanced.simulationResultStreams().Discount)
     .transform(stream => StringJoin`${RoundPrecision(stream, 4)}%`)
 
-const optimized_sale_qty = new PipelineBuilder(`Optimized Sale Quantity`)
-    .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
-    .transform(stream => FilterTag(stream, "Sales"))
-    .transform(stream => Reduce(
-        stream,
-        (previous, value) => Add(previous, GetField(value, "qty")),
-        Const(0n)
-    ))
-
 const recommended_procurement_choices = new PipelineBuilder(`Recommended Procurement Choices`)
     .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
     .transform(stream => FilterTag(stream, "Procurement"))
@@ -512,15 +503,7 @@ const interactive_scenario = new ScenarioBuilder("Interactive")
             )
     )
 
-    
-const bau_sale_qty = new PipelineBuilder(`BAU Sale Quantity _`)
-    .from(interactive_scenario.simulationJournalStream())
-    .transform(stream => FilterTag(stream, "Sales"))
-    .transform(stream => Reduce(
-        stream,
-        (previous, value) => Add(previous, GetField(value, "qty")),
-        Const(0n)
-    ))
+
 
 const concatenated_reports = new PipelineBuilder("Concatenated Reports")
     .from(descriptive_scenario.simulationResultStreams().Report)
@@ -604,8 +587,6 @@ const dashboard = new LayoutBuilder("Business Outcomes")
     .header(
         builder => builder
             .item("Recommended Discount", recommended_discount.outputStream())
-            .item("BAU Sale Qty", bau_sale_qty.outputStream())
-            .item("Optimized Sale Qty", bau_sale_qty.outputStream())
             .size(15)
     )
 
@@ -637,8 +618,6 @@ export default Template(
     multi_decision_prescriptive_scenario_enhanced,
     // Header value,
     recommended_discount,
-    bau_sale_qty,
-    optimized_sale_qty,
     // Table data
     recommended_procurement_choices,
     expected_deliveries,
