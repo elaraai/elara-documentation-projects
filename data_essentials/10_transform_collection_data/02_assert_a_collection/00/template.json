@@ -8,6 +8,83 @@
       },
       "writable": false
     },
+    "Pipeline.Parse Products": {
+      "name": "Pipeline.Parse Products",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "Name": {
+                "type": "String",
+                "value": null
+              },
+              "Code": {
+                "type": "String",
+                "value": null
+              },
+              "Category": {
+                "type": "String",
+                "value": null
+              },
+              "Unit Cost": {
+                "type": "Float",
+                "value": null,
+                "nullable": true
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "Pipeline.Parse Sales": {
+      "name": "Pipeline.Parse Sales",
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "transactionDate": {
+                "type": "DateTime",
+                "value": null
+              },
+              "items": {
+                "type": "Array",
+                "value": {
+                  "type": "Struct",
+                  "value": {
+                    "productCode": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "units": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "salePrice": {
+                      "type": "Float",
+                      "value": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
     "Source.My BlobType Datastream": {
       "name": "Source.My BlobType Datastream",
       "type": {
@@ -63,6 +140,22 @@
       "name": "Writeable.My Second Datastream",
       "type": {
         "type": "Integer",
+        "value": null
+      },
+      "writable": true
+    },
+    "Writeable.Products": {
+      "name": "Writeable.Products",
+      "type": {
+        "type": "Blob",
+        "value": null
+      },
+      "writable": true
+    },
+    "Writeable.Sales": {
+      "name": "Writeable.Sales",
+      "type": {
+        "type": "Blob",
         "value": null
       },
       "writable": true
@@ -142,7 +235,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_OD9p7lZ0KjZrkMNcFto0IW"
+              "name": "_13b7dN2TAbkGpL0mLxR5wD"
             },
             "value": {
               "type": {
@@ -150,7 +243,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_OD9p7lZ0KjZrkMNcFto0IW"
+              "name": "_13b7dN2TAbkGpL0mLxR5wD"
             }
           }
         },
@@ -335,6 +428,306 @@
         }
       ]
     },
+    "Pipeline.Parse Products": {
+      "name": "Pipeline.Parse Products",
+      "parent": "Pipeline.Parse Products",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.Products",
+          "type": {
+            "type": "Blob",
+            "value": null
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Parse Products",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "Name": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Code": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Category": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Unit Cost": {
+                    "type": "Float",
+                    "value": null,
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "fromCsv",
+          "skip_n": {
+            "type": "integer",
+            "kind": "literal",
+            "value": "1"
+          },
+          "delimiter": ",",
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "Name": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Code": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Category": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "Unit Cost": {
+                    "type": "Float",
+                    "value": null,
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "output_key": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Variable",
+            "name": "field.Code"
+          }
+        },
+        {
+          "operation_type": "assert",
+          "assertion": {
+            "assertion_type": "Fail",
+            "value_type": "Every",
+            "predicate": {
+              "type": {
+                "type": "Boolean",
+                "value": null
+              },
+              "ast_type": "IfNull",
+              "input": {
+                "type": {
+                  "type": "Float",
+                  "value": null,
+                  "nullable": true
+                },
+                "ast_type": "Variable",
+                "name": "field.Unit Cost"
+              },
+              "output_null": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": false
+              },
+              "output_value": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": true
+              },
+              "value": {
+                "type": {
+                  "type": "Float",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "_rIShZ7u7tnF7qDrgSdDp$e"
+              }
+            },
+            "message": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "StringJoin",
+              "values": [
+                {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Const",
+                  "value": "Expected non-null values for \"Unit Cost\", got "
+                },
+                {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Print",
+                  "value": {
+                    "type": {
+                      "type": "Float",
+                      "value": null,
+                      "nullable": true
+                    },
+                    "ast_type": "Variable",
+                    "name": "field.Unit Cost"
+                  }
+                }
+              ],
+              "seperator": ""
+            }
+          }
+        }
+      ]
+    },
+    "Pipeline.Parse Sales": {
+      "name": "Pipeline.Parse Sales",
+      "parent": "Pipeline.Parse Sales",
+      "task_type": "pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.Sales",
+          "type": {
+            "type": "Blob",
+            "value": null
+          },
+          "writable": true
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.Parse Sales",
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "items": {
+                    "type": "Array",
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "productCode": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "units": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "salePrice": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "writable": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "fromJsonLines",
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "transactionDate": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "items": {
+                    "type": "Array",
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "productCode": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "units": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "salePrice": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "output_key": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Print",
+            "value": {
+              "type": {
+                "type": "DateTime",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.transactionDate"
+            }
+          }
+        }
+      ]
+    },
     "Source.My BlobType Datastream": {
       "name": "Source.My BlobType Datastream",
       "parent": "My BlobType Datastream",
@@ -472,6 +865,16 @@
         "ast_type": "Const",
         "value": "10"
       }
+    },
+    "Writeable.Products": {
+      "default_type": "file",
+      "stream": "Writeable.Products",
+      "path": "./data/products.csv"
+    },
+    "Writeable.Sales": {
+      "default_type": "file",
+      "stream": "Writeable.Sales",
+      "path": "./data/sales.jsonl"
     }
   }
 }
