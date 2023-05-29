@@ -4310,7 +4310,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_kEY4e1oOm3FtMtWR4OnKg$"
+                          "name": "_i7C17zeVOJjU2FePYh8f$7"
                         },
                         "second": {
                           "type": {
@@ -4327,7 +4327,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_kEY4e1oOm3FtMtWR4OnKg$"
+                        "name": "_i7C17zeVOJjU2FePYh8f$7"
                       },
                       "false": {
                         "type": {
@@ -4344,7 +4344,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_kEY4e1oOm3FtMtWR4OnKg$"
+                      "name": "_i7C17zeVOJjU2FePYh8f$7"
                     },
                     "value": {
                       "type": {
@@ -4815,7 +4815,7 @@
                                 "value": null
                               },
                               "ast_type": "Variable",
-                              "name": "_key_DXponzSra5V_SpqjSMvLCh"
+                              "name": "_key_BZbyP463XQMTk55MWB0zpu"
                             },
                             "weight": {
                               "type": {
@@ -4834,7 +4834,7 @@
                                   }
                                 },
                                 "ast_type": "Variable",
-                                "name": "_value_znHwoN5B3QzEkxsmWzrayh"
+                                "name": "_value_XuMpFNARpmRLNKFuNTWpH6"
                               },
                               "key": "weight"
                             }
@@ -4851,7 +4851,7 @@
                             }
                           },
                           "ast_type": "Variable",
-                          "name": "_value_znHwoN5B3QzEkxsmWzrayh"
+                          "name": "_value_XuMpFNARpmRLNKFuNTWpH6"
                         },
                         "input_key": {
                           "type": {
@@ -4859,7 +4859,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_key_DXponzSra5V_SpqjSMvLCh"
+                          "name": "_key_BZbyP463XQMTk55MWB0zpu"
                         }
                       },
                       "isless": {
@@ -4889,7 +4889,7 @@
                               }
                             },
                             "ast_type": "Variable",
-                            "name": "_first_dMYV5k0dYaV_Gs9SWByG_X"
+                            "name": "_first_cHoWbZrllvdzBd05U2dCsn"
                           },
                           "key": "weight"
                         },
@@ -4914,7 +4914,7 @@
                               }
                             },
                             "ast_type": "Variable",
-                            "name": "_second_X_I4_mZOskbvQFLZ6lhOfa"
+                            "name": "_second_tRLLThZM5VmLAUN$Ee4O7M"
                           },
                           "key": "weight"
                         }
@@ -4934,7 +4934,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "_first_dMYV5k0dYaV_Gs9SWByG_X"
+                        "name": "_first_cHoWbZrllvdzBd05U2dCsn"
                       },
                       "second": {
                         "type": {
@@ -4951,7 +4951,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "_second_X_I4_mZOskbvQFLZ6lhOfa"
+                        "name": "_second_tRLLThZM5VmLAUN$Ee4O7M"
                       }
                     },
                     "key": {
@@ -6710,7 +6710,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_kEY4e1oOm3FtMtWR4OnKg$"
+                          "name": "_i7C17zeVOJjU2FePYh8f$7"
                         },
                         "second": {
                           "type": {
@@ -6727,7 +6727,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_kEY4e1oOm3FtMtWR4OnKg$"
+                        "name": "_i7C17zeVOJjU2FePYh8f$7"
                       },
                       "false": {
                         "type": {
@@ -6744,7 +6744,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_kEY4e1oOm3FtMtWR4OnKg$"
+                      "name": "_i7C17zeVOJjU2FePYh8f$7"
                     },
                     "value": {
                       "type": {
@@ -7140,13 +7140,48 @@
                       }
                     }
                   },
-                  "ast_type": "Const",
-                  "value": {
-                    "supplierName": "",
-                    "paymentTerms": 0,
-                    "leadTime": 0,
-                    "unitCost": 0,
-                    "orderQty": "0"
+                  "ast_type": "Struct",
+                  "fields": {
+                    "supplierName": {
+                      "type": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": ""
+                    },
+                    "paymentTerms": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": 0
+                    },
+                    "leadTime": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": 0
+                    },
+                    "unitCost": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": 0
+                    },
+                    "orderQty": {
+                      "type": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": "0"
+                    }
                   }
                 }
               }
@@ -7578,7 +7613,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_yu2D3Q2OA5koejr3nNL$RN"
+              "name": "_I3VYONa1IKjZzr8frkaJAj"
             },
             "value": {
               "type": {
@@ -7586,7 +7621,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_yu2D3Q2OA5koejr3nNL$RN"
+              "name": "_I3VYONa1IKjZzr8frkaJAj"
             }
           }
         }
@@ -7947,7 +7982,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_2nMnzGL5jPsT$eGbp_ci0l"
+                      "name": "_7D3QFAoz77TJJeKHwk97pm"
                     },
                     "second": {
                       "type": {
@@ -7955,7 +7990,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_previous_Y4ztxqcy3NNQK9ph3Jf__S"
+                      "name": "_previous_ae5BkS4zxjUNtjOkCUmT7n"
                     }
                   },
                   "true": {
@@ -7964,7 +7999,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_2nMnzGL5jPsT$eGbp_ci0l"
+                    "name": "_7D3QFAoz77TJJeKHwk97pm"
                   },
                   "false": {
                     "type": {
@@ -7972,7 +8007,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_previous_Y4ztxqcy3NNQK9ph3Jf__S"
+                    "name": "_previous_ae5BkS4zxjUNtjOkCUmT7n"
                   }
                 },
                 "variable": {
@@ -7981,7 +8016,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_2nMnzGL5jPsT$eGbp_ci0l"
+                  "name": "_7D3QFAoz77TJJeKHwk97pm"
                 },
                 "value": {
                   "type": {
@@ -8008,7 +8043,7 @@
                       }
                     },
                     "ast_type": "Variable",
-                    "name": "_value_UBQSuaQBgpCh7xeIbzdnGT"
+                    "name": "_value_6kc2BolGBo7e$VToFwQHWN"
                   },
                   "key": "date"
                 }
@@ -8027,7 +8062,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_previous_Y4ztxqcy3NNQK9ph3Jf__S"
+                "name": "_previous_ae5BkS4zxjUNtjOkCUmT7n"
               },
               "value": {
                 "type": {
@@ -8048,7 +8083,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_UBQSuaQBgpCh7xeIbzdnGT"
+                "name": "_value_6kc2BolGBo7e$VToFwQHWN"
               },
               "key": {
                 "type": {
@@ -8056,7 +8091,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_key_J$Ftb25u2aS$34l317FzGH"
+                "name": "_key_GmiEczyY_scYQsyDRcHr1Y"
               }
             },
             "duration": {
@@ -8308,7 +8343,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_roEoL99u2zsFnlA4FPXPjx"
+                      "name": "_EiRq0_6n0LeL9gRennmQ_p"
                     },
                     "second": {
                       "type": {
@@ -8316,7 +8351,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_previous_z6PQnUxvNamjMUVMjQ0_Qr"
+                      "name": "_previous_eVY1ex8trUNOwzroSu3Dut"
                     }
                   },
                   "true": {
@@ -8325,7 +8360,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_roEoL99u2zsFnlA4FPXPjx"
+                    "name": "_EiRq0_6n0LeL9gRennmQ_p"
                   },
                   "false": {
                     "type": {
@@ -8333,7 +8368,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_previous_z6PQnUxvNamjMUVMjQ0_Qr"
+                    "name": "_previous_eVY1ex8trUNOwzroSu3Dut"
                   }
                 },
                 "variable": {
@@ -8342,7 +8377,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_roEoL99u2zsFnlA4FPXPjx"
+                  "name": "_EiRq0_6n0LeL9gRennmQ_p"
                 },
                 "value": {
                   "type": {
@@ -8365,7 +8400,7 @@
                       }
                     },
                     "ast_type": "Variable",
-                    "name": "_value_ntD2XRDQWEU02ftR8ZYEDZ"
+                    "name": "_value_hhNJvYuEYWnLLq1583BBik"
                   },
                   "key": "date"
                 }
@@ -8384,7 +8419,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_previous_z6PQnUxvNamjMUVMjQ0_Qr"
+                "name": "_previous_eVY1ex8trUNOwzroSu3Dut"
               },
               "value": {
                 "type": {
@@ -8401,7 +8436,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_ntD2XRDQWEU02ftR8ZYEDZ"
+                "name": "_value_hhNJvYuEYWnLLq1583BBik"
               },
               "key": {
                 "type": {
@@ -8409,7 +8444,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_key_xFKgNLnzjMyqdr1wW68euU"
+                "name": "_key_hOYf3r9CqikFZ2PzAL8WM0"
               }
             },
             "duration": {
@@ -9322,7 +9357,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_ivM3yQYfpnYvGOGtncpuNU"
+              "name": "_key_ALBRomQV80zcLal9yqhqMD"
             },
             "input_value": {
               "type": {
@@ -9351,7 +9386,7 @@
                 }
               },
               "ast_type": "Variable",
-              "name": "_value_R_sxfd8ui3QEA50IDpHBAx"
+              "name": "_value__3xime1bmpwVsL$IPOubkw"
             },
             "input_key": {
               "type": {
@@ -9359,7 +9394,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_ivM3yQYfpnYvGOGtncpuNU"
+              "name": "_key_ALBRomQV80zcLal9yqhqMD"
             }
           }
         }
@@ -12570,7 +12605,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_kEY4e1oOm3FtMtWR4OnKg$"
+                          "name": "_i7C17zeVOJjU2FePYh8f$7"
                         },
                         "second": {
                           "type": {
@@ -12587,7 +12622,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_kEY4e1oOm3FtMtWR4OnKg$"
+                        "name": "_i7C17zeVOJjU2FePYh8f$7"
                       },
                       "false": {
                         "type": {
@@ -12604,7 +12639,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_kEY4e1oOm3FtMtWR4OnKg$"
+                      "name": "_i7C17zeVOJjU2FePYh8f$7"
                     },
                     "value": {
                       "type": {
@@ -13000,13 +13035,48 @@
                       }
                     }
                   },
-                  "ast_type": "Const",
-                  "value": {
-                    "supplierName": "",
-                    "paymentTerms": 0,
-                    "leadTime": 0,
-                    "unitCost": 0,
-                    "orderQty": "0"
+                  "ast_type": "Struct",
+                  "fields": {
+                    "supplierName": {
+                      "type": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": ""
+                    },
+                    "paymentTerms": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": 0
+                    },
+                    "leadTime": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": 0
+                    },
+                    "unitCost": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": 0
+                    },
+                    "orderQty": {
+                      "type": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": "0"
+                    }
                   }
                 }
               }
@@ -15127,7 +15197,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_kEY4e1oOm3FtMtWR4OnKg$"
+                          "name": "_i7C17zeVOJjU2FePYh8f$7"
                         },
                         "second": {
                           "type": {
@@ -15144,7 +15214,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_kEY4e1oOm3FtMtWR4OnKg$"
+                        "name": "_i7C17zeVOJjU2FePYh8f$7"
                       },
                       "false": {
                         "type": {
@@ -15161,7 +15231,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_kEY4e1oOm3FtMtWR4OnKg$"
+                      "name": "_i7C17zeVOJjU2FePYh8f$7"
                     },
                     "value": {
                       "type": {
@@ -15632,7 +15702,7 @@
                                 "value": null
                               },
                               "ast_type": "Variable",
-                              "name": "_key_DXponzSra5V_SpqjSMvLCh"
+                              "name": "_key_BZbyP463XQMTk55MWB0zpu"
                             },
                             "weight": {
                               "type": {
@@ -15651,7 +15721,7 @@
                                   }
                                 },
                                 "ast_type": "Variable",
-                                "name": "_value_znHwoN5B3QzEkxsmWzrayh"
+                                "name": "_value_XuMpFNARpmRLNKFuNTWpH6"
                               },
                               "key": "weight"
                             }
@@ -15668,7 +15738,7 @@
                             }
                           },
                           "ast_type": "Variable",
-                          "name": "_value_znHwoN5B3QzEkxsmWzrayh"
+                          "name": "_value_XuMpFNARpmRLNKFuNTWpH6"
                         },
                         "input_key": {
                           "type": {
@@ -15676,7 +15746,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_key_DXponzSra5V_SpqjSMvLCh"
+                          "name": "_key_BZbyP463XQMTk55MWB0zpu"
                         }
                       },
                       "isless": {
@@ -15706,7 +15776,7 @@
                               }
                             },
                             "ast_type": "Variable",
-                            "name": "_first_dMYV5k0dYaV_Gs9SWByG_X"
+                            "name": "_first_cHoWbZrllvdzBd05U2dCsn"
                           },
                           "key": "weight"
                         },
@@ -15731,7 +15801,7 @@
                               }
                             },
                             "ast_type": "Variable",
-                            "name": "_second_X_I4_mZOskbvQFLZ6lhOfa"
+                            "name": "_second_tRLLThZM5VmLAUN$Ee4O7M"
                           },
                           "key": "weight"
                         }
@@ -15751,7 +15821,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "_first_dMYV5k0dYaV_Gs9SWByG_X"
+                        "name": "_first_cHoWbZrllvdzBd05U2dCsn"
                       },
                       "second": {
                         "type": {
@@ -15768,7 +15838,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "_second_X_I4_mZOskbvQFLZ6lhOfa"
+                        "name": "_second_tRLLThZM5VmLAUN$Ee4O7M"
                       }
                     },
                     "key": {
@@ -17812,7 +17882,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_kEY4e1oOm3FtMtWR4OnKg$"
+                          "name": "_i7C17zeVOJjU2FePYh8f$7"
                         },
                         "second": {
                           "type": {
@@ -17829,7 +17899,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_kEY4e1oOm3FtMtWR4OnKg$"
+                        "name": "_i7C17zeVOJjU2FePYh8f$7"
                       },
                       "false": {
                         "type": {
@@ -17846,7 +17916,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_kEY4e1oOm3FtMtWR4OnKg$"
+                      "name": "_i7C17zeVOJjU2FePYh8f$7"
                     },
                     "value": {
                       "type": {
@@ -18242,13 +18312,48 @@
                       }
                     }
                   },
-                  "ast_type": "Const",
-                  "value": {
-                    "supplierName": "",
-                    "paymentTerms": 0,
-                    "leadTime": 0,
-                    "unitCost": 0,
-                    "orderQty": "0"
+                  "ast_type": "Struct",
+                  "fields": {
+                    "supplierName": {
+                      "type": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": ""
+                    },
+                    "paymentTerms": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": 0
+                    },
+                    "leadTime": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": 0
+                    },
+                    "unitCost": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": 0
+                    },
+                    "orderQty": {
+                      "type": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": "0"
+                    }
                   }
                 }
               }
@@ -20279,7 +20384,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_kEY4e1oOm3FtMtWR4OnKg$"
+                          "name": "_i7C17zeVOJjU2FePYh8f$7"
                         },
                         "second": {
                           "type": {
@@ -20296,7 +20401,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_kEY4e1oOm3FtMtWR4OnKg$"
+                        "name": "_i7C17zeVOJjU2FePYh8f$7"
                       },
                       "false": {
                         "type": {
@@ -20313,7 +20418,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_kEY4e1oOm3FtMtWR4OnKg$"
+                      "name": "_i7C17zeVOJjU2FePYh8f$7"
                     },
                     "value": {
                       "type": {
@@ -20709,13 +20814,48 @@
                       }
                     }
                   },
-                  "ast_type": "Const",
-                  "value": {
-                    "supplierName": "",
-                    "paymentTerms": 0,
-                    "leadTime": 0,
-                    "unitCost": 0,
-                    "orderQty": "0"
+                  "ast_type": "Struct",
+                  "fields": {
+                    "supplierName": {
+                      "type": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": ""
+                    },
+                    "paymentTerms": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": 0
+                    },
+                    "leadTime": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": 0
+                    },
+                    "unitCost": {
+                      "type": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": 0
+                    },
+                    "orderQty": {
+                      "type": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "ast_type": "Const",
+                      "value": "0"
+                    }
                   }
                 }
               }
