@@ -1,4 +1,4 @@
-import { Add, AddDuration, Const, Convert, DateTimeType, Default, DictType, Divide, Equal, FilterTag, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, In, Insert, IntegerType, Keys, LayoutBuilder, Less, Max, Min, MLModelBuilder, Multiply, NewArray, PipelineBuilder, Print, ProcessBuilder, Reduce, ResourceBuilder, Round, RoundPrecision, ScenarioBuilder, Size, Sort, SourceBuilder, StringJoin, StringType, Struct, StructType, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
+import { Add, AddDuration, Const, Convert, DateTimeType, Default, DictType, Divide, FilterTag, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, In, IntegerType, Keys, LayoutBuilder, Max, Min, MLModelBuilder, Multiply, ObjectiveLayout, PipelineBuilder, Print, ProcessBuilder, Reduce, ResourceBuilder, Round, RoundPrecision, ScenarioBuilder, Size, Sort, SourceBuilder, StringJoin, StringType, Struct, StructType, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
 
 ////////////////////////////////////////////////////////////
 /////////// STEP 1: GET THE DATA
@@ -399,19 +399,6 @@ const prescriptive = new ScenarioBuilder("Prescriptive")
     .process(predicted_procurement)
     // reporting
     .alterResourceFromValue("Report", new Map())
-    // .alterProcessFromPipeline(
-    //     "Reporter",
-    //     (builder, _) => builder
-    //         .from(historic_sales_cutoff_date.outputStream())
-    //         .transform(
-    //             date => NewDict(
-    //                 StringType,
-    //                 StructType({ date: DateTimeType }),
-    //                 ["0"],
-    //                 [Struct({ date })]
-    //             )
-    //         )
-    // )
     // end simulation
     .endSimulation(future_cutoff_date.outputStream())
     // elara will try to maximise this - the cash balance!
@@ -475,19 +462,6 @@ const interactive = new ScenarioBuilder("Interactive")
     .resource(discount)
     .process(predicted_sales)
     .alterResourceFromValue("Report", new Map())
-    // .alterProcessFromPipeline(
-    //     "Reporter",
-    //     (builder, _) => builder
-    //         .from(historic_sales_cutoff_date.outputStream())
-    //         .transform(
-    //             date => NewDict(
-    //                 StringType,
-    //                 StructType({ date: DateTimeType }),
-    //                 ["0"],
-    //                 [Struct({ date })]
-    //             )
-    //         )
-    // )
     // end simulation
     .endSimulation(future_cutoff_date.outputStream())
     // user-supplied discount
@@ -495,7 +469,7 @@ const interactive = new ScenarioBuilder("Interactive")
         .from(discount_choice.outputStream())
         .transform((discount) => GetField(discount, 'discount'))
     )
-    // // procurement supplied from optimized scenario
+    // procurement supplied from optimized scenario
     .alterProcessFromPipeline(
         "Procurement",
         (builder) => builder
@@ -513,6 +487,30 @@ const interactive = new ScenarioBuilder("Interactive")
                 }
             })
     )
+
+const interactive_procurement_choices = new PipelineBuilder(`Interactive Procurement Choices`)
+    .from(interactive.simulationJournalStream())
+    .transform(stream => FilterTag(stream, "Procurement"))
+    .input({ name: "Suppliers", stream: descriptive.simulationResultStreams().Suppliers })
+    .input({ name: "Recommended Supplier Choice", stream: recommended_procurement_choices.outputStream() })
+    .transform((stream, input) => ToDict(
+        stream,
+        (value) => Struct({
+            date: GetField(value, "date"),
+            supplier: GetField(value, "supplierName"),
+            orderQty: GetField(value, "orderQty"),
+            unitCost: GetField(value, "unitCost"),
+            allSuppliers: Keys(input.Suppliers),
+        }),
+        value => Print(GetField(value, "date"))
+    ))
+    .leftJoin({
+        right_input: inputs => inputs["Recommended Supplier Choice"],
+        right_key: (_fields, key, _inputs)  => key,
+        right_selections: {
+            recommendation: fields => fields.supplierName
+        }
+    })
 
 const concatenated_reports = new PipelineBuilder("Concatenated Reports")
     .from(descriptive.simulationResultStreams().Report)
@@ -556,12 +554,14 @@ const tabbed_tables = new LayoutBuilder("Tabbed Tables")
             .table(
                 "Recommended Supplier Choices",
                 builder => builder
-                    .fromStream(recommended_procurement_choices.outputStream())
+                    .fromStream(interactive_procurement_choices.outputStream())
                     .date("Procurement Date", fields => fields.date)
                     .string("Supplier Name", {
-                        value: fields => fields.supplierName,
+                        value: fields => fields.supplier,
                         edit: supplier_choice.outputStream(),
-                        range: fields => fields.supplierNames
+                        range: fields => fields.allSuppliers,
+                        target: fields => fields.recommendation,
+                        tooltip: fields => fields.supplier,
                     })
                     .integer("Order Qty", fields => fields.orderQty)
             )
@@ -644,39 +644,28 @@ const discount_form = new LayoutBuilder("Discount")
             })
     )
 
+
 // Dashboard
 const dashboard = new LayoutBuilder("Business Outcomes")
     .panel(
         "row",
         builder => builder
-            .panel(
-                50,
-                "column",
-                builder => builder
-                    .layout(50, discount_form)
-                    .layout(50, tabbed_tables)
+            .panel(50, "column", builder => builder
+                .layout(50, discount_form)
+                .layout(50, tabbed_tables)
             )
-            .panel(
-                50,
-                "column",
-                builder => builder
-                    .layout(50, cash_graph)
-                    .tab(50, builder => builder
-                        .layout(stock_graph)
-                        .layout(qty_graph)
-                    )
+            .panel(50, "column", builder => builder
+                .layout(50, cash_graph)
+                .tab(50, builder => builder
+                    .layout(stock_graph)
+                    .layout(qty_graph)
+                )
             )
     )
     .header(
         builder => builder
-            .value(
-                "Todays Recommended Discount",
-                recommended_discount.outputStream()
-            )
-            .value(
-                "Todays Supplier",
-                recommended_supplier.outputStream()
-            )
+            .value("Todays Discount", recommended_discount.outputStream())
+            .value("Todays Supplier", recommended_supplier.outputStream())
             .kpi(
                 "Total Qty",
                 comparison_qty.outputStream(), {
@@ -696,111 +685,7 @@ const dashboard = new LayoutBuilder("Business Outcomes")
             .size(14)
     )
 
-const objective = new PipelineBuilder("Objective")
-    .from(prescriptive.optimizationStream())
-    .select({
-        selections: {
-            iteration: (fields) => fields.iteration,
-            objective: (fields) => fields.objective,
-            min: (fields) => Reduce(fields.objectives, (a, b) => Min(a, b), fields.objective),
-            max: (fields) => Reduce(fields.objectives, (a, b) => Max(a, b), fields.objective),
-        }
-    })
-    .transform(objectives => Sort(
-        ToArray(objectives, value => value),
-        (a, b) => Less(GetField(a, 'iteration'), GetField(b, 'iteration'))
-    ))
-    .transform(objectives => Reduce(
-        objectives,
-        (prev, value) => IfElse(
-            Equal(Size(prev), 0n),
-            Insert(prev, 'last', Struct({
-                iteration: GetField(value, "iteration"),
-                objective: GetField(value, "objective"),
-                best: GetField(value, "objective"),
-                min: GetField(value, "min"),
-                max: GetField(value, "max"),
-            })),
-            IfElse(
-                Greater(GetField(value, "objective"), GetField(Get(prev, Subtract(Size(prev), 1n)), 'best')),
-                Insert(prev, 'last', Struct({
-                    iteration: GetField(value, "iteration"),
-                    objective: GetField(value, "objective"),
-                    best: GetField(value, "objective"),
-                    min: GetField(value, "min"),
-                    max: GetField(value, "max"),
-                })),
-                Insert(prev, 'last', Struct({
-                    iteration: GetField(value, "iteration"),
-                    objective: GetField(value, "objective"),
-                    best: GetField(Get(prev, Subtract(Size(prev), 1n)), "best"),
-                    min: GetField(Get(prev, Subtract(Size(prev), 1n)), "min"),
-                    max: GetField(Get(prev, Subtract(Size(prev), 1n)), "max"),
-                })),
-            )
-        ),
-        NewArray(StructType({
-            iteration: IntegerType,
-            objective: FloatType,
-            best: FloatType,
-            min: FloatType,
-            max: FloatType,
-        })),
-    ))
-
-const optimization = new LayoutBuilder("Optimization")
-    .vega("Objective Value", builder => builder
-        .fromStream(objective.outputStream())
-        .spec(fields => ({
-            transform: [],
-            layer: [
-                {
-                    mark: { type: "circle", opacity: 0.3 },
-                    encoding: {
-                        x: { field: fields.iteration, type: "quantitative" },
-                        y: { field: fields.objective, type: "quantitative" },
-                        tooltip: [
-                            { field: fields.iteration, type: "quantitative" },
-                            { field: fields.objective, type: "quantitative" },
-                            { field: fields.best, type: "quantitative" },
-                            { field: fields.min, type: "quantitative" },
-                            { field: fields.max, type: "quantitative" },
-                        ]
-                    }
-                },
-                {
-                    mark: { type: "errorband" },
-                    encoding: {
-                        x: { field: fields.iteration, type: "quantitative" },
-                        y: { field: fields.min, type: "quantitative" },
-                        y2: { field: fields.max, type: "quantitative" },
-                        tooltip: [
-                            { field: fields.iteration, type: "quantitative" },
-                            { field: fields.objective, type: "quantitative" },
-                            { field: fields.best, type: "quantitative" },
-                            { field: fields.min, type: "quantitative" },
-                            { field: fields.max, type: "quantitative" },
-                        ]
-                    }
-                },
-                {
-                    mark: { type: "line" },
-                    encoding: {
-                        x: { field: fields.iteration, type: "quantitative" },
-                        y: { field: fields.best, type: "quantitative" },
-                        tooltip: [
-                            { field: fields.iteration, type: "quantitative" },
-                            { field: fields.objective, type: "quantitative" },
-                            { field: fields.best, type: "quantitative" },
-                            { field: fields.min, type: "quantitative" },
-                            { field: fields.max, type: "quantitative" },
-                        ]
-                    }
-                }
-            ]
-        }))
-    )
-
+const objective = ObjectiveLayout(prescriptive.optimizationStream())
 
 ////////////////////////////////////////////////////////////
 /////////// STEP 6: MERGE INTO A SOLUTION
@@ -839,19 +724,19 @@ export default Template(
     comparison_cash,
     // Table data
     recommended_procurement_choices,
+    interactive_procurement_choices,
     expected_deliveries,
     expected_invoices,
     // Reporting
     report,
     reporter,
-    objective,
     // Interactive Scenario
     discount_choice,
     supplier_choice,
     interactive,
     // Line chart data
     concatenated_reports,
-    // Dashboard
+    // Layouts
     dashboard,
-    optimization
+    objective,
 )
