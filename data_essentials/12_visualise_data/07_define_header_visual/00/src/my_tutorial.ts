@@ -257,7 +257,7 @@ const panel_layout = new LayoutBuilder("Business Insights Dashboard")
     )
     .header(
         builder => builder
-            .item("Average Daily Profit", average_daily_profit.outputStream())
+            .value("Average Daily Profit", average_daily_profit.outputStream())
             .size(15)
     )
 

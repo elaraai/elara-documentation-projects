@@ -584,7 +584,7 @@ const dashboard = new LayoutBuilder("Business Outcomes")
     )
     .header(
         builder => builder
-            .item("Recommended Discount", recommended_discount.outputStream())
+            .value("Recommended Discount", recommended_discount.outputStream())
             .size(15)
     )
 

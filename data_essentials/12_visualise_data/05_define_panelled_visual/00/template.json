@@ -741,7 +741,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_R1kMMSIiqym_G3KNvyl1Op"
+                "name": "_mbe9EVu8KfjkgoxE3aAGnt"
               },
               "value": {
                 "type": {
@@ -749,7 +749,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_R1kMMSIiqym_G3KNvyl1Op"
+                "name": "_mbe9EVu8KfjkgoxE3aAGnt"
               }
             }
           },
@@ -2086,7 +2086,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_hLrjvLohNY2bK_kKIP_ZTp"
+                    "name": "_2MhgnsjtIzMcDJQ0rNoSuK"
                   }
                 }
               },
@@ -2096,7 +2096,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_hLrjvLohNY2bK_kKIP_ZTp"
+                "name": "_2MhgnsjtIzMcDJQ0rNoSuK"
               }
             },
             "profit": {
@@ -2178,7 +2178,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_aUVTKZ3RLrrev2gIAlpIKQ"
+                        "name": "_5gvHKrOqElkKGk0_IBYtl_"
                       }
                     }
                   },
@@ -2188,7 +2188,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_aUVTKZ3RLrrev2gIAlpIKQ"
+                    "name": "_5gvHKrOqElkKGk0_IBYtl_"
                   }
                 },
                 "output_null": {
@@ -2210,7 +2210,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_vH8$UMMlMAQapuzgKUBl2N"
+                    "name": "_PhYmlR01uIN2xlh4bhGF1o"
                   },
                   "second": {
                     "type": {
@@ -2218,7 +2218,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_dgXsn_DK3ncrGn4U$yOlwL"
+                    "name": "_cBAEroKUsW5rKzoXy5nT5d"
                   }
                 },
                 "value": {
@@ -2227,7 +2227,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_dgXsn_DK3ncrGn4U$yOlwL"
+                  "name": "_cBAEroKUsW5rKzoXy5nT5d"
                 }
               },
               "value": {
@@ -2236,7 +2236,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_vH8$UMMlMAQapuzgKUBl2N"
+                "name": "_PhYmlR01uIN2xlh4bhGF1o"
               }
             }
           },
@@ -2412,7 +2412,13 @@
             },
             "key_visible": false,
             "key_label": "Key",
-            "writable": "none",
+            "writable": {
+              "type": "none",
+              "add": false,
+              "remove": false,
+              "update": false
+            },
+            "input_streams": {},
             "percentage": 50
           },
           {
@@ -2607,7 +2613,13 @@
             },
             "key_visible": false,
             "key_label": "Key",
-            "writable": "none"
+            "writable": {
+              "type": "none",
+              "add": false,
+              "remove": false,
+              "update": false
+            },
+            "input_streams": {}
           },
           {
             "type": "vega",

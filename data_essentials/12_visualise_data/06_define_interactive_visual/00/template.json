@@ -754,7 +754,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_uHRyjqGpd1wuUDvcU5MexU"
+                "name": "_paILUZlbejkbUsIXV9S2q$"
               },
               "value": {
                 "type": {
@@ -762,7 +762,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_uHRyjqGpd1wuUDvcU5MexU"
+                "name": "_paILUZlbejkbUsIXV9S2q$"
               }
             }
           },
@@ -2116,7 +2116,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_g7peSovZWVRKRpPsNIGI62"
+                    "name": "_F0PJGWIXMk0NjoOoTNZtxf"
                   }
                 }
               },
@@ -2126,7 +2126,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_g7peSovZWVRKRpPsNIGI62"
+                "name": "_F0PJGWIXMk0NjoOoTNZtxf"
               }
             },
             "profit": {
@@ -2215,7 +2215,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_Hu7y6260QvOMOWnzZqa$Jh"
+                          "name": "_x$zzOyOcQWMlFk7ooU1f$f"
                         }
                       }
                     },
@@ -2225,7 +2225,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_Hu7y6260QvOMOWnzZqa$Jh"
+                      "name": "_x$zzOyOcQWMlFk7ooU1f$f"
                     }
                   },
                   "output_null": {
@@ -2247,7 +2247,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_yXpcQyWAbu0CgbEld5rZ99"
+                      "name": "_H$ljriEfT7MojYXuXSYtSG"
                     },
                     "second": {
                       "type": {
@@ -2255,7 +2255,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_UyLqAwganTUXsg4uEaz4BZ"
+                      "name": "_KNKzpRmNbCiAWlXHY3LJjL"
                     }
                   },
                   "value": {
@@ -2264,7 +2264,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_UyLqAwganTUXsg4uEaz4BZ"
+                    "name": "_KNKzpRmNbCiAWlXHY3LJjL"
                   }
                 },
                 "value": {
@@ -2273,7 +2273,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_yXpcQyWAbu0CgbEld5rZ99"
+                  "name": "_H$ljriEfT7MojYXuXSYtSG"
                 }
               },
               "output_null": {
@@ -2295,7 +2295,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_Ghf7GdjILsNc37Itho1YnY"
+                  "name": "_6CGTd9aAlDOukKuuyGCDnp"
                 },
                 "second": {
                   "type": {
@@ -2355,7 +2355,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_Ghf7GdjILsNc37Itho1YnY"
+                "name": "_6CGTd9aAlDOukKuuyGCDnp"
               }
             }
           },
@@ -2554,7 +2554,13 @@
                 },
                 "key_visible": false,
                 "key_label": "Key",
-                "writable": "none",
+                "writable": {
+                  "type": "none",
+                  "add": false,
+                  "remove": false,
+                  "update": false
+                },
+                "input_streams": {},
                 "percentage": 70
               },
               {
@@ -2574,6 +2580,13 @@
                     }
                   }
                 },
+                "writable": {
+                  "type": "field",
+                  "add": false,
+                  "remove": false,
+                  "update": true
+                },
+                "input_streams": {},
                 "percentage": 30
               }
             ],
@@ -2824,7 +2837,13 @@
             },
             "key_visible": false,
             "key_label": "Key",
-            "writable": "none"
+            "writable": {
+              "type": "none",
+              "add": false,
+              "remove": false,
+              "update": false
+            },
+            "input_streams": {}
           },
           {
             "type": "vega",

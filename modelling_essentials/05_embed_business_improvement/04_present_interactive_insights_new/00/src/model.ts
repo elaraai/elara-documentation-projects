@@ -1,4 +1,4 @@
-import { Add, AddDuration, Const, Convert, DateTimeType, Default, DictType, Divide, FilterTag, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, In, IntegerType, Keys, LayoutBuilder, Max, Min, MLModelBuilder, Multiply, ObjectiveLayout, PipelineBuilder, Print, ProcessBuilder, Reduce, ResourceBuilder, Round, RoundPrecision, ScenarioBuilder, Size, Sort, SourceBuilder, StringJoin, StringType, Struct, StructType, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
+import { Add, AddDuration, Const, Convert, DateTimeType, Default, DictType, Divide, FilterTag, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IntegerType, Keys, LayoutBuilder, Max, Min, MLModelBuilder, Multiply, ObjectiveLayout, PipelineBuilder, Print, ProcessBuilder, RandomKey, Reduce, ResourceBuilder, Round, RoundPrecision, ScenarioBuilder, Sort, SourceBuilder, StringJoin, StringType, Struct, StructType, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
 
 ////////////////////////////////////////////////////////////
 /////////// STEP 1: GET THE DATA
@@ -410,33 +410,37 @@ const prescriptive = new ScenarioBuilder("Prescriptive")
     .optimizeEvery("Supplier Policy", "stockOnHandWeight", { min: -1, max: 1 })
     .optimizationInMemory(true)
 
-const recommended_discount = new PipelineBuilder("Recommended Discount")
-    .from(prescriptive.simulationResultStreams().Discount)
-    .transform(stream => StringJoin`${RoundPrecision(stream, 4)}%`)
+const supplier_names = new PipelineBuilder("Supplier Names")
+    .from(descriptive.simulationResultStreams().Suppliers)
+    .transform(stream => Keys(stream))
 
 const recommended_procurement_choices = new PipelineBuilder(`Recommended Procurement Choices`)
     .from(prescriptive.simulationJournalStream())
     .transform(stream => FilterTag(stream, "Procurement"))
-    .input({ name: "Suppliers", stream: descriptive.simulationResultStreams().Suppliers })
-    .transform((stream, input) => ToDict(
+    .transform((stream) => ToDict(
         stream,
         (value) => Struct({
             date: GetField(value, "date"),
             supplierName: GetField(value, "supplierName"),
             orderQty: GetField(value, "orderQty"),
             unitCost: GetField(value, "unitCost"),
-            supplierNames: Keys(input.Suppliers)
         }),
         value => Print(GetField(value, "date"))
     ))
 
-const recommended_supplier = new PipelineBuilder("Recommended Supplier")
+const bau_procurement_choices = new PipelineBuilder(`BAU Procurement Choices`)
     .from(recommended_procurement_choices.outputStream())
-    .transform(stream => IfElse(
-        Greater(Size(stream), 0n),
-        GetField(Get(ToArray(stream, value => value), Const(0n)), "supplierName"),
-        Const("No orders today")
-    ))
+    .input({ name: "Suppliers", stream: supplier_names.outputStream() })
+    .select({
+        keep_all: false,
+        selections: {
+            date: (fields) => fields.date,
+            // choose a random supplier
+            supplierName: (_fields, _key, inputs) => RandomKey(inputs.Suppliers),
+            // keep the recommended choice
+            recommended: (fields) => fields.supplierName,
+        }
+    })
 
 const expected_deliveries = new PipelineBuilder(`Expected Deliveries`)
     .from(prescriptive.simulationJournalStream())
@@ -449,7 +453,7 @@ const expected_invoices = new PipelineBuilder(`Expected Invoices`)
 // New Interactive Scenario
 const discount_choice = new SourceBuilder("Discount Choice")
     .value({
-        value: { discount: 0, min_discount: 0, max_discount: 100 },
+        value: { discount: 0, min_discount: 0, max_discount: 20 },
     })
 
 const supplier_choice = new SourceBuilder('Supplier Choice').value({
@@ -473,44 +477,17 @@ const interactive = new ScenarioBuilder("Interactive")
     .alterProcessFromPipeline(
         "Procurement",
         (builder) => builder
-            .from(recommended_procurement_choices.outputStream())
+            .from(bau_procurement_choices.outputStream())
             .input({ name: "Supplier Choice", stream: supplier_choice.outputStream() })
             .select({
                 keep_all: false,
                 selections: {
                     date: (fields) => fields.date,
-                    supplierName: (fields, key, inputs) => IfElse(
-                        In(inputs["Supplier Choice"], key),
-                        Get(inputs["Supplier Choice"], key),
-                        fields.supplierName
-                    ),
+                    // if theres a manual choice, choose that, otherwise choose the default one
+                    supplierName: (fields, key, inputs) => Get(inputs["Supplier Choice"], key, fields.supplierName),
                 }
             })
     )
-
-const interactive_procurement_choices = new PipelineBuilder(`Interactive Procurement Choices`)
-    .from(interactive.simulationJournalStream())
-    .transform(stream => FilterTag(stream, "Procurement"))
-    .input({ name: "Suppliers", stream: descriptive.simulationResultStreams().Suppliers })
-    .input({ name: "Recommended Supplier Choice", stream: recommended_procurement_choices.outputStream() })
-    .transform((stream, input) => ToDict(
-        stream,
-        (value) => Struct({
-            date: GetField(value, "date"),
-            supplier: GetField(value, "supplierName"),
-            orderQty: GetField(value, "orderQty"),
-            unitCost: GetField(value, "unitCost"),
-            allSuppliers: Keys(input.Suppliers),
-        }),
-        value => Print(GetField(value, "date"))
-    ))
-    .leftJoin({
-        right_input: inputs => inputs["Recommended Supplier Choice"],
-        right_key: (_fields, key, _inputs)  => key,
-        right_selections: {
-            recommendation: fields => fields.supplierName
-        }
-    })
 
 const concatenated_reports = new PipelineBuilder("Concatenated Reports")
     .from(descriptive.simulationResultStreams().Report)
@@ -554,16 +531,15 @@ const tabbed_tables = new LayoutBuilder("Tabbed Tables")
             .table(
                 "Recommended Supplier Choices",
                 builder => builder
-                    .fromStream(interactive_procurement_choices.outputStream())
+                    .fromStream(bau_procurement_choices.outputStream())
+                    .input({ name: "Suppliers", stream: supplier_names.outputStream() })
                     .date("Procurement Date", fields => fields.date)
                     .string("Supplier Name", {
-                        value: fields => fields.supplier,
+                        value: fields => fields.supplierName,
                         edit: supplier_choice.outputStream(),
-                        range: fields => fields.allSuppliers,
-                        target: fields => fields.recommendation,
-                        tooltip: fields => fields.supplier,
+                        range: (_, inputs) => inputs.Suppliers,
+                        target: fields => fields.recommended,
                     })
-                    .integer("Order Qty", fields => fields.orderQty)
             )
             .table(
                 "Expected Deliveries",
@@ -637,10 +613,12 @@ const discount_form = new LayoutBuilder("Discount")
         "Discount",
         builder => builder
             .fromStream(discount_choice.outputStream())
+            .input({ name: "Discount", stream: prescriptive.simulationResultStreams().Discount })
             .float("Discount (%)", {
                 value: fields => fields.discount,
                 min: fields => fields.min_discount,
-                max: fields => fields.max_discount
+                max: fields => fields.max_discount,
+                target: (_fields, inputs) => inputs.Discount
             })
     )
 
@@ -664,8 +642,6 @@ const dashboard = new LayoutBuilder("Business Outcomes")
     )
     .header(
         builder => builder
-            .value("Todays Discount", recommended_discount.outputStream())
-            .value("Todays Supplier", recommended_supplier.outputStream())
             .kpi(
                 "Total Qty",
                 comparison_qty.outputStream(), {
@@ -718,13 +694,12 @@ export default Template(
     predicted_procurement,
     prescriptive,
     // Header value,
-    recommended_discount,
-    recommended_supplier,
     comparison_qty,
     comparison_cash,
+    supplier_names,
     // Table data
     recommended_procurement_choices,
-    interactive_procurement_choices,
+    bau_procurement_choices,
     expected_deliveries,
     expected_invoices,
     // Reporting
