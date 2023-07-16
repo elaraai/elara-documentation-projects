@@ -12,6 +12,8 @@ const params = new SourceBuilder("Initial Params")
         }
     })
 
+
+    
 export function Demand(discount: EastFunction<FloatType>) {
     return Subtract(
         1,

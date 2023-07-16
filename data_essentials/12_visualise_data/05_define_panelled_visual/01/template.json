@@ -741,7 +741,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_H6rdhnwlUM1q6_iamJdnKg"
+                "name": "_JS4CY3dKLniPX7DZjNdUW1"
               },
               "value": {
                 "type": {
@@ -749,7 +749,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_H6rdhnwlUM1q6_iamJdnKg"
+                "name": "_JS4CY3dKLniPX7DZjNdUW1"
               }
             }
           },
@@ -2086,7 +2086,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_B6nXsRMfx5QuyvJuLM58CX"
+                    "name": "_A3yqVXNkxRP8II9JQlKMvu"
                   }
                 }
               },
@@ -2096,7 +2096,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_B6nXsRMfx5QuyvJuLM58CX"
+                "name": "_A3yqVXNkxRP8II9JQlKMvu"
               }
             },
             "profit": {
@@ -2178,7 +2178,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_wGl2Z0h54t87LaEoOI7cfK"
+                        "name": "_9MoBtKniSpC9NbMLadak6M"
                       }
                     }
                   },
@@ -2188,7 +2188,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_wGl2Z0h54t87LaEoOI7cfK"
+                    "name": "_9MoBtKniSpC9NbMLadak6M"
                   }
                 },
                 "output_null": {
@@ -2210,7 +2210,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_3neNeS7d6K290Mps_qVKCj"
+                    "name": "_dkn$q0$ypWQhcWRKQCkYcp"
                   },
                   "second": {
                     "type": {
@@ -2218,7 +2218,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_ibDp80yrBOwlP4EbbaLamy"
+                    "name": "_ue$KJHzdKQLZvu4L2prLP0"
                   }
                 },
                 "value": {
@@ -2227,7 +2227,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_ibDp80yrBOwlP4EbbaLamy"
+                  "name": "_ue$KJHzdKQLZvu4L2prLP0"
                 }
               },
               "value": {
@@ -2236,7 +2236,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_3neNeS7d6K290Mps_qVKCj"
+                "name": "_dkn$q0$ypWQhcWRKQCkYcp"
               }
             }
           },
@@ -2456,22 +2456,27 @@
                     },
                     "y": {
                       "field": "revenue",
-                      "aggregate": "sum",
-                      "title": "Revenue"
+                      "title": "Revenue",
+                      "aggregate": "sum"
                     },
                     "color": {
                       "field": "store",
-                      "type": "nominal",
                       "title": "Store"
                     },
                     "tooltip": [
                       {
                         "field": "transactionDate",
-                        "type": "temporal"
+                        "type": "temporal",
+                        "title": "Date"
                       },
                       {
                         "field": "revenue",
-                        "type": "quantitative"
+                        "title": "Revenue",
+                        "aggregate": "sum"
+                      },
+                      {
+                        "field": "store",
+                        "title": "Store"
                       }
                     ]
                   }
@@ -2705,22 +2710,27 @@
                 },
                 "y": {
                   "field": "revenue",
-                  "aggregate": "sum",
-                  "title": "Revenue"
+                  "title": "Revenue",
+                  "aggregate": "sum"
                 },
                 "color": {
                   "field": "store",
-                  "type": "nominal",
                   "title": "Store"
                 },
                 "tooltip": [
                   {
                     "field": "transactionDate",
-                    "type": "temporal"
+                    "type": "temporal",
+                    "title": "Date"
                   },
                   {
                     "field": "revenue",
-                    "type": "quantitative"
+                    "title": "Revenue",
+                    "aggregate": "sum"
+                  },
+                  {
+                    "field": "store",
+                    "title": "Store"
                   }
                 ]
               }

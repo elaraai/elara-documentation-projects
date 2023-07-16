@@ -237,8 +237,8 @@ const reporter = new ProcessBuilder("Reporter")
 
 // run the historic processes up to the cutoff date
 const descriptive = new ScenarioBuilder("Descriptive")
-    .resource(cash, { ledger: true })
-    .resource(stock_on_hand, { ledger: true })
+    .resource(cash)
+    .resource(stock_on_hand)
     .resource(quantity_sold)
     .resource(price)
     .resource(suppliers)
@@ -510,9 +510,9 @@ const comparison_qty = new PipelineBuilder("Comparison Qty")
     .input({ name: "BAU", stream: interactive.simulationResultStreams()["Quantity Sold"] })
     .transform((qty, input) => Struct({
         Optimized: qty,
-        DisplayOptimized: StringJoin`Optimized ${qty}`,
+        DisplayOptimized: StringJoin`Full Potential ${qty}`,
         BAU: input.BAU,
-        DisplayBAU: StringJoin`BAU ${input.BAU}`,
+        DisplayBAU: StringJoin`${input.BAU}`,
     }))
 
 const comparison_cash = new PipelineBuilder("Comparison Cash")
@@ -520,16 +520,16 @@ const comparison_cash = new PipelineBuilder("Comparison Cash")
     .input({ name: "BAU", stream: interactive.simulationResultStreams().Cash })
     .transform((qty, input) => Struct({
         Optimized: qty,
-        DisplayOptimized: StringJoin`Optimized $${RoundPrecision(qty, 4)}`,
+        DisplayOptimized: StringJoin`Full Potential $${RoundPrecision(qty, 4)}`,
         BAU: input.BAU,
-        DisplayBAU: StringJoin`BAU $${RoundPrecision(input.BAU, 4)}`,
+        DisplayBAU: StringJoin`$${RoundPrecision(input.BAU, 4)}`,
     }))
 
 const tabbed_tables = new LayoutBuilder("Tabbed Tables")
     .tab(
         builder => builder
             .table(
-                "Recommended Supplier Choices",
+                "Supplier Choices",
                 builder => builder
                     .fromStream(bau_procurement_choices.outputStream())
                     .input({ name: "Suppliers", stream: supplier_names.outputStream() })
@@ -658,6 +658,7 @@ const dashboard = new LayoutBuilder("Business Outcomes")
                 display_value: (fields) => fields.DisplayBAU,
                 display_target: (fields) => fields.DisplayOptimized,
             })
+            
             .size(14)
     )
 
