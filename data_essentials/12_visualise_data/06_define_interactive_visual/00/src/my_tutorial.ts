@@ -183,8 +183,8 @@ const panel_layout = new LayoutBuilder("Business Insights Dashboard")
             .panel(50,
                 "column",
                 builder => builder
-                    .layout(70, table_layout)
-                    .form(30, "Donation Pledge", builder => builder
+                    .layout(60, table_layout)
+                    .form(40, "Donation Pledge", builder => builder
                         .fromStream(donation_pledge.outputStream())
                         .float("Percentage Of Profit to Donate (%)", {
                             value: fields => fields.percentageOfProfit

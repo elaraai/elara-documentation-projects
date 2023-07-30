@@ -1,4 +1,4 @@
-import { ArrayType, BlobType, Const, DateTimeType, DictType, Divide, FloatType, Floor, Get, GetField, IfNull, IntegerType, LayoutBuilder, Multiply, Nullable, PipelineBuilder, SourceBuilder, Stream, StringJoin, StringType, StructType, Subtract, Sum, Template, Unique, } from "@elaraai/core"
+import { ArrayType, BlobType, DateTimeType, Divide, FloatType, Floor, GetField, IfNull, IntegerType, LayoutBuilder, Multiply, Nullable, PipelineBuilder, SourceBuilder, Stream, StringJoin, StringType, StructType, Subtract, Sum, Template, Unique, } from "@elaraai/core"
 
 const my_products_file_source = new SourceBuilder("Products")
     .file({ path: "./data/products.csv" })
@@ -22,7 +22,7 @@ const parse_products = new PipelineBuilder("Parse Products")
             name: fields => fields.Name,
             code: fields => fields.Code,
             category: fields => fields.Category,
-            unitCost: fields => IfNull(fields["Unit Cost"], 100)
+            unitCost: fields => IfNull(fields["Unit Cost"], 100),
         }
     })
 
@@ -35,7 +35,7 @@ const sydney_sales_file_source = new SourceBuilder("Sydney Sales")
 const brisbane_sales_file_source = new SourceBuilder("Brisbane Sales")
     .file({ path: "./data/brisbane_sales.jsonl" })
 
-const SalesParser = (store: string, sales_blob_stream: Stream<BlobType>) => 
+const SalesParser = (store: string, sales_blob_stream: Stream<BlobType>) =>
     new PipelineBuilder(`Parse ${store} Sales`)
         .from(sales_blob_stream)
         .fromJsonLines({
@@ -58,15 +58,14 @@ const parse_brisbane_sales = SalesParser("Brisbane", brisbane_sales_file_source.
 
 const sales_across_stores = new PipelineBuilder("Sales Across Stores")
     .from(parse_melbourne_sales.outputStream())
-    .input({ name: "sydney_sales", stream: parse_sydney_sales.outputStream()})
-    .input({ name: "brisbane_sales", stream: parse_brisbane_sales.outputStream()})
+    .input({ name: "sydney_sales", stream: parse_sydney_sales.outputStream() })
+    .input({ name: "brisbane_sales", stream: parse_brisbane_sales.outputStream() })
     .concatenate({
         discriminator_name: "store",
         discriminator_value: "Melbourne",
         inputs: [
             { input: inputs => inputs.sydney_sales, discriminator_value: "Sydney" },
             { input: inputs => inputs.brisbane_sales, discriminator_value: "Brisbane" },
-
         ],
     })
     .disaggregateArray({
@@ -80,16 +79,16 @@ const sales_across_stores = new PipelineBuilder("Sales Across Stores")
         },
     })
 
-const product_unit_rebate = new SourceBuilder("Unit Rebate Per Product")
-    .value({
-        value: new Map(),
-        type: DictType(StringType, FloatType)
-    })
-
 const donation_pledge = new SourceBuilder("Donation Pledge")
     .value({
         value: { percentageOfProfit: 0 }
     })
+
+const patched_products = new SourceBuilder("Patched Products")
+    .patch(parse_products.outputStream())
+
+const max_unit_cost = new SourceBuilder("Patched Statistics Per Product Code")
+    .value({ value: 500 })
 
 const statistics_per_product_code = new PipelineBuilder("Statistics Per Product Code")
     .from(sales_across_stores.outputStream())
@@ -101,7 +100,7 @@ const statistics_per_product_code = new PipelineBuilder("Statistics Per Product 
             revenue: fields => Sum(fields.salePrice)
         }
     })
-    .input({ name: "products", stream: parse_products.outputStream() })
+    .input({ name: "products", stream: patched_products.outputStream() })
     .rightJoin({
         right_input: inputs => inputs.products,
         right_key: inputs => inputs.code,
@@ -118,27 +117,44 @@ const statistics_per_product_code = new PipelineBuilder("Statistics Per Product 
         },
         output_key: fields => fields.code
     })
-    .input({ name: "productUnitRebate", stream: product_unit_rebate.outputStream() })
     .input({ name: "donationPledge", stream: donation_pledge.outputStream() })
     .select({
         keep_all: true,
         selections: {
-            rebate: (_, key, inputs) => Get(inputs.productUnitRebate, key, 0),
-            cost: (fields, key, inputs) => Multiply(
-                Subtract(fields.unitCost, Get(inputs.productUnitRebate, key, 0)),
-                fields.units
-            ),
-            profit: (fields, key, inputs) => Multiply(
+            cost: fields => Multiply(fields.unitCost, fields.units),
+            profit: (fields, _, inputs) => Multiply(
                 Subtract(
                     fields.revenue,
-                    Multiply(Subtract(fields.unitCost, Get(inputs.productUnitRebate, key, 0)), fields.units)
+                    Multiply(fields.unitCost, fields.units)
                 ),
                 Subtract(1, Divide(GetField(inputs.donationPledge, "percentageOfProfit"), 100))
-            ),
-            min_rebate: _ => Const(0),
-            max_rebate: fields => fields.unitCost
+            )
         }
     })
+
+const products_layout = new LayoutBuilder("Products")
+    .table(
+        "Products",
+        builder => builder
+            .fromPatch(patched_products)
+            .input({ name: 'Max Cost', stream: max_unit_cost.outputStream() })
+            .showKey("Code")
+            .string("Category", {
+                value: fields => fields.category,
+                readonly: true
+            })
+            .string("Name", {
+                value: fields => fields.name,
+                readonly: true
+            })
+            .float("Unit Cost", {
+                value: fields => fields.unitCost,
+                min: 0,
+                max: (_fields, inputs) => inputs["Max Cost"]
+            })
+            .disableAdd()
+            .disableRemove()
+    )
 
 const table_layout = new LayoutBuilder("Statistics Per Product Code")
     .table(
@@ -149,15 +165,6 @@ const table_layout = new LayoutBuilder("Statistics Per Product Code")
             .string("Category", fields => fields.category)
             .string("Name", fields => fields.name)
             .float("Unit Cost", fields => fields.unitCost)
-            .float(
-                "Unit Rebate",
-                {
-                    value: fields => fields.rebate,
-                    min: fields => fields.min_rebate,
-                    max: fields => fields.max_rebate,
-                    edit: product_unit_rebate.outputStream()
-                }
-            )
             .integer("Units Sold", fields => fields.units)
             .float("Total Cost", fields => fields.cost)
             .float("Total Revenue", fields => fields.revenue)
@@ -205,12 +212,18 @@ const panel_layout = new LayoutBuilder("Business Insights Dashboard")
             .panel(50,
                 "column",
                 builder => builder
-                    .layout(70, table_layout)
-                    .form(30, "Donation Pledge", builder => builder
-                        .fromStream(donation_pledge.outputStream())
-                        .float("Percentage Of Profit to Donate (%)", {
-                            value: fields => fields.percentageOfProfit
-                        })
+                    .layout(60, table_layout)
+                    .panel(40,
+                        "row",
+                        builder => builder
+                        .layout(50, products_layout)
+                        .form(50,
+                            "Donation Pledge", builder => builder
+                                .fromStream(donation_pledge.outputStream())
+                                .float("Percentage Of Profit to Donate (%)", {
+                                    value: fields => fields.percentageOfProfit
+                                })
+                        )
                     )
             )
             .panel(50,
@@ -221,12 +234,12 @@ const panel_layout = new LayoutBuilder("Business Insights Dashboard")
                         50,
                         "Profit Split across Products",
                         builder => builder.fromStream(statistics_per_product_code.outputStream())
-                        .pie({
-                            key: fields => fields.name,
-                            key_title: "Product Code",
-                            value: fields => fields.profit,
-                            value_title: "Total Profit"
-                        })
+                            .pie({
+                                key: fields => fields.name,
+                                key_title: "Product Code",
+                                value: fields => fields.profit,
+                                value_title: "Total Profit"
+                            })
                     )
             )
     )
@@ -242,11 +255,12 @@ export default Template(
     parse_brisbane_sales,
     sales_across_stores,
     statistics_per_product_code,
+    patched_products,
+    max_unit_cost,
     // table_layout,
     revenue_over_time,
     // graph_layout,
     tabbed_layout,
     panel_layout,
-    product_unit_rebate,
     donation_pledge
 )

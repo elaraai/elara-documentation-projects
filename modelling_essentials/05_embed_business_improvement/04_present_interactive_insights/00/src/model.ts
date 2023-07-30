@@ -1,4 +1,4 @@
-import { Add, AddDuration, Const, Convert, DateTimeType, Default, DictType, Divide, FilterTag, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IntegerType, LayoutBuilder, Max, Min, MLModelBuilder, Multiply, NewDict, PipelineBuilder, Print, ProcessBuilder, Reduce, ResourceBuilder, Round, RoundPrecision, ScenarioBuilder, Sort, SourceBuilder, StringJoin, StringType, Struct, StructType, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
+import { Add, AddDuration, Const, Convert, DateTimeType, Default, DictType, Divide, FilterTag, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IntegerType, Keys, LayoutBuilder, Max, Min, MLModelBuilder, Multiply, PipelineBuilder, Print, ProcessBuilder, RandomKey, Reduce, ResourceBuilder, Round, RoundPrecision, ScenarioBuilder, Sort, SourceBuilder, StringJoin, StringType, Struct, StructType, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
 
 ////////////////////////////////////////////////////////////
 /////////// STEP 1: GET THE DATA
@@ -286,8 +286,8 @@ const predicted_sales = new ProcessBuilder("Predicted Sales")
             date: IfElse(
                 GreaterEqual(Hour(date), GetField(inputs.operating_times, "end")),
                 AddDuration(
-                    Floor(AddDuration(date, 1, 'day'), 'day'), 
-                    Convert(GetField(inputs.operating_times, "start"), FloatType), 
+                    Floor(AddDuration(date, 1, 'day'), 'day'),
+                    Convert(GetField(inputs.operating_times, "start"), FloatType),
                     'hour'
                 ),
                 date
@@ -357,13 +357,13 @@ const predicted_procurement = new ProcessBuilder("Predicted Procurement")
             )
         ),
         block => block
-        .execute(
-            "Procurement",
-            props => Struct({
-                date: props.date,
-                supplierName: GetField(props.supplier, "supplierName"),
-            }),
-        )
+            .execute(
+                "Procurement",
+                props => Struct({
+                    date: props.date,
+                    supplierName: GetField(props.supplier, "supplierName"),
+                }),
+            )
     )
     // Set procurement to occur every day
     .execute("Predicted Procurement", props => Struct({ date: AddDuration(props.date, 1, 'day') }))
@@ -373,7 +373,7 @@ const predicted_procurement = new ProcessBuilder("Predicted Procurement")
         .transform(date => Struct({ date }))
     )
 
-const prescriptive = new ScenarioBuilder("Prescriptive")
+const prescriptive_scenario = new ScenarioBuilder("Prescriptive")
     .continueScenario(descriptive)
     .resource(operating_times)
     .resource(discount)
@@ -382,19 +382,6 @@ const prescriptive = new ScenarioBuilder("Prescriptive")
     .process(predicted_procurement)
     // reporting
     .alterResourceFromValue("Report", new Map())
-    .alterProcessFromPipeline(
-        "Reporter",
-        (builder, _) => builder
-            .from(historic_sales_end.outputStream())
-            .transform(
-                date => NewDict(
-                    StringType,
-                    StructType({ date: DateTimeType }),
-                    ["0"],
-                    [Struct({ date })]
-                )
-            )
-    )
     // end simulation
     .endSimulation(future_end.outputStream())
     // elara will try to maximise this - the cash balance!
@@ -406,32 +393,128 @@ const prescriptive = new ScenarioBuilder("Prescriptive")
     .optimizeEvery("Supplier Policy", "stockOnHandWeight", { min: -1, max: 1 })
     .optimizationInMemory(true)
 
-const recommended_discount = new PipelineBuilder("Recommended Discount")
-    .from(prescriptive.simulationResultStreams().Discount)
-    .transform(stream => StringJoin`${RoundPrecision(stream, 4)}%`)
+const supplier_names = new PipelineBuilder("Supplier Names")
+    .from(descriptive.simulationResultStreams().Suppliers)
+    .transform(stream => Keys(stream))
 
 const recommended_procurement_choices = new PipelineBuilder(`Recommended Procurement Choices`)
-    .from(prescriptive.simulationJournalStream())
+    .from(prescriptive_scenario.simulationJournalStream())
     .transform(stream => FilterTag(stream, "Procurement"))
+    .transform((stream) => ToDict(
+        stream,
+        (value) => Struct({
+            date: GetField(value, "date"),
+            supplierName: GetField(value, "supplierName"),
+            orderQty: GetField(value, "orderQty"),
+            unitCost: GetField(value, "unitCost"),
+        }),
+        value => Print(GetField(value, "date"))
+    ))
+
+const bau_procurement_choices = new PipelineBuilder(`BAU Procurement Choices`)
+    .from(recommended_procurement_choices.outputStream())
+    .input({ name: "Suppliers", stream: supplier_names.outputStream() })
+    .select({
+        keep_all: false,
+        selections: {
+            date: (fields) => fields.date,
+            // choose a random supplier
+            supplierName: (_fields, _key, inputs) => RandomKey(inputs.Suppliers),
+            // keep the recommended choice
+            recommended: (fields) => fields.supplierName,
+        }
+    })
 
 const expected_deliveries = new PipelineBuilder(`Expected Deliveries`)
-    .from(prescriptive.simulationJournalStream())
+    .from(prescriptive_scenario.simulationJournalStream())
     .transform(stream => FilterTag(stream, "Receive Goods"))
 
 const expected_invoices = new PipelineBuilder(`Expected Invoices`)
-    .from(prescriptive.simulationJournalStream())
+    .from(prescriptive_scenario.simulationJournalStream())
     .transform(stream => FilterTag(stream, "Pay Supplier"))
+
+// New Interactive Scenario
+const discount_choice = new SourceBuilder("Discount Choice")
+    .value({
+        value: { discount: 0, min_discount: 0, max_discount: 100 },
+        type: StructType({ discount: FloatType, min_discount: FloatType, max_discount: FloatType })
+    })
+
+const supplier_choice = new SourceBuilder('Supplier Choice')
+    .patch(bau_procurement_choices.outputStream())
+
+const interactive_scenario = new ScenarioBuilder("Interactive")
+    .continueScenario(descriptive)
+    .resource(operating_times)
+    .resource(discount)
+    .process(predicted_sales)
+    // reporting
+    .alterResourceFromValue("Report", new Map())
+    // end simulation
+    .endSimulation(future_end.outputStream())
+    // user-supplied discount
+    .alterResourceFromPipeline("Discount", builder => builder
+        .from(discount_choice.outputStream())
+        .transform(discountChoice => GetField(discountChoice, "discount"))
+    )
+    // procurement supplied from optimized scenario
+    .alterProcessFromPipeline(
+        "Procurement",
+        (builder) => builder
+            .from(supplier_choice.outputStream())
+            .select({
+                keep_all: false,
+                selections: {
+                    date: (fields) => fields.date,
+                    supplierName: (fields) => fields.supplierName,
+                }
+            })
+    )
+
+
+const comparison_cash = new PipelineBuilder("Comparison Cash")
+    .from(prescriptive_scenario.simulationResultStreams().Cash)
+    .input({ name: "BAU", stream: interactive_scenario.simulationResultStreams().Cash })
+    .transform((qty, input) => Struct({
+        Optimized: qty,
+        DisplayOptimized: StringJoin`$${RoundPrecision(qty, 4)}`,
+        BAU: input.BAU,
+        DisplayBAU: StringJoin`$${RoundPrecision(input.BAU, 4)}`,
+    }))
+
+
+const concatenated_reports = new PipelineBuilder("Concatenated Reports")
+    .from(descriptive.simulationResultStreams().Report)
+    .input({ name: "Optimized", stream: prescriptive_scenario.simulationResultStreams().Report })
+    .input({ name: "BAU", stream: interactive_scenario.simulationResultStreams().Report })
+    .concatenate({
+        discriminator_name: "scenario",
+        discriminator_value: "Historic",
+        inputs: [
+            { input: inputs => inputs.Optimized, discriminator_value: "Optimized" },
+            { input: inputs => inputs.BAU, discriminator_value: "BAU" },
+        ]
+    })
+////////////////////////////////////////////////////////////
+/////////// STEP 5: PRESENT THE INSIGHTS
+
 
 const tabbed_tables = new LayoutBuilder("Tabbed Tables")
     .tab(
         builder => builder
             .table(
-                "Recommended Order Choices",
+                "Supplier Choices",
                 builder => builder
-                    .fromStream(recommended_procurement_choices.outputStream())
+                    .fromPatch(supplier_choice)
+                    .input({ name: "Suppliers", stream: supplier_names.outputStream() })
                     .date("Procurement Date", fields => fields.date)
-                    .string("Supplier Name", fields => fields.supplierName)
-                    .integer("Order Qty", fields => fields.orderQty)
+                    .string("Supplier Name", {
+                        value: fields => fields.supplierName,
+                        range: (_, inputs) => inputs.Suppliers,
+                        target: fields => fields.recommended,
+                    })
+                    .disableAdd()
+                    .disableRemove()
             )
             .table(
                 "Expected Deliveries",
@@ -453,74 +536,6 @@ const tabbed_tables = new LayoutBuilder("Tabbed Tables")
                     .float("Invoice Total", fields => fields.invoiceTotal)
             )
     )
-
-// New Interactive Scenario
-const discount_choice = new SourceBuilder("Discount Choice")
-    .value({
-        value: { discount: 0, min_discount: 0, max_discount: 100 },
-        type: StructType({ discount: FloatType, min_discount: FloatType, max_discount: FloatType })
-    })
-
-const interactive_scenario = new ScenarioBuilder("Interactive")
-    .continueScenario(descriptive)
-    .resource(operating_times)
-    .resource(discount)
-    .process(predicted_sales)
-    // reporting
-    .alterResourceFromValue("Report", new Map())
-    .alterProcessFromPipeline(
-        "Reporter",
-        (builder, _) => builder
-            .from(historic_sales_end.outputStream())
-            .transform(
-                date => NewDict(
-                    StringType,
-                    StructType({ date: DateTimeType }),
-                    ["0"],
-                    [Struct({ date })]
-                )
-            )
-    )
-    // end simulation
-    .endSimulation(future_end.outputStream())
-    // user-supplied discount
-    .alterResourceFromPipeline("Discount", builder => builder
-        .from(discount_choice.outputStream())
-        .transform(discountChoice => GetField(discountChoice, "discount"))
-    )
-    // procurement supplied from optimized scenario
-    .alterProcessFromPipeline(
-        "Procurement",
-        builder => builder
-            .from(prescriptive.simulationJournalStream())
-            .transform(
-                stream => ToDict(
-                    FilterTag(stream, "Procurement"),
-                    value => Struct({
-                        date: GetField(value, "date"),
-                        supplierName: GetField(value, "supplierName"),
-                    }),
-                    (_, index) => Print(index)
-                )
-            )
-    )
-
-
-////////////////////////////////////////////////////////////
-/////////// STEP 5: PRESENT THE INSIGHTS
-
-const concatenated_reports = new PipelineBuilder("Concatenated Reports")
-    .from(descriptive.simulationResultStreams().Report)
-    .input({ name: "Optimized", stream: prescriptive.simulationResultStreams().Report })
-    .input({ name: "BAU", stream: interactive_scenario.simulationResultStreams().Report })
-    .concatenate({
-        discriminator_name: "scenario",
-        discriminator_value: "Historic",
-        inputs: [
-            { input: inputs => inputs.Optimized, discriminator_value: "Optimized" },
-            { input: inputs => inputs.BAU, discriminator_value: "BAU" },
-        ]
-    })
 
 const cash_graph = new LayoutBuilder("Cash Graph")
     .vega(
@@ -552,41 +567,54 @@ const stock_graph = new LayoutBuilder("Stock Graph")
             })
     )
 
+const discount_form = new LayoutBuilder("Discount")
+    .form(
+        "Discount",
+        builder => builder
+            .fromStream(discount_choice.outputStream())
+            .input({ name: "Discount", stream: prescriptive_scenario.simulationResultStreams().Discount })
+            .float("Discount (%)", {
+                value: fields => fields.discount,
+                min: fields => fields.min_discount,
+                max: fields => fields.max_discount,
+                target: (_fields, inputs) => inputs.Discount
+            })
+    )
+
+
 // Dashboard
 const dashboard = new LayoutBuilder("Business Outcomes")
     .panel(
         "row",
         builder => builder
-        .panel(
-            50,
-            "column",
-            builder => builder
-                .form(
-                    50,
-                    "BAU Discount",
-                    builder => builder
-                        .fromStream(discount_choice.outputStream())
-                        .float("Percentage Discount", {
-                            value: fields => fields.discount,
-                            min: fields => fields.min_discount,
-                            max: fields => fields.max_discount
-                        })
-                )
-                .layout(50, tabbed_tables)
-        )
-        .panel(
-            50,
-            "column",
-            builder => builder
-                .layout(50, cash_graph)
-                .layout(50, stock_graph)
-        )
+            .panel(
+                50,
+                "column",
+                builder => builder
+                    .layout(50, discount_form)
+                    .layout(50, tabbed_tables)
+            )
+            .panel(
+                50,
+                "column",
+                builder => builder
+                    .layout(50, cash_graph)
+                    .layout(50, stock_graph)
+            )
     )
     .header(
         builder => builder
-            .value("Recommended Discount", recommended_discount.outputStream())
-            .size(15)
+            .progress(
+                "Potential Profit Achieved",
+                comparison_cash.outputStream(), {
+                value: (fields) => fields.BAU,
+                target: (fields) => fields.Optimized,
+                display_value: (fields) => fields.DisplayBAU,
+                display_target: (fields) => fields.DisplayOptimized,
+            })
+            .size(14)
     )
+    .targetsToolbar(true)
 
 ////////////////////////////////////////////////////////////
 /////////// STEP 6: MERGE INTO A SOLUTION
@@ -617,11 +645,11 @@ export default Template(
     discount,
     supplier_policy,
     predicted_procurement,
-    prescriptive,
-    // Header value,
-    recommended_discount,
+    prescriptive_scenario,
     // Table data
+    supplier_names,
     recommended_procurement_choices,
+    bau_procurement_choices,
     expected_deliveries,
     expected_invoices,
     // Reporting
@@ -629,8 +657,10 @@ export default Template(
     reporter,
     // Interactive Scenario
     discount_choice,
+    supplier_choice,
     interactive_scenario,
-    // Line chart data
+    // Visual data
+    comparison_cash,
     concatenated_reports,
     // Dashboard
     dashboard

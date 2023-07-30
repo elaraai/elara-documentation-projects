@@ -1,4 +1,4 @@
-import { Add, AddDuration, Const, Convert, DateTimeType, Default, DictType, Divide, FilterTag, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IntegerType, LayoutBuilder, Max, Min, MLModelBuilder, Multiply, NewDict, PipelineBuilder, Print, ProcessBuilder, Reduce, ResourceBuilder, Round, RoundPrecision, ScenarioBuilder, Sort, SourceBuilder, StringJoin, StringType, Struct, StructType, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
+import { Add, AddDuration, Const, Convert, DateTimeType, Default, DictType, Divide, FilterTag, FloatType, Floor, Get, GetField, Greater, GreaterEqual, Hour, IfElse, IntegerType, LayoutBuilder, Max, Min, MLModelBuilder, Multiply, PipelineBuilder, Print, ProcessBuilder, Reduce, ResourceBuilder, Round, RoundPrecision, ScenarioBuilder, Sort, SourceBuilder, StringJoin, StringType, Struct, StructType, Subtract, Template, ToArray, ToDict } from "@elaraai/core"
 
 const sales_file = new SourceBuilder("Sales File")
     .file({ path: 'data/sales.jsonl' })
@@ -369,7 +369,7 @@ const ranked_predicted_procurement = new ProcessBuilder("Ranked Predicted Procur
         .transform(date => Struct({ date }))
     )
 
-const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi-decision Prescriptive Enhanced")
+const prescriptive_scenario = new ScenarioBuilder("Multi-decision Prescriptive Enhanced")
     .continueScenario(descriptive_scenario)
     .resource(operating_times)
     .resource(discount)
@@ -378,19 +378,6 @@ const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi
     .process(ranked_predicted_procurement)
     // reporting
     .alterResourceFromValue("Report", new Map())
-    .alterProcessFromPipeline(
-        "Reporter",
-        (builder, _) => builder
-            .from(historic_sales_cutoff_date.outputStream())
-            .transform(
-                date => NewDict(
-                    StringType,
-                    StructType({ date: DateTimeType }),
-                    ["0"],
-                    [Struct({ date })]
-                )
-            )
-    )
     // end simulation
     .endSimulation(future_cutoff_date.outputStream())
     // elara will try to maximise this - the cash balance!
@@ -403,21 +390,21 @@ const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi
     .optimizationInMemory(true)
 
 const recommended_discount = new PipelineBuilder("Recommended Discount")
-    .from(multi_decision_prescriptive_scenario_enhanced.simulationResultStreams().Discount)
+    .from(prescriptive_scenario.simulationResultStreams().Discount)
     .transform(
         stream => StringJoin`${RoundPrecision(stream, 4)}%`
     )
 
 const recommended_procurement_choices = new PipelineBuilder(`Recommended Procurement Choices`)
-    .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
+    .from(prescriptive_scenario.simulationJournalStream())
     .transform(stream => FilterTag(stream, "Procurement"))
 
 const expected_deliveries = new PipelineBuilder(`Expected Deliveries`)
-    .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
+    .from(prescriptive_scenario.simulationJournalStream())
     .transform(stream => FilterTag(stream, "Receive Goods"))
 
 const expected_invoices = new PipelineBuilder(`Expected Invoices`)
-    .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
+    .from(prescriptive_scenario.simulationJournalStream())
     .transform(stream => FilterTag(stream, "Pay Supplier"))
 
 const tabbed_tables = new LayoutBuilder("Tabbed Tables")
@@ -456,7 +443,7 @@ const concatenated_reports = new PipelineBuilder("Concatenated Reports")
     .from(descriptive_scenario.simulationResultStreams().Report)
     .input({
         name: "optimizedReport",
-        stream: multi_decision_prescriptive_scenario_enhanced.simulationResultStreams().Report
+        stream: prescriptive_scenario.simulationResultStreams().Report
     })
     .concatenate({
         discriminator_name: "scenario",
@@ -512,7 +499,7 @@ const dashboard = new LayoutBuilder("Business Outcomes")
     )
     .header(
         builder => builder
-            .item("Recommended Discount", recommended_discount.outputStream())
+            .value("Recommended Discount", recommended_discount.outputStream())
             .size(15)
     )
 
@@ -541,7 +528,7 @@ export default Template(
     discount,
     multi_factor_supplier_policy,
     ranked_predicted_procurement,
-    multi_decision_prescriptive_scenario_enhanced,
+    prescriptive_scenario,
     // Header value,
     recommended_discount,
     // Table data

@@ -325,7 +325,7 @@ const ranked_predicted_procurement = new ProcessBuilder("Ranked Predicted Procur
         .transform(date => Struct({ date }))
     )
 
-const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi-decision Prescriptive Enhanced")
+const prescriptive_scenario = new ScenarioBuilder("Multi-decision Prescriptive Enhanced")
     .continueScenario(descriptive_scenario)
     .resource(operating_times)
     .resource(discount)
@@ -368,5 +368,5 @@ export default Template(
     discount,
     multi_factor_supplier_policy,
     ranked_predicted_procurement,
-    multi_decision_prescriptive_scenario_enhanced,
+    prescriptive_scenario,
 )

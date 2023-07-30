@@ -325,7 +325,7 @@ const ranked_predicted_procurement = new ProcessBuilder("Ranked Predicted Procur
         .transform(date => Struct({ date }))
     )
 
-const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi-decision Prescriptive Enhanced")
+const prescriptive_scenario = new ScenarioBuilder("Multi-decision Prescriptive Enhanced")
     .continueScenario(descriptive_scenario)
     .resource(operating_times)
     .resource(discount)
@@ -344,21 +344,21 @@ const multi_decision_prescriptive_scenario_enhanced = new ScenarioBuilder("Multi
     .optimizationInMemory(true)
 
 const recommended_discount = new PipelineBuilder("Recommended Discount")
-    .from(multi_decision_prescriptive_scenario_enhanced.simulationResultStreams().Discount)
+    .from(prescriptive_scenario.simulationResultStreams().Discount)
     .transform(
         stream => StringJoin`${RoundPrecision(stream, 4)}%`
     )
 
 const recommended_procurement_choices = new PipelineBuilder(`Recommended Procurement Choices`)
-    .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
+    .from(prescriptive_scenario.simulationJournalStream())
     .transform(stream => FilterTag(stream, "Procurement"))
 
 const expected_deliveries = new PipelineBuilder(`Expected Deliveries`)
-    .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
+    .from(prescriptive_scenario.simulationJournalStream())
     .transform(stream => FilterTag(stream, "Receive Goods"))
 
 const expected_invoices = new PipelineBuilder(`Expected Invoices`)
-    .from(multi_decision_prescriptive_scenario_enhanced.simulationJournalStream())
+    .from(prescriptive_scenario.simulationJournalStream())
     .transform(stream => FilterTag(stream, "Pay Supplier"))
 
 const tabbed_tables = new LayoutBuilder("Tabbed Tables")
@@ -394,7 +394,7 @@ const tabbed_tables = new LayoutBuilder("Tabbed Tables")
     )
 
 const optimized_cash_over_time = new PipelineBuilder("Optimised Cash Over Time")
-    .from(multi_decision_prescriptive_scenario_enhanced.simulationLedgerStreams().Cash)
+    .from(prescriptive_scenario.simulationLedgerStreams().Cash)
     .transform(
         stream => ToDict(
             stream,
@@ -437,7 +437,7 @@ const cash_over_time = new PipelineBuilder("Cash Over Time")
     })
 
 const optimized_stock_over_time = new PipelineBuilder("Optimised Stock-on-hand Over Time")
-    .from(multi_decision_prescriptive_scenario_enhanced.simulationLedgerStreams()["Stock-on-hand"])
+    .from(prescriptive_scenario.simulationLedgerStreams()["Stock-on-hand"])
     .transform(
         stream => ToDict(
             stream,
@@ -524,7 +524,7 @@ const dashboard = new LayoutBuilder("Business Outcomes")
     )
     .header(
         builder => builder
-            .item("Recommended Discount", recommended_discount.outputStream())
+            .value("Recommended Discount", recommended_discount.outputStream())
             .size(15)
     )
 
@@ -553,7 +553,7 @@ export default Template(
     discount,
     multi_factor_supplier_policy,
     ranked_predicted_procurement,
-    multi_decision_prescriptive_scenario_enhanced,
+    prescriptive_scenario,
     // Header value,
     recommended_discount,
     // Table data

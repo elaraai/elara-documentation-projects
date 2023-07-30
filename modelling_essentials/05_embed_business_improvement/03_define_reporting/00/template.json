@@ -251,28 +251,6 @@
       },
       "writable": false
     },
-    "Pipeline.Alteration.Multi-decision Prescriptive Enhanced.Resource.Reporter": {
-      "name": "Pipeline.Alteration.Multi-decision Prescriptive Enhanced.Resource.Reporter",
-      "type": {
-        "type": "Dict",
-        "value": {
-          "key": {
-            "type": "String",
-            "value": null
-          },
-          "value": {
-            "type": "Struct",
-            "value": {
-              "date": {
-                "type": "DateTime",
-                "value": null
-              }
-            }
-          }
-        }
-      },
-      "writable": false
-    },
     "Pipeline.Concatenated Reports": {
       "name": "Pipeline.Concatenated Reports",
       "type": {
@@ -2167,28 +2145,6 @@
           },
           "writable": false
         },
-        "process.Reporter": {
-          "name": "Pipeline.Alteration.Multi-decision Prescriptive Enhanced.Resource.Reporter",
-          "type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "date": {
-                    "type": "DateTime",
-                    "value": null
-                  }
-                }
-              }
-            }
-          },
-          "writable": false
-        },
         "queue": {
           "name": "SimulationQueue.Descriptive",
           "type": {
@@ -3551,7 +3507,7 @@
               }
             }
           ],
-          "input": "process.Reporter"
+          "input": null
         },
         "Predicted Sales": {
           "name": "Predicted Sales",
@@ -3629,7 +3585,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_akl7ia5eqUTo86omP0O1hH"
+                          "name": "_H9GaMjawa0GTG30epDdUwP"
                         },
                         "second": {
                           "type": {
@@ -3646,7 +3602,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_akl7ia5eqUTo86omP0O1hH"
+                        "name": "_H9GaMjawa0GTG30epDdUwP"
                       },
                       "false": {
                         "type": {
@@ -3663,7 +3619,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_akl7ia5eqUTo86omP0O1hH"
+                      "name": "_H9GaMjawa0GTG30epDdUwP"
                     },
                     "value": {
                       "type": {
@@ -4139,7 +4095,7 @@
                                 "value": null
                               },
                               "ast_type": "Variable",
-                              "name": "_key_g1nz3MbgdK9_MUP0lncn9k"
+                              "name": "_key_joAl0gzTp6CvAQO9orsUu8"
                             },
                             "default": null
                           },
@@ -4220,7 +4176,7 @@
                                 "value": null
                               },
                               "ast_type": "Variable",
-                              "name": "_key_g1nz3MbgdK9_MUP0lncn9k"
+                              "name": "_key_joAl0gzTp6CvAQO9orsUu8"
                             },
                             "default": null
                           },
@@ -4242,7 +4198,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_key_g1nz3MbgdK9_MUP0lncn9k"
+                      "name": "_key_joAl0gzTp6CvAQO9orsUu8"
                     }
                   }
                 },
@@ -4273,7 +4229,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "_value_2xYlob4C$rnf3FI4mErC$G"
+                  "name": "_value_mSB6is7K57odMAMflM0JSi"
                 },
                 "input_key": {
                   "type": {
@@ -4281,7 +4237,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_key_g1nz3MbgdK9_MUP0lncn9k"
+                  "name": "_key_joAl0gzTp6CvAQO9orsUu8"
                 }
               }
             },
@@ -4439,7 +4395,7 @@
                               }
                             },
                             "ast_type": "Variable",
-                            "name": "_first_1kyOmVjRmqh0ewy$2TVDET"
+                            "name": "_first_IY6JcuyfXYmD4XIcmnQsMx"
                           },
                           "key": "rank"
                         },
@@ -4464,7 +4420,7 @@
                               }
                             },
                             "ast_type": "Variable",
-                            "name": "_second_kqvQz3nB0st$IHlK1utW3E"
+                            "name": "_second_GuMv1vd68ySB0ANo6SQGEb"
                           },
                           "key": "rank"
                         }
@@ -4484,7 +4440,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "_first_1kyOmVjRmqh0ewy$2TVDET"
+                        "name": "_first_IY6JcuyfXYmD4XIcmnQsMx"
                       },
                       "second": {
                         "type": {
@@ -4501,7 +4457,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "_second_kqvQz3nB0st$IHlK1utW3E"
+                        "name": "_second_GuMv1vd68ySB0ANo6SQGEb"
                       }
                     },
                     "key": {
@@ -4930,123 +4886,6 @@
       },
       "initial_queue": "queue",
       "end_date": "endDate"
-    },
-    "Pipeline.Alteration.Multi-decision Prescriptive Enhanced.Resource.Reporter": {
-      "name": "Pipeline.Alteration.Multi-decision Prescriptive Enhanced.Resource.Reporter",
-      "parent": "Pipeline.Alteration.Multi-decision Prescriptive Enhanced.Resource.Reporter",
-      "task_type": "pipeline",
-      "inputs": {
-        "input": {
-          "name": "Pipeline.Historic Sales Cutoff Date",
-          "type": {
-            "type": "DateTime",
-            "value": null
-          },
-          "writable": false
-        }
-      },
-      "outputs": {
-        "output": {
-          "name": "Pipeline.Alteration.Multi-decision Prescriptive Enhanced.Resource.Reporter",
-          "type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "date": {
-                    "type": "DateTime",
-                    "value": null
-                  }
-                }
-              }
-            }
-          },
-          "writable": false
-        }
-      },
-      "operations": [
-        {
-          "operation_type": "transform",
-          "output_type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "date": {
-                    "type": "DateTime",
-                    "value": null
-                  }
-                }
-              }
-            }
-          },
-          "expression": {
-            "type": {
-              "type": "Dict",
-              "value": {
-                "key": {
-                  "type": "String",
-                  "value": null
-                },
-                "value": {
-                  "type": "Struct",
-                  "value": {
-                    "date": {
-                      "type": "DateTime",
-                      "value": null
-                    }
-                  }
-                }
-              }
-            },
-            "ast_type": "NewDict",
-            "keys": [
-              {
-                "type": {
-                  "type": "String",
-                  "value": null
-                },
-                "ast_type": "Const",
-                "value": "0"
-              }
-            ],
-            "values": [
-              {
-                "type": {
-                  "type": "Struct",
-                  "value": {
-                    "date": {
-                      "type": "DateTime",
-                      "value": null
-                    }
-                  }
-                },
-                "ast_type": "Struct",
-                "fields": {
-                  "date": {
-                    "type": {
-                      "type": "DateTime",
-                      "value": null
-                    },
-                    "ast_type": "Variable",
-                    "name": "value"
-                  }
-                }
-              }
-            ]
-          }
-        }
-      ]
     },
     "Pipeline.Concatenated Reports": {
       "name": "Pipeline.Concatenated Reports",
@@ -5888,7 +5727,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_Paj$fkMcsz53NCXDAR0SK1"
+                "name": "_value_U$vK5ZojKz$0CTmqmnnjWV"
               },
               "functions": {
                 "Pay Supplier": {
@@ -5995,7 +5834,7 @@
                       }
                     },
                     "ast_type": "Variable",
-                    "name": "_MGG3K$tCwevrhvW$aLnumt"
+                    "name": "_OR7xhjfO_$8_YB36rPCXo9"
                   }
                 },
                 "Reporter": {
@@ -6029,7 +5868,7 @@
                   }
                 }
               },
-              "value": "_MGG3K$tCwevrhvW$aLnumt"
+              "value": "_OR7xhjfO_$8_YB36rPCXo9"
             },
             "value": {
               "type": {
@@ -6223,7 +6062,7 @@
                 }
               },
               "ast_type": "Variable",
-              "name": "_value_Paj$fkMcsz53NCXDAR0SK1"
+              "name": "_value_U$vK5ZojKz$0CTmqmnnjWV"
             },
             "key": {
               "type": {
@@ -6231,7 +6070,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_UM7tmp5iR$ziZo9EYPHCPI"
+              "name": "_key__zrg3uvL_e3uUituEJge3G"
             }
           }
         }
@@ -6975,7 +6814,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_fJdByZN7OIGbpwSy3ecfFQ"
+                "name": "_value_vgF5HVSC8fJB$kgGBdsT_X"
               },
               "functions": {
                 "Pay Supplier": {
@@ -7046,7 +6885,7 @@
                       }
                     },
                     "ast_type": "Variable",
-                    "name": "_b$4TQANjFUI_aQG6b5GrlH"
+                    "name": "_LTrlY0CB93ZFJp8I9CcGB$"
                   }
                 },
                 "Predicted Sales": {
@@ -7140,7 +6979,7 @@
                   }
                 }
               },
-              "value": "_b$4TQANjFUI_aQG6b5GrlH"
+              "value": "_LTrlY0CB93ZFJp8I9CcGB$"
             },
             "value": {
               "type": {
@@ -7334,7 +7173,7 @@
                 }
               },
               "ast_type": "Variable",
-              "name": "_value_fJdByZN7OIGbpwSy3ecfFQ"
+              "name": "_value_vgF5HVSC8fJB$kgGBdsT_X"
             },
             "key": {
               "type": {
@@ -7342,7 +7181,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_2jHSKqK9$4hUXRsAVrV9Zy"
+              "name": "_key_iXdWTKOdqeb8LV6RnMQwRY"
             }
           }
         }
@@ -7703,7 +7542,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_hO7fQqpBzfSsapFE3qikxN"
+                      "name": "_i79sKTyqgtBo_ujhI7xja2"
                     },
                     "second": {
                       "type": {
@@ -7711,7 +7550,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_previous_iL9HnmWFl4XKWOOAwNH1sf"
+                      "name": "_previous_CioYpqHP$NNbbLAlKSsJfJ"
                     }
                   },
                   "true": {
@@ -7720,7 +7559,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_hO7fQqpBzfSsapFE3qikxN"
+                    "name": "_i79sKTyqgtBo_ujhI7xja2"
                   },
                   "false": {
                     "type": {
@@ -7728,7 +7567,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_previous_iL9HnmWFl4XKWOOAwNH1sf"
+                    "name": "_previous_CioYpqHP$NNbbLAlKSsJfJ"
                   }
                 },
                 "variable": {
@@ -7737,7 +7576,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_hO7fQqpBzfSsapFE3qikxN"
+                  "name": "_i79sKTyqgtBo_ujhI7xja2"
                 },
                 "value": {
                   "type": {
@@ -7764,7 +7603,7 @@
                       }
                     },
                     "ast_type": "Variable",
-                    "name": "_value_jKzt2wygINDSUF4ODB8SCW"
+                    "name": "_value_BY$gPLCA8Uz9IWh2f$uvfa"
                   },
                   "key": "date"
                 }
@@ -7783,7 +7622,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_previous_iL9HnmWFl4XKWOOAwNH1sf"
+                "name": "_previous_CioYpqHP$NNbbLAlKSsJfJ"
               },
               "value": {
                 "type": {
@@ -7804,7 +7643,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_jKzt2wygINDSUF4ODB8SCW"
+                "name": "_value_BY$gPLCA8Uz9IWh2f$uvfa"
               },
               "key": {
                 "type": {
@@ -7812,7 +7651,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_key_RbNynoWRQCYwsaVQSjp07P"
+                "name": "_key_x$zibif28k2P9UZmemY0F2"
               }
             },
             "duration": {
@@ -8064,7 +7903,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_9TepCUn47RbbGvfpkq8ojG"
+                      "name": "_ksX1RPDFljQdYBoD$1apsE"
                     },
                     "second": {
                       "type": {
@@ -8072,7 +7911,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_previous_LIlrqqwocRmboSzFwCS1zo"
+                      "name": "_previous_rfRf3kA1hU21Z7y869o5YO"
                     }
                   },
                   "true": {
@@ -8081,7 +7920,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_9TepCUn47RbbGvfpkq8ojG"
+                    "name": "_ksX1RPDFljQdYBoD$1apsE"
                   },
                   "false": {
                     "type": {
@@ -8089,7 +7928,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_previous_LIlrqqwocRmboSzFwCS1zo"
+                    "name": "_previous_rfRf3kA1hU21Z7y869o5YO"
                   }
                 },
                 "variable": {
@@ -8098,7 +7937,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_9TepCUn47RbbGvfpkq8ojG"
+                  "name": "_ksX1RPDFljQdYBoD$1apsE"
                 },
                 "value": {
                   "type": {
@@ -8121,7 +7960,7 @@
                       }
                     },
                     "ast_type": "Variable",
-                    "name": "_value_UXHK6B5G7a4Y451GTxcZMz"
+                    "name": "_value_EV5Uo_meUE$i9H7b4oBz$4"
                   },
                   "key": "date"
                 }
@@ -8140,7 +7979,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_previous_LIlrqqwocRmboSzFwCS1zo"
+                "name": "_previous_rfRf3kA1hU21Z7y869o5YO"
               },
               "value": {
                 "type": {
@@ -8157,7 +7996,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_UXHK6B5G7a4Y451GTxcZMz"
+                "name": "_value_EV5Uo_meUE$i9H7b4oBz$4"
               },
               "key": {
                 "type": {
@@ -8165,7 +8004,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_key_JhPfjymUY3HGSUOVdS5cRG"
+                "name": "_key_HxAnxqr7mqxJ_d$sm$1S7X"
               }
             },
             "duration": {
@@ -9105,7 +8944,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_a21kP$RawPnTjQtDCyiInS"
+                        "name": "_We3pHGkPlVbeXwFSB$80QU"
                       },
                       "second": {
                         "type": {
@@ -9113,7 +8952,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_previous_baXoO7U2YGzopMNIk0YbBa"
+                        "name": "_previous_XUx3hEqkJr1SuWGaPS8mJl"
                       }
                     },
                     "true": {
@@ -9122,7 +8961,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_a21kP$RawPnTjQtDCyiInS"
+                      "name": "_We3pHGkPlVbeXwFSB$80QU"
                     },
                     "false": {
                       "type": {
@@ -9130,7 +8969,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_previous_baXoO7U2YGzopMNIk0YbBa"
+                      "name": "_previous_XUx3hEqkJr1SuWGaPS8mJl"
                     }
                   },
                   "variable": {
@@ -9139,7 +8978,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_a21kP$RawPnTjQtDCyiInS"
+                    "name": "_We3pHGkPlVbeXwFSB$80QU"
                   },
                   "value": {
                     "type": {
@@ -9166,7 +9005,7 @@
                         }
                       },
                       "ast_type": "Variable",
-                      "name": "_value_NPv8WW4$McpDVxu6LMv0Ft"
+                      "name": "_value_AxehDjWgqgtE5N_E5$47eN"
                     },
                     "key": "date"
                   }
@@ -9185,7 +9024,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_previous_baXoO7U2YGzopMNIk0YbBa"
+                  "name": "_previous_XUx3hEqkJr1SuWGaPS8mJl"
                 },
                 "value": {
                   "type": {
@@ -9206,7 +9045,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "_value_NPv8WW4$McpDVxu6LMv0Ft"
+                  "name": "_value_AxehDjWgqgtE5N_E5$47eN"
                 },
                 "key": {
                   "type": {
@@ -9214,7 +9053,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_key_6pIes7yFk$ja1I_ZFsngeS"
+                  "name": "_key_823tcNgXv1cDsLXCe3Zr52"
                 }
               }
             }
@@ -10170,7 +10009,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_JpXFY0fTnl46HnffF0vps$"
+                "name": "_value_rpmd1hNfmSWkngiAsZLi2H"
               },
               "functions": {
                 "Pay Supplier": {
@@ -10305,7 +10144,7 @@
                       }
                     },
                     "ast_type": "Variable",
-                    "name": "_1KL3SB2H_FmZzUl$dD$9iP"
+                    "name": "_OF3LnQl4kwjGdky_yf_5sB"
                   }
                 },
                 "Ranked Predicted Procurement": {
@@ -10369,7 +10208,7 @@
                   }
                 }
               },
-              "value": "_1KL3SB2H_FmZzUl$dD$9iP"
+              "value": "_OF3LnQl4kwjGdky_yf_5sB"
             },
             "value": {
               "type": {
@@ -10563,7 +10402,7 @@
                 }
               },
               "ast_type": "Variable",
-              "name": "_value_JpXFY0fTnl46HnffF0vps$"
+              "name": "_value_rpmd1hNfmSWkngiAsZLi2H"
             },
             "key": {
               "type": {
@@ -10571,7 +10410,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_E$DhocsmhNrsVO1QaO3jQj"
+              "name": "_key_B2yru3603VoH6dEaLDu9DY"
             }
           }
         }
@@ -10776,7 +10615,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_q0kW9eUASiqj6jioGotDos"
+              "name": "_key_5zEuUOz2plaAVEK0MnBixB"
             },
             "input_value": {
               "type": {
@@ -10805,7 +10644,7 @@
                 }
               },
               "ast_type": "Variable",
-              "name": "_value_uEfkKkMZwDL6OeW8awFPvM"
+              "name": "_value_f3l8EA3DPASmENW$rqVYcq"
             },
             "input_key": {
               "type": {
@@ -10813,7 +10652,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_q0kW9eUASiqj6jioGotDos"
+              "name": "_key_5zEuUOz2plaAVEK0MnBixB"
             }
           }
         }
@@ -12827,28 +12666,6 @@
           },
           "writable": false
         },
-        "process.Reporter": {
-          "name": "Pipeline.Alteration.Multi-decision Prescriptive Enhanced.Resource.Reporter",
-          "type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "date": {
-                    "type": "DateTime",
-                    "value": null
-                  }
-                }
-              }
-            }
-          },
-          "writable": false
-        },
         "endDate": {
           "name": "Pipeline.FutureCutoffDate",
           "type": {
@@ -14611,7 +14428,7 @@
               }
             }
           ],
-          "input": "process.Reporter"
+          "input": null
         },
         "Predicted Sales": {
           "name": "Predicted Sales",
@@ -14689,7 +14506,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_akl7ia5eqUTo86omP0O1hH"
+                          "name": "_H9GaMjawa0GTG30epDdUwP"
                         },
                         "second": {
                           "type": {
@@ -14706,7 +14523,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_akl7ia5eqUTo86omP0O1hH"
+                        "name": "_H9GaMjawa0GTG30epDdUwP"
                       },
                       "false": {
                         "type": {
@@ -14723,7 +14540,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_akl7ia5eqUTo86omP0O1hH"
+                      "name": "_H9GaMjawa0GTG30epDdUwP"
                     },
                     "value": {
                       "type": {
@@ -15199,7 +15016,7 @@
                                 "value": null
                               },
                               "ast_type": "Variable",
-                              "name": "_key_g1nz3MbgdK9_MUP0lncn9k"
+                              "name": "_key_joAl0gzTp6CvAQO9orsUu8"
                             },
                             "default": null
                           },
@@ -15280,7 +15097,7 @@
                                 "value": null
                               },
                               "ast_type": "Variable",
-                              "name": "_key_g1nz3MbgdK9_MUP0lncn9k"
+                              "name": "_key_joAl0gzTp6CvAQO9orsUu8"
                             },
                             "default": null
                           },
@@ -15302,7 +15119,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_key_g1nz3MbgdK9_MUP0lncn9k"
+                      "name": "_key_joAl0gzTp6CvAQO9orsUu8"
                     }
                   }
                 },
@@ -15333,7 +15150,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "_value_2xYlob4C$rnf3FI4mErC$G"
+                  "name": "_value_mSB6is7K57odMAMflM0JSi"
                 },
                 "input_key": {
                   "type": {
@@ -15341,7 +15158,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_key_g1nz3MbgdK9_MUP0lncn9k"
+                  "name": "_key_joAl0gzTp6CvAQO9orsUu8"
                 }
               }
             },
@@ -15499,7 +15316,7 @@
                               }
                             },
                             "ast_type": "Variable",
-                            "name": "_first_1kyOmVjRmqh0ewy$2TVDET"
+                            "name": "_first_IY6JcuyfXYmD4XIcmnQsMx"
                           },
                           "key": "rank"
                         },
@@ -15524,7 +15341,7 @@
                               }
                             },
                             "ast_type": "Variable",
-                            "name": "_second_kqvQz3nB0st$IHlK1utW3E"
+                            "name": "_second_GuMv1vd68ySB0ANo6SQGEb"
                           },
                           "key": "rank"
                         }
@@ -15544,7 +15361,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "_first_1kyOmVjRmqh0ewy$2TVDET"
+                        "name": "_first_IY6JcuyfXYmD4XIcmnQsMx"
                       },
                       "second": {
                         "type": {
@@ -15561,7 +15378,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "_second_kqvQz3nB0st$IHlK1utW3E"
+                        "name": "_second_GuMv1vd68ySB0ANo6SQGEb"
                       }
                     },
                     "key": {
@@ -16068,11 +15885,24 @@
                 "kind": "array",
                 "name": "Recommended Order Choices",
                 "stream": "Pipeline.Recommended Procurement Choices",
-                "columns": {
-                  "Procurement Date": {
+                "columns": [
+                  {
+                    "name": "Key",
+                    "kind": "key",
+                    "value": {
+                      "type": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "key"
+                    },
+                    "readonly": true,
+                    "hidden": true
+                  },
+                  {
                     "name": "Procurement Date",
                     "kind": "primitive",
-                    "target": "field",
                     "value": {
                       "type": {
                         "type": "DateTime",
@@ -16084,12 +15914,12 @@
                     "type": {
                       "type": "DateTime",
                       "value": null
-                    }
+                    },
+                    "hidden": false
                   },
-                  "Supplier Name": {
+                  {
                     "name": "Supplier Name",
                     "kind": "primitive",
-                    "target": "field",
                     "value": {
                       "type": {
                         "type": "String",
@@ -16101,12 +15931,12 @@
                     "type": {
                       "type": "String",
                       "value": null
-                    }
+                    },
+                    "hidden": false
                   },
-                  "Order Qty": {
+                  {
                     "name": "Order Qty",
                     "kind": "primitive",
-                    "target": "field",
                     "value": {
                       "type": {
                         "type": "Integer",
@@ -16118,29 +15948,41 @@
                     "type": {
                       "type": "Integer",
                       "value": null
-                    }
+                    },
+                    "hidden": false
                   }
-                },
-                "key_visible": false,
-                "key_label": "Key",
+                ],
                 "writable": {
                   "type": "none",
                   "add": false,
                   "remove": false,
                   "update": false
                 },
-                "input_streams": {}
+                "input_streams": []
               },
               {
                 "type": "table",
                 "kind": "array",
                 "name": "Expected Deliveries",
                 "stream": "Pipeline.Expected Deliveries",
-                "columns": {
-                  "Planned Delivery Date": {
+                "columns": [
+                  {
+                    "name": "Key",
+                    "kind": "key",
+                    "value": {
+                      "type": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "key"
+                    },
+                    "readonly": true,
+                    "hidden": true
+                  },
+                  {
                     "name": "Planned Delivery Date",
                     "kind": "primitive",
-                    "target": "field",
                     "value": {
                       "type": {
                         "type": "DateTime",
@@ -16152,12 +15994,12 @@
                     "type": {
                       "type": "DateTime",
                       "value": null
-                    }
+                    },
+                    "hidden": false
                   },
-                  "Supplier Name": {
+                  {
                     "name": "Supplier Name",
                     "kind": "primitive",
-                    "target": "field",
                     "value": {
                       "type": {
                         "type": "String",
@@ -16169,12 +16011,12 @@
                     "type": {
                       "type": "String",
                       "value": null
-                    }
+                    },
+                    "hidden": false
                   },
-                  "Order Qty": {
+                  {
                     "name": "Order Qty",
                     "kind": "primitive",
-                    "target": "field",
                     "value": {
                       "type": {
                         "type": "Integer",
@@ -16186,29 +16028,41 @@
                     "type": {
                       "type": "Integer",
                       "value": null
-                    }
+                    },
+                    "hidden": false
                   }
-                },
-                "key_visible": false,
-                "key_label": "Key",
+                ],
                 "writable": {
                   "type": "none",
                   "add": false,
                   "remove": false,
                   "update": false
                 },
-                "input_streams": {}
+                "input_streams": []
               },
               {
                 "type": "table",
                 "kind": "array",
                 "name": "Expected Invoices",
                 "stream": "Pipeline.Expected Invoices",
-                "columns": {
-                  "Payment Due Date": {
+                "columns": [
+                  {
+                    "name": "Key",
+                    "kind": "key",
+                    "value": {
+                      "type": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "key"
+                    },
+                    "readonly": true,
+                    "hidden": true
+                  },
+                  {
                     "name": "Payment Due Date",
                     "kind": "primitive",
-                    "target": "field",
                     "value": {
                       "type": {
                         "type": "DateTime",
@@ -16220,12 +16074,12 @@
                     "type": {
                       "type": "DateTime",
                       "value": null
-                    }
+                    },
+                    "hidden": false
                   },
-                  "Supplier Name": {
+                  {
                     "name": "Supplier Name",
                     "kind": "primitive",
-                    "target": "field",
                     "value": {
                       "type": {
                         "type": "String",
@@ -16237,12 +16091,12 @@
                     "type": {
                       "type": "String",
                       "value": null
-                    }
+                    },
+                    "hidden": false
                   },
-                  "Order Date": {
+                  {
                     "name": "Order Date",
                     "kind": "primitive",
-                    "target": "field",
                     "value": {
                       "type": {
                         "type": "DateTime",
@@ -16254,12 +16108,12 @@
                     "type": {
                       "type": "DateTime",
                       "value": null
-                    }
+                    },
+                    "hidden": false
                   },
-                  "Unit Cost": {
+                  {
                     "name": "Unit Cost",
                     "kind": "primitive",
-                    "target": "field",
                     "value": {
                       "type": {
                         "type": "Float",
@@ -16271,12 +16125,12 @@
                     "type": {
                       "type": "Float",
                       "value": null
-                    }
+                    },
+                    "hidden": false
                   },
-                  "Order Qty": {
+                  {
                     "name": "Order Qty",
                     "kind": "primitive",
-                    "target": "field",
                     "value": {
                       "type": {
                         "type": "Integer",
@@ -16288,12 +16142,12 @@
                     "type": {
                       "type": "Integer",
                       "value": null
-                    }
+                    },
+                    "hidden": false
                   },
-                  "Invoice Total": {
+                  {
                     "name": "Invoice Total",
                     "kind": "primitive",
-                    "target": "field",
                     "value": {
                       "type": {
                         "type": "Float",
@@ -16305,18 +16159,17 @@
                     "type": {
                       "type": "Float",
                       "value": null
-                    }
+                    },
+                    "hidden": false
                   }
-                },
-                "key_visible": false,
-                "key_label": "Key",
+                ],
                 "writable": {
                   "type": "none",
                   "add": false,
                   "remove": false,
                   "update": false
                 },
-                "input_streams": {}
+                "input_streams": []
               }
             ],
             "percentage": 50
