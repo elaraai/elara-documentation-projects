@@ -2,6 +2,7 @@
   "streams": {
     "Pipeline.Filter After Datetime": {
       "name": "Pipeline.Filter After Datetime",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -44,6 +45,7 @@
     },
     "Pipeline.Filter On Date": {
       "name": "Pipeline.Filter On Date",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -86,6 +88,7 @@
     },
     "Pipeline.My Pipeline": {
       "name": "Pipeline.My Pipeline",
+      "module": [],
       "type": {
         "type": "Integer",
         "value": null
@@ -94,6 +97,7 @@
     },
     "Pipeline.Parse Products": {
       "name": "Pipeline.Parse Products",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -129,6 +133,7 @@
     },
     "Pipeline.Parse Sales": {
       "name": "Pipeline.Parse Sales",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -171,6 +176,7 @@
     },
     "Source.My BlobType Datastream": {
       "name": "Source.My BlobType Datastream",
+      "module": [],
       "type": {
         "type": "Blob",
         "value": null
@@ -179,6 +185,7 @@
     },
     "Writeable.My BlobType Datastream": {
       "name": "Writeable.My BlobType Datastream",
+      "module": [],
       "type": {
         "type": "Blob",
         "value": null
@@ -187,6 +194,7 @@
     },
     "Writeable.My Datastream": {
       "name": "Writeable.My Datastream",
+      "module": [],
       "type": {
         "type": "Integer",
         "value": null,
@@ -196,6 +204,7 @@
     },
     "Writeable.My DictType Datastream": {
       "name": "Writeable.My DictType Datastream",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -222,6 +231,7 @@
     },
     "Writeable.My Second Datastream": {
       "name": "Writeable.My Second Datastream",
+      "module": [],
       "type": {
         "type": "Integer",
         "value": null
@@ -230,6 +240,7 @@
     },
     "Writeable.Products": {
       "name": "Writeable.Products",
+      "module": [],
       "type": {
         "type": "Blob",
         "value": null
@@ -238,6 +249,7 @@
     },
     "Writeable.Sales": {
       "name": "Writeable.Sales",
+      "module": [],
       "type": {
         "type": "Blob",
         "value": null
@@ -247,12 +259,13 @@
   },
   "tasks": {
     "Pipeline.Filter After Datetime": {
-      "name": "Pipeline.Filter After Datetime",
-      "parent": "Pipeline.Filter After Datetime",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Filter After Datetime",
       "inputs": {
         "input": {
           "name": "Pipeline.Parse Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -291,12 +304,13 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Filter After Datetime",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -335,7 +349,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -406,12 +420,13 @@
       ]
     },
     "Pipeline.Filter On Date": {
-      "name": "Pipeline.Filter On Date",
-      "parent": "Pipeline.Filter On Date",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Filter On Date",
       "inputs": {
         "input": {
           "name": "Pipeline.Parse Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -450,12 +465,13 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Filter On Date",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -494,7 +510,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -574,36 +590,39 @@
       ]
     },
     "Pipeline.My Pipeline": {
-      "name": "Pipeline.My Pipeline",
-      "parent": "Pipeline.My Pipeline",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.My Pipeline",
       "inputs": {
         "input": {
           "name": "Writeable.My Datastream",
+          "module": [],
           "type": {
             "type": "Integer",
             "value": null,
             "nullable": true
           },
-          "writable": true
+          "optional": false
         },
         "some_integer": {
           "name": "Writeable.My Second Datastream",
+          "module": [],
           "type": {
             "type": "Integer",
             "value": null
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.My Pipeline",
+          "module": [],
           "type": {
             "type": "Integer",
             "value": null
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -646,7 +665,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_31bpWRkRiNdNrAiPv6qZ5y"
+              "name": "_L8y0I$yOXuUaifwxEeRVG2"
             },
             "value": {
               "type": {
@@ -654,7 +673,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_31bpWRkRiNdNrAiPv6qZ5y"
+              "name": "_L8y0I$yOXuUaifwxEeRVG2"
             }
           }
         },
@@ -675,7 +694,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "value"
+                "name": "__value"
               },
               "second": {
                 "type": {
@@ -713,7 +732,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "value"
+                    "name": "__value"
                   }
                 }
               ],
@@ -738,7 +757,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "value"
+                "name": "__value"
               },
               "second": {
                 "type": {
@@ -799,7 +818,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "value"
+                    "name": "__value"
                   }
                 }
               ],
@@ -840,22 +859,24 @@
       ]
     },
     "Pipeline.Parse Products": {
-      "name": "Pipeline.Parse Products",
-      "parent": "Pipeline.Parse Products",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Parse Products",
       "inputs": {
         "input": {
           "name": "Writeable.Products",
+          "module": [],
           "type": {
             "type": "Blob",
             "value": null
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Parse Products",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -887,7 +908,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -899,6 +920,7 @@
             "value": "1"
           },
           "delimiter": ",",
+          "null_str": "",
           "output_type": {
             "type": "Dict",
             "value": {
@@ -942,22 +964,24 @@
       ]
     },
     "Pipeline.Parse Sales": {
-      "name": "Pipeline.Parse Sales",
-      "parent": "Pipeline.Parse Sales",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Parse Sales",
       "inputs": {
         "input": {
           "name": "Writeable.Sales",
+          "module": [],
           "type": {
             "type": "Blob",
             "value": null
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Parse Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -996,7 +1020,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -1060,27 +1084,29 @@
     },
     "Source.My BlobType Datastream": {
       "name": "Source.My BlobType Datastream",
-      "parent": "My BlobType Datastream",
+      "module": [],
       "task_type": "source",
       "source_type": "writeable",
       "inputs": {
         "input": {
           "name": "Writeable.My BlobType Datastream",
+          "module": [],
           "type": {
             "type": "Blob",
             "value": null
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Source.My BlobType Datastream",
+          "module": [],
           "type": {
             "type": "Blob",
             "value": null
           },
-          "writable": false
+          "optional": false
         }
       },
       "input_assertions": [],
@@ -1106,7 +1132,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "value"
+                "name": "__value"
               }
             },
             "second": {
@@ -1151,7 +1177,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "value"
+                    "name": "__value"
                   }
                 }
               },
@@ -1174,6 +1200,7 @@
     "Writeable.My Datastream": {
       "default_type": "value",
       "stream": "Writeable.My Datastream",
+      "module": [],
       "value": {
         "type": {
           "type": "Integer",
@@ -1187,6 +1214,7 @@
     "Writeable.My Second Datastream": {
       "default_type": "value",
       "stream": "Writeable.My Second Datastream",
+      "module": [],
       "value": {
         "type": {
           "type": "Integer",
@@ -1199,11 +1227,13 @@
     "Writeable.Products": {
       "default_type": "file",
       "stream": "Writeable.Products",
+      "module": [],
       "path": "./data/products.csv"
     },
     "Writeable.Sales": {
       "default_type": "file",
       "stream": "Writeable.Sales",
+      "module": [],
       "path": "./data/sales.jsonl"
     }
   }

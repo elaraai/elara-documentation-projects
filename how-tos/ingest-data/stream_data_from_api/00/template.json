@@ -2,6 +2,7 @@
   "streams": {
     "Source.My API": {
       "name": "Source.My API",
+      "module": [],
       "type": {
         "type": "Blob",
         "value": null
@@ -10,6 +11,7 @@
     },
     "Writeable.My Token": {
       "name": "Writeable.My Token",
+      "module": [],
       "type": {
         "type": "String",
         "value": null
@@ -20,7 +22,7 @@
   "tasks": {
     "Source.My API": {
       "name": "Source.My API",
-      "parent": "My API",
+      "module": [],
       "task_type": "source",
       "source_type": "api",
       "cron": "* * * * *",
@@ -135,21 +137,23 @@
       "inputs": {
         "token": {
           "name": "Writeable.My Token",
+          "module": [],
           "type": {
             "type": "String",
             "value": null
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Source.My API",
+          "module": [],
           "type": {
             "type": "Blob",
             "value": null
           },
-          "writable": false
+          "optional": false
         }
       },
       "input_assertions": [],
@@ -160,6 +164,7 @@
     "Writeable.My Token": {
       "default_type": "value",
       "stream": "Writeable.My Token",
+      "module": [],
       "value": {
         "type": {
           "type": "String",

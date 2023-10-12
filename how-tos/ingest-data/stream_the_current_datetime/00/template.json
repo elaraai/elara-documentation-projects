@@ -2,6 +2,7 @@
   "streams": {
     "Source.Current Datetime": {
       "name": "Source.Current Datetime",
+      "module": [],
       "type": {
         "type": "String",
         "value": null
@@ -12,7 +13,7 @@
   "tasks": {
     "Source.Current Datetime": {
       "name": "Source.Current Datetime",
-      "parent": "Current Datetime",
+      "module": [],
       "task_type": "source",
       "source_type": "clock",
       "cron": "* * * * *",
@@ -53,11 +54,12 @@
       "outputs": {
         "output": {
           "name": "Source.Current Datetime",
+          "module": [],
           "type": {
             "type": "String",
             "value": null
           },
-          "writable": false
+          "optional": false
         }
       },
       "input_assertions": [],

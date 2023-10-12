@@ -2,6 +2,7 @@
   "streams": {
     "Pipeline.Construct a Variant": {
       "name": "Pipeline.Construct a Variant",
+      "module": [],
       "type": {
         "type": "Variant",
         "value": {
@@ -19,6 +20,7 @@
     },
     "Writeable.BooleanType Datastream": {
       "name": "Writeable.BooleanType Datastream",
+      "module": [],
       "type": {
         "type": "Boolean",
         "value": null
@@ -27,6 +29,7 @@
     },
     "Writeable.VariantType Datastream": {
       "name": "Writeable.VariantType Datastream",
+      "module": [],
       "type": {
         "type": "Variant",
         "value": {
@@ -45,22 +48,24 @@
   },
   "tasks": {
     "Pipeline.Construct a Variant": {
-      "name": "Pipeline.Construct a Variant",
-      "parent": "Pipeline.Construct a Variant",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Construct a Variant",
       "inputs": {
         "input": {
           "name": "Writeable.BooleanType Datastream",
+          "module": [],
           "type": {
             "type": "Boolean",
             "value": null
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Construct a Variant",
+          "module": [],
           "type": {
             "type": "Variant",
             "value": {
@@ -74,7 +79,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -167,6 +172,7 @@
     "Writeable.VariantType Datastream": {
       "default_type": "value",
       "stream": "Writeable.VariantType Datastream",
+      "module": [],
       "value": {
         "type": {
           "type": "Variant",

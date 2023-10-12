@@ -317,7 +317,7 @@ const interactive_scenario = new ScenarioBuilder("Interactive")
 const prescriptive_scenario = new ScenarioBuilder("Prescriptive")
     .copyScenario(predictive_scenario)
     // elara will try to maximise this - the cash balance!
-    .objective("Cash", cash => cash)
+    .objective(resources => resources.Cash)
 
 export default Template(
     sales_file,

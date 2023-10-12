@@ -2,6 +2,7 @@
   "streams": {
     "Pipeline.My Pipeline": {
       "name": "Pipeline.My Pipeline",
+      "module": [],
       "type": {
         "type": "Integer",
         "value": null,
@@ -11,6 +12,7 @@
     },
     "Writeable.My Datastream": {
       "name": "Writeable.My Datastream",
+      "module": [],
       "type": {
         "type": "Integer",
         "value": null,
@@ -20,6 +22,7 @@
     },
     "Writeable.My Second Datastream": {
       "name": "Writeable.My Second Datastream",
+      "module": [],
       "type": {
         "type": "Integer",
         "value": null
@@ -29,37 +32,40 @@
   },
   "tasks": {
     "Pipeline.My Pipeline": {
-      "name": "Pipeline.My Pipeline",
-      "parent": "Pipeline.My Pipeline",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.My Pipeline",
       "inputs": {
         "input": {
           "name": "Writeable.My Datastream",
+          "module": [],
           "type": {
             "type": "Integer",
             "value": null,
             "nullable": true
           },
-          "writable": true
+          "optional": false
         },
         "some_integer": {
           "name": "Writeable.My Second Datastream",
+          "module": [],
           "type": {
             "type": "Integer",
             "value": null
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.My Pipeline",
+          "module": [],
           "type": {
             "type": "Integer",
             "value": null,
             "nullable": true
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -109,7 +115,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_p6jHajB9HhD$__0VDP6nuM"
+                "name": "_eCn2JF8Oluk91LFO1CTtHE"
               },
               "second": {
                 "type": {
@@ -126,7 +132,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_p6jHajB9HhD$__0VDP6nuM"
+              "name": "_eCn2JF8Oluk91LFO1CTtHE"
             }
           }
         }
@@ -137,6 +143,7 @@
     "Writeable.My Datastream": {
       "default_type": "value",
       "stream": "Writeable.My Datastream",
+      "module": [],
       "value": {
         "type": {
           "type": "Integer",
@@ -150,6 +157,7 @@
     "Writeable.My Second Datastream": {
       "default_type": "value",
       "stream": "Writeable.My Second Datastream",
+      "module": [],
       "value": {
         "type": {
           "type": "Integer",

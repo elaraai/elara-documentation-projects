@@ -381,7 +381,7 @@ const prescriptive_scenario = new ScenarioBuilder("Multi-decision Prescriptive E
     // end simulation
     .endSimulation(future_cutoff_date.outputStream())
     // elara will try to maximise this - the cash balance!
-    .objective("Cash", cash => cash)
+    .objective(resources => resources.Cash)
     // tell elara to find the best discount
     .optimize("Discount", { min: 0, max: 20.0 })
     // tell elara to find the best rank for supplier policy

@@ -2,6 +2,7 @@
   "streams": {
     "Pipeline.Per Product Sales": {
       "name": "Pipeline.Per Product Sales",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -19,6 +20,7 @@
     },
     "Pipeline.Sum of floats": {
       "name": "Pipeline.Sum of floats",
+      "module": [],
       "type": {
         "type": "Float",
         "value": null
@@ -27,6 +29,7 @@
     },
     "Pipeline.Sum values below 20": {
       "name": "Pipeline.Sum values below 20",
+      "module": [],
       "type": {
         "type": "Float",
         "value": null
@@ -35,6 +38,7 @@
     },
     "Pipeline.Test": {
       "name": "Pipeline.Test",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -52,6 +56,7 @@
     },
     "Writeable.Array of floats": {
       "name": "Writeable.Array of floats",
+      "module": [],
       "type": {
         "type": "Array",
         "value": {
@@ -63,6 +68,7 @@
     },
     "Writeable.Sales": {
       "name": "Writeable.Sales",
+      "module": [],
       "type": {
         "type": "Array",
         "value": {
@@ -84,12 +90,13 @@
   },
   "tasks": {
     "Pipeline.Per Product Sales": {
-      "name": "Pipeline.Per Product Sales",
-      "parent": "Pipeline.Per Product Sales",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Per Product Sales",
       "inputs": {
         "input": {
           "name": "Writeable.Sales",
+          "module": [],
           "type": {
             "type": "Array",
             "value": {
@@ -106,12 +113,13 @@
               }
             }
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Per Product Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -125,7 +133,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -206,7 +214,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "_value_6E2K3WWt3JKs2WyyzVa_yr"
+                  "name": "_value_WL2CBSPQ4ALOaqCvH9Pb6n"
                 },
                 "key": "units"
               },
@@ -216,7 +224,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_previous_GjJ$FCXDEn2RTkSwhhiq6I"
+                "name": "_previous_j$fv_CRxIAcZ2qKzH4BSos"
               }
             },
             "output_key": {
@@ -240,7 +248,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_6E2K3WWt3JKs2WyyzVa_yr"
+                "name": "_value_WL2CBSPQ4ALOaqCvH9Pb6n"
               },
               "key": "product"
             },
@@ -259,7 +267,7 @@
                 }
               },
               "ast_type": "Variable",
-              "name": "_value_6E2K3WWt3JKs2WyyzVa_yr"
+              "name": "_value_WL2CBSPQ4ALOaqCvH9Pb6n"
             },
             "input_key": {
               "type": {
@@ -267,7 +275,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_RfPhlYwGpKYkCMihysEVui"
+              "name": "_key_C$_nYBEc6AHIn3v2tEsqwZ"
             },
             "previous_value": {
               "type": {
@@ -275,7 +283,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_previous_GjJ$FCXDEn2RTkSwhhiq6I"
+              "name": "_previous_j$fv_CRxIAcZ2qKzH4BSos"
             },
             "initial_value": {
               "type": {
@@ -290,12 +298,13 @@
       ]
     },
     "Pipeline.Sum of floats": {
-      "name": "Pipeline.Sum of floats",
-      "parent": "Pipeline.Sum of floats",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Sum of floats",
       "inputs": {
         "input": {
           "name": "Writeable.Array of floats",
+          "module": [],
           "type": {
             "type": "Array",
             "value": {
@@ -303,17 +312,18 @@
               "value": null
             }
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Sum of floats",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -352,7 +362,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_previous_XoL6aIutgUQsl_ofytvP8E"
+                "name": "_previous_HcOnx0Pzr8ARzVFcnrZ48l"
               },
               "second": {
                 "type": {
@@ -360,7 +370,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_value_RM$Sieaxxjt1aNQ8GuVrCA"
+                "name": "_value_0AOYzw0pKJpTXUJ_0UMes1"
               }
             },
             "initial": {
@@ -377,7 +387,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_previous_XoL6aIutgUQsl_ofytvP8E"
+              "name": "_previous_HcOnx0Pzr8ARzVFcnrZ48l"
             },
             "value": {
               "type": {
@@ -385,7 +395,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_value_RM$Sieaxxjt1aNQ8GuVrCA"
+              "name": "_value_0AOYzw0pKJpTXUJ_0UMes1"
             },
             "key": {
               "type": {
@@ -393,19 +403,20 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_4Xy96lse4ds6dl3xgd0TdR"
+              "name": "_key_$2Nj_xoSyvCdxBYeqTyer5"
             }
           }
         }
       ]
     },
     "Pipeline.Sum values below 20": {
-      "name": "Pipeline.Sum values below 20",
-      "parent": "Pipeline.Sum values below 20",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Sum values below 20",
       "inputs": {
         "input": {
           "name": "Writeable.Array of floats",
+          "module": [],
           "type": {
             "type": "Array",
             "value": {
@@ -413,17 +424,18 @@
               "value": null
             }
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Sum values below 20",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -468,7 +480,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_value_XVeZKc$U1zrCneCs5OtgDL"
+                  "name": "_value_T$qKrRjIaL$$Y7oA7UvRHF"
                 },
                 "second": {
                   "type": {
@@ -491,7 +503,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_previous_bmaniAMJuYakLWvlp2zbV8"
+                  "name": "_previous_x9aCOpZYjToZoC1t8spUO9"
                 },
                 "second": {
                   "type": {
@@ -499,7 +511,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_value_XVeZKc$U1zrCneCs5OtgDL"
+                  "name": "_value_T$qKrRjIaL$$Y7oA7UvRHF"
                 }
               },
               "false": {
@@ -508,7 +520,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_previous_bmaniAMJuYakLWvlp2zbV8"
+                "name": "_previous_x9aCOpZYjToZoC1t8spUO9"
               }
             },
             "initial": {
@@ -525,7 +537,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_previous_bmaniAMJuYakLWvlp2zbV8"
+              "name": "_previous_x9aCOpZYjToZoC1t8spUO9"
             },
             "value": {
               "type": {
@@ -533,7 +545,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_value_XVeZKc$U1zrCneCs5OtgDL"
+              "name": "_value_T$qKrRjIaL$$Y7oA7UvRHF"
             },
             "key": {
               "type": {
@@ -541,19 +553,20 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_XHh2fP1ouWnu2ykD9kzVvz"
+              "name": "_key_Rrl6PCd8F1$Anu2H0VTuB0"
             }
           }
         }
       ]
     },
     "Pipeline.Test": {
-      "name": "Pipeline.Test",
-      "parent": "Pipeline.Test",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Test",
       "inputs": {
         "input": {
           "name": "Writeable.Sales",
+          "module": [],
           "type": {
             "type": "Array",
             "value": {
@@ -570,12 +583,13 @@
               }
             }
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Test",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -589,7 +603,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -673,7 +687,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_previous_ziXqnnD0ZYIe6j7_WKJ0fv"
+                "name": "_previous_ays_xCduzW_GpiNrA7Ex4h"
               },
               "key": {
                 "type": {
@@ -696,7 +710,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "_value_jSdYi8czDhTc7HW8q$fni6"
+                  "name": "_value_fZGCD0$ZXPIv0OmIMe7tBJ"
                 },
                 "key": "product"
               },
@@ -733,7 +747,7 @@
                         }
                       },
                       "ast_type": "Variable",
-                      "name": "_value_jSdYi8czDhTc7HW8q$fni6"
+                      "name": "_value_fZGCD0$ZXPIv0OmIMe7tBJ"
                     },
                     "key": "units"
                   }
@@ -759,7 +773,7 @@
                       }
                     },
                     "ast_type": "Variable",
-                    "name": "_previous_ziXqnnD0ZYIe6j7_WKJ0fv"
+                    "name": "_previous_ays_xCduzW_GpiNrA7Ex4h"
                   },
                   "key": {
                     "type": {
@@ -782,7 +796,7 @@
                         }
                       },
                       "ast_type": "Variable",
-                      "name": "_value_jSdYi8czDhTc7HW8q$fni6"
+                      "name": "_value_fZGCD0$ZXPIv0OmIMe7tBJ"
                     },
                     "key": "product"
                   },
@@ -830,7 +844,7 @@
                 }
               },
               "ast_type": "Variable",
-              "name": "_previous_ziXqnnD0ZYIe6j7_WKJ0fv"
+              "name": "_previous_ays_xCduzW_GpiNrA7Ex4h"
             },
             "value": {
               "type": {
@@ -847,7 +861,7 @@
                 }
               },
               "ast_type": "Variable",
-              "name": "_value_jSdYi8czDhTc7HW8q$fni6"
+              "name": "_value_fZGCD0$ZXPIv0OmIMe7tBJ"
             },
             "key": {
               "type": {
@@ -855,7 +869,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_key_rQ6tB1sVobV6PUJDQeXku$"
+              "name": "_key_FhqxypVGKDf25o6dl4qNBT"
             }
           }
         }
@@ -866,6 +880,7 @@
     "Writeable.Array of floats": {
       "default_type": "value",
       "stream": "Writeable.Array of floats",
+      "module": [],
       "value": {
         "type": {
           "type": "Array",
@@ -887,6 +902,7 @@
     "Writeable.Sales": {
       "default_type": "value",
       "stream": "Writeable.Sales",
+      "module": [],
       "value": {
         "type": {
           "type": "Array",

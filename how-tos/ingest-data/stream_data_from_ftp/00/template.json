@@ -2,6 +2,7 @@
   "streams": {
     "Source.My FTP": {
       "name": "Source.My FTP",
+      "module": [],
       "type": {
         "type": "Blob",
         "value": null
@@ -12,7 +13,7 @@
   "tasks": {
     "Source.My FTP": {
       "name": "Source.My FTP",
-      "parent": "My FTP",
+      "module": [],
       "task_type": "source",
       "source_type": "ftp",
       "cron": "* * * * *",
@@ -44,11 +45,12 @@
       "outputs": {
         "output": {
           "name": "Source.My FTP",
+          "module": [],
           "type": {
             "type": "Blob",
             "value": null
           },
-          "writable": false
+          "optional": false
         }
       },
       "input_assertions": [],

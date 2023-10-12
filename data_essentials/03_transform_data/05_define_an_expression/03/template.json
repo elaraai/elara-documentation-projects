@@ -2,6 +2,7 @@
   "streams": {
     "Pipeline.My Pipeline": {
       "name": "Pipeline.My Pipeline",
+      "module": [],
       "type": {
         "type": "Integer",
         "value": null
@@ -10,6 +11,7 @@
     },
     "Writeable.My Datastream": {
       "name": "Writeable.My Datastream",
+      "module": [],
       "type": {
         "type": "Integer",
         "value": null
@@ -19,27 +21,29 @@
   },
   "tasks": {
     "Pipeline.My Pipeline": {
-      "name": "Pipeline.My Pipeline",
-      "parent": "Pipeline.My Pipeline",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.My Pipeline",
       "inputs": {
         "input": {
           "name": "Writeable.My Datastream",
+          "module": [],
           "type": {
             "type": "Integer",
             "value": null
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.My Pipeline",
+          "module": [],
           "type": {
             "type": "Integer",
             "value": null
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -95,6 +99,7 @@
     "Writeable.My Datastream": {
       "default_type": "value",
       "stream": "Writeable.My Datastream",
+      "module": [],
       "value": {
         "type": {
           "type": "Integer",

@@ -2,6 +2,7 @@
   "streams": {
     "Pipeline.My Parser": {
       "name": "Pipeline.My Parser",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -33,6 +34,7 @@
     },
     "Writeable.My BlobType Stream": {
       "name": "Writeable.My BlobType Stream",
+      "module": [],
       "type": {
         "type": "Blob",
         "value": null
@@ -42,22 +44,24 @@
   },
   "tasks": {
     "Pipeline.My Parser": {
-      "name": "Pipeline.My Parser",
-      "parent": "Pipeline.My Parser",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.My Parser",
       "inputs": {
         "input": {
           "name": "Writeable.My BlobType Stream",
+          "module": [],
           "type": {
             "type": "Blob",
             "value": null
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.My Parser",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -85,7 +89,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -141,6 +145,7 @@
     "Writeable.My BlobType Stream": {
       "default_type": "value",
       "stream": "Writeable.My BlobType Stream",
+      "module": [],
       "value": {
         "type": {
           "type": "Blob",

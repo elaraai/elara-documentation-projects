@@ -2,6 +2,7 @@
   "streams": {
     "MLModel.Demand": {
       "name": "MLModel.Demand",
+      "module": [],
       "type": {
         "type": "Struct",
         "value": {
@@ -46,6 +47,7 @@
     },
     "MLTraining.Demand": {
       "name": "MLTraining.Demand",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -85,6 +87,7 @@
     },
     "MLValidation.Demand": {
       "name": "MLValidation.Demand",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -144,53 +147,33 @@
     },
     "Optimization.Prescriptive": {
       "name": "Optimization.Prescriptive",
+      "module": [],
       "type": {
-        "type": "Dict",
+        "type": "Array",
         "value": {
-          "key": {
-            "type": "String",
-            "value": null
-          },
+          "type": "Struct",
           "value": {
-            "type": "Struct",
-            "value": {
-              "iteration": {
-                "type": "Integer",
-                "value": null
-              },
-              "objective": {
+            "objective": {
+              "type": "Float",
+              "value": null
+            },
+            "objectives": {
+              "type": "Array",
+              "value": {
                 "type": "Float",
                 "value": null
-              },
-              "objectives": {
-                "type": "Array",
+              }
+            },
+            "values": {
+              "type": "Dict",
+              "value": {
+                "key": {
+                  "type": "String",
+                  "value": null
+                },
                 "value": {
                   "type": "Float",
                   "value": null
-                }
-              },
-              "validationObjective": {
-                "type": "Float",
-                "value": null
-              },
-              "validationObjectives": {
-                "type": "Array",
-                "value": {
-                  "type": "Float",
-                  "value": null
-                }
-              },
-              "values": {
-                "type": "Dict",
-                "value": {
-                  "key": {
-                    "type": "String",
-                    "value": null
-                  },
-                  "value": {
-                    "type": "Float",
-                    "value": null
-                  }
                 }
               }
             }
@@ -201,6 +184,7 @@
     },
     "Optimized.Prescriptive.Discount": {
       "name": "Optimized.Prescriptive.Discount",
+      "module": [],
       "type": {
         "type": "Float",
         "value": null
@@ -209,6 +193,7 @@
     },
     "Pipeline.Alteration.Interactive.Resource.Discount": {
       "name": "Pipeline.Alteration.Interactive.Resource.Discount",
+      "module": [],
       "type": {
         "type": "Float",
         "value": null
@@ -217,6 +202,7 @@
     },
     "Pipeline.FutureCutoffDate": {
       "name": "Pipeline.FutureCutoffDate",
+      "module": [],
       "type": {
         "type": "DateTime",
         "value": null
@@ -225,6 +211,7 @@
     },
     "Pipeline.Historic Procurement": {
       "name": "Pipeline.Historic Procurement",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -251,6 +238,7 @@
     },
     "Pipeline.Historic Sales": {
       "name": "Pipeline.Historic Sales",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -281,6 +269,7 @@
     },
     "Pipeline.Historic Sales Cutoff Date": {
       "name": "Pipeline.Historic Sales Cutoff Date",
+      "module": [],
       "type": {
         "type": "DateTime",
         "value": null
@@ -289,6 +278,7 @@
     },
     "Pipeline.MLTraining.Demand": {
       "name": "Pipeline.MLTraining.Demand",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -315,6 +305,7 @@
     },
     "Pipeline.Next Procurement Date": {
       "name": "Pipeline.Next Procurement Date",
+      "module": [],
       "type": {
         "type": "DateTime",
         "value": null
@@ -323,6 +314,7 @@
     },
     "Pipeline.Process.Predicted Procurement": {
       "name": "Pipeline.Process.Predicted Procurement",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -345,6 +337,7 @@
     },
     "Pipeline.Process.Predicted Sales": {
       "name": "Pipeline.Process.Predicted Sales",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -367,6 +360,7 @@
     },
     "Pipeline.Suppliers": {
       "name": "Pipeline.Suppliers",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -405,6 +399,7 @@
     },
     "SimulationJournal.Descriptive": {
       "name": "SimulationJournal.Descriptive",
+      "module": [],
       "type": {
         "type": "Array",
         "value": {
@@ -534,6 +529,7 @@
     },
     "SimulationJournal.Interactive": {
       "name": "SimulationJournal.Interactive",
+      "module": [],
       "type": {
         "type": "Array",
         "value": {
@@ -706,6 +702,7 @@
     },
     "SimulationJournal.Predictive": {
       "name": "SimulationJournal.Predictive",
+      "module": [],
       "type": {
         "type": "Array",
         "value": {
@@ -878,6 +875,7 @@
     },
     "SimulationJournal.Prescriptive": {
       "name": "SimulationJournal.Prescriptive",
+      "module": [],
       "type": {
         "type": "Array",
         "value": {
@@ -1050,6 +1048,7 @@
     },
     "SimulationLedger.Descriptive.Cash": {
       "name": "SimulationLedger.Descriptive.Cash",
+      "module": [],
       "type": {
         "type": "Array",
         "value": {
@@ -1079,6 +1078,7 @@
     },
     "SimulationLedger.Descriptive.Stock-on-hand": {
       "name": "SimulationLedger.Descriptive.Stock-on-hand",
+      "module": [],
       "type": {
         "type": "Array",
         "value": {
@@ -1108,6 +1108,7 @@
     },
     "SimulationLedger.Interactive.Cash": {
       "name": "SimulationLedger.Interactive.Cash",
+      "module": [],
       "type": {
         "type": "Array",
         "value": {
@@ -1137,6 +1138,7 @@
     },
     "SimulationLedger.Interactive.Stock-on-hand": {
       "name": "SimulationLedger.Interactive.Stock-on-hand",
+      "module": [],
       "type": {
         "type": "Array",
         "value": {
@@ -1166,6 +1168,7 @@
     },
     "SimulationLedger.Predictive.Cash": {
       "name": "SimulationLedger.Predictive.Cash",
+      "module": [],
       "type": {
         "type": "Array",
         "value": {
@@ -1195,6 +1198,7 @@
     },
     "SimulationLedger.Predictive.Stock-on-hand": {
       "name": "SimulationLedger.Predictive.Stock-on-hand",
+      "module": [],
       "type": {
         "type": "Array",
         "value": {
@@ -1224,6 +1228,7 @@
     },
     "SimulationLedger.Prescriptive.Cash": {
       "name": "SimulationLedger.Prescriptive.Cash",
+      "module": [],
       "type": {
         "type": "Array",
         "value": {
@@ -1253,6 +1258,7 @@
     },
     "SimulationLedger.Prescriptive.Stock-on-hand": {
       "name": "SimulationLedger.Prescriptive.Stock-on-hand",
+      "module": [],
       "type": {
         "type": "Array",
         "value": {
@@ -1282,6 +1288,7 @@
     },
     "SimulationQueue.Descriptive": {
       "name": "SimulationQueue.Descriptive",
+      "module": [],
       "type": {
         "type": "Array",
         "value": {
@@ -1366,6 +1373,7 @@
     },
     "SimulationQueue.Interactive": {
       "name": "SimulationQueue.Interactive",
+      "module": [],
       "type": {
         "type": "Array",
         "value": {
@@ -1468,6 +1476,7 @@
     },
     "SimulationQueue.Predictive": {
       "name": "SimulationQueue.Predictive",
+      "module": [],
       "type": {
         "type": "Array",
         "value": {
@@ -1570,6 +1579,7 @@
     },
     "SimulationQueue.Prescriptive": {
       "name": "SimulationQueue.Prescriptive",
+      "module": [],
       "type": {
         "type": "Array",
         "value": {
@@ -1672,6 +1682,7 @@
     },
     "SimulationResult.Descriptive.Cash": {
       "name": "SimulationResult.Descriptive.Cash",
+      "module": [],
       "type": {
         "type": "Float",
         "value": null
@@ -1680,6 +1691,7 @@
     },
     "SimulationResult.Descriptive.Price": {
       "name": "SimulationResult.Descriptive.Price",
+      "module": [],
       "type": {
         "type": "Float",
         "value": null
@@ -1688,6 +1700,7 @@
     },
     "SimulationResult.Descriptive.Stock-on-hand": {
       "name": "SimulationResult.Descriptive.Stock-on-hand",
+      "module": [],
       "type": {
         "type": "Integer",
         "value": null
@@ -1696,6 +1709,7 @@
     },
     "SimulationResult.Descriptive.Suppliers": {
       "name": "SimulationResult.Descriptive.Suppliers",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -1734,6 +1748,7 @@
     },
     "SimulationResult.Interactive.Cash": {
       "name": "SimulationResult.Interactive.Cash",
+      "module": [],
       "type": {
         "type": "Float",
         "value": null
@@ -1742,6 +1757,7 @@
     },
     "SimulationResult.Interactive.Discount": {
       "name": "SimulationResult.Interactive.Discount",
+      "module": [],
       "type": {
         "type": "Float",
         "value": null
@@ -1750,6 +1766,7 @@
     },
     "SimulationResult.Interactive.Operating Times": {
       "name": "SimulationResult.Interactive.Operating Times",
+      "module": [],
       "type": {
         "type": "Struct",
         "value": {
@@ -1767,6 +1784,7 @@
     },
     "SimulationResult.Interactive.Price": {
       "name": "SimulationResult.Interactive.Price",
+      "module": [],
       "type": {
         "type": "Float",
         "value": null
@@ -1775,6 +1793,7 @@
     },
     "SimulationResult.Interactive.Stock-on-hand": {
       "name": "SimulationResult.Interactive.Stock-on-hand",
+      "module": [],
       "type": {
         "type": "Integer",
         "value": null
@@ -1783,6 +1802,7 @@
     },
     "SimulationResult.Interactive.Suppliers": {
       "name": "SimulationResult.Interactive.Suppliers",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -1821,6 +1841,7 @@
     },
     "SimulationResult.Predictive.Cash": {
       "name": "SimulationResult.Predictive.Cash",
+      "module": [],
       "type": {
         "type": "Float",
         "value": null
@@ -1829,6 +1850,7 @@
     },
     "SimulationResult.Predictive.Discount": {
       "name": "SimulationResult.Predictive.Discount",
+      "module": [],
       "type": {
         "type": "Float",
         "value": null
@@ -1837,6 +1859,7 @@
     },
     "SimulationResult.Predictive.Operating Times": {
       "name": "SimulationResult.Predictive.Operating Times",
+      "module": [],
       "type": {
         "type": "Struct",
         "value": {
@@ -1854,6 +1877,7 @@
     },
     "SimulationResult.Predictive.Price": {
       "name": "SimulationResult.Predictive.Price",
+      "module": [],
       "type": {
         "type": "Float",
         "value": null
@@ -1862,6 +1886,7 @@
     },
     "SimulationResult.Predictive.Stock-on-hand": {
       "name": "SimulationResult.Predictive.Stock-on-hand",
+      "module": [],
       "type": {
         "type": "Integer",
         "value": null
@@ -1870,6 +1895,7 @@
     },
     "SimulationResult.Predictive.Suppliers": {
       "name": "SimulationResult.Predictive.Suppliers",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -1908,6 +1934,7 @@
     },
     "SimulationResult.Prescriptive.Cash": {
       "name": "SimulationResult.Prescriptive.Cash",
+      "module": [],
       "type": {
         "type": "Float",
         "value": null
@@ -1916,6 +1943,7 @@
     },
     "SimulationResult.Prescriptive.Discount": {
       "name": "SimulationResult.Prescriptive.Discount",
+      "module": [],
       "type": {
         "type": "Float",
         "value": null
@@ -1924,6 +1952,7 @@
     },
     "SimulationResult.Prescriptive.Operating Times": {
       "name": "SimulationResult.Prescriptive.Operating Times",
+      "module": [],
       "type": {
         "type": "Struct",
         "value": {
@@ -1941,6 +1970,7 @@
     },
     "SimulationResult.Prescriptive.Price": {
       "name": "SimulationResult.Prescriptive.Price",
+      "module": [],
       "type": {
         "type": "Float",
         "value": null
@@ -1949,6 +1979,7 @@
     },
     "SimulationResult.Prescriptive.Stock-on-hand": {
       "name": "SimulationResult.Prescriptive.Stock-on-hand",
+      "module": [],
       "type": {
         "type": "Integer",
         "value": null
@@ -1957,6 +1988,7 @@
     },
     "SimulationResult.Prescriptive.Suppliers": {
       "name": "SimulationResult.Prescriptive.Suppliers",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -1995,6 +2027,7 @@
     },
     "Writeable.My Discount Choice": {
       "name": "Writeable.My Discount Choice",
+      "module": [],
       "type": {
         "type": "Float",
         "value": null,
@@ -2004,6 +2037,7 @@
     },
     "Writeable.Procurement File": {
       "name": "Writeable.Procurement File",
+      "module": [],
       "type": {
         "type": "Blob",
         "value": null
@@ -2012,6 +2046,7 @@
     },
     "Writeable.Resource.Cash": {
       "name": "Writeable.Resource.Cash",
+      "module": [],
       "type": {
         "type": "Float",
         "value": null
@@ -2020,6 +2055,7 @@
     },
     "Writeable.Resource.Discount": {
       "name": "Writeable.Resource.Discount",
+      "module": [],
       "type": {
         "type": "Float",
         "value": null
@@ -2028,6 +2064,7 @@
     },
     "Writeable.Resource.Operating Times": {
       "name": "Writeable.Resource.Operating Times",
+      "module": [],
       "type": {
         "type": "Struct",
         "value": {
@@ -2045,6 +2082,7 @@
     },
     "Writeable.Resource.Price": {
       "name": "Writeable.Resource.Price",
+      "module": [],
       "type": {
         "type": "Float",
         "value": null
@@ -2053,6 +2091,7 @@
     },
     "Writeable.Resource.Stock-on-hand": {
       "name": "Writeable.Resource.Stock-on-hand",
+      "module": [],
       "type": {
         "type": "Integer",
         "value": null
@@ -2061,6 +2100,7 @@
     },
     "Writeable.Sales File": {
       "name": "Writeable.Sales File",
+      "module": [],
       "type": {
         "type": "Blob",
         "value": null
@@ -2069,6 +2109,7 @@
     },
     "Writeable.Suppliers File": {
       "name": "Writeable.Suppliers File",
+      "module": [],
       "type": {
         "type": "Blob",
         "value": null
@@ -2079,6 +2120,7 @@
   "tasks": {
     "MLTraining.Demand": {
       "task_type": "ml_training",
+      "module": [],
       "name": "MLTraining.Demand",
       "features": {
         "discount": {
@@ -2098,6 +2140,7 @@
       "inputs": {
         "input": {
           "name": "Pipeline.MLTraining.Demand",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -2120,12 +2163,13 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "outputs": {
         "model": {
           "name": "MLModel.Demand",
+          "module": [],
           "type": {
             "type": "Struct",
             "value": {
@@ -2166,10 +2210,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "training": {
           "name": "MLTraining.Demand",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -2205,10 +2250,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "validation": {
           "name": "MLValidation.Demand",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -2264,40 +2310,45 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       }
     },
     "Optimization.Prescriptive": {
       "task_type": "optimization",
+      "module": [],
       "name": "Optimization.Prescriptive",
       "inputs": {
         "resource.Cash": {
           "name": "SimulationResult.Descriptive.Cash",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "resource.Stock-on-hand": {
           "name": "SimulationResult.Descriptive.Stock-on-hand",
+          "module": [],
           "type": {
             "type": "Integer",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "resource.Price": {
           "name": "SimulationResult.Descriptive.Price",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "resource.Suppliers": {
           "name": "SimulationResult.Descriptive.Suppliers",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -2332,10 +2383,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "resource.Operating Times": {
           "name": "Writeable.Resource.Operating Times",
+          "module": [],
           "type": {
             "type": "Struct",
             "value": {
@@ -2349,18 +2401,20 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "resource.Discount": {
           "name": "Writeable.Resource.Discount",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "process.Predicted Sales": {
           "name": "Pipeline.Process.Predicted Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -2379,10 +2433,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "ml.Demand": {
           "name": "MLModel.Demand",
+          "module": [],
           "type": {
             "type": "Struct",
             "value": {
@@ -2423,10 +2478,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "process.Predicted Procurement": {
           "name": "Pipeline.Process.Predicted Procurement",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -2445,10 +2501,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "queue": {
           "name": "SimulationQueue.Descriptive",
+          "module": [],
           "type": {
             "type": "Array",
             "value": {
@@ -2529,82 +2586,64 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "endDate": {
           "name": "Pipeline.FutureCutoffDate",
+          "module": [],
           "type": {
             "type": "DateTime",
             "value": null
           },
-          "writable": false
+          "optional": false
         }
       },
       "outputs": {
         "optimized.Discount": {
           "name": "Optimized.Prescriptive.Discount",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "optimization": {
           "name": "Optimization.Prescriptive",
+          "module": [],
           "type": {
-            "type": "Dict",
+            "type": "Array",
             "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
+              "type": "Struct",
               "value": {
-                "type": "Struct",
-                "value": {
-                  "iteration": {
-                    "type": "Integer",
-                    "value": null
-                  },
-                  "objective": {
+                "objective": {
+                  "type": "Float",
+                  "value": null
+                },
+                "objectives": {
+                  "type": "Array",
+                  "value": {
                     "type": "Float",
                     "value": null
-                  },
-                  "objectives": {
-                    "type": "Array",
+                  }
+                },
+                "values": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
                     "value": {
                       "type": "Float",
                       "value": null
-                    }
-                  },
-                  "validationObjective": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "validationObjectives": {
-                    "type": "Array",
-                    "value": {
-                      "type": "Float",
-                      "value": null
-                    }
-                  },
-                  "values": {
-                    "type": "Dict",
-                    "value": {
-                      "key": {
-                        "type": "String",
-                        "value": null
-                      },
-                      "value": {
-                        "type": "Float",
-                        "value": null
-                      }
                     }
                   }
                 }
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "resources": {
@@ -2769,7 +2808,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "r_Price"
+                  "name": "__resource_Price"
                 },
                 "second": {
                   "type": {
@@ -2789,7 +2828,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "p_discount"
+                      "name": "discount"
                     },
                     "second": {
                       "type": {
@@ -2806,7 +2845,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "r_Price"
+                    "name": "__resource_Price"
                   }
                 }
               }
@@ -2832,7 +2871,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_qty"
+                    "name": "qty"
                   }
                 },
                 "second": {
@@ -2841,7 +2880,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_price"
+                  "name": "price"
                 }
               }
             },
@@ -2860,7 +2899,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "r_Stock-on-hand"
+                  "name": "__resource_Stock-on-hand"
                 },
                 "second": {
                   "type": {
@@ -2868,7 +2907,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_qty"
+                  "name": "qty"
                 }
               },
               "assertions": []
@@ -2888,7 +2927,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "r_Cash"
+                  "name": "__resource_Cash"
                 },
                 "second": {
                   "type": {
@@ -2896,7 +2935,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_amount"
+                  "name": "amount"
                 }
               },
               "assertions": []
@@ -2956,7 +2995,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "r_Stock-on-hand"
+                  "name": "__resource_Stock-on-hand"
                 },
                 "second": {
                   "type": {
@@ -2964,7 +3003,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_orderQty"
+                  "name": "orderQty"
                 }
               },
               "assertions": []
@@ -3050,7 +3089,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_orderQty"
+                    "name": "orderQty"
                   }
                 },
                 "second": {
@@ -3059,7 +3098,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_unitCost"
+                  "name": "unitCost"
                 }
               }
             },
@@ -3078,7 +3117,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "r_Cash"
+                  "name": "__resource_Cash"
                 },
                 "second": {
                   "type": {
@@ -3086,7 +3125,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_invoiceTotal"
+                  "name": "invoiceTotal"
                 }
               },
               "assertions": []
@@ -3222,7 +3261,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "r_Suppliers"
+                  "name": "__resource_Suppliers"
                 },
                 "key": {
                   "type": {
@@ -3230,7 +3269,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_supplierName"
+                  "name": "supplierName"
                 },
                 "default": null
               }
@@ -3271,7 +3310,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "p_supplier"
+                  "name": "supplier"
                 },
                 "key": "orderQty"
               }
@@ -3311,7 +3350,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "p_date"
+                      "name": "date"
                     },
                     "duration": {
                       "type": {
@@ -3346,7 +3385,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "p_supplier"
+                        "name": "supplier"
                       },
                       "key": "leadTime"
                     },
@@ -3358,7 +3397,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_supplierName"
+                    "name": "supplierName"
                   },
                   "orderQty": {
                     "type": {
@@ -3366,7 +3405,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_orderQty"
+                    "name": "orderQty"
                   }
                 }
               },
@@ -3415,7 +3454,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "p_supplier"
+                  "name": "supplier"
                 },
                 "key": "unitCost"
               }
@@ -3463,7 +3502,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "p_date"
+                      "name": "date"
                     },
                     "duration": {
                       "type": {
@@ -3498,7 +3537,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "p_supplier"
+                        "name": "supplier"
                       },
                       "key": "paymentTerms"
                     },
@@ -3510,7 +3549,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_supplierName"
+                    "name": "supplierName"
                   },
                   "unitCost": {
                     "type": {
@@ -3518,7 +3557,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_unitCost"
+                    "name": "unitCost"
                   },
                   "orderQty": {
                     "type": {
@@ -3526,7 +3565,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_orderQty"
+                    "name": "orderQty"
                   },
                   "orderDate": {
                     "type": {
@@ -3534,7 +3573,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_date"
+                    "name": "date"
                   }
                 }
               },
@@ -3600,7 +3639,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_date"
+                    "name": "date"
                   },
                   "qty": {
                     "type": {
@@ -3626,7 +3665,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_QNdAe0nsdd8M$QCKSHs0jL"
+                          "name": "_TaF$sUMzLkNI9YtcdWra0L"
                         },
                         "second": {
                           "type": {
@@ -3634,7 +3673,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "r_Stock-on-hand"
+                          "name": "__resource_Stock-on-hand"
                         }
                       },
                       "true": {
@@ -3643,7 +3682,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_QNdAe0nsdd8M$QCKSHs0jL"
+                        "name": "_TaF$sUMzLkNI9YtcdWra0L"
                       },
                       "false": {
                         "type": {
@@ -3651,7 +3690,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "r_Stock-on-hand"
+                        "name": "__resource_Stock-on-hand"
                       }
                     },
                     "variable": {
@@ -3660,7 +3699,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_QNdAe0nsdd8M$QCKSHs0jL"
+                      "name": "_TaF$sUMzLkNI9YtcdWra0L"
                     },
                     "value": {
                       "type": {
@@ -3694,7 +3733,7 @@
                                 "value": null
                               },
                               "ast_type": "Variable",
-                              "name": "r_Discount"
+                              "name": "__resource_Discount"
                             }
                           }
                         },
@@ -3725,7 +3764,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "r_Discount"
+                    "name": "__resource_Discount"
                   }
                 }
               },
@@ -3783,7 +3822,7 @@
                               "value": null
                             },
                             "ast_type": "Variable",
-                            "name": "p_date"
+                            "name": "date"
                           },
                           "duration": {
                             "type": {
@@ -3817,7 +3856,7 @@
                             }
                           },
                           "ast_type": "Variable",
-                          "name": "r_Operating Times"
+                          "name": "__resource_Operating Times"
                         },
                         "key": "end"
                       }
@@ -3847,7 +3886,7 @@
                               "value": null
                             },
                             "ast_type": "Variable",
-                            "name": "p_date"
+                            "name": "date"
                           },
                           "duration": {
                             "type": {
@@ -3888,7 +3927,7 @@
                               }
                             },
                             "ast_type": "Variable",
-                            "name": "r_Operating Times"
+                            "name": "__resource_Operating Times"
                           },
                           "key": "start"
                         }
@@ -3907,7 +3946,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "p_date"
+                        "name": "date"
                       },
                       "duration": {
                         "type": {
@@ -4046,7 +4085,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "r_Suppliers"
+                  "name": "__resource_Suppliers"
                 },
                 "def": {
                   "type": {
@@ -4134,7 +4173,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "r_Cash"
+                  "name": "__resource_Cash"
                 },
                 "second": {
                   "type": {
@@ -4175,7 +4214,7 @@
                         }
                       },
                       "ast_type": "Variable",
-                      "name": "p_supplier"
+                      "name": "supplier"
                     },
                     "key": "unitCost"
                   },
@@ -4218,7 +4257,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "p_supplier"
+                        "name": "supplier"
                       },
                       "key": "orderQty"
                     }
@@ -4251,7 +4290,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "p_date"
+                        "name": "date"
                       },
                       "supplierName": {
                         "type": {
@@ -4286,7 +4325,7 @@
                             }
                           },
                           "ast_type": "Variable",
-                          "name": "p_supplier"
+                          "name": "supplier"
                         },
                         "key": "supplierName"
                       }
@@ -4331,7 +4370,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "p_date"
+                      "name": "date"
                     },
                     "duration": {
                       "type": {
@@ -4381,6 +4420,7 @@
           "input": "ml.Demand",
           "modelStream": {
             "name": "MLModel.Demand",
+            "module": [],
             "type": {
               "type": "Struct",
               "value": {
@@ -4425,20 +4465,14 @@
           }
         }
       },
-      "objectives": [
-        {
-          "objective_type": "Value",
-          "resource": "Cash",
-          "objective": {
-            "type": {
-              "type": "Float",
-              "value": null
-            },
-            "ast_type": "Variable",
-            "name": "r_Cash"
-          }
-        }
-      ],
+      "objective": {
+        "type": {
+          "type": "Float",
+          "value": null
+        },
+        "ast_type": "Variable",
+        "name": "__resource_Cash"
+      },
       "optimizations": [
         {
           "optimization_type": "set",
@@ -4469,42 +4503,45 @@
         "atol": 0,
         "threads": true,
         "in_memory": true,
-        "optimization_algorithm": "quad_direct"
+        "optimization_algorithm": "gradient_free"
       },
       "initial_queue": "queue",
       "end_date": "endDate"
     },
     "Pipeline.Alteration.Interactive.Resource.Discount": {
-      "name": "Pipeline.Alteration.Interactive.Resource.Discount",
-      "parent": "Pipeline.Alteration.Interactive.Resource.Discount",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Alteration.Interactive.Resource.Discount",
       "inputs": {
         "input": {
           "name": "Writeable.Resource.Discount",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "myDiscountChoice": {
           "name": "Writeable.My Discount Choice",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null,
             "nullable": true
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Alteration.Interactive.Resource.Discount",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -4547,7 +4584,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_g0RdpvsZyQCI1vIvFARLCP"
+              "name": "_RnLxKzpirLCuebT8_jC$hV"
             },
             "value": {
               "type": {
@@ -4555,34 +4592,36 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_g0RdpvsZyQCI1vIvFARLCP"
+              "name": "_RnLxKzpirLCuebT8_jC$hV"
             }
           }
         }
       ]
     },
     "Pipeline.FutureCutoffDate": {
-      "name": "Pipeline.FutureCutoffDate",
-      "parent": "Pipeline.FutureCutoffDate",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.FutureCutoffDate",
       "inputs": {
         "input": {
           "name": "Pipeline.Historic Sales Cutoff Date",
+          "module": [],
           "type": {
             "type": "DateTime",
             "value": null
           },
-          "writable": false
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.FutureCutoffDate",
+          "module": [],
           "type": {
             "type": "DateTime",
             "value": null
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -4620,22 +4659,24 @@
       ]
     },
     "Pipeline.Historic Procurement": {
-      "name": "Pipeline.Historic Procurement",
-      "parent": "Pipeline.Historic Procurement",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Historic Procurement",
       "inputs": {
         "input": {
           "name": "Writeable.Procurement File",
+          "module": [],
           "type": {
             "type": "Blob",
             "value": null
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Historic Procurement",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -4658,7 +4699,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -4705,22 +4746,24 @@
       ]
     },
     "Pipeline.Historic Sales": {
-      "name": "Pipeline.Historic Sales",
-      "parent": "Pipeline.Historic Sales",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Historic Sales",
       "inputs": {
         "input": {
           "name": "Writeable.Sales File",
+          "module": [],
           "type": {
             "type": "Blob",
             "value": null
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Historic Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -4747,7 +4790,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -4798,12 +4841,13 @@
       ]
     },
     "Pipeline.Historic Sales Cutoff Date": {
-      "name": "Pipeline.Historic Sales Cutoff Date",
-      "parent": "Pipeline.Historic Sales Cutoff Date",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Historic Sales Cutoff Date",
       "inputs": {
         "input": {
           "name": "Pipeline.Historic Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -4830,17 +4874,18 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Historic Sales Cutoff Date",
+          "module": [],
           "type": {
             "type": "DateTime",
             "value": null
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -4916,7 +4961,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_k58nrro3TzIV4UxbKyp5hm"
+                      "name": "_OFZHA3UWBKvOqvH49ZVHO5"
                     },
                     "second": {
                       "type": {
@@ -4924,7 +4969,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_previous_q7kLf60UZm$6$LKj_DOLhe"
+                      "name": "_previous_Ng0it83LgJz2vCoI5d3rFd"
                     }
                   },
                   "true": {
@@ -4933,7 +4978,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_k58nrro3TzIV4UxbKyp5hm"
+                    "name": "_OFZHA3UWBKvOqvH49ZVHO5"
                   },
                   "false": {
                     "type": {
@@ -4941,7 +4986,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_previous_q7kLf60UZm$6$LKj_DOLhe"
+                    "name": "_previous_Ng0it83LgJz2vCoI5d3rFd"
                   }
                 },
                 "variable": {
@@ -4950,7 +4995,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_k58nrro3TzIV4UxbKyp5hm"
+                  "name": "_OFZHA3UWBKvOqvH49ZVHO5"
                 },
                 "value": {
                   "type": {
@@ -4977,7 +5022,7 @@
                       }
                     },
                     "ast_type": "Variable",
-                    "name": "_value_jFTpGh_UfEhBPfXO$U9jDj"
+                    "name": "_value_fC0shrzzFzpjeUEd_oRr5A"
                   },
                   "key": "date"
                 }
@@ -4996,7 +5041,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_previous_q7kLf60UZm$6$LKj_DOLhe"
+                "name": "_previous_Ng0it83LgJz2vCoI5d3rFd"
               },
               "value": {
                 "type": {
@@ -5017,7 +5062,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_jFTpGh_UfEhBPfXO$U9jDj"
+                "name": "_value_fC0shrzzFzpjeUEd_oRr5A"
               },
               "key": {
                 "type": {
@@ -5025,7 +5070,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_key_O0srVOQ7MXOTnA_yPxG4N2"
+                "name": "_key_zCfl7dxB9F6CT57nm7rylI"
               }
             },
             "duration": {
@@ -5042,12 +5087,13 @@
       ]
     },
     "Pipeline.MLTraining.Demand": {
-      "name": "Pipeline.MLTraining.Demand",
-      "parent": "Pipeline.MLTraining.Demand",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.MLTraining.Demand",
       "inputs": {
         "input": {
           "name": "Pipeline.Historic Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -5074,12 +5120,13 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.MLTraining.Demand",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -5102,7 +5149,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -5167,12 +5214,13 @@
       ]
     },
     "Pipeline.Next Procurement Date": {
-      "name": "Pipeline.Next Procurement Date",
-      "parent": "Pipeline.Next Procurement Date",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Next Procurement Date",
       "inputs": {
         "input": {
           "name": "Pipeline.Historic Procurement",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -5195,17 +5243,18 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Next Procurement Date",
+          "module": [],
           "type": {
             "type": "DateTime",
             "value": null
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -5277,7 +5326,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_ZHQx6tg28OUZcXvVL1Xoa8"
+                      "name": "_3BnBHhmFan1EnvB6_0rxxE"
                     },
                     "second": {
                       "type": {
@@ -5285,7 +5334,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_previous_B0sInbQz1eJvFs4HCQjI84"
+                      "name": "_previous_AtCkYjnx6RgWLdVdQAzu8u"
                     }
                   },
                   "true": {
@@ -5294,7 +5343,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_ZHQx6tg28OUZcXvVL1Xoa8"
+                    "name": "_3BnBHhmFan1EnvB6_0rxxE"
                   },
                   "false": {
                     "type": {
@@ -5302,7 +5351,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_previous_B0sInbQz1eJvFs4HCQjI84"
+                    "name": "_previous_AtCkYjnx6RgWLdVdQAzu8u"
                   }
                 },
                 "variable": {
@@ -5311,7 +5360,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_ZHQx6tg28OUZcXvVL1Xoa8"
+                  "name": "_3BnBHhmFan1EnvB6_0rxxE"
                 },
                 "value": {
                   "type": {
@@ -5334,7 +5383,7 @@
                       }
                     },
                     "ast_type": "Variable",
-                    "name": "_value_dpQZkKAj0CtwxxrQ38wbnA"
+                    "name": "_value_BZ87TI_Da_ZOgfmlw5H69M"
                   },
                   "key": "date"
                 }
@@ -5353,7 +5402,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_previous_B0sInbQz1eJvFs4HCQjI84"
+                "name": "_previous_AtCkYjnx6RgWLdVdQAzu8u"
               },
               "value": {
                 "type": {
@@ -5370,7 +5419,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_dpQZkKAj0CtwxxrQ38wbnA"
+                "name": "_value_BZ87TI_Da_ZOgfmlw5H69M"
               },
               "key": {
                 "type": {
@@ -5378,7 +5427,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_key_kWUwSIieLKZjR2lNG03B34"
+                "name": "_key_P8i17WithzzZHIeAjz95JU"
               }
             },
             "duration": {
@@ -5395,22 +5444,24 @@
       ]
     },
     "Pipeline.Process.Predicted Procurement": {
-      "name": "Pipeline.Process.Predicted Procurement",
-      "parent": "Pipeline.Process.Predicted Procurement",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Process.Predicted Procurement",
       "inputs": {
         "input": {
           "name": "Pipeline.Next Procurement Date",
+          "module": [],
           "type": {
             "type": "DateTime",
             "value": null
           },
-          "writable": false
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Process.Predicted Procurement",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -5429,7 +5480,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -5537,20 +5588,22 @@
       ]
     },
     "Pipeline.Process.Predicted Sales": {
-      "name": "Pipeline.Process.Predicted Sales",
-      "parent": "Pipeline.Process.Predicted Sales",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Process.Predicted Sales",
       "inputs": {
         "input": {
           "name": "Pipeline.Historic Sales Cutoff Date",
+          "module": [],
           "type": {
             "type": "DateTime",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "operating_times": {
           "name": "Writeable.Resource.Operating Times",
+          "module": [],
           "type": {
             "type": "Struct",
             "value": {
@@ -5564,12 +5617,13 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Process.Predicted Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -5588,7 +5642,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -5827,22 +5881,24 @@
       ]
     },
     "Pipeline.Suppliers": {
-      "name": "Pipeline.Suppliers",
-      "parent": "Pipeline.Suppliers",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Suppliers",
       "inputs": {
         "input": {
           "name": "Writeable.Suppliers File",
+          "module": [],
           "type": {
             "type": "Blob",
             "value": null
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Suppliers",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -5877,7 +5933,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -5930,34 +5986,39 @@
     },
     "Simulation.Descriptive": {
       "task_type": "simulation",
+      "module": [],
       "name": "Simulation.Descriptive",
       "inputs": {
         "resource.Cash": {
           "name": "Writeable.Resource.Cash",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "resource.Stock-on-hand": {
           "name": "Writeable.Resource.Stock-on-hand",
+          "module": [],
           "type": {
             "type": "Integer",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "resource.Price": {
           "name": "Writeable.Resource.Price",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "resource.Suppliers": {
           "name": "Pipeline.Suppliers",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -5992,10 +6053,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "process.Sales": {
           "name": "Pipeline.Historic Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -6022,10 +6084,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "process.Procurement": {
           "name": "Pipeline.Historic Procurement",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -6048,44 +6111,49 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "endDate": {
           "name": "Pipeline.Historic Sales Cutoff Date",
+          "module": [],
           "type": {
             "type": "DateTime",
             "value": null
           },
-          "writable": false
+          "optional": false
         }
       },
       "outputs": {
         "result.Cash": {
           "name": "SimulationResult.Descriptive.Cash",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "result.Stock-on-hand": {
           "name": "SimulationResult.Descriptive.Stock-on-hand",
+          "module": [],
           "type": {
             "type": "Integer",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "result.Price": {
           "name": "SimulationResult.Descriptive.Price",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "result.Suppliers": {
           "name": "SimulationResult.Descriptive.Suppliers",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -6120,10 +6188,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "ledger.Cash": {
           "name": "SimulationLedger.Descriptive.Cash",
+          "module": [],
           "type": {
             "type": "Array",
             "value": {
@@ -6149,10 +6218,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "ledger.Stock-on-hand": {
           "name": "SimulationLedger.Descriptive.Stock-on-hand",
+          "module": [],
           "type": {
             "type": "Array",
             "value": {
@@ -6178,10 +6248,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "journal": {
           "name": "SimulationJournal.Descriptive",
+          "module": [],
           "type": {
             "type": "Array",
             "value": {
@@ -6307,10 +6378,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "queue": {
           "name": "SimulationQueue.Descriptive",
+          "module": [],
           "type": {
             "type": "Array",
             "value": {
@@ -6391,7 +6463,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "resources": {
@@ -6527,7 +6599,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "r_Price"
+                  "name": "__resource_Price"
                 },
                 "second": {
                   "type": {
@@ -6547,7 +6619,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "p_discount"
+                      "name": "discount"
                     },
                     "second": {
                       "type": {
@@ -6564,7 +6636,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "r_Price"
+                    "name": "__resource_Price"
                   }
                 }
               }
@@ -6590,7 +6662,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_qty"
+                    "name": "qty"
                   }
                 },
                 "second": {
@@ -6599,7 +6671,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_price"
+                  "name": "price"
                 }
               }
             },
@@ -6618,7 +6690,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "r_Stock-on-hand"
+                  "name": "__resource_Stock-on-hand"
                 },
                 "second": {
                   "type": {
@@ -6626,7 +6698,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_qty"
+                  "name": "qty"
                 }
               },
               "assertions": []
@@ -6646,7 +6718,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "r_Cash"
+                  "name": "__resource_Cash"
                 },
                 "second": {
                   "type": {
@@ -6654,7 +6726,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_amount"
+                  "name": "amount"
                 }
               },
               "assertions": []
@@ -6714,7 +6786,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "r_Stock-on-hand"
+                  "name": "__resource_Stock-on-hand"
                 },
                 "second": {
                   "type": {
@@ -6722,7 +6794,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_orderQty"
+                  "name": "orderQty"
                 }
               },
               "assertions": []
@@ -6808,7 +6880,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_orderQty"
+                    "name": "orderQty"
                   }
                 },
                 "second": {
@@ -6817,7 +6889,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_unitCost"
+                  "name": "unitCost"
                 }
               }
             },
@@ -6836,7 +6908,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "r_Cash"
+                  "name": "__resource_Cash"
                 },
                 "second": {
                   "type": {
@@ -6844,7 +6916,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_invoiceTotal"
+                  "name": "invoiceTotal"
                 }
               },
               "assertions": []
@@ -6980,7 +7052,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "r_Suppliers"
+                  "name": "__resource_Suppliers"
                 },
                 "key": {
                   "type": {
@@ -6988,7 +7060,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_supplierName"
+                  "name": "supplierName"
                 },
                 "default": null
               }
@@ -7029,7 +7101,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "p_supplier"
+                  "name": "supplier"
                 },
                 "key": "orderQty"
               }
@@ -7069,7 +7141,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "p_date"
+                      "name": "date"
                     },
                     "duration": {
                       "type": {
@@ -7104,7 +7176,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "p_supplier"
+                        "name": "supplier"
                       },
                       "key": "leadTime"
                     },
@@ -7116,7 +7188,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_supplierName"
+                    "name": "supplierName"
                   },
                   "orderQty": {
                     "type": {
@@ -7124,7 +7196,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_orderQty"
+                    "name": "orderQty"
                   }
                 }
               },
@@ -7173,7 +7245,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "p_supplier"
+                  "name": "supplier"
                 },
                 "key": "unitCost"
               }
@@ -7221,7 +7293,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "p_date"
+                      "name": "date"
                     },
                     "duration": {
                       "type": {
@@ -7256,7 +7328,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "p_supplier"
+                        "name": "supplier"
                       },
                       "key": "paymentTerms"
                     },
@@ -7268,7 +7340,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_supplierName"
+                    "name": "supplierName"
                   },
                   "unitCost": {
                     "type": {
@@ -7276,7 +7348,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_unitCost"
+                    "name": "unitCost"
                   },
                   "orderQty": {
                     "type": {
@@ -7284,7 +7356,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_orderQty"
+                    "name": "orderQty"
                   },
                   "orderDate": {
                     "type": {
@@ -7292,7 +7364,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_date"
+                    "name": "date"
                   }
                 }
               },
@@ -7310,7 +7382,72 @@
         }
       },
       "mls": {},
+      "results": {
+        "Cash": {
+          "type": {
+            "type": "Float",
+            "value": null
+          },
+          "ast_type": "Variable",
+          "name": "__resource_Cash"
+        },
+        "Stock-on-hand": {
+          "type": {
+            "type": "Integer",
+            "value": null
+          },
+          "ast_type": "Variable",
+          "name": "__resource_Stock-on-hand"
+        },
+        "Price": {
+          "type": {
+            "type": "Float",
+            "value": null
+          },
+          "ast_type": "Variable",
+          "name": "__resource_Price"
+        },
+        "Suppliers": {
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "supplierName": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "paymentTerms": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "leadTime": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "unitCost": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "orderQty": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "ast_type": "Variable",
+          "name": "__resource_Suppliers"
+        }
+      },
       "configuration": {
+        "trajectories": null,
         "in_memory": true,
         "journal": true,
         "queue": true,
@@ -7321,34 +7458,39 @@
     },
     "Simulation.Interactive": {
       "task_type": "simulation",
+      "module": [],
       "name": "Simulation.Interactive",
       "inputs": {
         "resource.Cash": {
           "name": "SimulationResult.Descriptive.Cash",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "resource.Stock-on-hand": {
           "name": "SimulationResult.Descriptive.Stock-on-hand",
+          "module": [],
           "type": {
             "type": "Integer",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "resource.Price": {
           "name": "SimulationResult.Descriptive.Price",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "resource.Suppliers": {
           "name": "SimulationResult.Descriptive.Suppliers",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -7383,10 +7525,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "resource.Operating Times": {
           "name": "Writeable.Resource.Operating Times",
+          "module": [],
           "type": {
             "type": "Struct",
             "value": {
@@ -7400,18 +7543,20 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "resource.Discount": {
           "name": "Pipeline.Alteration.Interactive.Resource.Discount",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "process.Predicted Sales": {
           "name": "Pipeline.Process.Predicted Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -7430,10 +7575,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "ml.Demand": {
           "name": "MLModel.Demand",
+          "module": [],
           "type": {
             "type": "Struct",
             "value": {
@@ -7474,10 +7620,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "process.Predicted Procurement": {
           "name": "Pipeline.Process.Predicted Procurement",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -7496,10 +7643,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "queue": {
           "name": "SimulationQueue.Descriptive",
+          "module": [],
           "type": {
             "type": "Array",
             "value": {
@@ -7580,44 +7728,49 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "endDate": {
           "name": "Pipeline.FutureCutoffDate",
+          "module": [],
           "type": {
             "type": "DateTime",
             "value": null
           },
-          "writable": false
+          "optional": false
         }
       },
       "outputs": {
         "result.Cash": {
           "name": "SimulationResult.Interactive.Cash",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "result.Stock-on-hand": {
           "name": "SimulationResult.Interactive.Stock-on-hand",
+          "module": [],
           "type": {
             "type": "Integer",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "result.Price": {
           "name": "SimulationResult.Interactive.Price",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "result.Suppliers": {
           "name": "SimulationResult.Interactive.Suppliers",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -7652,10 +7805,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "result.Operating Times": {
           "name": "SimulationResult.Interactive.Operating Times",
+          "module": [],
           "type": {
             "type": "Struct",
             "value": {
@@ -7669,18 +7823,20 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "result.Discount": {
           "name": "SimulationResult.Interactive.Discount",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "ledger.Cash": {
           "name": "SimulationLedger.Interactive.Cash",
+          "module": [],
           "type": {
             "type": "Array",
             "value": {
@@ -7706,10 +7862,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "ledger.Stock-on-hand": {
           "name": "SimulationLedger.Interactive.Stock-on-hand",
+          "module": [],
           "type": {
             "type": "Array",
             "value": {
@@ -7735,10 +7892,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "journal": {
           "name": "SimulationJournal.Interactive",
+          "module": [],
           "type": {
             "type": "Array",
             "value": {
@@ -7907,10 +8065,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "queue": {
           "name": "SimulationQueue.Interactive",
+          "module": [],
           "type": {
             "type": "Array",
             "value": {
@@ -8009,7 +8168,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "resources": {
@@ -8174,7 +8333,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "r_Price"
+                  "name": "__resource_Price"
                 },
                 "second": {
                   "type": {
@@ -8194,7 +8353,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "p_discount"
+                      "name": "discount"
                     },
                     "second": {
                       "type": {
@@ -8211,7 +8370,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "r_Price"
+                    "name": "__resource_Price"
                   }
                 }
               }
@@ -8237,7 +8396,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_qty"
+                    "name": "qty"
                   }
                 },
                 "second": {
@@ -8246,7 +8405,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_price"
+                  "name": "price"
                 }
               }
             },
@@ -8265,7 +8424,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "r_Stock-on-hand"
+                  "name": "__resource_Stock-on-hand"
                 },
                 "second": {
                   "type": {
@@ -8273,7 +8432,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_qty"
+                  "name": "qty"
                 }
               },
               "assertions": []
@@ -8293,7 +8452,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "r_Cash"
+                  "name": "__resource_Cash"
                 },
                 "second": {
                   "type": {
@@ -8301,7 +8460,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_amount"
+                  "name": "amount"
                 }
               },
               "assertions": []
@@ -8361,7 +8520,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "r_Stock-on-hand"
+                  "name": "__resource_Stock-on-hand"
                 },
                 "second": {
                   "type": {
@@ -8369,7 +8528,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_orderQty"
+                  "name": "orderQty"
                 }
               },
               "assertions": []
@@ -8455,7 +8614,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_orderQty"
+                    "name": "orderQty"
                   }
                 },
                 "second": {
@@ -8464,7 +8623,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_unitCost"
+                  "name": "unitCost"
                 }
               }
             },
@@ -8483,7 +8642,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "r_Cash"
+                  "name": "__resource_Cash"
                 },
                 "second": {
                   "type": {
@@ -8491,7 +8650,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_invoiceTotal"
+                  "name": "invoiceTotal"
                 }
               },
               "assertions": []
@@ -8627,7 +8786,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "r_Suppliers"
+                  "name": "__resource_Suppliers"
                 },
                 "key": {
                   "type": {
@@ -8635,7 +8794,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_supplierName"
+                  "name": "supplierName"
                 },
                 "default": null
               }
@@ -8676,7 +8835,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "p_supplier"
+                  "name": "supplier"
                 },
                 "key": "orderQty"
               }
@@ -8716,7 +8875,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "p_date"
+                      "name": "date"
                     },
                     "duration": {
                       "type": {
@@ -8751,7 +8910,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "p_supplier"
+                        "name": "supplier"
                       },
                       "key": "leadTime"
                     },
@@ -8763,7 +8922,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_supplierName"
+                    "name": "supplierName"
                   },
                   "orderQty": {
                     "type": {
@@ -8771,7 +8930,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_orderQty"
+                    "name": "orderQty"
                   }
                 }
               },
@@ -8820,7 +8979,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "p_supplier"
+                  "name": "supplier"
                 },
                 "key": "unitCost"
               }
@@ -8868,7 +9027,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "p_date"
+                      "name": "date"
                     },
                     "duration": {
                       "type": {
@@ -8903,7 +9062,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "p_supplier"
+                        "name": "supplier"
                       },
                       "key": "paymentTerms"
                     },
@@ -8915,7 +9074,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_supplierName"
+                    "name": "supplierName"
                   },
                   "unitCost": {
                     "type": {
@@ -8923,7 +9082,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_unitCost"
+                    "name": "unitCost"
                   },
                   "orderQty": {
                     "type": {
@@ -8931,7 +9090,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_orderQty"
+                    "name": "orderQty"
                   },
                   "orderDate": {
                     "type": {
@@ -8939,7 +9098,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_date"
+                    "name": "date"
                   }
                 }
               },
@@ -9005,7 +9164,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_date"
+                    "name": "date"
                   },
                   "qty": {
                     "type": {
@@ -9031,7 +9190,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_QNdAe0nsdd8M$QCKSHs0jL"
+                          "name": "_TaF$sUMzLkNI9YtcdWra0L"
                         },
                         "second": {
                           "type": {
@@ -9039,7 +9198,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "r_Stock-on-hand"
+                          "name": "__resource_Stock-on-hand"
                         }
                       },
                       "true": {
@@ -9048,7 +9207,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_QNdAe0nsdd8M$QCKSHs0jL"
+                        "name": "_TaF$sUMzLkNI9YtcdWra0L"
                       },
                       "false": {
                         "type": {
@@ -9056,7 +9215,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "r_Stock-on-hand"
+                        "name": "__resource_Stock-on-hand"
                       }
                     },
                     "variable": {
@@ -9065,7 +9224,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_QNdAe0nsdd8M$QCKSHs0jL"
+                      "name": "_TaF$sUMzLkNI9YtcdWra0L"
                     },
                     "value": {
                       "type": {
@@ -9099,7 +9258,7 @@
                                 "value": null
                               },
                               "ast_type": "Variable",
-                              "name": "r_Discount"
+                              "name": "__resource_Discount"
                             }
                           }
                         },
@@ -9130,7 +9289,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "r_Discount"
+                    "name": "__resource_Discount"
                   }
                 }
               },
@@ -9188,7 +9347,7 @@
                               "value": null
                             },
                             "ast_type": "Variable",
-                            "name": "p_date"
+                            "name": "date"
                           },
                           "duration": {
                             "type": {
@@ -9222,7 +9381,7 @@
                             }
                           },
                           "ast_type": "Variable",
-                          "name": "r_Operating Times"
+                          "name": "__resource_Operating Times"
                         },
                         "key": "end"
                       }
@@ -9252,7 +9411,7 @@
                               "value": null
                             },
                             "ast_type": "Variable",
-                            "name": "p_date"
+                            "name": "date"
                           },
                           "duration": {
                             "type": {
@@ -9293,7 +9452,7 @@
                               }
                             },
                             "ast_type": "Variable",
-                            "name": "r_Operating Times"
+                            "name": "__resource_Operating Times"
                           },
                           "key": "start"
                         }
@@ -9312,7 +9471,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "p_date"
+                        "name": "date"
                       },
                       "duration": {
                         "type": {
@@ -9451,7 +9610,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "r_Suppliers"
+                  "name": "__resource_Suppliers"
                 },
                 "def": {
                   "type": {
@@ -9539,7 +9698,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "r_Cash"
+                  "name": "__resource_Cash"
                 },
                 "second": {
                   "type": {
@@ -9580,7 +9739,7 @@
                         }
                       },
                       "ast_type": "Variable",
-                      "name": "p_supplier"
+                      "name": "supplier"
                     },
                     "key": "unitCost"
                   },
@@ -9623,7 +9782,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "p_supplier"
+                        "name": "supplier"
                       },
                       "key": "orderQty"
                     }
@@ -9656,7 +9815,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "p_date"
+                        "name": "date"
                       },
                       "supplierName": {
                         "type": {
@@ -9691,7 +9850,7 @@
                             }
                           },
                           "ast_type": "Variable",
-                          "name": "p_supplier"
+                          "name": "supplier"
                         },
                         "key": "supplierName"
                       }
@@ -9736,7 +9895,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "p_date"
+                      "name": "date"
                     },
                     "duration": {
                       "type": {
@@ -9786,6 +9945,7 @@
           "input": "ml.Demand",
           "modelStream": {
             "name": "MLModel.Demand",
+            "module": [],
             "type": {
               "type": "Struct",
               "value": {
@@ -9830,7 +9990,97 @@
           }
         }
       },
+      "results": {
+        "Cash": {
+          "type": {
+            "type": "Float",
+            "value": null
+          },
+          "ast_type": "Variable",
+          "name": "__resource_Cash"
+        },
+        "Stock-on-hand": {
+          "type": {
+            "type": "Integer",
+            "value": null
+          },
+          "ast_type": "Variable",
+          "name": "__resource_Stock-on-hand"
+        },
+        "Price": {
+          "type": {
+            "type": "Float",
+            "value": null
+          },
+          "ast_type": "Variable",
+          "name": "__resource_Price"
+        },
+        "Suppliers": {
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "supplierName": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "paymentTerms": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "leadTime": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "unitCost": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "orderQty": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "ast_type": "Variable",
+          "name": "__resource_Suppliers"
+        },
+        "Operating Times": {
+          "type": {
+            "type": "Struct",
+            "value": {
+              "start": {
+                "type": "Integer",
+                "value": null
+              },
+              "end": {
+                "type": "Integer",
+                "value": null
+              }
+            }
+          },
+          "ast_type": "Variable",
+          "name": "__resource_Operating Times"
+        },
+        "Discount": {
+          "type": {
+            "type": "Float",
+            "value": null
+          },
+          "ast_type": "Variable",
+          "name": "__resource_Discount"
+        }
+      },
       "configuration": {
+        "trajectories": null,
         "in_memory": true,
         "journal": true,
         "queue": true,
@@ -9841,34 +10091,39 @@
     },
     "Simulation.Predictive": {
       "task_type": "simulation",
+      "module": [],
       "name": "Simulation.Predictive",
       "inputs": {
         "resource.Cash": {
           "name": "SimulationResult.Descriptive.Cash",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "resource.Stock-on-hand": {
           "name": "SimulationResult.Descriptive.Stock-on-hand",
+          "module": [],
           "type": {
             "type": "Integer",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "resource.Price": {
           "name": "SimulationResult.Descriptive.Price",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "resource.Suppliers": {
           "name": "SimulationResult.Descriptive.Suppliers",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -9903,10 +10158,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "resource.Operating Times": {
           "name": "Writeable.Resource.Operating Times",
+          "module": [],
           "type": {
             "type": "Struct",
             "value": {
@@ -9920,18 +10176,20 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "resource.Discount": {
           "name": "Writeable.Resource.Discount",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "process.Predicted Sales": {
           "name": "Pipeline.Process.Predicted Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -9950,10 +10208,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "ml.Demand": {
           "name": "MLModel.Demand",
+          "module": [],
           "type": {
             "type": "Struct",
             "value": {
@@ -9994,10 +10253,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "process.Predicted Procurement": {
           "name": "Pipeline.Process.Predicted Procurement",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -10016,10 +10276,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "queue": {
           "name": "SimulationQueue.Descriptive",
+          "module": [],
           "type": {
             "type": "Array",
             "value": {
@@ -10100,44 +10361,49 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "endDate": {
           "name": "Pipeline.FutureCutoffDate",
+          "module": [],
           "type": {
             "type": "DateTime",
             "value": null
           },
-          "writable": false
+          "optional": false
         }
       },
       "outputs": {
         "result.Cash": {
           "name": "SimulationResult.Predictive.Cash",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "result.Stock-on-hand": {
           "name": "SimulationResult.Predictive.Stock-on-hand",
+          "module": [],
           "type": {
             "type": "Integer",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "result.Price": {
           "name": "SimulationResult.Predictive.Price",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "result.Suppliers": {
           "name": "SimulationResult.Predictive.Suppliers",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -10172,10 +10438,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "result.Operating Times": {
           "name": "SimulationResult.Predictive.Operating Times",
+          "module": [],
           "type": {
             "type": "Struct",
             "value": {
@@ -10189,18 +10456,20 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "result.Discount": {
           "name": "SimulationResult.Predictive.Discount",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "ledger.Cash": {
           "name": "SimulationLedger.Predictive.Cash",
+          "module": [],
           "type": {
             "type": "Array",
             "value": {
@@ -10226,10 +10495,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "ledger.Stock-on-hand": {
           "name": "SimulationLedger.Predictive.Stock-on-hand",
+          "module": [],
           "type": {
             "type": "Array",
             "value": {
@@ -10255,10 +10525,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "journal": {
           "name": "SimulationJournal.Predictive",
+          "module": [],
           "type": {
             "type": "Array",
             "value": {
@@ -10427,10 +10698,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "queue": {
           "name": "SimulationQueue.Predictive",
+          "module": [],
           "type": {
             "type": "Array",
             "value": {
@@ -10529,7 +10801,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "resources": {
@@ -10694,7 +10966,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "r_Price"
+                  "name": "__resource_Price"
                 },
                 "second": {
                   "type": {
@@ -10714,7 +10986,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "p_discount"
+                      "name": "discount"
                     },
                     "second": {
                       "type": {
@@ -10731,7 +11003,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "r_Price"
+                    "name": "__resource_Price"
                   }
                 }
               }
@@ -10757,7 +11029,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_qty"
+                    "name": "qty"
                   }
                 },
                 "second": {
@@ -10766,7 +11038,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_price"
+                  "name": "price"
                 }
               }
             },
@@ -10785,7 +11057,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "r_Stock-on-hand"
+                  "name": "__resource_Stock-on-hand"
                 },
                 "second": {
                   "type": {
@@ -10793,7 +11065,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_qty"
+                  "name": "qty"
                 }
               },
               "assertions": []
@@ -10813,7 +11085,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "r_Cash"
+                  "name": "__resource_Cash"
                 },
                 "second": {
                   "type": {
@@ -10821,7 +11093,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_amount"
+                  "name": "amount"
                 }
               },
               "assertions": []
@@ -10881,7 +11153,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "r_Stock-on-hand"
+                  "name": "__resource_Stock-on-hand"
                 },
                 "second": {
                   "type": {
@@ -10889,7 +11161,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_orderQty"
+                  "name": "orderQty"
                 }
               },
               "assertions": []
@@ -10975,7 +11247,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_orderQty"
+                    "name": "orderQty"
                   }
                 },
                 "second": {
@@ -10984,7 +11256,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_unitCost"
+                  "name": "unitCost"
                 }
               }
             },
@@ -11003,7 +11275,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "r_Cash"
+                  "name": "__resource_Cash"
                 },
                 "second": {
                   "type": {
@@ -11011,7 +11283,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_invoiceTotal"
+                  "name": "invoiceTotal"
                 }
               },
               "assertions": []
@@ -11147,7 +11419,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "r_Suppliers"
+                  "name": "__resource_Suppliers"
                 },
                 "key": {
                   "type": {
@@ -11155,7 +11427,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_supplierName"
+                  "name": "supplierName"
                 },
                 "default": null
               }
@@ -11196,7 +11468,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "p_supplier"
+                  "name": "supplier"
                 },
                 "key": "orderQty"
               }
@@ -11236,7 +11508,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "p_date"
+                      "name": "date"
                     },
                     "duration": {
                       "type": {
@@ -11271,7 +11543,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "p_supplier"
+                        "name": "supplier"
                       },
                       "key": "leadTime"
                     },
@@ -11283,7 +11555,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_supplierName"
+                    "name": "supplierName"
                   },
                   "orderQty": {
                     "type": {
@@ -11291,7 +11563,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_orderQty"
+                    "name": "orderQty"
                   }
                 }
               },
@@ -11340,7 +11612,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "p_supplier"
+                  "name": "supplier"
                 },
                 "key": "unitCost"
               }
@@ -11388,7 +11660,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "p_date"
+                      "name": "date"
                     },
                     "duration": {
                       "type": {
@@ -11423,7 +11695,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "p_supplier"
+                        "name": "supplier"
                       },
                       "key": "paymentTerms"
                     },
@@ -11435,7 +11707,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_supplierName"
+                    "name": "supplierName"
                   },
                   "unitCost": {
                     "type": {
@@ -11443,7 +11715,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_unitCost"
+                    "name": "unitCost"
                   },
                   "orderQty": {
                     "type": {
@@ -11451,7 +11723,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_orderQty"
+                    "name": "orderQty"
                   },
                   "orderDate": {
                     "type": {
@@ -11459,7 +11731,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_date"
+                    "name": "date"
                   }
                 }
               },
@@ -11525,7 +11797,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_date"
+                    "name": "date"
                   },
                   "qty": {
                     "type": {
@@ -11551,7 +11823,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_QNdAe0nsdd8M$QCKSHs0jL"
+                          "name": "_TaF$sUMzLkNI9YtcdWra0L"
                         },
                         "second": {
                           "type": {
@@ -11559,7 +11831,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "r_Stock-on-hand"
+                          "name": "__resource_Stock-on-hand"
                         }
                       },
                       "true": {
@@ -11568,7 +11840,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_QNdAe0nsdd8M$QCKSHs0jL"
+                        "name": "_TaF$sUMzLkNI9YtcdWra0L"
                       },
                       "false": {
                         "type": {
@@ -11576,7 +11848,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "r_Stock-on-hand"
+                        "name": "__resource_Stock-on-hand"
                       }
                     },
                     "variable": {
@@ -11585,7 +11857,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_QNdAe0nsdd8M$QCKSHs0jL"
+                      "name": "_TaF$sUMzLkNI9YtcdWra0L"
                     },
                     "value": {
                       "type": {
@@ -11619,7 +11891,7 @@
                                 "value": null
                               },
                               "ast_type": "Variable",
-                              "name": "r_Discount"
+                              "name": "__resource_Discount"
                             }
                           }
                         },
@@ -11650,7 +11922,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "r_Discount"
+                    "name": "__resource_Discount"
                   }
                 }
               },
@@ -11708,7 +11980,7 @@
                               "value": null
                             },
                             "ast_type": "Variable",
-                            "name": "p_date"
+                            "name": "date"
                           },
                           "duration": {
                             "type": {
@@ -11742,7 +12014,7 @@
                             }
                           },
                           "ast_type": "Variable",
-                          "name": "r_Operating Times"
+                          "name": "__resource_Operating Times"
                         },
                         "key": "end"
                       }
@@ -11772,7 +12044,7 @@
                               "value": null
                             },
                             "ast_type": "Variable",
-                            "name": "p_date"
+                            "name": "date"
                           },
                           "duration": {
                             "type": {
@@ -11813,7 +12085,7 @@
                               }
                             },
                             "ast_type": "Variable",
-                            "name": "r_Operating Times"
+                            "name": "__resource_Operating Times"
                           },
                           "key": "start"
                         }
@@ -11832,7 +12104,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "p_date"
+                        "name": "date"
                       },
                       "duration": {
                         "type": {
@@ -11971,7 +12243,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "r_Suppliers"
+                  "name": "__resource_Suppliers"
                 },
                 "def": {
                   "type": {
@@ -12059,7 +12331,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "r_Cash"
+                  "name": "__resource_Cash"
                 },
                 "second": {
                   "type": {
@@ -12100,7 +12372,7 @@
                         }
                       },
                       "ast_type": "Variable",
-                      "name": "p_supplier"
+                      "name": "supplier"
                     },
                     "key": "unitCost"
                   },
@@ -12143,7 +12415,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "p_supplier"
+                        "name": "supplier"
                       },
                       "key": "orderQty"
                     }
@@ -12176,7 +12448,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "p_date"
+                        "name": "date"
                       },
                       "supplierName": {
                         "type": {
@@ -12211,7 +12483,7 @@
                             }
                           },
                           "ast_type": "Variable",
-                          "name": "p_supplier"
+                          "name": "supplier"
                         },
                         "key": "supplierName"
                       }
@@ -12256,7 +12528,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "p_date"
+                      "name": "date"
                     },
                     "duration": {
                       "type": {
@@ -12306,6 +12578,7 @@
           "input": "ml.Demand",
           "modelStream": {
             "name": "MLModel.Demand",
+            "module": [],
             "type": {
               "type": "Struct",
               "value": {
@@ -12350,7 +12623,97 @@
           }
         }
       },
+      "results": {
+        "Cash": {
+          "type": {
+            "type": "Float",
+            "value": null
+          },
+          "ast_type": "Variable",
+          "name": "__resource_Cash"
+        },
+        "Stock-on-hand": {
+          "type": {
+            "type": "Integer",
+            "value": null
+          },
+          "ast_type": "Variable",
+          "name": "__resource_Stock-on-hand"
+        },
+        "Price": {
+          "type": {
+            "type": "Float",
+            "value": null
+          },
+          "ast_type": "Variable",
+          "name": "__resource_Price"
+        },
+        "Suppliers": {
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "supplierName": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "paymentTerms": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "leadTime": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "unitCost": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "orderQty": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "ast_type": "Variable",
+          "name": "__resource_Suppliers"
+        },
+        "Operating Times": {
+          "type": {
+            "type": "Struct",
+            "value": {
+              "start": {
+                "type": "Integer",
+                "value": null
+              },
+              "end": {
+                "type": "Integer",
+                "value": null
+              }
+            }
+          },
+          "ast_type": "Variable",
+          "name": "__resource_Operating Times"
+        },
+        "Discount": {
+          "type": {
+            "type": "Float",
+            "value": null
+          },
+          "ast_type": "Variable",
+          "name": "__resource_Discount"
+        }
+      },
       "configuration": {
+        "trajectories": null,
         "in_memory": true,
         "journal": true,
         "queue": true,
@@ -12361,34 +12724,39 @@
     },
     "Simulation.Prescriptive": {
       "task_type": "simulation",
+      "module": [],
       "name": "Simulation.Prescriptive",
       "inputs": {
         "resource.Cash": {
           "name": "SimulationResult.Descriptive.Cash",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "resource.Stock-on-hand": {
           "name": "SimulationResult.Descriptive.Stock-on-hand",
+          "module": [],
           "type": {
             "type": "Integer",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "resource.Price": {
           "name": "SimulationResult.Descriptive.Price",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "resource.Suppliers": {
           "name": "SimulationResult.Descriptive.Suppliers",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -12423,10 +12791,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "resource.Operating Times": {
           "name": "Writeable.Resource.Operating Times",
+          "module": [],
           "type": {
             "type": "Struct",
             "value": {
@@ -12440,18 +12809,20 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "resource.Discount": {
           "name": "Optimized.Prescriptive.Discount",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "process.Predicted Sales": {
           "name": "Pipeline.Process.Predicted Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -12470,10 +12841,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "ml.Demand": {
           "name": "MLModel.Demand",
+          "module": [],
           "type": {
             "type": "Struct",
             "value": {
@@ -12514,10 +12886,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "process.Predicted Procurement": {
           "name": "Pipeline.Process.Predicted Procurement",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -12536,18 +12909,20 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "endDate": {
           "name": "Pipeline.FutureCutoffDate",
+          "module": [],
           "type": {
             "type": "DateTime",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "queue": {
           "name": "SimulationQueue.Descriptive",
+          "module": [],
           "type": {
             "type": "Array",
             "value": {
@@ -12628,36 +13003,40 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "outputs": {
         "result.Cash": {
           "name": "SimulationResult.Prescriptive.Cash",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "result.Stock-on-hand": {
           "name": "SimulationResult.Prescriptive.Stock-on-hand",
+          "module": [],
           "type": {
             "type": "Integer",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "result.Price": {
           "name": "SimulationResult.Prescriptive.Price",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "result.Suppliers": {
           "name": "SimulationResult.Prescriptive.Suppliers",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -12692,10 +13071,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "result.Operating Times": {
           "name": "SimulationResult.Prescriptive.Operating Times",
+          "module": [],
           "type": {
             "type": "Struct",
             "value": {
@@ -12709,18 +13089,20 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "result.Discount": {
           "name": "SimulationResult.Prescriptive.Discount",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": false
+          "optional": false
         },
         "ledger.Cash": {
           "name": "SimulationLedger.Prescriptive.Cash",
+          "module": [],
           "type": {
             "type": "Array",
             "value": {
@@ -12746,10 +13128,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "ledger.Stock-on-hand": {
           "name": "SimulationLedger.Prescriptive.Stock-on-hand",
+          "module": [],
           "type": {
             "type": "Array",
             "value": {
@@ -12775,10 +13158,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "journal": {
           "name": "SimulationJournal.Prescriptive",
+          "module": [],
           "type": {
             "type": "Array",
             "value": {
@@ -12947,10 +13331,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "queue": {
           "name": "SimulationQueue.Prescriptive",
+          "module": [],
           "type": {
             "type": "Array",
             "value": {
@@ -13049,7 +13434,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "resources": {
@@ -13214,7 +13599,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "r_Price"
+                  "name": "__resource_Price"
                 },
                 "second": {
                   "type": {
@@ -13234,7 +13619,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "p_discount"
+                      "name": "discount"
                     },
                     "second": {
                       "type": {
@@ -13251,7 +13636,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "r_Price"
+                    "name": "__resource_Price"
                   }
                 }
               }
@@ -13277,7 +13662,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_qty"
+                    "name": "qty"
                   }
                 },
                 "second": {
@@ -13286,7 +13671,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_price"
+                  "name": "price"
                 }
               }
             },
@@ -13305,7 +13690,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "r_Stock-on-hand"
+                  "name": "__resource_Stock-on-hand"
                 },
                 "second": {
                   "type": {
@@ -13313,7 +13698,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_qty"
+                  "name": "qty"
                 }
               },
               "assertions": []
@@ -13333,7 +13718,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "r_Cash"
+                  "name": "__resource_Cash"
                 },
                 "second": {
                   "type": {
@@ -13341,7 +13726,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_amount"
+                  "name": "amount"
                 }
               },
               "assertions": []
@@ -13401,7 +13786,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "r_Stock-on-hand"
+                  "name": "__resource_Stock-on-hand"
                 },
                 "second": {
                   "type": {
@@ -13409,7 +13794,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_orderQty"
+                  "name": "orderQty"
                 }
               },
               "assertions": []
@@ -13495,7 +13880,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_orderQty"
+                    "name": "orderQty"
                   }
                 },
                 "second": {
@@ -13504,7 +13889,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_unitCost"
+                  "name": "unitCost"
                 }
               }
             },
@@ -13523,7 +13908,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "r_Cash"
+                  "name": "__resource_Cash"
                 },
                 "second": {
                   "type": {
@@ -13531,7 +13916,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_invoiceTotal"
+                  "name": "invoiceTotal"
                 }
               },
               "assertions": []
@@ -13667,7 +14052,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "r_Suppliers"
+                  "name": "__resource_Suppliers"
                 },
                 "key": {
                   "type": {
@@ -13675,7 +14060,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "p_supplierName"
+                  "name": "supplierName"
                 },
                 "default": null
               }
@@ -13716,7 +14101,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "p_supplier"
+                  "name": "supplier"
                 },
                 "key": "orderQty"
               }
@@ -13756,7 +14141,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "p_date"
+                      "name": "date"
                     },
                     "duration": {
                       "type": {
@@ -13791,7 +14176,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "p_supplier"
+                        "name": "supplier"
                       },
                       "key": "leadTime"
                     },
@@ -13803,7 +14188,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_supplierName"
+                    "name": "supplierName"
                   },
                   "orderQty": {
                     "type": {
@@ -13811,7 +14196,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_orderQty"
+                    "name": "orderQty"
                   }
                 }
               },
@@ -13860,7 +14245,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "p_supplier"
+                  "name": "supplier"
                 },
                 "key": "unitCost"
               }
@@ -13908,7 +14293,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "p_date"
+                      "name": "date"
                     },
                     "duration": {
                       "type": {
@@ -13943,7 +14328,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "p_supplier"
+                        "name": "supplier"
                       },
                       "key": "paymentTerms"
                     },
@@ -13955,7 +14340,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_supplierName"
+                    "name": "supplierName"
                   },
                   "unitCost": {
                     "type": {
@@ -13963,7 +14348,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_unitCost"
+                    "name": "unitCost"
                   },
                   "orderQty": {
                     "type": {
@@ -13971,7 +14356,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_orderQty"
+                    "name": "orderQty"
                   },
                   "orderDate": {
                     "type": {
@@ -13979,7 +14364,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_date"
+                    "name": "date"
                   }
                 }
               },
@@ -14045,7 +14430,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "p_date"
+                    "name": "date"
                   },
                   "qty": {
                     "type": {
@@ -14071,7 +14456,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_QNdAe0nsdd8M$QCKSHs0jL"
+                          "name": "_TaF$sUMzLkNI9YtcdWra0L"
                         },
                         "second": {
                           "type": {
@@ -14079,7 +14464,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "r_Stock-on-hand"
+                          "name": "__resource_Stock-on-hand"
                         }
                       },
                       "true": {
@@ -14088,7 +14473,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "_QNdAe0nsdd8M$QCKSHs0jL"
+                        "name": "_TaF$sUMzLkNI9YtcdWra0L"
                       },
                       "false": {
                         "type": {
@@ -14096,7 +14481,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "r_Stock-on-hand"
+                        "name": "__resource_Stock-on-hand"
                       }
                     },
                     "variable": {
@@ -14105,7 +14490,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_QNdAe0nsdd8M$QCKSHs0jL"
+                      "name": "_TaF$sUMzLkNI9YtcdWra0L"
                     },
                     "value": {
                       "type": {
@@ -14139,7 +14524,7 @@
                                 "value": null
                               },
                               "ast_type": "Variable",
-                              "name": "r_Discount"
+                              "name": "__resource_Discount"
                             }
                           }
                         },
@@ -14170,7 +14555,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "r_Discount"
+                    "name": "__resource_Discount"
                   }
                 }
               },
@@ -14228,7 +14613,7 @@
                               "value": null
                             },
                             "ast_type": "Variable",
-                            "name": "p_date"
+                            "name": "date"
                           },
                           "duration": {
                             "type": {
@@ -14262,7 +14647,7 @@
                             }
                           },
                           "ast_type": "Variable",
-                          "name": "r_Operating Times"
+                          "name": "__resource_Operating Times"
                         },
                         "key": "end"
                       }
@@ -14292,7 +14677,7 @@
                               "value": null
                             },
                             "ast_type": "Variable",
-                            "name": "p_date"
+                            "name": "date"
                           },
                           "duration": {
                             "type": {
@@ -14333,7 +14718,7 @@
                               }
                             },
                             "ast_type": "Variable",
-                            "name": "r_Operating Times"
+                            "name": "__resource_Operating Times"
                           },
                           "key": "start"
                         }
@@ -14352,7 +14737,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "p_date"
+                        "name": "date"
                       },
                       "duration": {
                         "type": {
@@ -14491,7 +14876,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "r_Suppliers"
+                  "name": "__resource_Suppliers"
                 },
                 "def": {
                   "type": {
@@ -14579,7 +14964,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "r_Cash"
+                  "name": "__resource_Cash"
                 },
                 "second": {
                   "type": {
@@ -14620,7 +15005,7 @@
                         }
                       },
                       "ast_type": "Variable",
-                      "name": "p_supplier"
+                      "name": "supplier"
                     },
                     "key": "unitCost"
                   },
@@ -14663,7 +15048,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "p_supplier"
+                        "name": "supplier"
                       },
                       "key": "orderQty"
                     }
@@ -14696,7 +15081,7 @@
                           "value": null
                         },
                         "ast_type": "Variable",
-                        "name": "p_date"
+                        "name": "date"
                       },
                       "supplierName": {
                         "type": {
@@ -14731,7 +15116,7 @@
                             }
                           },
                           "ast_type": "Variable",
-                          "name": "p_supplier"
+                          "name": "supplier"
                         },
                         "key": "supplierName"
                       }
@@ -14776,7 +15161,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "p_date"
+                      "name": "date"
                     },
                     "duration": {
                       "type": {
@@ -14826,6 +15211,7 @@
           "input": "ml.Demand",
           "modelStream": {
             "name": "MLModel.Demand",
+            "module": [],
             "type": {
               "type": "Struct",
               "value": {
@@ -14870,7 +15256,97 @@
           }
         }
       },
+      "results": {
+        "Cash": {
+          "type": {
+            "type": "Float",
+            "value": null
+          },
+          "ast_type": "Variable",
+          "name": "__resource_Cash"
+        },
+        "Stock-on-hand": {
+          "type": {
+            "type": "Integer",
+            "value": null
+          },
+          "ast_type": "Variable",
+          "name": "__resource_Stock-on-hand"
+        },
+        "Price": {
+          "type": {
+            "type": "Float",
+            "value": null
+          },
+          "ast_type": "Variable",
+          "name": "__resource_Price"
+        },
+        "Suppliers": {
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "supplierName": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "paymentTerms": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "leadTime": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "unitCost": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "orderQty": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "ast_type": "Variable",
+          "name": "__resource_Suppliers"
+        },
+        "Operating Times": {
+          "type": {
+            "type": "Struct",
+            "value": {
+              "start": {
+                "type": "Integer",
+                "value": null
+              },
+              "end": {
+                "type": "Integer",
+                "value": null
+              }
+            }
+          },
+          "ast_type": "Variable",
+          "name": "__resource_Operating Times"
+        },
+        "Discount": {
+          "type": {
+            "type": "Float",
+            "value": null
+          },
+          "ast_type": "Variable",
+          "name": "__resource_Discount"
+        }
+      },
       "configuration": {
+        "trajectories": null,
         "in_memory": true,
         "journal": true,
         "queue": true,
@@ -14884,6 +15360,7 @@
     "Writeable.My Discount Choice": {
       "default_type": "value",
       "stream": "Writeable.My Discount Choice",
+      "module": [],
       "value": {
         "type": {
           "type": "Float",
@@ -14897,6 +15374,7 @@
     "Writeable.Procurement File": {
       "default_type": "file",
       "stream": "Writeable.Procurement File",
+      "module": [],
       "path": "data/procurement.jsonl"
     },
     "Writeable.Resource.Cash": {
@@ -14909,6 +15387,7 @@
         "ast_type": "Const",
         "value": 0
       },
+      "module": [],
       "stream": "Writeable.Resource.Cash"
     },
     "Writeable.Resource.Discount": {
@@ -14921,6 +15400,7 @@
         "ast_type": "Const",
         "value": 0
       },
+      "module": [],
       "stream": "Writeable.Resource.Discount"
     },
     "Writeable.Resource.Operating Times": {
@@ -14945,6 +15425,7 @@
           "end": "15"
         }
       },
+      "module": [],
       "stream": "Writeable.Resource.Operating Times"
     },
     "Writeable.Resource.Price": {
@@ -14957,6 +15438,7 @@
         "ast_type": "Const",
         "value": 3.5
       },
+      "module": [],
       "stream": "Writeable.Resource.Price"
     },
     "Writeable.Resource.Stock-on-hand": {
@@ -14969,16 +15451,19 @@
         "ast_type": "Const",
         "value": "50"
       },
+      "module": [],
       "stream": "Writeable.Resource.Stock-on-hand"
     },
     "Writeable.Sales File": {
       "default_type": "file",
       "stream": "Writeable.Sales File",
+      "module": [],
       "path": "data/sales.jsonl"
     },
     "Writeable.Suppliers File": {
       "default_type": "file",
       "stream": "Writeable.Suppliers File",
+      "module": [],
       "path": "data/suppliers.jsonl"
     }
   }

@@ -2,6 +2,7 @@
   "streams": {
     "Pipeline.Construct a Variant": {
       "name": "Pipeline.Construct a Variant",
+      "module": [],
       "type": {
         "type": "Variant",
         "value": {
@@ -19,6 +20,7 @@
     },
     "Pipeline.Deconstruct a Variant": {
       "name": "Pipeline.Deconstruct a Variant",
+      "module": [],
       "type": {
         "type": "String",
         "value": null
@@ -27,6 +29,7 @@
     },
     "Pipeline.Deconstruct from Tag": {
       "name": "Pipeline.Deconstruct from Tag",
+      "module": [],
       "type": {
         "type": "Boolean",
         "value": null
@@ -35,6 +38,7 @@
     },
     "Writeable.BooleanType Datastream": {
       "name": "Writeable.BooleanType Datastream",
+      "module": [],
       "type": {
         "type": "Boolean",
         "value": null
@@ -43,6 +47,7 @@
     },
     "Writeable.VariantType Datastream": {
       "name": "Writeable.VariantType Datastream",
+      "module": [],
       "type": {
         "type": "Variant",
         "value": {
@@ -61,22 +66,24 @@
   },
   "tasks": {
     "Pipeline.Construct a Variant": {
-      "name": "Pipeline.Construct a Variant",
-      "parent": "Pipeline.Construct a Variant",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Construct a Variant",
       "inputs": {
         "input": {
           "name": "Writeable.BooleanType Datastream",
+          "module": [],
           "type": {
             "type": "Boolean",
             "value": null
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Construct a Variant",
+          "module": [],
           "type": {
             "type": "Variant",
             "value": {
@@ -90,7 +97,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -179,12 +186,13 @@
       ]
     },
     "Pipeline.Deconstruct a Variant": {
-      "name": "Pipeline.Deconstruct a Variant",
-      "parent": "Pipeline.Deconstruct a Variant",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Deconstruct a Variant",
       "inputs": {
         "input": {
           "name": "Writeable.VariantType Datastream",
+          "module": [],
           "type": {
             "type": "Variant",
             "value": {
@@ -198,17 +206,18 @@
               }
             }
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Deconstruct a Variant",
+          "module": [],
           "type": {
             "type": "String",
             "value": null
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -269,7 +278,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_gEUXNAahlfX1Kec4eBMtF3"
+                      "name": "_3LdQcqHhA7UnewkPiWLH6U"
                     }
                   }
                 ],
@@ -296,24 +305,25 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_gEUXNAahlfX1Kec4eBMtF3"
+                    "name": "_3LdQcqHhA7UnewkPiWLH6U"
                   }
                 ],
                 "seperator": ""
               }
             },
-            "value": "_gEUXNAahlfX1Kec4eBMtF3"
+            "value": "_3LdQcqHhA7UnewkPiWLH6U"
           }
         }
       ]
     },
     "Pipeline.Deconstruct from Tag": {
-      "name": "Pipeline.Deconstruct from Tag",
-      "parent": "Pipeline.Deconstruct from Tag",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Deconstruct from Tag",
       "inputs": {
         "input": {
           "name": "Writeable.VariantType Datastream",
+          "module": [],
           "type": {
             "type": "Variant",
             "value": {
@@ -327,17 +337,18 @@
               }
             }
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Deconstruct from Tag",
+          "module": [],
           "type": {
             "type": "Boolean",
             "value": null
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -388,7 +399,7 @@
                 "value": false
               }
             },
-            "value": "_C$kJcrqjm5Y42dJIe6irZQ"
+            "value": "_Y3kvQKpOBSf4ZHk0XObwsu"
           }
         }
       ]
@@ -398,6 +409,7 @@
     "Writeable.VariantType Datastream": {
       "default_type": "value",
       "stream": "Writeable.VariantType Datastream",
+      "module": [],
       "value": {
         "type": {
           "type": "Variant",

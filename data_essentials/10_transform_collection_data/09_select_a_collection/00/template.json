@@ -2,6 +2,7 @@
   "streams": {
     "Pipeline.By Category": {
       "name": "Pipeline.By Category",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -28,6 +29,7 @@
     },
     "Pipeline.By Date": {
       "name": "Pipeline.By Date",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -54,6 +56,7 @@
     },
     "Pipeline.Concatenate Sales across Sites": {
       "name": "Pipeline.Concatenate Sales across Sites",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -100,6 +103,7 @@
     },
     "Pipeline.Disaggregate Items": {
       "name": "Pipeline.Disaggregate Items",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -134,6 +138,7 @@
     },
     "Pipeline.Disaggregate Units": {
       "name": "Pipeline.Disaggregate Units",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -164,6 +169,7 @@
     },
     "Pipeline.Filter After Datetime": {
       "name": "Pipeline.Filter After Datetime",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -206,6 +212,7 @@
     },
     "Pipeline.Filter On Date": {
       "name": "Pipeline.Filter On Date",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -248,6 +255,7 @@
     },
     "Pipeline.Filter Revenue Greater than 100": {
       "name": "Pipeline.Filter Revenue Greater than 100",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -290,6 +298,7 @@
     },
     "Pipeline.My Pipeline": {
       "name": "Pipeline.My Pipeline",
+      "module": [],
       "type": {
         "type": "Integer",
         "value": null
@@ -298,6 +307,7 @@
     },
     "Pipeline.Parse Brisbane Sales": {
       "name": "Pipeline.Parse Brisbane Sales",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -340,6 +350,7 @@
     },
     "Pipeline.Parse Melbourne Sales": {
       "name": "Pipeline.Parse Melbourne Sales",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -382,6 +393,7 @@
     },
     "Pipeline.Parse Products": {
       "name": "Pipeline.Parse Products",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -417,6 +429,7 @@
     },
     "Pipeline.Parse Sydney Sales": {
       "name": "Pipeline.Parse Sydney Sales",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -459,6 +472,7 @@
     },
     "Pipeline.Recent Units Per Product Code By Date": {
       "name": "Pipeline.Recent Units Per Product Code By Date",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -508,6 +522,7 @@
     },
     "Pipeline.Sales and Product Info": {
       "name": "Pipeline.Sales and Product Info",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -551,6 +566,7 @@
     },
     "Pipeline.Units Per Product Code By Date": {
       "name": "Pipeline.Units Per Product Code By Date",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -586,6 +602,7 @@
     },
     "Source.My BlobType Datastream": {
       "name": "Source.My BlobType Datastream",
+      "module": [],
       "type": {
         "type": "Blob",
         "value": null
@@ -594,6 +611,7 @@
     },
     "Writeable.Brisbane Sales": {
       "name": "Writeable.Brisbane Sales",
+      "module": [],
       "type": {
         "type": "Blob",
         "value": null
@@ -602,6 +620,7 @@
     },
     "Writeable.Melbourne Sales": {
       "name": "Writeable.Melbourne Sales",
+      "module": [],
       "type": {
         "type": "Blob",
         "value": null
@@ -610,6 +629,7 @@
     },
     "Writeable.My BlobType Datastream": {
       "name": "Writeable.My BlobType Datastream",
+      "module": [],
       "type": {
         "type": "Blob",
         "value": null
@@ -618,6 +638,7 @@
     },
     "Writeable.My Datastream": {
       "name": "Writeable.My Datastream",
+      "module": [],
       "type": {
         "type": "Integer",
         "value": null,
@@ -627,6 +648,7 @@
     },
     "Writeable.My DictType Datastream": {
       "name": "Writeable.My DictType Datastream",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -653,6 +675,7 @@
     },
     "Writeable.My Second Datastream": {
       "name": "Writeable.My Second Datastream",
+      "module": [],
       "type": {
         "type": "Integer",
         "value": null
@@ -661,6 +684,7 @@
     },
     "Writeable.Products": {
       "name": "Writeable.Products",
+      "module": [],
       "type": {
         "type": "Blob",
         "value": null
@@ -669,6 +693,7 @@
     },
     "Writeable.Sydney Sales": {
       "name": "Writeable.Sydney Sales",
+      "module": [],
       "type": {
         "type": "Blob",
         "value": null
@@ -678,12 +703,13 @@
   },
   "tasks": {
     "Pipeline.By Category": {
-      "name": "Pipeline.By Category",
-      "parent": "Pipeline.By Category",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.By Category",
       "inputs": {
         "input": {
           "name": "Pipeline.Disaggregate Items",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -714,12 +740,13 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.By Category",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -742,7 +769,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -809,12 +836,13 @@
       ]
     },
     "Pipeline.By Date": {
-      "name": "Pipeline.By Date",
-      "parent": "Pipeline.By Date",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.By Date",
       "inputs": {
         "input": {
           "name": "Pipeline.Parse Melbourne Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -853,12 +881,13 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.By Date",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -881,7 +910,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -957,12 +986,13 @@
       ]
     },
     "Pipeline.Concatenate Sales across Sites": {
-      "name": "Pipeline.Concatenate Sales across Sites",
-      "parent": "Pipeline.Concatenate Sales across Sites",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Concatenate Sales across Sites",
       "inputs": {
         "input": {
           "name": "Pipeline.Parse Melbourne Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -1001,10 +1031,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "sydney_sales": {
           "name": "Pipeline.Parse Sydney Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -1043,10 +1074,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "brisbane_sales": {
           "name": "Pipeline.Parse Brisbane Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -1085,12 +1117,13 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Concatenate Sales across Sites",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -1133,7 +1166,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -1205,12 +1238,13 @@
       ]
     },
     "Pipeline.Disaggregate Items": {
-      "name": "Pipeline.Disaggregate Items",
-      "parent": "Pipeline.Disaggregate Items",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Disaggregate Items",
       "inputs": {
         "input": {
           "name": "Pipeline.Parse Melbourne Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -1249,12 +1283,13 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Disaggregate Items",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -1285,7 +1320,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -1487,12 +1522,13 @@
       ]
     },
     "Pipeline.Disaggregate Units": {
-      "name": "Pipeline.Disaggregate Units",
-      "parent": "Pipeline.Disaggregate Units",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Disaggregate Units",
       "inputs": {
         "input": {
           "name": "Pipeline.Disaggregate Items",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -1523,12 +1559,13 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Disaggregate Units",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -1555,7 +1592,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -1706,12 +1743,13 @@
       ]
     },
     "Pipeline.Filter After Datetime": {
-      "name": "Pipeline.Filter After Datetime",
-      "parent": "Pipeline.Filter After Datetime",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Filter After Datetime",
       "inputs": {
         "input": {
           "name": "Pipeline.Parse Melbourne Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -1750,12 +1788,13 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Filter After Datetime",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -1794,7 +1833,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -1865,12 +1904,13 @@
       ]
     },
     "Pipeline.Filter On Date": {
-      "name": "Pipeline.Filter On Date",
-      "parent": "Pipeline.Filter On Date",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Filter On Date",
       "inputs": {
         "input": {
           "name": "Pipeline.Parse Melbourne Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -1909,12 +1949,13 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Filter On Date",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -1953,7 +1994,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -2033,12 +2074,13 @@
       ]
     },
     "Pipeline.Filter Revenue Greater than 100": {
-      "name": "Pipeline.Filter Revenue Greater than 100",
-      "parent": "Pipeline.Filter Revenue Greater than 100",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Filter Revenue Greater than 100",
       "inputs": {
         "input": {
           "name": "Pipeline.Parse Melbourne Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -2077,12 +2119,13 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Filter Revenue Greater than 100",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -2121,7 +2164,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -2213,7 +2256,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_previous_jukblF6xw$Rp7uyE_4MELo"
+                  "name": "_previous_oFob36elgrP9TioKiPGaO6"
                 },
                 "second": {
                   "type": {
@@ -2240,7 +2283,7 @@
                       }
                     },
                     "ast_type": "Variable",
-                    "name": "_value_lFHtpkydaQR_DDxsKJLLrq"
+                    "name": "_value_XhcrHdpOktIxQc5A8zlwh5"
                   },
                   "key": "salePrice"
                 }
@@ -2259,7 +2302,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_previous_jukblF6xw$Rp7uyE_4MELo"
+                "name": "_previous_oFob36elgrP9TioKiPGaO6"
               },
               "value": {
                 "type": {
@@ -2280,7 +2323,7 @@
                   }
                 },
                 "ast_type": "Variable",
-                "name": "_value_lFHtpkydaQR_DDxsKJLLrq"
+                "name": "_value_XhcrHdpOktIxQc5A8zlwh5"
               },
               "key": {
                 "type": {
@@ -2288,7 +2331,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_key_bFRS4R5yr2lCBLLwGAmYc2"
+                "name": "_key_B6vsSHnYUZVGy8xc3w_AHJ"
               }
             },
             "second": {
@@ -2304,36 +2347,39 @@
       ]
     },
     "Pipeline.My Pipeline": {
-      "name": "Pipeline.My Pipeline",
-      "parent": "Pipeline.My Pipeline",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.My Pipeline",
       "inputs": {
         "input": {
           "name": "Writeable.My Datastream",
+          "module": [],
           "type": {
             "type": "Integer",
             "value": null,
             "nullable": true
           },
-          "writable": true
+          "optional": false
         },
         "some_integer": {
           "name": "Writeable.My Second Datastream",
+          "module": [],
           "type": {
             "type": "Integer",
             "value": null
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.My Pipeline",
+          "module": [],
           "type": {
             "type": "Integer",
             "value": null
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -2376,7 +2422,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_QQpO5DaVRL0Q7g$_kKBquk"
+              "name": "_BeHFxmrhm6Awpbs9nkzBIT"
             },
             "value": {
               "type": {
@@ -2384,7 +2430,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_QQpO5DaVRL0Q7g$_kKBquk"
+              "name": "_BeHFxmrhm6Awpbs9nkzBIT"
             }
           }
         },
@@ -2405,7 +2451,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "value"
+                "name": "__value"
               },
               "second": {
                 "type": {
@@ -2443,7 +2489,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "value"
+                    "name": "__value"
                   }
                 }
               ],
@@ -2468,7 +2514,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "value"
+                "name": "__value"
               },
               "second": {
                 "type": {
@@ -2529,7 +2575,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "value"
+                    "name": "__value"
                   }
                 }
               ],
@@ -2570,22 +2616,24 @@
       ]
     },
     "Pipeline.Parse Brisbane Sales": {
-      "name": "Pipeline.Parse Brisbane Sales",
-      "parent": "Pipeline.Parse Brisbane Sales",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Parse Brisbane Sales",
       "inputs": {
         "input": {
           "name": "Writeable.Brisbane Sales",
+          "module": [],
           "type": {
             "type": "Blob",
             "value": null
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Parse Brisbane Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -2624,7 +2672,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -2687,22 +2735,24 @@
       ]
     },
     "Pipeline.Parse Melbourne Sales": {
-      "name": "Pipeline.Parse Melbourne Sales",
-      "parent": "Pipeline.Parse Melbourne Sales",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Parse Melbourne Sales",
       "inputs": {
         "input": {
           "name": "Writeable.Melbourne Sales",
+          "module": [],
           "type": {
             "type": "Blob",
             "value": null
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Parse Melbourne Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -2741,7 +2791,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -2804,22 +2854,24 @@
       ]
     },
     "Pipeline.Parse Products": {
-      "name": "Pipeline.Parse Products",
-      "parent": "Pipeline.Parse Products",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Parse Products",
       "inputs": {
         "input": {
           "name": "Writeable.Products",
+          "module": [],
           "type": {
             "type": "Blob",
             "value": null
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Parse Products",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -2851,7 +2903,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -2863,6 +2915,7 @@
             "value": "0"
           },
           "delimiter": ",",
+          "null_str": "",
           "output_type": {
             "type": "Dict",
             "value": {
@@ -2906,22 +2959,24 @@
       ]
     },
     "Pipeline.Parse Sydney Sales": {
-      "name": "Pipeline.Parse Sydney Sales",
-      "parent": "Pipeline.Parse Sydney Sales",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Parse Sydney Sales",
       "inputs": {
         "input": {
           "name": "Writeable.Sydney Sales",
+          "module": [],
           "type": {
             "type": "Blob",
             "value": null
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Parse Sydney Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -2960,7 +3015,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -3023,12 +3078,13 @@
       ]
     },
     "Pipeline.Recent Units Per Product Code By Date": {
-      "name": "Pipeline.Recent Units Per Product Code By Date",
-      "parent": "Pipeline.Recent Units Per Product Code By Date",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Recent Units Per Product Code By Date",
       "inputs": {
         "input": {
           "name": "Pipeline.Units Per Product Code By Date",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -3060,12 +3116,13 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Recent Units Per Product Code By Date",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -3111,7 +3168,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -3245,12 +3302,13 @@
       ]
     },
     "Pipeline.Sales and Product Info": {
-      "name": "Pipeline.Sales and Product Info",
-      "parent": "Pipeline.Sales and Product Info",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Sales and Product Info",
       "inputs": {
         "input": {
           "name": "Pipeline.Disaggregate Items",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -3281,10 +3339,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "products": {
           "name": "Pipeline.Parse Products",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -3316,12 +3375,13 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Sales and Product Info",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -3361,7 +3421,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -3526,12 +3586,13 @@
       ]
     },
     "Pipeline.Units Per Product Code By Date": {
-      "name": "Pipeline.Units Per Product Code By Date",
-      "parent": "Pipeline.Units Per Product Code By Date",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Units Per Product Code By Date",
       "inputs": {
         "input": {
           "name": "Pipeline.Disaggregate Items",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -3562,12 +3623,13 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Units Per Product Code By Date",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -3599,7 +3661,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -3711,27 +3773,29 @@
     },
     "Source.My BlobType Datastream": {
       "name": "Source.My BlobType Datastream",
-      "parent": "My BlobType Datastream",
+      "module": [],
       "task_type": "source",
       "source_type": "writeable",
       "inputs": {
         "input": {
           "name": "Writeable.My BlobType Datastream",
+          "module": [],
           "type": {
             "type": "Blob",
             "value": null
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Source.My BlobType Datastream",
+          "module": [],
           "type": {
             "type": "Blob",
             "value": null
           },
-          "writable": false
+          "optional": false
         }
       },
       "input_assertions": [],
@@ -3757,7 +3821,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "value"
+                "name": "__value"
               }
             },
             "second": {
@@ -3802,7 +3866,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "value"
+                    "name": "__value"
                   }
                 }
               },
@@ -3825,16 +3889,19 @@
     "Writeable.Brisbane Sales": {
       "default_type": "file",
       "stream": "Writeable.Brisbane Sales",
+      "module": [],
       "path": "./data/brisbane_sales.jsonl"
     },
     "Writeable.Melbourne Sales": {
       "default_type": "file",
       "stream": "Writeable.Melbourne Sales",
+      "module": [],
       "path": "./data/sales.jsonl"
     },
     "Writeable.My Datastream": {
       "default_type": "value",
       "stream": "Writeable.My Datastream",
+      "module": [],
       "value": {
         "type": {
           "type": "Integer",
@@ -3848,6 +3915,7 @@
     "Writeable.My Second Datastream": {
       "default_type": "value",
       "stream": "Writeable.My Second Datastream",
+      "module": [],
       "value": {
         "type": {
           "type": "Integer",
@@ -3860,11 +3928,13 @@
     "Writeable.Products": {
       "default_type": "file",
       "stream": "Writeable.Products",
+      "module": [],
       "path": "./data/products.csv"
     },
     "Writeable.Sydney Sales": {
       "default_type": "file",
       "stream": "Writeable.Sydney Sales",
+      "module": [],
       "path": "./data/sydney_sales.jsonl"
     }
   }

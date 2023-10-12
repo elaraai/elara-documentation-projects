@@ -385,7 +385,7 @@ const prescriptive_scenario = new ScenarioBuilder("Prescriptive")
     // end simulation
     .endSimulation(future_end.outputStream())
     // elara will try to maximise this - the cash balance!
-    .objective("Cash", cash => cash)
+    .objective(resources => resources.Cash)
     // tell elara to find the best discount
     .optimize("Discount", { min: 0, max: 20.0 })
     // tell elara to find the best rank for supplier policy
@@ -477,9 +477,7 @@ const comparison_cash = new PipelineBuilder("Comparison Cash")
     .input({ name: "BAU", stream: interactive_scenario.simulationResultStreams().Cash })
     .transform((qty, input) => Struct({
         Optimized: qty,
-        DisplayOptimized: StringJoin`$${RoundPrecision(qty, 4)}`,
         BAU: input.BAU,
-        DisplayBAU: StringJoin`$${RoundPrecision(input.BAU, 4)}`,
     }))
 
 
@@ -609,8 +607,8 @@ const dashboard = new LayoutBuilder("Business Outcomes")
                 comparison_cash.outputStream(), {
                 value: (fields) => fields.BAU,
                 target: (fields) => fields.Optimized,
-                display_value: (fields) => fields.DisplayBAU,
-                display_target: (fields) => fields.DisplayOptimized,
+                display_value: (fields) => StringJoin`$${RoundPrecision(fields.BAU, 4)}`,
+                display_target: (fields) => StringJoin`$${RoundPrecision(fields.Optimized, 4)}`,
             })
             .size(14)
     )

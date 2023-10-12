@@ -2,6 +2,7 @@
   "streams": {
     "Pipeline.Historic Procurement": {
       "name": "Pipeline.Historic Procurement",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -28,6 +29,7 @@
     },
     "Pipeline.Historic Sales": {
       "name": "Pipeline.Historic Sales",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -58,6 +60,7 @@
     },
     "Pipeline.Suppliers": {
       "name": "Pipeline.Suppliers",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -96,6 +99,7 @@
     },
     "SimulationJournal.Descriptive": {
       "name": "SimulationJournal.Descriptive",
+      "module": [],
       "type": {
         "type": "Array",
         "value": {
@@ -138,6 +142,7 @@
     },
     "SimulationQueue.Descriptive": {
       "name": "SimulationQueue.Descriptive",
+      "module": [],
       "type": {
         "type": "Array",
         "value": {
@@ -180,6 +185,7 @@
     },
     "Writeable.Procurement File": {
       "name": "Writeable.Procurement File",
+      "module": [],
       "type": {
         "type": "Blob",
         "value": null
@@ -188,6 +194,7 @@
     },
     "Writeable.Sales File": {
       "name": "Writeable.Sales File",
+      "module": [],
       "type": {
         "type": "Blob",
         "value": null
@@ -196,6 +203,7 @@
     },
     "Writeable.Suppliers File": {
       "name": "Writeable.Suppliers File",
+      "module": [],
       "type": {
         "type": "Blob",
         "value": null
@@ -205,22 +213,24 @@
   },
   "tasks": {
     "Pipeline.Historic Procurement": {
-      "name": "Pipeline.Historic Procurement",
-      "parent": "Pipeline.Historic Procurement",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Historic Procurement",
       "inputs": {
         "input": {
           "name": "Writeable.Procurement File",
+          "module": [],
           "type": {
             "type": "Blob",
             "value": null
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Historic Procurement",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -243,7 +253,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -290,22 +300,24 @@
       ]
     },
     "Pipeline.Historic Sales": {
-      "name": "Pipeline.Historic Sales",
-      "parent": "Pipeline.Historic Sales",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Historic Sales",
       "inputs": {
         "input": {
           "name": "Writeable.Sales File",
+          "module": [],
           "type": {
             "type": "Blob",
             "value": null
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Historic Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -332,7 +344,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -383,22 +395,24 @@
       ]
     },
     "Pipeline.Suppliers": {
-      "name": "Pipeline.Suppliers",
-      "parent": "Pipeline.Suppliers",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Suppliers",
       "inputs": {
         "input": {
           "name": "Writeable.Suppliers File",
+          "module": [],
           "type": {
             "type": "Blob",
             "value": null
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Suppliers",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -433,7 +447,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -486,10 +500,12 @@
     },
     "Simulation.Descriptive": {
       "task_type": "simulation",
+      "module": [],
       "name": "Simulation.Descriptive",
       "inputs": {
         "process.Sales": {
           "name": "Pipeline.Historic Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -516,10 +532,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "process.Procurement": {
           "name": "Pipeline.Historic Procurement",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -542,12 +559,13 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "outputs": {
         "journal": {
           "name": "SimulationJournal.Descriptive",
+          "module": [],
           "type": {
             "type": "Array",
             "value": {
@@ -586,10 +604,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "queue": {
           "name": "SimulationQueue.Descriptive",
+          "module": [],
           "type": {
             "type": "Array",
             "value": {
@@ -628,7 +647,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "resources": {},
@@ -705,8 +724,10 @@
         }
       },
       "mls": {},
+      "results": {},
       "configuration": {
-        "in_memory": false,
+        "trajectories": null,
+        "in_memory": true,
         "journal": true,
         "queue": true,
         "debug": false
@@ -719,16 +740,19 @@
     "Writeable.Procurement File": {
       "default_type": "file",
       "stream": "Writeable.Procurement File",
+      "module": [],
       "path": "data/procurement.jsonl"
     },
     "Writeable.Sales File": {
       "default_type": "file",
       "stream": "Writeable.Sales File",
+      "module": [],
       "path": "data/sales.jsonl"
     },
     "Writeable.Suppliers File": {
       "default_type": "file",
       "stream": "Writeable.Suppliers File",
+      "module": [],
       "path": "data/suppliers.jsonl"
     }
   }

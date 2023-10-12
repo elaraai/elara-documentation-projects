@@ -2,6 +2,7 @@
   "streams": {
     "Pipeline.Parse Brisbane Sales": {
       "name": "Pipeline.Parse Brisbane Sales",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -44,6 +45,7 @@
     },
     "Pipeline.Parse Melbourne Sales": {
       "name": "Pipeline.Parse Melbourne Sales",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -86,6 +88,7 @@
     },
     "Pipeline.Parse Products": {
       "name": "Pipeline.Parse Products",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -120,6 +123,7 @@
     },
     "Pipeline.Parse Sydney Sales": {
       "name": "Pipeline.Parse Sydney Sales",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -162,6 +166,7 @@
     },
     "Pipeline.Revenue Over Time": {
       "name": "Pipeline.Revenue Over Time",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -198,6 +203,7 @@
     },
     "Pipeline.Sales Across Stores": {
       "name": "Pipeline.Sales Across Stores",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -236,6 +242,7 @@
     },
     "Pipeline.Statistics Per Product Code": {
       "name": "Pipeline.Statistics Per Product Code",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -290,6 +297,7 @@
     },
     "Writeable.Brisbane Sales": {
       "name": "Writeable.Brisbane Sales",
+      "module": [],
       "type": {
         "type": "Blob",
         "value": null
@@ -298,6 +306,7 @@
     },
     "Writeable.Donation Pledge": {
       "name": "Writeable.Donation Pledge",
+      "module": [],
       "type": {
         "type": "Struct",
         "value": {
@@ -311,6 +320,7 @@
     },
     "Writeable.Melbourne Sales": {
       "name": "Writeable.Melbourne Sales",
+      "module": [],
       "type": {
         "type": "Blob",
         "value": null
@@ -319,6 +329,7 @@
     },
     "Writeable.Products": {
       "name": "Writeable.Products",
+      "module": [],
       "type": {
         "type": "Blob",
         "value": null
@@ -327,6 +338,7 @@
     },
     "Writeable.Sydney Sales": {
       "name": "Writeable.Sydney Sales",
+      "module": [],
       "type": {
         "type": "Blob",
         "value": null
@@ -336,22 +348,24 @@
   },
   "tasks": {
     "Pipeline.Parse Brisbane Sales": {
-      "name": "Pipeline.Parse Brisbane Sales",
-      "parent": "Pipeline.Parse Brisbane Sales",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Parse Brisbane Sales",
       "inputs": {
         "input": {
           "name": "Writeable.Brisbane Sales",
+          "module": [],
           "type": {
             "type": "Blob",
             "value": null
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Parse Brisbane Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -390,7 +404,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -453,22 +467,24 @@
       ]
     },
     "Pipeline.Parse Melbourne Sales": {
-      "name": "Pipeline.Parse Melbourne Sales",
-      "parent": "Pipeline.Parse Melbourne Sales",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Parse Melbourne Sales",
       "inputs": {
         "input": {
           "name": "Writeable.Melbourne Sales",
+          "module": [],
           "type": {
             "type": "Blob",
             "value": null
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Parse Melbourne Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -507,7 +523,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -570,22 +586,24 @@
       ]
     },
     "Pipeline.Parse Products": {
-      "name": "Pipeline.Parse Products",
-      "parent": "Pipeline.Parse Products",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Parse Products",
       "inputs": {
         "input": {
           "name": "Writeable.Products",
+          "module": [],
           "type": {
             "type": "Blob",
             "value": null
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Parse Products",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -616,7 +634,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -628,6 +646,7 @@
             "value": "0"
           },
           "delimiter": ",",
+          "null_str": "",
           "output_type": {
             "type": "Dict",
             "value": {
@@ -754,7 +773,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_CaLs_Z$7X8D8jbBN_f2L1H"
+                "name": "_9M0t5r5C39GwPsC1H4OMMA"
               },
               "value": {
                 "type": {
@@ -762,7 +781,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_CaLs_Z$7X8D8jbBN_f2L1H"
+                "name": "_9M0t5r5C39GwPsC1H4OMMA"
               }
             }
           },
@@ -778,22 +797,24 @@
       ]
     },
     "Pipeline.Parse Sydney Sales": {
-      "name": "Pipeline.Parse Sydney Sales",
-      "parent": "Pipeline.Parse Sydney Sales",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Parse Sydney Sales",
       "inputs": {
         "input": {
           "name": "Writeable.Sydney Sales",
+          "module": [],
           "type": {
             "type": "Blob",
             "value": null
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Parse Sydney Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -832,7 +853,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -895,12 +916,13 @@
       ]
     },
     "Pipeline.Revenue Over Time": {
-      "name": "Pipeline.Revenue Over Time",
-      "parent": "Pipeline.Revenue Over Time",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Revenue Over Time",
       "inputs": {
         "input": {
           "name": "Pipeline.Sales Across Stores",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -935,12 +957,13 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Revenue Over Time",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -973,7 +996,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -1153,12 +1176,13 @@
       ]
     },
     "Pipeline.Sales Across Stores": {
-      "name": "Pipeline.Sales Across Stores",
-      "parent": "Pipeline.Sales Across Stores",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Sales Across Stores",
       "inputs": {
         "input": {
           "name": "Pipeline.Parse Melbourne Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -1197,10 +1221,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "sydney_sales": {
           "name": "Pipeline.Parse Sydney Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -1239,10 +1264,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "brisbane_sales": {
           "name": "Pipeline.Parse Brisbane Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -1281,12 +1307,13 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Sales Across Stores",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -1321,7 +1348,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -1600,12 +1627,13 @@
       ]
     },
     "Pipeline.Statistics Per Product Code": {
-      "name": "Pipeline.Statistics Per Product Code",
-      "parent": "Pipeline.Statistics Per Product Code",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Statistics Per Product Code",
       "inputs": {
         "input": {
           "name": "Pipeline.Sales Across Stores",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -1640,10 +1668,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "products": {
           "name": "Pipeline.Parse Products",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -1674,10 +1703,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "donationPledge": {
           "name": "Writeable.Donation Pledge",
+          "module": [],
           "type": {
             "type": "Struct",
             "value": {
@@ -1687,12 +1717,13 @@
               }
             }
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Statistics Per Product Code",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -1743,7 +1774,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -2116,7 +2147,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_vRMDgb79pOjz3PKnueLJUp"
+                    "name": "_f_P34DoLTPdc2kS9Z8OrKR"
                   }
                 }
               },
@@ -2126,7 +2157,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_vRMDgb79pOjz3PKnueLJUp"
+                "name": "_f_P34DoLTPdc2kS9Z8OrKR"
               }
             },
             "profit": {
@@ -2215,7 +2246,7 @@
                             "value": null
                           },
                           "ast_type": "Variable",
-                          "name": "_PJsSRBHZrUSXXDEUauTNKH"
+                          "name": "_76f2v46hFB_U__BwfC5L$Y"
                         }
                       }
                     },
@@ -2225,7 +2256,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_PJsSRBHZrUSXXDEUauTNKH"
+                      "name": "_76f2v46hFB_U__BwfC5L$Y"
                     }
                   },
                   "output_null": {
@@ -2247,7 +2278,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "__sMZf1gFh9zlehhV4Vjzqk"
+                      "name": "_KmKRzvuQRt5KR4y6mrvC$d"
                     },
                     "second": {
                       "type": {
@@ -2255,7 +2286,7 @@
                         "value": null
                       },
                       "ast_type": "Variable",
-                      "name": "_ehIs6gA2ci8RkoZkebhRI8"
+                      "name": "_eZpbXKvgX5Sr7VzeIwdNwy"
                     }
                   },
                   "value": {
@@ -2264,7 +2295,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "_ehIs6gA2ci8RkoZkebhRI8"
+                    "name": "_eZpbXKvgX5Sr7VzeIwdNwy"
                   }
                 },
                 "value": {
@@ -2273,7 +2304,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "__sMZf1gFh9zlehhV4Vjzqk"
+                  "name": "_KmKRzvuQRt5KR4y6mrvC$d"
                 }
               },
               "output_null": {
@@ -2295,7 +2326,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_OOkOt7K9_BQqj1NvUvMohp"
+                  "name": "_ympWsX7Qd859SxTcuj20K1"
                 },
                 "second": {
                   "type": {
@@ -2355,7 +2386,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "_OOkOt7K9_BQqj1NvUvMohp"
+                "name": "_ympWsX7Qd859SxTcuj20K1"
               }
             }
           },
@@ -2375,11 +2406,13 @@
     "Writeable.Brisbane Sales": {
       "default_type": "file",
       "stream": "Writeable.Brisbane Sales",
+      "module": [],
       "path": "./data/brisbane_sales.jsonl"
     },
     "Writeable.Donation Pledge": {
       "default_type": "value",
       "stream": "Writeable.Donation Pledge",
+      "module": [],
       "value": {
         "type": {
           "type": "Struct",
@@ -2399,539 +2432,796 @@
     "Writeable.Melbourne Sales": {
       "default_type": "file",
       "stream": "Writeable.Melbourne Sales",
+      "module": [],
       "path": "./data/sales.jsonl"
     },
     "Writeable.Products": {
       "default_type": "file",
       "stream": "Writeable.Products",
+      "module": [],
       "path": "./data/products.csv"
     },
     "Writeable.Sydney Sales": {
       "default_type": "file",
       "stream": "Writeable.Sydney Sales",
+      "module": [],
       "path": "./data/sydney_sales.jsonl"
     }
   },
   "layouts": {
-    "Layout.Business Insights Dashboard": {
-      "type": "layout",
-      "name": "Layout.Business Insights Dashboard",
-      "display_name": "Business Insights Dashboard",
+    "Business Insights Dashboard": {
+      "name": "Business Insights Dashboard",
+      "module": [],
       "visual": {
-        "type": "panel",
-        "orientation": "row",
-        "visuals": [
-          {
-            "type": "panel",
-            "orientation": "column",
-            "visuals": [
-              {
-                "type": "table",
-                "kind": "struct",
-                "name": "Statistics Per Product Code",
-                "stream": "Pipeline.Statistics Per Product Code",
-                "columns": [
-                  {
-                    "name": "Key",
-                    "kind": "key",
-                    "value": {
-                      "type": {
-                        "type": "String",
-                        "value": null
-                      },
-                      "ast_type": "Variable",
-                      "name": "key"
-                    },
-                    "readonly": true,
-                    "hidden": true
-                  },
-                  {
-                    "name": "Code",
-                    "kind": "primitive",
-                    "value": {
-                      "type": {
-                        "type": "String",
-                        "value": null
-                      },
-                      "ast_type": "Variable",
-                      "name": "code"
-                    },
+        "type": "flat",
+        "name": "Business Insights Dashboard",
+        "visual": {
+          "type": "panel",
+          "orientation": "row",
+          "visuals": [
+            {
+              "type": "panel",
+              "orientation": "column",
+              "visuals": [
+                {
+                  "type": "table",
+                  "kind": "struct",
+                  "name": "Statistics Per Product Code",
+                  "stream": {
+                    "name": "Pipeline.Statistics Per Product Code",
+                    "module": [],
                     "type": {
-                      "type": "String",
-                      "value": null
+                      "type": "Dict",
+                      "value": {
+                        "key": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "value": {
+                          "type": "Struct",
+                          "value": {
+                            "units": {
+                              "type": "Integer",
+                              "value": null,
+                              "nullable": true
+                            },
+                            "revenue": {
+                              "type": "Float",
+                              "value": null,
+                              "nullable": true
+                            },
+                            "name": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "category": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "code": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "unitCost": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "cost": {
+                              "type": "Float",
+                              "value": null,
+                              "nullable": true
+                            },
+                            "profit": {
+                              "type": "Float",
+                              "value": null,
+                              "nullable": true
+                            }
+                          }
+                        }
+                      }
                     },
-                    "hidden": false
+                    "writable": false
                   },
-                  {
-                    "name": "Category",
-                    "kind": "primitive",
-                    "value": {
-                      "type": {
-                        "type": "String",
-                        "value": null
-                      },
-                      "ast_type": "Variable",
-                      "name": "category"
-                    },
-                    "type": {
-                      "type": "String",
-                      "value": null
-                    },
-                    "hidden": false
-                  },
-                  {
-                    "name": "Name",
-                    "kind": "primitive",
-                    "value": {
-                      "type": {
-                        "type": "String",
-                        "value": null
-                      },
-                      "ast_type": "Variable",
-                      "name": "name"
-                    },
-                    "type": {
-                      "type": "String",
-                      "value": null
-                    },
-                    "hidden": false
-                  },
-                  {
-                    "name": "Unit Cost",
-                    "kind": "primitive",
-                    "value": {
-                      "type": {
-                        "type": "Float",
-                        "value": null
-                      },
-                      "ast_type": "Variable",
-                      "name": "unitCost"
-                    },
-                    "hidden": false
-                  },
-                  {
-                    "name": "Units Sold",
-                    "kind": "primitive",
-                    "value": {
-                      "type": {
-                        "type": "Integer",
-                        "value": null,
-                        "nullable": true
-                      },
-                      "ast_type": "Variable",
-                      "name": "units"
-                    },
-                    "hidden": false
-                  },
-                  {
-                    "name": "Total Cost",
-                    "kind": "primitive",
-                    "value": {
-                      "type": {
-                        "type": "Float",
-                        "value": null,
-                        "nullable": true
-                      },
-                      "ast_type": "Variable",
-                      "name": "cost"
-                    },
-                    "hidden": false
-                  },
-                  {
-                    "name": "Total Revenue",
-                    "kind": "primitive",
-                    "value": {
-                      "type": {
-                        "type": "Float",
-                        "value": null,
-                        "nullable": true
-                      },
-                      "ast_type": "Variable",
-                      "name": "revenue"
-                    },
-                    "hidden": false
-                  },
-                  {
-                    "name": "Profit",
-                    "kind": "primitive",
-                    "value": {
-                      "type": {
-                        "type": "Float",
-                        "value": null,
-                        "nullable": true
-                      },
-                      "ast_type": "Variable",
-                      "name": "profit"
-                    },
-                    "hidden": false
-                  }
-                ],
-                "input_streams": [],
-                "writable": {
-                  "type": "none",
-                  "add": false,
-                  "remove": false,
-                  "update": false
-                },
-                "percentage": 60
-              },
-              {
-                "type": "form",
-                "name": "Donation Pledge",
-                "stream": "Writeable.Donation Pledge",
-                "inputs": [
-                  {
-                    "name": "Percentage Of Profit to Donate (%)",
-                    "value": {
-                      "type": {
-                        "type": "Float",
-                        "value": null
-                      },
-                      "ast_type": "Variable",
-                      "name": "percentageOfProfit"
-                    }
-                  }
-                ],
-                "writable": {
-                  "type": "writable",
-                  "add": true,
-                  "remove": true,
-                  "update": true
-                },
-                "input_streams": [],
-                "percentage": 40
-              }
-            ],
-            "percentage": 50
-          },
-          {
-            "type": "panel",
-            "orientation": "column",
-            "visuals": [
-              {
-                "type": "vega",
-                "kind": "dict",
-                "name": "Revenue over Time",
-                "stream": "Pipeline.Revenue Over Time",
-                "spec": {
-                  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-                  "width": "container",
-                  "height": "container",
-                  "data": {
-                    "values": []
-                  },
-                  "params": [
+                  "columns": [
                     {
-                      "name": "grid",
-                      "select": "interval",
-                      "bind": "scales"
+                      "name": "Key",
+                      "kind": "key",
+                      "value": {
+                        "type": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "ast_type": "Variable",
+                        "name": "key"
+                      },
+                      "readonly": true,
+                      "hidden": true
+                    },
+                    {
+                      "name": "Code",
+                      "kind": "primitive",
+                      "value": {
+                        "type": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "ast_type": "Variable",
+                        "name": "code"
+                      },
+                      "type": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "hidden": false
+                    },
+                    {
+                      "name": "Category",
+                      "kind": "primitive",
+                      "value": {
+                        "type": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "ast_type": "Variable",
+                        "name": "category"
+                      },
+                      "type": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "hidden": false
+                    },
+                    {
+                      "name": "Name",
+                      "kind": "primitive",
+                      "value": {
+                        "type": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "ast_type": "Variable",
+                        "name": "name"
+                      },
+                      "type": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "hidden": false
+                    },
+                    {
+                      "name": "Unit Cost",
+                      "kind": "primitive",
+                      "value": {
+                        "type": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "ast_type": "Variable",
+                        "name": "unitCost"
+                      },
+                      "hidden": false
+                    },
+                    {
+                      "name": "Units Sold",
+                      "kind": "primitive",
+                      "value": {
+                        "type": {
+                          "type": "Integer",
+                          "value": null,
+                          "nullable": true
+                        },
+                        "ast_type": "Variable",
+                        "name": "units"
+                      },
+                      "hidden": false
+                    },
+                    {
+                      "name": "Total Cost",
+                      "kind": "primitive",
+                      "value": {
+                        "type": {
+                          "type": "Float",
+                          "value": null,
+                          "nullable": true
+                        },
+                        "ast_type": "Variable",
+                        "name": "cost"
+                      },
+                      "hidden": false
+                    },
+                    {
+                      "name": "Total Revenue",
+                      "kind": "primitive",
+                      "value": {
+                        "type": {
+                          "type": "Float",
+                          "value": null,
+                          "nullable": true
+                        },
+                        "ast_type": "Variable",
+                        "name": "revenue"
+                      },
+                      "hidden": false
+                    },
+                    {
+                      "name": "Profit",
+                      "kind": "primitive",
+                      "value": {
+                        "type": {
+                          "type": "Float",
+                          "value": null,
+                          "nullable": true
+                        },
+                        "ast_type": "Variable",
+                        "name": "profit"
+                      },
+                      "hidden": false
                     }
                   ],
-                  "mark": {
-                    "type": "area",
-                    "opacity": 0.8
+                  "input_streams": [],
+                  "writable": {
+                    "type": "none",
+                    "add": false,
+                    "remove": false,
+                    "update": false
                   },
-                  "encoding": {
-                    "x": {
-                      "field": "transactionDate",
-                      "type": "temporal",
-                      "title": "Date"
+                  "percentage": 60
+                },
+                {
+                  "type": "form",
+                  "name": "Donation Pledge",
+                  "stream": {
+                    "name": "Writeable.Donation Pledge",
+                    "module": [],
+                    "type": {
+                      "type": "Struct",
+                      "value": {
+                        "percentageOfProfit": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
                     },
-                    "y": {
-                      "field": "revenue",
-                      "title": "Revenue",
-                      "aggregate": "sum"
+                    "writable": true
+                  },
+                  "inputs": [
+                    {
+                      "kind": "primitive",
+                      "name": "Percentage Of Profit to Donate (%)",
+                      "value": {
+                        "type": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "ast_type": "Variable",
+                        "name": "percentageOfProfit"
+                      }
+                    }
+                  ],
+                  "writable": {
+                    "type": "writable",
+                    "add": true,
+                    "remove": true,
+                    "update": true
+                  },
+                  "input_streams": [],
+                  "percentage": 40
+                }
+              ],
+              "percentage": 50
+            },
+            {
+              "type": "panel",
+              "orientation": "column",
+              "visuals": [
+                {
+                  "type": "vega",
+                  "kind": "dict",
+                  "name": "Revenue over Time",
+                  "stream": {
+                    "name": "Pipeline.Revenue Over Time",
+                    "module": [],
+                    "type": {
+                      "type": "Dict",
+                      "value": {
+                        "key": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "value": {
+                          "type": "Struct",
+                          "value": {
+                            "storeDate": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "store": {
+                              "type": "String",
+                              "value": null,
+                              "nullable": true
+                            },
+                            "transactionDate": {
+                              "type": "DateTime",
+                              "value": null,
+                              "nullable": true
+                            },
+                            "revenue": {
+                              "type": "Float",
+                              "value": null
+                            }
+                          }
+                        }
+                      }
                     },
-                    "color": {
-                      "field": "store",
-                      "title": "Store"
+                    "writable": false
+                  },
+                  "spec": {
+                    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+                    "width": "container",
+                    "height": "container",
+                    "data": {
+                      "values": []
                     },
-                    "tooltip": [
+                    "params": [
                       {
+                        "name": "grid",
+                        "select": "interval",
+                        "bind": "scales"
+                      }
+                    ],
+                    "mark": {
+                      "type": "area",
+                      "opacity": 0.8
+                    },
+                    "encoding": {
+                      "x": {
                         "field": "transactionDate",
                         "type": "temporal",
                         "title": "Date"
                       },
-                      {
+                      "y": {
                         "field": "revenue",
                         "title": "Revenue",
                         "aggregate": "sum"
                       },
-                      {
+                      "color": {
                         "field": "store",
                         "title": "Store"
-                      }
-                    ]
-                  }
-                },
-                "percentage": 50
-              },
-              {
-                "type": "vega",
-                "kind": "dict",
-                "name": "Profit Split across Products",
-                "stream": "Pipeline.Statistics Per Product Code",
-                "spec": {
-                  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-                  "width": "container",
-                  "height": "container",
-                  "data": {
-                    "values": []
-                  },
-                  "mark": {
-                    "type": "arc",
-                    "innerRadius": {
-                      "signal": "min(width,height) / 4"
-                    },
-                    "outerRadius": {
-                      "signal": "min(width, height) / 2"
-                    },
-                    "cornerRadius": 2,
-                    "padAngle": 0.025
-                  },
-                  "encoding": {
-                    "theta": {
-                      "field": "profit",
-                      "aggregate": "sum",
-                      "title": "Total Profit"
-                    },
-                    "color": {
-                      "field": "name",
-                      "title": "Product Code"
-                    },
-                    "tooltip": [
-                      {
-                        "field": "name"
                       },
-                      {
-                        "field": "profit",
-                        "aggregate": "sum"
-                      }
-                    ]
-                  }
-                },
-                "percentage": 50
-              }
-            ],
-            "percentage": 50
-          }
-        ]
-      }
-    },
-    "Layout.Tabbed Business Insights": {
-      "type": "layout",
-      "name": "Layout.Tabbed Business Insights",
-      "display_name": "Tabbed Business Insights",
-      "visual": {
-        "type": "tab",
-        "visuals": [
-          {
-            "type": "table",
-            "kind": "struct",
-            "name": "Statistics Per Product Code",
-            "stream": "Pipeline.Statistics Per Product Code",
-            "columns": [
-              {
-                "name": "Key",
-                "kind": "key",
-                "value": {
-                  "type": {
-                    "type": "String",
-                    "value": null
+                      "tooltip": [
+                        {
+                          "field": "transactionDate",
+                          "type": "temporal",
+                          "title": "Date"
+                        },
+                        {
+                          "field": "revenue",
+                          "title": "Revenue",
+                          "aggregate": "sum"
+                        },
+                        {
+                          "field": "store",
+                          "title": "Store"
+                        }
+                      ]
+                    }
                   },
-                  "ast_type": "Variable",
-                  "name": "key"
+                  "percentage": 50
                 },
-                "readonly": true,
-                "hidden": true
-              },
-              {
-                "name": "Code",
-                "kind": "primitive",
-                "value": {
-                  "type": {
-                    "type": "String",
-                    "value": null
-                  },
-                  "ast_type": "Variable",
-                  "name": "code"
-                },
-                "type": {
-                  "type": "String",
-                  "value": null
-                },
-                "hidden": false
-              },
-              {
-                "name": "Category",
-                "kind": "primitive",
-                "value": {
-                  "type": {
-                    "type": "String",
-                    "value": null
-                  },
-                  "ast_type": "Variable",
-                  "name": "category"
-                },
-                "type": {
-                  "type": "String",
-                  "value": null
-                },
-                "hidden": false
-              },
-              {
-                "name": "Name",
-                "kind": "primitive",
-                "value": {
-                  "type": {
-                    "type": "String",
-                    "value": null
-                  },
-                  "ast_type": "Variable",
-                  "name": "name"
-                },
-                "type": {
-                  "type": "String",
-                  "value": null
-                },
-                "hidden": false
-              },
-              {
-                "name": "Unit Cost",
-                "kind": "primitive",
-                "value": {
-                  "type": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "ast_type": "Variable",
-                  "name": "unitCost"
-                },
-                "hidden": false
-              },
-              {
-                "name": "Units Sold",
-                "kind": "primitive",
-                "value": {
-                  "type": {
-                    "type": "Integer",
-                    "value": null,
-                    "nullable": true
-                  },
-                  "ast_type": "Variable",
-                  "name": "units"
-                },
-                "hidden": false
-              },
-              {
-                "name": "Total Cost",
-                "kind": "primitive",
-                "value": {
-                  "type": {
-                    "type": "Float",
-                    "value": null,
-                    "nullable": true
-                  },
-                  "ast_type": "Variable",
-                  "name": "cost"
-                },
-                "hidden": false
-              },
-              {
-                "name": "Total Revenue",
-                "kind": "primitive",
-                "value": {
-                  "type": {
-                    "type": "Float",
-                    "value": null,
-                    "nullable": true
-                  },
-                  "ast_type": "Variable",
-                  "name": "revenue"
-                },
-                "hidden": false
-              },
-              {
-                "name": "Profit",
-                "kind": "primitive",
-                "value": {
-                  "type": {
-                    "type": "Float",
-                    "value": null,
-                    "nullable": true
-                  },
-                  "ast_type": "Variable",
-                  "name": "profit"
-                },
-                "hidden": false
-              }
-            ],
-            "input_streams": [],
-            "writable": {
-              "type": "none",
-              "add": false,
-              "remove": false,
-              "update": false
-            }
-          },
-          {
-            "type": "vega",
-            "kind": "dict",
-            "name": "Revenue over Time",
-            "stream": "Pipeline.Revenue Over Time",
-            "spec": {
-              "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-              "width": "container",
-              "height": "container",
-              "data": {
-                "values": []
-              },
-              "params": [
                 {
-                  "name": "grid",
-                  "select": "interval",
-                  "bind": "scales"
+                  "type": "vega",
+                  "kind": "dict",
+                  "name": "Profit Split across Products",
+                  "stream": {
+                    "name": "Pipeline.Statistics Per Product Code",
+                    "module": [],
+                    "type": {
+                      "type": "Dict",
+                      "value": {
+                        "key": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "value": {
+                          "type": "Struct",
+                          "value": {
+                            "units": {
+                              "type": "Integer",
+                              "value": null,
+                              "nullable": true
+                            },
+                            "revenue": {
+                              "type": "Float",
+                              "value": null,
+                              "nullable": true
+                            },
+                            "name": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "category": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "code": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "unitCost": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "cost": {
+                              "type": "Float",
+                              "value": null,
+                              "nullable": true
+                            },
+                            "profit": {
+                              "type": "Float",
+                              "value": null,
+                              "nullable": true
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "writable": false
+                  },
+                  "spec": {
+                    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+                    "width": "container",
+                    "height": "container",
+                    "data": {
+                      "values": []
+                    },
+                    "mark": {
+                      "type": "arc",
+                      "innerRadius": {
+                        "signal": "min(width,height) / 4"
+                      },
+                      "outerRadius": {
+                        "signal": "min(width, height) / 2"
+                      },
+                      "cornerRadius": 2,
+                      "padAngle": 0.025
+                    },
+                    "encoding": {
+                      "theta": {
+                        "field": "profit",
+                        "aggregate": "sum",
+                        "title": "Total Profit"
+                      },
+                      "color": {
+                        "field": "name",
+                        "title": "Product Code"
+                      },
+                      "tooltip": [
+                        {
+                          "field": "name"
+                        },
+                        {
+                          "field": "profit",
+                          "aggregate": "sum"
+                        }
+                      ]
+                    }
+                  },
+                  "percentage": 50
                 }
               ],
-              "mark": {
-                "type": "area",
-                "opacity": 0.8
+              "percentage": 50
+            }
+          ]
+        }
+      }
+    },
+    "Tabbed Business Insights": {
+      "name": "Tabbed Business Insights",
+      "module": [],
+      "visual": {
+        "type": "flat",
+        "name": "Tabbed Business Insights",
+        "visual": {
+          "type": "tab",
+          "visuals": [
+            {
+              "type": "table",
+              "kind": "struct",
+              "name": "Statistics Per Product Code",
+              "stream": {
+                "name": "Pipeline.Statistics Per Product Code",
+                "module": [],
+                "type": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "units": {
+                          "type": "Integer",
+                          "value": null,
+                          "nullable": true
+                        },
+                        "revenue": {
+                          "type": "Float",
+                          "value": null,
+                          "nullable": true
+                        },
+                        "name": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "category": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "code": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "unitCost": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "cost": {
+                          "type": "Float",
+                          "value": null,
+                          "nullable": true
+                        },
+                        "profit": {
+                          "type": "Float",
+                          "value": null,
+                          "nullable": true
+                        }
+                      }
+                    }
+                  }
+                },
+                "writable": false
               },
-              "encoding": {
-                "x": {
-                  "field": "transactionDate",
-                  "type": "temporal",
-                  "title": "Date"
+              "columns": [
+                {
+                  "name": "Key",
+                  "kind": "key",
+                  "value": {
+                    "type": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "key"
+                  },
+                  "readonly": true,
+                  "hidden": true
                 },
-                "y": {
-                  "field": "revenue",
-                  "title": "Revenue",
-                  "aggregate": "sum"
+                {
+                  "name": "Code",
+                  "kind": "primitive",
+                  "value": {
+                    "type": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "code"
+                  },
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "hidden": false
                 },
-                "color": {
-                  "field": "store",
-                  "title": "Store"
+                {
+                  "name": "Category",
+                  "kind": "primitive",
+                  "value": {
+                    "type": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "category"
+                  },
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "hidden": false
                 },
-                "tooltip": [
+                {
+                  "name": "Name",
+                  "kind": "primitive",
+                  "value": {
+                    "type": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "name"
+                  },
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "hidden": false
+                },
+                {
+                  "name": "Unit Cost",
+                  "kind": "primitive",
+                  "value": {
+                    "type": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "unitCost"
+                  },
+                  "hidden": false
+                },
+                {
+                  "name": "Units Sold",
+                  "kind": "primitive",
+                  "value": {
+                    "type": {
+                      "type": "Integer",
+                      "value": null,
+                      "nullable": true
+                    },
+                    "ast_type": "Variable",
+                    "name": "units"
+                  },
+                  "hidden": false
+                },
+                {
+                  "name": "Total Cost",
+                  "kind": "primitive",
+                  "value": {
+                    "type": {
+                      "type": "Float",
+                      "value": null,
+                      "nullable": true
+                    },
+                    "ast_type": "Variable",
+                    "name": "cost"
+                  },
+                  "hidden": false
+                },
+                {
+                  "name": "Total Revenue",
+                  "kind": "primitive",
+                  "value": {
+                    "type": {
+                      "type": "Float",
+                      "value": null,
+                      "nullable": true
+                    },
+                    "ast_type": "Variable",
+                    "name": "revenue"
+                  },
+                  "hidden": false
+                },
+                {
+                  "name": "Profit",
+                  "kind": "primitive",
+                  "value": {
+                    "type": {
+                      "type": "Float",
+                      "value": null,
+                      "nullable": true
+                    },
+                    "ast_type": "Variable",
+                    "name": "profit"
+                  },
+                  "hidden": false
+                }
+              ],
+              "input_streams": [],
+              "writable": {
+                "type": "none",
+                "add": false,
+                "remove": false,
+                "update": false
+              }
+            },
+            {
+              "type": "vega",
+              "kind": "dict",
+              "name": "Revenue over Time",
+              "stream": {
+                "name": "Pipeline.Revenue Over Time",
+                "module": [],
+                "type": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "storeDate": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "store": {
+                          "type": "String",
+                          "value": null,
+                          "nullable": true
+                        },
+                        "transactionDate": {
+                          "type": "DateTime",
+                          "value": null,
+                          "nullable": true
+                        },
+                        "revenue": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                },
+                "writable": false
+              },
+              "spec": {
+                "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+                "width": "container",
+                "height": "container",
+                "data": {
+                  "values": []
+                },
+                "params": [
                   {
+                    "name": "grid",
+                    "select": "interval",
+                    "bind": "scales"
+                  }
+                ],
+                "mark": {
+                  "type": "area",
+                  "opacity": 0.8
+                },
+                "encoding": {
+                  "x": {
                     "field": "transactionDate",
                     "type": "temporal",
                     "title": "Date"
                   },
-                  {
+                  "y": {
                     "field": "revenue",
                     "title": "Revenue",
                     "aggregate": "sum"
                   },
-                  {
+                  "color": {
                     "field": "store",
                     "title": "Store"
-                  }
-                ]
+                  },
+                  "tooltip": [
+                    {
+                      "field": "transactionDate",
+                      "type": "temporal",
+                      "title": "Date"
+                    },
+                    {
+                      "field": "revenue",
+                      "title": "Revenue",
+                      "aggregate": "sum"
+                    },
+                    {
+                      "field": "store",
+                      "title": "Store"
+                    }
+                  ]
+                }
               }
             }
-          }
-        ]
+          ]
+        }
       }
     }
   }

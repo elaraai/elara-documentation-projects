@@ -2,6 +2,7 @@
   "streams": {
     "Pipeline.My Other Stream": {
       "name": "Pipeline.My Other Stream",
+      "module": [],
       "type": {
         "type": "Float",
         "value": null
@@ -10,6 +11,7 @@
     },
     "Writeable.My Stream": {
       "name": "Writeable.My Stream",
+      "module": [],
       "type": {
         "type": "Float",
         "value": null
@@ -19,27 +21,29 @@
   },
   "tasks": {
     "Pipeline.My Other Stream": {
-      "name": "Pipeline.My Other Stream",
-      "parent": "Pipeline.My Other Stream",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.My Other Stream",
       "inputs": {
         "input": {
           "name": "Writeable.My Stream",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.My Other Stream",
+          "module": [],
           "type": {
             "type": "Float",
             "value": null
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -80,6 +84,7 @@
     "Writeable.My Stream": {
       "default_type": "value",
       "stream": "Writeable.My Stream",
+      "module": [],
       "value": {
         "type": {
           "type": "Float",

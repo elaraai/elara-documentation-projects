@@ -2,6 +2,7 @@
   "streams": {
     "Pipeline.My Pipeline": {
       "name": "Pipeline.My Pipeline",
+      "module": [],
       "type": {
         "type": "Integer",
         "value": null
@@ -10,6 +11,7 @@
     },
     "Writeable.My Datastream": {
       "name": "Writeable.My Datastream",
+      "module": [],
       "type": {
         "type": "Integer",
         "value": null,
@@ -19,6 +21,7 @@
     },
     "Writeable.My DictType Datastream": {
       "name": "Writeable.My DictType Datastream",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -45,6 +48,7 @@
     },
     "Writeable.My Second Datastream": {
       "name": "Writeable.My Second Datastream",
+      "module": [],
       "type": {
         "type": "Integer",
         "value": null
@@ -54,36 +58,39 @@
   },
   "tasks": {
     "Pipeline.My Pipeline": {
-      "name": "Pipeline.My Pipeline",
-      "parent": "Pipeline.My Pipeline",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.My Pipeline",
       "inputs": {
         "input": {
           "name": "Writeable.My Datastream",
+          "module": [],
           "type": {
             "type": "Integer",
             "value": null,
             "nullable": true
           },
-          "writable": true
+          "optional": false
         },
         "some_integer": {
           "name": "Writeable.My Second Datastream",
+          "module": [],
           "type": {
             "type": "Integer",
             "value": null
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.My Pipeline",
+          "module": [],
           "type": {
             "type": "Integer",
             "value": null
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -126,7 +133,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_ojRUqeB2B32l$_nPzeg6FB"
+              "name": "_B0wRthvJ6cfN7gQJr$kyjy"
             },
             "value": {
               "type": {
@@ -134,7 +141,7 @@
                 "value": null
               },
               "ast_type": "Variable",
-              "name": "_ojRUqeB2B32l$_nPzeg6FB"
+              "name": "_B0wRthvJ6cfN7gQJr$kyjy"
             }
           }
         },
@@ -155,7 +162,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "value"
+                "name": "__value"
               },
               "second": {
                 "type": {
@@ -193,7 +200,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "value"
+                    "name": "__value"
                   }
                 }
               ],
@@ -218,7 +225,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "value"
+                "name": "__value"
               },
               "second": {
                 "type": {
@@ -279,7 +286,7 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "value"
+                    "name": "__value"
                   }
                 }
               ],
@@ -324,6 +331,7 @@
     "Writeable.My Datastream": {
       "default_type": "value",
       "stream": "Writeable.My Datastream",
+      "module": [],
       "value": {
         "type": {
           "type": "Integer",
@@ -337,6 +345,7 @@
     "Writeable.My Second Datastream": {
       "default_type": "value",
       "stream": "Writeable.My Second Datastream",
+      "module": [],
       "value": {
         "type": {
           "type": "Integer",

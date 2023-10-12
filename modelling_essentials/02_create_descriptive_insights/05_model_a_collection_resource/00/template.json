@@ -2,6 +2,7 @@
   "streams": {
     "SimulationJournal.Descriptive": {
       "name": "SimulationJournal.Descriptive",
+      "module": [],
       "type": {
         "type": "Array",
         "value": {
@@ -36,6 +37,7 @@
     },
     "SimulationLedger.Descriptive.Stock-on-hand": {
       "name": "SimulationLedger.Descriptive.Stock-on-hand",
+      "module": [],
       "type": {
         "type": "Array",
         "value": {
@@ -185,6 +187,7 @@
     },
     "SimulationQueue.Descriptive": {
       "name": "SimulationQueue.Descriptive",
+      "module": [],
       "type": {
         "type": "Array",
         "value": {
@@ -219,6 +222,7 @@
     },
     "SimulationResult.Descriptive.Stock-on-hand": {
       "name": "SimulationResult.Descriptive.Stock-on-hand",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -245,6 +249,7 @@
     },
     "Writeable.Process.Sales": {
       "name": "Writeable.Process.Sales",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -280,6 +285,7 @@
     },
     "Writeable.Resource.Stock-on-hand": {
       "name": "Writeable.Resource.Stock-on-hand",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -308,10 +314,12 @@
   "tasks": {
     "Simulation.Descriptive": {
       "task_type": "simulation",
+      "module": [],
       "name": "Simulation.Descriptive",
       "inputs": {
         "resource.Stock-on-hand": {
           "name": "Writeable.Resource.Stock-on-hand",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -334,10 +342,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "process.Sales": {
           "name": "Writeable.Process.Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -369,12 +378,13 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "outputs": {
         "result.Stock-on-hand": {
           "name": "SimulationResult.Descriptive.Stock-on-hand",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -397,10 +407,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "ledger.Stock-on-hand": {
           "name": "SimulationLedger.Descriptive.Stock-on-hand",
+          "module": [],
           "type": {
             "type": "Array",
             "value": {
@@ -546,10 +557,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "journal": {
           "name": "SimulationJournal.Descriptive",
+          "module": [],
           "type": {
             "type": "Array",
             "value": {
@@ -580,10 +592,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "queue": {
           "name": "SimulationQueue.Descriptive",
+          "module": [],
           "type": {
             "type": "Array",
             "value": {
@@ -614,7 +627,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "resources": {
@@ -738,7 +751,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "r_Stock-on-hand"
+                  "name": "__resource_Stock-on-hand"
                 },
                 "output_value": {
                   "type": {
@@ -767,7 +780,7 @@
                         }
                       },
                       "ast_type": "Variable",
-                      "name": "_value_Psv1fqTvrZ5ma41ksl8mgo"
+                      "name": "_value_S9zl52Lq5nmLpiYiD5EcWu"
                     },
                     "key": "qty"
                   },
@@ -792,7 +805,7 @@
                         }
                       },
                       "ast_type": "Variable",
-                      "name": "p_saleQty"
+                      "name": "saleQty"
                     },
                     "key": {
                       "type": {
@@ -815,7 +828,7 @@
                           }
                         },
                         "ast_type": "Variable",
-                        "name": "_value_Psv1fqTvrZ5ma41ksl8mgo"
+                        "name": "_value_S9zl52Lq5nmLpiYiD5EcWu"
                       },
                       "key": "name"
                     },
@@ -835,7 +848,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_key_IqLfrhwwrLNAaYqby3ZlsX"
+                  "name": "_key_VFf$UVglm6tMPEqZDANI$K"
                 },
                 "input_value": {
                   "type": {
@@ -852,7 +865,7 @@
                     }
                   },
                   "ast_type": "Variable",
-                  "name": "_value_Psv1fqTvrZ5ma41ksl8mgo"
+                  "name": "_value_S9zl52Lq5nmLpiYiD5EcWu"
                 },
                 "input_key": {
                   "type": {
@@ -860,7 +873,7 @@
                     "value": null
                   },
                   "ast_type": "Variable",
-                  "name": "_key_IqLfrhwwrLNAaYqby3ZlsX"
+                  "name": "_key_VFf$UVglm6tMPEqZDANI$K"
                 }
               },
               "assertions": []
@@ -870,8 +883,37 @@
         }
       },
       "mls": {},
+      "results": {
+        "Stock-on-hand": {
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "name": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "qty": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "ast_type": "Variable",
+          "name": "__resource_Stock-on-hand"
+        }
+      },
       "configuration": {
-        "in_memory": false,
+        "trajectories": null,
+        "in_memory": true,
         "journal": true,
         "queue": true,
         "debug": false
@@ -884,6 +926,7 @@
     "Writeable.Process.Sales": {
       "default_type": "value",
       "stream": "Writeable.Process.Sales",
+      "module": [],
       "value": {
         "type": {
           "type": "Dict",
@@ -1012,6 +1055,7 @@
           }
         ]
       },
+      "module": [],
       "stream": "Writeable.Resource.Stock-on-hand"
     }
   }

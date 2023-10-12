@@ -2,6 +2,7 @@
   "streams": {
     "MLModel.Demand": {
       "name": "MLModel.Demand",
+      "module": [],
       "type": {
         "type": "Struct",
         "value": {
@@ -46,6 +47,7 @@
     },
     "MLPrediction.Demand Validation": {
       "name": "MLPrediction.Demand Validation",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -77,6 +79,7 @@
     },
     "MLTraining.Demand": {
       "name": "MLTraining.Demand",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -116,6 +119,7 @@
     },
     "MLValidation.Demand": {
       "name": "MLValidation.Demand",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -175,6 +179,7 @@
     },
     "Pipeline.Historic Procurement": {
       "name": "Pipeline.Historic Procurement",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -201,6 +206,7 @@
     },
     "Pipeline.Historic Sales": {
       "name": "Pipeline.Historic Sales",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -231,6 +237,7 @@
     },
     "Pipeline.MLTraining.Demand": {
       "name": "Pipeline.MLTraining.Demand",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -257,6 +264,7 @@
     },
     "Pipeline.Suppliers": {
       "name": "Pipeline.Suppliers",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -295,6 +303,7 @@
     },
     "Writeable.Demand Values": {
       "name": "Writeable.Demand Values",
+      "module": [],
       "type": {
         "type": "Dict",
         "value": {
@@ -317,6 +326,7 @@
     },
     "Writeable.Procurement File": {
       "name": "Writeable.Procurement File",
+      "module": [],
       "type": {
         "type": "Blob",
         "value": null
@@ -325,6 +335,7 @@
     },
     "Writeable.Sales File": {
       "name": "Writeable.Sales File",
+      "module": [],
       "type": {
         "type": "Blob",
         "value": null
@@ -333,6 +344,7 @@
     },
     "Writeable.Suppliers File": {
       "name": "Writeable.Suppliers File",
+      "module": [],
       "type": {
         "type": "Blob",
         "value": null
@@ -342,8 +354,9 @@
   },
   "tasks": {
     "MLPrediction.Demand Validation": {
-      "name": "MLPrediction.Demand Validation",
       "task_type": "ml_prediction",
+      "module": [],
+      "name": "MLPrediction.Demand Validation",
       "model": {
         "type": "gaussian_process",
         "noise": "gaussian"
@@ -351,6 +364,7 @@
       "inputs": {
         "model": {
           "name": "MLModel.Demand",
+          "module": [],
           "type": {
             "type": "Struct",
             "value": {
@@ -391,10 +405,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "examples": {
           "name": "Writeable.Demand Values",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -413,12 +428,13 @@
               }
             }
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "MLPrediction.Demand Validation",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -446,12 +462,13 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       }
     },
     "MLTraining.Demand": {
       "task_type": "ml_training",
+      "module": [],
       "name": "MLTraining.Demand",
       "features": {
         "discount": {
@@ -471,6 +488,7 @@
       "inputs": {
         "input": {
           "name": "Pipeline.MLTraining.Demand",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -493,12 +511,13 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "outputs": {
         "model": {
           "name": "MLModel.Demand",
+          "module": [],
           "type": {
             "type": "Struct",
             "value": {
@@ -539,10 +558,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "training": {
           "name": "MLTraining.Demand",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -578,10 +598,11 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         },
         "validation": {
           "name": "MLValidation.Demand",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -637,27 +658,29 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       }
     },
     "Pipeline.Historic Procurement": {
-      "name": "Pipeline.Historic Procurement",
-      "parent": "Pipeline.Historic Procurement",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Historic Procurement",
       "inputs": {
         "input": {
           "name": "Writeable.Procurement File",
+          "module": [],
           "type": {
             "type": "Blob",
             "value": null
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Historic Procurement",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -680,7 +703,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -727,22 +750,24 @@
       ]
     },
     "Pipeline.Historic Sales": {
-      "name": "Pipeline.Historic Sales",
-      "parent": "Pipeline.Historic Sales",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Historic Sales",
       "inputs": {
         "input": {
           "name": "Writeable.Sales File",
+          "module": [],
           "type": {
             "type": "Blob",
             "value": null
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Historic Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -769,7 +794,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -820,12 +845,13 @@
       ]
     },
     "Pipeline.MLTraining.Demand": {
-      "name": "Pipeline.MLTraining.Demand",
-      "parent": "Pipeline.MLTraining.Demand",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.MLTraining.Demand",
       "inputs": {
         "input": {
           "name": "Pipeline.Historic Sales",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -852,12 +878,13 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.MLTraining.Demand",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -880,7 +907,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -945,22 +972,24 @@
       ]
     },
     "Pipeline.Suppliers": {
-      "name": "Pipeline.Suppliers",
-      "parent": "Pipeline.Suppliers",
       "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.Suppliers",
       "inputs": {
         "input": {
           "name": "Writeable.Suppliers File",
+          "module": [],
           "type": {
             "type": "Blob",
             "value": null
           },
-          "writable": true
+          "optional": false
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.Suppliers",
+          "module": [],
           "type": {
             "type": "Dict",
             "value": {
@@ -995,7 +1024,7 @@
               }
             }
           },
-          "writable": false
+          "optional": false
         }
       },
       "operations": [
@@ -1051,6 +1080,7 @@
     "Writeable.Demand Values": {
       "default_type": "value",
       "stream": "Writeable.Demand Values",
+      "module": [],
       "value": {
         "type": {
           "type": "Dict",
@@ -1198,16 +1228,19 @@
     "Writeable.Procurement File": {
       "default_type": "file",
       "stream": "Writeable.Procurement File",
+      "module": [],
       "path": "data/procurement.jsonl"
     },
     "Writeable.Sales File": {
       "default_type": "file",
       "stream": "Writeable.Sales File",
+      "module": [],
       "path": "data/sales.jsonl"
     },
     "Writeable.Suppliers File": {
       "default_type": "file",
       "stream": "Writeable.Suppliers File",
+      "module": [],
       "path": "data/suppliers.jsonl"
     }
   }
