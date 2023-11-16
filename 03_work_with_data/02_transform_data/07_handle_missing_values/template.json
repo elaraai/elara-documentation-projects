@@ -1,0 +1,72 @@
+{
+  "streams": {
+    "Pipeline.My Pipeline": {
+      "name": "Pipeline.My Pipeline",
+      "module": [],
+      "type": {
+        "type": "Integer",
+        "value": null,
+        "nullable": true
+      },
+      "writable": false
+    },
+    "Writeable.My Source": {
+      "name": "Writeable.My Source",
+      "module": [],
+      "type": {
+        "type": "Integer",
+        "value": null,
+        "nullable": true
+      },
+      "writable": true
+    }
+  },
+  "tasks": {
+    "Pipeline.My Pipeline": {
+      "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.My Pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.My Source",
+          "module": [],
+          "type": {
+            "type": "Integer",
+            "value": null,
+            "nullable": true
+          },
+          "optional": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.My Pipeline",
+          "module": [],
+          "type": {
+            "type": "Integer",
+            "value": null,
+            "nullable": true
+          },
+          "optional": false
+        }
+      },
+      "operations": []
+    }
+  },
+  "defaults": {
+    "Writeable.My Source": {
+      "default_type": "value",
+      "stream": "Writeable.My Source",
+      "module": [],
+      "value": {
+        "type": {
+          "type": "Integer",
+          "value": null,
+          "nullable": true
+        },
+        "ast_type": "Const",
+        "value": "2"
+      }
+    }
+  }
+}
