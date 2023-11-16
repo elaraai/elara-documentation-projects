@@ -1,4 +1,6 @@
-import { SourceBuilder , IntegerType} from "@elaraai/core"
+import { SourceBuilder , IntegerType, Template} from "@elaraai/core"
 
-export default new SourceBuilder("My Datastream")
+const my_source = new SourceBuilder("My Source")
     .writeable(IntegerType)
+
+export default Template(my_source)    
