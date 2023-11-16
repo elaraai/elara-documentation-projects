@@ -1,4 +1,4 @@
-import { FloatType, Nullable, SourceBuilder, StringType, Template, DateTimeType, DictType, SetType, StructType } from "@elaraai/core"
+import { FloatType, Nullable, SourceBuilder, StringType, Template, DateTimeType, DictType, SetType, StructType, LayoutBuilder } from "@elaraai/core"
 
 const now = new Date()
 const N = 1000
@@ -97,7 +97,7 @@ const source_set_range = new SourceBuilder('source_set_range').value({ value: ne
 const source_dict_range = new SourceBuilder('source_dict_range').value({
     value: new Map([
         ["Group One", new Set([1, 2, 3, 4, 5, 6, 7, 8, 9].map(a => `mtsqttl4s5${a % 5}`))],
-        ["Group Two", new Set(["Other Option", "Another Option"])]
+        ["Group Two", new Set([1, 2, 3, 4, 5].map(a => `mtsqttl4s5${a % 5}`))]
     ])
 })
 const source_array_struct_linked = new SourceBuilder('source_fourteen').value({
@@ -128,126 +128,131 @@ const source_array_struct_linked = new SourceBuilder('source_fourteen').value({
 // ## How-to create a `DictType<StringType, StructType>>` Table
 
 // ### Add Primitive Column - with function
-// const add_primitive_column_function_dict_struct = new LayoutBuilder(`01.01 - Add Primitive Column (Functions)`)
-//     .table("Add Primitive Column", builder => builder
-//         .fromStream(source_dict_struct.outputStream())
-//         .date("Date (Variable)", fields => fields.date)
-//         .integer("Integer", fields => fields.integer)
-//         .float("Float", fields => fields.float)
-//         .string("String", fields => fields.string)
-//         .boolean("Boolean", fields => fields.boolean)
-//     )
+const add_primitive_column_function_dict_struct = new LayoutBuilder(`01.01 - Add Primitive Column (Functions)`)
+    .table("Add Primitive Column", builder => builder
+        .fromStream(source_dict_struct.outputStream())
+        .date("Date", fields => fields.date)
+        .integer("Integer", fields => fields.integer)
+        .float("Float", fields => fields.float)
+        .string("String", fields => fields.string)
+        .boolean("Boolean", fields => fields.boolean)
+    )
 
 // ### Add Primitive Column - with object
-// const add_primitive_column_objects_dict_struct = new LayoutBuilder(`01.01 - Add Primitive Column (Objects)`)
-//     .table("Add Primitive Column", builder => builder
-//         .fromStream(source_dict_struct.outputStream())
-//         .date("Date (Variable)", { value: fields => fields.date })
-//         .integer("Integer", { value: fields => fields.integer })
-//         .float("Float", { value: fields => fields.float })
-//         .string("String", { value: fields => fields.string })
-//         .boolean("Boolean", { value: fields => fields.boolean })
-//     )
+const add_primitive_column_objects_dict_struct = new LayoutBuilder(`01.01 - Add Primitive Column (Objects)`)
+    .table("Add Primitive Column", builder => builder
+        .fromStream(source_dict_struct.outputStream())
+        .date("Date", { value: fields => fields.date })
+        .integer("Integer", { value: fields => fields.integer })
+        .float("Float", { value: fields => fields.float })
+        .string("String", { value: fields => fields.string })
+        .boolean("Boolean", { value: fields => fields.boolean })
+    )
 
 // ### Add Primitive Column style
-// const add_primitive_column_style_dict_struct = new LayoutBuilder(`01.01 - Add Primitive style (Objects)`)
-//     .table("Add Primitive Column", builder => builder
-//         .fromStream(source_dict_struct.outputStream())
-//         .date("Date (Variable)", { 
-//             value: fields => fields.date,
-//             color: fields => fields.color
-//         })
-//         .integer("Integer", { 
-//             value: fields => fields.integer,
-//             color: "##ffbf00"
-//         })
-//         .float("Float", { 
-//             value: fields => fields.float,
-//             background: fields => fields.color
 
-//         })
-//         .string("String", { 
-//             value: fields => fields.string,
-//             background: "##ffbf00"
-//         })
-//         .boolean("Boolean", { 
-//             value: fields => fields.boolean,
-//         })
-//     )
+const add_primitive_column_style_dict_struct = new LayoutBuilder(`01.01 - Add Primitive style (Objects)`)
+    .table("Add Primitive Column", builder => builder
+        .fromStream(source_dict_struct.outputStream())
+        .date("Date", { 
+            value: fields => fields.date,
+            color: fields => fields.color
+        })
+        .integer("Integer", { 
+            value: fields => fields.integer,
+            color: "##ffbf00"
+        })
+        .float("Float", { 
+            value: fields => fields.float,
+            background: fields => fields.color
+
+        })
+        .string("String", { 
+            value: fields => fields.string,
+            background: "##ffbf00"
+        })
+        .boolean("Boolean", { 
+            value: fields => fields.boolean,
+        })
+    )
 
 
 // ### Add Primitive Column bounds
 
-// const add_primitive_column_bounds = new LayoutBuilder("01.02 - Add Primitive Column (Bounds)")
-//     .table("Add Primitive Column", builder => builder
-//         .fromStream(source_dict_struct.outputStream())
-//         .input({ name: "source_date_min", stream: source_date_min.outputStream() })
-//         .input({ name: "source_date_max", stream: source_date_max.outputStream() })
-//         .input({ name: "source_integer_min", stream: source_integer_min.outputStream() })
-//         .input({ name: "source_integer_max", stream: source_integer_max.outputStream() })
-//         .input({ name: "source_number_min", stream: source_number_min.outputStream() })
-//         .input({ name: "source_number_max", stream: source_number_max.outputStream() })
-//         .input({ name: "source_set_range", stream: source_set_range.outputStream() })
-//         .input({ name: "source_dict_range", stream: source_dict_range.outputStream() })
-//         .date("Date (Variable)", {
-//             value: fields => fields.date,
-//             min: (_fields, inputs) => inputs.source_date_min,
-//             max: (_fields, inputs) => inputs.source_date_max
-//         })
-//         .integer("Integer", {
-//             value: fields => fields.integer3,
-//             min: (_fields, inputs) => inputs.source_integer_min,
-//             max: (_fields, inputs) => inputs.source_integer_max
-//         })
-//         .float("Float", {
-//             value: fields => fields.float3,
-//             min: (_fields, inputs) => inputs.source_number_min,
-//             max: (_fields, inputs) => inputs.source_number_max
-//         })
-//         .string("String", {
-//             value: fields => fields.string,
-//             range: (_fields, inputs) => inputs.source_set_range,
-//         })
-//         .string("String (Grouped)", {
-//             value: fields => fields.string,
-//             range: (_fields, inputs) => inputs.source_dict_range,
-//         })
-//     )
+const add_primitive_column_bounds = new LayoutBuilder("01.02 - Add Primitive Column (Bounds)")
+    .table("Add Primitive Column", builder => builder
+        .fromStream(source_dict_struct.outputStream())
+        .input({ name: "source_date_min", stream: source_date_min.outputStream() })
+        .input({ name: "source_date_max", stream: source_date_max.outputStream() })
+        .input({ name: "source_integer_min", stream: source_integer_min.outputStream() })
+        .input({ name: "source_integer_max", stream: source_integer_max.outputStream() })
+        .input({ name: "source_number_min", stream: source_number_min.outputStream() })
+        .input({ name: "source_number_max", stream: source_number_max.outputStream() })
+        .input({ name: "source_set_range", stream: source_set_range.outputStream() })
+        .input({ name: "source_dict_range", stream: source_dict_range.outputStream() })
+        .date("Date", {
+            value: fields => fields.date,
+            min: (_fields, inputs) => inputs.source_date_min,
+            max: (_fields, inputs) => inputs.source_date_max
+        })
+        .integer("Integer", {
+            value: fields => fields.integer3,
+            min: (_fields, inputs) => inputs.source_integer_min,
+            max: (_fields, inputs) => inputs.source_integer_max
+        })
+        .float("Float", {
+            value: fields => fields.float3,
+            min: (_fields, inputs) => inputs.source_number_min,
+            max: (_fields, inputs) => inputs.source_number_max
+        })
+        .string("String", {
+            value: fields => fields.string,
+            range: (_fields, inputs) => inputs.source_set_range,
+        })
+        .string("String (Grouped)", {
+            value: fields => fields.string,
+            range: (_fields, inputs) => inputs.source_dict_range,
+        })
+    )
 
 // ### Add Primitive Column target
 
-// const add_primitive_column_targets = new LayoutBuilder("01.02 - Add Primitive Column (Bounds)")
-//     .table("Add Primitive Column", builder => builder
-//         .fromStream(source_dict_struct.outputStream())
-//         .input({ name: "source_date", stream: source_date.outputStream() })
-//         .input({ name: "source_integer", stream: source_integer.outputStream() })
-//         .input({ name: "source_number", stream: source_number.outputStream() })
-//         .input({ name: "source_set", stream: source_set.outputStream() })
-//         .date("Date (Variable)", {
-//             value: fields => fields.date,
-//             target: (_fields, inputs) => inputs.source_date,
-//         })
-//         .integer("Integer", {
-//             value: fields => fields.integer3,
-//             target: (_fields, inputs) => inputs.source_integer,
+const add_primitive_column_targets = new LayoutBuilder("01.02 - Add Primitive Column (Bounds)")
+    .table("Add Primitive Column", builder => builder
+        .fromStream(source_dict_struct.outputStream())
+        .input({ name: "source_date", stream: source_date.outputStream() })
+        .input({ name: "source_integer", stream: source_integer.outputStream() })
+        .input({ name: "source_float", stream: source_float.outputStream() })
+        .input({ name: "source_set", stream: source_set.outputStream() })
+        .input({ name: "source_string", stream: source_string.outputStream() })
+        .date("Date", {
+            value: fields => fields.date,
+            target: (_fields, inputs) => inputs.source_date,
+        })
+        .integer("Integer", {
+            value: fields => fields.integer,
+            target: (_fields, inputs) => inputs.source_integer,
 
-//         })
-//         .float("Float", {
-//             value: fields => fields.float3,
-//             target: (_fields, inputs) => inputs.source_number,
-//         })
-//         .string("String", {
-//             value: fields => fields.string,
-//             target: (_fields, inputs) => inputs.sour,
-//         })
-//         .string("String (Grouped)", {
-//             value: fields => fields.string,
-//             target: (_fields, inputs) => inputs.source_date,
-//         })
-//     )
+        })
+        .float("Float", {
+            value: fields => fields.float,
+            target: (_fields, inputs) => inputs.source_float,
+        })
+        .string("String", {
+            value: fields => fields.string,
+            target: (_fields, inputs) => inputs.source_string,
+        })
+    )
 
 
 // ### Add Columns for all Fields
+
+
+const add_primitive_column_targets = new LayoutBuilder("01.02 - Add Primitive Column (Bounds)")
+    .table("Add Primitive Column", builder => builder
+        .fromStream(source_dict_struct.outputStream())
+        .columns()
+    )
 
 // ### Show the key
 

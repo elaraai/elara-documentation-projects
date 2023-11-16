@@ -15,6 +15,10 @@ clean:
 	find . -name 'template.json' -prune -exec rm -rf '{}' +
 	find . -name 'package-lock.json' -prune -exec rm -rf '{}' +
 
+.PHONY: build
+build: 
+
+
 .PHONY: build-data_essentials
 build-data_essentials: 
 	cd data_essentials && make build
