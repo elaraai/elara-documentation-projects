@@ -1,3 +1,9 @@
-import { Template } from "@elaraai/core"
+import { SourceBuilder, PipelineBuilder, Template } from "@elaraai/core"
 
-export default Template();
+const my_source = new SourceBuilder("My Source")
+    .value({ value: 2n })
+
+const my_pipeline = new PipelineBuilder("My Pipeline")
+    .from(my_source.outputStream())
+
+export default Template(my_source, my_pipeline)    
