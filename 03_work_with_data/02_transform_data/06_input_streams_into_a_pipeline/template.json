@@ -1,0 +1,133 @@
+{
+  "streams": {
+    "Pipeline.My Pipeline": {
+      "name": "Pipeline.My Pipeline",
+      "module": [],
+      "type": {
+        "type": "Integer",
+        "value": null
+      },
+      "writable": false
+    },
+    "Writeable.My Other Source": {
+      "name": "Writeable.My Other Source",
+      "module": [],
+      "type": {
+        "type": "Integer",
+        "value": null
+      },
+      "writable": true
+    },
+    "Writeable.My Source": {
+      "name": "Writeable.My Source",
+      "module": [],
+      "type": {
+        "type": "Integer",
+        "value": null
+      },
+      "writable": true
+    }
+  },
+  "tasks": {
+    "Pipeline.My Pipeline": {
+      "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.My Pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.My Source",
+          "module": [],
+          "type": {
+            "type": "Integer",
+            "value": null
+          },
+          "optional": false
+        },
+        "My Other Source": {
+          "name": "Writeable.My Other Source",
+          "module": [],
+          "type": {
+            "type": "Integer",
+            "value": null
+          },
+          "optional": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.My Pipeline",
+          "module": [],
+          "type": {
+            "type": "Integer",
+            "value": null
+          },
+          "optional": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "input",
+          "name": "My Other Source"
+        },
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "Integer",
+            "value": null
+          },
+          "expression": {
+            "type": {
+              "type": "Integer",
+              "value": null
+            },
+            "ast_type": "Add",
+            "first": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "value"
+            },
+            "second": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "input.My Other Source"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "defaults": {
+    "Writeable.My Other Source": {
+      "default_type": "value",
+      "stream": "Writeable.My Other Source",
+      "module": [],
+      "value": {
+        "type": {
+          "type": "Integer",
+          "value": null
+        },
+        "ast_type": "Const",
+        "value": "5"
+      }
+    },
+    "Writeable.My Source": {
+      "default_type": "value",
+      "stream": "Writeable.My Source",
+      "module": [],
+      "value": {
+        "type": {
+          "type": "Integer",
+          "value": null
+        },
+        "ast_type": "Const",
+        "value": "2"
+      }
+    }
+  }
+}
