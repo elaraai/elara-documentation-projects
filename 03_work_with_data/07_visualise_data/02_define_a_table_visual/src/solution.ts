@@ -1,3 +1,43 @@
-import { Template } from "@elaraai/core"
+import { SourceBuilder, Template, LayoutBuilder, StringJoin, IfElse, Greater, PrintTruncatedCurrency } from "@elaraai/core"
 
-export default Template();
+const my_source = new SourceBuilder("My Source")
+    .value({
+        value: new Map(Array.from({ length: 200 }).map((_, index) => (
+            [`${index}`, {
+                date: new Date(new Date().valueOf() + index),
+                category: `category ${index % 2}`,
+                value: BigInt(index),
+                amount: index,
+                processed: Math.random() > 0.5,
+                tags: new Set(["One", "Two"].sort(() => Math.random() - Math.random()).slice(0, 2)),
+            }]
+        )))
+    })
+
+const my_layout = new LayoutBuilder("My Layout")
+    .table("My Table", builder => builder
+        .fromStream(my_source.outputStream())
+        .columns()
+    )
+
+const my_other_layout = new LayoutBuilder("My Other Layout")
+    .table("My Other Table", builder => builder
+        .fromStream(my_source.outputStream())
+        .date("Date", fields => fields.date)
+        .string("Category", {
+            value: fields => fields.category,
+            tooltip: fields => StringJoin`${fields.category} for ${fields.value}`,
+        })
+        .integer("Value", {
+            value: fields => fields.value,
+            color: fields => IfElse(Greater(fields.value, 0n), 'green', 'red'),
+        })
+        .float("Amount", {
+            value: fields => fields.amount,
+            display: fields => StringJoin`${PrintTruncatedCurrency(fields.amount)}`,
+        })
+        .boolean("Processed", fields => fields.processed)
+        .set("Tags", fields => fields.tags)
+    )
+
+export default Template(my_source, my_layout, my_other_layout);

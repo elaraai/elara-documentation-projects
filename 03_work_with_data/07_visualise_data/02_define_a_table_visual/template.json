@@ -1,0 +1,4182 @@
+{
+  "streams": {
+    "Writeable.My Source": {
+      "name": "Writeable.My Source",
+      "module": [],
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              },
+              "category": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Integer",
+                "value": null
+              },
+              "amount": {
+                "type": "Float",
+                "value": null
+              },
+              "processed": {
+                "type": "Boolean",
+                "value": null
+              },
+              "tags": {
+                "type": "Set",
+                "value": {
+                  "type": "String",
+                  "value": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "writable": true
+    }
+  },
+  "tasks": {},
+  "defaults": {
+    "Writeable.My Source": {
+      "default_type": "value",
+      "stream": "Writeable.My Source",
+      "module": [],
+      "value": {
+        "type": {
+          "type": "Dict",
+          "value": {
+            "key": {
+              "type": "String",
+              "value": null
+            },
+            "value": {
+              "type": "Struct",
+              "value": {
+                "date": {
+                  "type": "DateTime",
+                  "value": null
+                },
+                "category": {
+                  "type": "String",
+                  "value": null
+                },
+                "value": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "amount": {
+                  "type": "Float",
+                  "value": null
+                },
+                "processed": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "tags": {
+                  "type": "Set",
+                  "value": {
+                    "type": "String",
+                    "value": null
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ast_type": "Const",
+        "value": [
+          {
+            "key": "0",
+            "value": {
+              "date": "2023-11-18T04:24:49.955Z",
+              "category": "category 0",
+              "value": "0",
+              "amount": 200,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "1",
+            "value": {
+              "date": "2023-11-18T05:24:49.955Z",
+              "category": "category 1",
+              "value": "25",
+              "amount": 201.25581039058628,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "2",
+            "value": {
+              "date": "2023-11-18T06:24:49.955Z",
+              "category": "category 2",
+              "value": "50",
+              "amount": 202.50666467128607,
+              "processed": true,
+              "tags": [
+                "Two",
+                "Three"
+              ]
+            }
+          },
+          {
+            "key": "3",
+            "value": {
+              "date": "2023-11-18T07:24:49.955Z",
+              "category": "category 3",
+              "value": "74",
+              "amount": 203.74762629171448,
+              "processed": false,
+              "tags": [
+                "One",
+                "Three"
+              ]
+            }
+          },
+          {
+            "key": "4",
+            "value": {
+              "date": "2023-11-18T08:24:49.955Z",
+              "category": "category 0",
+              "value": "96",
+              "amount": 204.9737977432971,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "5",
+            "value": {
+              "date": "2023-11-18T09:24:49.955Z",
+              "category": "category 1",
+              "value": "118",
+              "amount": 206.18033988749895,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "6",
+            "value": {
+              "date": "2023-11-18T10:24:49.955Z",
+              "category": "category 2",
+              "value": "137",
+              "amount": 207.36249105369356,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "7",
+            "value": {
+              "date": "2023-11-18T11:24:49.955Z",
+              "category": "category 3",
+              "value": "154",
+              "amount": 208.51558583130145,
+              "processed": true,
+              "tags": [
+                "Two",
+                "Three"
+              ]
+            }
+          },
+          {
+            "key": "8",
+            "value": {
+              "date": "2023-11-18T12:24:49.955Z",
+              "category": "category 0",
+              "value": "169",
+              "amount": 209.6350734820343,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "9",
+            "value": {
+              "date": "2023-11-18T13:24:49.955Z",
+              "category": "category 1",
+              "value": "181",
+              "amount": 210.71653589957992,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "10",
+            "value": {
+              "date": "2023-11-18T14:24:49.955Z",
+              "category": "category 2",
+              "value": "190",
+              "amount": 211.75570504584945,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "11",
+            "value": {
+              "date": "2023-11-18T15:24:49.955Z",
+              "category": "category 3",
+              "value": "196",
+              "amount": 212.7484797949738,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "12",
+            "value": {
+              "date": "2023-11-18T16:24:49.955Z",
+              "category": "category 0",
+              "value": "200",
+              "amount": 213.6909421185738,
+              "processed": true,
+              "tags": [
+                "One",
+                "Three"
+              ]
+            }
+          },
+          {
+            "key": "13",
+            "value": {
+              "date": "2023-11-18T17:24:49.955Z",
+              "category": "category 1",
+              "value": "200",
+              "amount": 214.57937254842824,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "14",
+            "value": {
+              "date": "2023-11-18T18:24:49.955Z",
+              "category": "category 2",
+              "value": "196",
+              "amount": 215.41026485551578,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "15",
+            "value": {
+              "date": "2023-11-18T19:24:49.955Z",
+              "category": "category 3",
+              "value": "190",
+              "amount": 216.18033988749895,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "16",
+            "value": {
+              "date": "2023-11-18T20:24:49.955Z",
+              "category": "category 0",
+              "value": "181",
+              "amount": 216.8865585100403,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "17",
+            "value": {
+              "date": "2023-11-18T21:24:49.955Z",
+              "category": "category 1",
+              "value": "169",
+              "amount": 217.52613360087727,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "18",
+            "value": {
+              "date": "2023-11-18T22:24:49.955Z",
+              "category": "category 2",
+              "value": "154",
+              "amount": 218.0965410493204,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "19",
+            "value": {
+              "date": "2023-11-18T23:24:49.955Z",
+              "category": "category 3",
+              "value": "137",
+              "amount": 218.59552971776503,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "20",
+            "value": {
+              "date": "2023-11-19T00:24:49.955Z",
+              "category": "category 0",
+              "value": "118",
+              "amount": 219.02113032590307,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "21",
+            "value": {
+              "date": "2023-11-19T01:24:49.955Z",
+              "category": "category 1",
+              "value": "96",
+              "amount": 219.37166322257264,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "22",
+            "value": {
+              "date": "2023-11-19T02:24:49.955Z",
+              "category": "category 2",
+              "value": "74",
+              "amount": 219.64574501457378,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "23",
+            "value": {
+              "date": "2023-11-19T03:24:49.955Z",
+              "category": "category 3",
+              "value": "50",
+              "amount": 219.84229402628955,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "24",
+            "value": {
+              "date": "2023-11-19T04:24:49.955Z",
+              "category": "category 0",
+              "value": "25",
+              "amount": 219.96053456856544,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "25",
+            "value": {
+              "date": "2023-11-19T05:24:49.955Z",
+              "category": "category 1",
+              "value": "0",
+              "amount": 220,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "26",
+            "value": {
+              "date": "2023-11-19T06:24:49.955Z",
+              "category": "category 2",
+              "value": "-25",
+              "amount": 219.96053456856544,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "27",
+            "value": {
+              "date": "2023-11-19T07:24:49.955Z",
+              "category": "category 3",
+              "value": "-50",
+              "amount": 219.84229402628955,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "28",
+            "value": {
+              "date": "2023-11-19T08:24:49.955Z",
+              "category": "category 0",
+              "value": "-74",
+              "amount": 219.64574501457378,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "29",
+            "value": {
+              "date": "2023-11-19T09:24:49.955Z",
+              "category": "category 1",
+              "value": "-96",
+              "amount": 219.37166322257264,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "30",
+            "value": {
+              "date": "2023-11-19T10:24:49.955Z",
+              "category": "category 2",
+              "value": "-118",
+              "amount": 219.02113032590307,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "31",
+            "value": {
+              "date": "2023-11-19T11:24:49.955Z",
+              "category": "category 3",
+              "value": "-137",
+              "amount": 218.59552971776503,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "32",
+            "value": {
+              "date": "2023-11-19T12:24:49.955Z",
+              "category": "category 0",
+              "value": "-154",
+              "amount": 218.0965410493204,
+              "processed": true,
+              "tags": [
+                "Two",
+                "Three"
+              ]
+            }
+          },
+          {
+            "key": "33",
+            "value": {
+              "date": "2023-11-19T13:24:49.955Z",
+              "category": "category 1",
+              "value": "-169",
+              "amount": 217.52613360087727,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "34",
+            "value": {
+              "date": "2023-11-19T14:24:49.955Z",
+              "category": "category 2",
+              "value": "-181",
+              "amount": 216.8865585100403,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "35",
+            "value": {
+              "date": "2023-11-19T15:24:49.955Z",
+              "category": "category 3",
+              "value": "-190",
+              "amount": 216.18033988749895,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "36",
+            "value": {
+              "date": "2023-11-19T16:24:49.955Z",
+              "category": "category 0",
+              "value": "-196",
+              "amount": 215.41026485551578,
+              "processed": false,
+              "tags": [
+                "Two",
+                "Three"
+              ]
+            }
+          },
+          {
+            "key": "37",
+            "value": {
+              "date": "2023-11-19T17:24:49.955Z",
+              "category": "category 1",
+              "value": "-200",
+              "amount": 214.57937254842824,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "38",
+            "value": {
+              "date": "2023-11-19T18:24:49.955Z",
+              "category": "category 2",
+              "value": "-200",
+              "amount": 213.6909421185738,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "39",
+            "value": {
+              "date": "2023-11-19T19:24:49.955Z",
+              "category": "category 3",
+              "value": "-196",
+              "amount": 212.7484797949738,
+              "processed": false,
+              "tags": [
+                "Three",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "40",
+            "value": {
+              "date": "2023-11-19T20:24:49.955Z",
+              "category": "category 0",
+              "value": "-190",
+              "amount": 211.75570504584945,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "41",
+            "value": {
+              "date": "2023-11-19T21:24:49.955Z",
+              "category": "category 1",
+              "value": "-181",
+              "amount": 210.71653589957995,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "42",
+            "value": {
+              "date": "2023-11-19T22:24:49.955Z",
+              "category": "category 2",
+              "value": "-169",
+              "amount": 209.6350734820343,
+              "processed": true,
+              "tags": [
+                "One",
+                "Three"
+              ]
+            }
+          },
+          {
+            "key": "43",
+            "value": {
+              "date": "2023-11-19T23:24:49.955Z",
+              "category": "category 3",
+              "value": "-154",
+              "amount": 208.51558583130145,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "44",
+            "value": {
+              "date": "2023-11-20T00:24:49.955Z",
+              "category": "category 0",
+              "value": "-137",
+              "amount": 207.36249105369356,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "45",
+            "value": {
+              "date": "2023-11-20T01:24:49.955Z",
+              "category": "category 1",
+              "value": "-118",
+              "amount": 206.18033988749895,
+              "processed": false,
+              "tags": [
+                "Three",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "46",
+            "value": {
+              "date": "2023-11-20T02:24:49.955Z",
+              "category": "category 2",
+              "value": "-96",
+              "amount": 204.9737977432971,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "47",
+            "value": {
+              "date": "2023-11-20T03:24:49.955Z",
+              "category": "category 3",
+              "value": "-74",
+              "amount": 203.74762629171448,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "48",
+            "value": {
+              "date": "2023-11-20T04:24:49.955Z",
+              "category": "category 0",
+              "value": "-50",
+              "amount": 202.5066646712861,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "49",
+            "value": {
+              "date": "2023-11-20T05:24:49.955Z",
+              "category": "category 1",
+              "value": "-25",
+              "amount": 201.25581039058628,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "50",
+            "value": {
+              "date": "2023-11-20T06:24:49.955Z",
+              "category": "category 2",
+              "value": "0",
+              "amount": 200,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "51",
+            "value": {
+              "date": "2023-11-20T07:24:49.955Z",
+              "category": "category 3",
+              "value": "25",
+              "amount": 198.74418960941372,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "52",
+            "value": {
+              "date": "2023-11-20T08:24:49.955Z",
+              "category": "category 0",
+              "value": "50",
+              "amount": 197.49333532871393,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "53",
+            "value": {
+              "date": "2023-11-20T09:24:49.955Z",
+              "category": "category 1",
+              "value": "74",
+              "amount": 196.25237370828552,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "54",
+            "value": {
+              "date": "2023-11-20T10:24:49.955Z",
+              "category": "category 2",
+              "value": "96",
+              "amount": 195.0262022567029,
+              "processed": false,
+              "tags": [
+                "Three",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "55",
+            "value": {
+              "date": "2023-11-20T11:24:49.955Z",
+              "category": "category 3",
+              "value": "118",
+              "amount": 193.81966011250105,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "56",
+            "value": {
+              "date": "2023-11-20T12:24:49.955Z",
+              "category": "category 0",
+              "value": "137",
+              "amount": 192.63750894630644,
+              "processed": true,
+              "tags": [
+                "Three",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "57",
+            "value": {
+              "date": "2023-11-20T13:24:49.955Z",
+              "category": "category 1",
+              "value": "154",
+              "amount": 191.48441416869855,
+              "processed": true,
+              "tags": [
+                "One",
+                "Three"
+              ]
+            }
+          },
+          {
+            "key": "58",
+            "value": {
+              "date": "2023-11-20T14:24:49.955Z",
+              "category": "category 2",
+              "value": "169",
+              "amount": 190.3649265179657,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "59",
+            "value": {
+              "date": "2023-11-20T15:24:49.955Z",
+              "category": "category 3",
+              "value": "181",
+              "amount": 189.28346410042008,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "60",
+            "value": {
+              "date": "2023-11-20T16:24:49.955Z",
+              "category": "category 0",
+              "value": "190",
+              "amount": 188.24429495415055,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "61",
+            "value": {
+              "date": "2023-11-20T17:24:49.955Z",
+              "category": "category 1",
+              "value": "196",
+              "amount": 187.2515202050262,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "62",
+            "value": {
+              "date": "2023-11-20T18:24:49.955Z",
+              "category": "category 2",
+              "value": "200",
+              "amount": 186.30905788142624,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "63",
+            "value": {
+              "date": "2023-11-20T19:24:49.955Z",
+              "category": "category 3",
+              "value": "200",
+              "amount": 185.42062745157176,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "64",
+            "value": {
+              "date": "2023-11-20T20:24:49.955Z",
+              "category": "category 0",
+              "value": "196",
+              "amount": 184.58973514448422,
+              "processed": true,
+              "tags": [
+                "One",
+                "Three"
+              ]
+            }
+          },
+          {
+            "key": "65",
+            "value": {
+              "date": "2023-11-20T21:24:49.955Z",
+              "category": "category 1",
+              "value": "190",
+              "amount": 183.81966011250105,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "66",
+            "value": {
+              "date": "2023-11-20T22:24:49.955Z",
+              "category": "category 2",
+              "value": "181",
+              "amount": 183.11344148995968,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "67",
+            "value": {
+              "date": "2023-11-20T23:24:49.955Z",
+              "category": "category 3",
+              "value": "169",
+              "amount": 182.47386639912273,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "68",
+            "value": {
+              "date": "2023-11-21T00:24:49.955Z",
+              "category": "category 0",
+              "value": "154",
+              "amount": 181.9034589506796,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "69",
+            "value": {
+              "date": "2023-11-21T01:24:49.955Z",
+              "category": "category 1",
+              "value": "137",
+              "amount": 181.40447028223497,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "70",
+            "value": {
+              "date": "2023-11-21T02:24:49.955Z",
+              "category": "category 2",
+              "value": "118",
+              "amount": 180.97886967409693,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "71",
+            "value": {
+              "date": "2023-11-21T03:24:49.955Z",
+              "category": "category 3",
+              "value": "96",
+              "amount": 180.62833677742736,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "72",
+            "value": {
+              "date": "2023-11-21T04:24:49.955Z",
+              "category": "category 0",
+              "value": "74",
+              "amount": 180.35425498542622,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "73",
+            "value": {
+              "date": "2023-11-21T05:24:49.955Z",
+              "category": "category 1",
+              "value": "50",
+              "amount": 180.15770597371045,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "74",
+            "value": {
+              "date": "2023-11-21T06:24:49.955Z",
+              "category": "category 2",
+              "value": "25",
+              "amount": 180.03946543143456,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "75",
+            "value": {
+              "date": "2023-11-21T07:24:49.955Z",
+              "category": "category 3",
+              "value": "0",
+              "amount": 180,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "76",
+            "value": {
+              "date": "2023-11-21T08:24:49.955Z",
+              "category": "category 0",
+              "value": "-25",
+              "amount": 180.03946543143456,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "77",
+            "value": {
+              "date": "2023-11-21T09:24:49.955Z",
+              "category": "category 1",
+              "value": "-50",
+              "amount": 180.15770597371045,
+              "processed": true,
+              "tags": [
+                "Two",
+                "Three"
+              ]
+            }
+          },
+          {
+            "key": "78",
+            "value": {
+              "date": "2023-11-21T10:24:49.955Z",
+              "category": "category 2",
+              "value": "-74",
+              "amount": 180.35425498542622,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "79",
+            "value": {
+              "date": "2023-11-21T11:24:49.955Z",
+              "category": "category 3",
+              "value": "-96",
+              "amount": 180.62833677742736,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "80",
+            "value": {
+              "date": "2023-11-21T12:24:49.955Z",
+              "category": "category 0",
+              "value": "-118",
+              "amount": 180.97886967409693,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "81",
+            "value": {
+              "date": "2023-11-21T13:24:49.955Z",
+              "category": "category 1",
+              "value": "-137",
+              "amount": 181.40447028223497,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "82",
+            "value": {
+              "date": "2023-11-21T14:24:49.955Z",
+              "category": "category 2",
+              "value": "-154",
+              "amount": 181.9034589506796,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "83",
+            "value": {
+              "date": "2023-11-21T15:24:49.955Z",
+              "category": "category 3",
+              "value": "-169",
+              "amount": 182.47386639912273,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "84",
+            "value": {
+              "date": "2023-11-21T16:24:49.955Z",
+              "category": "category 0",
+              "value": "-181",
+              "amount": 183.1134414899597,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "85",
+            "value": {
+              "date": "2023-11-21T17:24:49.955Z",
+              "category": "category 1",
+              "value": "-190",
+              "amount": 183.81966011250105,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "86",
+            "value": {
+              "date": "2023-11-21T18:24:49.955Z",
+              "category": "category 2",
+              "value": "-196",
+              "amount": 184.58973514448422,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "87",
+            "value": {
+              "date": "2023-11-21T19:24:49.955Z",
+              "category": "category 3",
+              "value": "-200",
+              "amount": 185.42062745157176,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "88",
+            "value": {
+              "date": "2023-11-21T20:24:49.955Z",
+              "category": "category 0",
+              "value": "-200",
+              "amount": 186.3090578814262,
+              "processed": false,
+              "tags": [
+                "Three",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "89",
+            "value": {
+              "date": "2023-11-21T21:24:49.955Z",
+              "category": "category 1",
+              "value": "-196",
+              "amount": 187.2515202050262,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "90",
+            "value": {
+              "date": "2023-11-21T22:24:49.955Z",
+              "category": "category 2",
+              "value": "-190",
+              "amount": 188.24429495415052,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "91",
+            "value": {
+              "date": "2023-11-21T23:24:49.955Z",
+              "category": "category 3",
+              "value": "-181",
+              "amount": 189.28346410042005,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "92",
+            "value": {
+              "date": "2023-11-22T00:24:49.955Z",
+              "category": "category 0",
+              "value": "-169",
+              "amount": 190.36492651796567,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "93",
+            "value": {
+              "date": "2023-11-22T01:24:49.955Z",
+              "category": "category 1",
+              "value": "-154",
+              "amount": 191.48441416869855,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "94",
+            "value": {
+              "date": "2023-11-22T02:24:49.955Z",
+              "category": "category 2",
+              "value": "-137",
+              "amount": 192.63750894630644,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "95",
+            "value": {
+              "date": "2023-11-22T03:24:49.955Z",
+              "category": "category 3",
+              "value": "-118",
+              "amount": 193.81966011250105,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "96",
+            "value": {
+              "date": "2023-11-22T04:24:49.955Z",
+              "category": "category 0",
+              "value": "-96",
+              "amount": 195.0262022567029,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "97",
+            "value": {
+              "date": "2023-11-22T05:24:49.955Z",
+              "category": "category 1",
+              "value": "-74",
+              "amount": 196.25237370828552,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "98",
+            "value": {
+              "date": "2023-11-22T06:24:49.955Z",
+              "category": "category 2",
+              "value": "-50",
+              "amount": 197.4933353287139,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "99",
+            "value": {
+              "date": "2023-11-22T07:24:49.955Z",
+              "category": "category 3",
+              "value": "-25",
+              "amount": 198.74418960941372,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "100",
+            "value": {
+              "date": "2023-11-22T08:24:49.955Z",
+              "category": "category 0",
+              "value": "0",
+              "amount": 200,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "101",
+            "value": {
+              "date": "2023-11-22T09:24:49.955Z",
+              "category": "category 1",
+              "value": "25",
+              "amount": 201.25581039058625,
+              "processed": true,
+              "tags": [
+                "Two",
+                "Three"
+              ]
+            }
+          },
+          {
+            "key": "102",
+            "value": {
+              "date": "2023-11-22T10:24:49.955Z",
+              "category": "category 2",
+              "value": "50",
+              "amount": 202.50666467128607,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "103",
+            "value": {
+              "date": "2023-11-22T11:24:49.955Z",
+              "category": "category 3",
+              "value": "74",
+              "amount": 203.74762629171448,
+              "processed": false,
+              "tags": [
+                "One",
+                "Three"
+              ]
+            }
+          },
+          {
+            "key": "104",
+            "value": {
+              "date": "2023-11-22T12:24:49.955Z",
+              "category": "category 0",
+              "value": "96",
+              "amount": 204.9737977432971,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "105",
+            "value": {
+              "date": "2023-11-22T13:24:49.955Z",
+              "category": "category 1",
+              "value": "118",
+              "amount": 206.18033988749895,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "106",
+            "value": {
+              "date": "2023-11-22T14:24:49.955Z",
+              "category": "category 2",
+              "value": "137",
+              "amount": 207.36249105369356,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "107",
+            "value": {
+              "date": "2023-11-22T15:24:49.955Z",
+              "category": "category 3",
+              "value": "154",
+              "amount": 208.51558583130145,
+              "processed": false,
+              "tags": [
+                "One",
+                "Three"
+              ]
+            }
+          },
+          {
+            "key": "108",
+            "value": {
+              "date": "2023-11-22T16:24:49.955Z",
+              "category": "category 0",
+              "value": "169",
+              "amount": 209.6350734820343,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "109",
+            "value": {
+              "date": "2023-11-22T17:24:49.955Z",
+              "category": "category 1",
+              "value": "181",
+              "amount": 210.71653589957992,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "110",
+            "value": {
+              "date": "2023-11-22T18:24:49.955Z",
+              "category": "category 2",
+              "value": "190",
+              "amount": 211.75570504584945,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "111",
+            "value": {
+              "date": "2023-11-22T19:24:49.955Z",
+              "category": "category 3",
+              "value": "196",
+              "amount": 212.7484797949738,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "112",
+            "value": {
+              "date": "2023-11-22T20:24:49.955Z",
+              "category": "category 0",
+              "value": "200",
+              "amount": 213.6909421185738,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "113",
+            "value": {
+              "date": "2023-11-22T21:24:49.955Z",
+              "category": "category 1",
+              "value": "200",
+              "amount": 214.57937254842824,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "114",
+            "value": {
+              "date": "2023-11-22T22:24:49.955Z",
+              "category": "category 2",
+              "value": "196",
+              "amount": 215.41026485551578,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "115",
+            "value": {
+              "date": "2023-11-22T23:24:49.955Z",
+              "category": "category 3",
+              "value": "190",
+              "amount": 216.18033988749895,
+              "processed": false,
+              "tags": [
+                "Three",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "116",
+            "value": {
+              "date": "2023-11-23T00:24:49.955Z",
+              "category": "category 0",
+              "value": "181",
+              "amount": 216.8865585100403,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "117",
+            "value": {
+              "date": "2023-11-23T01:24:49.955Z",
+              "category": "category 1",
+              "value": "169",
+              "amount": 217.52613360087727,
+              "processed": false,
+              "tags": [
+                "Three",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "118",
+            "value": {
+              "date": "2023-11-23T02:24:49.955Z",
+              "category": "category 2",
+              "value": "154",
+              "amount": 218.0965410493204,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "119",
+            "value": {
+              "date": "2023-11-23T03:24:49.955Z",
+              "category": "category 3",
+              "value": "137",
+              "amount": 218.59552971776503,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "120",
+            "value": {
+              "date": "2023-11-23T04:24:49.955Z",
+              "category": "category 0",
+              "value": "118",
+              "amount": 219.02113032590307,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "121",
+            "value": {
+              "date": "2023-11-23T05:24:49.955Z",
+              "category": "category 1",
+              "value": "96",
+              "amount": 219.37166322257264,
+              "processed": false,
+              "tags": [
+                "Two",
+                "Three"
+              ]
+            }
+          },
+          {
+            "key": "122",
+            "value": {
+              "date": "2023-11-23T06:24:49.955Z",
+              "category": "category 2",
+              "value": "74",
+              "amount": 219.64574501457378,
+              "processed": true,
+              "tags": [
+                "Three",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "123",
+            "value": {
+              "date": "2023-11-23T07:24:49.955Z",
+              "category": "category 3",
+              "value": "50",
+              "amount": 219.84229402628955,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "124",
+            "value": {
+              "date": "2023-11-23T08:24:49.955Z",
+              "category": "category 0",
+              "value": "25",
+              "amount": 219.96053456856544,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "125",
+            "value": {
+              "date": "2023-11-23T09:24:49.955Z",
+              "category": "category 1",
+              "value": "0",
+              "amount": 220,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "126",
+            "value": {
+              "date": "2023-11-23T10:24:49.955Z",
+              "category": "category 2",
+              "value": "-25",
+              "amount": 219.96053456856544,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "127",
+            "value": {
+              "date": "2023-11-23T11:24:49.955Z",
+              "category": "category 3",
+              "value": "-50",
+              "amount": 219.84229402628955,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "128",
+            "value": {
+              "date": "2023-11-23T12:24:49.955Z",
+              "category": "category 0",
+              "value": "-74",
+              "amount": 219.64574501457378,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "129",
+            "value": {
+              "date": "2023-11-23T13:24:49.955Z",
+              "category": "category 1",
+              "value": "-96",
+              "amount": 219.37166322257264,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "130",
+            "value": {
+              "date": "2023-11-23T14:24:49.955Z",
+              "category": "category 2",
+              "value": "-118",
+              "amount": 219.02113032590307,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "131",
+            "value": {
+              "date": "2023-11-23T15:24:49.955Z",
+              "category": "category 3",
+              "value": "-137",
+              "amount": 218.59552971776503,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "132",
+            "value": {
+              "date": "2023-11-23T16:24:49.955Z",
+              "category": "category 0",
+              "value": "-154",
+              "amount": 218.0965410493204,
+              "processed": true,
+              "tags": [
+                "Two",
+                "Three"
+              ]
+            }
+          },
+          {
+            "key": "133",
+            "value": {
+              "date": "2023-11-23T17:24:49.955Z",
+              "category": "category 1",
+              "value": "-169",
+              "amount": 217.52613360087727,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "134",
+            "value": {
+              "date": "2023-11-23T18:24:49.955Z",
+              "category": "category 2",
+              "value": "-181",
+              "amount": 216.8865585100403,
+              "processed": false,
+              "tags": [
+                "Two",
+                "Three"
+              ]
+            }
+          },
+          {
+            "key": "135",
+            "value": {
+              "date": "2023-11-23T19:24:49.955Z",
+              "category": "category 3",
+              "value": "-190",
+              "amount": 216.18033988749895,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "136",
+            "value": {
+              "date": "2023-11-23T20:24:49.955Z",
+              "category": "category 0",
+              "value": "-196",
+              "amount": 215.41026485551578,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "137",
+            "value": {
+              "date": "2023-11-23T21:24:49.955Z",
+              "category": "category 1",
+              "value": "-200",
+              "amount": 214.5793725484282,
+              "processed": false,
+              "tags": [
+                "Three",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "138",
+            "value": {
+              "date": "2023-11-23T22:24:49.955Z",
+              "category": "category 2",
+              "value": "-200",
+              "amount": 213.69094211857376,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "139",
+            "value": {
+              "date": "2023-11-23T23:24:49.955Z",
+              "category": "category 3",
+              "value": "-196",
+              "amount": 212.7484797949738,
+              "processed": true,
+              "tags": [
+                "Three",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "140",
+            "value": {
+              "date": "2023-11-24T00:24:49.955Z",
+              "category": "category 0",
+              "value": "-190",
+              "amount": 211.75570504584948,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "141",
+            "value": {
+              "date": "2023-11-24T01:24:49.955Z",
+              "category": "category 1",
+              "value": "-181",
+              "amount": 210.71653589957995,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "142",
+            "value": {
+              "date": "2023-11-24T02:24:49.955Z",
+              "category": "category 2",
+              "value": "-169",
+              "amount": 209.6350734820343,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "143",
+            "value": {
+              "date": "2023-11-24T03:24:49.955Z",
+              "category": "category 3",
+              "value": "-154",
+              "amount": 208.51558583130145,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "144",
+            "value": {
+              "date": "2023-11-24T04:24:49.955Z",
+              "category": "category 0",
+              "value": "-137",
+              "amount": 207.36249105369356,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "145",
+            "value": {
+              "date": "2023-11-24T05:24:49.955Z",
+              "category": "category 1",
+              "value": "-118",
+              "amount": 206.18033988749895,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "146",
+            "value": {
+              "date": "2023-11-24T06:24:49.955Z",
+              "category": "category 2",
+              "value": "-96",
+              "amount": 204.9737977432971,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "147",
+            "value": {
+              "date": "2023-11-24T07:24:49.955Z",
+              "category": "category 3",
+              "value": "-74",
+              "amount": 203.74762629171448,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "148",
+            "value": {
+              "date": "2023-11-24T08:24:49.955Z",
+              "category": "category 0",
+              "value": "-50",
+              "amount": 202.50666467128607,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "149",
+            "value": {
+              "date": "2023-11-24T09:24:49.955Z",
+              "category": "category 1",
+              "value": "-25",
+              "amount": 201.25581039058628,
+              "processed": true,
+              "tags": [
+                "Three",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "150",
+            "value": {
+              "date": "2023-11-24T10:24:49.955Z",
+              "category": "category 2",
+              "value": "0",
+              "amount": 200,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "151",
+            "value": {
+              "date": "2023-11-24T11:24:49.955Z",
+              "category": "category 3",
+              "value": "25",
+              "amount": 198.74418960941375,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "152",
+            "value": {
+              "date": "2023-11-24T12:24:49.955Z",
+              "category": "category 0",
+              "value": "50",
+              "amount": 197.49333532871393,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "153",
+            "value": {
+              "date": "2023-11-24T13:24:49.955Z",
+              "category": "category 1",
+              "value": "74",
+              "amount": 196.2523737082855,
+              "processed": false,
+              "tags": [
+                "Two",
+                "Three"
+              ]
+            }
+          },
+          {
+            "key": "154",
+            "value": {
+              "date": "2023-11-24T14:24:49.955Z",
+              "category": "category 2",
+              "value": "96",
+              "amount": 195.0262022567029,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "155",
+            "value": {
+              "date": "2023-11-24T15:24:49.955Z",
+              "category": "category 3",
+              "value": "118",
+              "amount": 193.81966011250105,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "156",
+            "value": {
+              "date": "2023-11-24T16:24:49.955Z",
+              "category": "category 0",
+              "value": "137",
+              "amount": 192.63750894630647,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "157",
+            "value": {
+              "date": "2023-11-24T17:24:49.955Z",
+              "category": "category 1",
+              "value": "154",
+              "amount": 191.48441416869858,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "158",
+            "value": {
+              "date": "2023-11-24T18:24:49.955Z",
+              "category": "category 2",
+              "value": "169",
+              "amount": 190.3649265179657,
+              "processed": false,
+              "tags": [
+                "One",
+                "Three"
+              ]
+            }
+          },
+          {
+            "key": "159",
+            "value": {
+              "date": "2023-11-24T19:24:49.955Z",
+              "category": "category 3",
+              "value": "181",
+              "amount": 189.28346410042008,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "160",
+            "value": {
+              "date": "2023-11-24T20:24:49.955Z",
+              "category": "category 0",
+              "value": "190",
+              "amount": 188.24429495415055,
+              "processed": false,
+              "tags": [
+                "Two",
+                "Three"
+              ]
+            }
+          },
+          {
+            "key": "161",
+            "value": {
+              "date": "2023-11-24T21:24:49.955Z",
+              "category": "category 1",
+              "value": "196",
+              "amount": 187.25152020502622,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "162",
+            "value": {
+              "date": "2023-11-24T22:24:49.955Z",
+              "category": "category 2",
+              "value": "200",
+              "amount": 186.30905788142624,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "163",
+            "value": {
+              "date": "2023-11-24T23:24:49.955Z",
+              "category": "category 3",
+              "value": "200",
+              "amount": 185.4206274515718,
+              "processed": true,
+              "tags": [
+                "Two",
+                "Three"
+              ]
+            }
+          },
+          {
+            "key": "164",
+            "value": {
+              "date": "2023-11-25T00:24:49.955Z",
+              "category": "category 0",
+              "value": "196",
+              "amount": 184.58973514448425,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "165",
+            "value": {
+              "date": "2023-11-25T01:24:49.955Z",
+              "category": "category 1",
+              "value": "190",
+              "amount": 183.81966011250108,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "166",
+            "value": {
+              "date": "2023-11-25T02:24:49.955Z",
+              "category": "category 2",
+              "value": "181",
+              "amount": 183.11344148995968,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "167",
+            "value": {
+              "date": "2023-11-25T03:24:49.955Z",
+              "category": "category 3",
+              "value": "169",
+              "amount": 182.47386639912273,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "168",
+            "value": {
+              "date": "2023-11-25T04:24:49.955Z",
+              "category": "category 0",
+              "value": "154",
+              "amount": 181.9034589506796,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "169",
+            "value": {
+              "date": "2023-11-25T05:24:49.955Z",
+              "category": "category 1",
+              "value": "137",
+              "amount": 181.40447028223497,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "170",
+            "value": {
+              "date": "2023-11-25T06:24:49.955Z",
+              "category": "category 2",
+              "value": "118",
+              "amount": 180.97886967409693,
+              "processed": false,
+              "tags": [
+                "Two",
+                "Three"
+              ]
+            }
+          },
+          {
+            "key": "171",
+            "value": {
+              "date": "2023-11-25T07:24:49.955Z",
+              "category": "category 3",
+              "value": "96",
+              "amount": 180.6283367774274,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "172",
+            "value": {
+              "date": "2023-11-25T08:24:49.955Z",
+              "category": "category 0",
+              "value": "74",
+              "amount": 180.35425498542622,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "173",
+            "value": {
+              "date": "2023-11-25T09:24:49.955Z",
+              "category": "category 1",
+              "value": "50",
+              "amount": 180.15770597371045,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "174",
+            "value": {
+              "date": "2023-11-25T10:24:49.955Z",
+              "category": "category 2",
+              "value": "25",
+              "amount": 180.03946543143456,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "175",
+            "value": {
+              "date": "2023-11-25T11:24:49.955Z",
+              "category": "category 3",
+              "value": "0",
+              "amount": 180,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "176",
+            "value": {
+              "date": "2023-11-25T12:24:49.955Z",
+              "category": "category 0",
+              "value": "-25",
+              "amount": 180.03946543143456,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "177",
+            "value": {
+              "date": "2023-11-25T13:24:49.955Z",
+              "category": "category 1",
+              "value": "-50",
+              "amount": 180.15770597371045,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "178",
+            "value": {
+              "date": "2023-11-25T14:24:49.955Z",
+              "category": "category 2",
+              "value": "-74",
+              "amount": 180.35425498542622,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "179",
+            "value": {
+              "date": "2023-11-25T15:24:49.955Z",
+              "category": "category 3",
+              "value": "-96",
+              "amount": 180.62833677742736,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "180",
+            "value": {
+              "date": "2023-11-25T16:24:49.955Z",
+              "category": "category 0",
+              "value": "-118",
+              "amount": 180.97886967409693,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "181",
+            "value": {
+              "date": "2023-11-25T17:24:49.955Z",
+              "category": "category 1",
+              "value": "-137",
+              "amount": 181.40447028223497,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "182",
+            "value": {
+              "date": "2023-11-25T18:24:49.955Z",
+              "category": "category 2",
+              "value": "-154",
+              "amount": 181.9034589506796,
+              "processed": false,
+              "tags": [
+                "Three",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "183",
+            "value": {
+              "date": "2023-11-25T19:24:49.955Z",
+              "category": "category 3",
+              "value": "-169",
+              "amount": 182.4738663991227,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "184",
+            "value": {
+              "date": "2023-11-25T20:24:49.955Z",
+              "category": "category 0",
+              "value": "-181",
+              "amount": 183.11344148995968,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "185",
+            "value": {
+              "date": "2023-11-25T21:24:49.955Z",
+              "category": "category 1",
+              "value": "-190",
+              "amount": 183.81966011250105,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "186",
+            "value": {
+              "date": "2023-11-25T22:24:49.955Z",
+              "category": "category 2",
+              "value": "-196",
+              "amount": 184.5897351444842,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "187",
+            "value": {
+              "date": "2023-11-25T23:24:49.955Z",
+              "category": "category 3",
+              "value": "-200",
+              "amount": 185.4206274515718,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "188",
+            "value": {
+              "date": "2023-11-26T00:24:49.955Z",
+              "category": "category 0",
+              "value": "-200",
+              "amount": 186.30905788142624,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "189",
+            "value": {
+              "date": "2023-11-26T01:24:49.955Z",
+              "category": "category 1",
+              "value": "-196",
+              "amount": 187.2515202050262,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "190",
+            "value": {
+              "date": "2023-11-26T02:24:49.955Z",
+              "category": "category 2",
+              "value": "-190",
+              "amount": 188.24429495415052,
+              "processed": false,
+              "tags": [
+                "Three",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "191",
+            "value": {
+              "date": "2023-11-26T03:24:49.955Z",
+              "category": "category 3",
+              "value": "-181",
+              "amount": 189.28346410042005,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "192",
+            "value": {
+              "date": "2023-11-26T04:24:49.955Z",
+              "category": "category 0",
+              "value": "-169",
+              "amount": 190.36492651796567,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "193",
+            "value": {
+              "date": "2023-11-26T05:24:49.955Z",
+              "category": "category 1",
+              "value": "-154",
+              "amount": 191.48441416869852,
+              "processed": true,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "194",
+            "value": {
+              "date": "2023-11-26T06:24:49.955Z",
+              "category": "category 2",
+              "value": "-137",
+              "amount": 192.63750894630644,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "195",
+            "value": {
+              "date": "2023-11-26T07:24:49.955Z",
+              "category": "category 3",
+              "value": "-118",
+              "amount": 193.81966011250105,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "196",
+            "value": {
+              "date": "2023-11-26T08:24:49.955Z",
+              "category": "category 0",
+              "value": "-96",
+              "amount": 195.0262022567029,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "197",
+            "value": {
+              "date": "2023-11-26T09:24:49.955Z",
+              "category": "category 1",
+              "value": "-74",
+              "amount": 196.2523737082855,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "198",
+            "value": {
+              "date": "2023-11-26T10:24:49.955Z",
+              "category": "category 2",
+              "value": "-50",
+              "amount": 197.49333532871393,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "199",
+            "value": {
+              "date": "2023-11-26T11:24:49.955Z",
+              "category": "category 3",
+              "value": "-25",
+              "amount": 198.74418960941372,
+              "processed": false,
+              "tags": [
+                "Three",
+                "Two"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "layouts": {
+    "My Layout": {
+      "name": "My Layout",
+      "module": [],
+      "visual": {
+        "type": "flat",
+        "name": "My Layout",
+        "visual": {
+          "type": "table",
+          "kind": "struct",
+          "name": "My Layout",
+          "stream": {
+            "name": "Writeable.My Source",
+            "module": [],
+            "type": {
+              "type": "Dict",
+              "value": {
+                "key": {
+                  "type": "String",
+                  "value": null
+                },
+                "value": {
+                  "type": "Struct",
+                  "value": {
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "category": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "amount": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "processed": {
+                      "type": "Boolean",
+                      "value": null
+                    },
+                    "tags": {
+                      "type": "Set",
+                      "value": {
+                        "type": "String",
+                        "value": null
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "writable": true
+          },
+          "columns": [
+            {
+              "name": "Key",
+              "kind": "key",
+              "value": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "key"
+              },
+              "readonly": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": true
+              },
+              "hidden": true,
+              "hidden_detail": false
+            },
+            {
+              "name": "Date",
+              "kind": "primitive",
+              "value": {
+                "type": {
+                  "type": "DateTime",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "date"
+              },
+              "readonly": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": false
+              },
+              "hidden": false,
+              "hidden_detail": false
+            },
+            {
+              "name": "Category",
+              "kind": "primitive",
+              "value": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "category"
+              },
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "tooltip": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "StringJoin",
+                "values": [
+                  {
+                    "type": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "category"
+                  },
+                  {
+                    "type": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "ast_type": "Const",
+                    "value": " for "
+                  },
+                  {
+                    "type": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "ast_type": "Print",
+                    "value": {
+                      "type": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "value"
+                    }
+                  }
+                ],
+                "seperator": ""
+              },
+              "readonly": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": true
+              },
+              "hidden": false,
+              "hidden_detail": false
+            },
+            {
+              "name": "Value",
+              "kind": "primitive",
+              "value": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "value"
+              },
+              "color": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "IfElse",
+                "predicate": {
+                  "type": {
+                    "type": "Boolean",
+                    "value": null
+                  },
+                  "ast_type": "Greater",
+                  "first": {
+                    "type": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "value"
+                  },
+                  "second": {
+                    "type": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "ast_type": "Const",
+                    "value": "0"
+                  }
+                },
+                "true": {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Const",
+                  "value": "green"
+                },
+                "false": {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Const",
+                  "value": "red"
+                }
+              },
+              "readonly": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": false
+              },
+              "hidden": false,
+              "hidden_detail": false,
+              "constraint": {
+                "min": {
+                  "type": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "ast_type": "Const",
+                  "value": "-400"
+                },
+                "max": {
+                  "type": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "ast_type": "Const",
+                  "value": "400"
+                },
+                "type": "Integer"
+              }
+            },
+            {
+              "name": "Amount",
+              "kind": "primitive",
+              "value": {
+                "type": {
+                  "type": "Float",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "amount"
+              },
+              "readonly": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Greater",
+                "first": {
+                  "type": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "value"
+                },
+                "second": {
+                  "type": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "ast_type": "Const",
+                  "value": "0"
+                }
+              },
+              "display": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "StringJoin",
+                "values": [
+                  {
+                    "type": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "ast_type": "IfElse",
+                    "predicate": {
+                      "type": {
+                        "type": "Boolean",
+                        "value": null
+                      },
+                      "ast_type": "LessEqual",
+                      "first": {
+                        "type": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "ast_type": "Variable",
+                        "name": "amount"
+                      },
+                      "second": {
+                        "type": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "ast_type": "Const",
+                        "value": 0
+                      }
+                    },
+                    "true": {
+                      "type": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "ast_type": "IfElse",
+                      "predicate": {
+                        "type": {
+                          "type": "Boolean",
+                          "value": null
+                        },
+                        "ast_type": "LessEqual",
+                        "first": {
+                          "type": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "ast_type": "Let",
+                          "ast": {
+                            "type": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "ast_type": "IfElse",
+                            "predicate": {
+                              "type": {
+                                "type": "Boolean",
+                                "value": null
+                              },
+                              "ast_type": "Greater",
+                              "first": {
+                                "type": {
+                                  "type": "Float",
+                                  "value": null
+                                },
+                                "ast_type": "Variable",
+                                "name": "amount"
+                              },
+                              "second": {
+                                "type": {
+                                  "type": "Float",
+                                  "value": null
+                                },
+                                "ast_type": "Variable",
+                                "name": "__Let2"
+                              }
+                            },
+                            "true": {
+                              "type": {
+                                "type": "Float",
+                                "value": null
+                              },
+                              "ast_type": "Variable",
+                              "name": "amount"
+                            },
+                            "false": {
+                              "type": {
+                                "type": "Float",
+                                "value": null
+                              },
+                              "ast_type": "Variable",
+                              "name": "__Let2"
+                            }
+                          },
+                          "variable": {
+                            "type": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "ast_type": "Variable",
+                            "name": "__Let2"
+                          },
+                          "value": {
+                            "type": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "ast_type": "Subtract",
+                            "first": {
+                              "type": {
+                                "type": "Float",
+                                "value": null
+                              },
+                              "ast_type": "Const",
+                              "value": 0
+                            },
+                            "second": {
+                              "type": {
+                                "type": "Float",
+                                "value": null
+                              },
+                              "ast_type": "Variable",
+                              "name": "amount"
+                            }
+                          }
+                        },
+                        "second": {
+                          "type": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "ast_type": "Const",
+                          "value": 100
+                        }
+                      },
+                      "true": {
+                        "type": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "ast_type": "StringJoin",
+                        "values": [
+                          {
+                            "type": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "ast_type": "Const",
+                            "value": "-$"
+                          },
+                          {
+                            "type": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "ast_type": "RegexReplace",
+                            "value": {
+                              "type": {
+                                "type": "String",
+                                "value": null
+                              },
+                              "ast_type": "Print",
+                              "value": {
+                                "type": {
+                                  "type": "Float",
+                                  "value": null
+                                },
+                                "ast_type": "Let",
+                                "ast": {
+                                  "type": {
+                                    "type": "Float",
+                                    "value": null
+                                  },
+                                  "ast_type": "Let",
+                                  "ast": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "IfElse",
+                                    "predicate": {
+                                      "type": {
+                                        "type": "Boolean",
+                                        "value": null
+                                      },
+                                      "ast_type": "Greater",
+                                      "first": {
+                                        "type": {
+                                          "type": "Float",
+                                          "value": null
+                                        },
+                                        "ast_type": "Variable",
+                                        "name": "__Let3"
+                                      },
+                                      "second": {
+                                        "type": {
+                                          "type": "Float",
+                                          "value": null
+                                        },
+                                        "ast_type": "Variable",
+                                        "name": "__Let2"
+                                      }
+                                    },
+                                    "true": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Variable",
+                                      "name": "__Let3"
+                                    },
+                                    "false": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Variable",
+                                      "name": "__Let2"
+                                    }
+                                  },
+                                  "variable": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "Variable",
+                                    "name": "__Let2"
+                                  },
+                                  "value": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "Subtract",
+                                    "first": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Const",
+                                      "value": 0
+                                    },
+                                    "second": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Variable",
+                                      "name": "__Let3"
+                                    }
+                                  }
+                                },
+                                "variable": {
+                                  "type": {
+                                    "type": "Float",
+                                    "value": null
+                                  },
+                                  "ast_type": "Variable",
+                                  "name": "__Let3"
+                                },
+                                "value": {
+                                  "type": {
+                                    "type": "Float",
+                                    "value": null
+                                  },
+                                  "ast_type": "RoundPrecision",
+                                  "value": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "Variable",
+                                    "name": "amount"
+                                  },
+                                  "significant_digits": 1
+                                }
+                              }
+                            },
+                            "search": "B(?=(d{3})+(?!d))",
+                            "replace": {
+                              "type": {
+                                "type": "String",
+                                "value": null
+                              },
+                              "ast_type": "Const",
+                              "value": ","
+                            },
+                            "flags": "g"
+                          }
+                        ],
+                        "seperator": ""
+                      },
+                      "false": {
+                        "type": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "ast_type": "StringJoin",
+                        "values": [
+                          {
+                            "type": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "ast_type": "Const",
+                            "value": "-$"
+                          },
+                          {
+                            "type": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "ast_type": "RegexReplace",
+                            "value": {
+                              "type": {
+                                "type": "String",
+                                "value": null
+                              },
+                              "ast_type": "Print",
+                              "value": {
+                                "type": {
+                                  "type": "Float",
+                                  "value": null
+                                },
+                                "ast_type": "Let",
+                                "ast": {
+                                  "type": {
+                                    "type": "Float",
+                                    "value": null
+                                  },
+                                  "ast_type": "Let",
+                                  "ast": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "IfElse",
+                                    "predicate": {
+                                      "type": {
+                                        "type": "Boolean",
+                                        "value": null
+                                      },
+                                      "ast_type": "Greater",
+                                      "first": {
+                                        "type": {
+                                          "type": "Float",
+                                          "value": null
+                                        },
+                                        "ast_type": "Variable",
+                                        "name": "__Let3"
+                                      },
+                                      "second": {
+                                        "type": {
+                                          "type": "Float",
+                                          "value": null
+                                        },
+                                        "ast_type": "Variable",
+                                        "name": "__Let2"
+                                      }
+                                    },
+                                    "true": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Variable",
+                                      "name": "__Let3"
+                                    },
+                                    "false": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Variable",
+                                      "name": "__Let2"
+                                    }
+                                  },
+                                  "variable": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "Variable",
+                                    "name": "__Let2"
+                                  },
+                                  "value": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "Subtract",
+                                    "first": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Const",
+                                      "value": 0
+                                    },
+                                    "second": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Variable",
+                                      "name": "__Let3"
+                                    }
+                                  }
+                                },
+                                "variable": {
+                                  "type": {
+                                    "type": "Float",
+                                    "value": null
+                                  },
+                                  "ast_type": "Variable",
+                                  "name": "__Let3"
+                                },
+                                "value": {
+                                  "type": {
+                                    "type": "Float",
+                                    "value": null
+                                  },
+                                  "ast_type": "RoundPrecision",
+                                  "value": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "Variable",
+                                    "name": "amount"
+                                  },
+                                  "significant_digits": 2
+                                }
+                              }
+                            },
+                            "search": "B(?=(d{3})+(?!d))",
+                            "replace": {
+                              "type": {
+                                "type": "String",
+                                "value": null
+                              },
+                              "ast_type": "Const",
+                              "value": ","
+                            },
+                            "flags": "g"
+                          }
+                        ],
+                        "seperator": ""
+                      }
+                    },
+                    "false": {
+                      "type": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "ast_type": "IfElse",
+                      "predicate": {
+                        "type": {
+                          "type": "Boolean",
+                          "value": null
+                        },
+                        "ast_type": "LessEqual",
+                        "first": {
+                          "type": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "ast_type": "Let",
+                          "ast": {
+                            "type": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "ast_type": "IfElse",
+                            "predicate": {
+                              "type": {
+                                "type": "Boolean",
+                                "value": null
+                              },
+                              "ast_type": "Greater",
+                              "first": {
+                                "type": {
+                                  "type": "Float",
+                                  "value": null
+                                },
+                                "ast_type": "Variable",
+                                "name": "amount"
+                              },
+                              "second": {
+                                "type": {
+                                  "type": "Float",
+                                  "value": null
+                                },
+                                "ast_type": "Variable",
+                                "name": "__Let2"
+                              }
+                            },
+                            "true": {
+                              "type": {
+                                "type": "Float",
+                                "value": null
+                              },
+                              "ast_type": "Variable",
+                              "name": "amount"
+                            },
+                            "false": {
+                              "type": {
+                                "type": "Float",
+                                "value": null
+                              },
+                              "ast_type": "Variable",
+                              "name": "__Let2"
+                            }
+                          },
+                          "variable": {
+                            "type": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "ast_type": "Variable",
+                            "name": "__Let2"
+                          },
+                          "value": {
+                            "type": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "ast_type": "Subtract",
+                            "first": {
+                              "type": {
+                                "type": "Float",
+                                "value": null
+                              },
+                              "ast_type": "Const",
+                              "value": 0
+                            },
+                            "second": {
+                              "type": {
+                                "type": "Float",
+                                "value": null
+                              },
+                              "ast_type": "Variable",
+                              "name": "amount"
+                            }
+                          }
+                        },
+                        "second": {
+                          "type": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "ast_type": "Const",
+                          "value": 100
+                        }
+                      },
+                      "true": {
+                        "type": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "ast_type": "StringJoin",
+                        "values": [
+                          {
+                            "type": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "ast_type": "Const",
+                            "value": "$"
+                          },
+                          {
+                            "type": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "ast_type": "RegexReplace",
+                            "value": {
+                              "type": {
+                                "type": "String",
+                                "value": null
+                              },
+                              "ast_type": "Print",
+                              "value": {
+                                "type": {
+                                  "type": "Float",
+                                  "value": null
+                                },
+                                "ast_type": "Let",
+                                "ast": {
+                                  "type": {
+                                    "type": "Float",
+                                    "value": null
+                                  },
+                                  "ast_type": "Let",
+                                  "ast": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "IfElse",
+                                    "predicate": {
+                                      "type": {
+                                        "type": "Boolean",
+                                        "value": null
+                                      },
+                                      "ast_type": "Greater",
+                                      "first": {
+                                        "type": {
+                                          "type": "Float",
+                                          "value": null
+                                        },
+                                        "ast_type": "Variable",
+                                        "name": "__Let3"
+                                      },
+                                      "second": {
+                                        "type": {
+                                          "type": "Float",
+                                          "value": null
+                                        },
+                                        "ast_type": "Variable",
+                                        "name": "__Let2"
+                                      }
+                                    },
+                                    "true": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Variable",
+                                      "name": "__Let3"
+                                    },
+                                    "false": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Variable",
+                                      "name": "__Let2"
+                                    }
+                                  },
+                                  "variable": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "Variable",
+                                    "name": "__Let2"
+                                  },
+                                  "value": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "Subtract",
+                                    "first": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Const",
+                                      "value": 0
+                                    },
+                                    "second": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Variable",
+                                      "name": "__Let3"
+                                    }
+                                  }
+                                },
+                                "variable": {
+                                  "type": {
+                                    "type": "Float",
+                                    "value": null
+                                  },
+                                  "ast_type": "Variable",
+                                  "name": "__Let3"
+                                },
+                                "value": {
+                                  "type": {
+                                    "type": "Float",
+                                    "value": null
+                                  },
+                                  "ast_type": "RoundPrecision",
+                                  "value": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "Variable",
+                                    "name": "amount"
+                                  },
+                                  "significant_digits": 1
+                                }
+                              }
+                            },
+                            "search": "B(?=(d{3})+(?!d))",
+                            "replace": {
+                              "type": {
+                                "type": "String",
+                                "value": null
+                              },
+                              "ast_type": "Const",
+                              "value": ","
+                            },
+                            "flags": "g"
+                          }
+                        ],
+                        "seperator": ""
+                      },
+                      "false": {
+                        "type": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "ast_type": "StringJoin",
+                        "values": [
+                          {
+                            "type": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "ast_type": "Const",
+                            "value": "$"
+                          },
+                          {
+                            "type": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "ast_type": "RegexReplace",
+                            "value": {
+                              "type": {
+                                "type": "String",
+                                "value": null
+                              },
+                              "ast_type": "Print",
+                              "value": {
+                                "type": {
+                                  "type": "Float",
+                                  "value": null
+                                },
+                                "ast_type": "Let",
+                                "ast": {
+                                  "type": {
+                                    "type": "Float",
+                                    "value": null
+                                  },
+                                  "ast_type": "Let",
+                                  "ast": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "IfElse",
+                                    "predicate": {
+                                      "type": {
+                                        "type": "Boolean",
+                                        "value": null
+                                      },
+                                      "ast_type": "Greater",
+                                      "first": {
+                                        "type": {
+                                          "type": "Float",
+                                          "value": null
+                                        },
+                                        "ast_type": "Variable",
+                                        "name": "__Let3"
+                                      },
+                                      "second": {
+                                        "type": {
+                                          "type": "Float",
+                                          "value": null
+                                        },
+                                        "ast_type": "Variable",
+                                        "name": "__Let2"
+                                      }
+                                    },
+                                    "true": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Variable",
+                                      "name": "__Let3"
+                                    },
+                                    "false": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Variable",
+                                      "name": "__Let2"
+                                    }
+                                  },
+                                  "variable": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "Variable",
+                                    "name": "__Let2"
+                                  },
+                                  "value": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "Subtract",
+                                    "first": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Const",
+                                      "value": 0
+                                    },
+                                    "second": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Variable",
+                                      "name": "__Let3"
+                                    }
+                                  }
+                                },
+                                "variable": {
+                                  "type": {
+                                    "type": "Float",
+                                    "value": null
+                                  },
+                                  "ast_type": "Variable",
+                                  "name": "__Let3"
+                                },
+                                "value": {
+                                  "type": {
+                                    "type": "Float",
+                                    "value": null
+                                  },
+                                  "ast_type": "RoundPrecision",
+                                  "value": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "Variable",
+                                    "name": "amount"
+                                  },
+                                  "significant_digits": 2
+                                }
+                              }
+                            },
+                            "search": "B(?=(d{3})+(?!d))",
+                            "replace": {
+                              "type": {
+                                "type": "String",
+                                "value": null
+                              },
+                              "ast_type": "Const",
+                              "value": ","
+                            },
+                            "flags": "g"
+                          }
+                        ],
+                        "seperator": ""
+                      }
+                    }
+                  }
+                ],
+                "seperator": ""
+              },
+              "hidden": false,
+              "hidden_detail": false
+            },
+            {
+              "name": "Processed",
+              "kind": "primitive",
+              "value": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "processed"
+              },
+              "readonly": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": false
+              },
+              "hidden": false,
+              "hidden_detail": false,
+              "type": {
+                "type": "Boolean",
+                "value": null
+              }
+            },
+            {
+              "name": "Tags",
+              "kind": "primitive",
+              "value": {
+                "type": {
+                  "type": "Set",
+                  "value": {
+                    "type": "String",
+                    "value": null
+                  }
+                },
+                "ast_type": "Variable",
+                "name": "tags"
+              },
+              "range": {
+                "type": {
+                  "type": "Set",
+                  "value": {
+                    "type": "String",
+                    "value": null
+                  }
+                },
+                "ast_type": "Const",
+                "value": [
+                  "One",
+                  "Two",
+                  "Three",
+                  "Four"
+                ]
+              },
+              "type": {
+                "type": "Set",
+                "value": {
+                  "type": "String",
+                  "value": null
+                }
+              },
+              "readonly": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": false
+              },
+              "hidden": false,
+              "hidden_detail": false,
+              "constraint": {
+                "range": {
+                  "type": {
+                    "type": "Set",
+                    "value": {
+                      "type": "String",
+                      "value": null
+                    }
+                  },
+                  "ast_type": "Const",
+                  "value": [
+                    "One",
+                    "Two",
+                    "Three",
+                    "Four"
+                  ]
+                },
+                "type": "String"
+              }
+            }
+          ],
+          "input_streams": [],
+          "writable": {
+            "type": "writable",
+            "add": true,
+            "remove": true,
+            "update": true
+          }
+        }
+      }
+    }
+  }
+}
