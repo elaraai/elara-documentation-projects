@@ -1,4 +1,4 @@
-import { SourceBuilder, Template, LayoutBuilder, StringJoin, IfElse, Greater, PrintTruncatedCurrency } from "@elaraai/core"
+import { SourceBuilder, Template, LayoutBuilder, StringJoin, IfElse, Greater, PrintTruncatedCurrency, Const } from "@elaraai/core"
 
 const my_source = new SourceBuilder("My Source")
     .value({
@@ -30,13 +30,16 @@ const my_other_layout = new LayoutBuilder("My Other Layout")
         })
         .integer("Value", {
             value: fields => fields.value,
-            color: fields => IfElse(Greater(fields.value, 0n), 'green', 'red'),
+            color: fields => IfElse(Greater(fields.value, 50n), Const('#50BA8B'), Const('#BA6F63')),
         })
         .float("Amount", {
             value: fields => fields.amount,
             display: fields => StringJoin`${PrintTruncatedCurrency(fields.amount)}`,
         })
-        .boolean("Processed", fields => fields.processed)
+        .boolean("Processed", {
+            value: fields => fields.processed,
+            background: fields => IfElse(fields.processed, '#50BA8B66', '#BA6F6366')
+        })
         .set("Tags", fields => fields.tags)
     )
 
