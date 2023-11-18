@@ -10,6 +10,6 @@ const my_pipeline = new PipelineBuilder("My Pipeline")
     .from(my_source.outputStream())
     .input({ name: "My Other Source", stream: my_other_source.outputStream() })
     // you can use the additional input in the expression
-    .transform((stream, inputs) =>  Add(stream, inputs["My Other Source"]))
+    .transform((stream, inputs) => Add(stream, inputs["My Other Source"]))
 
 export default Template(my_source, my_other_source, my_pipeline)    

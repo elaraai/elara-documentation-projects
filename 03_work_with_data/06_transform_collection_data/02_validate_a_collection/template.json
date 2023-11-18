@@ -4,8 +4,22 @@
       "name": "Pipeline.My Other Pipeline",
       "module": [],
       "type": {
-        "type": "Integer",
-        "value": null
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "value": {
+                "type": "Integer",
+                "value": null
+              }
+            }
+          }
+        }
       },
       "writable": false
     },
@@ -13,8 +27,22 @@
       "name": "Pipeline.My Pipeline",
       "module": [],
       "type": {
-        "type": "Integer",
-        "value": null
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "value": {
+                "type": "Integer",
+                "value": null
+              }
+            }
+          }
+        }
       },
       "writable": false
     },
@@ -22,8 +50,22 @@
       "name": "Writeable.My Source",
       "module": [],
       "type": {
-        "type": "Integer",
-        "value": null
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "value": {
+                "type": "Integer",
+                "value": null
+              }
+            }
+          }
+        }
       },
       "writable": true
     }
@@ -38,8 +80,22 @@
           "name": "Writeable.My Source",
           "module": [],
           "type": {
-            "type": "Integer",
-            "value": null
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "value": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
           },
           "optional": false
         }
@@ -49,8 +105,22 @@
           "name": "Pipeline.My Other Pipeline",
           "module": [],
           "type": {
-            "type": "Integer",
-            "value": null
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "value": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
           },
           "optional": false
         }
@@ -60,7 +130,7 @@
           "operation_type": "assert",
           "assertion": {
             "assertion_type": "Warn",
-            "value_type": "Value",
+            "value_type": "Every",
             "if": {
               "type": {
                 "type": "Boolean",
@@ -73,7 +143,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "__value"
+                "name": "field.value"
               },
               "second": {
                 "type": {
@@ -111,8 +181,24 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "__value"
+                    "name": "field.value"
                   }
+                },
+                {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Const",
+                  "value": " at "
+                },
+                {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "__key"
                 }
               ],
               "seperator": ""
@@ -123,7 +209,7 @@
           "operation_type": "assert",
           "assertion": {
             "assertion_type": "Log",
-            "value_type": "Value",
+            "value_type": "Every",
             "if": {
               "type": {
                 "type": "Boolean",
@@ -136,7 +222,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "__value"
+                "name": "field.value"
               },
               "second": {
                 "type": {
@@ -160,7 +246,7 @@
                     "value": null
                   },
                   "ast_type": "Const",
-                  "value": "Noticed greater than 10, got "
+                  "value": "Noticed value greater than 10, got "
                 },
                 {
                   "type": {
@@ -174,8 +260,24 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "__value"
+                    "name": "field.value"
                   }
+                },
+                {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Const",
+                  "value": " at "
+                },
+                {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "__key"
                 }
               ],
               "seperator": ""
@@ -193,8 +295,22 @@
           "name": "Writeable.My Source",
           "module": [],
           "type": {
-            "type": "Integer",
-            "value": null
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "value": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
           },
           "optional": false
         }
@@ -204,8 +320,22 @@
           "name": "Pipeline.My Pipeline",
           "module": [],
           "type": {
-            "type": "Integer",
-            "value": null
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "value": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
           },
           "optional": false
         }
@@ -215,7 +345,7 @@
           "operation_type": "assert",
           "assertion": {
             "assertion_type": "Fail",
-            "value_type": "Value",
+            "value_type": "Every",
             "if": {
               "type": {
                 "type": "Boolean",
@@ -228,7 +358,7 @@
                   "value": null
                 },
                 "ast_type": "Variable",
-                "name": "__value"
+                "name": "field.value"
               },
               "second": {
                 "type": {
@@ -266,8 +396,24 @@
                       "value": null
                     },
                     "ast_type": "Variable",
-                    "name": "__value"
+                    "name": "field.value"
                   }
+                },
+                {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Const",
+                  "value": " at "
+                },
+                {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "__key"
                 }
               ],
               "seperator": ""
@@ -284,11 +430,50 @@
       "module": [],
       "value": {
         "type": {
-          "type": "Integer",
-          "value": null
+          "type": "Dict",
+          "value": {
+            "key": {
+              "type": "String",
+              "value": null
+            },
+            "value": {
+              "type": "Struct",
+              "value": {
+                "value": {
+                  "type": "Integer",
+                  "value": null
+                }
+              }
+            }
+          }
         },
         "ast_type": "Const",
-        "value": "55"
+        "value": [
+          {
+            "key": "0",
+            "value": {
+              "value": "0"
+            }
+          },
+          {
+            "key": "1",
+            "value": {
+              "value": "15"
+            }
+          },
+          {
+            "key": "2",
+            "value": {
+              "value": "25"
+            }
+          },
+          {
+            "key": "3",
+            "value": {
+              "value": "55"
+            }
+          }
+        ]
       }
     }
   }
