@@ -14,13 +14,13 @@ const my_source = new SourceBuilder("My Source")
         )))
     })
 
-const my_layout = new LayoutBuilder("My Layout")
+const my_layout = new LayoutBuilder("01 - My Layout")
     .table("My Table", builder => builder
         .fromStream(my_source.outputStream())
         .columns()
     )
 
-const my_other_layout = new LayoutBuilder("My Other Layout")
+const my_other_layout = new LayoutBuilder("02 - My Other Layout")
     .table("My Other Table", builder => builder
         .fromStream(my_source.outputStream())
         .date("Date", fields => fields.date)

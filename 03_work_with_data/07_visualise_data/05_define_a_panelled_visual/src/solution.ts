@@ -23,8 +23,6 @@ const my_layout = new LayoutBuilder("My Layout")
                 .scatter({
                     x: builder => builder.value(fields => fields.date).sort('ascending'),
                     y: builder => builder.value(fields => fields.value),
-                    color: builder => builder.value(fields => fields.value),
-                    size: builder => builder.value(fields => fields.value)
                 })
             )
         )
