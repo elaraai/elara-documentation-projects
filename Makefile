@@ -9,11 +9,6 @@ deploy:
 	 cd 01_manage_solutions/01_understand_solutions/01_what_is_elara && edk template deploy -ycw "01_01_01_what_is_elara"
 	 cd 01_manage_solutions/01_understand_solutions/02_why_use_elara && edk template deploy -ycw "01_01_02_why_use_elara"
 	 cd 01_manage_solutions/01_understand_solutions/03_how_is_elara_used && edk template deploy -ycw "01_01_03_how_is_elara_used"
-	 cd 01_manage_solutions/02_define_a_solution/01_define_a_value_network && edk template deploy -ycw "01_02_01_define_a_value_network"
-	 cd 01_manage_solutions/02_define_a_solution/02_define_business_kpis && edk template deploy -ycw "01_02_02_define_business_kpis"
-	 cd 01_manage_solutions/02_define_a_solution/03_define_business_objectives && edk template deploy -ycw "01_02_03_define_business_objectives"
-	 cd 01_manage_solutions/02_define_a_solution/04_define_a_business_blueprint && edk template deploy -ycw "01_02_04_define_a_business_blueprint"
-	 cd 01_manage_solutions/02_define_a_solution/05_define_a_business_use_case && edk template deploy -ycw "01_02_05_define_a_business_use_case"
 	 cd 02_manage_the_platform/01_setup_your_dev_environment/01_install_edk_cli && edk template deploy -ycw "02_01_01_install_edk_cli"
 	 cd 02_manage_the_platform/01_setup_your_dev_environment/02_log_in && edk template deploy -ycw "02_01_02_log_in"
 	 cd 02_manage_the_platform/01_setup_your_dev_environment/03_initialise_a_project && edk template deploy -ycw "02_01_03_initialise_a_project"
@@ -132,11 +127,6 @@ install:
 	 cd 01_manage_solutions/01_understand_solutions/01_what_is_elara && npm i
 	 cd 01_manage_solutions/01_understand_solutions/02_why_use_elara && npm i
 	 cd 01_manage_solutions/01_understand_solutions/03_how_is_elara_used && npm i
-	 cd 01_manage_solutions/02_define_a_solution/01_define_a_value_network && npm i
-	 cd 01_manage_solutions/02_define_a_solution/02_define_business_kpis && npm i
-	 cd 01_manage_solutions/02_define_a_solution/03_define_business_objectives && npm i
-	 cd 01_manage_solutions/02_define_a_solution/04_define_a_business_blueprint && npm i
-	 cd 01_manage_solutions/02_define_a_solution/05_define_a_business_use_case && npm i
 	 cd 02_manage_the_platform/01_setup_your_dev_environment/01_install_edk_cli && npm i
 	 cd 02_manage_the_platform/01_setup_your_dev_environment/02_log_in && npm i
 	 cd 02_manage_the_platform/01_setup_your_dev_environment/03_initialise_a_project && npm i
@@ -255,11 +245,6 @@ build:
 	 cd 01_manage_solutions/01_understand_solutions/01_what_is_elara && edk template build
 	 cd 01_manage_solutions/01_understand_solutions/02_why_use_elara && edk template build
 	 cd 01_manage_solutions/01_understand_solutions/03_how_is_elara_used && edk template build
-	 cd 01_manage_solutions/02_define_a_solution/01_define_a_value_network && edk template build
-	 cd 01_manage_solutions/02_define_a_solution/02_define_business_kpis && edk template build
-	 cd 01_manage_solutions/02_define_a_solution/03_define_business_objectives && edk template build
-	 cd 01_manage_solutions/02_define_a_solution/04_define_a_business_blueprint && edk template build
-	 cd 01_manage_solutions/02_define_a_solution/05_define_a_business_use_case && edk template build
 	 cd 02_manage_the_platform/01_setup_your_dev_environment/01_install_edk_cli && edk template build
 	 cd 02_manage_the_platform/01_setup_your_dev_environment/02_log_in && edk template build
 	 cd 02_manage_the_platform/01_setup_your_dev_environment/03_initialise_a_project && edk template build
@@ -378,11 +363,6 @@ delete:
 	cd 01_manage_solutions/01_understand_solutions/01_what_is_elara && edk workspace delete "01_01_01_what_is_elara"
 	cd 01_manage_solutions/01_understand_solutions/02_why_use_elara && edk workspace delete "01_01_02_why_use_elara"
 	cd 01_manage_solutions/01_understand_solutions/03_how_is_elara_used && edk workspace delete "01_01_03_how_is_elara_used"
-	cd 01_manage_solutions/02_define_a_solution/01_define_a_value_network && edk workspace delete "01_02_01_define_a_value_network"
-	cd 01_manage_solutions/02_define_a_solution/02_define_business_kpis && edk workspace delete "01_02_02_define_business_kpis"
-	cd 01_manage_solutions/02_define_a_solution/03_define_business_objectives && edk workspace delete "01_02_03_define_business_objectives"
-	cd 01_manage_solutions/02_define_a_solution/04_define_a_business_blueprint && edk workspace delete "01_02_04_define_a_business_blueprint"
-	cd 01_manage_solutions/02_define_a_solution/05_define_a_business_use_case && edk workspace delete "01_02_05_define_a_business_use_case"
 	cd 02_manage_the_platform/01_setup_your_dev_environment/01_install_edk_cli && edk workspace delete "02_01_01_install_edk_cli"
 	cd 02_manage_the_platform/01_setup_your_dev_environment/02_log_in && edk workspace delete "02_01_02_log_in"
 	cd 02_manage_the_platform/01_setup_your_dev_environment/03_initialise_a_project && edk workspace delete "02_01_03_initialise_a_project"
