@@ -1,9 +1,11 @@
-# elara-documentation-projects
+# Elara Example Projects
 
+The following repository contains all training exercise projects.
 
-## The following need doc updates
-data_essentials/10_transform_collection_data/08_select_a_collection/02
-data_essentials/10_transform_collection_data/09_encode_to_json/00
-data_essentials/10_transform_collection_data/09_encode_to_json/01
-data_essentials/11_send_data_out/02_send_data/00
-modelling_essentials/03_create_predictive_insights/01_define_a_future_scenario/00
+Further information about these projects can be found [in the Elara learning website](https://learning.elaraai.com/Learning) 
+
+## Build
+A `Makefile` is provided to install, build, deploy, and destroy all solutions:
+
+- `make install`: will install dependencies for all projects
+- `make build`: will build the Elara template for all projects

@@ -1,0 +1,379 @@
+{
+  "streams": {
+    "Pipeline.My Other Pipeline": {
+      "name": "Pipeline.My Other Pipeline",
+      "module": [],
+      "type": {
+        "type": "Struct",
+        "value": {
+          "sum_of_value": {
+            "type": "Integer",
+            "value": null
+          }
+        }
+      },
+      "writable": false
+    },
+    "Pipeline.My Pipeline": {
+      "name": "Pipeline.My Pipeline",
+      "module": [],
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "category": {
+                "type": "String",
+                "value": null,
+                "nullable": true
+              },
+              "sum_of_value": {
+                "type": "Integer",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "Writeable.My Source": {
+      "name": "Writeable.My Source",
+      "module": [],
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "category": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Integer",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": true
+    }
+  },
+  "tasks": {
+    "Pipeline.My Other Pipeline": {
+      "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.My Other Pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.My Source",
+          "module": [],
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "category": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "value": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "optional": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.My Other Pipeline",
+          "module": [],
+          "type": {
+            "type": "Struct",
+            "value": {
+              "sum_of_value": {
+                "type": "Integer",
+                "value": null
+              }
+            }
+          },
+          "optional": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "aggregate",
+          "aggregations": {
+            "sum_of_value": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "aggregation_type": "Sum",
+              "input_key": "key",
+              "value": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "field.value"
+              },
+              "field": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "sum_of_value"
+              }
+            }
+          },
+          "output_type": {
+            "type": "Struct",
+            "value": {
+              "sum_of_value": {
+                "type": "Integer",
+                "value": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Pipeline.My Pipeline": {
+      "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.My Pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.My Source",
+          "module": [],
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "category": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "value": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "optional": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.My Pipeline",
+          "module": [],
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "category": {
+                    "type": "String",
+                    "value": null,
+                    "nullable": true
+                  },
+                  "sum_of_value": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "optional": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "aggregate",
+          "group_value": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Variable",
+            "name": "field.category"
+          },
+          "aggregations": {
+            "category": {
+              "type": {
+                "type": "String",
+                "value": null,
+                "nullable": true
+              },
+              "aggregation_type": "Unique",
+              "input_key": "key",
+              "value": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "field.category"
+              },
+              "field": {
+                "type": {
+                  "type": "String",
+                  "value": null,
+                  "nullable": true
+                },
+                "ast_type": "Variable",
+                "name": "category"
+              }
+            },
+            "sum_of_value": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "aggregation_type": "Sum",
+              "input_key": "key",
+              "value": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "field.value"
+              },
+              "field": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "sum_of_value"
+              }
+            }
+          },
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "category": {
+                    "type": "String",
+                    "value": null,
+                    "nullable": true
+                  },
+                  "sum_of_value": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "defaults": {
+    "Writeable.My Source": {
+      "default_type": "value",
+      "stream": "Writeable.My Source",
+      "module": [],
+      "value": {
+        "type": {
+          "type": "Dict",
+          "value": {
+            "key": {
+              "type": "String",
+              "value": null
+            },
+            "value": {
+              "type": "Struct",
+              "value": {
+                "category": {
+                  "type": "String",
+                  "value": null
+                },
+                "value": {
+                  "type": "Integer",
+                  "value": null
+                }
+              }
+            }
+          }
+        },
+        "ast_type": "Const",
+        "value": [
+          {
+            "key": "0",
+            "value": {
+              "category": "a",
+              "value": "0"
+            }
+          },
+          {
+            "key": "1",
+            "value": {
+              "category": "b",
+              "value": "15"
+            }
+          },
+          {
+            "key": "2",
+            "value": {
+              "category": "a",
+              "value": "25"
+            }
+          },
+          {
+            "key": "3",
+            "value": {
+              "category": "b",
+              "value": "55"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,356 @@
+{
+  "streams": {
+    "Pipeline.My Pipeline": {
+      "name": "Pipeline.My Pipeline",
+      "module": [],
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "value": {
+                "type": "Integer",
+                "value": null
+              },
+              "other_value": {
+                "type": "String",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "Writeable.My Other Source": {
+      "name": "Writeable.My Other Source",
+      "module": [],
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "other_value": {
+                "type": "String",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": true
+    },
+    "Writeable.My Source": {
+      "name": "Writeable.My Source",
+      "module": [],
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "value": {
+                "type": "Integer",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": true
+    }
+  },
+  "tasks": {
+    "Pipeline.My Pipeline": {
+      "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.My Pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.My Source",
+          "module": [],
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "value": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "optional": false
+        },
+        "My Other Source": {
+          "name": "Writeable.My Other Source",
+          "module": [],
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "other_value": {
+                    "type": "String",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "optional": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.My Pipeline",
+          "module": [],
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "value": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "other_value": {
+                    "type": "String",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "optional": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "input",
+          "name": "My Other Source"
+        },
+        {
+          "operation_type": "join",
+          "join_type": "Inner",
+          "source_table": "input.My Other Source",
+          "source_key": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "StringJoin",
+            "values": [
+              {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": "key."
+              },
+              {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "key"
+              }
+            ],
+            "seperator": ""
+          },
+          "source_selections": {
+            "other_value": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "StringJoin",
+              "values": [
+                {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Const",
+                  "value": "category "
+                },
+                {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "field.other_value"
+                }
+              ],
+              "seperator": ""
+            }
+          },
+          "target_key": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Variable",
+            "name": "key"
+          },
+          "target_selections": {
+            "value": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.value"
+            }
+          },
+          "output_key": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Variable",
+            "name": "left_key"
+          },
+          "output_type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "value": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "other_value": {
+                    "type": "String",
+                    "value": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "defaults": {
+    "Writeable.My Other Source": {
+      "default_type": "value",
+      "stream": "Writeable.My Other Source",
+      "module": [],
+      "value": {
+        "type": {
+          "type": "Dict",
+          "value": {
+            "key": {
+              "type": "String",
+              "value": null
+            },
+            "value": {
+              "type": "Struct",
+              "value": {
+                "other_value": {
+                  "type": "String",
+                  "value": null
+                }
+              }
+            }
+          }
+        },
+        "ast_type": "Const",
+        "value": [
+          {
+            "key": "0",
+            "value": {
+              "other_value": "a"
+            }
+          },
+          {
+            "key": "1",
+            "value": {
+              "other_value": "b"
+            }
+          }
+        ]
+      }
+    },
+    "Writeable.My Source": {
+      "default_type": "value",
+      "stream": "Writeable.My Source",
+      "module": [],
+      "value": {
+        "type": {
+          "type": "Dict",
+          "value": {
+            "key": {
+              "type": "String",
+              "value": null
+            },
+            "value": {
+              "type": "Struct",
+              "value": {
+                "value": {
+                  "type": "Integer",
+                  "value": null
+                }
+              }
+            }
+          }
+        },
+        "ast_type": "Const",
+        "value": [
+          {
+            "key": "key.0",
+            "value": {
+              "value": "1"
+            }
+          },
+          {
+            "key": "key.1",
+            "value": {
+              "value": "15"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

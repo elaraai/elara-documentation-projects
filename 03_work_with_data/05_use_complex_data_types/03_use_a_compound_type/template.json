@@ -1,0 +1,70 @@
+{
+  "streams": {
+    "Writeable.My Source": {
+      "name": "Writeable.My Source",
+      "module": [],
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "value": {
+                "type": "Integer",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": true
+    }
+  },
+  "tasks": {},
+  "defaults": {
+    "Writeable.My Source": {
+      "default_type": "value",
+      "stream": "Writeable.My Source",
+      "module": [],
+      "value": {
+        "type": {
+          "type": "Dict",
+          "value": {
+            "key": {
+              "type": "String",
+              "value": null
+            },
+            "value": {
+              "type": "Struct",
+              "value": {
+                "value": {
+                  "type": "Integer",
+                  "value": null
+                }
+              }
+            }
+          }
+        },
+        "ast_type": "Const",
+        "value": [
+          {
+            "key": "0",
+            "value": {
+              "value": "1"
+            }
+          },
+          {
+            "key": "1",
+            "value": {
+              "value": "2"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

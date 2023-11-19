@@ -1,0 +1,31 @@
+{
+  "streams": {
+    "Writeable.My Source": {
+      "name": "Writeable.My Source",
+      "module": [],
+      "type": {
+        "type": "Integer",
+        "value": null,
+        "nullable": true
+      },
+      "writable": true
+    }
+  },
+  "tasks": {},
+  "defaults": {
+    "Writeable.My Source": {
+      "default_type": "value",
+      "stream": "Writeable.My Source",
+      "module": [],
+      "value": {
+        "type": {
+          "type": "Integer",
+          "value": null,
+          "nullable": true
+        },
+        "ast_type": "Const",
+        "value": "2"
+      }
+    }
+  }
+}

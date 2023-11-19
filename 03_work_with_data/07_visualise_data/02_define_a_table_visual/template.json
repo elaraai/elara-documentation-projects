@@ -1,0 +1,4369 @@
+{
+  "streams": {
+    "Writeable.My Source": {
+      "name": "Writeable.My Source",
+      "module": [],
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "date": {
+                "type": "DateTime",
+                "value": null
+              },
+              "category": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Integer",
+                "value": null
+              },
+              "amount": {
+                "type": "Float",
+                "value": null
+              },
+              "processed": {
+                "type": "Boolean",
+                "value": null
+              },
+              "tags": {
+                "type": "Set",
+                "value": {
+                  "type": "String",
+                  "value": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "writable": true
+    }
+  },
+  "tasks": {},
+  "defaults": {
+    "Writeable.My Source": {
+      "default_type": "value",
+      "stream": "Writeable.My Source",
+      "module": [],
+      "value": {
+        "type": {
+          "type": "Dict",
+          "value": {
+            "key": {
+              "type": "String",
+              "value": null
+            },
+            "value": {
+              "type": "Struct",
+              "value": {
+                "date": {
+                  "type": "DateTime",
+                  "value": null
+                },
+                "category": {
+                  "type": "String",
+                  "value": null
+                },
+                "value": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "amount": {
+                  "type": "Float",
+                  "value": null
+                },
+                "processed": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "tags": {
+                  "type": "Set",
+                  "value": {
+                    "type": "String",
+                    "value": null
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ast_type": "Const",
+        "value": [
+          {
+            "key": "0",
+            "value": {
+              "date": "2023-11-19T04:04:20.566Z",
+              "category": "category 0",
+              "value": "0",
+              "amount": 0,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "1",
+            "value": {
+              "date": "2023-11-19T04:04:20.567Z",
+              "category": "category 1",
+              "value": "1",
+              "amount": 1,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "2",
+            "value": {
+              "date": "2023-11-19T04:04:20.568Z",
+              "category": "category 0",
+              "value": "2",
+              "amount": 2,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "3",
+            "value": {
+              "date": "2023-11-19T04:04:20.569Z",
+              "category": "category 1",
+              "value": "3",
+              "amount": 3,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "4",
+            "value": {
+              "date": "2023-11-19T04:04:20.570Z",
+              "category": "category 0",
+              "value": "4",
+              "amount": 4,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "5",
+            "value": {
+              "date": "2023-11-19T04:04:20.571Z",
+              "category": "category 1",
+              "value": "5",
+              "amount": 5,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "6",
+            "value": {
+              "date": "2023-11-19T04:04:20.572Z",
+              "category": "category 0",
+              "value": "6",
+              "amount": 6,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "7",
+            "value": {
+              "date": "2023-11-19T04:04:20.573Z",
+              "category": "category 1",
+              "value": "7",
+              "amount": 7,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "8",
+            "value": {
+              "date": "2023-11-19T04:04:20.574Z",
+              "category": "category 0",
+              "value": "8",
+              "amount": 8,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "9",
+            "value": {
+              "date": "2023-11-19T04:04:20.575Z",
+              "category": "category 1",
+              "value": "9",
+              "amount": 9,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "10",
+            "value": {
+              "date": "2023-11-19T04:04:20.576Z",
+              "category": "category 0",
+              "value": "10",
+              "amount": 10,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "11",
+            "value": {
+              "date": "2023-11-19T04:04:20.577Z",
+              "category": "category 1",
+              "value": "11",
+              "amount": 11,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "12",
+            "value": {
+              "date": "2023-11-19T04:04:20.578Z",
+              "category": "category 0",
+              "value": "12",
+              "amount": 12,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "13",
+            "value": {
+              "date": "2023-11-19T04:04:20.579Z",
+              "category": "category 1",
+              "value": "13",
+              "amount": 13,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "14",
+            "value": {
+              "date": "2023-11-19T04:04:20.580Z",
+              "category": "category 0",
+              "value": "14",
+              "amount": 14,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "15",
+            "value": {
+              "date": "2023-11-19T04:04:20.581Z",
+              "category": "category 1",
+              "value": "15",
+              "amount": 15,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "16",
+            "value": {
+              "date": "2023-11-19T04:04:20.582Z",
+              "category": "category 0",
+              "value": "16",
+              "amount": 16,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "17",
+            "value": {
+              "date": "2023-11-19T04:04:20.583Z",
+              "category": "category 1",
+              "value": "17",
+              "amount": 17,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "18",
+            "value": {
+              "date": "2023-11-19T04:04:20.584Z",
+              "category": "category 0",
+              "value": "18",
+              "amount": 18,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "19",
+            "value": {
+              "date": "2023-11-19T04:04:20.585Z",
+              "category": "category 1",
+              "value": "19",
+              "amount": 19,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "20",
+            "value": {
+              "date": "2023-11-19T04:04:20.586Z",
+              "category": "category 0",
+              "value": "20",
+              "amount": 20,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "21",
+            "value": {
+              "date": "2023-11-19T04:04:20.587Z",
+              "category": "category 1",
+              "value": "21",
+              "amount": 21,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "22",
+            "value": {
+              "date": "2023-11-19T04:04:20.588Z",
+              "category": "category 0",
+              "value": "22",
+              "amount": 22,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "23",
+            "value": {
+              "date": "2023-11-19T04:04:20.589Z",
+              "category": "category 1",
+              "value": "23",
+              "amount": 23,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "24",
+            "value": {
+              "date": "2023-11-19T04:04:20.590Z",
+              "category": "category 0",
+              "value": "24",
+              "amount": 24,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "25",
+            "value": {
+              "date": "2023-11-19T04:04:20.591Z",
+              "category": "category 1",
+              "value": "25",
+              "amount": 25,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "26",
+            "value": {
+              "date": "2023-11-19T04:04:20.592Z",
+              "category": "category 0",
+              "value": "26",
+              "amount": 26,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "27",
+            "value": {
+              "date": "2023-11-19T04:04:20.593Z",
+              "category": "category 1",
+              "value": "27",
+              "amount": 27,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "28",
+            "value": {
+              "date": "2023-11-19T04:04:20.594Z",
+              "category": "category 0",
+              "value": "28",
+              "amount": 28,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "29",
+            "value": {
+              "date": "2023-11-19T04:04:20.595Z",
+              "category": "category 1",
+              "value": "29",
+              "amount": 29,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "30",
+            "value": {
+              "date": "2023-11-19T04:04:20.596Z",
+              "category": "category 0",
+              "value": "30",
+              "amount": 30,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "31",
+            "value": {
+              "date": "2023-11-19T04:04:20.597Z",
+              "category": "category 1",
+              "value": "31",
+              "amount": 31,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "32",
+            "value": {
+              "date": "2023-11-19T04:04:20.598Z",
+              "category": "category 0",
+              "value": "32",
+              "amount": 32,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "33",
+            "value": {
+              "date": "2023-11-19T04:04:20.599Z",
+              "category": "category 1",
+              "value": "33",
+              "amount": 33,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "34",
+            "value": {
+              "date": "2023-11-19T04:04:20.600Z",
+              "category": "category 0",
+              "value": "34",
+              "amount": 34,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "35",
+            "value": {
+              "date": "2023-11-19T04:04:20.601Z",
+              "category": "category 1",
+              "value": "35",
+              "amount": 35,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "36",
+            "value": {
+              "date": "2023-11-19T04:04:20.602Z",
+              "category": "category 0",
+              "value": "36",
+              "amount": 36,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "37",
+            "value": {
+              "date": "2023-11-19T04:04:20.603Z",
+              "category": "category 1",
+              "value": "37",
+              "amount": 37,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "38",
+            "value": {
+              "date": "2023-11-19T04:04:20.604Z",
+              "category": "category 0",
+              "value": "38",
+              "amount": 38,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "39",
+            "value": {
+              "date": "2023-11-19T04:04:20.605Z",
+              "category": "category 1",
+              "value": "39",
+              "amount": 39,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "40",
+            "value": {
+              "date": "2023-11-19T04:04:20.606Z",
+              "category": "category 0",
+              "value": "40",
+              "amount": 40,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "41",
+            "value": {
+              "date": "2023-11-19T04:04:20.607Z",
+              "category": "category 1",
+              "value": "41",
+              "amount": 41,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "42",
+            "value": {
+              "date": "2023-11-19T04:04:20.608Z",
+              "category": "category 0",
+              "value": "42",
+              "amount": 42,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "43",
+            "value": {
+              "date": "2023-11-19T04:04:20.609Z",
+              "category": "category 1",
+              "value": "43",
+              "amount": 43,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "44",
+            "value": {
+              "date": "2023-11-19T04:04:20.610Z",
+              "category": "category 0",
+              "value": "44",
+              "amount": 44,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "45",
+            "value": {
+              "date": "2023-11-19T04:04:20.611Z",
+              "category": "category 1",
+              "value": "45",
+              "amount": 45,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "46",
+            "value": {
+              "date": "2023-11-19T04:04:20.612Z",
+              "category": "category 0",
+              "value": "46",
+              "amount": 46,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "47",
+            "value": {
+              "date": "2023-11-19T04:04:20.613Z",
+              "category": "category 1",
+              "value": "47",
+              "amount": 47,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "48",
+            "value": {
+              "date": "2023-11-19T04:04:20.614Z",
+              "category": "category 0",
+              "value": "48",
+              "amount": 48,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "49",
+            "value": {
+              "date": "2023-11-19T04:04:20.615Z",
+              "category": "category 1",
+              "value": "49",
+              "amount": 49,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "50",
+            "value": {
+              "date": "2023-11-19T04:04:20.616Z",
+              "category": "category 0",
+              "value": "50",
+              "amount": 50,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "51",
+            "value": {
+              "date": "2023-11-19T04:04:20.617Z",
+              "category": "category 1",
+              "value": "51",
+              "amount": 51,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "52",
+            "value": {
+              "date": "2023-11-19T04:04:20.618Z",
+              "category": "category 0",
+              "value": "52",
+              "amount": 52,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "53",
+            "value": {
+              "date": "2023-11-19T04:04:20.619Z",
+              "category": "category 1",
+              "value": "53",
+              "amount": 53,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "54",
+            "value": {
+              "date": "2023-11-19T04:04:20.620Z",
+              "category": "category 0",
+              "value": "54",
+              "amount": 54,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "55",
+            "value": {
+              "date": "2023-11-19T04:04:20.621Z",
+              "category": "category 1",
+              "value": "55",
+              "amount": 55,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "56",
+            "value": {
+              "date": "2023-11-19T04:04:20.622Z",
+              "category": "category 0",
+              "value": "56",
+              "amount": 56,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "57",
+            "value": {
+              "date": "2023-11-19T04:04:20.623Z",
+              "category": "category 1",
+              "value": "57",
+              "amount": 57,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "58",
+            "value": {
+              "date": "2023-11-19T04:04:20.624Z",
+              "category": "category 0",
+              "value": "58",
+              "amount": 58,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "59",
+            "value": {
+              "date": "2023-11-19T04:04:20.625Z",
+              "category": "category 1",
+              "value": "59",
+              "amount": 59,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "60",
+            "value": {
+              "date": "2023-11-19T04:04:20.626Z",
+              "category": "category 0",
+              "value": "60",
+              "amount": 60,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "61",
+            "value": {
+              "date": "2023-11-19T04:04:20.627Z",
+              "category": "category 1",
+              "value": "61",
+              "amount": 61,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "62",
+            "value": {
+              "date": "2023-11-19T04:04:20.628Z",
+              "category": "category 0",
+              "value": "62",
+              "amount": 62,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "63",
+            "value": {
+              "date": "2023-11-19T04:04:20.629Z",
+              "category": "category 1",
+              "value": "63",
+              "amount": 63,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "64",
+            "value": {
+              "date": "2023-11-19T04:04:20.630Z",
+              "category": "category 0",
+              "value": "64",
+              "amount": 64,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "65",
+            "value": {
+              "date": "2023-11-19T04:04:20.631Z",
+              "category": "category 1",
+              "value": "65",
+              "amount": 65,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "66",
+            "value": {
+              "date": "2023-11-19T04:04:20.632Z",
+              "category": "category 0",
+              "value": "66",
+              "amount": 66,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "67",
+            "value": {
+              "date": "2023-11-19T04:04:20.633Z",
+              "category": "category 1",
+              "value": "67",
+              "amount": 67,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "68",
+            "value": {
+              "date": "2023-11-19T04:04:20.634Z",
+              "category": "category 0",
+              "value": "68",
+              "amount": 68,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "69",
+            "value": {
+              "date": "2023-11-19T04:04:20.635Z",
+              "category": "category 1",
+              "value": "69",
+              "amount": 69,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "70",
+            "value": {
+              "date": "2023-11-19T04:04:20.636Z",
+              "category": "category 0",
+              "value": "70",
+              "amount": 70,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "71",
+            "value": {
+              "date": "2023-11-19T04:04:20.637Z",
+              "category": "category 1",
+              "value": "71",
+              "amount": 71,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "72",
+            "value": {
+              "date": "2023-11-19T04:04:20.638Z",
+              "category": "category 0",
+              "value": "72",
+              "amount": 72,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "73",
+            "value": {
+              "date": "2023-11-19T04:04:20.639Z",
+              "category": "category 1",
+              "value": "73",
+              "amount": 73,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "74",
+            "value": {
+              "date": "2023-11-19T04:04:20.640Z",
+              "category": "category 0",
+              "value": "74",
+              "amount": 74,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "75",
+            "value": {
+              "date": "2023-11-19T04:04:20.641Z",
+              "category": "category 1",
+              "value": "75",
+              "amount": 75,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "76",
+            "value": {
+              "date": "2023-11-19T04:04:20.642Z",
+              "category": "category 0",
+              "value": "76",
+              "amount": 76,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "77",
+            "value": {
+              "date": "2023-11-19T04:04:20.643Z",
+              "category": "category 1",
+              "value": "77",
+              "amount": 77,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "78",
+            "value": {
+              "date": "2023-11-19T04:04:20.644Z",
+              "category": "category 0",
+              "value": "78",
+              "amount": 78,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "79",
+            "value": {
+              "date": "2023-11-19T04:04:20.645Z",
+              "category": "category 1",
+              "value": "79",
+              "amount": 79,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "80",
+            "value": {
+              "date": "2023-11-19T04:04:20.646Z",
+              "category": "category 0",
+              "value": "80",
+              "amount": 80,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "81",
+            "value": {
+              "date": "2023-11-19T04:04:20.647Z",
+              "category": "category 1",
+              "value": "81",
+              "amount": 81,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "82",
+            "value": {
+              "date": "2023-11-19T04:04:20.648Z",
+              "category": "category 0",
+              "value": "82",
+              "amount": 82,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "83",
+            "value": {
+              "date": "2023-11-19T04:04:20.649Z",
+              "category": "category 1",
+              "value": "83",
+              "amount": 83,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "84",
+            "value": {
+              "date": "2023-11-19T04:04:20.650Z",
+              "category": "category 0",
+              "value": "84",
+              "amount": 84,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "85",
+            "value": {
+              "date": "2023-11-19T04:04:20.651Z",
+              "category": "category 1",
+              "value": "85",
+              "amount": 85,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "86",
+            "value": {
+              "date": "2023-11-19T04:04:20.652Z",
+              "category": "category 0",
+              "value": "86",
+              "amount": 86,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "87",
+            "value": {
+              "date": "2023-11-19T04:04:20.653Z",
+              "category": "category 1",
+              "value": "87",
+              "amount": 87,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "88",
+            "value": {
+              "date": "2023-11-19T04:04:20.654Z",
+              "category": "category 0",
+              "value": "88",
+              "amount": 88,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "89",
+            "value": {
+              "date": "2023-11-19T04:04:20.655Z",
+              "category": "category 1",
+              "value": "89",
+              "amount": 89,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "90",
+            "value": {
+              "date": "2023-11-19T04:04:20.656Z",
+              "category": "category 0",
+              "value": "90",
+              "amount": 90,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "91",
+            "value": {
+              "date": "2023-11-19T04:04:20.657Z",
+              "category": "category 1",
+              "value": "91",
+              "amount": 91,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "92",
+            "value": {
+              "date": "2023-11-19T04:04:20.658Z",
+              "category": "category 0",
+              "value": "92",
+              "amount": 92,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "93",
+            "value": {
+              "date": "2023-11-19T04:04:20.659Z",
+              "category": "category 1",
+              "value": "93",
+              "amount": 93,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "94",
+            "value": {
+              "date": "2023-11-19T04:04:20.660Z",
+              "category": "category 0",
+              "value": "94",
+              "amount": 94,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "95",
+            "value": {
+              "date": "2023-11-19T04:04:20.661Z",
+              "category": "category 1",
+              "value": "95",
+              "amount": 95,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "96",
+            "value": {
+              "date": "2023-11-19T04:04:20.662Z",
+              "category": "category 0",
+              "value": "96",
+              "amount": 96,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "97",
+            "value": {
+              "date": "2023-11-19T04:04:20.663Z",
+              "category": "category 1",
+              "value": "97",
+              "amount": 97,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "98",
+            "value": {
+              "date": "2023-11-19T04:04:20.664Z",
+              "category": "category 0",
+              "value": "98",
+              "amount": 98,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "99",
+            "value": {
+              "date": "2023-11-19T04:04:20.665Z",
+              "category": "category 1",
+              "value": "99",
+              "amount": 99,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "100",
+            "value": {
+              "date": "2023-11-19T04:04:20.666Z",
+              "category": "category 0",
+              "value": "100",
+              "amount": 100,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "101",
+            "value": {
+              "date": "2023-11-19T04:04:20.667Z",
+              "category": "category 1",
+              "value": "101",
+              "amount": 101,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "102",
+            "value": {
+              "date": "2023-11-19T04:04:20.668Z",
+              "category": "category 0",
+              "value": "102",
+              "amount": 102,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "103",
+            "value": {
+              "date": "2023-11-19T04:04:20.669Z",
+              "category": "category 1",
+              "value": "103",
+              "amount": 103,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "104",
+            "value": {
+              "date": "2023-11-19T04:04:20.670Z",
+              "category": "category 0",
+              "value": "104",
+              "amount": 104,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "105",
+            "value": {
+              "date": "2023-11-19T04:04:20.671Z",
+              "category": "category 1",
+              "value": "105",
+              "amount": 105,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "106",
+            "value": {
+              "date": "2023-11-19T04:04:20.672Z",
+              "category": "category 0",
+              "value": "106",
+              "amount": 106,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "107",
+            "value": {
+              "date": "2023-11-19T04:04:20.673Z",
+              "category": "category 1",
+              "value": "107",
+              "amount": 107,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "108",
+            "value": {
+              "date": "2023-11-19T04:04:20.674Z",
+              "category": "category 0",
+              "value": "108",
+              "amount": 108,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "109",
+            "value": {
+              "date": "2023-11-19T04:04:20.675Z",
+              "category": "category 1",
+              "value": "109",
+              "amount": 109,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "110",
+            "value": {
+              "date": "2023-11-19T04:04:20.676Z",
+              "category": "category 0",
+              "value": "110",
+              "amount": 110,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "111",
+            "value": {
+              "date": "2023-11-19T04:04:20.677Z",
+              "category": "category 1",
+              "value": "111",
+              "amount": 111,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "112",
+            "value": {
+              "date": "2023-11-19T04:04:20.678Z",
+              "category": "category 0",
+              "value": "112",
+              "amount": 112,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "113",
+            "value": {
+              "date": "2023-11-19T04:04:20.679Z",
+              "category": "category 1",
+              "value": "113",
+              "amount": 113,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "114",
+            "value": {
+              "date": "2023-11-19T04:04:20.680Z",
+              "category": "category 0",
+              "value": "114",
+              "amount": 114,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "115",
+            "value": {
+              "date": "2023-11-19T04:04:20.681Z",
+              "category": "category 1",
+              "value": "115",
+              "amount": 115,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "116",
+            "value": {
+              "date": "2023-11-19T04:04:20.682Z",
+              "category": "category 0",
+              "value": "116",
+              "amount": 116,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "117",
+            "value": {
+              "date": "2023-11-19T04:04:20.683Z",
+              "category": "category 1",
+              "value": "117",
+              "amount": 117,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "118",
+            "value": {
+              "date": "2023-11-19T04:04:20.684Z",
+              "category": "category 0",
+              "value": "118",
+              "amount": 118,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "119",
+            "value": {
+              "date": "2023-11-19T04:04:20.685Z",
+              "category": "category 1",
+              "value": "119",
+              "amount": 119,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "120",
+            "value": {
+              "date": "2023-11-19T04:04:20.686Z",
+              "category": "category 0",
+              "value": "120",
+              "amount": 120,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "121",
+            "value": {
+              "date": "2023-11-19T04:04:20.687Z",
+              "category": "category 1",
+              "value": "121",
+              "amount": 121,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "122",
+            "value": {
+              "date": "2023-11-19T04:04:20.688Z",
+              "category": "category 0",
+              "value": "122",
+              "amount": 122,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "123",
+            "value": {
+              "date": "2023-11-19T04:04:20.689Z",
+              "category": "category 1",
+              "value": "123",
+              "amount": 123,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "124",
+            "value": {
+              "date": "2023-11-19T04:04:20.690Z",
+              "category": "category 0",
+              "value": "124",
+              "amount": 124,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "125",
+            "value": {
+              "date": "2023-11-19T04:04:20.691Z",
+              "category": "category 1",
+              "value": "125",
+              "amount": 125,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "126",
+            "value": {
+              "date": "2023-11-19T04:04:20.692Z",
+              "category": "category 0",
+              "value": "126",
+              "amount": 126,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "127",
+            "value": {
+              "date": "2023-11-19T04:04:20.693Z",
+              "category": "category 1",
+              "value": "127",
+              "amount": 127,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "128",
+            "value": {
+              "date": "2023-11-19T04:04:20.694Z",
+              "category": "category 0",
+              "value": "128",
+              "amount": 128,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "129",
+            "value": {
+              "date": "2023-11-19T04:04:20.695Z",
+              "category": "category 1",
+              "value": "129",
+              "amount": 129,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "130",
+            "value": {
+              "date": "2023-11-19T04:04:20.696Z",
+              "category": "category 0",
+              "value": "130",
+              "amount": 130,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "131",
+            "value": {
+              "date": "2023-11-19T04:04:20.697Z",
+              "category": "category 1",
+              "value": "131",
+              "amount": 131,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "132",
+            "value": {
+              "date": "2023-11-19T04:04:20.698Z",
+              "category": "category 0",
+              "value": "132",
+              "amount": 132,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "133",
+            "value": {
+              "date": "2023-11-19T04:04:20.699Z",
+              "category": "category 1",
+              "value": "133",
+              "amount": 133,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "134",
+            "value": {
+              "date": "2023-11-19T04:04:20.700Z",
+              "category": "category 0",
+              "value": "134",
+              "amount": 134,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "135",
+            "value": {
+              "date": "2023-11-19T04:04:20.701Z",
+              "category": "category 1",
+              "value": "135",
+              "amount": 135,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "136",
+            "value": {
+              "date": "2023-11-19T04:04:20.702Z",
+              "category": "category 0",
+              "value": "136",
+              "amount": 136,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "137",
+            "value": {
+              "date": "2023-11-19T04:04:20.703Z",
+              "category": "category 1",
+              "value": "137",
+              "amount": 137,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "138",
+            "value": {
+              "date": "2023-11-19T04:04:20.704Z",
+              "category": "category 0",
+              "value": "138",
+              "amount": 138,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "139",
+            "value": {
+              "date": "2023-11-19T04:04:20.705Z",
+              "category": "category 1",
+              "value": "139",
+              "amount": 139,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "140",
+            "value": {
+              "date": "2023-11-19T04:04:20.706Z",
+              "category": "category 0",
+              "value": "140",
+              "amount": 140,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "141",
+            "value": {
+              "date": "2023-11-19T04:04:20.707Z",
+              "category": "category 1",
+              "value": "141",
+              "amount": 141,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "142",
+            "value": {
+              "date": "2023-11-19T04:04:20.708Z",
+              "category": "category 0",
+              "value": "142",
+              "amount": 142,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "143",
+            "value": {
+              "date": "2023-11-19T04:04:20.709Z",
+              "category": "category 1",
+              "value": "143",
+              "amount": 143,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "144",
+            "value": {
+              "date": "2023-11-19T04:04:20.710Z",
+              "category": "category 0",
+              "value": "144",
+              "amount": 144,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "145",
+            "value": {
+              "date": "2023-11-19T04:04:20.711Z",
+              "category": "category 1",
+              "value": "145",
+              "amount": 145,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "146",
+            "value": {
+              "date": "2023-11-19T04:04:20.712Z",
+              "category": "category 0",
+              "value": "146",
+              "amount": 146,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "147",
+            "value": {
+              "date": "2023-11-19T04:04:20.713Z",
+              "category": "category 1",
+              "value": "147",
+              "amount": 147,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "148",
+            "value": {
+              "date": "2023-11-19T04:04:20.714Z",
+              "category": "category 0",
+              "value": "148",
+              "amount": 148,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "149",
+            "value": {
+              "date": "2023-11-19T04:04:20.715Z",
+              "category": "category 1",
+              "value": "149",
+              "amount": 149,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "150",
+            "value": {
+              "date": "2023-11-19T04:04:20.716Z",
+              "category": "category 0",
+              "value": "150",
+              "amount": 150,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "151",
+            "value": {
+              "date": "2023-11-19T04:04:20.717Z",
+              "category": "category 1",
+              "value": "151",
+              "amount": 151,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "152",
+            "value": {
+              "date": "2023-11-19T04:04:20.718Z",
+              "category": "category 0",
+              "value": "152",
+              "amount": 152,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "153",
+            "value": {
+              "date": "2023-11-19T04:04:20.719Z",
+              "category": "category 1",
+              "value": "153",
+              "amount": 153,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "154",
+            "value": {
+              "date": "2023-11-19T04:04:20.720Z",
+              "category": "category 0",
+              "value": "154",
+              "amount": 154,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "155",
+            "value": {
+              "date": "2023-11-19T04:04:20.721Z",
+              "category": "category 1",
+              "value": "155",
+              "amount": 155,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "156",
+            "value": {
+              "date": "2023-11-19T04:04:20.722Z",
+              "category": "category 0",
+              "value": "156",
+              "amount": 156,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "157",
+            "value": {
+              "date": "2023-11-19T04:04:20.723Z",
+              "category": "category 1",
+              "value": "157",
+              "amount": 157,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "158",
+            "value": {
+              "date": "2023-11-19T04:04:20.724Z",
+              "category": "category 0",
+              "value": "158",
+              "amount": 158,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "159",
+            "value": {
+              "date": "2023-11-19T04:04:20.725Z",
+              "category": "category 1",
+              "value": "159",
+              "amount": 159,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "160",
+            "value": {
+              "date": "2023-11-19T04:04:20.726Z",
+              "category": "category 0",
+              "value": "160",
+              "amount": 160,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "161",
+            "value": {
+              "date": "2023-11-19T04:04:20.727Z",
+              "category": "category 1",
+              "value": "161",
+              "amount": 161,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "162",
+            "value": {
+              "date": "2023-11-19T04:04:20.728Z",
+              "category": "category 0",
+              "value": "162",
+              "amount": 162,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "163",
+            "value": {
+              "date": "2023-11-19T04:04:20.729Z",
+              "category": "category 1",
+              "value": "163",
+              "amount": 163,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "164",
+            "value": {
+              "date": "2023-11-19T04:04:20.730Z",
+              "category": "category 0",
+              "value": "164",
+              "amount": 164,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "165",
+            "value": {
+              "date": "2023-11-19T04:04:20.731Z",
+              "category": "category 1",
+              "value": "165",
+              "amount": 165,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "166",
+            "value": {
+              "date": "2023-11-19T04:04:20.732Z",
+              "category": "category 0",
+              "value": "166",
+              "amount": 166,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "167",
+            "value": {
+              "date": "2023-11-19T04:04:20.733Z",
+              "category": "category 1",
+              "value": "167",
+              "amount": 167,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "168",
+            "value": {
+              "date": "2023-11-19T04:04:20.734Z",
+              "category": "category 0",
+              "value": "168",
+              "amount": 168,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "169",
+            "value": {
+              "date": "2023-11-19T04:04:20.735Z",
+              "category": "category 1",
+              "value": "169",
+              "amount": 169,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "170",
+            "value": {
+              "date": "2023-11-19T04:04:20.736Z",
+              "category": "category 0",
+              "value": "170",
+              "amount": 170,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "171",
+            "value": {
+              "date": "2023-11-19T04:04:20.737Z",
+              "category": "category 1",
+              "value": "171",
+              "amount": 171,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "172",
+            "value": {
+              "date": "2023-11-19T04:04:20.738Z",
+              "category": "category 0",
+              "value": "172",
+              "amount": 172,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "173",
+            "value": {
+              "date": "2023-11-19T04:04:20.739Z",
+              "category": "category 1",
+              "value": "173",
+              "amount": 173,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "174",
+            "value": {
+              "date": "2023-11-19T04:04:20.740Z",
+              "category": "category 0",
+              "value": "174",
+              "amount": 174,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "175",
+            "value": {
+              "date": "2023-11-19T04:04:20.741Z",
+              "category": "category 1",
+              "value": "175",
+              "amount": 175,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "176",
+            "value": {
+              "date": "2023-11-19T04:04:20.742Z",
+              "category": "category 0",
+              "value": "176",
+              "amount": 176,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "177",
+            "value": {
+              "date": "2023-11-19T04:04:20.743Z",
+              "category": "category 1",
+              "value": "177",
+              "amount": 177,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "178",
+            "value": {
+              "date": "2023-11-19T04:04:20.744Z",
+              "category": "category 0",
+              "value": "178",
+              "amount": 178,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "179",
+            "value": {
+              "date": "2023-11-19T04:04:20.745Z",
+              "category": "category 1",
+              "value": "179",
+              "amount": 179,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "180",
+            "value": {
+              "date": "2023-11-19T04:04:20.746Z",
+              "category": "category 0",
+              "value": "180",
+              "amount": 180,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "181",
+            "value": {
+              "date": "2023-11-19T04:04:20.747Z",
+              "category": "category 1",
+              "value": "181",
+              "amount": 181,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "182",
+            "value": {
+              "date": "2023-11-19T04:04:20.748Z",
+              "category": "category 0",
+              "value": "182",
+              "amount": 182,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "183",
+            "value": {
+              "date": "2023-11-19T04:04:20.749Z",
+              "category": "category 1",
+              "value": "183",
+              "amount": 183,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "184",
+            "value": {
+              "date": "2023-11-19T04:04:20.750Z",
+              "category": "category 0",
+              "value": "184",
+              "amount": 184,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "185",
+            "value": {
+              "date": "2023-11-19T04:04:20.751Z",
+              "category": "category 1",
+              "value": "185",
+              "amount": 185,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "186",
+            "value": {
+              "date": "2023-11-19T04:04:20.752Z",
+              "category": "category 0",
+              "value": "186",
+              "amount": 186,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "187",
+            "value": {
+              "date": "2023-11-19T04:04:20.753Z",
+              "category": "category 1",
+              "value": "187",
+              "amount": 187,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "188",
+            "value": {
+              "date": "2023-11-19T04:04:20.754Z",
+              "category": "category 0",
+              "value": "188",
+              "amount": 188,
+              "processed": false,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "189",
+            "value": {
+              "date": "2023-11-19T04:04:20.755Z",
+              "category": "category 1",
+              "value": "189",
+              "amount": 189,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "190",
+            "value": {
+              "date": "2023-11-19T04:04:20.756Z",
+              "category": "category 0",
+              "value": "190",
+              "amount": 190,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "191",
+            "value": {
+              "date": "2023-11-19T04:04:20.757Z",
+              "category": "category 1",
+              "value": "191",
+              "amount": 191,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "192",
+            "value": {
+              "date": "2023-11-19T04:04:20.758Z",
+              "category": "category 0",
+              "value": "192",
+              "amount": 192,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "193",
+            "value": {
+              "date": "2023-11-19T04:04:20.759Z",
+              "category": "category 1",
+              "value": "193",
+              "amount": 193,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "194",
+            "value": {
+              "date": "2023-11-19T04:04:20.760Z",
+              "category": "category 0",
+              "value": "194",
+              "amount": 194,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "195",
+            "value": {
+              "date": "2023-11-19T04:04:20.761Z",
+              "category": "category 1",
+              "value": "195",
+              "amount": 195,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "196",
+            "value": {
+              "date": "2023-11-19T04:04:20.762Z",
+              "category": "category 0",
+              "value": "196",
+              "amount": 196,
+              "processed": false,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "197",
+            "value": {
+              "date": "2023-11-19T04:04:20.763Z",
+              "category": "category 1",
+              "value": "197",
+              "amount": 197,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          },
+          {
+            "key": "198",
+            "value": {
+              "date": "2023-11-19T04:04:20.764Z",
+              "category": "category 0",
+              "value": "198",
+              "amount": 198,
+              "processed": true,
+              "tags": [
+                "Two",
+                "One"
+              ]
+            }
+          },
+          {
+            "key": "199",
+            "value": {
+              "date": "2023-11-19T04:04:20.765Z",
+              "category": "category 1",
+              "value": "199",
+              "amount": 199,
+              "processed": true,
+              "tags": [
+                "One",
+                "Two"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "layouts": {
+    "01 - My Layout": {
+      "name": "01 - My Layout",
+      "module": [],
+      "visual": {
+        "type": "flat",
+        "name": "01 - My Layout",
+        "visual": {
+          "type": "table",
+          "kind": "struct",
+          "name": "My Table",
+          "stream": {
+            "name": "Writeable.My Source",
+            "module": [],
+            "type": {
+              "type": "Dict",
+              "value": {
+                "key": {
+                  "type": "String",
+                  "value": null
+                },
+                "value": {
+                  "type": "Struct",
+                  "value": {
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "category": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "amount": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "processed": {
+                      "type": "Boolean",
+                      "value": null
+                    },
+                    "tags": {
+                      "type": "Set",
+                      "value": {
+                        "type": "String",
+                        "value": null
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "writable": true
+          },
+          "columns": [
+            {
+              "name": "Key",
+              "kind": "key",
+              "value": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "key"
+              },
+              "readonly": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": true
+              },
+              "hidden": true,
+              "hidden_detail": false
+            },
+            {
+              "name": "date",
+              "kind": "primitive",
+              "value": {
+                "type": {
+                  "type": "DateTime",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "date"
+              },
+              "readonly": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": false
+              },
+              "hidden": false,
+              "hidden_detail": false
+            },
+            {
+              "name": "category",
+              "kind": "primitive",
+              "value": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "category"
+              },
+              "readonly": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": false
+              },
+              "hidden": false,
+              "hidden_detail": false
+            },
+            {
+              "name": "value",
+              "kind": "primitive",
+              "value": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "value"
+              },
+              "readonly": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": false
+              },
+              "hidden": false,
+              "hidden_detail": false
+            },
+            {
+              "name": "amount",
+              "kind": "primitive",
+              "value": {
+                "type": {
+                  "type": "Float",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "amount"
+              },
+              "readonly": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": false
+              },
+              "hidden": false,
+              "hidden_detail": false
+            },
+            {
+              "name": "processed",
+              "kind": "primitive",
+              "value": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "processed"
+              },
+              "readonly": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": false
+              },
+              "hidden": false,
+              "hidden_detail": false
+            },
+            {
+              "name": "tags",
+              "kind": "collection",
+              "value": {
+                "type": {
+                  "type": "Set",
+                  "value": {
+                    "type": "String",
+                    "value": null
+                  }
+                },
+                "ast_type": "Variable",
+                "name": "tags"
+              },
+              "readonly": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": true
+              },
+              "hidden": false,
+              "hidden_detail": false
+            }
+          ],
+          "input_streams": [],
+          "writable": {
+            "type": "writable",
+            "add": true,
+            "remove": true,
+            "update": true
+          }
+        }
+      }
+    },
+    "02 - My Other Layout": {
+      "name": "02 - My Other Layout",
+      "module": [],
+      "visual": {
+        "type": "flat",
+        "name": "02 - My Other Layout",
+        "visual": {
+          "type": "table",
+          "kind": "struct",
+          "name": "My Other Table",
+          "stream": {
+            "name": "Writeable.My Source",
+            "module": [],
+            "type": {
+              "type": "Dict",
+              "value": {
+                "key": {
+                  "type": "String",
+                  "value": null
+                },
+                "value": {
+                  "type": "Struct",
+                  "value": {
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "category": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "amount": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "processed": {
+                      "type": "Boolean",
+                      "value": null
+                    },
+                    "tags": {
+                      "type": "Set",
+                      "value": {
+                        "type": "String",
+                        "value": null
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "writable": true
+          },
+          "columns": [
+            {
+              "name": "Key",
+              "kind": "key",
+              "value": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "key"
+              },
+              "readonly": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": true
+              },
+              "hidden": true,
+              "hidden_detail": false
+            },
+            {
+              "name": "Date",
+              "kind": "primitive",
+              "value": {
+                "type": {
+                  "type": "DateTime",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "date"
+              },
+              "readonly": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": false
+              },
+              "hidden": false,
+              "hidden_detail": false
+            },
+            {
+              "name": "Category",
+              "kind": "primitive",
+              "value": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "category"
+              },
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "tooltip": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "StringJoin",
+                "values": [
+                  {
+                    "type": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "category"
+                  },
+                  {
+                    "type": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "ast_type": "Const",
+                    "value": " for "
+                  },
+                  {
+                    "type": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "ast_type": "Print",
+                    "value": {
+                      "type": {
+                        "type": "Integer",
+                        "value": null
+                      },
+                      "ast_type": "Variable",
+                      "name": "value"
+                    }
+                  }
+                ],
+                "seperator": ""
+              },
+              "readonly": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": false
+              },
+              "hidden": false,
+              "hidden_detail": false
+            },
+            {
+              "name": "Value",
+              "kind": "primitive",
+              "value": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "value"
+              },
+              "color": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "IfElse",
+                "predicate": {
+                  "type": {
+                    "type": "Boolean",
+                    "value": null
+                  },
+                  "ast_type": "Greater",
+                  "first": {
+                    "type": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "value"
+                  },
+                  "second": {
+                    "type": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "ast_type": "Const",
+                    "value": "50"
+                  }
+                },
+                "true": {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Const",
+                  "value": "#50BA8B"
+                },
+                "false": {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Const",
+                  "value": "#BA6F63"
+                }
+              },
+              "readonly": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": false
+              },
+              "hidden": false,
+              "hidden_detail": false
+            },
+            {
+              "name": "Amount",
+              "kind": "primitive",
+              "value": {
+                "type": {
+                  "type": "Float",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "amount"
+              },
+              "readonly": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": false
+              },
+              "display": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "StringJoin",
+                "values": [
+                  {
+                    "type": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "ast_type": "IfElse",
+                    "predicate": {
+                      "type": {
+                        "type": "Boolean",
+                        "value": null
+                      },
+                      "ast_type": "LessEqual",
+                      "first": {
+                        "type": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "ast_type": "Variable",
+                        "name": "amount"
+                      },
+                      "second": {
+                        "type": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "ast_type": "Const",
+                        "value": 0
+                      }
+                    },
+                    "true": {
+                      "type": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "ast_type": "IfElse",
+                      "predicate": {
+                        "type": {
+                          "type": "Boolean",
+                          "value": null
+                        },
+                        "ast_type": "LessEqual",
+                        "first": {
+                          "type": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "ast_type": "Let",
+                          "ast": {
+                            "type": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "ast_type": "IfElse",
+                            "predicate": {
+                              "type": {
+                                "type": "Boolean",
+                                "value": null
+                              },
+                              "ast_type": "Greater",
+                              "first": {
+                                "type": {
+                                  "type": "Float",
+                                  "value": null
+                                },
+                                "ast_type": "Variable",
+                                "name": "amount"
+                              },
+                              "second": {
+                                "type": {
+                                  "type": "Float",
+                                  "value": null
+                                },
+                                "ast_type": "Variable",
+                                "name": "__Let2"
+                              }
+                            },
+                            "true": {
+                              "type": {
+                                "type": "Float",
+                                "value": null
+                              },
+                              "ast_type": "Variable",
+                              "name": "amount"
+                            },
+                            "false": {
+                              "type": {
+                                "type": "Float",
+                                "value": null
+                              },
+                              "ast_type": "Variable",
+                              "name": "__Let2"
+                            }
+                          },
+                          "variable": {
+                            "type": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "ast_type": "Variable",
+                            "name": "__Let2"
+                          },
+                          "value": {
+                            "type": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "ast_type": "Subtract",
+                            "first": {
+                              "type": {
+                                "type": "Float",
+                                "value": null
+                              },
+                              "ast_type": "Const",
+                              "value": 0
+                            },
+                            "second": {
+                              "type": {
+                                "type": "Float",
+                                "value": null
+                              },
+                              "ast_type": "Variable",
+                              "name": "amount"
+                            }
+                          }
+                        },
+                        "second": {
+                          "type": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "ast_type": "Const",
+                          "value": 100
+                        }
+                      },
+                      "true": {
+                        "type": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "ast_type": "StringJoin",
+                        "values": [
+                          {
+                            "type": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "ast_type": "Const",
+                            "value": "-$"
+                          },
+                          {
+                            "type": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "ast_type": "RegexReplace",
+                            "value": {
+                              "type": {
+                                "type": "String",
+                                "value": null
+                              },
+                              "ast_type": "Print",
+                              "value": {
+                                "type": {
+                                  "type": "Float",
+                                  "value": null
+                                },
+                                "ast_type": "Let",
+                                "ast": {
+                                  "type": {
+                                    "type": "Float",
+                                    "value": null
+                                  },
+                                  "ast_type": "Let",
+                                  "ast": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "IfElse",
+                                    "predicate": {
+                                      "type": {
+                                        "type": "Boolean",
+                                        "value": null
+                                      },
+                                      "ast_type": "Greater",
+                                      "first": {
+                                        "type": {
+                                          "type": "Float",
+                                          "value": null
+                                        },
+                                        "ast_type": "Variable",
+                                        "name": "__Let3"
+                                      },
+                                      "second": {
+                                        "type": {
+                                          "type": "Float",
+                                          "value": null
+                                        },
+                                        "ast_type": "Variable",
+                                        "name": "__Let2"
+                                      }
+                                    },
+                                    "true": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Variable",
+                                      "name": "__Let3"
+                                    },
+                                    "false": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Variable",
+                                      "name": "__Let2"
+                                    }
+                                  },
+                                  "variable": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "Variable",
+                                    "name": "__Let2"
+                                  },
+                                  "value": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "Subtract",
+                                    "first": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Const",
+                                      "value": 0
+                                    },
+                                    "second": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Variable",
+                                      "name": "__Let3"
+                                    }
+                                  }
+                                },
+                                "variable": {
+                                  "type": {
+                                    "type": "Float",
+                                    "value": null
+                                  },
+                                  "ast_type": "Variable",
+                                  "name": "__Let3"
+                                },
+                                "value": {
+                                  "type": {
+                                    "type": "Float",
+                                    "value": null
+                                  },
+                                  "ast_type": "RoundPrecision",
+                                  "value": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "Variable",
+                                    "name": "amount"
+                                  },
+                                  "significant_digits": 1
+                                }
+                              }
+                            },
+                            "search": "B(?=(d{3})+(?!d))",
+                            "replace": {
+                              "type": {
+                                "type": "String",
+                                "value": null
+                              },
+                              "ast_type": "Const",
+                              "value": ","
+                            },
+                            "flags": "g"
+                          }
+                        ],
+                        "seperator": ""
+                      },
+                      "false": {
+                        "type": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "ast_type": "StringJoin",
+                        "values": [
+                          {
+                            "type": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "ast_type": "Const",
+                            "value": "-$"
+                          },
+                          {
+                            "type": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "ast_type": "RegexReplace",
+                            "value": {
+                              "type": {
+                                "type": "String",
+                                "value": null
+                              },
+                              "ast_type": "Print",
+                              "value": {
+                                "type": {
+                                  "type": "Float",
+                                  "value": null
+                                },
+                                "ast_type": "Let",
+                                "ast": {
+                                  "type": {
+                                    "type": "Float",
+                                    "value": null
+                                  },
+                                  "ast_type": "Let",
+                                  "ast": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "IfElse",
+                                    "predicate": {
+                                      "type": {
+                                        "type": "Boolean",
+                                        "value": null
+                                      },
+                                      "ast_type": "Greater",
+                                      "first": {
+                                        "type": {
+                                          "type": "Float",
+                                          "value": null
+                                        },
+                                        "ast_type": "Variable",
+                                        "name": "__Let3"
+                                      },
+                                      "second": {
+                                        "type": {
+                                          "type": "Float",
+                                          "value": null
+                                        },
+                                        "ast_type": "Variable",
+                                        "name": "__Let2"
+                                      }
+                                    },
+                                    "true": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Variable",
+                                      "name": "__Let3"
+                                    },
+                                    "false": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Variable",
+                                      "name": "__Let2"
+                                    }
+                                  },
+                                  "variable": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "Variable",
+                                    "name": "__Let2"
+                                  },
+                                  "value": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "Subtract",
+                                    "first": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Const",
+                                      "value": 0
+                                    },
+                                    "second": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Variable",
+                                      "name": "__Let3"
+                                    }
+                                  }
+                                },
+                                "variable": {
+                                  "type": {
+                                    "type": "Float",
+                                    "value": null
+                                  },
+                                  "ast_type": "Variable",
+                                  "name": "__Let3"
+                                },
+                                "value": {
+                                  "type": {
+                                    "type": "Float",
+                                    "value": null
+                                  },
+                                  "ast_type": "RoundPrecision",
+                                  "value": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "Variable",
+                                    "name": "amount"
+                                  },
+                                  "significant_digits": 2
+                                }
+                              }
+                            },
+                            "search": "B(?=(d{3})+(?!d))",
+                            "replace": {
+                              "type": {
+                                "type": "String",
+                                "value": null
+                              },
+                              "ast_type": "Const",
+                              "value": ","
+                            },
+                            "flags": "g"
+                          }
+                        ],
+                        "seperator": ""
+                      }
+                    },
+                    "false": {
+                      "type": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "ast_type": "IfElse",
+                      "predicate": {
+                        "type": {
+                          "type": "Boolean",
+                          "value": null
+                        },
+                        "ast_type": "LessEqual",
+                        "first": {
+                          "type": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "ast_type": "Let",
+                          "ast": {
+                            "type": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "ast_type": "IfElse",
+                            "predicate": {
+                              "type": {
+                                "type": "Boolean",
+                                "value": null
+                              },
+                              "ast_type": "Greater",
+                              "first": {
+                                "type": {
+                                  "type": "Float",
+                                  "value": null
+                                },
+                                "ast_type": "Variable",
+                                "name": "amount"
+                              },
+                              "second": {
+                                "type": {
+                                  "type": "Float",
+                                  "value": null
+                                },
+                                "ast_type": "Variable",
+                                "name": "__Let2"
+                              }
+                            },
+                            "true": {
+                              "type": {
+                                "type": "Float",
+                                "value": null
+                              },
+                              "ast_type": "Variable",
+                              "name": "amount"
+                            },
+                            "false": {
+                              "type": {
+                                "type": "Float",
+                                "value": null
+                              },
+                              "ast_type": "Variable",
+                              "name": "__Let2"
+                            }
+                          },
+                          "variable": {
+                            "type": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "ast_type": "Variable",
+                            "name": "__Let2"
+                          },
+                          "value": {
+                            "type": {
+                              "type": "Float",
+                              "value": null
+                            },
+                            "ast_type": "Subtract",
+                            "first": {
+                              "type": {
+                                "type": "Float",
+                                "value": null
+                              },
+                              "ast_type": "Const",
+                              "value": 0
+                            },
+                            "second": {
+                              "type": {
+                                "type": "Float",
+                                "value": null
+                              },
+                              "ast_type": "Variable",
+                              "name": "amount"
+                            }
+                          }
+                        },
+                        "second": {
+                          "type": {
+                            "type": "Float",
+                            "value": null
+                          },
+                          "ast_type": "Const",
+                          "value": 100
+                        }
+                      },
+                      "true": {
+                        "type": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "ast_type": "StringJoin",
+                        "values": [
+                          {
+                            "type": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "ast_type": "Const",
+                            "value": "$"
+                          },
+                          {
+                            "type": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "ast_type": "RegexReplace",
+                            "value": {
+                              "type": {
+                                "type": "String",
+                                "value": null
+                              },
+                              "ast_type": "Print",
+                              "value": {
+                                "type": {
+                                  "type": "Float",
+                                  "value": null
+                                },
+                                "ast_type": "Let",
+                                "ast": {
+                                  "type": {
+                                    "type": "Float",
+                                    "value": null
+                                  },
+                                  "ast_type": "Let",
+                                  "ast": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "IfElse",
+                                    "predicate": {
+                                      "type": {
+                                        "type": "Boolean",
+                                        "value": null
+                                      },
+                                      "ast_type": "Greater",
+                                      "first": {
+                                        "type": {
+                                          "type": "Float",
+                                          "value": null
+                                        },
+                                        "ast_type": "Variable",
+                                        "name": "__Let3"
+                                      },
+                                      "second": {
+                                        "type": {
+                                          "type": "Float",
+                                          "value": null
+                                        },
+                                        "ast_type": "Variable",
+                                        "name": "__Let2"
+                                      }
+                                    },
+                                    "true": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Variable",
+                                      "name": "__Let3"
+                                    },
+                                    "false": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Variable",
+                                      "name": "__Let2"
+                                    }
+                                  },
+                                  "variable": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "Variable",
+                                    "name": "__Let2"
+                                  },
+                                  "value": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "Subtract",
+                                    "first": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Const",
+                                      "value": 0
+                                    },
+                                    "second": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Variable",
+                                      "name": "__Let3"
+                                    }
+                                  }
+                                },
+                                "variable": {
+                                  "type": {
+                                    "type": "Float",
+                                    "value": null
+                                  },
+                                  "ast_type": "Variable",
+                                  "name": "__Let3"
+                                },
+                                "value": {
+                                  "type": {
+                                    "type": "Float",
+                                    "value": null
+                                  },
+                                  "ast_type": "RoundPrecision",
+                                  "value": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "Variable",
+                                    "name": "amount"
+                                  },
+                                  "significant_digits": 1
+                                }
+                              }
+                            },
+                            "search": "B(?=(d{3})+(?!d))",
+                            "replace": {
+                              "type": {
+                                "type": "String",
+                                "value": null
+                              },
+                              "ast_type": "Const",
+                              "value": ","
+                            },
+                            "flags": "g"
+                          }
+                        ],
+                        "seperator": ""
+                      },
+                      "false": {
+                        "type": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "ast_type": "StringJoin",
+                        "values": [
+                          {
+                            "type": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "ast_type": "Const",
+                            "value": "$"
+                          },
+                          {
+                            "type": {
+                              "type": "String",
+                              "value": null
+                            },
+                            "ast_type": "RegexReplace",
+                            "value": {
+                              "type": {
+                                "type": "String",
+                                "value": null
+                              },
+                              "ast_type": "Print",
+                              "value": {
+                                "type": {
+                                  "type": "Float",
+                                  "value": null
+                                },
+                                "ast_type": "Let",
+                                "ast": {
+                                  "type": {
+                                    "type": "Float",
+                                    "value": null
+                                  },
+                                  "ast_type": "Let",
+                                  "ast": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "IfElse",
+                                    "predicate": {
+                                      "type": {
+                                        "type": "Boolean",
+                                        "value": null
+                                      },
+                                      "ast_type": "Greater",
+                                      "first": {
+                                        "type": {
+                                          "type": "Float",
+                                          "value": null
+                                        },
+                                        "ast_type": "Variable",
+                                        "name": "__Let3"
+                                      },
+                                      "second": {
+                                        "type": {
+                                          "type": "Float",
+                                          "value": null
+                                        },
+                                        "ast_type": "Variable",
+                                        "name": "__Let2"
+                                      }
+                                    },
+                                    "true": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Variable",
+                                      "name": "__Let3"
+                                    },
+                                    "false": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Variable",
+                                      "name": "__Let2"
+                                    }
+                                  },
+                                  "variable": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "Variable",
+                                    "name": "__Let2"
+                                  },
+                                  "value": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "Subtract",
+                                    "first": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Const",
+                                      "value": 0
+                                    },
+                                    "second": {
+                                      "type": {
+                                        "type": "Float",
+                                        "value": null
+                                      },
+                                      "ast_type": "Variable",
+                                      "name": "__Let3"
+                                    }
+                                  }
+                                },
+                                "variable": {
+                                  "type": {
+                                    "type": "Float",
+                                    "value": null
+                                  },
+                                  "ast_type": "Variable",
+                                  "name": "__Let3"
+                                },
+                                "value": {
+                                  "type": {
+                                    "type": "Float",
+                                    "value": null
+                                  },
+                                  "ast_type": "RoundPrecision",
+                                  "value": {
+                                    "type": {
+                                      "type": "Float",
+                                      "value": null
+                                    },
+                                    "ast_type": "Variable",
+                                    "name": "amount"
+                                  },
+                                  "significant_digits": 2
+                                }
+                              }
+                            },
+                            "search": "B(?=(d{3})+(?!d))",
+                            "replace": {
+                              "type": {
+                                "type": "String",
+                                "value": null
+                              },
+                              "ast_type": "Const",
+                              "value": ","
+                            },
+                            "flags": "g"
+                          }
+                        ],
+                        "seperator": ""
+                      }
+                    }
+                  }
+                ],
+                "seperator": ""
+              },
+              "hidden": false,
+              "hidden_detail": false
+            },
+            {
+              "name": "Processed",
+              "kind": "primitive",
+              "value": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "processed"
+              },
+              "background": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "IfElse",
+                "predicate": {
+                  "type": {
+                    "type": "Boolean",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "processed"
+                },
+                "true": {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Const",
+                  "value": "#50BA8B66"
+                },
+                "false": {
+                  "type": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "ast_type": "Const",
+                  "value": "#BA6F6366"
+                }
+              },
+              "readonly": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": false
+              },
+              "hidden": false,
+              "hidden_detail": false,
+              "type": {
+                "type": "Boolean",
+                "value": null
+              }
+            },
+            {
+              "name": "Tags",
+              "kind": "primitive",
+              "value": {
+                "type": {
+                  "type": "Set",
+                  "value": {
+                    "type": "String",
+                    "value": null
+                  }
+                },
+                "ast_type": "Variable",
+                "name": "tags"
+              },
+              "type": {
+                "type": "Set",
+                "value": {
+                  "type": "String",
+                  "value": null
+                }
+              },
+              "readonly": {
+                "type": {
+                  "type": "Boolean",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": false
+              },
+              "hidden": false,
+              "hidden_detail": false
+            }
+          ],
+          "input_streams": [],
+          "writable": {
+            "type": "writable",
+            "add": true,
+            "remove": true,
+            "update": true
+          }
+        }
+      }
+    }
+  }
+}

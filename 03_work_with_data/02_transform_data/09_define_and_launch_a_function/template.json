@@ -1,0 +1,318 @@
+{
+  "streams": {
+    "Function.factoral.output": {
+      "name": "Function.factoral.output",
+      "module": [],
+      "type": {
+        "type": "Integer",
+        "value": null
+      },
+      "writable": false
+    },
+    "Function.increment.y": {
+      "name": "Function.increment.y",
+      "module": [],
+      "type": {
+        "type": "Integer",
+        "value": null
+      },
+      "writable": false
+    },
+    "Writeable.n": {
+      "name": "Writeable.n",
+      "module": [],
+      "type": {
+        "type": "Integer",
+        "value": null
+      },
+      "writable": true
+    },
+    "Writeable.x": {
+      "name": "Writeable.x",
+      "module": [],
+      "type": {
+        "type": "Integer",
+        "value": null
+      },
+      "writable": true
+    }
+  },
+  "tasks": {
+    "Function.factoral": {
+      "task_type": "function",
+      "module": [],
+      "name": "Function.factoral",
+      "inputs": {
+        "n": {
+          "name": "Writeable.n",
+          "module": [],
+          "type": {
+            "type": "Integer",
+            "value": null
+          },
+          "optional": false
+        }
+      },
+      "outputs": {
+        "output.output": {
+          "name": "Function.factoral.output",
+          "module": [],
+          "type": {
+            "type": "Integer",
+            "value": null
+          },
+          "optional": false
+        }
+      },
+      "defaults": {},
+      "statements": [
+        {
+          "type": "if",
+          "predicate": {
+            "type": {
+              "type": "Boolean",
+              "value": null
+            },
+            "ast_type": "Less",
+            "first": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "n"
+            },
+            "second": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Const",
+              "value": "0"
+            }
+          },
+          "true_statements": [
+            {
+              "type": "error",
+              "message": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": "input is negative"
+              }
+            }
+          ],
+          "false_statements": []
+        },
+        {
+          "type": "let",
+          "name": "ret",
+          "expr": {
+            "type": {
+              "type": "Integer",
+              "value": null
+            },
+            "ast_type": "Const",
+            "value": "1"
+          }
+        },
+        {
+          "type": "let",
+          "name": "i",
+          "expr": {
+            "type": {
+              "type": "Integer",
+              "value": null
+            },
+            "ast_type": "Const",
+            "value": "1"
+          }
+        },
+        {
+          "type": "while",
+          "label": "0",
+          "predicate": {
+            "type": {
+              "type": "Boolean",
+              "value": null
+            },
+            "ast_type": "Less",
+            "first": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "i"
+            },
+            "second": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "n"
+            }
+          },
+          "statements": [
+            {
+              "type": "assign",
+              "name": "i",
+              "expr": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Add",
+                "first": {
+                  "type": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "i"
+                },
+                "second": {
+                  "type": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "ast_type": "Const",
+                  "value": "1"
+                }
+              }
+            },
+            {
+              "type": "assign",
+              "name": "ret",
+              "expr": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Multiply",
+                "first": {
+                  "type": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "ret"
+                },
+                "second": {
+                  "type": {
+                    "type": "Integer",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "i"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "return",
+          "outputs": {
+            "output": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "ret"
+            }
+          }
+        }
+      ]
+    },
+    "Function.increment": {
+      "task_type": "function",
+      "module": [],
+      "name": "Function.increment",
+      "inputs": {
+        "x": {
+          "name": "Writeable.x",
+          "module": [],
+          "type": {
+            "type": "Integer",
+            "value": null
+          },
+          "optional": false
+        }
+      },
+      "outputs": {
+        "output.y": {
+          "name": "Function.increment.y",
+          "module": [],
+          "type": {
+            "type": "Integer",
+            "value": null
+          },
+          "optional": false
+        }
+      },
+      "defaults": {},
+      "statements": [
+        {
+          "type": "return",
+          "outputs": {
+            "y": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Add",
+              "first": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "x"
+              },
+              "second": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": "1"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "defaults": {
+    "Writeable.n": {
+      "default_type": "value",
+      "stream": "Writeable.n",
+      "module": [],
+      "value": {
+        "type": {
+          "type": "Integer",
+          "value": null
+        },
+        "ast_type": "Const",
+        "value": "10"
+      }
+    },
+    "Writeable.x": {
+      "default_type": "value",
+      "stream": "Writeable.x",
+      "module": [],
+      "value": {
+        "type": {
+          "type": "Integer",
+          "value": null
+        },
+        "ast_type": "Const",
+        "value": "2"
+      }
+    }
+  }
+}
