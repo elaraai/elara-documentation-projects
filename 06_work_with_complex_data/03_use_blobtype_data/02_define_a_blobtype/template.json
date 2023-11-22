@@ -1,1 +1,31 @@
-{}
+{
+  "streams": {
+    "Writeable.My Other Source": {
+      "name": "Writeable.My Other Source",
+      "module": [],
+      "type": {
+        "type": "Blob",
+        "value": null
+      },
+      "writable": true
+    },
+    "Writeable.My Source": {
+      "name": "Writeable.My Source",
+      "module": [],
+      "type": {
+        "type": "Blob",
+        "value": null
+      },
+      "writable": true
+    }
+  },
+  "tasks": {},
+  "defaults": {
+    "Writeable.My Other Source": {
+      "default_type": "file",
+      "stream": "Writeable.My Other Source",
+      "module": [],
+      "path": "./data/test.csv"
+    }
+  }
+}
