@@ -1,1 +1,523 @@
-{}
+{
+  "streams": {
+    "Pipeline.My Other Pipeline": {
+      "name": "Pipeline.My Other Pipeline",
+      "module": [],
+      "type": {
+        "type": "Blob",
+        "value": null
+      },
+      "writable": false
+    },
+    "Pipeline.My Pipeline": {
+      "name": "Pipeline.My Pipeline",
+      "module": [],
+      "type": {
+        "type": "Blob",
+        "value": null
+      },
+      "writable": false
+    },
+    "Writeable.My Source": {
+      "name": "Writeable.My Source",
+      "module": [],
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "string": {
+                "type": "String",
+                "value": null
+              },
+              "date": {
+                "type": "DateTime",
+                "value": null
+              },
+              "float": {
+                "type": "Float",
+                "value": null
+              },
+              "integer": {
+                "type": "Float",
+                "value": null
+              },
+              "boolean": {
+                "type": "Boolean",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": true
+    }
+  },
+  "tasks": {
+    "Pipeline.My Other Pipeline": {
+      "task_type": "pipeline",
+      "module": [],
+      "name": "Pipeline.My Other Pipeline",
+      "inputs": {
+        "input": {
+          "name": "Writeable.My Source",
+          "module": [],
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "string": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "float": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "integer": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "boolean": {
+                    "type": "Boolean",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "optional": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.My Other Pipeline",
+          "module": [],
+          "type": {
+            "type": "Blob",
+            "value": null
+          },
+          "optional": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "transform",
+          "output_type": {
+            "type": "Blob",
+            "value": null
+          },
+          "expression": {
+            "type": {
+              "type": "Blob",
+              "value": null
+            },
+            "ast_type": "ToCsv",
+            "value": {
+              "type": {
+                "type": "Array",
+                "value": {
+                  "type": "Struct",
+                  "value": {
+                    "string": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "float": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "integer": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "boolean": {
+                      "type": "Boolean",
+                      "value": null
+                    }
+                  }
+                }
+              },
+              "ast_type": "ToArray",
+              "collection": {
+                "type": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "string": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "date": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "float": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "integer": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "boolean": {
+                          "type": "Boolean",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                },
+                "ast_type": "Variable",
+                "name": "value"
+              },
+              "output_value": {
+                "type": {
+                  "type": "Struct",
+                  "value": {
+                    "string": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "float": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "integer": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "boolean": {
+                      "type": "Boolean",
+                      "value": null
+                    }
+                  }
+                },
+                "ast_type": "Variable",
+                "name": "__ToArrayValue0"
+              },
+              "input_value": {
+                "type": {
+                  "type": "Struct",
+                  "value": {
+                    "string": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "date": {
+                      "type": "DateTime",
+                      "value": null
+                    },
+                    "float": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "integer": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "boolean": {
+                      "type": "Boolean",
+                      "value": null
+                    }
+                  }
+                },
+                "ast_type": "Variable",
+                "name": "__ToArrayValue0"
+              },
+              "input_key": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "__ToArrayKey0"
+              }
+            },
+            "printers": {
+              "string": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "field"
+              },
+              "date": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Print",
+                "value": {
+                  "type": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "field"
+                }
+              },
+              "float": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Print",
+                "value": {
+                  "type": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "field"
+                }
+              },
+              "integer": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Print",
+                "value": {
+                  "type": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "field"
+                }
+              },
+              "boolean": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Print",
+                "value": {
+                  "type": {
+                    "type": "Boolean",
+                    "value": null
+                  },
+                  "ast_type": "Variable",
+                  "name": "field"
+                }
+              }
+            },
+            "options": {
+              "nullString": "",
+              "quoteChar": "\"",
+              "escapeChar": "\"",
+              "delimiter": ",",
+              "newline": "\r\n",
+              "header": true
+            }
+          }
+        }
+      ]
+    },
+    "Pipeline.My Pipeline": {
+      "task_type": "pipeline",
+      "name": "Pipeline.My Pipeline",
+      "module": [],
+      "inputs": {
+        "input": {
+          "name": "Writeable.My Source",
+          "module": [],
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "string": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "float": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "integer": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "boolean": {
+                    "type": "Boolean",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "optional": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Pipeline.My Pipeline",
+          "module": [],
+          "type": {
+            "type": "Blob",
+            "value": null
+          },
+          "optional": false
+        }
+      },
+      "operations": [
+        {
+          "operation_type": "toCsv",
+          "output_type": {
+            "type": "Blob",
+            "value": null
+          },
+          "selections": {
+            "string": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.string"
+            },
+            "date": {
+              "type": {
+                "type": "DateTime",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.date"
+            },
+            "float": {
+              "type": {
+                "type": "Float",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.float"
+            },
+            "integer": {
+              "type": {
+                "type": "Float",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.integer"
+            },
+            "boolean": {
+              "type": {
+                "type": "Boolean",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "field.boolean"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "defaults": {
+    "Writeable.My Source": {
+      "default_type": "value",
+      "stream": "Writeable.My Source",
+      "module": [],
+      "value": {
+        "type": {
+          "type": "Dict",
+          "value": {
+            "key": {
+              "type": "String",
+              "value": null
+            },
+            "value": {
+              "type": "Struct",
+              "value": {
+                "string": {
+                  "type": "String",
+                  "value": null
+                },
+                "date": {
+                  "type": "DateTime",
+                  "value": null
+                },
+                "float": {
+                  "type": "Float",
+                  "value": null
+                },
+                "integer": {
+                  "type": "Float",
+                  "value": null
+                },
+                "boolean": {
+                  "type": "Boolean",
+                  "value": null
+                }
+              }
+            }
+          }
+        },
+        "ast_type": "Const",
+        "value": [
+          {
+            "key": "01",
+            "value": {
+              "string": "0mtsqttl4s5",
+              "date": "2023-11-22T20:21:13.775Z",
+              "float": -790.29,
+              "integer": -875,
+              "boolean": false
+            }
+          },
+          {
+            "key": "02",
+            "value": {
+              "string": "0mtsqttl4s5",
+              "date": "2023-11-22T20:21:13.775Z",
+              "float": -790.29,
+              "integer": -875,
+              "boolean": false
+            }
+          }
+        ]
+      }
+    }
+  }
+}

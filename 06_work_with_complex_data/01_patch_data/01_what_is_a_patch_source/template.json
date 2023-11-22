@@ -1,1 +1,1222 @@
-{}
+{
+  "streams": {
+    "Source.My Patch": {
+      "name": "Source.My Patch",
+      "module": [],
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "value": {
+                "type": "Integer",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "SourceConflict.My Patch": {
+      "name": "SourceConflict.My Patch",
+      "module": [],
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Variant",
+            "value": {
+              "Delete": {
+                "type": "Struct",
+                "value": {
+                  "value": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              },
+              "Insert": {
+                "type": "Struct",
+                "value": {
+                  "value": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              },
+              "Update": {
+                "type": "Struct",
+                "value": {
+                  "inserted": {
+                    "type": "Struct",
+                    "value": {
+                      "value": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
+                  },
+                  "deleted": {
+                    "type": "Struct",
+                    "value": {
+                      "value": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "writable": false
+    },
+    "Writeable.My Source": {
+      "name": "Writeable.My Source",
+      "module": [],
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Struct",
+            "value": {
+              "value": {
+                "type": "Integer",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": true
+    },
+    "Writeable.Patch.My Patch": {
+      "name": "Writeable.Patch.My Patch",
+      "module": [],
+      "type": {
+        "type": "Dict",
+        "value": {
+          "key": {
+            "type": "String",
+            "value": null
+          },
+          "value": {
+            "type": "Variant",
+            "value": {
+              "Delete": {
+                "type": "Struct",
+                "value": {
+                  "value": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              },
+              "Insert": {
+                "type": "Struct",
+                "value": {
+                  "value": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              },
+              "Update": {
+                "type": "Struct",
+                "value": {
+                  "inserted": {
+                    "type": "Struct",
+                    "value": {
+                      "value": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
+                  },
+                  "deleted": {
+                    "type": "Struct",
+                    "value": {
+                      "value": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "writable": true
+    }
+  },
+  "tasks": {
+    "Source.My Patch": {
+      "task_type": "source",
+      "source_type": "patch",
+      "name": "Source.My Patch",
+      "module": [],
+      "inputs": {
+        "base": {
+          "name": "Writeable.My Source",
+          "module": [],
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "value": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "optional": false
+        },
+        "patch": {
+          "name": "Writeable.Patch.My Patch",
+          "module": [],
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Variant",
+                "value": {
+                  "Delete": {
+                    "type": "Struct",
+                    "value": {
+                      "value": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
+                  },
+                  "Insert": {
+                    "type": "Struct",
+                    "value": {
+                      "value": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
+                  },
+                  "Update": {
+                    "type": "Struct",
+                    "value": {
+                      "inserted": {
+                        "type": "Struct",
+                        "value": {
+                          "value": {
+                            "type": "Integer",
+                            "value": null
+                          }
+                        }
+                      },
+                      "deleted": {
+                        "type": "Struct",
+                        "value": {
+                          "value": {
+                            "type": "Integer",
+                            "value": null
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "optional": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Source.My Patch",
+          "module": [],
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "value": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "optional": false
+        },
+        "conflicts": {
+          "name": "SourceConflict.My Patch",
+          "module": [],
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Variant",
+                "value": {
+                  "Delete": {
+                    "type": "Struct",
+                    "value": {
+                      "value": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
+                  },
+                  "Insert": {
+                    "type": "Struct",
+                    "value": {
+                      "value": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
+                  },
+                  "Update": {
+                    "type": "Struct",
+                    "value": {
+                      "inserted": {
+                        "type": "Struct",
+                        "value": {
+                          "value": {
+                            "type": "Integer",
+                            "value": null
+                          }
+                        }
+                      },
+                      "deleted": {
+                        "type": "Struct",
+                        "value": {
+                          "value": {
+                            "type": "Integer",
+                            "value": null
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "optional": false
+        }
+      }
+    }
+  },
+  "defaults": {
+    "Writeable.My Source": {
+      "default_type": "value",
+      "stream": "Writeable.My Source",
+      "module": [],
+      "value": {
+        "type": {
+          "type": "Dict",
+          "value": {
+            "key": {
+              "type": "String",
+              "value": null
+            },
+            "value": {
+              "type": "Struct",
+              "value": {
+                "value": {
+                  "type": "Integer",
+                  "value": null
+                }
+              }
+            }
+          }
+        },
+        "ast_type": "Const",
+        "value": [
+          {
+            "key": "0",
+            "value": {
+              "value": "1"
+            }
+          },
+          {
+            "key": "1",
+            "value": {
+              "value": "2"
+            }
+          }
+        ]
+      }
+    },
+    "Writeable.Patch.My Patch": {
+      "default_type": "value",
+      "stream": "Writeable.Patch.My Patch",
+      "module": [],
+      "value": {
+        "type": {
+          "type": "Dict",
+          "value": {
+            "key": {
+              "type": "String",
+              "value": null
+            },
+            "value": {
+              "type": "Variant",
+              "value": {
+                "Delete": {
+                  "type": "Struct",
+                  "value": {
+                    "value": {
+                      "type": "Integer",
+                      "value": null
+                    }
+                  }
+                },
+                "Insert": {
+                  "type": "Struct",
+                  "value": {
+                    "value": {
+                      "type": "Integer",
+                      "value": null
+                    }
+                  }
+                },
+                "Update": {
+                  "type": "Struct",
+                  "value": {
+                    "inserted": {
+                      "type": "Struct",
+                      "value": {
+                        "value": {
+                          "type": "Integer",
+                          "value": null
+                        }
+                      }
+                    },
+                    "deleted": {
+                      "type": "Struct",
+                      "value": {
+                        "value": {
+                          "type": "Integer",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ast_type": "Const",
+        "value": []
+      }
+    }
+  },
+  "layouts": {
+    "My Layout": {
+      "name": "My Layout",
+      "module": [],
+      "visual": {
+        "type": "flat",
+        "name": "My Layout",
+        "visual": {
+          "type": "panel",
+          "orientation": "row",
+          "visuals": [
+            {
+              "type": "table",
+              "kind": "struct",
+              "name": "My Patch Table",
+              "stream": {
+                "name": "Source.My Patch",
+                "module": [],
+                "type": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "value": {
+                          "type": "Integer",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                },
+                "writable": false
+              },
+              "columns": [
+                {
+                  "name": "Key",
+                  "kind": "key",
+                  "value": {
+                    "type": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "key"
+                  },
+                  "readonly": {
+                    "type": {
+                      "type": "Boolean",
+                      "value": null
+                    },
+                    "ast_type": "Const",
+                    "value": true
+                  },
+                  "hidden": true,
+                  "hidden_detail": false
+                },
+                {
+                  "name": "value",
+                  "kind": "primitive",
+                  "value": {
+                    "type": {
+                      "type": "Integer",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "value"
+                  },
+                  "readonly": {
+                    "type": {
+                      "type": "Boolean",
+                      "value": null
+                    },
+                    "ast_type": "Const",
+                    "value": false
+                  },
+                  "hidden": false,
+                  "hidden_detail": false
+                }
+              ],
+              "input_streams": [],
+              "writable": {
+                "type": "patch",
+                "add": true,
+                "remove": true,
+                "update": true,
+                "conflicts": {
+                  "name": "SourceConflict.My Patch",
+                  "module": [],
+                  "type": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Variant",
+                        "value": {
+                          "Delete": {
+                            "type": "Struct",
+                            "value": {
+                              "value": {
+                                "type": "Integer",
+                                "value": null
+                              }
+                            }
+                          },
+                          "Insert": {
+                            "type": "Struct",
+                            "value": {
+                              "value": {
+                                "type": "Integer",
+                                "value": null
+                              }
+                            }
+                          },
+                          "Update": {
+                            "type": "Struct",
+                            "value": {
+                              "inserted": {
+                                "type": "Struct",
+                                "value": {
+                                  "value": {
+                                    "type": "Integer",
+                                    "value": null
+                                  }
+                                }
+                              },
+                              "deleted": {
+                                "type": "Struct",
+                                "value": {
+                                  "value": {
+                                    "type": "Integer",
+                                    "value": null
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "writable": false
+                },
+                "output": {
+                  "name": "Source.My Patch",
+                  "module": [],
+                  "type": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Struct",
+                        "value": {
+                          "value": {
+                            "type": "Integer",
+                            "value": null
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "writable": false
+                },
+                "patch": {
+                  "name": "Writeable.Patch.My Patch",
+                  "module": [],
+                  "type": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Variant",
+                        "value": {
+                          "Delete": {
+                            "type": "Struct",
+                            "value": {
+                              "value": {
+                                "type": "Integer",
+                                "value": null
+                              }
+                            }
+                          },
+                          "Insert": {
+                            "type": "Struct",
+                            "value": {
+                              "value": {
+                                "type": "Integer",
+                                "value": null
+                              }
+                            }
+                          },
+                          "Update": {
+                            "type": "Struct",
+                            "value": {
+                              "inserted": {
+                                "type": "Struct",
+                                "value": {
+                                  "value": {
+                                    "type": "Integer",
+                                    "value": null
+                                  }
+                                }
+                              },
+                              "deleted": {
+                                "type": "Struct",
+                                "value": {
+                                  "value": {
+                                    "type": "Integer",
+                                    "value": null
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "writable": true
+                },
+                "base": {
+                  "name": "Writeable.My Source",
+                  "module": [],
+                  "type": {
+                    "type": "Dict",
+                    "value": {
+                      "key": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Struct",
+                        "value": {
+                          "value": {
+                            "type": "Integer",
+                            "value": null
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "writable": true
+                },
+                "task": {
+                  "task_type": "source",
+                  "source_type": "patch",
+                  "name": "Source.My Patch",
+                  "module": [],
+                  "inputs": {
+                    "base": {
+                      "name": "Writeable.My Source",
+                      "module": [],
+                      "type": {
+                        "type": "Dict",
+                        "value": {
+                          "key": {
+                            "type": "String",
+                            "value": null
+                          },
+                          "value": {
+                            "type": "Struct",
+                            "value": {
+                              "value": {
+                                "type": "Integer",
+                                "value": null
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "optional": false
+                    },
+                    "patch": {
+                      "name": "Writeable.Patch.My Patch",
+                      "module": [],
+                      "type": {
+                        "type": "Dict",
+                        "value": {
+                          "key": {
+                            "type": "String",
+                            "value": null
+                          },
+                          "value": {
+                            "type": "Variant",
+                            "value": {
+                              "Delete": {
+                                "type": "Struct",
+                                "value": {
+                                  "value": {
+                                    "type": "Integer",
+                                    "value": null
+                                  }
+                                }
+                              },
+                              "Insert": {
+                                "type": "Struct",
+                                "value": {
+                                  "value": {
+                                    "type": "Integer",
+                                    "value": null
+                                  }
+                                }
+                              },
+                              "Update": {
+                                "type": "Struct",
+                                "value": {
+                                  "inserted": {
+                                    "type": "Struct",
+                                    "value": {
+                                      "value": {
+                                        "type": "Integer",
+                                        "value": null
+                                      }
+                                    }
+                                  },
+                                  "deleted": {
+                                    "type": "Struct",
+                                    "value": {
+                                      "value": {
+                                        "type": "Integer",
+                                        "value": null
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "optional": false
+                    }
+                  },
+                  "outputs": {
+                    "output": {
+                      "name": "Source.My Patch",
+                      "module": [],
+                      "type": {
+                        "type": "Dict",
+                        "value": {
+                          "key": {
+                            "type": "String",
+                            "value": null
+                          },
+                          "value": {
+                            "type": "Struct",
+                            "value": {
+                              "value": {
+                                "type": "Integer",
+                                "value": null
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "optional": false
+                    },
+                    "conflicts": {
+                      "name": "SourceConflict.My Patch",
+                      "module": [],
+                      "type": {
+                        "type": "Dict",
+                        "value": {
+                          "key": {
+                            "type": "String",
+                            "value": null
+                          },
+                          "value": {
+                            "type": "Variant",
+                            "value": {
+                              "Delete": {
+                                "type": "Struct",
+                                "value": {
+                                  "value": {
+                                    "type": "Integer",
+                                    "value": null
+                                  }
+                                }
+                              },
+                              "Insert": {
+                                "type": "Struct",
+                                "value": {
+                                  "value": {
+                                    "type": "Integer",
+                                    "value": null
+                                  }
+                                }
+                              },
+                              "Update": {
+                                "type": "Struct",
+                                "value": {
+                                  "inserted": {
+                                    "type": "Struct",
+                                    "value": {
+                                      "value": {
+                                        "type": "Integer",
+                                        "value": null
+                                      }
+                                    }
+                                  },
+                                  "deleted": {
+                                    "type": "Struct",
+                                    "value": {
+                                      "value": {
+                                        "type": "Integer",
+                                        "value": null
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "optional": false
+                    }
+                  }
+                },
+                "undo": true
+              },
+              "percentage": 50
+            },
+            {
+              "type": "panel",
+              "orientation": "column",
+              "visuals": [
+                {
+                  "type": "table",
+                  "kind": "struct",
+                  "name": "My Source",
+                  "stream": {
+                    "name": "Writeable.My Source",
+                    "module": [],
+                    "type": {
+                      "type": "Dict",
+                      "value": {
+                        "key": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "value": {
+                          "type": "Struct",
+                          "value": {
+                            "value": {
+                              "type": "Integer",
+                              "value": null
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "writable": true
+                  },
+                  "columns": [
+                    {
+                      "name": "Key",
+                      "kind": "key",
+                      "value": {
+                        "type": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "ast_type": "Variable",
+                        "name": "key"
+                      },
+                      "readonly": {
+                        "type": {
+                          "type": "Boolean",
+                          "value": null
+                        },
+                        "ast_type": "Const",
+                        "value": true
+                      },
+                      "hidden": true,
+                      "hidden_detail": false
+                    },
+                    {
+                      "name": "value",
+                      "kind": "primitive",
+                      "value": {
+                        "type": {
+                          "type": "Integer",
+                          "value": null
+                        },
+                        "ast_type": "Variable",
+                        "name": "value"
+                      },
+                      "readonly": {
+                        "type": {
+                          "type": "Boolean",
+                          "value": null
+                        },
+                        "ast_type": "Const",
+                        "value": false
+                      },
+                      "hidden": false,
+                      "hidden_detail": false
+                    }
+                  ],
+                  "input_streams": [],
+                  "writable": {
+                    "type": "writable",
+                    "add": true,
+                    "remove": true,
+                    "update": true
+                  },
+                  "percentage": 30
+                },
+                {
+                  "type": "table",
+                  "kind": "primitive",
+                  "name": "My Patches",
+                  "stream": {
+                    "name": "Writeable.Patch.My Patch",
+                    "module": [],
+                    "type": {
+                      "type": "Dict",
+                      "value": {
+                        "key": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "value": {
+                          "type": "Variant",
+                          "value": {
+                            "Delete": {
+                              "type": "Struct",
+                              "value": {
+                                "value": {
+                                  "type": "Integer",
+                                  "value": null
+                                }
+                              }
+                            },
+                            "Insert": {
+                              "type": "Struct",
+                              "value": {
+                                "value": {
+                                  "type": "Integer",
+                                  "value": null
+                                }
+                              }
+                            },
+                            "Update": {
+                              "type": "Struct",
+                              "value": {
+                                "inserted": {
+                                  "type": "Struct",
+                                  "value": {
+                                    "value": {
+                                      "type": "Integer",
+                                      "value": null
+                                    }
+                                  }
+                                },
+                                "deleted": {
+                                  "type": "Struct",
+                                  "value": {
+                                    "value": {
+                                      "type": "Integer",
+                                      "value": null
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "writable": true
+                  },
+                  "writable": {
+                    "type": "none",
+                    "add": false,
+                    "remove": false,
+                    "update": false
+                  },
+                  "columns": [
+                    {
+                      "name": "Key",
+                      "kind": "key",
+                      "value": {
+                        "type": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "ast_type": "Variable",
+                        "name": "key"
+                      },
+                      "readonly": {
+                        "type": {
+                          "type": "Boolean",
+                          "value": null
+                        },
+                        "ast_type": "Const",
+                        "value": true
+                      },
+                      "hidden": false,
+                      "hidden_detail": false
+                    },
+                    {
+                      "name": "Value",
+                      "kind": "value",
+                      "value": {
+                        "type": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "ast_type": "Variable",
+                        "name": "value"
+                      },
+                      "readonly": {
+                        "type": {
+                          "type": "Boolean",
+                          "value": null
+                        },
+                        "ast_type": "Const",
+                        "value": true
+                      },
+                      "hidden": false,
+                      "hidden_detail": false
+                    }
+                  ],
+                  "input_streams": [],
+                  "percentage": 40
+                },
+                {
+                  "type": "table",
+                  "kind": "primitive",
+                  "name": "My Conflicts",
+                  "stream": {
+                    "name": "SourceConflict.My Patch",
+                    "module": [],
+                    "type": {
+                      "type": "Dict",
+                      "value": {
+                        "key": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "value": {
+                          "type": "Variant",
+                          "value": {
+                            "Delete": {
+                              "type": "Struct",
+                              "value": {
+                                "value": {
+                                  "type": "Integer",
+                                  "value": null
+                                }
+                              }
+                            },
+                            "Insert": {
+                              "type": "Struct",
+                              "value": {
+                                "value": {
+                                  "type": "Integer",
+                                  "value": null
+                                }
+                              }
+                            },
+                            "Update": {
+                              "type": "Struct",
+                              "value": {
+                                "inserted": {
+                                  "type": "Struct",
+                                  "value": {
+                                    "value": {
+                                      "type": "Integer",
+                                      "value": null
+                                    }
+                                  }
+                                },
+                                "deleted": {
+                                  "type": "Struct",
+                                  "value": {
+                                    "value": {
+                                      "type": "Integer",
+                                      "value": null
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "writable": false
+                  },
+                  "writable": {
+                    "type": "none",
+                    "add": false,
+                    "remove": false,
+                    "update": false
+                  },
+                  "columns": [
+                    {
+                      "name": "Key",
+                      "kind": "key",
+                      "value": {
+                        "type": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "ast_type": "Variable",
+                        "name": "key"
+                      },
+                      "readonly": {
+                        "type": {
+                          "type": "Boolean",
+                          "value": null
+                        },
+                        "ast_type": "Const",
+                        "value": true
+                      },
+                      "hidden": false,
+                      "hidden_detail": false
+                    },
+                    {
+                      "name": "Value",
+                      "kind": "value",
+                      "value": {
+                        "type": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "ast_type": "Variable",
+                        "name": "value"
+                      },
+                      "readonly": {
+                        "type": {
+                          "type": "Boolean",
+                          "value": null
+                        },
+                        "ast_type": "Const",
+                        "value": true
+                      },
+                      "hidden": false,
+                      "hidden_detail": false
+                    }
+                  ],
+                  "input_streams": [],
+                  "percentage": 30
+                }
+              ],
+              "percentage": 50
+            }
+          ]
+        }
+      }
+    }
+  }
+}
