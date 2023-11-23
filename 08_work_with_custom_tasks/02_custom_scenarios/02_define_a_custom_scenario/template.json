@@ -1,1 +1,147 @@
-{}
+{
+  "streams": {
+    "CustomSimulationResult.Quadratic.output.txt": {
+      "name": "CustomSimulationResult.Quadratic.output.txt",
+      "module": [],
+      "type": {
+        "type": "Float",
+        "value": null
+      },
+      "writable": false
+    },
+    "Writeable.My Source": {
+      "name": "Writeable.My Source",
+      "module": [],
+      "type": {
+        "type": "Float",
+        "value": null
+      },
+      "writable": true
+    }
+  },
+  "tasks": {
+    "CustomOptimization.Quadratic": {
+      "task_type": "custom_optimization",
+      "module": [],
+      "name": "CustomOptimization.Quadratic",
+      "inputs": {
+        "input.input.txt": {
+          "name": "Writeable.My Source",
+          "module": [],
+          "type": {
+            "type": "Float",
+            "value": null
+          },
+          "optional": false
+        }
+      },
+      "outputs": {
+        "result.output.txt": {
+          "name": "CustomSimulationResult.Quadratic.output.txt",
+          "module": [],
+          "type": {
+            "type": "Float",
+            "value": null
+          },
+          "optional": false
+        }
+      },
+      "results": {
+        "output.txt": {
+          "type": {
+            "type": "Float",
+            "value": null
+          },
+          "ast_type": "Variable",
+          "name": "output.txt"
+        }
+      },
+      "inputFiles": [
+        {
+          "input": "input.input.txt",
+          "path": "input.txt",
+          "executable": false,
+          "toBlob": {
+            "type": {
+              "type": "Blob",
+              "value": null
+            },
+            "ast_type": "Utf8Encode",
+            "from": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "Print",
+              "value": {
+                "type": {
+                  "type": "Float",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "input.txt"
+              }
+            }
+          }
+        }
+      ],
+      "outputFiles": [
+        {
+          "path": "output.txt",
+          "fromBlob": {
+            "type": {
+              "type": "Float",
+              "value": null
+            },
+            "ast_type": "Parse",
+            "from": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "Utf8Decode",
+              "from": {
+                "type": {
+                  "type": "Blob",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "output.txt"
+              }
+            }
+          }
+        }
+      ],
+      "image": null,
+      "command": [
+        "/bin/bash",
+        "-c",
+        "awk '{x=$1; printf \"%.14f\\n\", x * (10 - x)}' input.txt > output.txt"
+      ],
+      "mountDir": "/root/data",
+      "objective": {
+        "type": {
+          "type": "Float",
+          "value": null
+        },
+        "ast_type": "Const",
+        "value": 0
+      },
+      "optimizations": [],
+      "configuration": {
+        "trajectories": 20,
+        "max_iterations": 1000,
+        "min_iterations": 0,
+        "rtol": 0.001,
+        "atol": 0,
+        "in_memory": false,
+        "optimization_algorithm": "gradient_free"
+      },
+      "logStdOut": false,
+      "logStdErr": false,
+      "envs": {},
+      "simulationTrajectories": null
+    }
+  },
+  "defaults": {}
+}
