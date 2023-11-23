@@ -1,3 +1,6 @@
-import { Template } from "@elaraai/core"
+import { SourceBuilder, Template } from "@elaraai/core"
 
-export default Template();
+const my_source = new SourceBuilder("My Source")
+    .file({ path: "./data/test.csv" });
+
+export default Template(my_source)

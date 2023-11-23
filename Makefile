@@ -85,14 +85,6 @@ deploy:
 	 cd 05_use_expressions/06_advanced_topics/03_mutation && edk template deploy -ycw "05_06_03_mutation"
 	 cd 06_work_with_complex_data/01_patch_data/01_what_is_a_patch_source && edk template deploy -ycw "06_01_01_what_is_a_patch_source"
 	 cd 06_work_with_complex_data/01_patch_data/02_define_a_patch_source && edk template deploy -ycw "06_01_02_define_a_patch_source"
-	 cd 06_work_with_complex_data/02_visualise_data/01_what_is_a_patch_visual && edk template deploy -ycw "06_02_01_what_is_a_patch_visual"
-	 cd 06_work_with_complex_data/02_visualise_data/02_define_a_patch_visual && edk template deploy -ycw "06_02_02_define_a_patch_visual"
-	 cd 06_work_with_complex_data/02_visualise_data/03_input_streams_into_a_layout && edk template deploy -ycw "06_02_03_input_streams_into_a_layout"
-	 cd 06_work_with_complex_data/02_visualise_data/04_define_planner_visual && edk template deploy -ycw "06_02_04_define_planner_visual"
-	 cd 06_work_with_complex_data/02_visualise_data/05_define_layered_vega_visual && edk template deploy -ycw "06_02_05_define_layered_vega_visual"
-	 cd 06_work_with_complex_data/02_visualise_data/06_define_formatted_table_visual && edk template deploy -ycw "06_02_06_define_formatted_table_visual"
-	 cd 06_work_with_complex_data/02_visualise_data/07_define_patch_table_visual && edk template deploy -ycw "06_02_07_define_patch_table_visual"
-	 cd 06_work_with_complex_data/02_visualise_data/08_define_form_visual && edk template deploy -ycw "06_02_08_define_form_visual"
 	 cd 06_work_with_complex_data/03_use_blobtype_data/01_what_is_the_blob_type && edk template deploy -ycw "06_03_01_what_is_the_blob_type"
 	 cd 06_work_with_complex_data/03_use_blobtype_data/02_define_a_blobtype && edk template deploy -ycw "06_03_02_define_a_blobtype"
 	 cd 06_work_with_complex_data/03_use_blobtype_data/03_validate_a_blobtype && edk template deploy -ycw "06_03_03_validate_a_blobtype"
@@ -203,14 +195,6 @@ install:
 	 cd 05_use_expressions/06_advanced_topics/03_mutation && npm i
 	 cd 06_work_with_complex_data/01_patch_data/01_what_is_a_patch_source && npm i
 	 cd 06_work_with_complex_data/01_patch_data/02_define_a_patch_source && npm i
-	 cd 06_work_with_complex_data/02_visualise_data/01_what_is_a_patch_visual && npm i
-	 cd 06_work_with_complex_data/02_visualise_data/02_define_a_patch_visual && npm i
-	 cd 06_work_with_complex_data/02_visualise_data/03_input_streams_into_a_layout && npm i
-	 cd 06_work_with_complex_data/02_visualise_data/04_define_planner_visual && npm i
-	 cd 06_work_with_complex_data/02_visualise_data/05_define_layered_vega_visual && npm i
-	 cd 06_work_with_complex_data/02_visualise_data/06_define_formatted_table_visual && npm i
-	 cd 06_work_with_complex_data/02_visualise_data/07_define_patch_table_visual && npm i
-	 cd 06_work_with_complex_data/02_visualise_data/08_define_form_visual && npm i
 	 cd 06_work_with_complex_data/03_use_blobtype_data/01_what_is_the_blob_type && npm i
 	 cd 06_work_with_complex_data/03_use_blobtype_data/02_define_a_blobtype && npm i
 	 cd 06_work_with_complex_data/03_use_blobtype_data/03_validate_a_blobtype && npm i
@@ -321,14 +305,6 @@ build:
 	 cd 05_use_expressions/06_advanced_topics/03_mutation && edk template build
 	 cd 06_work_with_complex_data/01_patch_data/01_what_is_a_patch_source && edk template build
 	 cd 06_work_with_complex_data/01_patch_data/02_define_a_patch_source && edk template build
-	 cd 06_work_with_complex_data/02_visualise_data/01_what_is_a_patch_visual && edk template build
-	 cd 06_work_with_complex_data/02_visualise_data/02_define_a_patch_visual && edk template build
-	 cd 06_work_with_complex_data/02_visualise_data/03_input_streams_into_a_layout && edk template build
-	 cd 06_work_with_complex_data/02_visualise_data/04_define_planner_visual && edk template build
-	 cd 06_work_with_complex_data/02_visualise_data/05_define_layered_vega_visual && edk template build
-	 cd 06_work_with_complex_data/02_visualise_data/06_define_formatted_table_visual && edk template build
-	 cd 06_work_with_complex_data/02_visualise_data/07_define_patch_table_visual && edk template build
-	 cd 06_work_with_complex_data/02_visualise_data/08_define_form_visual && edk template build
 	 cd 06_work_with_complex_data/03_use_blobtype_data/01_what_is_the_blob_type && edk template build
 	 cd 06_work_with_complex_data/03_use_blobtype_data/02_define_a_blobtype && edk template build
 	 cd 06_work_with_complex_data/03_use_blobtype_data/03_validate_a_blobtype && edk template build
@@ -439,14 +415,6 @@ delete:
 	cd 05_use_expressions/06_advanced_topics/03_mutation && edk workspace delete "05_06_03_mutation"
 	cd 06_work_with_complex_data/01_patch_data/01_what_is_a_patch_source && edk workspace delete "06_01_01_what_is_a_patch_source"
 	cd 06_work_with_complex_data/01_patch_data/02_define_a_patch_source && edk workspace delete "06_01_02_define_a_patch_source"
-	cd 06_work_with_complex_data/02_visualise_data/01_what_is_a_patch_visual && edk workspace delete "06_02_01_what_is_a_patch_visual"
-	cd 06_work_with_complex_data/02_visualise_data/02_define_a_patch_visual && edk workspace delete "06_02_02_define_a_patch_visual"
-	cd 06_work_with_complex_data/02_visualise_data/03_input_streams_into_a_layout && edk workspace delete "06_02_03_input_streams_into_a_layout"
-	cd 06_work_with_complex_data/02_visualise_data/04_define_planner_visual && edk workspace delete "06_02_04_define_planner_visual"
-	cd 06_work_with_complex_data/02_visualise_data/05_define_layered_vega_visual && edk workspace delete "06_02_05_define_layered_vega_visual"
-	cd 06_work_with_complex_data/02_visualise_data/06_define_formatted_table_visual && edk workspace delete "06_02_06_define_formatted_table_visual"
-	cd 06_work_with_complex_data/02_visualise_data/07_define_patch_table_visual && edk workspace delete "06_02_07_define_patch_table_visual"
-	cd 06_work_with_complex_data/02_visualise_data/08_define_form_visual && edk workspace delete "06_02_08_define_form_visual"
 	cd 06_work_with_complex_data/03_use_blobtype_data/01_what_is_the_blob_type && edk workspace delete "06_03_01_what_is_the_blob_type"
 	cd 06_work_with_complex_data/03_use_blobtype_data/02_define_a_blobtype && edk workspace delete "06_03_02_define_a_blobtype"
 	cd 06_work_with_complex_data/03_use_blobtype_data/03_validate_a_blobtype && edk workspace delete "06_03_03_validate_a_blobtype"

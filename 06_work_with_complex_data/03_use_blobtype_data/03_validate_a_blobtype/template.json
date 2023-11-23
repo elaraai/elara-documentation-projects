@@ -1,1 +1,98 @@
-{}
+{
+  "streams": {
+    "Source.My Source": {
+      "name": "Source.My Source",
+      "module": [],
+      "type": {
+        "type": "Blob",
+        "value": null
+      },
+      "writable": false
+    },
+    "Writeable.My Source": {
+      "name": "Writeable.My Source",
+      "module": [],
+      "type": {
+        "type": "Blob",
+        "value": null
+      },
+      "writable": true
+    }
+  },
+  "tasks": {
+    "Source.My Source": {
+      "name": "Source.My Source",
+      "module": [],
+      "task_type": "source",
+      "source_type": "writeable",
+      "inputs": {
+        "input": {
+          "name": "Writeable.My Source",
+          "module": [],
+          "type": {
+            "type": "Blob",
+            "value": null
+          },
+          "optional": false
+        }
+      },
+      "outputs": {
+        "output": {
+          "name": "Source.My Source",
+          "module": [],
+          "type": {
+            "type": "Blob",
+            "value": null
+          },
+          "optional": false
+        }
+      },
+      "input_assertions": [],
+      "output_assertions": [
+        {
+          "assertion_type": "Fail",
+          "value_type": "Value",
+          "if": {
+            "type": {
+              "type": "Boolean",
+              "value": null
+            },
+            "ast_type": "Equal",
+            "first": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Size",
+              "collection": {
+                "type": {
+                  "type": "Blob",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "__value"
+              }
+            },
+            "second": {
+              "type": {
+                "type": "Integer",
+                "value": null
+              },
+              "ast_type": "Const",
+              "value": "0"
+            }
+          },
+          "message": {
+            "type": {
+              "type": "String",
+              "value": null
+            },
+            "ast_type": "Const",
+            "value": "File is empty"
+          }
+        }
+      ]
+    }
+  },
+  "defaults": {}
+}

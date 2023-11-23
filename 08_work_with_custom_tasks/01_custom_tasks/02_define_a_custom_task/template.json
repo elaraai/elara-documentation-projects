@@ -1,1 +1,128 @@
-{}
+{
+  "streams": {
+    "Custom.Quadratic.output.txt": {
+      "name": "Custom.Quadratic.output.txt",
+      "module": [],
+      "type": {
+        "type": "Float",
+        "value": null
+      },
+      "writable": false
+    },
+    "Writeable.My Source": {
+      "name": "Writeable.My Source",
+      "module": [],
+      "type": {
+        "type": "Float",
+        "value": null
+      },
+      "writable": true
+    }
+  },
+  "tasks": {
+    "Custom.Quadratic": {
+      "task_type": "custom",
+      "module": [],
+      "name": "Custom.Quadratic",
+      "inputs": {
+        "input.input.txt": {
+          "name": "Writeable.My Source",
+          "module": [],
+          "type": {
+            "type": "Float",
+            "value": null
+          },
+          "optional": false
+        }
+      },
+      "outputs": {
+        "output.txt": {
+          "name": "Custom.Quadratic.output.txt",
+          "module": [],
+          "type": {
+            "type": "Float",
+            "value": null
+          },
+          "optional": false
+        }
+      },
+      "results": {
+        "output.txt": {
+          "type": {
+            "type": "Float",
+            "value": null
+          },
+          "ast_type": "Variable",
+          "name": "output.txt"
+        }
+      },
+      "inputFiles": [
+        {
+          "input": "input.input.txt",
+          "path": "input.txt",
+          "executable": false,
+          "toBlob": {
+            "type": {
+              "type": "Blob",
+              "value": null
+            },
+            "ast_type": "Utf8Encode",
+            "from": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "Print",
+              "value": {
+                "type": {
+                  "type": "Float",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "input.txt"
+              }
+            }
+          }
+        }
+      ],
+      "outputFiles": [
+        {
+          "path": "output.txt",
+          "fromBlob": {
+            "type": {
+              "type": "Float",
+              "value": null
+            },
+            "ast_type": "Parse",
+            "from": {
+              "type": {
+                "type": "String",
+                "value": null
+              },
+              "ast_type": "Utf8Decode",
+              "from": {
+                "type": {
+                  "type": "Blob",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "output.txt"
+              }
+            }
+          }
+        }
+      ],
+      "image": null,
+      "command": [
+        "/bin/bash",
+        "-c",
+        "awk '{x=$1; printf \"%.14f\\n\", x * (10 - x)}' input.txt > output.txt"
+      ],
+      "mountDir": "/root/data",
+      "logStdOut": true,
+      "logStdErr": true,
+      "envs": {}
+    }
+  },
+  "defaults": {}
+}

@@ -1,1 +1,257 @@
-{}
+{
+  "streams": {
+    "Function.Area.area": {
+      "name": "Function.Area.area",
+      "module": [],
+      "type": {
+        "type": "Float",
+        "value": null
+      },
+      "writable": false
+    },
+    "Writeable.My Source": {
+      "name": "Writeable.My Source",
+      "module": [],
+      "type": {
+        "type": "Variant",
+        "value": {
+          "circle": {
+            "type": "Float",
+            "value": null
+          },
+          "point": {
+            "nullable": true
+          },
+          "rectangle": {
+            "type": "Struct",
+            "value": {
+              "width": {
+                "type": "Float",
+                "value": null
+              },
+              "height": {
+                "type": "Float",
+                "value": null
+              }
+            }
+          }
+        }
+      },
+      "writable": true
+    }
+  },
+  "tasks": {
+    "Function.Area": {
+      "task_type": "function",
+      "module": [],
+      "name": "Function.Area",
+      "inputs": {
+        "geometry": {
+          "name": "Writeable.My Source",
+          "module": [],
+          "type": {
+            "type": "Variant",
+            "value": {
+              "circle": {
+                "type": "Float",
+                "value": null
+              },
+              "point": {
+                "nullable": true
+              },
+              "rectangle": {
+                "type": "Struct",
+                "value": {
+                  "width": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "height": {
+                    "type": "Float",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "optional": false
+        }
+      },
+      "outputs": {
+        "output.area": {
+          "name": "Function.Area.area",
+          "module": [],
+          "type": {
+            "type": "Float",
+            "value": null
+          },
+          "optional": false
+        }
+      },
+      "defaults": {},
+      "mls": {},
+      "statements": [
+        {
+          "type": "let",
+          "name": "area",
+          "expr": {
+            "type": {
+              "type": "Float",
+              "value": null
+            },
+            "ast_type": "Match",
+            "input": {
+              "type": {
+                "type": "Variant",
+                "value": {
+                  "circle": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "point": {
+                    "nullable": true
+                  },
+                  "rectangle": {
+                    "type": "Struct",
+                    "value": {
+                      "width": {
+                        "type": "Float",
+                        "value": null
+                      },
+                      "height": {
+                        "type": "Float",
+                        "value": null
+                      }
+                    }
+                  }
+                }
+              },
+              "ast_type": "Variable",
+              "name": "geometry"
+            },
+            "functions": {
+              "circle": {
+                "type": {
+                  "type": "Float",
+                  "value": null
+                },
+                "ast_type": "Multiply",
+                "first": {
+                  "type": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "ast_type": "Const",
+                  "value": 3.141592653589793
+                },
+                "second": {
+                  "type": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "ast_type": "Multiply",
+                  "first": {
+                    "type": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "__Match2"
+                  },
+                  "second": {
+                    "type": {
+                      "type": "Float",
+                      "value": null
+                    },
+                    "ast_type": "Variable",
+                    "name": "__Match2"
+                  }
+                }
+              },
+              "point": {
+                "type": {
+                  "type": "Float",
+                  "value": null
+                },
+                "ast_type": "Const",
+                "value": 0
+              },
+              "rectangle": {
+                "type": {
+                  "type": "Float",
+                  "value": null
+                },
+                "ast_type": "Multiply",
+                "first": {
+                  "type": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "ast_type": "GetField",
+                  "struct": {
+                    "type": {
+                      "type": "Struct",
+                      "value": {
+                        "width": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "height": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    },
+                    "ast_type": "Variable",
+                    "name": "__Match2"
+                  },
+                  "key": "width"
+                },
+                "second": {
+                  "type": {
+                    "type": "Float",
+                    "value": null
+                  },
+                  "ast_type": "GetField",
+                  "struct": {
+                    "type": {
+                      "type": "Struct",
+                      "value": {
+                        "width": {
+                          "type": "Float",
+                          "value": null
+                        },
+                        "height": {
+                          "type": "Float",
+                          "value": null
+                        }
+                      }
+                    },
+                    "ast_type": "Variable",
+                    "name": "__Match2"
+                  },
+                  "key": "height"
+                }
+              }
+            },
+            "value": "__Match2"
+          }
+        },
+        {
+          "type": "return",
+          "outputs": {
+            "area": {
+              "type": {
+                "type": "Float",
+                "value": null
+              },
+              "ast_type": "Variable",
+              "name": "area"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "defaults": {}
+}

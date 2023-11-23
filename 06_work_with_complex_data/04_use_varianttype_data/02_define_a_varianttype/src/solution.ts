@@ -1,3 +1,15 @@
-import { Template } from "@elaraai/core"
+import { FloatType, NullType, SourceBuilder, StructType, Template, VariantType } from "@elaraai/core"
 
-export default Template();
+const GeometryType = VariantType({
+    point: NullType,
+    circle: FloatType,
+    rectangle: StructType({
+        width: FloatType,
+        height: FloatType,
+    })
+})
+
+const my_source = new SourceBuilder("My Source")
+    .writeable(GeometryType);
+
+export default Template(my_source);
