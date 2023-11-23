@@ -3,7 +3,7 @@ import { BlobType, Size, SourceBuilder, Template, Const, Equal } from "@elaraai/
 const my_source = new SourceBuilder("My Source")
     .writeable(BlobType)
     .error({
-        if: value => Equal(Size(value), Const(5n)),
+        if: value => Equal(Size(value), Const(0n)),
         message: () => Const(`File is empty`),
     })
 

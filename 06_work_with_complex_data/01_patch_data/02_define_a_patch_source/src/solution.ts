@@ -31,5 +31,4 @@ const my_layout = new LayoutBuilder("My Layout")
         )
     )
 
-
 export default Template(my_source, my_patch, my_layout) 
