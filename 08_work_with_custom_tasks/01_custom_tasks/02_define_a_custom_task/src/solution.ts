@@ -1,7 +1,7 @@
 import { CustomTaskBuilder, FloatType, Parse, Print, SourceBuilder, Template, Utf8Decode, Utf8Encode } from "@elaraai/core"
 
 const my_source = new SourceBuilder("My Source")
-    .value({ value: 2 });
+    .writeable(FloatType);
 
 const custom_task = new CustomTaskBuilder("Quadratic")
     .input(
