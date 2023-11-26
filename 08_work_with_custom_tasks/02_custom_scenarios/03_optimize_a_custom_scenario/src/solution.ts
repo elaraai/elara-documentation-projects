@@ -16,7 +16,8 @@ const custom_task = new CustomScenarioBuilder("Quadratic")
     )
     .objective(outputs => outputs['output.txt'])
     .optimize("input.txt", { min: 0, max: 10 })
-    .optimizationMaxIterations(20)
-    .optimizationTrajectories(1);
+    .optimizationMaxIterations(3)
+    .optimizationTrajectories(1)
+    .simulationTrajectories(10)
 
 export default Template(my_source, custom_task);

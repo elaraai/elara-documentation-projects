@@ -58,6 +58,11 @@ deploy:
 	 cd 03_work_with_data/07_visualise_data/03_define_a_vega_visual && edk template deploy -ycw "03_07_03_define_a_vega_visual"
 	 cd 03_work_with_data/07_visualise_data/04_define_a_tabbed_visual && edk template deploy -ycw "03_07_04_define_a_tabbed_visual"
 	 cd 03_work_with_data/07_visualise_data/05_define_a_panelled_visual && edk template deploy -ycw "03_07_05_define_a_panelled_visual"
+	 cd 04_work_with_models/03_build_a_model/01_define_a_descriptive_scenario && edk template deploy -ycw "04_03_01_define_a_descriptive_scenario"
+	 cd 04_work_with_models/03_build_a_model/02_whats_an_ml_builder && edk template deploy -ycw "04_03_02_whats_an_ml_builder"
+	 cd 04_work_with_models/03_build_a_model/03_define_a_predictive_scenario && edk template deploy -ycw "04_03_03_define_a_predictive_scenario"
+	 cd 04_work_with_models/03_build_a_model/04_define_a_prescriptive_scenario && edk template deploy -ycw "04_03_04_define_a_prescriptive_scenario"
+	 cd 04_work_with_models/03_build_a_model/05_define_an_interactive_scenario && edk template deploy -ycw "04_03_05_define_an_interactive_scenario"
 	 cd 05_use_expressions/01_introduction_to_east/01_why_east && edk template deploy -ycw "05_01_01_why_east"
 	 cd 05_use_expressions/01_introduction_to_east/02_east_values_and_types && edk template deploy -ycw "05_01_02_east_values_and_types"
 	 cd 05_use_expressions/01_introduction_to_east/03_east_expressions && edk template deploy -ycw "05_01_03_east_expressions"
@@ -168,6 +173,11 @@ install:
 	 cd 03_work_with_data/07_visualise_data/03_define_a_vega_visual && npm i
 	 cd 03_work_with_data/07_visualise_data/04_define_a_tabbed_visual && npm i
 	 cd 03_work_with_data/07_visualise_data/05_define_a_panelled_visual && npm i
+	 cd 04_work_with_models/03_build_a_model/01_define_a_descriptive_scenario && npm i
+	 cd 04_work_with_models/03_build_a_model/02_whats_an_ml_builder && npm i
+	 cd 04_work_with_models/03_build_a_model/03_define_a_predictive_scenario && npm i
+	 cd 04_work_with_models/03_build_a_model/04_define_a_prescriptive_scenario && npm i
+	 cd 04_work_with_models/03_build_a_model/05_define_an_interactive_scenario && npm i
 	 cd 05_use_expressions/01_introduction_to_east/01_why_east && npm i
 	 cd 05_use_expressions/01_introduction_to_east/02_east_values_and_types && npm i
 	 cd 05_use_expressions/01_introduction_to_east/03_east_expressions && npm i
@@ -278,6 +288,11 @@ build:
 	 cd 03_work_with_data/07_visualise_data/03_define_a_vega_visual && edk template build
 	 cd 03_work_with_data/07_visualise_data/04_define_a_tabbed_visual && edk template build
 	 cd 03_work_with_data/07_visualise_data/05_define_a_panelled_visual && edk template build
+	 cd 04_work_with_models/03_build_a_model/01_define_a_descriptive_scenario && edk template build
+	 cd 04_work_with_models/03_build_a_model/02_whats_an_ml_builder && edk template build
+	 cd 04_work_with_models/03_build_a_model/03_define_a_predictive_scenario && edk template build
+	 cd 04_work_with_models/03_build_a_model/04_define_a_prescriptive_scenario && edk template build
+	 cd 04_work_with_models/03_build_a_model/05_define_an_interactive_scenario && edk template build
 	 cd 05_use_expressions/01_introduction_to_east/01_why_east && edk template build
 	 cd 05_use_expressions/01_introduction_to_east/02_east_values_and_types && edk template build
 	 cd 05_use_expressions/01_introduction_to_east/03_east_expressions && edk template build
@@ -388,7 +403,11 @@ delete:
 	cd 03_work_with_data/07_visualise_data/03_define_a_vega_visual && edk workspace delete "03_07_03_define_a_vega_visual"
 	cd 03_work_with_data/07_visualise_data/04_define_a_tabbed_visual && edk workspace delete "03_07_04_define_a_tabbed_visual"
 	cd 03_work_with_data/07_visualise_data/05_define_a_panelled_visual && edk workspace delete "03_07_05_define_a_panelled_visual"
-	cd 05_use_expressions/01_introduction_to_east/01_why_east && edk workspace delete "05_01_01_why_east"
+	cd 04_work_with_models/03_build_a_model/01_define_a_descriptive_scenario && edk workspace delete "04_03_01_define_a_descriptive_scenario"
+	cd 04_work_with_models/03_build_a_model/02_whats_an_ml_builder && edk workspace delete "04_03_02_whats_an_ml_builder"
+	cd 04_work_with_models/03_build_a_model/03_define_a_predictive_scenario && edk workspace delete "04_03_03_define_a_predictive_scenario"
+	cd 04_work_with_models/03_build_a_model/04_define_a_prescriptive_scenario && edk workspace delete "04_03_04_define_a_prescriptive_scenario"
+	cd 04_work_with_models/03_build_a_model/05_define_an_interactive_scenario && edk workspace delete "04_03_05_define_an_interactive_scenario"	cd 05_use_expressions/01_introduction_to_east/01_why_east && edk workspace delete "05_01_01_why_east"
 	cd 05_use_expressions/01_introduction_to_east/02_east_values_and_types && edk workspace delete "05_01_02_east_values_and_types"
 	cd 05_use_expressions/01_introduction_to_east/03_east_expressions && edk workspace delete "05_01_03_east_expressions"
 	cd 05_use_expressions/02_primitive_data/01_boolean_logic && edk workspace delete "05_02_01_boolean_logic"

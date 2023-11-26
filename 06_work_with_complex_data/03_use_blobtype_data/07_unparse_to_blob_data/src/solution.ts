@@ -1,4 +1,4 @@
-import { PipelineBuilder, SourceBuilder, Template, ToArray, ToCsv } from "@elaraai/core"
+import { Add, PipelineBuilder, SourceBuilder, Template, ToArray, ToCsv } from "@elaraai/core"
 
 const my_source = new SourceBuilder("My Source")
     .value({
@@ -10,11 +10,11 @@ const my_source = new SourceBuilder("My Source")
 
 const my_pipeline = new PipelineBuilder("My Pipeline")
     .from(my_source.outputStream())
-    .toCsv({
+    .toXlsx({
         selections: {
             string: (fields) => fields.string,
             date: (fields) => fields.date,
-            float: (fields) => fields.float,
+            float: (fields) => Add(fields.float, 1),
             integer: (fields) => fields.integer,
             boolean: (fields) => fields.boolean,
         },

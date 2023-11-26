@@ -32,5 +32,43 @@
     }
   },
   "tasks": {},
-  "defaults": {}
+  "defaults": {
+    "Writeable.My Source": {
+      "default_type": "value",
+      "stream": "Writeable.My Source",
+      "module": [],
+      "value": {
+        "type": {
+          "type": "Variant",
+          "value": {
+            "circle": {
+              "type": "Float",
+              "value": null
+            },
+            "point": {
+              "nullable": true
+            },
+            "rectangle": {
+              "type": "Struct",
+              "value": {
+                "width": {
+                  "type": "Float",
+                  "value": null
+                },
+                "height": {
+                  "type": "Float",
+                  "value": null
+                }
+              }
+            }
+          }
+        },
+        "ast_type": "Const",
+        "value": {
+          "type": "point",
+          "value": null
+        }
+      }
+    }
+  }
 }

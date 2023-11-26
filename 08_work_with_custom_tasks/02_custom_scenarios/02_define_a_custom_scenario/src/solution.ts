@@ -14,5 +14,6 @@ const custom_task = new CustomScenarioBuilder("Quadratic")
         "output.txt", // filename
         blob => Parse(FloatType, Utf8Decode(blob)) // fromBlob
     )
+    .simulationTrajectories(10)
 
 export default Template(my_source, custom_task);

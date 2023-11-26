@@ -4,8 +4,11 @@
       "name": "CustomSimulationResult.Quadratic.output.txt",
       "module": [],
       "type": {
-        "type": "Float",
-        "value": null
+        "type": "Array",
+        "value": {
+          "type": "Float",
+          "value": null
+        }
       },
       "writable": false
     },
@@ -40,8 +43,11 @@
           "name": "CustomSimulationResult.Quadratic.output.txt",
           "module": [],
           "type": {
-            "type": "Float",
-            "value": null
+            "type": "Array",
+            "value": {
+              "type": "Float",
+              "value": null
+            }
           },
           "optional": false
         }
@@ -140,7 +146,7 @@
       "logStdOut": false,
       "logStdErr": false,
       "envs": {},
-      "simulationTrajectories": null
+      "simulationTrajectories": 10
     }
   },
   "defaults": {
