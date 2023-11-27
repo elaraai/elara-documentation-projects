@@ -229,9 +229,13 @@ const sales = new ProcessBuilder("Sales")
     .resource(cash)
     .value("qty", IntegerType)
     .value("price", FloatType)
+    // can only sell if there is enough inventory, so update the  qty
     .assign("qty", (props, resources) => Min(resources["Inventory"], props.qty))
+    // get the total amount of revenue
     .let("amount", props => Multiply(props.qty, props.price))
+    // update the inventory balance by the qty
     .set("Inventory", (props, resources) => Subtract(resources["Inventory"], props.qty))
+    // update the cash balance by the amount
     .set("Cash", (props, resources) => Add(resources.Cash, props.amount))
     // the initial data comes from the historic sale data
     .mapManyFromStream(sales_data.outputStream())
@@ -254,8 +258,9 @@ const pay_supplier = new ProcessBuilder("Pay Supplier")
     .value("qty", IntegerType)
     // the total amount to be paid
     .let("amount", props => Multiply(props.qty, props.unitCost))
+    // the debt has been cleared
     .set("Liability", (props, resources) => Add(resources.Liability, props.amount))
-    // the update to cash by the amount
+    // update the cash by the amount
     .set("Cash", (props, resources) => Subtract(resources.Cash, props.amount))
 
 // order some inventory, schedule supplier payment and receiving the inventory later 
@@ -266,7 +271,9 @@ const procurement = new ProcessBuilder("Procurement")
     .process(receive_goods)
     .resource(liability)
     .value("supplierName", StringType)
+    // get the supplier
     .let("supplier", (props, resources) => Get(resources.Suppliers, props.supplierName))
+    // calculate the total amount to pay the supplier
     .let("amount", (props) => Multiply(GetField(props.supplier, "unitCost"), GetField(props.supplier, "unitQty")))
     // only order if there is enough cash available
     .if(

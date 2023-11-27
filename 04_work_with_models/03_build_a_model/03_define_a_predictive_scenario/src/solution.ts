@@ -1,4 +1,4 @@
-import { Add, AddDuration, Ceiling, Convert, DateTimeType, DayOfWeek, DictType, FloatType, Get, GetField, GreaterEqual, Hour, IntegerType, MLModelBuilder, Min, Multiply, PipelineBuilder, Print, ProcessBuilder, Reduce, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringJoin, StringType, Struct, StructType, Subtract, Template, IfElse, LayoutBuilder, FunctionBuilder, NewDict, PrintTruncatedCurrency, Less, LessEqual, DefaultValue, Max, SubtractDuration } from "@elaraai/core"
+import { Add, AddDuration, Ceiling, Convert, DateTimeType, DayOfWeek, DictType, FloatType, Get, GetField, GreaterEqual, Hour, IntegerType, MLModelBuilder, Min, Multiply, PipelineBuilder, Print, ProcessBuilder, Reduce, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringJoin, StringType, Struct, StructType, Subtract, Template, IfElse, LayoutBuilder, FunctionBuilder, NewDict, PrintTruncatedCurrency, Less, LessEqual, DefaultValue, Max, SubtractDuration, Range, RandomUniform, Const, RandomValue, Round } from "@elaraai/core"
 
 /**
  * # Predictive Solution Overview
@@ -140,6 +140,70 @@ const historic_demand = new MLModelBuilder("Demand")
             })
     })
 
+
+// generate the procurement dates, and a schedule of orders
+const demand = new FunctionBuilder("Demand")
+    .input("sales", sales_data.outputStream())
+    .ml(historic_demand)
+    .body(block => block
+        .let("ret", () => NewDict(StringType, StructType({ price: FloatType, dayOfWeek: IntegerType, hourOfDay: IntegerType, qty: IntegerType })))
+        .forArray(
+            () => Range(0n, 1000n),
+            (block, index) => block
+                .let("price", () => Multiply(Const(rrp), RandomUniform(1.0, 0.7)))
+                .let("dayOfWeek", () => RandomValue(Range(0n, 6n)))
+                .let("hourOfDay", () => RandomValue(Range(9n, 17n)))
+                .insert(
+                    vars => vars.ret,
+                    // print the date as a string with format YYYY-MM-DD
+                    () => Print(index),
+                    // add an order into the schedule, with the inferred supplier name
+                    (vars, mls) => Struct({
+                        price: vars.price,
+                        dayOfWeek: vars.dayOfWeek,
+                        hourOfDay: vars.hourOfDay,
+                        qty: Round(mls.Demand(Struct({
+                            price: vars.price,
+                            dayOfWeek: vars.dayOfWeek,
+                            hourOfDay: vars.hourOfDay,
+                        })), 'nearest', 'integer')
+                    })
+                )
+        )
+
+        // return the inferred demand
+        .return({
+            demand: vars => vars.ret,
+        })
+    )
+
+const demand_chart = new LayoutBuilder("Demand Analysis")
+    .vega(
+        "Demand Analysis",
+        builder => builder
+            .view(builder => builder
+                .fromStream(demand.outputStreams().demand)
+                // create a line chart of the liability vs time, with a different color for each scenario
+                .spec((fields) => ({
+                    $schema: "https://vega.github.io/schema/vega-lite/v5.json",
+                    title: "",
+                    repeat: {
+                        row: [fields.price, fields.dayOfWeek, fields.hourOfDay, fields.qty],
+                        column: [fields.qty, fields.hourOfDay, fields.dayOfWeek, fields.price]
+                    },
+                    spec: {
+                        mark: "point",
+                        encoding: {
+                            x: { field: { repeat: "column" }, type: "quantitative" },
+                            y: {
+                                field: { repeat: "row" },
+                                type: "quantitative",
+                            },
+                        }
+                    }
+                }) as any))
+    )
+
 // define an ml model to infer the typical supplier choice on a day
 const historic_supplier_choice = new MLModelBuilder("Supplier Choices")
     // add a feature to the model
@@ -235,9 +299,13 @@ const sales = new ProcessBuilder("Sales")
     .resource(cash)
     .value("qty", IntegerType)
     .value("price", FloatType)
+    // can only sell if there is enough inventory, so update the  qty
     .assign("qty", (props, resources) => Min(resources["Inventory"], props.qty))
+    // get the total amount of revenue
     .let("amount", props => Multiply(props.qty, props.price))
+    // update the inventory balance by the qty
     .set("Inventory", (props, resources) => Subtract(resources["Inventory"], props.qty))
+    // update the cash balance by the amount
     .set("Cash", (props, resources) => Add(resources.Cash, props.amount))
     // the initial data comes from the historic sale data
     .mapManyFromStream(sales_data.outputStream())
@@ -260,8 +328,9 @@ const pay_supplier = new ProcessBuilder("Pay Supplier")
     .value("qty", IntegerType)
     // the total amount to be paid
     .let("amount", props => Multiply(props.qty, props.unitCost))
+    // the debt has been cleared
     .set("Liability", (props, resources) => Add(resources.Liability, props.amount))
-    // the update to cash by the amount
+    // update the cash by the amount
     .set("Cash", (props, resources) => Subtract(resources.Cash, props.amount))
 
 // order some inventory, schedule supplier payment and receiving the inventory later 
@@ -272,7 +341,9 @@ const procurement = new ProcessBuilder("Procurement")
     .process(receive_goods)
     .resource(liability)
     .value("supplierName", StringType)
+    // get the supplier
     .let("supplier", (props, resources) => Get(resources.Suppliers, props.supplierName))
+    // calculate the total amount to pay the supplier
     .let("amount", (props) => Multiply(GetField(props.supplier, "unitCost"), GetField(props.supplier, "unitQty")))
     // only order if there is enough cash available
     .if(
@@ -473,7 +544,6 @@ const inventory_graph = new LayoutBuilder("Inventory")
                     x: builder => builder.value(fields => fields.date).title("Date"),
                     y: builder => builder.value(fields => fields.inventory).title("Inventory"),
                     color: builder => builder.value(fields => fields.scenario).scale(colors)
-
                 })
             )
     )
@@ -531,8 +601,8 @@ const dashboard = new LayoutBuilder("Dashboard")
             .item(
                 "Liability",
                 builder => builder
-                .fromStream(predictive.simulationResultStreams().Liability)
-                .value((value) => PrintTruncatedCurrency(value))
+                    .fromStream(predictive.simulationResultStreams().Liability)
+                    .value((value) => PrintTruncatedCurrency(value))
             )
     )
     // enable the targets and tasks toolbars
@@ -555,6 +625,9 @@ export default Template(
     // ml functions
     historic_demand,
     historic_supplier_choice,
+    // ml testing
+    demand,
+    demand_chart,
     // processes
     sales,
     receive_goods,

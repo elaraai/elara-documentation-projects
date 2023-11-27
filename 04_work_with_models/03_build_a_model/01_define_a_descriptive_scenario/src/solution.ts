@@ -10,7 +10,7 @@ import { Add, AddDuration, DateTimeType, DictType, FloatType, Get, GetField, Gre
  * 
  * 1. **Data Sources**: Create sources for procurement, sales, and supplier data from JSON files.
  * 2. **Pipeline Building**: Use the `PipelineBuilder` to process and transform data streams from the sources, defining fields and output keys.
- * 3. **Function Building**: Create functions to generate key dates related to sales and procurement.
+ * 3. **Function Building**: Create functions to generate key dates related to sales.
  * 4. **Resource Building**: Define resources such as cash, liability, inventory, etc., mapping them from values or data streams.
  * 5. **Process Building**: Define processes for sales, receiving goods from suppliers, paying suppliers, and procurement.
  * 6. **Reporter Building**: Build a reporter process to generate hourly reports on cash, liability, and inventory.
@@ -78,7 +78,7 @@ const procurement_data = new PipelineBuilder('Procurement')
         output_key: fields => StringJoin`${fields.date}${fields.supplierName}`
     })
 
-// Generate the keys dates related to sales
+// Generate the key dates related to sales
 const sales_dates = new FunctionBuilder("Sales Dates")
     .input("sales", sales_data.outputStream())
     .body(builder => builder
@@ -101,24 +101,6 @@ const sales_dates = new FunctionBuilder("Sales Dates")
         })
     )
 
-// generate the procurement dates, and a schedule of orders
-const procurement_dates = new FunctionBuilder("Procurement Dates")
-    .input("procurement", procurement_data.outputStream())
-    .body(block => block
-        // get the last order date and time
-        .let("last", vars => Reduce(
-            vars.procurement,
-            (prev, order) => Max(prev, GetField(order, 'date')),
-            DefaultValue(DateTimeType))
-        )
-        // get the date of the next order date and time
-        .let("next", vars => AddDuration(vars.last, 1, 'day'))
-        // return all the dates and schedule
-        .return({
-            last: vars => vars.last,
-            next: vars => vars.next,
-        })
-    )
 
 // create the resources for the simulation
 const cash = new ResourceBuilder("Cash").mapFromValue(500)
@@ -147,9 +129,13 @@ const sales = new ProcessBuilder("Sales")
     .resource(cash)
     .value("qty", IntegerType)
     .value("price", FloatType)
+    // can only sell if there is enough inventory, so update the  qty
     .assign("qty", (props, resources) => Min(resources["Inventory"], props.qty))
+    // get the total amount of revenue
     .let("amount", props => Multiply(props.qty, props.price))
+    // update the inventory balance by the qty
     .set("Inventory", (props, resources) => Subtract(resources["Inventory"], props.qty))
+    // update the cash balance by the amount
     .set("Cash", (props, resources) => Add(resources.Cash, props.amount))
     // the initial data comes from the historic sale data
     .mapManyFromStream(sales_data.outputStream())
@@ -172,8 +158,9 @@ const pay_supplier = new ProcessBuilder("Pay Supplier")
     .value("qty", IntegerType)
     // the total amount to be paid
     .let("amount", props => Multiply(props.qty, props.unitCost))
+    // the debt has been cleared
     .set("Liability", (props, resources) => Add(resources.Liability, props.amount))
-    // the update to cash by the amount
+    // update the cash by the amount
     .set("Cash", (props, resources) => Subtract(resources.Cash, props.amount))
 
 // order some inventory, schedule supplier payment and receiving the inventory later 
@@ -184,7 +171,9 @@ const procurement = new ProcessBuilder("Procurement")
     .process(receive_goods)
     .resource(liability)
     .value("supplierName", StringType)
+    // get the supplier
     .let("supplier", (props, resources) => Get(resources.Suppliers, props.supplierName))
+    // calculate the total amount to pay the supplier
     .let("amount", (props) => Multiply(GetField(props.supplier, "unitCost"), GetField(props.supplier, "unitQty")))
     // only order if there is enough cash available
     .if(
@@ -341,7 +330,6 @@ export default Template(
     procurement_data,
     // date processing
     sales_dates,
-    procurement_dates,
     // processes
     sales,
     receive_goods,
