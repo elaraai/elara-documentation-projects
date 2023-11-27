@@ -3,7 +3,6 @@ import { ArrayType, BooleanType, DateTimeType, FloatType, FromCsv, IntegerType, 
 const my_source = new SourceBuilder("My Source")
     .file({ path: "./data/test.csv" });
 
-
 const my_pipeline = new PipelineBuilder("My Pipeline")
     .from(my_source.outputStream())
     .fromCsv({
@@ -15,7 +14,7 @@ const my_pipeline = new PipelineBuilder("My Pipeline")
             boolean: BooleanType,
         },
         output_key: (fields) => fields.string
-    });
+    })
 
 const my_other_pipeline = new PipelineBuilder("My Other Pipeline")
     .from(my_source.outputStream())
