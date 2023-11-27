@@ -403,8 +403,7 @@
       },
       "operations": [
         {
-          "operation_type": "toXlsx",
-          "sheet": "Sheet1",
+          "operation_type": "toCsv",
           "output_type": {
             "type": "Blob",
             "value": null
@@ -431,23 +430,8 @@
                 "type": "Float",
                 "value": null
               },
-              "ast_type": "Add",
-              "first": {
-                "type": {
-                  "type": "Float",
-                  "value": null
-                },
-                "ast_type": "Variable",
-                "name": "field.float"
-              },
-              "second": {
-                "type": {
-                  "type": "Float",
-                  "value": null
-                },
-                "ast_type": "Const",
-                "value": 1
-              }
+              "ast_type": "Variable",
+              "name": "field.float"
             },
             "integer": {
               "type": {
@@ -516,7 +500,7 @@
             "key": "01",
             "value": {
               "string": "0mtsqttl4s5",
-              "date": "2023-11-26T21:28:21.022Z",
+              "date": "2023-11-26T21:39:57.866Z",
               "float": -790.29,
               "integer": -875,
               "boolean": false
@@ -526,7 +510,7 @@
             "key": "02",
             "value": {
               "string": "0mtsqttl4s5",
-              "date": "2023-11-26T21:28:21.022Z",
+              "date": "2023-11-26T21:39:57.866Z",
               "float": -790.29,
               "integer": -875,
               "boolean": false

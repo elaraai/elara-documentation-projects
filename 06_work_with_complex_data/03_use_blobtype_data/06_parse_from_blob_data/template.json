@@ -18,8 +18,7 @@
             },
             "float": {
               "type": "Float",
-              "value": null,
-              "nullable": true
+              "value": null
             },
             "integer": {
               "type": "Integer",
@@ -73,15 +72,6 @@
       },
       "writable": false
     },
-    "Writeable.My Other Source": {
-      "name": "Writeable.My Other Source",
-      "module": [],
-      "type": {
-        "type": "Blob",
-        "value": null
-      },
-      "writable": true
-    },
     "Writeable.My Source": {
       "name": "Writeable.My Source",
       "module": [],
@@ -127,8 +117,7 @@
                 },
                 "float": {
                   "type": "Float",
-                  "value": null,
-                  "nullable": true
+                  "value": null
                 },
                 "integer": {
                   "type": "Integer",
@@ -162,8 +151,7 @@
                 },
                 "float": {
                   "type": "Float",
-                  "value": null,
-                  "nullable": true
+                  "value": null
                 },
                 "integer": {
                   "type": "Integer",
@@ -192,8 +180,7 @@
                   },
                   "float": {
                     "type": "Float",
-                    "value": null,
-                    "nullable": true
+                    "value": null
                   },
                   "integer": {
                     "type": "Integer",
@@ -409,12 +396,6 @@
     }
   },
   "defaults": {
-    "Writeable.My Other Source": {
-      "default_type": "file",
-      "stream": "Writeable.My Other Source",
-      "module": [],
-      "path": "./data/test.json"
-    },
     "Writeable.My Source": {
       "default_type": "file",
       "stream": "Writeable.My Source",

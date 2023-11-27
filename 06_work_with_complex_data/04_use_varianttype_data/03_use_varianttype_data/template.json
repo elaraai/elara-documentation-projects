@@ -92,44 +92,6 @@
       "mls": {},
       "statements": [
         {
-          "type": "match",
-          "label": "0",
-          "variant": {
-            "type": {
-              "type": "Variant",
-              "value": {
-                "circle": {
-                  "type": "Float",
-                  "value": null
-                },
-                "point": {
-                  "nullable": true
-                },
-                "rectangle": {
-                  "type": "Struct",
-                  "value": {
-                    "width": {
-                      "type": "Float",
-                      "value": null
-                    },
-                    "height": {
-                      "type": "Float",
-                      "value": null
-                    }
-                  }
-                }
-              }
-            },
-            "ast_type": "Variable",
-            "name": "geometry"
-          },
-          "case_statements": {
-            "point": [],
-            "circle": [],
-            "rectangle": []
-          }
-        },
-        {
           "type": "let",
           "name": "area",
           "expr": {

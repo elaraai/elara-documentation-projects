@@ -15,14 +15,6 @@ const my_source = new SourceBuilder("My Source")
 const area = new FunctionBuilder("Area")
     .input("geometry", my_source.outputStream())
     .body(block => block
-        .match(
-            vars => vars.geometry,
-            {
-                point: point => point,
-                circle: circle => circle,
-                rectangle: rectangle => rectangle,
-              }
-        )
         .let("area", vars => Match(vars.geometry, {
             point: _ => Const(0.0),
             circle: radius => Multiply(Math.PI, Multiply(radius, radius)),
