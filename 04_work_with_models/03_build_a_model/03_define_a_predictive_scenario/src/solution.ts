@@ -1,4 +1,4 @@
-import { Add, AddDuration, Ceiling, Convert, DateTimeType, DayOfWeek, DictType, FloatType, Get, GetField, GreaterEqual, Hour, IntegerType, MLModelBuilder, Min, Multiply, PipelineBuilder, Print, ProcessBuilder, Reduce, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringJoin, StringType, Struct, StructType, Subtract, Template, IfElse, LayoutBuilder, FunctionBuilder, NewDict, PrintTruncatedCurrency, Less, LessEqual, DefaultValue, Max, SubtractDuration, Range, RandomUniform, Const, RandomValue, Round } from "@elaraai/core"
+import { Add, AddDuration, Ceiling, Convert, DateTimeType, DayOfWeek, DictType, FloatType, Get, GetField, GreaterEqual, Hour, IntegerType, MLModelBuilder, Min, Multiply, PipelineBuilder, Print, ProcessBuilder, Reduce, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringJoin, StringType, Struct, StructType, Subtract, Template, IfElse, LayoutBuilder, FunctionBuilder, NewDict, PrintTruncatedCurrency, Less, LessEqual, DefaultValue, Max, SubtractDuration } from "@elaraai/core"
 
 /**
  * # Predictive Solution Overview
@@ -139,70 +139,6 @@ const historic_demand = new MLModelBuilder("Demand")
                 }
             })
     })
-
-
-// generate the procurement dates, and a schedule of orders
-const demand = new FunctionBuilder("Demand")
-    .input("sales", sales_data.outputStream())
-    .ml(historic_demand)
-    .body(block => block
-        .let("ret", () => NewDict(StringType, StructType({ price: FloatType, dayOfWeek: IntegerType, hourOfDay: IntegerType, qty: IntegerType })))
-        .forArray(
-            () => Range(0n, 1000n),
-            (block, index) => block
-                .let("price", () => Multiply(Const(rrp), RandomUniform(1.0, 0.7)))
-                .let("dayOfWeek", () => RandomValue(Range(0n, 6n)))
-                .let("hourOfDay", () => RandomValue(Range(9n, 17n)))
-                .insert(
-                    vars => vars.ret,
-                    // print the date as a string with format YYYY-MM-DD
-                    () => Print(index),
-                    // add an order into the schedule, with the inferred supplier name
-                    (vars, mls) => Struct({
-                        price: vars.price,
-                        dayOfWeek: vars.dayOfWeek,
-                        hourOfDay: vars.hourOfDay,
-                        qty: Round(mls.Demand(Struct({
-                            price: vars.price,
-                            dayOfWeek: vars.dayOfWeek,
-                            hourOfDay: vars.hourOfDay,
-                        })), 'nearest', 'integer')
-                    })
-                )
-        )
-
-        // return the inferred demand
-        .return({
-            demand: vars => vars.ret,
-        })
-    )
-
-const demand_chart = new LayoutBuilder("Demand Analysis")
-    .vega(
-        "Demand Analysis",
-        builder => builder
-            .view(builder => builder
-                .fromStream(demand.outputStreams().demand)
-                // create a line chart of the liability vs time, with a different color for each scenario
-                .spec((fields) => ({
-                    $schema: "https://vega.github.io/schema/vega-lite/v5.json",
-                    title: "",
-                    repeat: {
-                        row: [fields.price, fields.dayOfWeek, fields.hourOfDay, fields.qty],
-                        column: [fields.qty, fields.hourOfDay, fields.dayOfWeek, fields.price]
-                    },
-                    spec: {
-                        mark: "point",
-                        encoding: {
-                            x: { field: { repeat: "column" }, type: "quantitative" },
-                            y: {
-                                field: { repeat: "row" },
-                                type: "quantitative",
-                            },
-                        }
-                    }
-                }) as any))
-    )
 
 // define an ml model to infer the typical supplier choice on a day
 const historic_supplier_choice = new MLModelBuilder("Supplier Choices")
@@ -472,7 +408,6 @@ const predictive = new ScenarioBuilder("Predictive")
     .alterResourceFromValue("Reports", new Map())
     // end simulation at the end date
     .endSimulation(end_date.outputStream())
-
 // combine the reports from all multiple scenarios
 const concatenated_reports = new PipelineBuilder("Concatenated Reports")
     .from(descriptive.simulationResultStreams().Reports)
@@ -625,9 +560,6 @@ export default Template(
     // ml functions
     historic_demand,
     historic_supplier_choice,
-    // ml testing
-    demand,
-    demand_chart,
     // processes
     sales,
     receive_goods,

@@ -1,40 +1,5 @@
 {
   "streams": {
-    "Function.Demand.demand": {
-      "name": "Function.Demand.demand",
-      "module": [],
-      "type": {
-        "type": "Dict",
-        "value": {
-          "key": {
-            "type": "String",
-            "value": null
-          },
-          "value": {
-            "type": "Struct",
-            "value": {
-              "price": {
-                "type": "Float",
-                "value": null
-              },
-              "dayOfWeek": {
-                "type": "Integer",
-                "value": null
-              },
-              "hourOfDay": {
-                "type": "Integer",
-                "value": null
-              },
-              "qty": {
-                "type": "Integer",
-                "value": null
-              }
-            }
-          }
-        }
-      },
-      "writable": false
-    },
     "Function.Procurement Dates.last": {
       "name": "Function.Procurement Dates.last",
       "module": [],
@@ -1579,727 +1544,6 @@
     }
   },
   "tasks": {
-    "Function.Demand": {
-      "task_type": "function",
-      "module": [],
-      "name": "Function.Demand",
-      "inputs": {
-        "sales": {
-          "name": "Pipeline.Sales",
-          "module": [],
-          "type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "date": {
-                    "type": "DateTime",
-                    "value": null
-                  },
-                  "qty": {
-                    "type": "Integer",
-                    "value": null
-                  },
-                  "price": {
-                    "type": "Float",
-                    "value": null
-                  }
-                }
-              }
-            }
-          },
-          "optional": false
-        },
-        "ml.Demand": {
-          "name": "MLModel.Demand",
-          "module": [],
-          "type": {
-            "type": "Struct",
-            "value": {
-              "parameters": {
-                "type": "Blob",
-                "value": null
-              },
-              "transform": {
-                "type": "Struct",
-                "value": {
-                  "n_features": {
-                    "type": "Integer",
-                    "value": null
-                  },
-                  "transform": {
-                    "type": "Struct",
-                    "value": {
-                      "price": {
-                        "type": "Struct",
-                        "value": {
-                          "index": {
-                            "type": "Integer",
-                            "value": null
-                          },
-                          "min": {
-                            "type": "Float",
-                            "value": null
-                          },
-                          "max": {
-                            "type": "Float",
-                            "value": null
-                          }
-                        }
-                      },
-                      "dayOfWeek": {
-                        "type": "Struct",
-                        "value": {
-                          "index": {
-                            "type": "Integer",
-                            "value": null
-                          },
-                          "min": {
-                            "type": "Integer",
-                            "value": null
-                          },
-                          "max": {
-                            "type": "Integer",
-                            "value": null
-                          }
-                        }
-                      },
-                      "hourOfDay": {
-                        "type": "Struct",
-                        "value": {
-                          "index": {
-                            "type": "Integer",
-                            "value": null
-                          },
-                          "min": {
-                            "type": "Integer",
-                            "value": null
-                          },
-                          "max": {
-                            "type": "Integer",
-                            "value": null
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "optional": false
-        }
-      },
-      "outputs": {
-        "output.demand": {
-          "name": "Function.Demand.demand",
-          "module": [],
-          "type": {
-            "type": "Dict",
-            "value": {
-              "key": {
-                "type": "String",
-                "value": null
-              },
-              "value": {
-                "type": "Struct",
-                "value": {
-                  "price": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "dayOfWeek": {
-                    "type": "Integer",
-                    "value": null
-                  },
-                  "hourOfDay": {
-                    "type": "Integer",
-                    "value": null
-                  },
-                  "qty": {
-                    "type": "Integer",
-                    "value": null
-                  }
-                }
-              }
-            }
-          },
-          "optional": false
-        }
-      },
-      "defaults": {},
-      "mls": {
-        "Demand": {
-          "name": "Demand",
-          "output_type": {
-            "type": "Float",
-            "value": null
-          },
-          "features_type": {
-            "type": "Struct",
-            "value": {
-              "price": {
-                "type": "Float",
-                "value": null
-              },
-              "dayOfWeek": {
-                "type": "Integer",
-                "value": null
-              },
-              "hourOfDay": {
-                "type": "Integer",
-                "value": null
-              }
-            }
-          },
-          "model": {
-            "type": "gaussian_process",
-            "noise": "gaussian"
-          },
-          "input": "ml.Demand",
-          "modelStream": {
-            "name": "MLModel.Demand",
-            "module": [],
-            "type": {
-              "type": "Struct",
-              "value": {
-                "parameters": {
-                  "type": "Blob",
-                  "value": null
-                },
-                "transform": {
-                  "type": "Struct",
-                  "value": {
-                    "n_features": {
-                      "type": "Integer",
-                      "value": null
-                    },
-                    "transform": {
-                      "type": "Struct",
-                      "value": {
-                        "price": {
-                          "type": "Struct",
-                          "value": {
-                            "index": {
-                              "type": "Integer",
-                              "value": null
-                            },
-                            "min": {
-                              "type": "Float",
-                              "value": null
-                            },
-                            "max": {
-                              "type": "Float",
-                              "value": null
-                            }
-                          }
-                        },
-                        "dayOfWeek": {
-                          "type": "Struct",
-                          "value": {
-                            "index": {
-                              "type": "Integer",
-                              "value": null
-                            },
-                            "min": {
-                              "type": "Integer",
-                              "value": null
-                            },
-                            "max": {
-                              "type": "Integer",
-                              "value": null
-                            }
-                          }
-                        },
-                        "hourOfDay": {
-                          "type": "Struct",
-                          "value": {
-                            "index": {
-                              "type": "Integer",
-                              "value": null
-                            },
-                            "min": {
-                              "type": "Integer",
-                              "value": null
-                            },
-                            "max": {
-                              "type": "Integer",
-                              "value": null
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            },
-            "writable": false
-          }
-        }
-      },
-      "statements": [
-        {
-          "type": "let",
-          "name": "ret",
-          "expr": {
-            "type": {
-              "type": "Dict",
-              "value": {
-                "key": {
-                  "type": "String",
-                  "value": null
-                },
-                "value": {
-                  "type": "Struct",
-                  "value": {
-                    "price": {
-                      "type": "Float",
-                      "value": null
-                    },
-                    "dayOfWeek": {
-                      "type": "Integer",
-                      "value": null
-                    },
-                    "hourOfDay": {
-                      "type": "Integer",
-                      "value": null
-                    },
-                    "qty": {
-                      "type": "Integer",
-                      "value": null
-                    }
-                  }
-                }
-              }
-            },
-            "ast_type": "NewDict",
-            "keys": [],
-            "values": []
-          }
-        },
-        {
-          "type": "for",
-          "label": "0",
-          "collection": {
-            "type": {
-              "type": "Array",
-              "value": {
-                "type": "Integer",
-                "value": null
-              }
-            },
-            "ast_type": "Range",
-            "start": {
-              "type": {
-                "type": "Integer",
-                "value": null
-              },
-              "ast_type": "Const",
-              "value": "0"
-            },
-            "stop": {
-              "type": {
-                "type": "Integer",
-                "value": null
-              },
-              "ast_type": "Const",
-              "value": "1000"
-            }
-          },
-          "statements": [
-            {
-              "type": "let",
-              "name": "price",
-              "expr": {
-                "type": {
-                  "type": "Float",
-                  "value": null
-                },
-                "ast_type": "Multiply",
-                "first": {
-                  "type": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "ast_type": "Const",
-                  "value": 2.2
-                },
-                "second": {
-                  "type": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "ast_type": "Add",
-                  "first": {
-                    "type": {
-                      "type": "Float",
-                      "value": null
-                    },
-                    "ast_type": "Const",
-                    "value": 1
-                  },
-                  "second": {
-                    "type": {
-                      "type": "Float",
-                      "value": null
-                    },
-                    "ast_type": "Multiply",
-                    "first": {
-                      "type": {
-                        "type": "Float",
-                        "value": null
-                      },
-                      "ast_type": "Subtract",
-                      "first": {
-                        "type": {
-                          "type": "Float",
-                          "value": null
-                        },
-                        "ast_type": "Const",
-                        "value": 0.7
-                      },
-                      "second": {
-                        "type": {
-                          "type": "Float",
-                          "value": null
-                        },
-                        "ast_type": "Const",
-                        "value": 1
-                      }
-                    },
-                    "second": {
-                      "type": {
-                        "type": "Float",
-                        "value": null
-                      },
-                      "ast_type": "RandomUniform"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "type": "let",
-              "name": "dayOfWeek",
-              "expr": {
-                "type": {
-                  "type": "Integer",
-                  "value": null
-                },
-                "ast_type": "RandomValue",
-                "collection": {
-                  "type": {
-                    "type": "Array",
-                    "value": {
-                      "type": "Integer",
-                      "value": null
-                    }
-                  },
-                  "ast_type": "Range",
-                  "start": {
-                    "type": {
-                      "type": "Integer",
-                      "value": null
-                    },
-                    "ast_type": "Const",
-                    "value": "0"
-                  },
-                  "stop": {
-                    "type": {
-                      "type": "Integer",
-                      "value": null
-                    },
-                    "ast_type": "Const",
-                    "value": "6"
-                  }
-                },
-                "def": {
-                  "type": {
-                    "type": "Integer",
-                    "value": null
-                  },
-                  "ast_type": "Const",
-                  "value": "0"
-                }
-              }
-            },
-            {
-              "type": "let",
-              "name": "hourOfDay",
-              "expr": {
-                "type": {
-                  "type": "Integer",
-                  "value": null
-                },
-                "ast_type": "RandomValue",
-                "collection": {
-                  "type": {
-                    "type": "Array",
-                    "value": {
-                      "type": "Integer",
-                      "value": null
-                    }
-                  },
-                  "ast_type": "Range",
-                  "start": {
-                    "type": {
-                      "type": "Integer",
-                      "value": null
-                    },
-                    "ast_type": "Const",
-                    "value": "9"
-                  },
-                  "stop": {
-                    "type": {
-                      "type": "Integer",
-                      "value": null
-                    },
-                    "ast_type": "Const",
-                    "value": "17"
-                  }
-                },
-                "def": {
-                  "type": {
-                    "type": "Integer",
-                    "value": null
-                  },
-                  "ast_type": "Const",
-                  "value": "0"
-                }
-              }
-            },
-            {
-              "type": "insert",
-              "collection": {
-                "type": {
-                  "type": "Dict",
-                  "value": {
-                    "key": {
-                      "type": "String",
-                      "value": null
-                    },
-                    "value": {
-                      "type": "Struct",
-                      "value": {
-                        "price": {
-                          "type": "Float",
-                          "value": null
-                        },
-                        "dayOfWeek": {
-                          "type": "Integer",
-                          "value": null
-                        },
-                        "hourOfDay": {
-                          "type": "Integer",
-                          "value": null
-                        },
-                        "qty": {
-                          "type": "Integer",
-                          "value": null
-                        }
-                      }
-                    }
-                  }
-                },
-                "ast_type": "Variable",
-                "name": "ret"
-              },
-              "key": {
-                "type": {
-                  "type": "String",
-                  "value": null
-                },
-                "ast_type": "Print",
-                "value": {
-                  "type": {
-                    "type": "Integer",
-                    "value": null
-                  },
-                  "ast_type": "Variable",
-                  "name": "__value0"
-                }
-              },
-              "value": {
-                "type": {
-                  "type": "Struct",
-                  "value": {
-                    "price": {
-                      "type": "Float",
-                      "value": null
-                    },
-                    "dayOfWeek": {
-                      "type": "Integer",
-                      "value": null
-                    },
-                    "hourOfDay": {
-                      "type": "Integer",
-                      "value": null
-                    },
-                    "qty": {
-                      "type": "Integer",
-                      "value": null
-                    }
-                  }
-                },
-                "ast_type": "Struct",
-                "fields": {
-                  "price": {
-                    "type": {
-                      "type": "Float",
-                      "value": null
-                    },
-                    "ast_type": "Variable",
-                    "name": "price"
-                  },
-                  "dayOfWeek": {
-                    "type": {
-                      "type": "Integer",
-                      "value": null
-                    },
-                    "ast_type": "Variable",
-                    "name": "dayOfWeek"
-                  },
-                  "hourOfDay": {
-                    "type": {
-                      "type": "Integer",
-                      "value": null
-                    },
-                    "ast_type": "Variable",
-                    "name": "hourOfDay"
-                  },
-                  "qty": {
-                    "type": {
-                      "type": "Integer",
-                      "value": null
-                    },
-                    "ast_type": "Round",
-                    "rounding_mode": "nearest",
-                    "value": {
-                      "ast_type": "ML",
-                      "type": {
-                        "type": "Float",
-                        "value": null
-                      },
-                      "name": "Demand",
-                      "features": {
-                        "type": {
-                          "type": "Struct",
-                          "value": {
-                            "price": {
-                              "type": "Float",
-                              "value": null
-                            },
-                            "dayOfWeek": {
-                              "type": "Integer",
-                              "value": null
-                            },
-                            "hourOfDay": {
-                              "type": "Integer",
-                              "value": null
-                            }
-                          }
-                        },
-                        "ast_type": "Struct",
-                        "fields": {
-                          "price": {
-                            "type": {
-                              "type": "Float",
-                              "value": null
-                            },
-                            "ast_type": "Variable",
-                            "name": "price"
-                          },
-                          "dayOfWeek": {
-                            "type": {
-                              "type": "Integer",
-                              "value": null
-                            },
-                            "ast_type": "Variable",
-                            "name": "dayOfWeek"
-                          },
-                          "hourOfDay": {
-                            "type": {
-                              "type": "Integer",
-                              "value": null
-                            },
-                            "ast_type": "Variable",
-                            "name": "hourOfDay"
-                          }
-                        }
-                      },
-                      "config": {
-                        "min": {
-                          "type": {
-                            "type": "Float",
-                            "value": null
-                          },
-                          "ast_type": "Const",
-                          "value": "-Infinity"
-                        },
-                        "max": {
-                          "type": {
-                            "type": "Float",
-                            "value": null
-                          },
-                          "ast_type": "Const",
-                          "value": "Infinity"
-                        }
-                      }
-                    }
-                  }
-                }
-              },
-              "if_exists": "error"
-            }
-          ]
-        },
-        {
-          "type": "return",
-          "outputs": {
-            "demand": {
-              "type": {
-                "type": "Dict",
-                "value": {
-                  "key": {
-                    "type": "String",
-                    "value": null
-                  },
-                  "value": {
-                    "type": "Struct",
-                    "value": {
-                      "price": {
-                        "type": "Float",
-                        "value": null
-                      },
-                      "dayOfWeek": {
-                        "type": "Integer",
-                        "value": null
-                      },
-                      "hourOfDay": {
-                        "type": "Integer",
-                        "value": null
-                      },
-                      "qty": {
-                        "type": "Integer",
-                        "value": null
-                      }
-                    }
-                  }
-                }
-              },
-              "ast_type": "Variable",
-              "name": "ret"
-            }
-          }
-        }
-      ]
-    },
     "Function.Procurement Dates": {
       "task_type": "function",
       "module": [],
@@ -5907,7 +5151,8 @@
             "type": "Float",
             "value": null
           },
-          "input": "resource.Cash"
+          "input": "resource.Cash",
+          "description": null
         },
         "Inventory": {
           "name": "Inventory",
@@ -5915,7 +5160,8 @@
             "type": "Integer",
             "value": null
           },
-          "input": "resource.Inventory"
+          "input": "resource.Inventory",
+          "description": null
         },
         "Liability": {
           "name": "Liability",
@@ -5923,7 +5169,8 @@
             "type": "Float",
             "value": null
           },
-          "input": "resource.Liability"
+          "input": "resource.Liability",
+          "description": null
         },
         "Price": {
           "name": "Price",
@@ -5931,7 +5178,8 @@
             "type": "Float",
             "value": null
           },
-          "input": "resource.Price"
+          "input": "resource.Price",
+          "description": null
         },
         "Suppliers": {
           "name": "Suppliers",
@@ -5969,7 +5217,8 @@
               }
             }
           },
-          "input": "resource.Suppliers"
+          "input": "resource.Suppliers",
+          "description": null
         },
         "Reports": {
           "name": "Reports",
@@ -6003,7 +5252,8 @@
               }
             }
           },
-          "input": "resource.Reports"
+          "input": "resource.Reports",
+          "description": null
         }
       },
       "processes": {
@@ -6187,7 +5437,8 @@
               }
             }
           ],
-          "input": "process.Sales"
+          "input": "process.Sales",
+          "description": null
         },
         "Receive Goods": {
           "name": "Receive Goods",
@@ -6254,7 +5505,8 @@
               }
             }
           ],
-          "input": null
+          "input": null,
+          "description": null
         },
         "Pay Supplier": {
           "name": "Pay Supplier",
@@ -6394,7 +5646,8 @@
               }
             }
           ],
-          "input": null
+          "input": null,
+          "description": null
         },
         "Procurement": {
           "name": "Procurement",
@@ -6971,7 +6224,8 @@
               "false_block": []
             }
           ],
-          "input": "process.Procurement"
+          "input": "process.Procurement",
+          "description": null
         },
         "Reporter": {
           "name": "Reporter",
@@ -7148,7 +6402,8 @@
               }
             }
           ],
-          "input": "process.Reporter"
+          "input": "process.Reporter",
+          "description": null
         }
       },
       "mls": {},
@@ -8038,7 +7293,8 @@
             "type": "Float",
             "value": null
           },
-          "input": "resource.Cash"
+          "input": "resource.Cash",
+          "description": null
         },
         "Inventory": {
           "name": "Inventory",
@@ -8046,7 +7302,8 @@
             "type": "Integer",
             "value": null
           },
-          "input": "resource.Inventory"
+          "input": "resource.Inventory",
+          "description": null
         },
         "Liability": {
           "name": "Liability",
@@ -8054,7 +7311,8 @@
             "type": "Float",
             "value": null
           },
-          "input": "resource.Liability"
+          "input": "resource.Liability",
+          "description": null
         },
         "Price": {
           "name": "Price",
@@ -8062,7 +7320,8 @@
             "type": "Float",
             "value": null
           },
-          "input": "resource.Price"
+          "input": "resource.Price",
+          "description": null
         },
         "Suppliers": {
           "name": "Suppliers",
@@ -8100,7 +7359,8 @@
               }
             }
           },
-          "input": "resource.Suppliers"
+          "input": "resource.Suppliers",
+          "description": null
         },
         "Reports": {
           "name": "Reports",
@@ -8134,7 +7394,8 @@
               }
             }
           },
-          "input": "resource.Reports"
+          "input": "resource.Reports",
+          "description": null
         },
         "Orders": {
           "name": "Orders",
@@ -8160,7 +7421,8 @@
               }
             }
           },
-          "input": "resource.Orders"
+          "input": "resource.Orders",
+          "description": null
         }
       },
       "processes": {
@@ -8344,7 +7606,8 @@
               }
             }
           ],
-          "input": null
+          "input": null,
+          "description": null
         },
         "Receive Goods": {
           "name": "Receive Goods",
@@ -8411,7 +7674,8 @@
               }
             }
           ],
-          "input": null
+          "input": null,
+          "description": null
         },
         "Pay Supplier": {
           "name": "Pay Supplier",
@@ -8551,7 +7815,8 @@
               }
             }
           ],
-          "input": null
+          "input": null,
+          "description": null
         },
         "Procurement": {
           "name": "Procurement",
@@ -9128,7 +8393,8 @@
               "false_block": []
             }
           ],
-          "input": null
+          "input": null,
+          "description": null
         },
         "Reporter": {
           "name": "Reporter",
@@ -9305,7 +8571,8 @@
               }
             }
           ],
-          "input": null
+          "input": null,
+          "description": null
         },
         "Predicted Sales": {
           "name": "Predicted Sales",
@@ -9600,7 +8867,8 @@
               }
             }
           ],
-          "input": "process.Predicted Sales"
+          "input": "process.Predicted Sales",
+          "description": null
         },
         "Predicted Procurement": {
           "name": "Predicted Procurement",
@@ -9730,7 +8998,8 @@
               ]
             }
           ],
-          "input": "process.Predicted Procurement"
+          "input": "process.Predicted Procurement",
+          "description": null
         }
       },
       "mls": {
@@ -13503,95 +12772,6 @@
           "tasks": {
             "show_idle": false,
             "label": "Tasks"
-          }
-        }
-      }
-    },
-    "Demand Analysis": {
-      "name": "Demand Analysis",
-      "module": [],
-      "visual": {
-        "type": "flat",
-        "name": "Demand Analysis",
-        "visual": {
-          "type": "view",
-          "name": "Demand Analysis",
-          "view": {
-            "type": "spec",
-            "name": "Demand Analysis",
-            "stream": {
-              "name": "Function.Demand.demand",
-              "module": [],
-              "type": {
-                "type": "Dict",
-                "value": {
-                  "key": {
-                    "type": "String",
-                    "value": null
-                  },
-                  "value": {
-                    "type": "Struct",
-                    "value": {
-                      "price": {
-                        "type": "Float",
-                        "value": null
-                      },
-                      "dayOfWeek": {
-                        "type": "Integer",
-                        "value": null
-                      },
-                      "hourOfDay": {
-                        "type": "Integer",
-                        "value": null
-                      },
-                      "qty": {
-                        "type": "Integer",
-                        "value": null
-                      }
-                    }
-                  }
-                }
-              },
-              "writable": false
-            },
-            "spec": {
-              "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-              "title": "",
-              "repeat": {
-                "row": [
-                  "price",
-                  "dayOfWeek",
-                  "hourOfDay",
-                  "qty"
-                ],
-                "column": [
-                  "qty",
-                  "hourOfDay",
-                  "dayOfWeek",
-                  "price"
-                ]
-              },
-              "spec": {
-                "mark": "point",
-                "encoding": {
-                  "x": {
-                    "field": {
-                      "repeat": "column"
-                    },
-                    "type": "quantitative"
-                  },
-                  "y": {
-                    "field": {
-                      "repeat": "row"
-                    },
-                    "type": "quantitative"
-                  }
-                }
-              },
-              "data": {
-                "name": "Demand Analysis"
-              }
-            }
           }
         }
       }
