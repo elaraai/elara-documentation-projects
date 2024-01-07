@@ -118,6 +118,8 @@ deploy:
 	 cd 08_work_with_custom_tasks/02_custom_scenarios/01_what_is_a_custom_scenario && edk template deploy -ycw "08_02_01_what_is_a_custom_scenario"
 	 cd 08_work_with_custom_tasks/02_custom_scenarios/02_define_a_custom_scenario && edk template deploy -ycw "08_02_02_define_a_custom_scenario"
 	 cd 08_work_with_custom_tasks/02_custom_scenarios/03_optimize_a_custom_scenario && edk template deploy -ycw "08_02_03_optimize_a_custom_scenario"
+	 cd 09_work_with_llm/01_build_an_assistant/01_what_is_an_assistant && edk template deploy -ycw "09_01_01_what_is_an_assistant"
+	 cd 09_work_with_llm/01_build_an_assistant/02_define_an_assistant && edk template deploy -ycw "09_01_02_define_an_assistant"
 
 .PHONY: install
 install:
@@ -233,6 +235,8 @@ install:
 	 cd 08_work_with_custom_tasks/02_custom_scenarios/01_what_is_a_custom_scenario && npm i
 	 cd 08_work_with_custom_tasks/02_custom_scenarios/02_define_a_custom_scenario && npm i
 	 cd 08_work_with_custom_tasks/02_custom_scenarios/03_optimize_a_custom_scenario && npm i
+	 cd 09_work_with_llm/01_build_an_assistant/01_what_is_an_assistant && npm i
+	 cd 09_work_with_llm/01_build_an_assistant/02_define_an_assistant && npm i
 
 .PHONY: build
 build:
@@ -348,6 +352,8 @@ build:
 	 cd 08_work_with_custom_tasks/02_custom_scenarios/01_what_is_a_custom_scenario && edk template build
 	 cd 08_work_with_custom_tasks/02_custom_scenarios/02_define_a_custom_scenario && edk template build
 	 cd 08_work_with_custom_tasks/02_custom_scenarios/03_optimize_a_custom_scenario && edk template build
+	 cd 09_work_with_llm/01_build_an_assistant/01_what_is_an_assistant && edk template build
+	 cd 09_work_with_llm/01_build_an_assistant/02_define_an_assistant && edk template build
 
 .PHONY: delete
 delete:
@@ -462,3 +468,5 @@ delete:
 	cd 08_work_with_custom_tasks/02_custom_scenarios/01_what_is_a_custom_scenario && edk workspace delete "08_02_01_what_is_a_custom_scenario"
 	cd 08_work_with_custom_tasks/02_custom_scenarios/02_define_a_custom_scenario && edk workspace delete "08_02_02_define_a_custom_scenario"
 	cd 08_work_with_custom_tasks/02_custom_scenarios/03_optimize_a_custom_scenario && edk workspace delete "08_02_03_optimize_a_custom_scenario"
+	cd 09_work_with_llm/01_build_an_assistant/01_what_is_an_assistant && edk workspace delete "09_01_01_what_is_an_assistant"
+	cd 09_work_with_llm/01_build_an_assistant/02_define_an_assistant && edk workspace delete "09_01_02_define_an_assistant"

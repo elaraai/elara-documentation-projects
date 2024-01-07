@@ -1,6 +1,5 @@
 import { Add, AddDuration, DateTimeType, DictType, FloatType, Get, GetField, GreaterEqual, IntegerType, Min, Multiply, PipelineBuilder, Print, ProcessBuilder, Reduce, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringJoin, StringType, Struct, StructType, Subtract, Template, LayoutBuilder, FunctionBuilder, DefaultValue, Max, PrintTruncatedCurrency } from "@elaraai/core"
 
-
 /**
  * # Descriptive Solution Overview
  * 
