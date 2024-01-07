@@ -511,7 +511,7 @@ const assistant = new LLMBuilder("assistant")
     .input({ name: "price", stream: custom_price.outputStream() })
 
     .assistant({
-        api_key: process.env.OPEN_AI_KEY!,
+        api_key: " ... YOUR OPEN AI KEY ...",
         prompt: (inputs) => inputs.prompt
     })
     .aggregate(
