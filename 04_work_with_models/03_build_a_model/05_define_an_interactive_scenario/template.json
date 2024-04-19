@@ -2877,6 +2877,7 @@
           }
         }
       },
+      "procedures": {},
       "statements": [
         {
           "type": "let",
@@ -3413,6 +3414,7 @@
       },
       "defaults": {},
       "mls": {},
+      "procedures": {},
       "statements": [
         {
           "type": "let",
@@ -6772,6 +6774,7 @@
           }
         }
       },
+      "procedures": {},
       "objective": {
         "type": {
           "type": "Float",
@@ -12588,6 +12591,7 @@
         }
       },
       "mls": {},
+      "procedures": {},
       "results": {
         "Cash": {
           "type": {
@@ -15431,6 +15435,7 @@
           }
         }
       },
+      "procedures": {},
       "results": {
         "Cash": {
           "type": {
@@ -18300,6 +18305,7 @@
           }
         }
       },
+      "procedures": {},
       "results": {
         "Cash": {
           "type": {
@@ -26288,78 +26294,6 @@
               "type": "cartesian",
               "name": "Objective by Iteration.0",
               "stream": {
-                "name": "Pipeline.Prescriptive Objective Values",
-                "module": [],
-                "type": {
-                  "type": "Dict",
-                  "value": {
-                    "key": {
-                      "type": "String",
-                      "value": null
-                    },
-                    "value": {
-                      "type": "Struct",
-                      "value": {
-                        "iteration": {
-                          "type": "Integer",
-                          "value": null
-                        },
-                        "objective": {
-                          "type": "Float",
-                          "value": null
-                        }
-                      }
-                    }
-                  }
-                },
-                "writable": false
-              },
-              "mark": {
-                "kind": "point",
-                "shape_filled": true,
-                "fill": "#D9DCDE",
-                "stroke_width": 0,
-                "opacity": 0.2
-              },
-              "x": {
-                "kind": "numeric",
-                "type": "quantitative",
-                "name": "iteration",
-                "field": "iteration",
-                "sort": {
-                  "type": "value",
-                  "order": "ascending"
-                }
-              },
-              "y": {
-                "kind": "numeric",
-                "type": "quantitative",
-                "name": "objective",
-                "field": "objective"
-              },
-              "selections": {
-                "iteration": {
-                  "type": {
-                    "type": "Integer",
-                    "value": null
-                  },
-                  "ast_type": "Variable",
-                  "name": "iteration"
-                },
-                "objective": {
-                  "type": {
-                    "type": "Float",
-                    "value": null
-                  },
-                  "ast_type": "Variable",
-                  "name": "objective"
-                }
-              }
-            },
-            {
-              "type": "cartesian",
-              "name": "Objective by Iteration.1",
-              "stream": {
                 "name": "Pipeline.Prescriptive Best Objective Range",
                 "module": [],
                 "type": {
@@ -26431,7 +26365,7 @@
             },
             {
               "type": "cartesian",
-              "name": "Objective by Iteration.2",
+              "name": "Objective by Iteration.1",
               "stream": {
                 "name": "Pipeline.Prescriptive Best Objective Value",
                 "module": [],
