@@ -1,10 +1,11 @@
 import { Add, Const, FunctionBuilder, Less, Multiply, SourceBuilder, Template } from "@elaraai/core"
 
-// Increment function
-
+// 1. Define and increment function
+// 1.1. Define a source with a value that contains a BigInt
 const x = new SourceBuilder("x")
     .value({ value: 2n });
 
+// 1.2. Define a function that takes the output stream of the source and increments it by 1
 const increment = new FunctionBuilder("increment")
     .input("x", x.outputStream())
     .body(block => block
@@ -13,11 +14,12 @@ const increment = new FunctionBuilder("increment")
         })
     );
 
-// Factorial function
-
+// 2. Define a factorial function
+// 2.1. Define a source with a value that contains a BigInt
 const n = new SourceBuilder("n")
     .value({ value: 10n });
 
+// 2.2. Define a function that takes the output stream of the source and calculates the factorial
 const factorial = new FunctionBuilder("factoral")
     .input("n", n.outputStream())
     .body(block => block
@@ -39,8 +41,7 @@ const factorial = new FunctionBuilder("factoral")
         })
     );
 
-// Build template
-
+// 3. Export the sources and functions in a Template
 export default Template(
     x,
     increment,

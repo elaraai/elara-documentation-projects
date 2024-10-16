@@ -41,7 +41,7 @@ const sales_data = new PipelineBuilder('Sales')
             price: FloatType,
         },
         // the sale date is unique, so can be used as the key
-        output_key: fields => Print(fields.date)
+        output_key: context => Print(context.fields.date)
     })
 
 const supplier_data = new PipelineBuilder('Suppliers')
@@ -60,7 +60,7 @@ const supplier_data = new PipelineBuilder('Suppliers')
             unitQty: IntegerType,
         },
         // the name is unique, so can bs used as the key
-        output_key: fields => fields.supplierName
+        output_key: context => context.fields.supplierName
     })
 
 
@@ -74,7 +74,7 @@ const procurement_data = new PipelineBuilder('Procurement')
             supplierName: StringType,
         },
         // the name is unique so can be used as the key
-        output_key: fields => StringJoin`${fields.date}${fields.supplierName}`
+        output_key: context => StringJoin`${context.fields.date}${context.fields.supplierName}`
     })
 
 // Generate the key dates related to sales
@@ -218,7 +218,7 @@ const reporter = new ProcessBuilder("Reporter")
     // the first report should start at the first sale date (in the past)
     .mapFromPipeline(builder => builder
         .from(sales_dates.outputStreams().first)
-        .transform((date) => Struct({ date }))
+        .transform((context) => Struct({ date: context.value }))
     )
 
 // create a scenario to simulate historic business outcomes
@@ -283,40 +283,40 @@ const liability_graph = new LayoutBuilder("Liability")
 // create a dashboard to interact with the simulation and optimization
 const dashboard = new LayoutBuilder("Dashboard")
     .tab(builder => builder
-        .layout(cash_graph)
-        .layout(liability_graph)
-        .layout(inventory_graph)
+        .layout("Cash", cash_graph)
+        .layout("Liability", liability_graph)
+        .layout("Inventory", inventory_graph)
     )
-    .header(
-        builder => builder
-            .item(
-                "Price",
-                builder => builder
-                    .fromStream(descriptive.simulationResultStreams().Price)
-                    .value((value) => PrintTruncatedCurrency(value),)
-            )
-            .item(
-                "Profit",
-                builder => builder
-                    .fromStream(descriptive.simulationResultStreams().Cash)
-                    .value((value) => PrintTruncatedCurrency(value),)
-            )
-            .item(
-                "Inventory",
-                builder => builder
-                    .fromStream(descriptive.simulationResultStreams().Inventory)
-                    .value((value) => value)
-            )
-            .item(
-                "Liability",
-                builder => builder
-                    .fromStream(descriptive.simulationResultStreams().Liability)
-                    .value((value) => PrintTruncatedCurrency(value))
-            )
-    )
+    // .header(
+    //     builder => builder
+    //         .item(
+    //             "Price",
+    //             builder => builder
+    //                 .fromStream(descriptive.simulationResultStreams().Price)
+    //                 .value((value) => PrintTruncatedCurrency(value),)
+    //         )
+    //         .item(
+    //             "Profit",
+    //             builder => builder
+    //                 .fromStream(descriptive.simulationResultStreams().Cash)
+    //                 .value((value) => PrintTruncatedCurrency(value),)
+    //         )
+    //         .item(
+    //             "Inventory",
+    //             builder => builder
+    //                 .fromStream(descriptive.simulationResultStreams().Inventory)
+    //                 .value((value) => value)
+    //         )
+    //         .item(
+    //             "Liability",
+    //             builder => builder
+    //                 .fromStream(descriptive.simulationResultStreams().Liability)
+    //                 .value((value) => PrintTruncatedCurrency(value))
+    //         )
+    // )
     // enable the targets and tasks toolbars
-    .targetsToolbar(true)
-    .tasksToolbar(true)
+    // .targetsToolbar(true)
+    // .tasksToolbar(true)
 
 export default Template(
     // data sources

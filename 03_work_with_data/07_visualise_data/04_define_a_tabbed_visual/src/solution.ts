@@ -1,5 +1,6 @@
 import { SourceBuilder, Template, LayoutBuilder } from "@elaraai/core"
 
+// 1. Define a source with a value that contains a Map
 const my_source = new SourceBuilder("My Source")
     .value({
         value: new Map(Array.from({ length: 100 }).map((_, index) => (
@@ -11,12 +12,15 @@ const my_source = new SourceBuilder("My Source")
         )))
     })
 
+// 2. Define a layout with a tab that contains a table and a vega chart that displays the source
 const my_layout = new LayoutBuilder("My Layout")
     .tab(builder => builder
+        // 2.1 Add a table to the tab
         .table("My Table", builder => builder
             .fromStream(my_source.outputStream())
             .columns()
         )
+        // 2.2 Add a vega chart to the tab
         .vega("My Chart", builder => builder
             .view(builder => builder
                 .fromStream(my_source.outputStream())
@@ -28,4 +32,5 @@ const my_layout = new LayoutBuilder("My Layout")
         )
     )
 
+// 3. Export the source and layout in a Template
 export default Template(my_source, my_layout);

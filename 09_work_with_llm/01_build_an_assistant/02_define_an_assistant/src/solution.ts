@@ -1,4 +1,4 @@
-import { Add, AddDuration, Ceiling, Convert, DateTimeType, DayOfWeek, DictType, FloatType, Get, GetField, GreaterEqual, Hour, IntegerType, MLModelBuilder, Min, Multiply, PipelineBuilder, Print, ProcessBuilder, Reduce, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringJoin, StringType, Struct, StructType, Subtract, Template, IfElse, LayoutBuilder, ObjectiveLayout, FunctionBuilder, NewDict, Keys, Compare, PrintTruncatedCurrency, Less, LessEqual, DefaultValue, Max, SubtractDuration, ToArray, LLMBuilder, Nullable, Const } from "@elaraai/core"
+import { Add, AddDuration, Ceiling, Convert, DateTimeType, DayOfWeek, DictType, FloatType, Get, GetField, GreaterEqual, Hour, IntegerType, MLModelBuilder, Min, Multiply, PipelineBuilder, Print, ProcessBuilder, Reduce, ResourceBuilder, ScenarioBuilder, SourceBuilder, StringJoin, StringType, Struct, StructType, Subtract, Template, IfElse, LayoutBuilder, ObjectiveLayout, FunctionBuilder, NewDict, Keys, Less, LessEqual, DefaultValue, Max, SubtractDuration, ToArray, LLMBuilder, Nullable, Const, In } from "@elaraai/core"
 
 /**
  * # LLM Solution Overview
@@ -58,7 +58,6 @@ const supplier_data = new PipelineBuilder('Suppliers')
         // the name is unique, so can bs used as the key
         output_key: fields => fields.supplierName
     })
-
 
 const procurement_data = new PipelineBuilder('Procurement')
     .from(procurement_file.outputStream())
@@ -216,14 +215,14 @@ const reports = new ResourceBuilder("Reports")
         new Map(),
         DictType(
             StringType,
-            StructType({ 
-                date: DateTimeType, 
-                cash: FloatType, 
-                costs: FloatType, 
-                revenue: FloatType, 
-                profit: FloatType, 
-                liability: FloatType, 
-                inventory: IntegerType, 
+            StructType({
+                date: DateTimeType,
+                cash: FloatType,
+                costs: FloatType,
+                revenue: FloatType,
+                profit: FloatType,
+                liability: FloatType,
+                inventory: IntegerType,
             })
         )
     )
@@ -334,20 +333,32 @@ const reporter = new ProcessBuilder("Reporter")
     .resource(liability)
     .resource(costs)
     .resource(revenue)
+    .let("report", (props, resources) => Struct({
+        date: props.date,
+        cash: resources.Cash,
+        costs: resources.Costs,
+        revenue: resources.Revenue,
+        profit: Subtract(resources.Revenue, resources.Costs),
+        liability: resources.Liability,
+        inventory: resources.Inventory,
+    }))
     // insert a report into the reports resource
-    .insert(
-        (_props, resources) => resources.Reports,
-        (props, _resources) => Print(props.date),
-        (props, resources) => Struct({
-            date: props.date,
-            cash: resources.Cash,
-            costs: resources.Costs,
-            revenue: resources.Revenue,
-            profit: Subtract(resources.Revenue, resources.Costs),
-            liability: resources.Liability,
-            inventory: resources.Inventory,
-        })
+    .if(
+        (props, resources) => In(resources.Reports, Print(props.date)),
+        process => process
+            .update(
+                (_props, resources) => resources.Reports,
+                (props) => Print(props.date),
+                (props) => props.report
+            ),
+        process => process
+            .insert(
+                (_props, resources) => resources.Reports,
+                (props) => Print(props.date),
+                (props) => props.report
+            )
     )
+
     // update the costs and revenue
     .set("Costs", () => Const(0.0))
     .set("Revenue", () => Const(0.0))
@@ -511,7 +522,7 @@ const assistant = new LLMBuilder("assistant")
     .input({ name: "price", stream: custom_price.outputStream() })
 
     .assistant({
-        api_key: " ... YOUR OPEN AI KEY ...",
+        api_key: process.env.OPEN_AI_KEY!,
         prompt: (inputs) => inputs.prompt
     })
     .aggregate(
@@ -524,8 +535,8 @@ const assistant = new LLMBuilder("assistant")
     .read(
         "read_current_price",
         {
-            return_value: (inputs) => inputs.price,
-            return_description: (builder) => builder
+            value: (inputs) => inputs.price,
+            value_description: (builder) => builder
                 .describe("An object containing the current price")
                 .struct(builder => builder
                     .field('price', builder => builder.describe("The current price").float())
@@ -535,8 +546,8 @@ const assistant = new LLMBuilder("assistant")
     .read(
         'read_current_inventory_orders',
         {
-            return_value: (inputs) => inputs.orders,
-            return_description: orders.toType()
+            value: (inputs) => inputs.orders,
+            value_description: orders.toType()
         }
     )
     .write(
@@ -660,82 +671,80 @@ const concatenated_reports = new PipelineBuilder("Concatenated Reports")
     })
 
 // create an editable table of orders
-const orders_graph = new LayoutBuilder("Orders")
-    .table(
-        "Orders",
-        builder => builder
-            .fromPatch(custom_orders)
-            .input({ name: "Recommended", stream: prescriptive.simulationResultStreams().Orders })
-            .input({ name: "Suppliers", stream: descriptive.simulationResultStreams().Suppliers })
-            // make the date readonly
-            .date("Date", {
-                value: fields => fields.date,
-                readonly: true
-            })
-            // allow selection of supplier based on all the suppliers, and the recommended supplier
-            .string("Supplier Name", {
-                value: fields => fields.supplierName,
-                range: (_, inputs) => Keys(inputs.Suppliers),
-                target: (fields, inputs) => GetField(Get(inputs.Recommended, Print(fields.date, "YYYY-MM-DD")), "supplierName"),
-            })
-            // disable adding or removing orders
-            .disableAdd()
-            .disableRemove()
-    )
+// const orders_graph = new LayoutBuilder("Orders")
+//     .table(
+//         "Orders",
+//         builder => builder
+//             .fromPatch(custom_orders)
+//             .input({ name: "Recommended", stream: prescriptive.simulationResultStreams().Orders })
+//             .input({ name: "Suppliers", stream: descriptive.simulationResultStreams().Suppliers })
+//             // make the date readonly
+//             .field('date', builder => builder
+//                 .allowReplace(false)
+//                 .label("Date")
+//             )
+//             // allow selection of supplier based on all the suppliers, and the recommended supplier
+//             .field("supplierName", builder => builder
+//                 .allowReplace(false)
+//                 .label("Supplier")
+//                 .range(context => Keys(context.inputs.Suppliers))
+//                 .target(context => GetField(Get(context.inputs.Recommended, Print(GetField(context.parent.value, 'date'), "YYYY-MM-DD")), "supplierName"))
+//             )
+//             // disable adding or removing orders
+//             .allowInsertItem(false)
+//             .allowDeleteItem(false)
+//     )
 
-// create an editable table of suppliers
-const supplier_graph = new LayoutBuilder("Suppliers")
-    .table(
-        "Suppliers",
-        builder => builder
-            .fromPatch(custom_suppliers)
-            // supplier name is readonly
-            .string("Supplier", {
-                value: fields => fields.supplierName,
-                readonly: true
-            })
-            // provide limits to the payment terms, lead time, unit cost and unit qty
-            .float("Payment Terms", {
-                value: fields => fields.paymentTerms,
-                min: 0,
-                max: 100,
-            })
-            .float("Lead Time", {
-                value: fields => fields.leadTime,
-                min: 0,
-                max: 100,
-            })
-            .float("Unit Cost", {
-                value: fields => fields.unitCost,
-                min: 0,
-                max: 5,
-            })
-            .integer("Unit Qty", {
-                value: fields => fields.unitQty,
-                min: 0n,
-                max: 5000n,
-            })
-            // disable adding or removing suppliers
-            .disableAdd()
-            .disableRemove()
-    )
+// // create an editable table of suppliers
+// const supplier_graph = new LayoutBuilder("Suppliers")
+//     .table(
+//         "Suppliers",
+//         builder => builder
+//             .fromPatch(custom_suppliers)
+//             .field("supplierName", builder => builder
+//                 .allowReplace(false)
+//                 .label("Supplier")
+//             )
+//             .field("paymentTerms", builder => builder
+//                 .label("Payment Terms")
+//                 .min(0)
+//                 .max(100)
+//             )
+//             .field("leadTime", builder => builder
+//                 .label("Lead Time")
+//                 .min(0)
+//                 .max(100)
+//             )
+//             .field("unitCost", builder => builder
+//                 .label("Unit Cost")
+//                 .min(0)
+//                 .max(5)
+//             )
+//             .field("unitQty", builder => builder
+//                 .label("Unit Qty")
+//                 .min(0n)
+//                 .max(5000n)
+//             )
+//             // disable adding or removing suppliers
+//             .allowInsertItem(false)
+//             .allowDeleteItem(false)
+//     )
 
-// create an editable form for the price
-const price_form = new LayoutBuilder("Price")
-    .form(
-        "Price",
-        builder => builder
-            .fromStream(custom_price.outputStream())
-            .input({ name: "Recommended", stream: prescriptive.simulationResultStreams().Price })
-            // provide a float input for the price, with a min and max, and target
-            .float("Price", {
-                value: fields => fields.price,
-                min: rrp * 0.7,
-                max: rrp,
-                target: (_fields, inputs) => inputs.Recommended,
-                target_display: (_fields, inputs) => PrintTruncatedCurrency(inputs.Recommended),
-            })
-    )
+// // create an editable form for the price
+// const price_form = new LayoutBuilder("Price")
+//     .form(
+//         "Price",
+//         builder => builder
+//             .fromStream(custom_price.outputStream())
+//             .input({ name: "Recommended", stream: prescriptive.simulationResultStreams().Price })
+//             // provide a float input for the price, with a min and max, and target
+//             .field("price", builder => builder
+//                 .min(rrp * 0.7)
+//                 .max(rrp)
+//                 .target(context => context.inputs.Recommended)
+//                 .targetDisplay(context => PrintTruncatedCurrency(context.inputs.Recommended))
+//             )
+//     )
 
 // make some colors for each scenario in the charts
 const colors: [value: string, color: string][] = [['Optimized', '#2B4B55'], ['BAU', '#6da7de'], ['Historic', '#b5bac0']]
@@ -792,58 +801,60 @@ const dashboard = new LayoutBuilder("Dashboard")
     .panel(
         "row",
         builder => builder
-            .tab(40, builder => builder
-                .layout(orders_graph)
-                .layout(supplier_graph)
-                .layout(price_form)
-            )
+            // .tab(40, builder => builder
+            //     .layout(orders_graph)
+            //     .layout(supplier_graph)
+            //     .layout(price_form)
+            // )
             .tab(60, builder => builder
                 .layout(cash_graph)
                 .layout(liability_graph)
                 .layout(inventory_graph)
             )
     )
-    .header(
-        builder => builder
-            .item(
-                "Profit (% Full Potential)",
-                builder => builder
-                    // add a kpi to the header, with the cash value, target, comparison and goal
-                    .fromStream(prescriptive.simulationResultStreams().Cash)
-                    .input({ name: "interactive", stream: predictive.simulationResultStreams().Cash })
-                    .kpi({
-                        value: (_value, inputs) => PrintTruncatedCurrency(inputs.interactive),
-                        target: (value) => PrintTruncatedCurrency(value),
-                        comparison: (value, inputs) => Compare(inputs.interactive, value),
-                        goal: 'greater'
-                    })
-            )
-            .item(
-                "Inventory (% Full Potential)",
-                builder => builder
-                    .fromStream(prescriptive.simulationResultStreams().Inventory)
-                    .input({ name: "interactive", stream: predictive.simulationResultStreams().Inventory })
-                    // add a kpi to the header, with the inventory value, target, comparison and goal
-                    .kpi({
-                        value: (_value, inputs) => inputs.interactive,
-                        target: (value) => value,
-                        goal: 'less'
-                    })
-            )
-            .item(
-                "Liability (% Full Potential)",
-                builder => builder
-                    .fromStream(prescriptive.simulationResultStreams().Liability)
-                    .input({ name: "interactive", stream: predictive.simulationResultStreams().Liability })
-                    // add a kpi to the header, with the liability value, target, comparison and goal
-                    .kpi({
-                        value: (_value, inputs) => PrintTruncatedCurrency(inputs.interactive),
-                        target: (value) => PrintTruncatedCurrency(value),
-                        comparison: (value, inputs) => Compare(inputs.interactive, value),
-                        goal: 'greater'
-                    })
-            )
-    )
+
+
+    // .header(
+    //     builder => builder
+    //         .item(
+    //             "Profit (% Full Potential)",
+    //             builder => builder
+    //                 // add a kpi to the header, with the cash value, target, comparison and goal
+    //                 .fromStream(prescriptive.simulationResultStreams().Cash)
+    //                 .input({ name: "interactive", stream: predictive.simulationResultStreams().Cash })
+    //                 .kpi({
+    //                     value: (_value, inputs) => PrintTruncatedCurrency(inputs.interactive),
+    //                     target: (value) => PrintTruncatedCurrency(value),
+    //                     comparison: (value, inputs) => Compare(inputs.interactive, value),
+    //                     goal: 'greater'
+    //                 })
+    //         )
+    //         .item(
+    //             "Inventory (% Full Potential)",
+    //             builder => builder
+    //                 .fromStream(prescriptive.simulationResultStreams().Inventory)
+    //                 .input({ name: "interactive", stream: predictive.simulationResultStreams().Inventory })
+    //                 // add a kpi to the header, with the inventory value, target, comparison and goal
+    //                 .kpi({
+    //                     value: (_value, inputs) => inputs.interactive,
+    //                     target: (value) => value,
+    //                     goal: 'less'
+    //                 })
+    //         )
+    //         .item(
+    //             "Liability (% Full Potential)",
+    //             builder => builder
+    //                 .fromStream(prescriptive.simulationResultStreams().Liability)
+    //                 .input({ name: "interactive", stream: predictive.simulationResultStreams().Liability })
+    //                 // add a kpi to the header, with the liability value, target, comparison and goal
+    //                 .kpi({
+    //                     value: (_value, inputs) => PrintTruncatedCurrency(inputs.interactive),
+    //                     target: (value) => PrintTruncatedCurrency(value),
+    //                     comparison: (value, inputs) => Compare(inputs.interactive, value),
+    //                     goal: 'greater'
+    //                 })
+    //         )
+    // )
     .chat(builder => builder
         .thread(
             prompt.outputStream(),
@@ -884,7 +895,7 @@ export default Template(
     predicted_procurement,
     // resources
     cash,
-    costs, 
+    costs,
     revenue,
     liability,
     inventory,

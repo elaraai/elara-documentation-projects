@@ -1,35 +1,55 @@
 {
   "streams": {
-    "Function.factoral.output": {
+    "/Function.factoral.output": {
       "name": "Function.factoral.output",
-      "module": [],
+      "module": [
+        {
+          "type": "root",
+          "name": ""
+        }
+      ],
       "type": {
         "type": "Integer",
         "value": null
       },
       "writable": false
     },
-    "Function.increment.y": {
+    "/Function.increment.y": {
       "name": "Function.increment.y",
-      "module": [],
+      "module": [
+        {
+          "type": "root",
+          "name": ""
+        }
+      ],
       "type": {
         "type": "Integer",
         "value": null
       },
       "writable": false
     },
-    "Writeable.n": {
-      "name": "Writeable.n",
-      "module": [],
+    "/Writable.n": {
+      "name": "Writable.n",
+      "module": [
+        {
+          "type": "root",
+          "name": ""
+        }
+      ],
       "type": {
         "type": "Integer",
         "value": null
       },
       "writable": true
     },
-    "Writeable.x": {
-      "name": "Writeable.x",
-      "module": [],
+    "/Writable.x": {
+      "name": "Writable.x",
+      "module": [
+        {
+          "type": "root",
+          "name": ""
+        }
+      ],
       "type": {
         "type": "Integer",
         "value": null
@@ -38,26 +58,41 @@
     }
   },
   "tasks": {
-    "Function.factoral": {
+    "/Function.factoral": {
       "task_type": "function",
-      "module": [],
+      "module": [
+        {
+          "type": "root",
+          "name": ""
+        }
+      ],
       "name": "Function.factoral",
       "inputs": {
         "n": {
-          "name": "Writeable.n",
-          "module": [],
+          "name": "Writable.n",
+          "module": [
+            {
+              "type": "root",
+              "name": ""
+            }
+          ],
           "type": {
             "type": "Integer",
             "value": null
           },
           "optional": false,
-          "writable": false
+          "writable": true
         }
       },
       "outputs": {
         "output.output": {
           "name": "Function.factoral.output",
-          "module": [],
+          "module": [
+            {
+              "type": "root",
+              "name": ""
+            }
+          ],
           "type": {
             "type": "Integer",
             "value": null
@@ -69,6 +104,7 @@
       "defaults": {},
       "mls": {},
       "procedures": {},
+      "decisions": {},
       "statements": [
         {
           "type": "if",
@@ -230,28 +266,44 @@
             }
           }
         }
-      ]
+      ],
+      "random_seed": "Function.factoral"
     },
-    "Function.increment": {
+    "/Function.increment": {
       "task_type": "function",
-      "module": [],
+      "module": [
+        {
+          "type": "root",
+          "name": ""
+        }
+      ],
       "name": "Function.increment",
       "inputs": {
         "x": {
-          "name": "Writeable.x",
-          "module": [],
+          "name": "Writable.x",
+          "module": [
+            {
+              "type": "root",
+              "name": ""
+            }
+          ],
           "type": {
             "type": "Integer",
             "value": null
           },
           "optional": false,
-          "writable": false
+          "writable": true
         }
       },
       "outputs": {
         "output.y": {
           "name": "Function.increment.y",
-          "module": [],
+          "module": [
+            {
+              "type": "root",
+              "name": ""
+            }
+          ],
           "type": {
             "type": "Integer",
             "value": null
@@ -263,6 +315,7 @@
       "defaults": {},
       "mls": {},
       "procedures": {},
+      "decisions": {},
       "statements": [
         {
           "type": "return",
@@ -292,14 +345,20 @@
             }
           }
         }
-      ]
+      ],
+      "random_seed": "Function.increment"
     }
   },
   "defaults": {
-    "Writeable.n": {
+    "/Writable.n": {
       "default_type": "value",
-      "stream": "Writeable.n",
-      "module": [],
+      "stream": "Writable.n",
+      "module": [
+        {
+          "type": "root",
+          "name": ""
+        }
+      ],
       "value": {
         "type": {
           "type": "Integer",
@@ -309,10 +368,15 @@
         "value": "10"
       }
     },
-    "Writeable.x": {
+    "/Writable.x": {
       "default_type": "value",
-      "stream": "Writeable.x",
-      "module": [],
+      "stream": "Writable.x",
+      "module": [
+        {
+          "type": "root",
+          "name": ""
+        }
+      ],
       "value": {
         "type": {
           "type": "Integer",
@@ -321,6 +385,13 @@
         "ast_type": "Const",
         "value": "2"
       }
+    }
+  },
+  "modules": {
+    "/": {
+      "type": "root",
+      "name": "",
+      "module": []
     }
   }
 }

@@ -1,8 +1,13 @@
 {
   "streams": {
-    "Pipeline.My Pipeline": {
+    "/Pipeline.My Pipeline": {
       "name": "Pipeline.My Pipeline",
-      "module": [],
+      "module": [
+        {
+          "type": "root",
+          "name": ""
+        }
+      ],
       "type": {
         "type": "Dict",
         "value": {
@@ -23,9 +28,14 @@
       },
       "writable": false
     },
-    "Writeable.My Source": {
-      "name": "Writeable.My Source",
-      "module": [],
+    "/Writable.My Source": {
+      "name": "Writable.My Source",
+      "module": [
+        {
+          "type": "root",
+          "name": ""
+        }
+      ],
       "type": {
         "type": "Dict",
         "value": {
@@ -51,14 +61,24 @@
     }
   },
   "tasks": {
-    "Pipeline.My Pipeline": {
+    "/Pipeline.My Pipeline": {
       "task_type": "pipeline",
-      "module": [],
+      "module": [
+        {
+          "type": "root",
+          "name": ""
+        }
+      ],
       "name": "Pipeline.My Pipeline",
       "inputs": {
         "input": {
-          "name": "Writeable.My Source",
-          "module": [],
+          "name": "Writable.My Source",
+          "module": [
+            {
+              "type": "root",
+              "name": ""
+            }
+          ],
           "type": {
             "type": "Dict",
             "value": {
@@ -81,13 +101,18 @@
             }
           },
           "optional": false,
-          "writable": false
+          "writable": true
         }
       },
       "outputs": {
         "output": {
           "name": "Pipeline.My Pipeline",
-          "module": [],
+          "module": [
+            {
+              "type": "root",
+              "name": ""
+            }
+          ],
           "type": {
             "type": "Dict",
             "value": {
@@ -186,14 +211,20 @@
             }
           }
         }
-      ]
+      ],
+      "random_seed": "Pipeline.My Pipeline"
     }
   },
   "defaults": {
-    "Writeable.My Source": {
+    "/Writable.My Source": {
       "default_type": "value",
-      "stream": "Writeable.My Source",
-      "module": [],
+      "stream": "Writable.My Source",
+      "module": [
+        {
+          "type": "root",
+          "name": ""
+        }
+      ],
       "value": {
         "type": {
           "type": "Dict",
@@ -238,6 +269,13 @@
           }
         ]
       }
+    }
+  },
+  "modules": {
+    "/": {
+      "type": "root",
+      "name": "",
+      "module": []
     }
   }
 }

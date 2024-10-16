@@ -1,5 +1,6 @@
 import { SourceBuilder, PipelineBuilder, Template, StringJoin } from "@elaraai/core"
 
+// 1. Define a source with a value that contains a Map with a struct value
 const my_source = new SourceBuilder("My Source")
     .value({
         value: new Map([
@@ -8,15 +9,22 @@ const my_source = new SourceBuilder("My Source")
         ])
     })
 
+// 2. Define a pipeline that takes the output stream of the source and disaggregates the array field
 const my_pipeline = new PipelineBuilder("My Pipeline")
     .from(my_source.outputStream())
+    // 2.1 Disaggregate the array field
     .disaggregateArray({
-        collection: fields => fields.value,
+        // 2.2 Define the collection to disaggregate
+        collection: context => context.fields.value,
+        // 2.3 Don't keep the original value from the dictionary
         keep_all: false,
+        // 2.4 Define the selections
         selections: {
-            array_value: (_fields, value) => value,
+            array_value: context => context.value,
         },
-        output_key: (_fields, _value, collection_key, input_key)  => StringJoin`${collection_key}${input_key}`
+        // 2.5 Define the output key
+        output_key: context => StringJoin`${context.collection_key}${context.input_key}`
     })
 
+// 3. Export the source and pipeline in a Template
 export default Template(my_source, my_pipeline);

@@ -1,8 +1,13 @@
 {
   "streams": {
-    "Writeable.My Source": {
-      "name": "Writeable.My Source",
-      "module": [],
+    "/Writable.My Source": {
+      "name": "Writable.My Source",
+      "module": [
+        {
+          "type": "root",
+          "name": ""
+        }
+      ],
       "type": {
         "type": "Integer",
         "value": null
@@ -11,5 +16,12 @@
     }
   },
   "tasks": {},
-  "defaults": {}
+  "defaults": {},
+  "modules": {
+    "/": {
+      "type": "root",
+      "name": "",
+      "module": []
+    }
+  }
 }

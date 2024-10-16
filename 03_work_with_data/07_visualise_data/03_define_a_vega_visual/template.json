@@ -1,8 +1,13 @@
 {
   "streams": {
-    "Writeable.My Source": {
-      "name": "Writeable.My Source",
-      "module": [],
+    "/Writable.My Source": {
+      "name": "Writable.My Source",
+      "module": [
+        {
+          "type": "root",
+          "name": ""
+        }
+      ],
       "type": {
         "type": "Dict",
         "value": {
@@ -34,10 +39,15 @@
   },
   "tasks": {},
   "defaults": {
-    "Writeable.My Source": {
+    "/Writable.My Source": {
       "default_type": "value",
-      "stream": "Writeable.My Source",
-      "module": [],
+      "stream": "Writable.My Source",
+      "module": [
+        {
+          "type": "root",
+          "name": ""
+        }
+      ],
       "value": {
         "type": {
           "type": "Dict",
@@ -70,7 +80,7 @@
           {
             "key": "0",
             "value": {
-              "date": "2024-04-19T04:32:50.063Z",
+              "date": "2024-10-16T22:26:27.625Z",
               "category": "category 0",
               "value": "0"
             }
@@ -78,7 +88,7 @@
           {
             "key": "1",
             "value": {
-              "date": "2024-04-19T05:32:50.063Z",
+              "date": "2024-10-16T23:26:27.625Z",
               "category": "category 1",
               "value": "6"
             }
@@ -86,7 +96,7 @@
           {
             "key": "2",
             "value": {
-              "date": "2024-04-19T06:32:50.063Z",
+              "date": "2024-10-17T00:26:27.625Z",
               "category": "category 2",
               "value": "13"
             }
@@ -94,7 +104,7 @@
           {
             "key": "3",
             "value": {
-              "date": "2024-04-19T07:32:50.063Z",
+              "date": "2024-10-17T01:26:27.625Z",
               "category": "category 3",
               "value": "19"
             }
@@ -102,7 +112,7 @@
           {
             "key": "4",
             "value": {
-              "date": "2024-04-19T08:32:50.063Z",
+              "date": "2024-10-17T02:26:27.625Z",
               "category": "category 0",
               "value": "25"
             }
@@ -110,7 +120,7 @@
           {
             "key": "5",
             "value": {
-              "date": "2024-04-19T09:32:50.063Z",
+              "date": "2024-10-17T03:26:27.625Z",
               "category": "category 1",
               "value": "31"
             }
@@ -118,7 +128,7 @@
           {
             "key": "6",
             "value": {
-              "date": "2024-04-19T10:32:50.063Z",
+              "date": "2024-10-17T04:26:27.625Z",
               "category": "category 2",
               "value": "37"
             }
@@ -126,7 +136,7 @@
           {
             "key": "7",
             "value": {
-              "date": "2024-04-19T11:32:50.063Z",
+              "date": "2024-10-17T05:26:27.625Z",
               "category": "category 3",
               "value": "44"
             }
@@ -134,7 +144,7 @@
           {
             "key": "8",
             "value": {
-              "date": "2024-04-19T12:32:50.063Z",
+              "date": "2024-10-17T06:26:27.625Z",
               "category": "category 0",
               "value": "50"
             }
@@ -142,7 +152,7 @@
           {
             "key": "9",
             "value": {
-              "date": "2024-04-19T13:32:50.063Z",
+              "date": "2024-10-17T07:26:27.625Z",
               "category": "category 1",
               "value": "56"
             }
@@ -150,7 +160,7 @@
           {
             "key": "10",
             "value": {
-              "date": "2024-04-19T14:32:50.063Z",
+              "date": "2024-10-17T08:26:27.625Z",
               "category": "category 2",
               "value": "62"
             }
@@ -158,7 +168,7 @@
           {
             "key": "11",
             "value": {
-              "date": "2024-04-19T15:32:50.063Z",
+              "date": "2024-10-17T09:26:27.625Z",
               "category": "category 3",
               "value": "68"
             }
@@ -166,7 +176,7 @@
           {
             "key": "12",
             "value": {
-              "date": "2024-04-19T16:32:50.063Z",
+              "date": "2024-10-17T10:26:27.625Z",
               "category": "category 0",
               "value": "74"
             }
@@ -174,7 +184,7 @@
           {
             "key": "13",
             "value": {
-              "date": "2024-04-19T17:32:50.063Z",
+              "date": "2024-10-17T11:26:27.625Z",
               "category": "category 1",
               "value": "79"
             }
@@ -182,7 +192,7 @@
           {
             "key": "14",
             "value": {
-              "date": "2024-04-19T18:32:50.063Z",
+              "date": "2024-10-17T12:26:27.625Z",
               "category": "category 2",
               "value": "85"
             }
@@ -190,7 +200,7 @@
           {
             "key": "15",
             "value": {
-              "date": "2024-04-19T19:32:50.063Z",
+              "date": "2024-10-17T13:26:27.625Z",
               "category": "category 3",
               "value": "91"
             }
@@ -198,7 +208,7 @@
           {
             "key": "16",
             "value": {
-              "date": "2024-04-19T20:32:50.063Z",
+              "date": "2024-10-17T14:26:27.625Z",
               "category": "category 0",
               "value": "96"
             }
@@ -206,7 +216,7 @@
           {
             "key": "17",
             "value": {
-              "date": "2024-04-19T21:32:50.063Z",
+              "date": "2024-10-17T15:26:27.625Z",
               "category": "category 1",
               "value": "102"
             }
@@ -214,7 +224,7 @@
           {
             "key": "18",
             "value": {
-              "date": "2024-04-19T22:32:50.063Z",
+              "date": "2024-10-17T16:26:27.625Z",
               "category": "category 2",
               "value": "107"
             }
@@ -222,7 +232,7 @@
           {
             "key": "19",
             "value": {
-              "date": "2024-04-19T23:32:50.063Z",
+              "date": "2024-10-17T17:26:27.625Z",
               "category": "category 3",
               "value": "112"
             }
@@ -230,7 +240,7 @@
           {
             "key": "20",
             "value": {
-              "date": "2024-04-20T00:32:50.063Z",
+              "date": "2024-10-17T18:26:27.625Z",
               "category": "category 0",
               "value": "118"
             }
@@ -238,7 +248,7 @@
           {
             "key": "21",
             "value": {
-              "date": "2024-04-20T01:32:50.063Z",
+              "date": "2024-10-17T19:26:27.625Z",
               "category": "category 1",
               "value": "123"
             }
@@ -246,7 +256,7 @@
           {
             "key": "22",
             "value": {
-              "date": "2024-04-20T02:32:50.063Z",
+              "date": "2024-10-17T20:26:27.625Z",
               "category": "category 2",
               "value": "127"
             }
@@ -254,7 +264,7 @@
           {
             "key": "23",
             "value": {
-              "date": "2024-04-20T03:32:50.063Z",
+              "date": "2024-10-17T21:26:27.625Z",
               "category": "category 3",
               "value": "132"
             }
@@ -262,7 +272,7 @@
           {
             "key": "24",
             "value": {
-              "date": "2024-04-20T04:32:50.063Z",
+              "date": "2024-10-17T22:26:27.625Z",
               "category": "category 0",
               "value": "137"
             }
@@ -270,7 +280,7 @@
           {
             "key": "25",
             "value": {
-              "date": "2024-04-20T05:32:50.063Z",
+              "date": "2024-10-17T23:26:27.625Z",
               "category": "category 1",
               "value": "141"
             }
@@ -278,7 +288,7 @@
           {
             "key": "26",
             "value": {
-              "date": "2024-04-20T06:32:50.063Z",
+              "date": "2024-10-18T00:26:27.625Z",
               "category": "category 2",
               "value": "146"
             }
@@ -286,7 +296,7 @@
           {
             "key": "27",
             "value": {
-              "date": "2024-04-20T07:32:50.063Z",
+              "date": "2024-10-18T01:26:27.625Z",
               "category": "category 3",
               "value": "150"
             }
@@ -294,7 +304,7 @@
           {
             "key": "28",
             "value": {
-              "date": "2024-04-20T08:32:50.063Z",
+              "date": "2024-10-18T02:26:27.625Z",
               "category": "category 0",
               "value": "154"
             }
@@ -302,7 +312,7 @@
           {
             "key": "29",
             "value": {
-              "date": "2024-04-20T09:32:50.063Z",
+              "date": "2024-10-18T03:26:27.625Z",
               "category": "category 1",
               "value": "158"
             }
@@ -310,7 +320,7 @@
           {
             "key": "30",
             "value": {
-              "date": "2024-04-20T10:32:50.063Z",
+              "date": "2024-10-18T04:26:27.625Z",
               "category": "category 2",
               "value": "162"
             }
@@ -318,7 +328,7 @@
           {
             "key": "31",
             "value": {
-              "date": "2024-04-20T11:32:50.063Z",
+              "date": "2024-10-18T05:26:27.625Z",
               "category": "category 3",
               "value": "165"
             }
@@ -326,7 +336,7 @@
           {
             "key": "32",
             "value": {
-              "date": "2024-04-20T12:32:50.063Z",
+              "date": "2024-10-18T06:26:27.625Z",
               "category": "category 0",
               "value": "169"
             }
@@ -334,7 +344,7 @@
           {
             "key": "33",
             "value": {
-              "date": "2024-04-20T13:32:50.063Z",
+              "date": "2024-10-18T07:26:27.625Z",
               "category": "category 1",
               "value": "172"
             }
@@ -342,7 +352,7 @@
           {
             "key": "34",
             "value": {
-              "date": "2024-04-20T14:32:50.063Z",
+              "date": "2024-10-18T08:26:27.625Z",
               "category": "category 2",
               "value": "175"
             }
@@ -350,7 +360,7 @@
           {
             "key": "35",
             "value": {
-              "date": "2024-04-20T15:32:50.063Z",
+              "date": "2024-10-18T09:26:27.625Z",
               "category": "category 3",
               "value": "178"
             }
@@ -358,7 +368,7 @@
           {
             "key": "36",
             "value": {
-              "date": "2024-04-20T16:32:50.063Z",
+              "date": "2024-10-18T10:26:27.625Z",
               "category": "category 0",
               "value": "181"
             }
@@ -366,7 +376,7 @@
           {
             "key": "37",
             "value": {
-              "date": "2024-04-20T17:32:50.063Z",
+              "date": "2024-10-18T11:26:27.625Z",
               "category": "category 1",
               "value": "184"
             }
@@ -374,7 +384,7 @@
           {
             "key": "38",
             "value": {
-              "date": "2024-04-20T18:32:50.063Z",
+              "date": "2024-10-18T12:26:27.625Z",
               "category": "category 2",
               "value": "186"
             }
@@ -382,7 +392,7 @@
           {
             "key": "39",
             "value": {
-              "date": "2024-04-20T19:32:50.063Z",
+              "date": "2024-10-18T13:26:27.625Z",
               "category": "category 3",
               "value": "188"
             }
@@ -390,7 +400,7 @@
           {
             "key": "40",
             "value": {
-              "date": "2024-04-20T20:32:50.063Z",
+              "date": "2024-10-18T14:26:27.625Z",
               "category": "category 0",
               "value": "190"
             }
@@ -398,7 +408,7 @@
           {
             "key": "41",
             "value": {
-              "date": "2024-04-20T21:32:50.063Z",
+              "date": "2024-10-18T15:26:27.625Z",
               "category": "category 1",
               "value": "192"
             }
@@ -406,7 +416,7 @@
           {
             "key": "42",
             "value": {
-              "date": "2024-04-20T22:32:50.063Z",
+              "date": "2024-10-18T16:26:27.625Z",
               "category": "category 2",
               "value": "194"
             }
@@ -414,7 +424,7 @@
           {
             "key": "43",
             "value": {
-              "date": "2024-04-20T23:32:50.063Z",
+              "date": "2024-10-18T17:26:27.625Z",
               "category": "category 3",
               "value": "195"
             }
@@ -422,7 +432,7 @@
           {
             "key": "44",
             "value": {
-              "date": "2024-04-21T00:32:50.063Z",
+              "date": "2024-10-18T18:26:27.625Z",
               "category": "category 0",
               "value": "196"
             }
@@ -430,7 +440,7 @@
           {
             "key": "45",
             "value": {
-              "date": "2024-04-21T01:32:50.063Z",
+              "date": "2024-10-18T19:26:27.625Z",
               "category": "category 1",
               "value": "198"
             }
@@ -438,7 +448,7 @@
           {
             "key": "46",
             "value": {
-              "date": "2024-04-21T02:32:50.063Z",
+              "date": "2024-10-18T20:26:27.625Z",
               "category": "category 2",
               "value": "198"
             }
@@ -446,7 +456,7 @@
           {
             "key": "47",
             "value": {
-              "date": "2024-04-21T03:32:50.063Z",
+              "date": "2024-10-18T21:26:27.625Z",
               "category": "category 3",
               "value": "199"
             }
@@ -454,7 +464,7 @@
           {
             "key": "48",
             "value": {
-              "date": "2024-04-21T04:32:50.063Z",
+              "date": "2024-10-18T22:26:27.625Z",
               "category": "category 0",
               "value": "200"
             }
@@ -462,7 +472,7 @@
           {
             "key": "49",
             "value": {
-              "date": "2024-04-21T05:32:50.063Z",
+              "date": "2024-10-18T23:26:27.625Z",
               "category": "category 1",
               "value": "200"
             }
@@ -470,7 +480,7 @@
           {
             "key": "50",
             "value": {
-              "date": "2024-04-21T06:32:50.063Z",
+              "date": "2024-10-19T00:26:27.625Z",
               "category": "category 2",
               "value": "200"
             }
@@ -478,7 +488,7 @@
           {
             "key": "51",
             "value": {
-              "date": "2024-04-21T07:32:50.063Z",
+              "date": "2024-10-19T01:26:27.625Z",
               "category": "category 3",
               "value": "200"
             }
@@ -486,7 +496,7 @@
           {
             "key": "52",
             "value": {
-              "date": "2024-04-21T08:32:50.063Z",
+              "date": "2024-10-19T02:26:27.625Z",
               "category": "category 0",
               "value": "200"
             }
@@ -494,7 +504,7 @@
           {
             "key": "53",
             "value": {
-              "date": "2024-04-21T09:32:50.063Z",
+              "date": "2024-10-19T03:26:27.625Z",
               "category": "category 1",
               "value": "199"
             }
@@ -502,7 +512,7 @@
           {
             "key": "54",
             "value": {
-              "date": "2024-04-21T10:32:50.063Z",
+              "date": "2024-10-19T04:26:27.625Z",
               "category": "category 2",
               "value": "198"
             }
@@ -510,7 +520,7 @@
           {
             "key": "55",
             "value": {
-              "date": "2024-04-21T11:32:50.063Z",
+              "date": "2024-10-19T05:26:27.625Z",
               "category": "category 3",
               "value": "198"
             }
@@ -518,7 +528,7 @@
           {
             "key": "56",
             "value": {
-              "date": "2024-04-21T12:32:50.063Z",
+              "date": "2024-10-19T06:26:27.625Z",
               "category": "category 0",
               "value": "196"
             }
@@ -526,7 +536,7 @@
           {
             "key": "57",
             "value": {
-              "date": "2024-04-21T13:32:50.063Z",
+              "date": "2024-10-19T07:26:27.625Z",
               "category": "category 1",
               "value": "195"
             }
@@ -534,7 +544,7 @@
           {
             "key": "58",
             "value": {
-              "date": "2024-04-21T14:32:50.063Z",
+              "date": "2024-10-19T08:26:27.625Z",
               "category": "category 2",
               "value": "194"
             }
@@ -542,7 +552,7 @@
           {
             "key": "59",
             "value": {
-              "date": "2024-04-21T15:32:50.063Z",
+              "date": "2024-10-19T09:26:27.625Z",
               "category": "category 3",
               "value": "192"
             }
@@ -550,7 +560,7 @@
           {
             "key": "60",
             "value": {
-              "date": "2024-04-21T16:32:50.063Z",
+              "date": "2024-10-19T10:26:27.625Z",
               "category": "category 0",
               "value": "190"
             }
@@ -558,7 +568,7 @@
           {
             "key": "61",
             "value": {
-              "date": "2024-04-21T17:32:50.063Z",
+              "date": "2024-10-19T11:26:27.625Z",
               "category": "category 1",
               "value": "188"
             }
@@ -566,7 +576,7 @@
           {
             "key": "62",
             "value": {
-              "date": "2024-04-21T18:32:50.063Z",
+              "date": "2024-10-19T12:26:27.625Z",
               "category": "category 2",
               "value": "186"
             }
@@ -574,7 +584,7 @@
           {
             "key": "63",
             "value": {
-              "date": "2024-04-21T19:32:50.063Z",
+              "date": "2024-10-19T13:26:27.625Z",
               "category": "category 3",
               "value": "184"
             }
@@ -582,7 +592,7 @@
           {
             "key": "64",
             "value": {
-              "date": "2024-04-21T20:32:50.063Z",
+              "date": "2024-10-19T14:26:27.625Z",
               "category": "category 0",
               "value": "181"
             }
@@ -590,7 +600,7 @@
           {
             "key": "65",
             "value": {
-              "date": "2024-04-21T21:32:50.063Z",
+              "date": "2024-10-19T15:26:27.625Z",
               "category": "category 1",
               "value": "178"
             }
@@ -598,7 +608,7 @@
           {
             "key": "66",
             "value": {
-              "date": "2024-04-21T22:32:50.063Z",
+              "date": "2024-10-19T16:26:27.625Z",
               "category": "category 2",
               "value": "175"
             }
@@ -606,7 +616,7 @@
           {
             "key": "67",
             "value": {
-              "date": "2024-04-21T23:32:50.063Z",
+              "date": "2024-10-19T17:26:27.625Z",
               "category": "category 3",
               "value": "172"
             }
@@ -614,7 +624,7 @@
           {
             "key": "68",
             "value": {
-              "date": "2024-04-22T00:32:50.063Z",
+              "date": "2024-10-19T18:26:27.625Z",
               "category": "category 0",
               "value": "169"
             }
@@ -622,7 +632,7 @@
           {
             "key": "69",
             "value": {
-              "date": "2024-04-22T01:32:50.063Z",
+              "date": "2024-10-19T19:26:27.625Z",
               "category": "category 1",
               "value": "165"
             }
@@ -630,7 +640,7 @@
           {
             "key": "70",
             "value": {
-              "date": "2024-04-22T02:32:50.063Z",
+              "date": "2024-10-19T20:26:27.625Z",
               "category": "category 2",
               "value": "162"
             }
@@ -638,7 +648,7 @@
           {
             "key": "71",
             "value": {
-              "date": "2024-04-22T03:32:50.063Z",
+              "date": "2024-10-19T21:26:27.625Z",
               "category": "category 3",
               "value": "158"
             }
@@ -646,7 +656,7 @@
           {
             "key": "72",
             "value": {
-              "date": "2024-04-22T04:32:50.063Z",
+              "date": "2024-10-19T22:26:27.625Z",
               "category": "category 0",
               "value": "154"
             }
@@ -654,7 +664,7 @@
           {
             "key": "73",
             "value": {
-              "date": "2024-04-22T05:32:50.063Z",
+              "date": "2024-10-19T23:26:27.625Z",
               "category": "category 1",
               "value": "150"
             }
@@ -662,7 +672,7 @@
           {
             "key": "74",
             "value": {
-              "date": "2024-04-22T06:32:50.063Z",
+              "date": "2024-10-20T00:26:27.625Z",
               "category": "category 2",
               "value": "146"
             }
@@ -670,7 +680,7 @@
           {
             "key": "75",
             "value": {
-              "date": "2024-04-22T07:32:50.063Z",
+              "date": "2024-10-20T01:26:27.625Z",
               "category": "category 3",
               "value": "141"
             }
@@ -678,7 +688,7 @@
           {
             "key": "76",
             "value": {
-              "date": "2024-04-22T08:32:50.063Z",
+              "date": "2024-10-20T02:26:27.625Z",
               "category": "category 0",
               "value": "137"
             }
@@ -686,7 +696,7 @@
           {
             "key": "77",
             "value": {
-              "date": "2024-04-22T09:32:50.063Z",
+              "date": "2024-10-20T03:26:27.625Z",
               "category": "category 1",
               "value": "132"
             }
@@ -694,7 +704,7 @@
           {
             "key": "78",
             "value": {
-              "date": "2024-04-22T10:32:50.063Z",
+              "date": "2024-10-20T04:26:27.625Z",
               "category": "category 2",
               "value": "127"
             }
@@ -702,7 +712,7 @@
           {
             "key": "79",
             "value": {
-              "date": "2024-04-22T11:32:50.063Z",
+              "date": "2024-10-20T05:26:27.625Z",
               "category": "category 3",
               "value": "123"
             }
@@ -710,7 +720,7 @@
           {
             "key": "80",
             "value": {
-              "date": "2024-04-22T12:32:50.063Z",
+              "date": "2024-10-20T06:26:27.625Z",
               "category": "category 0",
               "value": "118"
             }
@@ -718,7 +728,7 @@
           {
             "key": "81",
             "value": {
-              "date": "2024-04-22T13:32:50.063Z",
+              "date": "2024-10-20T07:26:27.625Z",
               "category": "category 1",
               "value": "112"
             }
@@ -726,7 +736,7 @@
           {
             "key": "82",
             "value": {
-              "date": "2024-04-22T14:32:50.063Z",
+              "date": "2024-10-20T08:26:27.625Z",
               "category": "category 2",
               "value": "107"
             }
@@ -734,7 +744,7 @@
           {
             "key": "83",
             "value": {
-              "date": "2024-04-22T15:32:50.063Z",
+              "date": "2024-10-20T09:26:27.625Z",
               "category": "category 3",
               "value": "102"
             }
@@ -742,7 +752,7 @@
           {
             "key": "84",
             "value": {
-              "date": "2024-04-22T16:32:50.063Z",
+              "date": "2024-10-20T10:26:27.625Z",
               "category": "category 0",
               "value": "96"
             }
@@ -750,7 +760,7 @@
           {
             "key": "85",
             "value": {
-              "date": "2024-04-22T17:32:50.063Z",
+              "date": "2024-10-20T11:26:27.625Z",
               "category": "category 1",
               "value": "91"
             }
@@ -758,7 +768,7 @@
           {
             "key": "86",
             "value": {
-              "date": "2024-04-22T18:32:50.063Z",
+              "date": "2024-10-20T12:26:27.625Z",
               "category": "category 2",
               "value": "85"
             }
@@ -766,7 +776,7 @@
           {
             "key": "87",
             "value": {
-              "date": "2024-04-22T19:32:50.063Z",
+              "date": "2024-10-20T13:26:27.625Z",
               "category": "category 3",
               "value": "79"
             }
@@ -774,7 +784,7 @@
           {
             "key": "88",
             "value": {
-              "date": "2024-04-22T20:32:50.063Z",
+              "date": "2024-10-20T14:26:27.625Z",
               "category": "category 0",
               "value": "74"
             }
@@ -782,7 +792,7 @@
           {
             "key": "89",
             "value": {
-              "date": "2024-04-22T21:32:50.063Z",
+              "date": "2024-10-20T15:26:27.625Z",
               "category": "category 1",
               "value": "68"
             }
@@ -790,7 +800,7 @@
           {
             "key": "90",
             "value": {
-              "date": "2024-04-22T22:32:50.063Z",
+              "date": "2024-10-20T16:26:27.625Z",
               "category": "category 2",
               "value": "62"
             }
@@ -798,7 +808,7 @@
           {
             "key": "91",
             "value": {
-              "date": "2024-04-22T23:32:50.063Z",
+              "date": "2024-10-20T17:26:27.625Z",
               "category": "category 3",
               "value": "56"
             }
@@ -806,7 +816,7 @@
           {
             "key": "92",
             "value": {
-              "date": "2024-04-23T00:32:50.063Z",
+              "date": "2024-10-20T18:26:27.625Z",
               "category": "category 0",
               "value": "50"
             }
@@ -814,7 +824,7 @@
           {
             "key": "93",
             "value": {
-              "date": "2024-04-23T01:32:50.063Z",
+              "date": "2024-10-20T19:26:27.625Z",
               "category": "category 1",
               "value": "44"
             }
@@ -822,7 +832,7 @@
           {
             "key": "94",
             "value": {
-              "date": "2024-04-23T02:32:50.063Z",
+              "date": "2024-10-20T20:26:27.625Z",
               "category": "category 2",
               "value": "37"
             }
@@ -830,7 +840,7 @@
           {
             "key": "95",
             "value": {
-              "date": "2024-04-23T03:32:50.063Z",
+              "date": "2024-10-20T21:26:27.625Z",
               "category": "category 3",
               "value": "31"
             }
@@ -838,7 +848,7 @@
           {
             "key": "96",
             "value": {
-              "date": "2024-04-23T04:32:50.063Z",
+              "date": "2024-10-20T22:26:27.625Z",
               "category": "category 0",
               "value": "25"
             }
@@ -846,7 +856,7 @@
           {
             "key": "97",
             "value": {
-              "date": "2024-04-23T05:32:50.063Z",
+              "date": "2024-10-20T23:26:27.625Z",
               "category": "category 1",
               "value": "19"
             }
@@ -854,7 +864,7 @@
           {
             "key": "98",
             "value": {
-              "date": "2024-04-23T06:32:50.063Z",
+              "date": "2024-10-21T00:26:27.625Z",
               "category": "category 2",
               "value": "13"
             }
@@ -862,7 +872,7 @@
           {
             "key": "99",
             "value": {
-              "date": "2024-04-23T07:32:50.063Z",
+              "date": "2024-10-21T01:26:27.625Z",
               "category": "category 3",
               "value": "6"
             }
@@ -872,21 +882,74 @@
     }
   },
   "layouts": {
-    "01 - My Layout": {
-      "name": "01 - My Layout",
-      "module": [],
+    "/03 - My Last Layout": {
+      "name": "03 - My Last Layout",
+      "module": [
+        {
+          "type": "root",
+          "name": ""
+        }
+      ],
       "visual": {
-        "type": "flat",
-        "name": "01 - My Layout",
+        "type": "visual",
+        "name": "03 - My Last Layout",
         "visual": {
-          "type": "view",
+          "type": "vega",
+          "vega_kind": "view",
+          "layout_kind": "layered",
           "name": "My Chart",
+          "streams": [
+            {
+              "stream": {
+                "name": "Writable.My Source",
+                "module": [
+                  {
+                    "type": "root",
+                    "name": ""
+                  }
+                ],
+                "type": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "date": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "category": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "value": {
+                          "type": "Integer",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                },
+                "writable": true
+              },
+              "input_streams": []
+            }
+          ],
           "view": {
-            "type": "cartesian",
+            "type": "spec",
             "name": "My Chart",
             "stream": {
-              "name": "Writeable.My Source",
-              "module": [],
+              "name": "Writable.My Source",
+              "module": [
+                {
+                  "type": "root",
+                  "name": ""
+                }
+              ],
               "type": {
                 "type": "Dict",
                 "value": {
@@ -915,6 +978,257 @@
               },
               "writable": true
             },
+            "input_streams": [],
+            "expression": {
+              "type": {
+                "type": "Dict",
+                "value": {
+                  "key": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "value": {
+                    "type": "Struct",
+                    "value": {
+                      "date": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "category": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
+                  }
+                }
+              },
+              "ast_type": "Variable",
+              "name": "value"
+            },
+            "spec": {
+              "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+              "transform": [],
+              "mark": {
+                "type": "point"
+              },
+              "encoding": {
+                "x": {
+                  "field": "date",
+                  "type": "temporal"
+                },
+                "y": {
+                  "field": "value",
+                  "type": "quantitative"
+                },
+                "color": {
+                  "field": "value",
+                  "type": "quantitative"
+                }
+              }
+            },
+            "selections": {
+              "date": {
+                "type": {
+                  "type": "DateTime",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "date"
+              },
+              "category": {
+                "type": {
+                  "type": "String",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "category"
+              },
+              "value": {
+                "type": {
+                  "type": "Integer",
+                  "value": null
+                },
+                "ast_type": "Variable",
+                "name": "value"
+              }
+            }
+          },
+          "allow_debug": false
+        }
+      },
+      "inputs": {
+        "/Writable.My Source": {
+          "name": "Writable.My Source",
+          "module": [
+            {
+              "type": "root",
+              "name": ""
+            }
+          ],
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "category": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "value": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": true
+        }
+      },
+      "types": [
+        "vega"
+      ]
+    },
+    "/My Layout": {
+      "name": "My Layout",
+      "module": [
+        {
+          "type": "root",
+          "name": ""
+        }
+      ],
+      "visual": {
+        "type": "visual",
+        "name": "My Layout",
+        "visual": {
+          "type": "vega",
+          "vega_kind": "view",
+          "layout_kind": "layered",
+          "name": "My Chart",
+          "streams": [
+            {
+              "stream": {
+                "name": "Writable.My Source",
+                "module": [
+                  {
+                    "type": "root",
+                    "name": ""
+                  }
+                ],
+                "type": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "date": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "category": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "value": {
+                          "type": "Integer",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                },
+                "writable": true
+              },
+              "input_streams": []
+            }
+          ],
+          "view": {
+            "type": "cartesian",
+            "name": "My Chart",
+            "stream": {
+              "name": "Writable.My Source",
+              "module": [
+                {
+                  "type": "root",
+                  "name": ""
+                }
+              ],
+              "type": {
+                "type": "Dict",
+                "value": {
+                  "key": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "value": {
+                    "type": "Struct",
+                    "value": {
+                      "date": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "category": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
+                  }
+                }
+              },
+              "writable": true
+            },
+            "expression": {
+              "type": {
+                "type": "Dict",
+                "value": {
+                  "key": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "value": {
+                    "type": "Struct",
+                    "value": {
+                      "date": {
+                        "type": "DateTime",
+                        "value": null
+                      },
+                      "category": {
+                        "type": "String",
+                        "value": null
+                      },
+                      "value": {
+                        "type": "Integer",
+                        "value": null
+                      }
+                    }
+                  }
+                }
+              },
+              "ast_type": "Variable",
+              "name": "value"
+            },
+            "input_streams": [],
             "mark": {
               "kind": "point"
             },
@@ -964,26 +1278,80 @@
                 "name": "value"
               }
             }
-          }
+          },
+          "allow_debug": false
         }
-      }
+      },
+      "inputs": {
+        "/Writable.My Source": {
+          "name": "Writable.My Source",
+          "module": [
+            {
+              "type": "root",
+              "name": ""
+            }
+          ],
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
+                "value": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "category": {
+                    "type": "String",
+                    "value": null
+                  },
+                  "value": {
+                    "type": "Integer",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "writable": true
+        }
+      },
+      "types": [
+        "vega"
+      ]
     },
-    "02 - My Other Layout": {
-      "name": "02 - My Other Layout",
-      "module": [],
+    "/My Other Layout": {
+      "name": "My Other Layout",
+      "module": [
+        {
+          "type": "root",
+          "name": ""
+        }
+      ],
       "visual": {
-        "type": "flat",
-        "name": "02 - My Other Layout",
+        "type": "visual",
+        "name": "My Other Layout",
         "visual": {
-          "type": "layer",
+          "type": "vega",
+          "vega_kind": "layer",
+          "layout_kind": "layered",
           "name": "My Chart",
           "views": [
             {
               "type": "cartesian",
               "name": "My Chart.0",
               "stream": {
-                "name": "Writeable.My Source",
-                "module": [],
+                "name": "Writable.My Source",
+                "module": [
+                  {
+                    "type": "root",
+                    "name": ""
+                  }
+                ],
                 "type": {
                   "type": "Dict",
                   "value": {
@@ -1012,6 +1380,37 @@
                 },
                 "writable": true
               },
+              "expression": {
+                "type": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "date": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "category": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "value": {
+                          "type": "Integer",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                },
+                "ast_type": "Variable",
+                "name": "value"
+              },
+              "input_streams": [],
               "mark": {
                 "kind": "bar",
                 "orient": "vertical"
@@ -1069,8 +1468,13 @@
               "type": "cartesian",
               "name": "My Chart.1",
               "stream": {
-                "name": "Writeable.My Source",
-                "module": [],
+                "name": "Writable.My Source",
+                "module": [
+                  {
+                    "type": "root",
+                    "name": ""
+                  }
+                ],
                 "type": {
                   "type": "Dict",
                   "value": {
@@ -1099,6 +1503,37 @@
                 },
                 "writable": true
               },
+              "expression": {
+                "type": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "date": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "category": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "value": {
+                          "type": "Integer",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                },
+                "ast_type": "Variable",
+                "name": "value"
+              },
+              "input_streams": [],
               "mark": {
                 "kind": "point"
               },
@@ -1149,106 +1584,138 @@
                 }
               }
             }
-          ]
+          ],
+          "streams": [
+            {
+              "stream": {
+                "name": "Writable.My Source",
+                "module": [
+                  {
+                    "type": "root",
+                    "name": ""
+                  }
+                ],
+                "type": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "date": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "category": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "value": {
+                          "type": "Integer",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                },
+                "writable": true
+              },
+              "input_streams": []
+            },
+            {
+              "stream": {
+                "name": "Writable.My Source",
+                "module": [
+                  {
+                    "type": "root",
+                    "name": ""
+                  }
+                ],
+                "type": {
+                  "type": "Dict",
+                  "value": {
+                    "key": {
+                      "type": "String",
+                      "value": null
+                    },
+                    "value": {
+                      "type": "Struct",
+                      "value": {
+                        "date": {
+                          "type": "DateTime",
+                          "value": null
+                        },
+                        "category": {
+                          "type": "String",
+                          "value": null
+                        },
+                        "value": {
+                          "type": "Integer",
+                          "value": null
+                        }
+                      }
+                    }
+                  }
+                },
+                "writable": true
+              },
+              "input_streams": []
+            }
+          ],
+          "allow_debug": false
         }
-      }
-    },
-    "03 - My Last Layout": {
-      "name": "03 - My Last Layout",
-      "module": [],
-      "visual": {
-        "type": "flat",
-        "name": "03 - My Last Layout",
-        "visual": {
-          "type": "view",
-          "name": "My Chart",
-          "view": {
-            "type": "spec",
-            "name": "My Chart",
-            "stream": {
-              "name": "Writeable.My Source",
-              "module": [],
-              "type": {
-                "type": "Dict",
+      },
+      "inputs": {
+        "/Writable.My Source": {
+          "name": "Writable.My Source",
+          "module": [
+            {
+              "type": "root",
+              "name": ""
+            }
+          ],
+          "type": {
+            "type": "Dict",
+            "value": {
+              "key": {
+                "type": "String",
+                "value": null
+              },
+              "value": {
+                "type": "Struct",
                 "value": {
-                  "key": {
+                  "date": {
+                    "type": "DateTime",
+                    "value": null
+                  },
+                  "category": {
                     "type": "String",
                     "value": null
                   },
                   "value": {
-                    "type": "Struct",
-                    "value": {
-                      "date": {
-                        "type": "DateTime",
-                        "value": null
-                      },
-                      "category": {
-                        "type": "String",
-                        "value": null
-                      },
-                      "value": {
-                        "type": "Integer",
-                        "value": null
-                      }
-                    }
+                    "type": "Integer",
+                    "value": null
                   }
                 }
-              },
-              "writable": true
-            },
-            "spec": {
-              "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-              "transform": [],
-              "mark": {
-                "type": "point"
-              },
-              "encoding": {
-                "x": {
-                  "field": "date",
-                  "type": "temporal"
-                },
-                "y": {
-                  "field": "value",
-                  "type": "quantitative"
-                },
-                "color": {
-                  "field": "value",
-                  "type": "quantitative"
-                }
-              },
-              "data": {
-                "name": "My Chart"
-              }
-            },
-            "selections": {
-              "date": {
-                "type": {
-                  "type": "DateTime",
-                  "value": null
-                },
-                "ast_type": "Variable",
-                "name": "date"
-              },
-              "category": {
-                "type": {
-                  "type": "String",
-                  "value": null
-                },
-                "ast_type": "Variable",
-                "name": "category"
-              },
-              "value": {
-                "type": {
-                  "type": "Integer",
-                  "value": null
-                },
-                "ast_type": "Variable",
-                "name": "value"
               }
             }
-          }
+          },
+          "writable": true
         }
-      }
+      },
+      "types": [
+        "vega"
+      ]
+    }
+  },
+  "modules": {
+    "/": {
+      "type": "root",
+      "name": "",
+      "module": []
     }
   }
 }
