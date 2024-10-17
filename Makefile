@@ -26,10 +26,17 @@ deploy:
 	 cd 03_work_with_data/06_transform_collection_data/07_join_collections && edk template deploy -ycw "03_06_07_join_collections"
 	 cd 03_work_with_data/06_transform_collection_data/08_concatenate_collections && edk template deploy -ycw "03_06_08_concatenate_collections"
 	 cd 03_work_with_data/06_transform_collection_data/09_offset_a_collection_datastream && edk template deploy -ycw "03_06_09_offset_a_collection_datastream"
-	 cd 03_work_with_data/07_visualise_data/02_define_a_table_visual && edk template deploy -ycw "03_07_02_define_a_table_visual"
-	 cd 03_work_with_data/07_visualise_data/03_define_a_vega_visual && edk template deploy -ycw "03_07_03_define_a_vega_visual"
-	 cd 03_work_with_data/07_visualise_data/04_define_a_tabbed_visual && edk template deploy -ycw "03_07_04_define_a_tabbed_visual"
-	 cd 03_work_with_data/07_visualise_data/05_define_a_panelled_visual && edk template deploy -ycw "03_07_05_define_a_panelled_visual"
+	 cd 03_work_with_data/07_visualise_data/02_define_a_table_visual && edk workspace deploy -ycw "03_07_02_define_a_table_visual"
+	 cd 03_work_with_data/07_visualise_data/03_define_a_vega_visual && edk workspace deploy -ycw "03_07_03_define_a_vega_visual"
+	 cd 03_work_with_data/07_visualise_data/04_define_a_tabbed_visual && edk workspace deploy -ycw "03_07_04_define_a_tabbed_visual"
+	 cd 03_work_with_data/07_visualise_data/05_define_a_panelled_visual && edk workspace deploy -ycw "03_07_05_define_a_panelled_visual"
+	 cd 03_work_with_data/07_visualise_data/06_define_a_split_visual && edk workspace deploy -ycw "03_07_06_define_a_split_visual"
+	 cd 03_work_with_data/07_visualise_data/07_define_a_stacked_visual && edk workspace deploy -ycw "03_07_07_define_a_stacked_visual"
+	 cd 03_work_with_data/07_visualise_data/08_define_a_view_visual && edk workspace deploy -ycw "03_07_08_define_a_view_visual"
+	 cd 03_work_with_data/07_visualise_data/09_define_a_map_visual && edk workspace deploy -ycw "03_07_09_define_a_map_visual"
+	 cd 03_work_with_data/07_visualise_data/10_define_a_timeline_visual && edk workspace deploy -ycw "03_07_10_define_a_timeline_visual"
+	 cd 03_work_with_data/07_visualise_data/11_define_a_card_visual && edk workspace deploy -ycw "03_07_11_define_a_card_visual"
+	 
 
 .PHONY: install
 install:
@@ -57,6 +64,12 @@ install:
 	 cd 03_work_with_data/07_visualise_data/03_define_a_vega_visual && npm i
 	 cd 03_work_with_data/07_visualise_data/04_define_a_tabbed_visual && npm i
 	 cd 03_work_with_data/07_visualise_data/05_define_a_panelled_visual && npm i
+	 cd 03_work_with_data/07_visualise_data/06_define_a_split_visual && npm i
+	 cd 03_work_with_data/07_visualise_data/07_define_a_stacked_visual && npm i
+	 cd 03_work_with_data/07_visualise_data/08_define_a_view_visual && npm i
+	 cd 03_work_with_data/07_visualise_data/09_define_a_map_visual && npm i
+	 cd 03_work_with_data/07_visualise_data/10_define_a_timeline_visual && npm i
+	 cd 03_work_with_data/07_visualise_data/11_define_a_card_visual && npm i
 
 
 .PHONY: build
@@ -85,6 +98,13 @@ build:
 	 cd 03_work_with_data/07_visualise_data/03_define_a_vega_visual && edk template build
 	 cd 03_work_with_data/07_visualise_data/04_define_a_tabbed_visual && edk template build
 	 cd 03_work_with_data/07_visualise_data/05_define_a_panelled_visual && edk template build
+	 cd 03_work_with_data/07_visualise_data/06_define_a_split_visual && edk template build
+	 cd 03_work_with_data/07_visualise_data/07_define_a_stacked_visual && edk template build
+	 cd 03_work_with_data/07_visualise_data/08_define_a_view_visual && edk template build
+	 cd 03_work_with_data/07_visualise_data/09_define_a_map_visual && edk template build
+	 cd 03_work_with_data/07_visualise_data/10_define_a_timeline_visual && edk template build
+	 cd 03_work_with_data/07_visualise_data/11_define_a_card_visual && edk template build
+
 
 
 .PHONY: delete
@@ -113,3 +133,9 @@ delete:
 	cd 03_work_with_data/07_visualise_data/03_define_a_vega_visual && edk workspace delete "03_07_03_define_a_vega_visual"
 	cd 03_work_with_data/07_visualise_data/04_define_a_tabbed_visual && edk workspace delete "03_07_04_define_a_tabbed_visual"
 	cd 03_work_with_data/07_visualise_data/05_define_a_panelled_visual && edk workspace delete "03_07_05_define_a_panelled_visual"
+	cd 03_work_with_data/07_visualise_data/06_define_a_split_visual && edk workspace delete "03_07_06_define_a_split_visual"
+	cd 03_work_with_data/07_visualise_data/07_define_a_stacked_visual && edk workspace delete "03_07_07_define_a_stacked_visual"
+	cd 03_work_with_data/07_visualise_data/08_define_a_view_visual && edk workspace delete "03_07_08_define_a_view_visual"
+	cd 03_work_with_data/07_visualise_data/09_define_a_map_visual && edk workspace delete "03_07_09_define_a_map_visual"
+	cd 03_work_with_data/07_visualise_data/10_define_a_timeline_visual && edk workspace delete "03_07_10_define_a_timeline_visual"
+	cd 03_work_with_data/07_visualise_data/11_define_a_card_visual && edk workspace delete "03_07_11_define_a_card_visual"
